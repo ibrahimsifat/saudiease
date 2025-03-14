@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "title": "SaudiEase - Digital Solutions for Saudi Businesses",
+    "description": "We offer comprehensive digital solutions tailored for Saudi businesses, helping you thrive in the digital age."
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "services": {
+    "title": "Comprehensive Digital Services",
+    "subtitle": "Our Expertise",
+    "description": "We offer a wide range of digital solutions tailored for Saudi businesses, helping you thrive in the digital age",
+    "viewAll": "View All Services",
+    "viewDetails": "View Details",
+    "categories": {
+      "all": "All Services",
+      "development": "Development",
+      "design": "Design",
+      "marketing": "Marketing",
+      "finance": "Finance"
+    }
+  },
+  "common": {
+    "languageName": "English",
+    "switchLanguage": "Switch language",
+    "currentLanguage": "Current language: English"
+  }
+}
