@@ -1,37 +1,35 @@
+import type { LucideIcon } from "lucide-react";
 import {
-  Monitor,
-  FileText,
-  PenTool,
   BarChart3,
-  Smartphone,
   Code,
-  ShoppingCart,
-  Server,
   Database,
-  Layers,
-  Palette,
+  FileText,
   Image,
-  Film,
-  Printer,
   Instagram,
-  Search,
+  Layers,
   Mail,
   MessageSquare,
-  Youtube,
+  Monitor,
+  Palette,
+  PenTool,
+  Printer,
+  Search,
+  ShoppingCart,
+  Smartphone,
   TrendingUp,
   Users,
-} from "lucide-react"
-import type { LucideIcon } from "lucide-react"
+  Youtube,
+} from "lucide-react";
 
 export interface Service {
-  id: string
-  icon: LucideIcon
-  title: string
-  description: string
-  longDescription?: string
-  benefits?: string[]
-  features?: string[]
-  category?: string
+  id: string;
+  icon: LucideIcon;
+  title: string;
+  description: string;
+  longDescription?: string;
+  benefits?: string[];
+  features?: string[];
+  category?: string;
 }
 
 export const services: Service[] = [
@@ -132,30 +130,6 @@ export const services: Service[] = [
     category: "development",
   },
   {
-    id: "enterprise-solutions",
-    icon: Server,
-    title: "Enterprise Solutions",
-    description:
-      "Scalable, secure enterprise applications that streamline operations and enhance productivity for Saudi organizations.",
-    longDescription:
-      "Our enterprise solutions address the complex needs of large Saudi organizations, providing scalable, secure, and efficient systems that streamline operations and enhance productivity while ensuring compliance with local regulations.",
-    benefits: [
-      "Improved operational efficiency",
-      "Enhanced data security",
-      "Streamlined business processes",
-      "Better decision-making capabilities",
-      "Reduced operational costs",
-    ],
-    features: [
-      "Custom ERP and CRM systems",
-      "Business process automation",
-      "Data analytics and reporting",
-      "Legacy system integration",
-      "Scalable cloud infrastructure",
-    ],
-    category: "development",
-  },
-  {
     id: "api-development",
     icon: Database,
     title: "API Development & Integration",
@@ -183,7 +157,8 @@ export const services: Service[] = [
     id: "e-invoicing",
     icon: FileText,
     title: "E-Invoicing & Accounts",
-    description: "ZATCA-compliant electronic invoicing solutions and seamless account management for Saudi businesses.",
+    description:
+      "ZATCA-compliant electronic invoicing solutions and seamless account management for Saudi businesses.",
     longDescription:
       "Our e-invoicing solutions help Saudi businesses comply with ZATCA regulations while streamlining their financial processes. We provide comprehensive account management tools that integrate with your existing systems.",
     benefits: [
@@ -299,30 +274,6 @@ export const services: Service[] = [
     category: "design",
   },
   {
-    id: "motion-graphics",
-    icon: Film,
-    title: "Motion Graphics & Animation",
-    description:
-      "Engaging motion graphics and animations that bring your brand to life and capture audience attention.",
-    longDescription:
-      "Our motion graphics and animation services create dynamic visual content that engages Saudi audiences and effectively communicates your message. We develop animations for various platforms, from social media to corporate presentations.",
-    benefits: [
-      "Increased audience engagement",
-      "Enhanced message retention",
-      "Simplified explanation of complex concepts",
-      "Distinctive brand communication",
-      "Versatile content for multiple platforms",
-    ],
-    features: [
-      "2D and 3D animation",
-      "Explainer videos",
-      "Logo animation",
-      "Social media animations",
-      "Animated infographics",
-    ],
-    category: "design",
-  },
-  {
     id: "print-design",
     icon: Printer,
     title: "Print Design",
@@ -422,7 +373,8 @@ export const services: Service[] = [
     id: "email-marketing",
     icon: Mail,
     title: "Email Marketing",
-    description: "Targeted email campaigns that nurture leads and build customer relationships with Saudi audiences.",
+    description:
+      "Targeted email campaigns that nurture leads and build customer relationships with Saudi audiences.",
     longDescription:
       "Our email marketing services help Saudi businesses build and maintain relationships with customers through personalized, targeted campaigns. We create engaging content that drives opens, clicks, and conversions.",
     benefits: [
@@ -445,7 +397,8 @@ export const services: Service[] = [
     id: "content-marketing",
     icon: MessageSquare,
     title: "Content Marketing",
-    description: "Strategic content creation and distribution that establishes your authority in the Saudi market.",
+    description:
+      "Strategic content creation and distribution that establishes your authority in the Saudi market.",
     longDescription:
       "We create and distribute valuable, relevant content that attracts and engages your target audience in Saudi Arabia. Our content marketing strategies build brand authority, drive traffic, and generate leads.",
     benefits: [
@@ -536,5 +489,4 @@ export const services: Service[] = [
     ],
     category: "marketing",
   },
-]
-
+];

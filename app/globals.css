@@ -155,7 +155,11 @@
 }
 
 .bg-grid-pattern {
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.05) 1px,
+      transparent 1px
+    ),
     linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
   background-size: 20px 20px;
 }
@@ -211,7 +215,12 @@
 
 /* Mesh gradient animation */
 .mesh-gradient {
-  background: linear-gradient(45deg, rgba(230, 62, 101, 0.1), rgba(80, 100, 255, 0.1), rgba(230, 62, 101, 0.1));
+  background: linear-gradient(
+    45deg,
+    rgba(230, 62, 101, 0.1),
+    rgba(80, 100, 255, 0.1),
+    rgba(230, 62, 101, 0.1)
+  );
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
 }
@@ -277,6 +286,73 @@
   transition: transform 0.4s ease;
   z-index: -1;
 }
+/* RTL Support */
+.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+.rtl .accordion-trigger {
+  flex-direction: row-reverse;
+}
+
+.rtl .accordion-trigger > svg {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* Fix for radio buttons in RTL */
+.rtl .flex.items-center.space-x-3 {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+.rtl .flex.items-center.space-x-3 > * {
+  margin-right: 0;
+  margin-left: 0.75rem;
+}
+
+/* Fix for calendar in RTL */
+.rtl .react-calendar {
+  direction: rtl;
+}
+
+.rtl .ltr-only {
+  display: none;
+}
+
+.rtl .ml-1,
+.rtl .ml-2,
+.rtl .ml-3,
+.rtl .ml-4 {
+  margin-left: 0;
+  margin-right: 0.25rem;
+  margin-right: 0.5rem;
+  margin-right: 0.75rem;
+  margin-right: 1rem;
+}
+
+.rtl .mr-1,
+.rtl .mr-2,
+.rtl .mr-3,
+.rtl .mr-4 {
+  margin-right: 0;
+  margin-left: 0.25rem;
+  margin-left: 0.5rem;
+  margin-left: 0.75rem;
+  margin-left: 1rem;
+}
+
+.rtl .space-x-1 > *,
+.rtl .space-x-2 > *,
+.rtl .space-x-3 > *,
+.rtl .space-x-4 > * {
+  margin-left: 0;
+  margin-right: 0.25rem;
+  margin-right: 0.5rem;
+  margin-right: 0.75rem;
+  margin-right: 1rem;
+}
 
 .btn-hover-slide:hover::after {
   transform: scaleX(1);
@@ -303,7 +379,8 @@
 
 .card-hover-lift:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 @keyframes float {
@@ -337,4 +414,3 @@
 .animate-float-slow {
   animation: float-slow 8s ease-in-out infinite;
 }
-

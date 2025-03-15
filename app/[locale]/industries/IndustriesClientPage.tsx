@@ -1,16 +1,25 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import Image from "next/image"
-import { businessCategories } from "@/data/business-categories"
-import { Button } from "@/components/ui/button"
-import { ArrowRight, Building2, CheckCircle2 } from "lucide-react"
-import Navbar from "@/components/navbar"
-import Footer from "@/components/footer"
-import ContactSection from "@/components/contact-section"
-import { motion } from "framer-motion"
+import ContactSection from "@/components/contact-section";
+import Footer from "@/components/footer";
+import Navbar from "@/components/navbar";
+import { Button } from "@/components/ui/button";
+import { businessCategories } from "@/data/business-categories";
+import { motion } from "framer-motion";
+import { ArrowLeft, ArrowRight, Building2, CheckCircle2 } from "lucide-react";
+import { useTranslations } from "next-intl";
+import Image from "next/image";
+import Link from "next/link";
+import { useParams } from "next/navigation";
 
 export default function IndustriesClientPage() {
+  const params = useParams();
+  const locale = params.locale || "en";
+  const isRTL = locale === "ar";
+  const t = useTranslations("industriesPage");
+
+  const ArrowIcon = isRTL ? ArrowLeft : ArrowRight;
+
   return (
     <main className="min-h-screen">
       <Navbar />
@@ -29,35 +38,45 @@ export default function IndustriesClientPage() {
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
               <span className="flex h-2 w-2 rounded-full bg-primary mr-2"></span>
-              Industry-Specific Solutions
+              {t("hero.badge")}
             </div>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-saudi-black mb-6">
-              Tailored Digital Solutions for
+              {t("hero.titleStart")}
               <span className="text-primary relative ml-2 inline-block">
-                Saudi Industries
+                {t("hero.titleHighlight")}
                 <svg
                   className="absolute -bottom-2 left-0 w-full h-3 text-primary/20"
                   viewBox="0 0 200 8"
                   preserveAspectRatio="none"
                 >
-                  <path d="M0,5 C50,0 150,0 200,5" stroke="currentColor" strokeWidth="4" fill="none" />
+                  <path
+                    d="M0,5 C50,0 150,0 200,5"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                    fill="none"
+                  />
                 </svg>
               </span>
             </h1>
 
             <p className="text-lg text-gray-600 mb-8 max-w-3xl mx-auto">
-              We understand the unique challenges and opportunities across different Saudi business sectors. Our
-              solutions are customized to meet industry-specific requirements and compliance standards, helping
-              businesses thrive in the Kingdom's dynamic economy.
+              {t("hero.description")}
             </p>
 
             <div className="flex flex-wrap justify-center gap-4">
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20">
-                Explore Industries
+              <Button
+                size="lg"
+                className="bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20"
+              >
+                {t("hero.exploreButton")}
               </Button>
-              <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary/5">
-                Schedule Consultation
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-primary text-primary hover:bg-primary/5"
+              >
+                {t("hero.scheduleButton")}
               </Button>
             </div>
           </div>
@@ -72,65 +91,119 @@ export default function IndustriesClientPage() {
               <div className="p-8 md:p-12">
                 <div className="inline-flex items-center px-3 py-1 rounded-full bg-green-100 text-green-700 text-sm font-medium mb-6">
                   <CheckCircle2 className="h-4 w-4 mr-2" />
-                  Vision 2030 Aligned
+                  {t("vision2030.badge")}
                 </div>
 
                 <h2 className="text-3xl font-bold text-saudi-black mb-6">
-                  Supporting Saudi Arabia's Digital Transformation
+                  {t("vision2030.title")}
                 </h2>
 
                 <p className="text-gray-600 mb-8">
-                  Our industry-specific solutions are designed to support the goals of Saudi Vision 2030, helping
-                  businesses across all sectors embrace digital transformation, improve efficiency, and contribute to
-                  the Kingdom's economic diversification.
+                  {t("vision2030.description")}
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
                   <div className="flex items-start">
                     <div className="flex-shrink-0 h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center mt-1">
-                      <svg className="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      <svg
+                        className="h-5 w-5 text-primary"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
                       </svg>
                     </div>
-                    <div className="ml-4">
-                      <h3 className="text-lg font-semibold text-saudi-black mb-1">Economic Diversification</h3>
-                      <p className="text-gray-600">Supporting growth across multiple sectors beyond oil</p>
+                    <div className={`${isRTL ? "mr-4" : "ml-4"}`}>
+                      <h3 className="text-lg font-semibold text-saudi-black mb-1">
+                        {t("vision2030.benefit1.title")}
+                      </h3>
+                      <p className="text-gray-600">
+                        {t("vision2030.benefit1.description")}
+                      </p>
                     </div>
                   </div>
 
                   <div className="flex items-start">
                     <div className="flex-shrink-0 h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center mt-1">
-                      <svg className="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      <svg
+                        className="h-5 w-5 text-primary"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
                       </svg>
                     </div>
-                    <div className="ml-4">
-                      <h3 className="text-lg font-semibold text-saudi-black mb-1">Digital Transformation</h3>
-                      <p className="text-gray-600">Enabling businesses to embrace modern technologies</p>
+                    <div className={`${isRTL ? "mr-4" : "ml-4"}`}>
+                      <h3 className="text-lg font-semibold text-saudi-black mb-1">
+                        {t("vision2030.benefit2.title")}
+                      </h3>
+                      <p className="text-gray-600">
+                        {t("vision2030.benefit2.description")}
+                      </p>
                     </div>
                   </div>
 
                   <div className="flex items-start">
                     <div className="flex-shrink-0 h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center mt-1">
-                      <svg className="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      <svg
+                        className="h-5 w-5 text-primary"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
                       </svg>
                     </div>
-                    <div className="ml-4">
-                      <h3 className="text-lg font-semibold text-saudi-black mb-1">SME Development</h3>
-                      <p className="text-gray-600">Supporting small and medium enterprises with affordable solutions</p>
+                    <div className={`${isRTL ? "mr-4" : "ml-4"}`}>
+                      <h3 className="text-lg font-semibold text-saudi-black mb-1">
+                        {t("vision2030.benefit3.title")}
+                      </h3>
+                      <p className="text-gray-600">
+                        {t("vision2030.benefit3.description")}
+                      </p>
                     </div>
                   </div>
 
                   <div className="flex items-start">
                     <div className="flex-shrink-0 h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center mt-1">
-                      <svg className="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      <svg
+                        className="h-5 w-5 text-primary"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
                       </svg>
                     </div>
-                    <div className="ml-4">
-                      <h3 className="text-lg font-semibold text-saudi-black mb-1">Localization</h3>
-                      <p className="text-gray-600">Creating solutions tailored to Saudi market needs</p>
+                    <div className={`${isRTL ? "mr-4" : "ml-4"}`}>
+                      <h3 className="text-lg font-semibold text-saudi-black mb-1">
+                        {t("vision2030.benefit4.title")}
+                      </h3>
+                      <p className="text-gray-600">
+                        {t("vision2030.benefit4.description")}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -139,7 +212,7 @@ export default function IndustriesClientPage() {
               <div className="relative h-[400px] lg:h-auto">
                 <Image
                   src="/placeholder.svg?height=600&width=800"
-                  alt="Saudi Vision 2030 Digital Transformation"
+                  alt={t("vision2030.imageAlt")}
                   fill
                   className="object-cover"
                 />
@@ -149,7 +222,7 @@ export default function IndustriesClientPage() {
                 <div className="absolute top-8 right-8 bg-white py-2 px-4 rounded-lg shadow-lg">
                   <div className="flex items-center">
                     <Building2 className="h-5 w-5 text-primary mr-2" />
-                    <span className="font-medium">Vision 2030 Partner</span>
+                    <span className="font-medium">{t("vision2030.badge")}</span>
                   </div>
                 </div>
               </div>
@@ -164,17 +237,14 @@ export default function IndustriesClientPage() {
           <div className="text-center max-w-3xl mx-auto mb-16">
             <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
               <span className="flex h-2 w-2 rounded-full bg-primary mr-2"></span>
-              Explore Our Industry Solutions
+              {t("industriesGrid.badge")}
             </div>
 
             <h2 className="text-3xl md:text-4xl font-bold text-saudi-black mb-6">
-              Specialized Digital Solutions for Every Sector
+              {t("industriesGrid.title")}
             </h2>
 
-            <p className="text-gray-600">
-              Discover how our tailored solutions address the unique challenges and opportunities in your industry,
-              helping your business thrive in Saudi Arabia's dynamic market.
-            </p>
+            <p className="text-gray-600">{t("industriesGrid.description")}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -197,7 +267,9 @@ export default function IndustriesClientPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
 
                   <div className="absolute bottom-4 left-4 right-4">
-                    <h3 className="text-xl font-bold text-white mb-1">{category.name}</h3>
+                    <h3 className="text-xl font-bold text-white mb-1">
+                      {category.name}
+                    </h3>
                     <div className="flex flex-wrap gap-2">
                       {category.services.slice(0, 2).map((service, i) => (
                         <span
@@ -209,7 +281,8 @@ export default function IndustriesClientPage() {
                       ))}
                       {category.services.length > 2 && (
                         <span className="text-xs bg-white/20 backdrop-blur-sm text-white px-2 py-1 rounded-full">
-                          +{category.services.length - 2} more
+                          +{category.services.length - 2}{" "}
+                          {t("industriesGrid.more")}
                         </span>
                       )}
                     </div>
@@ -217,15 +290,23 @@ export default function IndustriesClientPage() {
                 </div>
 
                 <div className="p-6">
-                  <p className="text-gray-600 mb-6 line-clamp-3">{category.description}</p>
+                  <p className="text-gray-600 mb-6 line-clamp-3">
+                    {category.description}
+                  </p>
 
                   <div className="flex justify-between items-center">
                     <Link
                       href={`/industries/${category.id}`}
                       className="text-primary font-medium flex items-center group-hover:underline"
                     >
-                      Explore Solutions
-                      <ArrowRight className="h-4 w-4 ml-2 transition-transform group-hover:translate-x-1" />
+                      {t("industriesGrid.exploreSolutions")}
+                      <ArrowIcon
+                        className={`h-4 w-4 ${
+                          isRTL ? "mr-2" : "ml-2"
+                        } transition-transform group-hover:${
+                          isRTL ? "-translate-x-1" : "translate-x-1"
+                        }`}
+                      />
                     </Link>
 
                     <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
@@ -243,16 +324,18 @@ export default function IndustriesClientPage() {
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-saudi-black mb-4">Industry Insights</h2>
+            <h2 className="text-3xl font-bold text-saudi-black mb-4">
+              {t("stats.title")}
+            </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Our deep understanding of Saudi industries allows us to create solutions that drive real results
+              {t("stats.description")}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100">
               <div className="text-4xl font-bold text-primary mb-2">12+</div>
-              <div className="text-gray-600">Industries Served</div>
+              <div className="text-gray-600">{t("stats.industriesServed")}</div>
               <div className="mt-4 h-2 bg-gray-100 rounded-full overflow-hidden">
                 <div className="h-full bg-primary w-[100%] rounded-full"></div>
               </div>
@@ -260,7 +343,9 @@ export default function IndustriesClientPage() {
 
             <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100">
               <div className="text-4xl font-bold text-primary mb-2">200+</div>
-              <div className="text-gray-600">Projects Completed</div>
+              <div className="text-gray-600">
+                {t("stats.projectsCompleted")}
+              </div>
               <div className="mt-4 h-2 bg-gray-100 rounded-full overflow-hidden">
                 <div className="h-full bg-primary w-[85%] rounded-full"></div>
               </div>
@@ -268,7 +353,9 @@ export default function IndustriesClientPage() {
 
             <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100">
               <div className="text-4xl font-bold text-primary mb-2">95%</div>
-              <div className="text-gray-600">Client Satisfaction</div>
+              <div className="text-gray-600">
+                {t("stats.clientSatisfaction")}
+              </div>
               <div className="mt-4 h-2 bg-gray-100 rounded-full overflow-hidden">
                 <div className="h-full bg-primary w-[95%] rounded-full"></div>
               </div>
@@ -276,7 +363,7 @@ export default function IndustriesClientPage() {
 
             <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100">
               <div className="text-4xl font-bold text-primary mb-2">8+</div>
-              <div className="text-gray-600">Years Experience</div>
+              <div className="text-gray-600">{t("stats.yearsExperience")}</div>
               <div className="mt-4 h-2 bg-gray-100 rounded-full overflow-hidden">
                 <div className="h-full bg-primary w-[80%] rounded-full"></div>
               </div>
@@ -295,21 +382,26 @@ export default function IndustriesClientPage() {
 
             <div className="relative z-10 max-w-3xl">
               <h2 className="text-3xl md:text-4xl font-bold text-saudi-black mb-6">
-                Ready to Transform Your Industry?
+                {t("cta.title")}
               </h2>
 
               <p className="text-lg text-gray-700 mb-8">
-                Let's discuss how our industry-specific solutions can help your business thrive in Saudi Arabia's
-                competitive market. Our team of experts is ready to provide tailored recommendations for your specific
-                needs.
+                {t("cta.description")}
               </p>
 
               <div className="flex flex-wrap gap-4">
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20">
-                  Schedule Consultation
+                <Button
+                  size="lg"
+                  className="bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20"
+                >
+                  {t("cta.scheduleButton")}
                 </Button>
-                <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary/5">
-                  View Case Studies
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="border-primary text-primary hover:bg-primary/5"
+                >
+                  {t("cta.caseStudiesButton")}
                 </Button>
               </div>
             </div>
@@ -320,6 +412,5 @@ export default function IndustriesClientPage() {
       <ContactSection />
       <Footer />
     </main>
-  )
+  );
 }
-

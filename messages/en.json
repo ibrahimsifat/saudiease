@@ -1202,5 +1202,613 @@
     "commentSample1": "This article was incredibly helpful! I've been trying to understand the Saudi market better for my business, and this gave me exactly what I needed.",
     "commentSample2": "Great insights! I would love to see more content about how Vision 2030 is affecting digital marketing strategies in the region.",
     "commentSample3": "I've implemented some of these strategies for my e-commerce business and seen a 30% increase in engagement. Thank you for the valuable information!"
+  },
+  "servicesPage": {
+    "meta": {
+      "title": "Professional Digital Services for Saudi Businesses",
+      "description": "Comprehensive digital services including web development, mobile apps, e-invoicing, graphic design, and digital marketing tailored for Saudi businesses.",
+      "keywords": [
+        "digital services Saudi Arabia",
+        "web development Riyadh",
+        "mobile app development KSA",
+        "e-invoicing ZATCA",
+        "graphic design Saudi",
+        "digital marketing services",
+        "Saudi business solutions",
+        "Vision 2030 digital transformation",
+        "Arabic website development",
+        "Saudi e-commerce solutions"
+      ],
+      "schemaTitle": "Digital Services",
+      "schemaDescription": "Comprehensive digital services for Saudi businesses including web development, mobile apps, e-invoicing, graphic design, and digital marketing."
+    },
+    "hero": {
+      "subtitle": "Professional Services",
+      "title": "Digital Solutions for Saudi Businesses",
+      "description": "Comprehensive digital services tailored to meet the unique needs of businesses in Saudi Arabia, helping you achieve your goals and drive growth."
+    },
+    "search": {
+      "placeholder": "Search for services...",
+      "button": "Search"
+    },
+    "categories": {
+      "title": "Browse by Category",
+      "filter": "Filter by category",
+      "all": "All Services",
+      "development": "Development",
+      "design": "Design",
+      "marketing": "Marketing",
+      "consulting": "Consulting",
+      "support": "Support",
+      "finance": "Finance"
+    },
+    "viewDetails": "View Details",
+    "noResults": {
+      "title": "No services found",
+      "description": "Try adjusting your search or filter to find what you're looking for.",
+      "reset": "Reset Filters"
+    },
+    "cta": {
+      "title": "Ready to Transform Your Business?",
+      "description": "Let's discuss how our services can help you achieve your business goals in the Saudi market.",
+      "contactButton": "Contact Us",
+      "scheduleButton": "Schedule Consultation"
+    }
+  },
+  "serviceDetail": {
+    "tableOfContents": "On This Page",
+    "sections": {
+      "overview": "Overview",
+      "features": "Features",
+      "process": "Our Process",
+      "technologies": "Technologies",
+      "pricing": "Pricing",
+      "caseStudies": "Case Studies",
+      "testimonials": "Testimonials",
+      "faq": "FAQ"
+    },
+    "breadcrumbs": {
+      "home": "Home",
+      "services": "Services"
+    },
+    "professionalServices": "Professional Services",
+    "solutions": "Solutions",
+    "getStarted": "Get Started",
+    "viewPricing": "View Pricing",
+    "trustIndicators": {
+      "experts": "Certified Experts",
+      "experience": "5+ Years Experience",
+      "clients": "250+ Happy Clients"
+    },
+    "floatingElements": {
+      "satisfaction": {
+        "title": "100% Satisfaction",
+        "description": "We guarantee quality results that meet your expectations"
+      },
+      "delivery": {
+        "title": "Fast Delivery",
+        "description": "Quick turnaround times without compromising quality"
+      }
+    },
+    "whatWeOffer": "What We Offer",
+    "clientSatisfaction": "Client Satisfaction",
+    "whyChoose": "Why Choose Our",
+    "whyChooseDescription": "Our {service} services stand out due to our deep expertise, tailored approach, and commitment to delivering exceptional results. We understand the unique challenges businesses face in Saudi Arabia and provide solutions that address your specific needs.",
+    "whyChoosePoints": {
+      "expertise": "Industry-leading expertise",
+      "tailored": "Tailored to Saudi market",
+      "methodology": "Proven methodology",
+      "support": "Ongoing support"
+    },
+    "whoFor": "Who This Service Is For",
+    "whoForDescription": "Our {service} services are ideal for businesses of all sizes looking to enhance their digital presence and streamline operations. Whether you're a startup, SME, or large enterprise, we have solutions tailored to your specific needs and budget.",
+    "businessTypes": {
+      "small": "Small Businesses",
+      "smallDesc": "Cost-effective solutions to establish your digital presence",
+      "medium": "Medium Enterprises",
+      "mediumDesc": "Scalable solutions to grow your business",
+      "large": "Large Corporations",
+      "largeDesc": "Enterprise-grade solutions for complex needs",
+      "government": "Government Entities",
+      "governmentDesc": "Compliant solutions for public sector requirements"
+    },
+    "keyFeatures": "Key Features",
+    "comprehensiveSolutions": "Comprehensive Solutions",
+    "featuresDescription": "Our {service} services include a wide range of features designed to meet your business needs and exceed your expectations.",
+    "technicalSpecs": "Technical Specifications",
+    "technicalSpecsDescription": "Our {service} solutions are built with the latest technologies and best practices to ensure optimal performance, security, and scalability.",
+    "requestDetailedSpecs": "Request Detailed Specs",
+    "specs": {
+      "performance": {
+        "title": "Performance",
+        "points": [
+          "Optimized for speed and efficiency",
+          "Regular performance monitoring",
+          "Scalable architecture"
+        ]
+      },
+      "security": {
+        "title": "Security",
+        "points": [
+          "Industry-standard encryption",
+          "Regular security audits",
+          "Compliance with local regulations"
+        ]
+      },
+      "compatibility": {
+        "title": "Compatibility",
+        "points": [
+          "Cross-platform support",
+          "Integration with popular systems",
+          "Mobile-friendly design"
+        ]
+      },
+      "support": {
+        "title": "Support",
+        "points": [
+          "24/7 technical support",
+          "Regular maintenance updates",
+          "Dedicated account manager"
+        ]
+      }
+    },
+    "ourProcess": "Our Process",
+    "processDescription": "We follow a structured approach to deliver high-quality solutions that meet your business needs and exceed your expectations.",
+    "technologiesWeUse": "Technologies We Use",
+    "technologiesDescription": "We leverage the latest technologies and tools to deliver high-quality solutions that drive results.",
+    "technologiesFooter": "Want to learn more about our technology stack and how it can benefit your business?",
+    "discussTechStack": "Discuss Your Tech Requirements",
+    "successStories": "Success Stories",
+    "caseStudiesDescription": "Explore how we've helped businesses achieve their goals with our {service} solutions.",
+    "results": "Results",
+    "similarResults": "Get Similar Results",
+    "transparentPricing": "Transparent Pricing",
+    "pricingDescription": "Choose the plan that best fits your business needs. All plans include our core features and dedicated support.",
+    "mostPopular": "MOST POPULAR",
+    "perProject": "per project",
+    "contactForQuote": "Contact for Quote",
+    "pricing": {
+      "essential": {
+        "name": "Essential",
+        "price": "SAR 5,000",
+        "description": "Perfect for small businesses just getting started",
+        "features": [
+          "Core service features",
+          "Basic customization",
+          "Email support",
+          "1 month of maintenance"
+        ]
+      },
+      "professional": {
+        "name": "Professional",
+        "price": "SAR 12,000",
+        "description": "Ideal for growing businesses with specific needs",
+        "features": [
+          "All Essential features",
+          "Advanced customization",
+          "Priority support",
+          "3 months of maintenance",
+          "Performance optimization"
+        ]
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "price": "Custom",
+        "description": "Comprehensive solution for large organizations",
+        "features": [
+          "All Professional features",
+          "Full customization",
+          "Dedicated support manager",
+          "12 months of maintenance",
+          "Regular updates and improvements",
+          "Integration with existing systems"
+        ]
+      }
+    },
+    "customSolutions": "Need a Custom Solution?",
+    "customSolutionsDescription": "We offer tailored solutions to meet your specific business requirements. Our team will work closely with you to understand your needs and develop a customized solution.",
+    "needHelp": "Need Help Choosing?",
+    "needHelpDescription": "Not sure which plan is right for you? Schedule a consultation with our experts to discuss your requirements.",
+    "scheduleConsultation": "Schedule Consultation",
+    "certifications": {
+      "iso": {
+        "name": "ISO 9001:2015",
+        "description": "Quality Management System"
+      },
+      "sbb": {
+        "name": "Saudi Business Bureau",
+        "description": "Certified Service Provider"
+      },
+      "citc": {
+        "name": "CITC Certified",
+        "description": "Communications and IT Commission"
+      }
+    },
+    "clientTestimonials": "What Our Clients Say",
+    "testimonialsDescription": "Don't just take our word for it. Here's what our clients have to say about our services.",
+    "testimonials": {
+      "first": {
+        "text": "Saudi Ease delivered exceptional results with their professional approach and attention to detail. Their team went above and beyond to ensure our project was a success.",
+        "author": "Mohammed Al-Harbi",
+        "position": "CEO",
+        "company": "Riyadh Technologies"
+      },
+      "second": {
+        "text": "Working with Saudi Ease was a game-changer for our business. Their expertise and innovative solutions helped us achieve our goals faster than expected.",
+        "author": "Fatima Al-Saud",
+        "position": "Marketing Director",
+        "company": "Saudi Retail Group"
+      }
+    },
+    "frequentlyAsked": "Frequently Asked Questions",
+    "faqDescription": "Find answers to common questions about our {service} services.",
+    "moreQuestions": "Still have questions? We're here to help!",
+    "askQuestion": "Ask a Question",
+    "getInTouch": "Get in Touch",
+    "startYourProject": "Start Your Project Today",
+    "contactDescription": "Contact us today to discuss how our {service} services can help your business grow.",
+    "callUs": "Call Us",
+    "businessHours": "Sunday-Thursday, 9am-6pm",
+    "emailUs": "Email Us",
+    "responseTime": "We respond within 24 hours",
+    "visitUs": "Visit Our Office",
+    "officeAddress": "King Fahd Road, Riyadh, Saudi Arabia",
+    "appointmentRequired": "Appointment required",
+    "contactForm": "Send Us a Message",
+    "yourName": "Your Name",
+    "namePlaceholder": "Enter your full name",
+    "yourEmail": "Your Email",
+    "emailPlaceholder": "Enter your email address",
+    "yourPhone": "Your Phone",
+    "phonePlaceholder": "Enter your phone number",
+    "yourMessage": "Your Message",
+    "messagePlaceholder": "Tell us about your project and how our {service} services can help",
+    "privacyConsent": "I agree to the privacy policy and terms of service",
+    "submitRequest": "Submit Request",
+    "contactUs": "Contact Us",
+    "exploreMore": "Explore More",
+    "relatedServices": "Related Services",
+    "relatedServicesDescription": "Discover other services that complement your digital strategy",
+    "learnMore": "Learn More",
+    "viewAllServices": "View All Services"
+  },
+  "faq": {
+    "metadata": {
+      "title": "Frequently Asked Questions | Saudi Ease",
+      "description": "Find answers to common questions about our web development, e-invoicing, digital marketing, and other services for Saudi businesses."
+    },
+    "loading": "Loading...",
+    "badge": "Common Questions",
+    "title": "Frequently Asked Questions",
+    "description": "Find answers to common questions about our services",
+    "questions": [
+      {
+        "question": "What types of digital services do you offer?",
+        "answer": "We offer a wide range of digital services including web development, e-invoicing solutions, graphic design & branding, and digital marketing."
+      },
+      {
+        "question": "How can I request a quote for my project?",
+        "answer": "You can request a quote by filling out the contact form on this page or by contacting us directly via phone or email."
+      },
+      {
+        "question": "What is the typical turnaround time for a project?",
+        "answer": "The turnaround time varies depending on the scope and complexity of the project. We'll provide a detailed timeline during the initial consultation."
+      },
+      {
+        "question": "Do you offer ongoing support and maintenance?",
+        "answer": "Yes, we offer ongoing support and maintenance packages to ensure your digital solutions remain up-to-date and perform optimally."
+      },
+      {
+        "question": "Are your e-invoicing solutions ZATCA compliant?",
+        "answer": "Yes, our e-invoicing solutions are fully compliant with ZATCA regulations in Saudi Arabia."
+      }
+    ]
+  },
+  "consultation": {
+    "metadata": {
+      "title": "Schedule a Consultation | Saudi Ease",
+      "description": "Book a personalized consultation with our digital transformation experts to discuss your business needs and explore tailored solutions."
+    },
+    "badge": "Book a Meeting",
+    "title": "Schedule a Consultation",
+    "description": "Book a 30-minute consultation with our digital experts to discuss your project needs and explore how we can help your business thrive in the digital landscape.",
+    "step1": {
+      "title": "Choose a Date",
+      "description": "Select your preferred date for the consultation.",
+      "continue": "Continue to Time Selection"
+    },
+    "step2": {
+      "title": "Pick a Time",
+      "description": "Choose a time that works best for your schedule.",
+      "back": "Back to Date Selection",
+      "continue": "Continue to Details"
+    },
+    "step3": {
+      "title": "Your Information",
+      "description": "Please provide your contact details so we can confirm your consultation.",
+      "back": "Back to Time Selection",
+      "submit": "Schedule Consultation",
+      "submitting": "Scheduling..."
+    },
+    "form": {
+      "name": "Full Name",
+      "namePlaceholder": "Enter your full name",
+      "nameError": "Please enter your name",
+      "email": "Email Address",
+      "emailPlaceholder": "Enter your email address",
+      "emailError": "Please enter a valid email address",
+      "phone": "Phone Number",
+      "phonePlaceholder": "Enter your phone number",
+      "phoneError": "Please enter a valid phone number",
+      "company": "Company Name (Optional)",
+      "companyPlaceholder": "Enter your company name",
+      "service": "Service Interested In",
+      "serviceError": "Please select a service",
+      "services": {
+        "webDevelopment": "Website & App Development",
+        "eCommerce": "E-Commerce Solutions",
+        "eInvoicing": "E-Invoicing (ZATCA Compliant)",
+        "graphicDesign": "Graphic Design & Branding",
+        "digitalMarketing": "Digital Marketing",
+        "seo": "Search Engine Optimization"
+      },
+      "message": "Additional Information (Optional)",
+      "messagePlaceholder": "Tell us more about your project needs..."
+    },
+    "summary": {
+      "title": "Consultation Summary",
+      "date": "Selected Date",
+      "noDateSelected": "No date selected",
+      "time": "Selected Time",
+      "noTimeSelected": "No time selected",
+      "contactInfo": "Contact Information",
+      "phone": "Phone",
+      "email": "Email"
+    },
+    "success": {
+      "title": "Consultation Scheduled!",
+      "description": "Your consultation has been successfully scheduled.",
+      "details": "We've sent a confirmation email with the details of your appointment:",
+      "backToHome": "Back to Home"
+    }
+  },
+  "industriesPage": {
+    "hero": {
+      "badge": "Industry-Specific Solutions",
+      "titleStart": "Tailored Digital Solutions for ",
+      "titleHighlight": "Saudi Industries",
+      "description": "We understand the unique challenges and opportunities across different Saudi business sectors. Our solutions are customized to meet industry-specific requirements and compliance standards, helping businesses thrive in the Kingdom's dynamic economy.",
+      "exploreButton": "Explore Industries",
+      "scheduleButton": "Schedule Consultation"
+    },
+    "vision2030": {
+      "badge": "Vision 2030 Aligned",
+      "title": "Supporting Saudi Arabia's Digital Transformation",
+      "description": "Our industry-specific solutions are designed to support the goals of Saudi Vision 2030, helping businesses across all sectors embrace digital transformation, improve efficiency, and contribute to the Kingdom's economic diversification.",
+      "imageAlt": "Saudi Vision 2030 Digital Transformation",
+      "benefit1": {
+        "title": "Economic Diversification",
+        "description": "Supporting growth across multiple sectors beyond oil"
+      },
+      "benefit2": {
+        "title": "Digital Transformation",
+        "description": "Enabling businesses to embrace modern technologies"
+      },
+      "benefit3": {
+        "title": "SME Development",
+        "description": "Supporting small and medium enterprises with affordable solutions"
+      },
+      "benefit4": {
+        "title": "Localization",
+        "description": "Creating solutions tailored to Saudi market needs"
+      }
+    },
+    "industriesGrid": {
+      "badge": "Explore Our Industry Solutions",
+      "title": "Specialized Digital Solutions for Every Sector",
+      "description": "Discover how our tailored solutions address the unique challenges and opportunities in your industry, helping your business thrive in Saudi Arabia's dynamic market.",
+      "exploreSolutions": "Explore Solutions",
+      "more": "more"
+    },
+    "stats": {
+      "title": "Industry Insights",
+      "description": "Our deep understanding of Saudi industries allows us to create solutions that drive real results",
+      "industriesServed": "Industries Served",
+      "projectsCompleted": "Projects Completed",
+      "clientSatisfaction": "Client Satisfaction",
+      "yearsExperience": "Years Experience"
+    },
+    "cta": {
+      "title": "Ready to Transform Your Industry?",
+      "description": "Let's discuss how our industry-specific solutions can help your business thrive in Saudi Arabia's competitive market. Our team of experts is ready to provide tailored recommendations for your specific needs.",
+      "scheduleButton": "Schedule Consultation",
+      "caseStudiesButton": "View Case Studies"
+    }
+  },
+  "industryDetail": {
+    "meta": {
+      "title": "{industry} Solutions | Saudi Ease",
+      "description": "Discover tailored digital solutions for the {industry} industry in Saudi Arabia. Our specialized services help {industryLower} businesses thrive in the digital landscape.",
+      "keywords": "{industry} digital solutions, Saudi {industryLower} technology, {industryLower} digital transformation Saudi Arabia",
+      "notFound": "Industry Not Found | Saudi Ease"
+    },
+    "hero": {
+      "badge": "Industry Solutions",
+      "titleSuffix": "Solutions",
+      "description": "Our tailored digital solutions for the {industry} sector address the unique challenges and opportunities in the Saudi market, helping businesses achieve their goals.",
+      "getStartedButton": "Get Started",
+      "scheduleButton": "Schedule Consultation",
+      "marketSize": "Market Size",
+      "annualGrowth": "Annual Growth",
+      "clientSatisfaction": "Client Satisfaction",
+      "vision2030": "Vision 2030 Alignment",
+      "vision2030Description": "Our {industry} solutions support Saudi Vision 2030 goals by enhancing efficiency, digital transformation, and sustainable growth.",
+      "saudiCertified": "Saudi Certified"
+    },
+    "benefits": {
+      "badge": "Why Choose Us",
+      "title": "Key Benefits for {industry} Businesses",
+      "description": "Our tailored solutions provide significant advantages for {industry} businesses in Saudi Arabia",
+      "benefit1": {
+        "title": "Increased Efficiency",
+        "description": "Streamline {industry} operations with automated workflows and integrated systems tailored to Saudi business practices."
+      },
+      "benefit2": {
+        "title": "Enhanced Customer Experience",
+        "description": "Deliver exceptional service through digital channels designed specifically for Saudi {industry} customers."
+      },
+      "benefit3": {
+        "title": "Data-Driven Insights",
+        "description": "Make informed decisions with analytics solutions customized for the Saudi {industry} market."
+      },
+      "benefit4": {
+        "title": "Competitive Advantage",
+        "description": "Stay ahead in the Saudi market with innovative digital solutions that set your {industry} business apart."
+      },
+      "benefit5": {
+        "title": "Regulatory Compliance",
+        "description": "Ensure full compliance with Saudi regulations specific to the {industry} sector."
+      },
+      "benefit6": {
+        "title": "Future-Ready Operations",
+        "description": "Prepare your {industry} business for future growth and Vision 2030 opportunities."
+      }
+    },
+    "tabs": {
+      "overview": "Overview",
+      "features": "Key Features",
+      "caseStudies": "Case Studies",
+      "faq": "FAQ"
+    },
+    "overview": {
+      "title": "Comprehensive {industry} Solutions",
+      "description": "Our {industry} solutions are designed specifically for the Saudi market, addressing the unique challenges and opportunities in this sector. We combine industry expertise with cutting-edge technology to deliver results that drive growth and efficiency.",
+      "feature1": {
+        "title": "Saudi Market Expertise",
+        "description": "Solutions tailored specifically for Saudi {industry} businesses"
+      },
+      "feature2": {
+        "title": "Regulatory Compliance",
+        "description": "Full alignment with Saudi regulations and Vision 2030 requirements"
+      },
+      "feature3": {
+        "title": "End-to-End Implementation",
+        "description": "Comprehensive support from planning to deployment and ongoing maintenance"
+      },
+      "feature4": {
+        "title": "Scalable Solutions",
+        "description": "Flexible systems that grow with your business needs"
+      },
+      "scheduleButton": "Schedule Consultation",
+      "projectsCompleted": "Projects Completed",
+      "clientSatisfaction": "Client Satisfaction"
+    },
+    "features": {
+      "title": "Key Features of Our {industry} Solutions",
+      "serviceDescription": "Our {service} solutions are designed specifically for Saudi {industry} businesses, ensuring compliance with local regulations while delivering exceptional performance.",
+      "enhanceDescription": "Enhance your {industry} operations with our advanced {service} solutions, designed to meet the specific needs of businesses in Saudi Arabia.",
+      "benefit1": "Customized for Saudi market requirements",
+      "benefit2": "Seamless integration with existing systems",
+      "benefit3": "Bilingual support (Arabic & English)",
+      "benefit4": "Vision 2030 aligned implementation",
+      "benefit5": "Cloud-based and on-premise options",
+      "benefit6": "Comprehensive training and support",
+      "exploreButton": "Explore All Features"
+    },
+    "caseStudies": {
+      "challengeLabel": "The Challenge",
+      "solutionLabel": "Our Solution",
+      "resultsLabel": "Results",
+      "case1": {
+        "title": "Leading {industry} Business Transformation",
+        "client": "Major {industry} Provider in Riyadh",
+        "challenge": "A leading {industry} business in Saudi Arabia was struggling with outdated systems that couldn't keep pace with the rapidly evolving market demands and Vision 2030 requirements.",
+        "solution": "We implemented a comprehensive digital transformation strategy, including {services}, tailored specifically to their business needs and aligned with Saudi regulations.",
+        "results": {
+          "result1": "50% increase in operational efficiency",
+          "result2": "35% reduction in processing time",
+          "result3": "Seamless compliance with Saudi regulations",
+          "result4": "Improved customer satisfaction scores by 40%"
+        }
+      },
+      "case2": {
+        "title": "{industry} Digital Innovation",
+        "client": "Growing {industry} Company in Jeddah",
+        "challenge": "A mid-sized {industry} company needed to modernize their operations while maintaining compliance with Saudi regulations and meeting the expectations of increasingly tech-savvy customers.",
+        "solution": "We developed a custom digital solution that integrated {service1} and {service2}, providing a seamless experience for both customers and staff while ensuring full compliance.",
+        "results": {
+          "result1": "200% increase in online engagement",
+          "result2": "45% growth in revenue within 6 months",
+          "result3": "Reduced operational costs by 30%",
+          "result4": "Expanded market reach across Saudi Arabia"
+        }
+      }
+    },
+    "faqs": {
+      "title": "Frequently Asked Questions About {industry} Solutions",
+      "faq1": {
+        "question": "What digital solutions are most important for the {industry} sector in Saudi Arabia?",
+        "answer": "For the {industry} sector in Saudi Arabia, the most critical digital solutions include {services}. These solutions help businesses meet the unique challenges of the Saudi market while aligning with Vision 2030 goals for digital transformation."
+      },
+      "faq2": {
+        "question": "How can {industry} businesses comply with Saudi regulations through digital solutions?",
+        "answer": "Our digital solutions for the {industry} sector are built with Saudi regulations in mind, including ZATCA e-invoicing requirements, data localization laws, and industry-specific compliance needs. We ensure all implementations meet current regulations while being adaptable to future changes."
+      },
+      "faq3": {
+        "question": "What is the typical implementation timeline for {industry} digital solutions?",
+        "answer": "Implementation timelines vary based on the specific needs and scale of your {industry} business. Typically, our solutions can be implemented within 2-4 months, with phased approaches available for larger organizations to minimize disruption to ongoing operations."
+      },
+      "faq4": {
+        "question": "How do your solutions support Vision 2030 goals for the {industry} sector?",
+        "answer": "Our digital solutions for the {industry} sector directly support Vision 2030 by enabling digital transformation, improving operational efficiency, supporting economic diversification, and enhancing the overall customer experience. We align our implementations with the specific Vision 2030 initiatives relevant to your industry."
+      },
+      "faq5": {
+        "question": "What ongoing support do you provide for {industry} businesses after implementation?",
+        "answer": "We provide comprehensive support including 24/7 technical assistance, regular updates to keep your systems current with Saudi regulations, performance optimization, staff training, and strategic consultations to ensure your digital solutions continue to meet your evolving business needs."
+      },
+      "moreQuestionsTitle": "Have more questions?",
+      "moreQuestionsDescription": "Our team of {industry} experts is ready to help you find the right solutions for your business.",
+      "contactButton": "Contact Our Experts"
+    },
+    "relatedIndustries": {
+      "title": "Explore Related Industries",
+      "description": "Discover our solutions for other sectors that might complement your {industry} business",
+      "learnMore": "Learn More"
+    },
+    "cta": {
+      "title": "Ready to Transform Your {industry} Business?",
+      "description": "Let's discuss how our specialized solutions can help your {industry} business thrive in Saudi Arabia's competitive market. Our team of experts is ready to provide tailored recommendations for your specific needs.",
+      "scheduleButton": "Schedule Consultation",
+      "caseStudiesButton": "View Case Studies"
+    }
+  },
+  "featuresPage": {
+    "metadata": {
+      "title": "Our Features | Saudi Ease - Digital Solutions for Saudi Businesses",
+      "description": "Explore the comprehensive features that make Saudi Ease the leading provider of digital solutions for businesses in Saudi Arabia."
+    },
+    "hero": {
+      "badge": "Powerful Features",
+      "title": "Advanced Features for Saudi Businesses",
+      "description": "Discover how our cutting-edge features can transform your business operations, enhance customer experiences, and drive growth in the Saudi market.",
+      "exploreButton": "Explore Features",
+      "contactButton": "Contact Us"
+    },
+    "grid": {
+      "title": "Comprehensive Feature Set",
+      "description": "Each feature is designed with Saudi businesses in mind, ensuring compliance with local regulations while delivering world-class digital experiences.",
+      "featureCard": {
+        "learnMore": "Learn More",
+        "benefit1": "Saudi market optimized",
+        "benefit2": "Regulatory compliant",
+        "benefit3": "Continuous updates"
+      }
+    },
+    "cta": {
+      "title": "Ready to Transform Your Business with Our Features?",
+      "description": "Our team of experts is ready to help you implement these features and customize them to your specific business needs.",
+      "getStartedButton": "Get Started",
+      "exploreServicesButton": "Explore Services"
+    }
   }
 }

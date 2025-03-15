@@ -1,24 +1,49 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { useRouter } from "next/navigation"
-import { motion } from "framer-motion"
-import { format } from "date-fns"
-import { CalendarIcon, Clock, ArrowRight, Check, Loader2 } from "lucide-react"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import * as z from "zod"
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { Calendar } from "@/components/ui/calendar"
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Label } from "@/components/ui/label"
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
+import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { format } from "date-fns";
+import { motion } from "framer-motion";
+import { ArrowRight, CalendarIcon, Check, Clock, Loader2 } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
 
 // Define the form schema with validation
 const formSchema = z.object({
@@ -61,7 +86,7 @@ const formSchema = z.object({
       message: "Project description must not exceed 500 characters.",
     }),
   hearAboutUs: z.string().optional(),
-})
+});
 
 // Available time slots
 const timeSlots = [
@@ -81,7 +106,7 @@ const timeSlots = [
   "03:30 PM",
   "04:00 PM",
   "04:30 PM",
-]
+];
 
 // Industry options
 const industries = [
@@ -97,7 +122,7 @@ const industries = [
   "Government",
   "Technology",
   "Other",
-]
+];
 
 // Service options
 const services = [
@@ -113,13 +138,13 @@ const services = [
   "Cybersecurity",
   "Business Intelligence",
   "Other",
-]
+];
 
 export default function ConsultationScheduler() {
-  const router = useRouter()
-  const [step, setStep] = useState(1)
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSuccess, setIsSuccess] = useState(false)
+  const router = useRouter();
+  const [step, setStep] = useState(1);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   // Initialize form with react-hook-form
   const form = useForm<z.infer<typeof formSchema>>({
@@ -133,64 +158,79 @@ export default function ConsultationScheduler() {
       hearAboutUs: "",
       consultationType: "virtual",
     },
-  })
+  });
 
   // Handle form submission
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    setIsSubmitting(true)
+    setIsSubmitting(true);
 
     // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    await new Promise((resolve) => setTimeout(resolve, 1500));
 
-    console.log(values)
-    setIsSubmitting(false)
-    setIsSuccess(true)
+    console.log(values);
+    setIsSubmitting(false);
+    setIsSuccess(true);
 
     // Redirect to thank you page or show success message
     setTimeout(() => {
-      router.push("/")
-    }, 3000)
+      router.push("/");
+    }, 3000);
   }
 
   // Next step handler
   const handleNextStep = async () => {
     if (step === 1) {
-      const isValid = await form.trigger(["fullName", "email", "phone", "companyName", "companySize", "industry"])
-      if (isValid) setStep(2)
+      const isValid = await form.trigger([
+        "fullName",
+        "email",
+        "phone",
+        "companyName",
+        "companySize",
+        "industry",
+      ]);
+      if (isValid) setStep(2);
     } else if (step === 2) {
       const isValid = await form.trigger([
         "serviceInterest",
         "consultationDate",
         "consultationTime",
         "consultationType",
-      ])
-      if (isValid) setStep(3)
+      ]);
+      if (isValid) setStep(3);
     }
-  }
+  };
 
   // Previous step handler
   const handlePrevStep = () => {
-    if (step > 1) setStep(step - 1)
-  }
+    if (step > 1) setStep(step - 1);
+  };
 
   // Animation variants
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  }
+  };
 
   if (isSuccess) {
     return (
       <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 py-20">
         <div className="container max-w-4xl mx-auto px-4">
-          <motion.div initial="hidden" animate="visible" variants={fadeIn} className="text-center">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={fadeIn}
+            className="text-center"
+          >
             <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-green-100 mb-6">
               <Check className="h-10 w-10 text-green-600" />
             </div>
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Consultation Scheduled Successfully!</h1>
+            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Consultation Scheduled Successfully!
+            </h1>
             <p className="text-lg text-gray-600 mb-8">
-              Thank you for scheduling a consultation with Saudi Ease. We've sent a confirmation email with all the
-              details. Our team will contact you shortly to confirm your appointment.
+              Thank you for scheduling a consultation with Saudi Ease. We've
+              sent a confirmation email with all the details. Our team will
+              contact you shortly to confirm your appointment.
             </p>
             <div className="bg-white rounded-xl shadow-md p-6 mb-8 border border-gray-100">
               <h2 className="text-xl font-semibold mb-4">What happens next?</h2>
@@ -203,27 +243,37 @@ export default function ConsultationScheduler() {
                 ].map((step, index) => (
                   <li key={index} className="flex items-start">
                     <div className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mr-3 mt-0.5">
-                      <span className="text-sm font-medium text-primary">{index + 1}</span>
+                      <span className="text-sm font-medium text-primary">
+                        {index + 1}
+                      </span>
                     </div>
                     <span className="text-gray-700">{step}</span>
                   </li>
                 ))}
               </ul>
             </div>
-            <Button onClick={() => router.push("/")} className="bg-primary hover:bg-primary/90 text-white px-8">
+            <Button
+              onClick={() => router.push("/")}
+              className="bg-primary hover:bg-primary/90 text-white px-8"
+            >
               Return to Homepage
             </Button>
           </motion.div>
         </div>
       </div>
-    )
+    );
   }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 py-20">
       <div className="container max-w-4xl mx-auto px-4">
         {/* Header */}
-        <motion.div initial="hidden" animate="visible" variants={fadeIn} className="text-center mb-12">
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={fadeIn}
+          className="text-center mb-12"
+        >
           <div className="inline-flex items-center justify-center mb-4">
             <div className="h-px w-10 bg-primary/30"></div>
             <span className="mx-4 text-sm font-medium text-primary px-3 py-1 rounded-full bg-primary/10">
@@ -231,10 +281,12 @@ export default function ConsultationScheduler() {
             </span>
             <div className="h-px w-10 bg-primary/30"></div>
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Schedule a Personalized Consultation</h1>
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Schedule a Personalized Consultation
+          </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Book a one-on-one session with our digital transformation experts to discuss your business needs and explore
-            tailored solutions.
+            Book a one-on-one session with our digital transformation experts to
+            discuss your business needs and explore tailored solutions.
           </p>
         </motion.div>
 
@@ -249,13 +301,20 @@ export default function ConsultationScheduler() {
                     step === i
                       ? "bg-primary text-white"
                       : step > i
-                        ? "bg-green-100 text-green-600"
-                        : "bg-gray-100 text-gray-500",
+                      ? "bg-green-100 text-green-600"
+                      : "bg-gray-100 text-gray-500"
                   )}
                 >
                   {step > i ? <Check className="h-5 w-5" /> : i}
                 </div>
-                {i < 3 && <div className={cn("h-1 w-20 mx-2", step > i ? "bg-primary" : "bg-gray-200")}></div>}
+                {i < 3 && (
+                  <div
+                    className={cn(
+                      "h-1 w-20 mx-2",
+                      step > i ? "bg-primary" : "bg-gray-200"
+                    )}
+                  ></div>
+                )}
               </div>
             ))}
           </div>
@@ -284,14 +343,19 @@ export default function ConsultationScheduler() {
                 {step === 3 && "Share your project details"}
               </CardTitle>
               <CardDescription>
-                {step === 1 && "Please provide your contact and company information"}
-                {step === 2 && "Select your preferred date, time and consultation type"}
+                {step === 1 &&
+                  "Please provide your contact and company information"}
+                {step === 2 &&
+                  "Select your preferred date, time and consultation type"}
                 {step === 3 && "Help us understand your project requirements"}
               </CardDescription>
             </CardHeader>
             <CardContent>
               <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <form
+                  onSubmit={form.handleSubmit(onSubmit)}
+                  className="space-y-6"
+                >
                   {/* Step 1: Personal Information */}
                   {step === 1 && (
                     <div className="space-y-4">
@@ -316,7 +380,11 @@ export default function ConsultationScheduler() {
                             <FormItem>
                               <FormLabel>Email Address</FormLabel>
                               <FormControl>
-                                <Input placeholder="john@example.com" type="email" {...field} />
+                                <Input
+                                  placeholder="john@example.com"
+                                  type="email"
+                                  {...field}
+                                />
                               </FormControl>
                               <FormMessage />
                             </FormItem>
@@ -332,7 +400,10 @@ export default function ConsultationScheduler() {
                             <FormItem>
                               <FormLabel>Phone Number</FormLabel>
                               <FormControl>
-                                <Input placeholder="+966 50 123 4567" {...field} />
+                                <Input
+                                  placeholder="+966 50 123 4567"
+                                  {...field}
+                                />
                               </FormControl>
                               <FormMessage />
                             </FormItem>
@@ -360,18 +431,31 @@ export default function ConsultationScheduler() {
                           render={({ field }) => (
                             <FormItem>
                               <FormLabel>Company Size</FormLabel>
-                              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                              <Select
+                                onValueChange={field.onChange}
+                                defaultValue={field.value}
+                              >
                                 <FormControl>
                                   <SelectTrigger>
                                     <SelectValue placeholder="Select company size" />
                                   </SelectTrigger>
                                 </FormControl>
                                 <SelectContent>
-                                  <SelectItem value="1-10">1-10 employees</SelectItem>
-                                  <SelectItem value="11-50">11-50 employees</SelectItem>
-                                  <SelectItem value="51-200">51-200 employees</SelectItem>
-                                  <SelectItem value="201-500">201-500 employees</SelectItem>
-                                  <SelectItem value="501+">501+ employees</SelectItem>
+                                  <SelectItem value="1-10">
+                                    1-10 employees
+                                  </SelectItem>
+                                  <SelectItem value="11-50">
+                                    11-50 employees
+                                  </SelectItem>
+                                  <SelectItem value="51-200">
+                                    51-200 employees
+                                  </SelectItem>
+                                  <SelectItem value="201-500">
+                                    201-500 employees
+                                  </SelectItem>
+                                  <SelectItem value="501+">
+                                    501+ employees
+                                  </SelectItem>
                                 </SelectContent>
                               </Select>
                               <FormMessage />
@@ -384,7 +468,10 @@ export default function ConsultationScheduler() {
                           render={({ field }) => (
                             <FormItem>
                               <FormLabel>Industry</FormLabel>
-                              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                              <Select
+                                onValueChange={field.onChange}
+                                defaultValue={field.value}
+                              >
                                 <FormControl>
                                   <SelectTrigger>
                                     <SelectValue placeholder="Select your industry" />
@@ -392,7 +479,12 @@ export default function ConsultationScheduler() {
                                 </FormControl>
                                 <SelectContent>
                                   {industries.map((industry) => (
-                                    <SelectItem key={industry} value={industry.toLowerCase().replace(/\s+/g, "-")}>
+                                    <SelectItem
+                                      key={industry}
+                                      value={industry
+                                        .toLowerCase()
+                                        .replace(/\s+/g, "-")}
+                                    >
                                       {industry}
                                     </SelectItem>
                                   ))}
@@ -415,7 +507,10 @@ export default function ConsultationScheduler() {
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel>Service of Interest</FormLabel>
-                            <Select onValueChange={field.onChange} defaultValue={field.value}>
+                            <Select
+                              onValueChange={field.onChange}
+                              defaultValue={field.value}
+                            >
                               <FormControl>
                                 <SelectTrigger>
                                   <SelectValue placeholder="Select a service" />
@@ -423,7 +518,12 @@ export default function ConsultationScheduler() {
                               </FormControl>
                               <SelectContent>
                                 {services.map((service) => (
-                                  <SelectItem key={service} value={service.toLowerCase().replace(/\s+/g, "-")}>
+                                  <SelectItem
+                                    key={service}
+                                    value={service
+                                      .toLowerCase()
+                                      .replace(/\s+/g, "-")}
+                                  >
                                     {service}
                                   </SelectItem>
                                 ))}
@@ -447,25 +547,35 @@ export default function ConsultationScheduler() {
                                     variant={"outline"}
                                     className={cn(
                                       "w-full pl-3 text-left font-normal",
-                                      !field.value && "text-muted-foreground",
+                                      !field.value && "text-muted-foreground"
                                     )}
                                   >
-                                    {field.value ? format(field.value, "PPP") : <span>Pick a date</span>}
+                                    {field.value ? (
+                                      format(field.value, "PPP")
+                                    ) : (
+                                      <span>Pick a date</span>
+                                    )}
                                     <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                                   </Button>
                                 </FormControl>
                               </PopoverTrigger>
-                              <PopoverContent className="w-auto p-0 z-50" align="start">
+                              <PopoverContent
+                                className="w-auto p-0 z-50"
+                                align="start"
+                              >
                                 <Calendar
                                   mode="single"
                                   selected={field.value}
                                   onSelect={field.onChange}
                                   disabled={(date) => {
                                     return (
-                                      date < new Date(new Date().setHours(0, 0, 0, 0)) ||
+                                      date <
+                                        new Date(
+                                          new Date().setHours(0, 0, 0, 0)
+                                        ) ||
                                       date.getDay() === 0 || // Sunday
                                       date.getDay() === 6
-                                    ) // Saturday
+                                    ); // Saturday
                                   }}
                                   initialFocus
                                 />
@@ -483,7 +593,10 @@ export default function ConsultationScheduler() {
                           render={({ field }) => (
                             <FormItem>
                               <FormLabel>Consultation Time</FormLabel>
-                              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                              <Select
+                                onValueChange={field.onChange}
+                                defaultValue={field.value}
+                              >
                                 <FormControl>
                                   <SelectTrigger>
                                     <SelectValue placeholder="Select a time" />
@@ -516,12 +629,22 @@ export default function ConsultationScheduler() {
                                 className="flex flex-col space-y-1"
                               >
                                 <div className="flex items-center space-x-2">
-                                  <RadioGroupItem value="virtual" id="virtual" />
-                                  <Label htmlFor="virtual">Virtual Meeting (Zoom/Teams)</Label>
+                                  <RadioGroupItem
+                                    value="virtual"
+                                    id="virtual"
+                                  />
+                                  <Label htmlFor="virtual">
+                                    Virtual Meeting (Zoom/Teams)
+                                  </Label>
                                 </div>
                                 <div className="flex items-center space-x-2">
-                                  <RadioGroupItem value="inPerson" id="inPerson" />
-                                  <Label htmlFor="inPerson">In-Person Meeting (Riyadh Office)</Label>
+                                  <RadioGroupItem
+                                    value="inPerson"
+                                    id="inPerson"
+                                  />
+                                  <Label htmlFor="inPerson">
+                                    In-Person Meeting (Riyadh Office)
+                                  </Label>
                                 </div>
                               </RadioGroup>
                             </FormControl>
@@ -549,7 +672,8 @@ export default function ConsultationScheduler() {
                               />
                             </FormControl>
                             <FormDescription>
-                              This helps us prepare for your consultation and provide relevant solutions.
+                              This helps us prepare for your consultation and
+                              provide relevant solutions.
                             </FormDescription>
                             <FormMessage />
                           </FormItem>
@@ -562,18 +686,31 @@ export default function ConsultationScheduler() {
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel>How did you hear about us?</FormLabel>
-                            <Select onValueChange={field.onChange} defaultValue={field.value}>
+                            <Select
+                              onValueChange={field.onChange}
+                              defaultValue={field.value}
+                            >
                               <FormControl>
                                 <SelectTrigger>
                                   <SelectValue placeholder="Select an option" />
                                 </SelectTrigger>
                               </FormControl>
                               <SelectContent>
-                                <SelectItem value="search">Search Engine (Google, Bing, etc.)</SelectItem>
-                                <SelectItem value="social">Social Media</SelectItem>
-                                <SelectItem value="referral">Referral from a Friend/Colleague</SelectItem>
-                                <SelectItem value="event">Event or Conference</SelectItem>
-                                <SelectItem value="advertisement">Advertisement</SelectItem>
+                                <SelectItem value="search">
+                                  Search Engine (Google, Bing, etc.)
+                                </SelectItem>
+                                <SelectItem value="social">
+                                  Social Media
+                                </SelectItem>
+                                <SelectItem value="referral">
+                                  Referral from a Friend/Colleague
+                                </SelectItem>
+                                <SelectItem value="event">
+                                  Event or Conference
+                                </SelectItem>
+                                <SelectItem value="advertisement">
+                                  Advertisement
+                                </SelectItem>
                                 <SelectItem value="other">Other</SelectItem>
                               </SelectContent>
                             </Select>
@@ -591,8 +728,10 @@ export default function ConsultationScheduler() {
                             What to expect
                           </h3>
                           <p className="text-sm text-blue-700 mt-1">
-                            Your consultation will last approximately 45 minutes. Our expert will discuss your business
-                            needs, answer your questions, and recommend tailored solutions for your specific challenges.
+                            Your consultation will last approximately 45
+                            minutes. Our expert will discuss your business
+                            needs, answer your questions, and recommend tailored
+                            solutions for your specific challenges.
                           </p>
                         </div>
                       </div>
@@ -603,7 +742,11 @@ export default function ConsultationScheduler() {
             </CardContent>
             <CardFooter className="flex justify-between border-t border-gray-100 pt-6">
               {step > 1 ? (
-                <Button type="button" variant="outline" onClick={handlePrevStep}>
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={handlePrevStep}
+                >
                   Back
                 </Button>
               ) : (
@@ -611,7 +754,11 @@ export default function ConsultationScheduler() {
               )}
 
               {step < 3 ? (
-                <Button type="button" onClick={handleNextStep} className="bg-primary hover:bg-primary/90 text-white">
+                <Button
+                  type="button"
+                  onClick={handleNextStep}
+                  className="bg-primary hover:bg-primary/90 text-white"
+                >
                   Continue
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
@@ -655,7 +802,8 @@ export default function ConsultationScheduler() {
             },
             {
               title: "Tailored Solutions",
-              description: "We provide customized recommendations based on your specific business needs and goals.",
+              description:
+                "We provide customized recommendations based on your specific business needs and goals.",
               icon: (
                 <div className="p-2 bg-primary/10 rounded-full">
                   <Check className="h-5 w-5 text-primary" />
@@ -664,7 +812,8 @@ export default function ConsultationScheduler() {
             },
             {
               title: "No Obligation",
-              description: "The consultation is completely free with no obligation to purchase any services.",
+              description:
+                "The consultation is completely free with no obligation to purchase any services.",
               icon: (
                 <div className="p-2 bg-primary/10 rounded-full">
                   <Check className="h-5 w-5 text-primary" />
@@ -672,12 +821,17 @@ export default function ConsultationScheduler() {
               ),
             },
           ].map((item, index) => (
-            <div key={index} className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+            <div
+              key={index}
+              className="bg-white p-6 rounded-xl shadow-sm border border-gray-100"
+            >
               <div className="flex items-start">
                 {item.icon}
                 <div className="ml-4">
                   <h3 className="font-medium text-gray-900">{item.title}</h3>
-                  <p className="text-sm text-gray-600 mt-1">{item.description}</p>
+                  <p className="text-sm text-gray-600 mt-1">
+                    {item.description}
+                  </p>
                 </div>
               </div>
             </div>
@@ -685,6 +839,5 @@ export default function ConsultationScheduler() {
         </motion.div>
       </div>
     </div>
-  )
+  );
 }
-

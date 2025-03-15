@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function PortfolioPage({ params }: Props) {
-  const { locale } = params;
+export default async function PortfolioPage({ params }: Props) {
+  const { locale } = await params;
   return <PortfolioPageClient locale={locale} />;
 }

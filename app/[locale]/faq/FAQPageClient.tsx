@@ -1,18 +1,23 @@
-"use client"
+"use client";
 
-import { useState, useEffect, useMemo } from "react"
-import { faqs, faqCategories } from "@/data/faq"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { Badge } from "@/components/ui/badge"
-import { Search, Filter, X } from "lucide-react"
-import { motion } from "framer-motion"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { faqCategories, faqs } from "@/data/faq";
+import { motion } from "framer-motion";
+import { Filter, Search, X } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
 
 export default function FAQPageClient() {
-  const [searchQuery, setSearchQuery] = useState("")
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
-  const [expandedItems, setExpandedItems] = useState<string[]>([])
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [expandedItems, setExpandedItems] = useState<string[]>([]);
 
   // Filter FAQs based on search query and selected category
   const filteredFaqs = useMemo(() => {
@@ -20,43 +25,48 @@ export default function FAQPageClient() {
       const matchesSearch =
         searchQuery === "" ||
         faq.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        faq.answer.toLowerCase().includes(searchQuery.toLowerCase())
+        faq.answer.toLowerCase().includes(searchQuery.toLowerCase());
 
-      const matchesCategory = selectedCategory === null || faq.category === selectedCategory
+      const matchesCategory =
+        selectedCategory === null || faq.category === selectedCategory;
 
-      return matchesSearch && matchesCategory
-    })
-  }, [searchQuery, selectedCategory])
+      return matchesSearch && matchesCategory;
+    });
+  }, [searchQuery, selectedCategory]);
 
   // Group FAQs by category for display
   const faqsByCategory = useMemo(() => {
-    const grouped: Record<string, typeof faqs> = {}
+    const grouped: Record<string, typeof faqs> = {};
 
     filteredFaqs.forEach((faq) => {
       if (!grouped[faq.category]) {
-        grouped[faq.category] = []
+        grouped[faq.category] = [];
       }
-      grouped[faq.category].push(faq)
-    })
+      grouped[faq.category].push(faq);
+    });
 
-    return grouped
-  }, [filteredFaqs])
+    return grouped;
+  }, [filteredFaqs]);
 
   // Reset expanded items when filters change
   useEffect(() => {
-    setExpandedItems([])
-  }, [searchQuery, selectedCategory])
+    setExpandedItems([]);
+  }, [searchQuery, selectedCategory]);
 
   // Handle accordion toggle
   const toggleAccordion = (itemId: string) => {
-    setExpandedItems((prev) => (prev.includes(itemId) ? prev.filter((id) => id !== itemId) : [...prev, itemId]))
-  }
+    setExpandedItems((prev) =>
+      prev.includes(itemId)
+        ? prev.filter((id) => id !== itemId)
+        : [...prev, itemId]
+    );
+  };
 
   // Clear all filters
   const clearFilters = () => {
-    setSearchQuery("")
-    setSelectedCategory(null)
-  }
+    setSearchQuery("");
+    setSelectedCategory(null);
+  };
 
   return (
     <div className="container mx-auto px-4 py-12 md:py-16 lg:py-20">
@@ -67,10 +77,13 @@ export default function FAQPageClient() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">Frequently Asked Questions</h1>
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+          Frequently Asked Questions
+        </h1>
         <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
-          Find answers to common questions about our services, processes, and technologies. If you can't find what
-          you're looking for, please contact our support team.
+          Find answers to common questions about our services, processes, and
+          technologies. If you can't find what you're looking for, please
+          contact our support team.
         </p>
       </motion.div>
 
@@ -89,7 +102,11 @@ export default function FAQPageClient() {
           </div>
           <div className="flex gap-2">
             {selectedCategory && (
-              <Button variant="outline" onClick={clearFilters} className="flex items-center gap-1">
+              <Button
+                variant="outline"
+                onClick={clearFilters}
+                className="flex items-center gap-1"
+              >
                 <X className="h-4 w-4" /> Clear Filters
               </Button>
             )}
@@ -138,7 +155,11 @@ export default function FAQPageClient() {
                   </span>
                   {category}
                 </h2>
-                <Accordion type="multiple" value={expandedItems} className="border rounded-lg">
+                <Accordion
+                  type="multiple"
+                  value={expandedItems}
+                  className="border rounded-lg"
+                >
                   {categoryFaqs.map((faq) => (
                     <AccordionItem key={faq.id} value={faq.id}>
                       <AccordionTrigger
@@ -148,7 +169,9 @@ export default function FAQPageClient() {
                         <span className="text-left">{faq.question}</span>
                       </AccordionTrigger>
                       <AccordionContent className="px-4 pb-4 pt-2">
-                        <div className="prose prose-sm max-w-none dark:prose-invert">{faq.answer}</div>
+                        <div className="prose prose-sm max-w-none dark:prose-invert">
+                          {faq.answer}
+                        </div>
                       </AccordionContent>
                     </AccordionItem>
                   ))}
@@ -157,7 +180,11 @@ export default function FAQPageClient() {
             ))
           ) : (
             // Display flat list when a category is selected
-            <Accordion type="multiple" value={expandedItems} className="border rounded-lg">
+            <Accordion
+              type="multiple"
+              value={expandedItems}
+              className="border rounded-lg"
+            >
               {filteredFaqs.map((faq) => (
                 <AccordionItem key={faq.id} value={faq.id}>
                   <AccordionTrigger
@@ -167,7 +194,9 @@ export default function FAQPageClient() {
                     <span className="text-left">{faq.question}</span>
                   </AccordionTrigger>
                   <AccordionContent className="px-4 pb-4 pt-2">
-                    <div className="prose prose-sm max-w-none dark:prose-invert">{faq.answer}</div>
+                    <div className="prose prose-sm max-w-none dark:prose-invert">
+                      {faq.answer}
+                    </div>
                   </AccordionContent>
                 </AccordionItem>
               ))}
@@ -182,8 +211,8 @@ export default function FAQPageClient() {
           </div>
           <h3 className="text-xl font-semibold mb-2">No results found</h3>
           <p className="text-muted-foreground mb-6">
-            We couldn't find any FAQs matching your search criteria. Please try different keywords or browse all
-            categories.
+            We couldn't find any FAQs matching your search criteria. Please try
+            different keywords or browse all categories.
           </p>
           <Button onClick={clearFilters}>Clear Filters</Button>
         </div>
@@ -194,8 +223,9 @@ export default function FAQPageClient() {
         <div className="text-center">
           <h2 className="text-2xl font-bold mb-4">Still have questions?</h2>
           <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-            If you couldn't find the answer to your question, our support team is here to help. Contact us and we'll get
-            back to you as soon as possible.
+            If you couldn't find the answer to your question, our support team
+            is here to help. Contact us and we'll get back to you as soon as
+            possible.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild>
@@ -208,6 +238,5 @@ export default function FAQPageClient() {
         </div>
       </div>
     </div>
-  )
+  );
 }
-

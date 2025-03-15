@@ -1,4 +1,4 @@
-import type { Service } from "./services";
+import { Service } from "../services";
 
 export interface ServiceDetail extends Service {
   id: string;
@@ -42,7 +42,6 @@ export interface ServiceDetail extends Service {
   }[];
   relatedServices: string[];
 }
-
 export const serviceDetails: Record<string, ServiceDetail> = {
   "web-development": {
     id: "web-development",

@@ -42,7 +42,6 @@ export async function generateMetadata({
 
 export default async function AboutPage({ params: { locale } }: Props) {
   const t = await getTranslations({ locale, namespace: "aboutPage" });
-  const footerT = await getTranslations({ locale, namespace: "preFooterCTA" });
 
   // Check if the locale is RTL
   const isRTL = locale === "ar";

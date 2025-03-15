@@ -1,29 +1,34 @@
-import type { Metadata } from "next"
-import Script from "next/script"
-import { generateServiceSchema } from "@/lib/schema"
-import { generatePageMetadata } from "@/lib/seo-utils"
-import ServicesPageClient from "./ServicesPageClient"
+import type { Locale } from "@/config/i18n";
+import { generateServiceSchema } from "@/lib/schema";
+import { generatePageMetadata } from "@/lib/seo-utils";
+import type { Metadata } from "next";
+import Script from "next/script";
+import ServicesPageClient from "./ServicesPageClient";
 
-export const metadata: Metadata = generatePageMetadata({
-  title: "Professional Digital Services for Saudi Businesses",
-  description:
-    "Comprehensive digital services including web development, mobile apps, e-invoicing, graphic design, and digital marketing tailored for Saudi businesses.",
-  keywords: [
-    "digital services Saudi Arabia",
-    "web development Riyadh",
-    "mobile app development KSA",
-    "e-invoicing ZATCA",
-    "graphic design Saudi",
-    "digital marketing services",
-    "Saudi business solutions",
-    "Vision 2030 digital transformation",
-    "Arabic website development",
-    "Saudi e-commerce solutions",
-  ],
-  path: "/services",
-})
+import { getTranslations } from "next-intl/server";
+type Props = {
+  params: { locale: Locale };
+};
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: Locale };
+}): Promise<Metadata> {
+  const locale = await params.locale;
+  const t = await getTranslations({ locale, namespace: "servicesPage" });
 
-export default function ServicesPage() {
+  return generatePageMetadata({
+    title: t("meta.title"),
+    description: t("meta.description"),
+    keywords: t("meta.keywords", { returnObjects: true }),
+    path: `/${params.locale}/services`,
+  });
+}
+
+export default async function ServicesPage({ params }: Props) {
+  const locale = await params.locale;
+  const t = await getTranslations({ locale, namespace: "servicesPage" });
+
   return (
     <>
       <Script
@@ -32,19 +37,17 @@ export default function ServicesPage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             generateServiceSchema({
-              title: "Digital Services",
-              description:
-                "Comprehensive digital services for Saudi businesses including web development, mobile apps, e-invoicing, graphic design, and digital marketing.",
+              title: t("meta.schemaTitle"),
+              description: t("meta.schemaDescription"),
               provider: {
                 name: "Saudi Ease",
                 url: "https://saudiease.com",
               },
-            }),
+            })
           ),
         }}
       />
-      <ServicesPageClient />
+      <ServicesPageClient locale={params.locale} />
     </>
-  )
+  );
 }
-
