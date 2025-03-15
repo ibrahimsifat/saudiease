@@ -2,8 +2,13 @@
 
 import { processSteps } from "@/data/process-steps";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
+import { useParams } from "next/navigation";
 
 export default function ProcessSection() {
+  const t = useTranslations("process");
+  const params = useParams();
+  const locale = (params?.locale as string) || "en";
   return (
     <section className="py-16 bg-gradient-to-br from-saudi-black to-gray-900 text-white">
       <div className="container mx-auto px-4">
@@ -14,14 +19,14 @@ export default function ProcessSection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-            <span className="flex h-2 w-2 rounded-full bg-primary mr-2"></span>
-            Our Proven Methodology
+          <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4 rtl:flex-row-reverse">
+            <span className="flex h-2 w-2 rounded-full bg-primary ltr:mr-2 rtl:ml-2"></span>
+            {t("sectionLabel")}
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-saudi-white mb-4">
-            Streamlined{" "}
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            {t("title").split(" ")[0]}{" "}
             <span className="text-primary relative">
-              Process
+              {t("title").split(" ")[1]}
               <svg
                 className="absolute -bottom-2 left-0 w-full h-3 text-primary/20"
                 viewBox="0 0 200 8"
@@ -37,9 +42,7 @@ export default function ProcessSection() {
             </span>
           </h2>
           <p className="text-gray-300 max-w-2xl mx-auto text-lg">
-            Our systematic approach ensures efficient delivery of high-quality
-            digital solutions tailored to the Saudi market, with clear
-            communication and transparency at every stage.
+            {t("description")}
           </p>
         </motion.div>
 
@@ -53,15 +56,21 @@ export default function ProcessSection() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="relative bg-white/5 p-6 rounded-xl backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all duration-300 group"
             >
-              <div className="absolute -top-5 left-6 h-10 w-10 rounded-full bg-primary flex items-center justify-center shadow-lg">
+              <div className="absolute -top-5 ltr:left-6 rtl:right-6 h-10 w-10 rounded-full bg-primary flex items-center justify-center shadow-lg">
                 {<step.icon className="h-6 w-6 text-white" />}
               </div>
               <div className="pt-6">
                 <h3 className="text-xl font-semibold mb-3 flex items-center">
-                  <span className="text-primary mr-2">{index + 1}.</span>{" "}
-                  {step.title}
+                  <span className="text-primary ltr:mr-2 rtl:ml-2">
+                    {index + 1}.
+                  </span>{" "}
+                  {step.title[locale as keyof typeof step.title] ||
+                    step.title.ar}
                 </h3>
-                <p className="text-gray-300">{step.description}</p>
+                <p className="text-gray-300">
+                  {step.description[locale as keyof typeof step.description] ||
+                    step.description.ar}
+                </p>
               </div>
               <div className="absolute bottom-0 left-0 h-1 bg-primary rounded-b-xl transition-all duration-300 w-0 group-hover:w-full"></div>
             </motion.div>

@@ -54,20 +54,7 @@
     "testimonialAuthor3": "Mohammed Al-Harbi",
     "testimonialCompany3": "Gulf Innovations Group"
   },
-  "services": {
-    "title": "Comprehensive Digital Services",
-    "subtitle": "Our Expertise",
-    "description": "We offer a wide range of digital solutions tailored for Saudi businesses, helping you thrive in the digital age",
-    "viewAll": "View All Services",
-    "viewDetails": "View Details",
-    "categories": {
-      "all": "All Services",
-      "development": "Development",
-      "design": "Design",
-      "marketing": "Marketing",
-      "finance": "Finance"
-    }
-  },
+
   "common": {
     "languageName": "English",
     "switchLanguage": "Switch language",
@@ -326,6 +313,165 @@
       }
     }
   },
+  "about": {
+    "sectionLabel": "About Saudi Ease",
+    "title": {
+      "part1": "Leading Digital Transformation in ",
+      "part2": "Saudi Arabia"
+    },
+    "subtitle": "We're a team of digital experts passionate about helping Saudi businesses thrive in the digital economy through innovative, compliant, and effective solutions.",
+    "imageAlt": "Saudi Ease team working on digital solutions",
+    "stats": {
+      "yearsExperience": "Years Experience",
+      "projectsCompleted": "Projects Completed"
+    },
+    "learnMoreButton": "Learn More About Us",
+    "seo": {
+      "name": "About Saudi Ease - Leading Digital Transformation in Saudi Arabia",
+      "description": "Learn about Saudi Ease, a team of digital experts passionate about helping Saudi businesses thrive in the digital economy through innovative, compliant, and effective solutions."
+    },
+    "tabs": {
+      "mission": {
+        "title": "Our Mission",
+        "description": "To empower Saudi businesses with innovative digital solutions that drive growth, ensure compliance with local regulations, and contribute to the Kingdom's Vision 2030 digital transformation goals.",
+        "points": {
+          "0": "Deliver cutting-edge web and mobile applications tailored to Saudi market needs",
+          "1": "Provide ZATCA-compliant e-invoicing solutions for seamless business operations",
+          "2": "Create bilingual digital experiences that resonate with both Arabic and English audiences",
+          "3": "Support Saudi businesses in their digital transformation journey"
+        }
+      },
+      "vision": {
+        "title": "Our Vision",
+        "description": "To be the leading digital solutions provider in Saudi Arabia, recognized for our expertise, innovation, and contribution to the Kingdom's digital economy in alignment with Vision 2030.",
+        "points": {
+          "0": "Pioneer advanced digital solutions for the Saudi market",
+          "1": "Set industry standards for quality and compliance",
+          "2": "Foster digital literacy and innovation across the Kingdom",
+          "3": "Contribute to Saudi Arabia's position as a regional technology hub"
+        }
+      },
+      "story": {
+        "title": "Our Story",
+        "description": "Founded in 2018, Saudi Ease began with a mission to bridge the gap between global digital standards and local Saudi business needs. Our journey has been marked by continuous growth, innovation, and a deep commitment to supporting the Kingdom's digital transformation.",
+        "points": {
+          "0": "Started with a team of 5 passionate digital experts in Riyadh",
+          "1": "Expanded to serve over 250 clients across 15 Saudi cities",
+          "2": "Developed specialized expertise in ZATCA compliance and e-invoicing",
+          "3": "Built a diverse team of Saudi and international digital professionals"
+        }
+      }
+    },
+    "coreValues": {
+      "sectionLabel": "Our Principles",
+      "titlePart1": "Our Core",
+      "titlePart2": "Values",
+      "subtitle": "The principles that guide our work and define our commitment to excellence",
+      "excellence": {
+        "title": "Excellence",
+        "description": "We strive for excellence in every digital solution we deliver, ensuring the highest quality standards for Saudi businesses."
+      },
+      "innovation": {
+        "title": "Innovation",
+        "description": "We embrace innovative technologies and approaches to solve complex digital challenges in the Saudi market."
+      },
+      "clientCentric": {
+        "title": "Client-Centric",
+        "description": "We put our clients' needs first, delivering tailored solutions that address their specific business requirements."
+      },
+      "localExpertise": {
+        "title": "Local Expertise",
+        "description": "Our deep understanding of Saudi regulations and business practices ensures compliant and effective digital solutions."
+      },
+      "agility": {
+        "title": "Agility",
+        "description": "We adapt quickly to changing market conditions and emerging technologies to keep our clients ahead of the curve."
+      }
+    }
+  },
+  "features": {
+    "title": "Advanced Capabilities",
+    "subtitle": "Cutting-Edge Features",
+    "description": "Our solutions come packed with advanced features designed specifically for the Saudi market, ensuring optimal performance, security, and user experience.",
+    "cta": "Explore Our Services",
+    "performance": {
+      "title": "Fast Performance",
+      "description": "Optimized websites and applications that load quickly and provide a smooth user experience."
+    },
+    "security": {
+      "title": "Secure Solutions",
+      "description": "Built with security in mind to protect your business and customer data."
+    },
+    "responsive": {
+      "title": "Mobile Responsive",
+      "description": "Designs that look and function perfectly on all devices, from desktops to smartphones."
+    },
+    "localExpertise": {
+      "title": "Local Expertise",
+      "description": "Deep understanding of the Saudi market and cultural nuances for effective digital solutions."
+    },
+    "growth": {
+      "title": "Growth Focused",
+      "description": "Strategic digital solutions designed to help your business grow and succeed."
+    },
+    "timely": {
+      "title": "Timely Delivery",
+      "description": "Committed to delivering projects on time and within budget, every time."
+    }
+  },
+  "featureDetails": {
+    "benefits": "Key Benefits",
+    "benefitsSubtitle": "Discover how our {feature} feature can transform your business operations and drive growth.",
+    "keyFeatures": "Key Features",
+    "caseStudy": "Case Study",
+    "faq": "FAQ",
+    "relatedFeatures": "Related Features",
+    "relatedFeaturesSubtitle": "Explore other features that work well with {feature} to create a comprehensive digital solution.",
+    "ctaTitle": "Ready to Implement {feature} in Your Business?",
+    "ctaDescription": "Our team of experts is ready to help you leverage this feature to drive growth and success for your Saudi business.",
+    "contactUs": "Contact Us",
+    "exploreServices": "Explore Services",
+    "requestDemo": "Request a Demo",
+    "discussProject": "Discuss Your Project",
+    "featureSpotlight": "Feature Spotlight",
+    "backToFeatures": "Back to Features",
+    "results": "Results:",
+    "performance": {
+      "title": "Fast Performance",
+      "subtitle": "Lightning-fast digital experiences for Saudi businesses",
+      "overview": "Our Fast Performance feature ensures your digital platforms load quickly and operate smoothly, providing an exceptional user experience that keeps customers engaged and satisfied."
+    },
+    "security": {
+      "title": "Secure Solutions",
+      "subtitle": "Enterprise-grade security for Saudi businesses",
+      "overview": "Our Secure Solutions feature provides comprehensive protection for your digital assets, ensuring compliance with Saudi regulations while safeguarding sensitive data from increasingly sophisticated cyber threats."
+    },
+    "responsive": {
+      "title": "Mobile Responsive",
+      "subtitle": "Seamless experiences across all devices",
+      "overview": "Our Mobile Responsive feature ensures your digital platforms look and function perfectly on all devices, from desktop computers to smartphones, providing a consistent and optimized experience for all users."
+    },
+    "localExpertise": {
+      "title": "Local Expertise",
+      "subtitle": "Deep understanding of the Saudi market",
+      "overview": "Our Local Expertise feature provides you with insights and solutions specifically tailored to the Saudi market, ensuring cultural relevance, regulatory compliance, and alignment with local business practices."
+    },
+    "growth": {
+      "title": "Growth Focused",
+      "subtitle": "Strategic solutions for business expansion",
+      "overview": "Our Growth Focused feature provides strategic digital solutions designed to help your Saudi business expand, attract new customers, and increase revenue through data-driven optimization and scalable architecture."
+    },
+    "timely": {
+      "title": "Timely Delivery",
+      "subtitle": "Reliable project execution and delivery",
+      "overview": "Our Timely Delivery feature ensures your digital projects are completed on schedule and within budget, with transparent communication throughout the process and rigorous project management methodologies."
+    }
+  },
+  "process": {
+    "sectionLabel": "Our Proven Methodology",
+    "title": "Streamlined Process",
+    "description": "Our systematic approach ensures efficient delivery of high-quality digital solutions tailored to the Saudi market, with clear communication and transparency at every stage."
+  },
   "whyChooseUs": {
     "sectionLabel": "Why Saudi Businesses Trust Us",
     "title": "Why Choose Us?",
@@ -358,5 +504,703 @@
       "experience": "Years Experience",
       "projects": "Projects Delivered"
     }
+  },
+  "cuttingEdgeTech": {
+    "sectionLabel": "Innovation & Technology",
+    "title": "Cutting-Edge Technology",
+    "description": "We leverage the latest technologies to deliver innovative solutions that drive business growth and digital transformation across Saudi Arabia.",
+    "tech1": {
+      "title": "Cloud Solutions",
+      "description": "Scalable and secure cloud infrastructure tailored to Saudi business needs."
+    },
+    "tech2": {
+      "title": "AI & Machine Learning",
+      "description": "Intelligent solutions that automate processes and provide valuable insights."
+    },
+    "tech3": {
+      "title": "Blockchain Technology",
+      "description": "Secure and transparent systems for critical business operations."
+    },
+    "tech4": {
+      "title": "IoT Integration",
+      "description": "Connected solutions that enhance operational efficiency and data collection."
+    },
+    "benefits": {
+      "title": "Benefits of Our Technology Approach",
+      "benefit1": "Faster time-to-market",
+      "benefit2": "Reduced operational costs",
+      "benefit3": "Enhanced security protocols",
+      "benefit4": "Future-proof scalability"
+    },
+    "cta": "Explore Our Tech Stack"
+  },
+  "latestTechnologies": {
+    "badge": "Cutting-Edge Technology",
+    "title": "Built With Modern Technologies",
+    "description": "We leverage the latest technologies to deliver high-performance, scalable solutions that keep you ahead of the competition",
+    "exploreButton": "Explore Our Tech Stack",
+    "technologies": {
+      "react": {
+        "name": "React",
+        "description": "Building interactive user interfaces"
+      },
+      "nextjs": {
+        "name": "Next.js",
+        "description": "The React framework for production"
+      },
+      "nodejs": {
+        "name": "Node.js",
+        "description": "JavaScript runtime for backend"
+      },
+      "typescript": {
+        "name": "TypeScript",
+        "description": "Typed JavaScript for better code"
+      },
+      "tailwind": {
+        "name": "Tailwind CSS",
+        "description": "Utility-first CSS framework"
+      },
+      "mongodb": {
+        "name": "MongoDB",
+        "description": "NoSQL database solution"
+      }
+    }
+  },
+  "testimonials": {
+    "sectionLabel": "Success Stories from Saudi Arabia",
+    "title": "What Our Saudi Clients Say",
+    "description": "Hear directly from businesses across the Kingdom about how our digital solutions have transformed their operations, improved compliance, and driven growth in the Saudi market.",
+    "previous": "Previous testimonial",
+    "next": "Next testimonial",
+    "goToTestimonial": "Go to testimonial",
+    "saudiArabia": "Saudi Arabia",
+    "project": "Project",
+    "trustedBy": "Trusted By Leading Saudi Companies",
+    "partner": "Partner",
+    "becomeNextSuccess": "Become Our Next Success Story",
+    "testimonial1": {
+      "text": "Saudi Ease transformed our business with their e-commerce solution. Their understanding of Saudi regulations saved us months of work and helped us launch ahead of schedule.",
+      "project": "E-commerce Platform"
+    },
+    "testimonial2": {
+      "text": "The team at Saudi Ease delivered a custom ERP system that perfectly aligned with our business processes. Their attention to detail and responsive support has made them our go-to technology partner.",
+      "project": "Custom ERP Implementation"
+    },
+    "testimonial3": {
+      "text": "Working with Saudi Ease on our digital transformation initiative was a game-changer. Their expertise in Saudi market requirements and technical capabilities exceeded our expectations.",
+      "project": "Digital Transformation"
+    },
+    "testimonial4": {
+      "text": "Saudi Ease helped us navigate the complex regulatory landscape while building our fintech solution. Their knowledge of local compliance requirements was invaluable.",
+      "project": "Fintech Solution"
+    },
+    "testimonial5": {
+      "text": "The mobile app developed by Saudi Ease has significantly improved our customer engagement. Their team's understanding of Saudi user preferences resulted in an intuitive, culturally-appropriate design.",
+      "project": "Mobile App Development"
+    }
+  },
+  "blogSection": {
+    "stayUpdated": "Stay Updated",
+    "latestInsights": "Latest Insights",
+    "stayUpdatedDescription": "Stay updated with the latest trends and insights in digital marketing, web development, and more.",
+    "featured": "Featured",
+    "readArticle": "Read Article",
+    "viewAllArticles": "View All Articles",
+    "subscribeNewsletter": "Subscribe to Our Newsletter",
+    "newsletterDescription": "Get the latest articles, insights, and industry updates delivered straight to your inbox.",
+    "enterEmail": "Enter your email",
+    "subscribe": "Subscribe",
+    "privacyNotice": "We respect your privacy. Unsubscribe at any time."
+  },
+  "ctaSection": {
+    "title": "Ready to Transform Your Saudi Business?",
+    "description": "Let's work together to create digital solutions that drive growth, ensure compliance, and position your business for success in Saudi Arabia's evolving digital landscape.",
+    "primaryButton": "Get Your Free Digital Assessment",
+    "secondaryButton": "Explore Our Saudi-Specific Services",
+    "stat1Value": "250+",
+    "stat1Label": "Saudi Projects Completed",
+    "stat2Value": "98%",
+    "stat2Label": "Client Satisfaction Rate",
+    "stat3Value": "5+",
+    "stat3Label": "Years in Saudi Market",
+    "stat4Value": "24/7",
+    "stat4Label": "Local Support Team"
+  },
+  "preFooterCTA": {
+    "sectionLabel": "Let's Work Together",
+    "title": "Ready to Transform Your Digital Presence?",
+    "description": "Our team of Saudi digital experts is ready to help your business thrive in the digital landscape. Reach out today and discover how we can elevate your brand.",
+    "quickContact": "Quick Contact",
+    "scheduleCall": "Schedule a Call",
+    "form": {
+      "name": "Your Name",
+      "namePlaceholder": "Enter your name",
+      "email": "Email Address",
+      "emailPlaceholder": "Enter your email",
+      "message": "How can we help?",
+      "messagePlaceholder": "Tell us about your project needs...",
+      "sendMessage": "Send Message",
+      "messageSent": "Message Sent!"
+    },
+    "scheduleDescription": "Schedule a free 30-minute consultation with our digital experts to discuss your project needs.",
+    "chooseDate": "Choose a Date",
+    "chooseDateDescription": "Select your preferred date for the consultation.",
+    "pickTime": "Pick a Time",
+    "pickTimeDescription": "Choose a time that works best for your schedule.",
+    "scheduleConsultation": "Schedule Consultation",
+    "orCallDirectly": "Or call us directly at",
+    "whyChooseUs": "Why Choose Saudi Ease?",
+    "saudiMarketExperts": "Saudi Market Experts",
+    "saudiMarketExpertsDescription": "Deep understanding of local business needs",
+    "zatcaCompliance": "ZATCA Compliance",
+    "zatcaComplianceDescription": "All solutions meet local regulations",
+    "fastTurnaround": "Fast Turnaround",
+    "fastTurnaroundDescription": "Quick delivery without compromising quality",
+    "bilingualSupport": "Bilingual Support",
+    "bilingualSupportDescription": "Arabic and English communication",
+    "contactInformation": "Contact Information",
+    "contactDescription": "Reach out through any of these channels for immediate assistance.",
+    "phone": "Phone",
+    "email": "Email",
+    "followUs": "Follow Us",
+    "officeImageAlt": "Saudi Ease Office",
+    "trustedBy": "Trusted by leading businesses across Saudi Arabia"
+  },
+  "footer": {
+    "logoAlt": "Saudi Ease Logo",
+    "quickLinksTitle": "Quick Links",
+    "servicesTitle": "Our Services",
+    "resourcesTitle": "Resources",
+    "legalDocuments": "Legal Documents",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "legalHub": "Legal Hub",
+    "allLegalDocuments": "All Legal Documents",
+    "updatedOn": "Updated {date}",
+    "copyright": "Saudi Ease. All rights reserved.",
+    "saudiCR": "Saudi CR",
+    "cookiePolicy": "Cookie Policy",
+    "sitemap": "Sitemap",
+    "weAccept": "We Accept",
+    "newsletter": {
+      "title": "Subscribe to Our Newsletter",
+      "description": "Stay updated with our latest news, insights, and special offers.",
+      "emailPlaceholder": "Your email address",
+      "subscribe": "Subscribe",
+      "thankYou": "Thank you for subscribing to our newsletter!",
+      "illustrationAlt": "Newsletter illustration"
+    },
+    "quickLinks": {
+      "home": "Home",
+      "about": "About Us",
+      "services": "Services",
+      "portfolio": "Portfolio",
+      "blog": "Blog",
+      "contact": "Contact"
+    },
+    "services": {
+      "webDevelopment": "Website & App Development for Saudi Market",
+      "eCommerce": "E-Commerce Solutions with SADAD Integration",
+      "eInvoicing": "ZATCA-Compliant E-Invoicing",
+      "graphicDesign": "Arabic & English Graphic Design",
+      "digitalMarketing": "Saudi-Focused Digital Marketing",
+      "seo": "Local SEO for Saudi Businesses"
+    },
+    "resources": {
+      "digitalTransformation": "Saudi Digital Transformation Guide",
+      "zatcaCompliance": "ZATCA Compliance Checklist",
+      "careers": "Careers at Saudi Ease"
+    }
+  },
+  "featuresShowcase": {
+    "sectionLabel": "Advanced Capabilities",
+    "titleStart": "Cutting-Edge",
+    "titleHighlight": "Features",
+    "description": "Our solutions leverage the latest technologies to provide Saudi businesses with powerful, secure, and scalable digital capabilities that drive growth and ensure compliance with local regulations.",
+    "learnMore": "Learn more",
+    "exploreServices": "Explore Our Services",
+    "imageAlt": "Digital services showcase",
+    "seoOptimized": "SEO Optimized",
+    "seoDescription": "Rank higher in search results with our SEO-focused development.",
+    "fastLoading": "Fast Loading",
+    "fastLoadingDescription": "Optimized for speed to keep your visitors engaged.",
+    "features": {
+      "responsive": {
+        "title": "Responsive Design",
+        "description": "Websites that look perfect on all devices, from smartphones to desktops."
+      },
+      "growth": {
+        "title": "SEO Optimization",
+        "description": "Rank higher in search results with our SEO-focused development approach."
+      },
+      "performance": {
+        "title": "Performance Optimization",
+        "description": "Lightning-fast loading speeds for better user experience and SEO rankings."
+      },
+      "security": {
+        "title": "Enhanced Security",
+        "description": "Advanced security measures to protect your website and customer data."
+      },
+      "local-expertise": {
+        "title": "E-commerce Solutions",
+        "description": "Powerful online stores with secure payment gateways and inventory management."
+      },
+      "timely": {
+        "title": "Advanced Analytics",
+        "description": "Detailed insights into visitor behavior to help optimize your digital strategy."
+      }
+    }
+  },
+  "aboutPage": {
+    "metadata": {
+      "title": "About Saudi Ease | Leading Digital Solutions Provider in Saudi Arabia",
+      "description": "Learn about Saudi Ease, our journey, mission, values, and the team behind our success in delivering exceptional digital solutions across Saudi Arabia.",
+      "ogTitle": "About Saudi Ease | Your Trusted Digital Partner in Saudi Arabia",
+      "ogDescription": "Discover the story, mission, and values that drive Saudi Ease to deliver exceptional digital solutions tailored for the Saudi market.",
+      "ogImageAlt": "Saudi Ease Team"
+    },
+    "hero": {
+      "title": "About Saudi Ease",
+      "subtitle": "Your Trusted Digital Partner in Saudi Arabia",
+      "description": "Saudi Ease is a leading digital solutions provider dedicated to helping businesses across Saudi Arabia thrive in the digital landscape. With deep local expertise and global standards, we deliver innovative, culturally-aware solutions that drive real business results.",
+      "imageAlt": "Saudi Ease Team"
+    },
+    "ourStory": {
+      "title": "Our Story",
+      "subtitle": "The Journey of Saudi Ease",
+      "description": "Founded in 2015, Saudi Ease began with a simple mission: to bridge the gap between global digital excellence and local Saudi market needs. What started as a small team of passionate digital experts has grown into a full-service digital agency trusted by hundreds of Saudi businesses.",
+      "foundedYear": "Founded in 2015",
+      "foundedLocation": "Riyadh, Saudi Arabia",
+      "founderName": "Mohammed Al-Qahtani",
+      "founderTitle": "Founder & CEO",
+      "founderQuote": "We started Saudi Ease with the vision of creating digital solutions that truly understand and address the unique needs of the Saudi market. Our journey has been about combining global expertise with local insights to deliver exceptional value.",
+      "imageAlt": "Saudi Ease Founder"
+    },
+    "missionVision": {
+      "missionTitle": "Our Mission",
+      "missionDescription": "To empower Saudi businesses with innovative digital solutions that drive growth, enhance customer experiences, and contribute to the Kingdom's digital transformation goals.",
+      "visionTitle": "Our Vision",
+      "visionDescription": "To be the most trusted digital partner for Saudi businesses, known for our excellence, innovation, and deep understanding of the local market."
+    },
+    "coreValues": {
+      "title": "Our Core Values",
+      "subtitle": "The Principles That Guide Us",
+      "description": "At Saudi Ease, our values define who we are and how we work. They guide our decisions, shape our culture, and drive our commitment to excellence.",
+      "values": {
+        "innovation": {
+          "title": "Innovation",
+          "description": "We constantly explore new technologies and approaches to deliver cutting-edge solutions."
+        },
+        "integrity": {
+          "title": "Integrity",
+          "description": "We operate with honesty, transparency, and ethical standards in all our interactions."
+        },
+        "excellence": {
+          "title": "Excellence",
+          "description": "We strive for the highest quality in everything we do, exceeding expectations."
+        },
+        "clientFocus": {
+          "title": "Client Focus",
+          "description": "We put our clients' needs at the center of our work, building lasting partnerships."
+        }
+      }
+    },
+    "timeline": {
+      "title": "Our Journey",
+      "subtitle": "Key Milestones in Our Growth",
+      "events": {
+        "founding": {
+          "year": "2015",
+          "title": "Foundation",
+          "description": "Saudi Ease was founded in Riyadh with a team of 5 digital specialists."
+        },
+        "expansion": {
+          "year": "2017",
+          "title": "First Expansion",
+          "description": "Opened our second office in Jeddah and expanded our team to 25 professionals."
+        },
+        "award": {
+          "year": "2019",
+          "title": "Recognition",
+          "description": "Received the 'Digital Innovation Award' at the Saudi Technology Excellence Awards."
+        },
+        "milestone": {
+          "year": "2022",
+          "title": "Major Milestone",
+          "description": "Celebrated our 500th successful project and expanded to 50+ team members."
+        }
+      }
+    },
+    "team": {
+      "title": "Our Leadership Team",
+      "subtitle": "The Experts Behind Our Success",
+      "description": "Our diverse team of experts combines local market knowledge with global expertise to deliver exceptional results for our clients.",
+      "members": {
+        "ceo": {
+          "name": "Mohammed Al-Qahtani",
+          "position": "Founder & CEO",
+          "bio": "With over 15 years of experience in digital transformation, Mohammed leads our vision and strategy.",
+          "imageAlt": "Mohammed Al-Qahtani, Founder & CEO"
+        },
+        "cto": {
+          "name": "Sara Al-Harbi",
+          "position": "Chief Technology Officer",
+          "bio": "Sara oversees our technical operations, ensuring we deliver innovative and robust solutions.",
+          "imageAlt": "Sara Al-Harbi, CTO"
+        },
+        "cmo": {
+          "name": "Khalid Al-Otaibi",
+          "position": "Chief Marketing Officer",
+          "bio": "Khalid leads our marketing strategies, helping clients achieve their business objectives.",
+          "imageAlt": "Khalid Al-Otaibi, CMO"
+        },
+        "cdo": {
+          "name": "Fatima Al-Saud",
+          "position": "Chief Design Officer",
+          "bio": "Fatima ensures our designs are not only beautiful but also culturally relevant and effective.",
+          "imageAlt": "Fatima Al-Saud, CDO"
+        }
+      }
+    },
+    "achievements": {
+      "title": "Our Achievements",
+      "subtitle": "The Impact We've Made",
+      "items": {
+        "clients": {
+          "title": "Happy Clients",
+          "value": "500+",
+          "description": "Businesses across Saudi Arabia trust us with their digital needs."
+        },
+        "projects": {
+          "title": "Projects Delivered",
+          "value": "1,200+",
+          "description": "Successful projects completed across various industries."
+        },
+        "awards": {
+          "title": "Awards Won",
+          "value": "25+",
+          "description": "Recognition for our excellence and innovation."
+        },
+        "satisfaction": {
+          "title": "Client Satisfaction",
+          "value": "95%",
+          "description": "Our clients rate us excellent on satisfaction surveys."
+        }
+      }
+    },
+    "testimonials": {
+      "title": "What Our Clients Say",
+      "subtitle": "Testimonials from Saudi Businesses",
+      "items": {
+        "first": {
+          "quote": "Saudi Ease transformed our digital presence completely. Their understanding of the Saudi market and technical expertise delivered results beyond our expectations.",
+          "author": "Abdullah Al-Rashid",
+          "company": "CEO, Al Madar Group",
+          "imageAlt": "Abdullah Al-Rashid"
+        },
+        "second": {
+          "quote": "Working with Saudi Ease has been a game-changer for our business. Their team truly understands our needs and delivers solutions that work for our market.",
+          "author": "Noura Al-Zahrani",
+          "company": "Marketing Director, Saudi Retail Solutions",
+          "imageAlt": "Noura Al-Zahrani"
+        }
+      }
+    },
+    "officeLocations": {
+      "title": "Our Offices",
+      "subtitle": "Where to Find Us",
+      "locations": {
+        "riyadh": {
+          "city": "Riyadh (Headquarters)",
+          "address": "King Fahd Road, Al Olaya District, Riyadh 12214",
+          "phone": "+966 11 234 5678",
+          "email": "riyadh@saudiease.com"
+        },
+        "jeddah": {
+          "city": "Jeddah",
+          "address": "Prince Sultan Road, Al Zahra District, Jeddah 23424",
+          "phone": "+966 12 345 6789",
+          "email": "jeddah@saudiease.com"
+        }
+      }
+    },
+    "csrInitiatives": {
+      "title": "Our CSR Initiatives",
+      "subtitle": "Giving Back to the Community",
+      "description": "At Saudi Ease, we believe in contributing to the communities we serve. Our corporate social responsibility initiatives focus on creating positive impact across Saudi Arabia.",
+      "initiatives": {
+        "education": {
+          "title": "Digital Education",
+          "description": "We provide free digital skills training to young Saudis, helping prepare the next generation for the digital economy."
+        },
+        "environment": {
+          "title": "Environmental Sustainability",
+          "description": "Our green office initiatives and tree planting programs contribute to a more sustainable Saudi Arabia."
+        },
+        "community": {
+          "title": "Community Support",
+          "description": "We regularly volunteer and contribute to local community development projects across the Kingdom."
+        }
+      }
+    },
+    "partners": {
+      "title": "Our Partners",
+      "subtitle": "Collaborating for Success",
+      "description": "We work with leading technology and business partners to deliver the best solutions for our clients."
+    },
+    "joinOurTeam": {
+      "title": "Join Our Team",
+      "subtitle": "Build Your Career with Saudi Ease",
+      "description": "We're always looking for talented individuals who are passionate about digital excellence and want to make an impact in Saudi Arabia.",
+      "buttonText": "View Open Positions"
+    }
+  },
+  "contact": {
+    "title": "Contact Us | Saudi Ease",
+    "description": "Get in touch with Saudi Ease for all your digital transformation needs. Our team is ready to help your business thrive in the digital landscape.",
+    "hero": {
+      "breadcrumb": "Contact Us",
+      "badge": "Get In Touch",
+      "title": "Let's Start a Conversation",
+      "description": "We're here to help with your digital transformation journey. Reach out to us through any of the channels below, and our team will get back to you promptly.",
+      "phone": "Call us directly",
+      "email": "Email us at",
+      "hours": "Business hours"
+    },
+    "form": {
+      "title": "Send Us a Message",
+      "description": "Fill out the form below with your project details, and our team will get back to you within 24 hours.",
+      "fullName": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "company": "Company Name",
+      "service": "Service Interested In",
+      "budget": "Budget Range",
+      "timeframe": "Project Timeframe",
+      "details": "Project Details",
+      "hearAbout": "How did you hear about us?",
+      "google": "Google",
+      "social": "Social Media",
+      "referral": "Referral",
+      "other": "Other",
+      "submit": "Send Message",
+      "processing": "Processing...",
+      "success": "Thank you for contacting us!",
+      "successDetail": "Your message has been sent successfully. We'll get back to you within 24 hours.",
+      "error": "Something went wrong",
+      "errorDetail": "There was an error sending your message. Please try again or contact us directly by phone.",
+      "phoneError": "Please enter a valid Saudi phone number (05xxxxxxxx)",
+      "emailError": "Please enter a valid email address"
+    },
+    "info": {
+      "title": "Contact Information",
+      "phone": "Phone",
+      "phoneSupport": "For general inquiries",
+      "email": "Email",
+      "emailResponse": "We'll respond within 24 hours",
+      "headquarters": "Headquarters",
+      "getDirections": "Get directions",
+      "businessHours": "Business Hours",
+      "connectWithUs": "Connect With Us",
+      "emergencySupport": "Emergency Support",
+      "emergencyDescription": "For urgent technical issues requiring immediate assistance:",
+      "emergencyAvailability": "Available 24/7 for existing clients"
+    },
+    "locations": {
+      "badge": "Visit Us",
+      "title": "Our Office Locations",
+      "description": "Visit our offices in Riyadh and Jeddah to discuss your digital transformation needs",
+      "headquarters": "HEADQUARTERS",
+      "branchOffice": "BRANCH OFFICE",
+      "address": "Address",
+      "phone": "Phone",
+      "email": "Email",
+      "hours": "Hours",
+      "getDirections": "Get Directions",
+      "interactiveMap": "Interactive Map",
+      "mapDescription": "Use the map below to find directions to our offices"
+    },
+    "support": {
+      "badge": "Customer Support",
+      "title": "Support Options",
+      "description": "Choose the support option that works best for you",
+      "liveChat": {
+        "title": "Live Chat",
+        "description": "Chat with our support team in real-time during business hours.",
+        "action": "Start Chat"
+      },
+      "phone": {
+        "title": "Phone Support",
+        "description": "Speak directly with our customer service representatives.",
+        "action": "Call Now"
+      },
+      "ticket": {
+        "title": "Submit a Ticket",
+        "description": "Create a support ticket for technical issues or inquiries.",
+        "action": "Create Ticket"
+      },
+      "video": {
+        "title": "Video Consultation",
+        "description": "Schedule a video call with our experts for personalized assistance.",
+        "action": "Book Session"
+      },
+      "specialized": {
+        "title": "Need Specialized Assistance?",
+        "description": "Our dedicated account managers are available to provide personalized support for complex projects and enterprise clients. Schedule a consultation to discuss your specific needs.",
+        "action": "Request Consultation"
+      }
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "description": "Find answers to common questions about our services",
+      "badge": "Common Questions",
+      "questions": [
+        {
+          "question": "What types of digital services do you offer?",
+          "answer": "We offer a wide range of digital services including web development, e-invoicing solutions, graphic design & branding, and digital marketing."
+        },
+        {
+          "question": "How can I request a quote for my project?",
+          "answer": "You can request a quote by filling out the contact form on this page or by contacting us directly via phone or email."
+        },
+        {
+          "question": "What is the typical turnaround time for a project?",
+          "answer": "The turnaround time varies depending on the scope and complexity of the project. We'll provide a detailed timeline during the initial consultation."
+        },
+        {
+          "question": "Do you offer ongoing support and maintenance?",
+          "answer": "Yes, we offer ongoing support and maintenance packages to ensure your digital solutions remain up-to-date and perform optimally."
+        },
+        {
+          "question": "Are your e-invoicing solutions ZATCA compliant?",
+          "answer": "Yes, our e-invoicing solutions are fully compliant with ZATCA regulations in Saudi Arabia."
+        }
+      ]
+    }
+  },
+  "portfolio": {
+    "metadata": {
+      "title": "Our Portfolio | Saudi Ease Digital Solutions",
+      "description": "Explore our portfolio of successful digital projects across Saudi Arabia. View our web development, e-commerce, and digital marketing case studies.",
+      "keywords": "Saudi digital portfolio, web development projects, Saudi e-commerce case studies, ZATCA e-invoicing implementations, Saudi Arabia digital marketing success stories",
+      "ogTitle": "Portfolio | Saudi Ease Digital Solutions",
+      "ogDescription": "Explore our portfolio of successful digital projects across Saudi Arabia."
+    },
+    "hero": {
+      "badge": "Our Project Portfolio",
+      "title": "Transforming Saudi Businesses Through Digital Excellence",
+      "description": "Explore our collection of successful digital projects that have helped businesses across Saudi Arabia achieve their goals and transform their digital presence."
+    },
+    "search": {
+      "placeholder": "Search projects..."
+    },
+    "filter": {
+      "label": "Filter by:"
+    },
+    "categories": {
+      "all": "All",
+      "web-development": "Web Development",
+      "e-commerce": "E-Commerce",
+      "mobile-app": "Mobile App",
+      "digital-marketing": "Digital Marketing",
+      "branding": "Branding",
+      "e-invoicing": "E-Invoicing"
+    },
+    "viewCaseStudy": "View Case Study",
+    "noResults": {
+      "title": "No projects found",
+      "description": "Try adjusting your search or filter to find what you're looking for.",
+      "resetButton": "Reset filters"
+    },
+    "cta": {
+      "title": "Ready to Transform Your Digital Presence?",
+      "description": "Let's discuss how we can help your business achieve its digital goals with our expertise in web development, e-commerce, and digital marketing.",
+      "primaryButton": "Start Your Project",
+      "secondaryButton": "Explore Our Services"
+    }
+  },
+  "blog": {
+    "title": "Blog | Saudi Ease Digital Solutions",
+    "subtitle": "Digital Transformation Insights",
+    "description": "Stay updated with the latest digital transformation trends, ZATCA e-invoicing updates, and digital marketing insights for Saudi businesses.",
+    "searchPlaceholder": "Search articles...",
+    "searchButton": "Search",
+    "categories": {
+      "all": "All Posts",
+      "digitalTransformation": "Digital Transformation",
+      "eInvoicing": "E-Invoicing",
+      "webDevelopment": "Web Development",
+      "digitalMarketing": "Digital Marketing",
+      "saudiTech": "Saudi Tech News"
+    },
+    "readMore": "Read More",
+    "readingTime": "min read",
+    "filterBy": "Filter by:",
+    "clearFilters": "Clear Filters",
+    "latestPosts": "Latest Posts",
+    "featuredPosts": "Featured Posts",
+    "popularTopics": "Popular Topics",
+    "subscribeTitle": "Subscribe to our newsletter",
+    "subscribeDescription": "Get the latest articles and insights delivered straight to your inbox.",
+    "emailPlaceholder": "Your email address",
+    "subscribe": "Subscribe",
+    "noResults": "No results found. Try a different search term.",
+    "by": "By",
+    "published": "Published",
+    "relatedPosts": "Related Posts",
+    "featured": "Featured",
+    "backToBlog": "Back to Blog",
+    "postNotFound": "Blog Post Not Found",
+    "postNotFoundDescription": "The blog post you are looking for does not exist.",
+    "author": "Author",
+    "contentWriter": "Content Writer",
+    "views": "views",
+    "readers": "readers",
+    "like": "Like",
+    "unlike": "Unlike",
+    "thisArticle": "this article",
+    "bookmark": "Bookmark",
+    "removeBookmark": "Remove bookmark",
+    "copyLinkToArticle": "Copy link to article",
+    "shareOn": "Share on",
+    "copyLink": "Copy Link",
+    "linkCopied": "Link copied to clipboard",
+    "linkCopiedDescription": "You can now share this article with others",
+    "articleLiked": "Article liked!",
+    "thankYouFeedback": "Thank you for your feedback",
+    "articleBookmarked": "Article bookmarked",
+    "savedToReadingList": "Saved to your reading list",
+    "bookmarkRemoved": "Bookmark removed",
+    "removedFromReadingList": "Removed from your reading list",
+    "commentSubmitted": "Comment submitted",
+    "commentAwaitingModeration": "Your comment is awaiting moderation",
+    "wasThisArticleHelpful": "Was this article helpful?",
+    "yesItHelpedMe": "Yes, it helped me",
+    "noINeedMoreInfo": "No, I need more info",
+    "comments": "Comments",
+    "leaveComment": "Leave a comment",
+    "shareThoughts": "Share your thoughts...",
+    "postComment": "Post Comment",
+    "reply": "Reply",
+    "daysAgo": "{days} days ago",
+    "weeksAgo": "{weeks} weeks ago",
+    "previousArticle": "Previous Article",
+    "nextArticle": "Next Article",
+    "tableOfContents": "Table of Contents",
+    "readingStats": "Reading Stats",
+    "readingProgress": "Reading Progress",
+    "readTime": "Read Time",
+    "whatToReadNext": "What to Read Next",
+    "noRelatedArticles": "No related articles found",
+    "viewAllArticles": "View All Articles",
+    "shareThisArticle": "Share This Article",
+    "tags": "Tags",
+    "authorBio": "An experienced digital marketing specialist with expertise in SEO, content strategy, and market analysis for Saudi businesses. With over 8 years of experience helping businesses grow their online presence.",
+    "follow": "Follow",
+    "contact": "Contact",
+    "allArticles": "All Articles",
+    "commentSample1": "This article was incredibly helpful! I've been trying to understand the Saudi market better for my business, and this gave me exactly what I needed.",
+    "commentSample2": "Great insights! I would love to see more content about how Vision 2030 is affecting digital marketing strategies in the region.",
+    "commentSample3": "I've implemented some of these strategies for my e-commerce business and seen a 30% increase in engagement. Thank you for the valuable information!"
   }
 }

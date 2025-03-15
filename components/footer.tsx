@@ -9,10 +9,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { companyInfo } from "@/data/company-info";
 import { ArrowRight, ChevronRight, Mail, MapPin, Phone } from "lucide-react";
+import { useTranslations } from "next-intl";
 import NextImage from "next/image";
 import { useState } from "react";
 
 export default function Footer() {
+  const t = useTranslations("footer");
   const currentYear = new Date().getFullYear();
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
@@ -28,43 +30,37 @@ export default function Footer() {
 
   // Update the services array with more SEO-friendly service names
   const services = [
+    { name: t("services.webDevelopment"), link: "/services/web-development" },
+    { name: t("services.eCommerce"), link: "/services/e-commerce" },
+    { name: t("services.eInvoicing"), link: "/services/e-invoicing" },
+    { name: t("services.graphicDesign"), link: "/services/graphic-design" },
     {
-      name: "Website & App Development for Saudi Market",
-      link: "/services/web-development",
-    },
-    {
-      name: "E-Commerce Solutions with SADAD Integration",
-      link: "/services/e-commerce",
-    },
-    { name: "ZATCA-Compliant E-Invoicing", link: "/services/e-invoicing" },
-    {
-      name: "Arabic & English Graphic Design",
-      link: "/services/graphic-design",
-    },
-    {
-      name: "Saudi-Focused Digital Marketing",
+      name: t("services.digitalMarketing"),
       link: "/services/digital-marketing",
     },
-    { name: "Local SEO for Saudi Businesses", link: "/services/seo" },
+    { name: t("services.seo"), link: "/services/seo" },
   ];
 
   const quickLinks = [
-    { name: "Home", link: "/" },
-    { name: "About Us", link: "/about" },
-    { name: "Services", link: "/services" },
-    { name: "Portfolio", link: "/portfolio" },
-    { name: "Blog", link: "/blog" },
-    { name: "Contact", link: "/contact" },
+    { name: t("quickLinks.home"), link: "/" },
+    { name: t("quickLinks.about"), link: "/about" },
+    { name: t("quickLinks.services"), link: "/services" },
+    { name: t("quickLinks.portfolio"), link: "/portfolio" },
+    { name: t("quickLinks.blog"), link: "/blog" },
+    { name: t("quickLinks.contact"), link: "/contact" },
   ];
 
   // Update the resources array with properly organized legal links
   const resources = [
     {
-      name: "Saudi Digital Transformation Guide",
+      name: t("resources.digitalTransformation"),
       link: "/resources/digital-transformation",
     },
-    { name: "ZATCA Compliance Checklist", link: "/resources/zatca-compliance" },
-    { name: "Careers at Saudi Ease", link: "/careers" },
+    {
+      name: t("resources.zatcaCompliance"),
+      link: "/resources/zatca-compliance",
+    },
+    { name: t("resources.careers"), link: "/careers" },
   ];
 
   // Animation variants
@@ -121,11 +117,10 @@ export default function Footer() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <div>
                 <h3 className="text-2xl font-bold text-saudi-black mb-3">
-                  Subscribe to Our Newsletter
+                  {t("newsletter.title")}
                 </h3>
                 <p className="text-gray-600 mb-4">
-                  Stay updated with our latest news, insights, and special
-                  offers.
+                  {t("newsletter.description")}
                 </p>
                 <form
                   onSubmit={handleSubscribe}
@@ -133,7 +128,7 @@ export default function Footer() {
                 >
                   <Input
                     type="email"
-                    placeholder="Your email address"
+                    placeholder={t("newsletter.emailPlaceholder")}
                     className="flex-grow border-gray-200"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -143,8 +138,8 @@ export default function Footer() {
                     type="submit"
                     className="bg-primary hover:bg-primary/90 text-white whitespace-nowrap"
                   >
-                    Subscribe
-                    <ArrowRight className="ml-2 h-4 w-4" />
+                    {t("newsletter.subscribe")}
+                    <ArrowRight className="ml-2 rtl:mr-2 rtl:ml-0 h-4 w-4" />
                   </Button>
                 </form>
                 {subscribed && (
@@ -153,7 +148,7 @@ export default function Footer() {
                     animate={{ opacity: 1, y: 0 }}
                     className="text-green-600 text-sm mt-2"
                   >
-                    Thank you for subscribing to our newsletter!
+                    {t("newsletter.thankYou")}
                   </motion.p>
                 )}
               </div>
@@ -161,7 +156,7 @@ export default function Footer() {
                 <div className="relative h-32 w-32">
                   <NextImage
                     src="/placeholder.svg?height=200&width=200"
-                    alt="Newsletter illustration"
+                    alt={t("newsletter.illustrationAlt")}
                     fill
                     className="object-contain"
                   />
@@ -253,7 +248,7 @@ export default function Footer() {
                 <div className="relative h-12 w-48">
                   <NextImage
                     src={companyInfo.logo}
-                    alt="Saudi Ease Logo"
+                    alt={t("logoAlt")}
                     fill
                     className="object-contain brightness-200 contrast-200"
                   />
@@ -263,7 +258,7 @@ export default function Footer() {
                 {companyInfo.shortDescription}
               </p>
 
-              <div className="flex space-x-4">
+              <div className="flex space-x-4 rtl:space-x-reverse">
                 {companyInfo.contact.socialMedia.map((social, index) => (
                   <motion.a
                     key={index}
@@ -280,7 +275,7 @@ export default function Footer() {
 
               <div className="space-y-4 pt-4 border-t border-white/10">
                 <div className="flex items-start">
-                  <Phone className="h-5 w-5 text-primary mr-3 mt-0.5" />
+                  <Phone className="h-5 w-5 text-primary mr-3 rtl:ml-3 rtl:mr-0 mt-0.5" />
                   <div>
                     <a
                       href={`tel:${companyInfo.contact.phone}`}
@@ -291,7 +286,7 @@ export default function Footer() {
                   </div>
                 </div>
                 <div className="flex items-start">
-                  <Mail className="h-5 w-5 text-primary mr-3 mt-0.5" />
+                  <Mail className="h-5 w-5 text-primary mr-3 rtl:ml-3 rtl:mr-0 mt-0.5" />
                   <div>
                     <a
                       href={`mailto:${companyInfo.contact.email}`}
@@ -302,7 +297,7 @@ export default function Footer() {
                   </div>
                 </div>
                 <div className="flex items-start">
-                  <MapPin className="h-5 w-5 text-primary mr-3 mt-0.5" />
+                  <MapPin className="h-5 w-5 text-primary mr-3 rtl:ml-3 rtl:mr-0 mt-0.5" />
                   <div>
                     <p className="text-gray-300">
                       {companyInfo.contact.address.street}
@@ -319,8 +314,8 @@ export default function Footer() {
               variants={itemVariants}
               className="lg:col-span-2 space-y-4"
             >
-              <h3 className="text-xl font-semibold text-white relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-12 after:bg-primary">
-                Quick Links
+              <h3 className="text-xl font-semibold text-white relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 rtl:after:right-0 rtl:after:left-auto after:h-0.5 after:w-12 after:bg-primary">
+                {t("quickLinksTitle")}
               </h3>
               <ul className="space-y-2">
                 {quickLinks.map((link, index) => (
@@ -329,7 +324,7 @@ export default function Footer() {
                       href={link.link}
                       className="text-gray-300 hover:text-primary transition-colors flex items-center group"
                     >
-                      <ChevronRight className="h-4 w-4 mr-1 text-primary transform transition-transform group-hover:translate-x-1" />
+                      <ChevronRight className="h-4 w-4 mr-1 rtl:ml-1 rtl:mr-0 text-primary transform transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
                       {link.name}
                     </Link>
                   </li>
@@ -341,8 +336,8 @@ export default function Footer() {
               variants={itemVariants}
               className="lg:col-span-3 space-y-4"
             >
-              <h3 className="text-xl font-semibold text-white relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-12 after:bg-primary">
-                Our Services
+              <h3 className="text-xl font-semibold text-white relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 rtl:after:right-0 rtl:after:left-auto after:h-0.5 after:w-12 after:bg-primary">
+                {t("servicesTitle")}
               </h3>
               <ul className="space-y-2">
                 {services.map((service, index) => (
@@ -351,7 +346,7 @@ export default function Footer() {
                       href={service.link}
                       className="text-gray-300 hover:text-primary transition-colors flex items-center group"
                     >
-                      <ChevronRight className="h-4 w-4 mr-1 text-primary transform transition-transform group-hover:translate-x-1" />
+                      <ChevronRight className="h-4 w-4 mr-1 rtl:ml-1 rtl:mr-0 text-primary transform transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
                       {service.name}
                     </Link>
                   </li>
@@ -363,8 +358,8 @@ export default function Footer() {
               variants={itemVariants}
               className="lg:col-span-3 space-y-4"
             >
-              <h3 className="text-xl font-semibold text-white relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-12 after:bg-primary">
-                Resources
+              <h3 className="text-xl font-semibold text-white relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 rtl:after:right-0 rtl:after:left-auto after:h-0.5 after:w-12 after:bg-primary">
+                {t("resourcesTitle")}
               </h3>
               <ul className="space-y-2">
                 {resources.map((resource, index) => (
@@ -373,7 +368,7 @@ export default function Footer() {
                       href={resource.link}
                       className="text-gray-300 hover:text-primary transition-colors flex items-center group"
                     >
-                      <ChevronRight className="h-4 w-4 mr-1 text-primary transform transition-transform group-hover:translate-x-1" />
+                      <ChevronRight className="h-4 w-4 mr-1 rtl:ml-1 rtl:mr-0 text-primary transform transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
                       {resource.name}
                     </Link>
                   </li>
@@ -381,8 +376,8 @@ export default function Footer() {
               </ul>
 
               <div className="pt-6 mt-6 border-t border-white/10">
-                <h4 className="text-white font-medium mb-3">We Accept</h4>
-                <div className="flex space-x-3">
+                <h4 className="text-white font-medium mb-3">{t("weAccept")}</h4>
+                <div className="flex space-x-3 rtl:space-x-reverse">
                   <div className="bg-white/10 h-8 w-12 rounded flex items-center justify-center">
                     <svg
                       className="h-5 w-5 text-white"
@@ -441,12 +436,12 @@ export default function Footer() {
             {/* Legal Links Section */}
             <div className="mb-8">
               <h3 className="text-lg font-semibold text-white mb-4">
-                Legal Documents
+                {t("legalDocuments")}
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 <Link href="/privacy-policy" className="group">
                   <div className="bg-white/5 hover:bg-white/10 transition-colors p-4 rounded-lg flex items-center">
-                    <div className="h-10 w-10 rounded-lg bg-primary/20 flex items-center justify-center mr-3 group-hover:bg-primary/30 transition-colors">
+                    <div className="h-10 w-10 rounded-lg bg-primary/20 flex items-center justify-center mr-3 rtl:ml-3 rtl:mr-0 group-hover:bg-primary/30 transition-colors">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="h-5 w-5 text-primary"
@@ -464,10 +459,10 @@ export default function Footer() {
                     </div>
                     <div>
                       <span className="text-white group-hover:text-primary transition-colors font-medium">
-                        Privacy Policy
+                        {t("privacyPolicy")}
                       </span>
                       <p className="text-gray-400 text-xs mt-1">
-                        Updated Mar 10, 2025
+                        {t("updatedOn", { date: "Mar 10, 2025" })}
                       </p>
                     </div>
                   </div>
@@ -475,7 +470,7 @@ export default function Footer() {
 
                 <Link href="/terms-of-service" className="group">
                   <div className="bg-white/5 hover:bg-white/10 transition-colors p-4 rounded-lg flex items-center">
-                    <div className="h-10 w-10 rounded-lg bg-primary/20 flex items-center justify-center mr-3 group-hover:bg-primary/30 transition-colors">
+                    <div className="h-10 w-10 rounded-lg bg-primary/20 flex items-center justify-center mr-3 rtl:ml-3 rtl:mr-0 group-hover:bg-primary/30 transition-colors">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="h-5 w-5 text-primary"
@@ -493,10 +488,10 @@ export default function Footer() {
                     </div>
                     <div>
                       <span className="text-white group-hover:text-primary transition-colors font-medium">
-                        Terms of Service
+                        {t("termsOfService")}
                       </span>
                       <p className="text-gray-400 text-xs mt-1">
-                        Updated Mar 5, 2025
+                        {t("updatedOn", { date: "Mar 5, 2025" })}
                       </p>
                     </div>
                   </div>
@@ -504,7 +499,7 @@ export default function Footer() {
 
                 <Link href="/legal" className="group">
                   <div className="bg-white/5 hover:bg-white/10 transition-colors p-4 rounded-lg flex items-center">
-                    <div className="h-10 w-10 rounded-lg bg-primary/20 flex items-center justify-center mr-3 group-hover:bg-primary/30 transition-colors">
+                    <div className="h-10 w-10 rounded-lg bg-primary/20 flex items-center justify-center mr-3 rtl:ml-3 rtl:mr-0 group-hover:bg-primary/30 transition-colors">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="h-5 w-5 text-primary"
@@ -522,10 +517,10 @@ export default function Footer() {
                     </div>
                     <div>
                       <span className="text-white group-hover:text-primary transition-colors font-medium">
-                        Legal Hub
+                        {t("legalHub")}
                       </span>
                       <p className="text-gray-400 text-xs mt-1">
-                        All Legal Documents
+                        {t("allLegalDocuments")}
                       </p>
                     </div>
                   </div>
@@ -536,33 +531,33 @@ export default function Footer() {
             {/* Copyright and Secondary Links */}
             <div className="flex flex-col md:flex-row justify-between items-center">
               <p className="text-gray-400 text-sm mb-4 md:mb-0">
-                &copy; {currentYear} Saudi Ease. All rights reserved. | Saudi
-                CR: 1234567890
+                &copy; {currentYear} {t("copyright")} | {t("saudiCR")}:
+                1234567890
               </p>
               <div className="flex flex-wrap justify-center gap-6">
                 <Link
                   href="/privacy-policy"
                   className="text-gray-400 hover:text-primary text-sm transition-colors"
                 >
-                  Privacy Policy
+                  {t("privacyPolicy")}
                 </Link>
                 <Link
                   href="/terms-of-service"
                   className="text-gray-400 hover:text-primary text-sm transition-colors"
                 >
-                  Terms of Service
+                  {t("termsOfService")}
                 </Link>
                 <Link
-                  href="/faq"
+                  href="/cookie-policy"
                   className="text-gray-400 hover:text-primary text-sm transition-colors"
                 >
-                  FAQ
+                  {t("cookiePolicy")}
                 </Link>
                 <Link
                   href="/sitemap.xml"
                   className="text-gray-400 hover:text-primary text-sm transition-colors"
                 >
-                  Sitemap
+                  {t("sitemap")}
                 </Link>
               </div>
             </div>

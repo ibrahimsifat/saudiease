@@ -1,356 +1,469 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { motion } from "framer-motion"
-import Image from "next/image"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { blogPosts } from "@/data/blog-posts"
-import { ArrowRight, Calendar, Filter, Search, User } from "lucide-react"
-import { Input } from "@/components/ui/input"
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { blogPosts } from "@/data/blog-posts";
+import { useMobile } from "@/hooks/use-mobile";
+import { ArrowRight, Calendar, Search } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
+import type React from "react";
+import { useEffect, useState } from "react";
+import OptimizedImage from "../../../components/optimized-image";
 
-export default function BlogPageClient() {
-  const [searchQuery, setSearchQuery] = useState("")
-  const [filteredPosts, setFilteredPosts] = useState(blogPosts)
-  const [selectedCategory, setSelectedCategory] = useState("all")
-  const [isLoading, setIsLoading] = useState(true)
+const translations = {
+  en: {
+    title: "Blog",
+    subtitle: "Digital Transformation Insights",
+    description:
+      "Stay updated with the latest digital transformation trends, ZATCA e-invoicing updates, and digital marketing insights for Saudi businesses.",
+    searchPlaceholder: "Search articles...",
+    searchButton: "Search",
+    categories: {
+      all: "All Posts",
+      digitalTransformation: "Digital Transformation",
+      eInvoicing: "E-Invoicing",
+      webDevelopment: "Web Development",
+      digitalMarketing: "Digital Marketing",
+      saudiTech: "Saudi Tech News",
+    },
+    readMore: "Read More",
+    readingTime: "min read",
+    filterBy: "Filter by:",
+    clearFilters: "Clear Filters",
+    latestPosts: "Latest Posts",
+    featuredPosts: "Featured Posts",
+    popularTopics: "Popular Topics",
+    subscribeTitle: "Subscribe to our newsletter",
+    subscribeDescription:
+      "Get the latest articles and insights delivered straight to your inbox.",
+    emailPlaceholder: "Your email address",
+    subscribe: "Subscribe",
+    noResults: "No results found. Try a different search term.",
+    by: "By",
+    published: "Published",
+    relatedPosts: "Related Posts",
+  },
+  ar: {
+    title: "المدونة",
+    subtitle: "رؤى التحول الرقمي",
+    description:
+      "ابق على اطلاع بأحدث اتجاهات التحول الرقمي، وتحديثات الفوترة الإلكترونية من هيئة الزكاة والضريبة والجمارك، ورؤى التسويق الرقمي للشركات السعودية.",
+    searchPlaceholder: "البحث في المقالات...",
+    searchButton: "بحث",
+    categories: {
+      all: "جميع المنشورات",
+      digitalTransformation: "التحول الرقمي",
+      eInvoicing: "الفوترة الإلكترونية",
+      webDevelopment: "تطوير الويب",
+      digitalMarketing: "التسويق الرقمي",
+      saudiTech: "أخبار التكنولوجيا السعودية",
+    },
+    readMore: "قراءة المزيد",
+    readingTime: "دقيقة قراءة",
+    filterBy: "تصفية حسب:",
+    clearFilters: "مسح التصفية",
+    latestPosts: "أحدث المنشورات",
+    featuredPosts: "منشورات مميزة",
+    popularTopics: "المواضيع الشائعة",
+    subscribeTitle: "اشترك في نشرتنا الإخبارية",
+    subscribeDescription:
+      "احصل على أحدث المقالات والرؤى مباشرة في صندوق الوارد الخاص بك.",
+    emailPlaceholder: "عنوان بريدك الإلكتروني",
+    subscribe: "اشترك",
+    noResults: "لم يتم العثور على نتائج. جرب مصطلح بحث مختلف.",
+    by: "بواسطة",
+    published: "نُشر في",
+    relatedPosts: "منشورات ذات صلة",
+  },
+  bn: {
+    title: "ব্লগ",
+    subtitle: "ডিজিটাল ট্রান্সফরমেশন ইনসাইটস",
+    description:
+      "সৌদি ব্যবসাগুলির জন্য সর্বশেষ ডিজিটাল ট্রান্সফরমেশন ট্রেন্ড, ZATCA ই-ইনভয়েসিং আপডেট, এবং ডিজিটাল মার্কেটিং ইনসাইটস সম্পর্কে আপডেট থাকুন।",
+    searchPlaceholder: "নিবন্ধ অনুসন্ধান করুন...",
+    searchButton: "অনুসন্ধান",
+    categories: {
+      all: "সমস্ত পোস্ট",
+      digitalTransformation: "ডিজিটাল ট্রান্সফরমেশন",
+      eInvoicing: "ই-ইনভয়েসিং",
+      webDevelopment: "ওয়েব ডেভেলপমেন্ট",
+      digitalMarketing: "ডিজিটাল মার্কেটিং",
+      saudiTech: "সৌদি টেক নিউজ",
+    },
+    readMore: "আরও পড়ুন",
+    readingTime: "মিনিট পড়া",
+    filterBy: "ফিল্টার করুন:",
+    clearFilters: "ফিল্টার পরিষ্কার করুন",
+    latestPosts: "সর্বশেষ পোস্ট",
+    featuredPosts: "বৈশিষ্ট্যযুক্ত পোস্ট",
+    popularTopics: "জনপ্রিয় বিষয়",
+    subscribeTitle: "আমাদের নিউজলেটারে সাবস্ক্রাইব করুন",
+    subscribeDescription:
+      "সর্বশেষ নিবন্ধ এবং ইনসাইটস সরাসরি আপনার ইনবক্সে পান।",
+    emailPlaceholder: "আপনার ইমেইল ঠিকানা",
+    subscribe: "সাবস্ক্রাইব",
+    noResults:
+      "কোন ফলাফল পাওয়া যায়নি। একটি ভিন্ন অনুসন্ধান শব্দ চেষ্টা করুন।",
+    by: "লেখক",
+    published: "প্রকাশিত",
+    relatedPosts: "সম্পর্কিত পোস্ট",
+  },
+};
 
-  // Get unique categories from blog posts
-  const categories = ["all", ...Array.from(new Set(blogPosts.map((post) => post.category)))]
+export default function BlogPageClient({ locale = "en" }: { locale?: string }) {
+  const t =
+    translations[locale as keyof typeof translations] || translations.en;
+  const isRTL = locale === "ar";
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const isMobile = useMobile();
 
-  // Filter blog posts based on search query and selected category
+  const [searchQuery, setSearchQuery] = useState("");
+  const [activeCategory, setActiveCategory] = useState("all");
+  const [filteredPosts, setFilteredPosts] = useState(blogPosts);
+
   useEffect(() => {
-    setIsLoading(true)
-    const timer = setTimeout(() => {
-      const filtered = blogPosts.filter((post) => {
-        const matchesSearch =
-          post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          post.tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()))
+    const category = searchParams.get("category") || "all";
+    const query = searchParams.get("q") || "";
 
-        const matchesCategory = selectedCategory === "all" || post.category === selectedCategory
+    setActiveCategory(category);
+    setSearchQuery(query);
 
-        return matchesSearch && matchesCategory
-      })
-      setFilteredPosts(filtered)
-      setIsLoading(false)
-    }, 300)
+    if (query) {
+      setFilteredPosts(
+        searchBlogPosts(query, category !== "all" ? category : undefined)
+      );
+    } else if (category !== "all") {
+      setFilteredPosts(blogPosts.filter((post) => post.category === category));
+    } else {
+      setFilteredPosts(blogPosts);
+    }
+  }, [searchParams]);
 
-    return () => clearTimeout(timer)
-  }, [searchQuery, selectedCategory])
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    const params = new URLSearchParams(searchParams.toString());
 
-  // Get featured posts
-  const featuredPosts = blogPosts.filter((post) => post.featured)
+    if (searchQuery) {
+      params.set("q", searchQuery);
+    } else {
+      params.delete("q");
+    }
+
+    router.push(`/blog?${params.toString()}`);
+  };
+
+  const handleCategoryChange = (category: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+
+    if (category !== "all") {
+      params.set("category", category);
+    } else {
+      params.delete("category");
+    }
+
+    if (searchQuery) {
+      params.set("q", searchQuery);
+    }
+
+    router.push(`/blog?${params.toString()}`);
+  };
+
+  const clearFilters = () => {
+    setSearchQuery("");
+    setActiveCategory("all");
+    router.push("/blog");
+  };
+
+  const featuredPosts = blogPosts.filter((post) => post.featured).slice(0, 3);
+  const latestPosts = [...blogPosts]
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, 6);
 
   return (
-    <div className="bg-gradient-to-b from-white to-gray-50">
+    <div
+      className={`min-h-screen bg-background ${isRTL ? "rtl:text-right" : ""}`}
+    >
       {/* Hero Section */}
-      <section className="pt-24 pb-16 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-primary/10 z-0"></div>
+      <section className="relative bg-gradient-to-b from-primary/10 to-background py-12 md:py-16 lg:py-20">
+        <div className="container px-4 md:px-6">
+          <div className="mx-auto max-w-3xl text-center">
+            <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
+              {t.title}
+            </h1>
+            <p className="mt-2 text-xl text-muted-foreground">{t.subtitle}</p>
+            <p className="mt-4 text-muted-foreground">{t.description}</p>
 
-        {/* Decorative elements */}
-        <div className="absolute top-20 right-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-10 left-10 w-72 h-72 bg-blue-100 rounded-full blur-3xl opacity-30"></div>
-
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-center max-w-3xl mx-auto"
-          >
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-saudi-black">Our Blog</h1>
-            <p className="text-lg text-gray-600 mb-8">
-              Stay updated with the latest insights on digital transformation, ZATCA e-invoicing, web development
-              trends, and digital marketing strategies for Saudi businesses.
-            </p>
-
-            <div className="relative max-w-xl mx-auto">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+            {/* Search Form */}
+            <form
+              onSubmit={handleSearch}
+              className="mt-8 flex w-full max-w-md mx-auto items-center space-x-2 rtl:space-x-reverse"
+            >
               <Input
-                type="text"
-                placeholder="Search articles..."
-                className="pl-10"
+                type="search"
+                placeholder={t.searchPlaceholder}
+                className={`flex-1 ${isRTL ? "text-right" : ""}`}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
-            </div>
-          </motion.div>
+              <Button type="submit">
+                <Search className="h-4 w-4 mr-2 rtl:ml-2 rtl:mr-0" />
+                {t.searchButton}
+              </Button>
+            </form>
+          </div>
         </div>
       </section>
 
-      {/* Featured Posts */}
-      {featuredPosts.length > 0 && (
-        <section className="py-12 bg-white">
-          <div className="container mx-auto px-4">
-            <h2 className="text-2xl font-bold mb-8 text-saudi-black">Featured Articles</h2>
+      {/* Main Content */}
+      <section className="py-12">
+        <div className="container px-4 md:px-6">
+          <div className="flex flex-col md:flex-row gap-8">
+            {/* Main Content */}
+            <div className="flex-1">
+              {/* Category Tabs */}
+              <div className="mb-8">
+                <div className="flex items-center justify-between mb-4">
+                  <h2 className="text-2xl font-bold">{t.latestPosts}</h2>
+                  {(searchQuery || activeCategory !== "all") && (
+                    <Button
+                      variant="ghost"
+                      onClick={clearFilters}
+                      className="h-8 px-2"
+                    >
+                      {t.clearFilters}
+                    </Button>
+                  )}
+                </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {featuredPosts.slice(0, 1).map((post) => (
-                <motion.div
-                  key={post.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="group"
-                >
-                  <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 border border-gray-100 h-full">
-                    <div className="grid grid-cols-1 md:grid-cols-2 h-full">
-                      <div className="relative h-64 md:h-full">
-                        <Image
-                          src={post.image || "/placeholder.svg?height=600&width=800"}
+                <div className="overflow-auto pb-2">
+                  <Tabs
+                    defaultValue={activeCategory}
+                    onValueChange={handleCategoryChange}
+                    className="w-full"
+                  >
+                    <TabsList className="w-full justify-start mb-4 overflow-auto">
+                      <TabsTrigger value="all" className="min-w-max">
+                        {t.categories.all}
+                      </TabsTrigger>
+                      <TabsTrigger
+                        value="digitalTransformation"
+                        className="min-w-max"
+                      >
+                        {t.categories.digitalTransformation}
+                      </TabsTrigger>
+                      <TabsTrigger value="eInvoicing" className="min-w-max">
+                        {t.categories.eInvoicing}
+                      </TabsTrigger>
+                      <TabsTrigger value="webDevelopment" className="min-w-max">
+                        {t.categories.webDevelopment}
+                      </TabsTrigger>
+                      <TabsTrigger
+                        value="digitalMarketing"
+                        className="min-w-max"
+                      >
+                        {t.categories.digitalMarketing}
+                      </TabsTrigger>
+                      <TabsTrigger value="saudiTech" className="min-w-max">
+                        {t.categories.saudiTech}
+                      </TabsTrigger>
+                    </TabsList>
+                  </Tabs>
+                </div>
+              </div>
+
+              {/* Blog Posts Grid */}
+              {filteredPosts.length > 0 ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {filteredPosts.map((post) => (
+                    <Card
+                      key={post.slug}
+                      className="overflow-hidden h-full flex flex-col"
+                    >
+                      <div className="relative h-48">
+                        <OptimizedImage
+                          src={post.coverImage}
                           alt={post.title}
                           fill
-                          className="object-cover transition-transform duration-500 group-hover:scale-110"
+                          className="object-cover"
                         />
-                        <div className="absolute top-4 left-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full">
-                          Featured
-                        </div>
                       </div>
-                      <div className="p-6 flex flex-col">
-                        <div className="flex items-center text-sm text-gray-500 space-x-4 mb-3">
-                          <div className="flex items-center">
-                            <Calendar className="h-4 w-4 mr-1 text-primary" />
-                            <span>{post.date}</span>
-                          </div>
-                          <div className="flex items-center">
-                            <User className="h-4 w-4 mr-1 text-primary" />
-                            <span>{post.author}</span>
+                      <CardHeader className="flex-1">
+                        <div className="flex items-center gap-2 mb-2">
+                          <Badge variant="secondary" className="capitalize">
+                            {post.category}
+                          </Badge>
+                          <div className="text-xs text-muted-foreground">
+                            {post.readingTime} {t.readingTime}
                           </div>
                         </div>
-                        <h3 className="text-2xl font-bold text-gray-800 mb-3 group-hover:text-primary transition-colors">
-                          <Link href={`/blog/${post.slug}`}>{post.title}</Link>
-                        </h3>
-                        <p className="text-gray-600 mb-6 flex-grow">{post.excerpt}</p>
-                        <div className="flex flex-wrap gap-2 mb-6">
-                          {post.tags.slice(0, 3).map((tag, index) => (
-                            <span key={index} className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">
-                              {tag}
+                        <CardTitle className="line-clamp-2">
+                          <Link
+                            href={`/blog/${post.slug}`}
+                            className="hover:underline"
+                          >
+                            {post.title}
+                          </Link>
+                        </CardTitle>
+                        <CardDescription className="line-clamp-3 mt-2">
+                          {post.excerpt}
+                        </CardDescription>
+                      </CardHeader>
+                      <CardFooter className="border-t pt-4 flex justify-between items-center">
+                        <div className="flex items-center gap-2">
+                          <div className="relative h-8 w-8 rounded-full overflow-hidden">
+                            <Image
+                              src={post.author.avatar || "/placeholder.svg"}
+                              alt={post.author.name}
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+                          <div className="text-sm">
+                            <span className="text-muted-foreground">
+                              {t.by}{" "}
                             </span>
-                          ))}
+                            {post.author.name}
+                          </div>
                         </div>
-                        <Button asChild>
-                          <Link href={`/blog/${post.slug}`} className="flex items-center">
-                            Read Article
-                            <ArrowRight className="ml-2 h-4 w-4" />
+                        <Button variant="ghost" size="sm" asChild>
+                          <Link
+                            href={`/blog/${post.slug}`}
+                            className={`flex items-center gap-1 ${
+                              isRTL ? "flex-row-reverse" : ""
+                            }`}
+                          >
+                            {t.readMore}
+                            <ArrowRight
+                              className={`h-4 w-4 ${isRTL ? "rotate-180" : ""}`}
+                            />
                           </Link>
                         </Button>
-                      </div>
-                    </div>
-                  </Card>
-                </motion.div>
-              ))}
+                      </CardFooter>
+                    </Card>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-12">
+                  <p className="text-muted-foreground">{t.noResults}</p>
+                </div>
+              )}
+            </div>
 
-              <div className="grid grid-cols-1 gap-6">
-                {featuredPosts.slice(1, 3).map((post) => (
-                  <motion.div
-                    key={post.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="group"
-                  >
-                    <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 border border-gray-100">
-                      <div className="flex flex-col md:flex-row">
-                        <div className="relative w-full md:w-1/3 h-48 md:h-auto">
+            {/* Sidebar */}
+            {!isMobile && (
+              <div className="w-full md:w-72 lg:w-80 space-y-8">
+                {/* Featured Posts */}
+                <div className="bg-muted/50 rounded-lg p-6">
+                  <h3 className="font-bold text-lg mb-4">{t.featuredPosts}</h3>
+                  <div className="space-y-4">
+                    {featuredPosts.map((post) => (
+                      <div key={post.slug} className="flex gap-3">
+                        <div className="relative h-16 w-16 flex-shrink-0 rounded-md overflow-hidden">
                           <Image
-                            src={post.image || "/placeholder.svg?height=300&width=400"}
+                            src={post.coverImage || "/placeholder.svg"}
                             alt={post.title}
                             fill
-                            className="object-cover transition-transform duration-500 group-hover:scale-110"
+                            className="object-cover"
                           />
                         </div>
-                        <div className="p-6 md:w-2/3">
-                          <div className="flex items-center text-xs text-gray-500 space-x-4 mb-2">
-                            <div className="flex items-center">
-                              <Calendar className="h-3 w-3 mr-1 text-primary" />
-                              <span>{post.date}</span>
-                            </div>
-                            <span className="bg-primary/10 text-primary px-2 py-0.5 rounded-full">{post.category}</span>
-                          </div>
-                          <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-primary transition-colors">
-                            <Link href={`/blog/${post.slug}`}>{post.title}</Link>
-                          </h3>
-                          <p className="text-gray-600 text-sm mb-4 line-clamp-2">{post.excerpt}</p>
-                          <Button size="sm" variant="ghost" className="text-primary p-0 hover:bg-transparent" asChild>
-                            <Link href={`/blog/${post.slug}`} className="flex items-center">
-                              Read More
-                              <ArrowRight className="ml-1 h-3 w-3" />
+                        <div>
+                          <h4 className="font-medium line-clamp-2 text-sm">
+                            <Link
+                              href={`/blog/${post.slug}`}
+                              className="hover:underline"
+                            >
+                              {post.title}
                             </Link>
-                          </Button>
-                        </div>
-                      </div>
-                    </Card>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* All Posts */}
-      <section className="py-12">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
-            <h2 className="text-2xl font-bold text-saudi-black mb-4 md:mb-0">Latest Articles</h2>
-
-            <Tabs defaultValue="all" onValueChange={setSelectedCategory} className="w-full md:w-auto">
-              <div className="flex items-center mb-2">
-                <Filter className="h-4 w-4 mr-2 text-primary" />
-                <span className="text-sm font-medium">Filter by Category:</span>
-              </div>
-              <TabsList className="w-full overflow-auto">
-                {categories.map((category) => (
-                  <TabsTrigger key={category} value={category} className="capitalize">
-                    {category}
-                  </TabsTrigger>
-                ))}
-              </TabsList>
-            </Tabs>
-          </div>
-
-          {/* Blog Posts Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {isLoading ? (
-              // Loading skeleton
-              Array.from({ length: 6 }).map((_, index) => (
-                <Card key={index} className="overflow-hidden border border-gray-100">
-                  <div className="h-48 bg-gray-200 animate-pulse"></div>
-                  <CardContent className="p-6">
-                    <div className="h-6 bg-gray-200 rounded animate-pulse mb-4"></div>
-                    <div className="h-4 bg-gray-100 rounded animate-pulse mb-2"></div>
-                    <div className="h-4 bg-gray-100 rounded animate-pulse mb-2"></div>
-                    <div className="h-4 bg-gray-100 rounded animate-pulse w-2/3"></div>
-                    <div className="mt-6 flex gap-2">
-                      <div className="h-8 w-20 bg-gray-200 rounded animate-pulse"></div>
-                      <div className="h-8 w-20 bg-gray-200 rounded animate-pulse"></div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))
-            ) : filteredPosts.length > 0 ? (
-              filteredPosts
-                .filter((post) => !post.featured)
-                .map((post) => (
-                  <motion.div
-                    key={post.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="group"
-                  >
-                    <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 border border-gray-100 h-full flex flex-col">
-                      <div className="relative h-48 overflow-hidden">
-                        <Image
-                          src={post.image || "/placeholder.svg?height=400&width=600"}
-                          alt={post.title}
-                          fill
-                          className="object-cover transition-transform duration-500 group-hover:scale-110"
-                        />
-                        <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-primary text-xs px-2 py-1 rounded-full">
-                          {post.readTime}
-                        </div>
-                      </div>
-                      <CardContent className="p-6 flex-grow flex flex-col">
-                        <div className="flex items-center text-sm text-gray-500 space-x-4 mb-3">
-                          <div className="flex items-center">
-                            <Calendar className="h-4 w-4 mr-1 text-primary/70" />
-                            <span>{post.date}</span>
-                          </div>
-                          <div className="flex items-center">
-                            <User className="h-4 w-4 mr-1 text-primary/70" />
-                            <span>{post.author}</span>
-                          </div>
-                        </div>
-
-                        <div className="mb-4 flex-grow">
-                          <h3 className="text-xl font-semibold text-gray-800 mb-2 group-hover:text-primary transition-colors line-clamp-2">
-                            <Link href={`/blog/${post.slug}`}>{post.title}</Link>
-                          </h3>
-                          <p className="text-gray-600 text-sm line-clamp-3">{post.excerpt}</p>
-                        </div>
-
-                        <div className="flex flex-wrap gap-2 mb-4">
-                          {post.tags.slice(0, 3).map((tag, index) => (
-                            <span key={index} className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">
-                              {tag}
+                          </h4>
+                          <div className="flex items-center mt-1 text-xs text-muted-foreground">
+                            <Calendar className="h-3 w-3 mr-1 rtl:ml-1 rtl:mr-0" />
+                            <span>
+                              {new Date(post.date).toLocaleDateString(
+                                locale === "ar"
+                                  ? "ar-SA"
+                                  : locale === "bn"
+                                  ? "bn-BD"
+                                  : "en-US"
+                              )}
                             </span>
-                          ))}
+                          </div>
                         </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
 
-                        <Button size="sm" asChild>
-                          <Link href={`/blog/${post.slug}`} className="flex items-center">
-                            Read Article
-                            <ArrowRight className="ml-2 h-3 w-3" />
-                          </Link>
-                        </Button>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                ))
-            ) : (
-              <div className="col-span-1 md:col-span-2 lg:col-span-3 text-center py-12">
-                <div className="bg-gray-50 rounded-lg p-8 max-w-md mx-auto">
-                  <Search className="h-12 w-12 text-gray-300 mx-auto mb-4" />
-                  <h3 className="text-xl font-bold text-gray-700 mb-2">No articles found</h3>
-                  <p className="text-gray-500 mb-4">
-                    We couldn't find any articles matching your search criteria. Please try different keywords or browse
-                    all articles.
+                {/* Popular Topics */}
+                <div className="bg-muted/50 rounded-lg p-6">
+                  <h3 className="font-bold text-lg mb-4">{t.popularTopics}</h3>
+                  <div className="flex flex-wrap gap-2">
+                    <Badge
+                      className="cursor-pointer"
+                      onClick={() =>
+                        handleCategoryChange("digitalTransformation")
+                      }
+                    >
+                      {t.categories.digitalTransformation}
+                    </Badge>
+                    <Badge
+                      className="cursor-pointer"
+                      onClick={() => handleCategoryChange("eInvoicing")}
+                    >
+                      {t.categories.eInvoicing}
+                    </Badge>
+                    <Badge
+                      className="cursor-pointer"
+                      onClick={() => handleCategoryChange("webDevelopment")}
+                    >
+                      {t.categories.webDevelopment}
+                    </Badge>
+                    <Badge
+                      className="cursor-pointer"
+                      onClick={() => handleCategoryChange("digitalMarketing")}
+                    >
+                      {t.categories.digitalMarketing}
+                    </Badge>
+                    <Badge
+                      className="cursor-pointer"
+                      onClick={() => handleCategoryChange("saudiTech")}
+                    >
+                      {t.categories.saudiTech}
+                    </Badge>
+                  </div>
+                </div>
+
+                {/* Newsletter Signup */}
+                <div className="bg-primary/10 rounded-lg p-6">
+                  <h3 className="font-bold text-lg mb-2">{t.subscribeTitle}</h3>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    {t.subscribeDescription}
                   </p>
-                  <Button
-                    onClick={() => {
-                      setSearchQuery("")
-                      setSelectedCategory("all")
-                    }}
-                  >
-                    Clear Filters
-                  </Button>
+                  <form className="space-y-2">
+                    <Input
+                      type="email"
+                      placeholder={t.emailPlaceholder}
+                      className={isRTL ? "text-right" : ""}
+                    />
+                    <Button className="w-full">{t.subscribe}</Button>
+                  </form>
                 </div>
               </div>
             )}
           </div>
-
-          {/* Newsletter Subscription */}
-          <div className="mt-20 bg-gradient-to-r from-primary/10 to-blue-600/10 rounded-2xl p-8 md:p-12">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-              <div>
-                <h3 className="text-2xl font-bold text-gray-800 mb-4">Subscribe to Our Newsletter</h3>
-                <p className="text-gray-600 mb-6">
-                  Get the latest articles, insights, and industry updates delivered straight to your inbox.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <input
-                    type="email"
-                    placeholder="Enter your email"
-                    className="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                  />
-                  <Button>Subscribe</Button>
-                </div>
-                <p className="text-xs text-gray-500 mt-3">We respect your privacy. Unsubscribe at any time.</p>
-              </div>
-              <div className="hidden md:flex justify-end">
-                <div className="relative w-64 h-64">
-                  <div className="absolute inset-0 bg-primary/20 rounded-full blur-3xl"></div>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <svg className="h-16 w-16 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
     </div>
-  )
+  );
 }
-

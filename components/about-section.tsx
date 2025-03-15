@@ -12,7 +12,9 @@ import {
   Users,
   Zap,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import { useRef, useState } from "react";
 
 export default function AboutSection() {
@@ -20,76 +22,75 @@ export default function AboutSection() {
   const isInView = useInView(ref, { once: true, threshold: 0.1 });
   const [activeTab, setActiveTab] = useState("mission");
 
+  // Get translations
+  const t = useTranslations("about");
+
   // Get animation settings based on device capabilities
   const animations = getOptimizedAnimations();
 
-  // Core values with SEO-friendly content
+  // Get current locale and direction
+  const locale = (useParams()?.locale as string) || "en";
+  const isRTL = locale === "ar";
+
+  // Core values with translations
   const coreValues = [
     {
       icon: <CheckCircle className="h-5 w-5 text-primary" />,
-      title: "Excellence",
-      description:
-        "We strive for excellence in every digital solution we deliver, ensuring the highest quality standards for Saudi businesses.",
+      title: t("coreValues.excellence.title"),
+      description: t("coreValues.excellence.description"),
     },
     {
       icon: <Award className="h-5 w-5 text-primary" />,
-      title: "Innovation",
-      description:
-        "We embrace innovative technologies and approaches to solve complex digital challenges in the Saudi market.",
+      title: t("coreValues.innovation.title"),
+      description: t("coreValues.innovation.description"),
     },
     {
       icon: <Users className="h-5 w-5 text-primary" />,
-      title: "Client-Centric",
-      description:
-        "We put our clients' needs first, delivering tailored solutions that address their specific business requirements.",
+      title: t("coreValues.clientCentric.title"),
+      description: t("coreValues.clientCentric.description"),
     },
     {
       icon: <Globe className="h-5 w-5 text-primary" />,
-      title: "Local Expertise",
-      description:
-        "Our deep understanding of Saudi regulations and business practices ensures compliant and effective digital solutions.",
+      title: t("coreValues.localExpertise.title"),
+      description: t("coreValues.localExpertise.description"),
     },
     {
       icon: <Zap className="h-5 w-5 text-primary" />,
-      title: "Agility",
-      description:
-        "We adapt quickly to changing market conditions and emerging technologies to keep our clients ahead of the curve.",
+      title: t("coreValues.agility.title"),
+      description: t("coreValues.agility.description"),
     },
   ];
 
-  // Tab content with SEO-friendly descriptions
+  // Tab content with translations
   const tabContent = {
     mission: {
-      title: "Our Mission",
-      description:
-        "To empower Saudi businesses with innovative digital solutions that drive growth, ensure compliance with local regulations, and contribute to the Kingdom's Vision 2030 digital transformation goals.",
+      title: t("tabs.mission.title"),
+      description: t("tabs.mission.description"),
       points: [
-        "Deliver cutting-edge web and mobile applications tailored to Saudi market needs",
-        "Provide ZATCA-compliant e-invoicing solutions for seamless business operations",
-        "Create bilingual digital experiences that resonate with both Arabic and English audiences",
-        "Support Saudi businesses in their digital transformation journey",
+        t("tabs.mission.points.0"),
+        t("tabs.mission.points.1"),
+        t("tabs.mission.points.2"),
+        t("tabs.mission.points.3"),
       ],
     },
     vision: {
-      title: "Our Vision",
-      description:
-        "To be the leading digital solutions provider in Saudi Arabia, recognized for our expertise, innovation, and contribution to the Kingdom's digital economy in alignment with Vision 2030.",
+      title: t("tabs.vision.title"),
+      description: t("tabs.vision.description"),
       points: [
-        "Pioneer advanced digital solutions for the Saudi market",
-        "Set industry standards for quality and compliance",
-        "Foster digital literacy and innovation across the Kingdom",
-        "Contribute to Saudi Arabia's position as a regional technology hub",
+        t("tabs.vision.points.0"),
+        t("tabs.vision.points.1"),
+        t("tabs.vision.points.2"),
+        t("tabs.vision.points.3"),
       ],
     },
     story: {
-      title: "Our Story",
-      description:
-        "Founded in 2018, Saudi Ease began with a mission to bridge the gap between global digital standards and local Saudi business needs. Our journey has been marked by continuous growth, innovation, and a deep commitment to supporting the Kingdom's digital transformation.",
+      title: t("tabs.story.title"),
+      description: t("tabs.story.description"),
       points: [
-        "Started with a team of 5 passionate digital experts in Riyadh",
-        "Expanded to serve over 250 clients across 15 Saudi cities",
-        "Developed specialized expertise in ZATCA compliance and e-invoicing",
-        "Built a diverse team of Saudi and international digital professionals",
+        t("tabs.story.points.0"),
+        t("tabs.story.points.1"),
+        t("tabs.story.points.2"),
+        t("tabs.story.points.3"),
       ],
     },
   };
@@ -98,10 +99,15 @@ export default function AboutSection() {
     <section
       id="about"
       className="py-24 relative overflow-hidden bg-gradient-to-b from-white to-gray-50"
+      dir={isRTL ? "rtl" : "ltr"}
     >
       {/* Background elements */}
       <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-white to-transparent"></div>
-      <div className="absolute bottom-0 right-0 w-2/3 h-96 bg-gradient-to-tl from-primary/5 to-transparent rounded-full blur-3xl"></div>
+      <div
+        className={`absolute bottom-0 ${
+          isRTL ? "left-0" : "right-0"
+        } w-2/3 h-96 bg-gradient-to-tl from-primary/5 to-transparent rounded-full blur-3xl`}
+      ></div>
 
       {/* Animated background elements - only if enabled */}
       {animations.enableBackgroundEffects && (
@@ -118,11 +124,23 @@ export default function AboutSection() {
         itemType="https://schema.org/AboutPage"
       >
         {/* Decorative elements for visual appeal */}
-        <div className="absolute left-0 top-20 w-24 h-24 bg-primary/5 rounded-full blur-xl"></div>
-        <div className="absolute right-0 bottom-20 w-32 h-32 bg-blue-50 rounded-full blur-xl"></div>
+        <div
+          className={`absolute ${
+            isRTL ? "right-0" : "left-0"
+          } top-20 w-24 h-24 bg-primary/5 rounded-full blur-xl`}
+        ></div>
+        <div
+          className={`absolute ${
+            isRTL ? "left-0" : "right-0"
+          } bottom-20 w-32 h-32 bg-blue-50 rounded-full blur-xl`}
+        ></div>
 
         {/* Decorative dots pattern */}
-        <div className="absolute right-10 top-40 hidden lg:block">
+        <div
+          className={`absolute ${
+            isRTL ? "left-10" : "right-10"
+          } top-40 hidden lg:block`}
+        >
           <div className="grid grid-cols-3 gap-2">
             {Array.from({ length: 9 }).map((_, i) => (
               <div key={i} className="h-2 w-2 rounded-full bg-primary/20"></div>
@@ -131,17 +149,15 @@ export default function AboutSection() {
         </div>
 
         {/* Decorative line */}
-        <div className="absolute left-0 top-1/2 w-16 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent hidden lg:block"></div>
+        <div
+          className={`absolute ${
+            isRTL ? "right-0" : "left-0"
+          } top-1/2 w-16 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent hidden lg:block`}
+        ></div>
 
         {/* SEO-friendly metadata */}
-        <meta
-          itemProp="name"
-          content="About Saudi Ease - Leading Digital Transformation in Saudi Arabia"
-        />
-        <meta
-          itemProp="description"
-          content="Learn about Saudi Ease, a team of digital experts passionate about helping Saudi businesses thrive in the digital economy through innovative, compliant, and effective solutions."
-        />
+        <meta itemProp="name" content={t("seo.name")} />
+        <meta itemProp="description" content={t("seo.description")} />
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -152,12 +168,14 @@ export default function AboutSection() {
         >
           <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
             <span className="flex h-2 w-2 rounded-full bg-primary mr-2"></span>
-            About Saudi Ease
+            {t("sectionLabel")}
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-saudi-black mb-4 tracking-tight">
-            Leading Digital Transformation in
-            <span className="text-primary relative ml-2">
-              Saudi Arabia
+            {t("title.part1")}
+            <span
+              className={`text-primary relative ${isRTL ? "mr-2" : "ml-2"}`}
+            >
+              {t("title.part2")}
               <svg
                 className="absolute -bottom-2 left-0 w-full h-3 text-primary/20"
                 viewBox="0 0 200 8"
@@ -173,15 +191,13 @@ export default function AboutSection() {
             </span>
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-            We're a team of digital experts passionate about helping Saudi
-            businesses thrive in the digital economy through innovative,
-            compliant, and effective solutions.
+            {t("subtitle")}
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: isRTL ? 50 : -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2 }}
             className="relative"
@@ -189,7 +205,7 @@ export default function AboutSection() {
             <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-xl">
               <OptimizedImage
                 src="/placeholder.svg?height=1000&width=800"
-                alt="Saudi Ease team working on digital solutions"
+                alt={t("imageAlt")}
                 fill
                 className="object-cover"
                 fadeIn={true}
@@ -203,23 +219,35 @@ export default function AboutSection() {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="text-white">
                     <p className="text-3xl font-bold">5+</p>
-                    <p className="text-sm opacity-80">Years Experience</p>
+                    <p className="text-sm opacity-80">
+                      {t("stats.yearsExperience")}
+                    </p>
                   </div>
                   <div className="text-white">
                     <p className="text-3xl font-bold">250+</p>
-                    <p className="text-sm opacity-80">Projects Completed</p>
+                    <p className="text-sm opacity-80">
+                      {t("stats.projectsCompleted")}
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Decorative elements */}
-            <div className="absolute -top-6 -left-6 h-24 w-24 bg-primary/10 rounded-full"></div>
-            <div className="absolute -bottom-6 -right-6 h-32 w-32 bg-primary/5 rounded-full"></div>
+            <div
+              className={`absolute -top-6 ${
+                isRTL ? "-right-6" : "-left-6"
+              } h-24 w-24 bg-primary/10 rounded-full`}
+            ></div>
+            <div
+              className={`absolute -bottom-6 ${
+                isRTL ? "-left-6" : "-right-6"
+              } h-32 w-32 bg-primary/5 rounded-full`}
+            ></div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: isRTL ? -50 : 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.3 }}
           >
@@ -265,7 +293,7 @@ export default function AboutSection() {
                 {tabContent[activeTab].points.map((point, index) => (
                   <motion.li
                     key={index}
-                    initial={{ opacity: 0, x: -10 }}
+                    initial={{ opacity: 0, x: isRTL ? 10 : -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.1 * index }}
                     className="flex items-start"
@@ -285,7 +313,11 @@ export default function AboutSection() {
                         />
                       </svg>
                     </div>
-                    <span className="ml-3 text-gray-700">{point}</span>
+                    <span
+                      className={`${isRTL ? "mr-3" : "ml-3"} text-gray-700`}
+                    >
+                      {point}
+                    </span>
                   </motion.li>
                 ))}
               </ul>
@@ -296,8 +328,10 @@ export default function AboutSection() {
               asChild
             >
               <Link href="/about" className="flex items-center">
-                Learn More About Us
-                <ArrowRight className="ml-2 h-4 w-4" />
+                {t("learnMoreButton")}
+                <ArrowRight
+                  className={`${isRTL ? "mr-2 rotate-180" : "ml-2"} h-4 w-4`}
+                />
               </Link>
             </Button>
           </motion.div>
@@ -312,8 +346,20 @@ export default function AboutSection() {
           style={{ willChange: "opacity, transform" }}
         >
           {/* Decorative elements */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full -mr-32 -mt-32"></div>
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-50 rounded-full -ml-32 -mb-32"></div>
+          <div
+            className={`absolute top-0 ${
+              isRTL ? "left-0" : "right-0"
+            } w-64 h-64 bg-primary/5 rounded-full ${
+              isRTL ? "-ml-32" : "-mr-32"
+            } -mt-32`}
+          ></div>
+          <div
+            className={`absolute bottom-0 ${
+              isRTL ? "right-0" : "left-0"
+            } w-64 h-64 bg-blue-50 rounded-full ${
+              isRTL ? "-mr-32" : "-ml-32"
+            } -mb-32`}
+          ></div>
 
           {/* Decorative grid pattern */}
           <div
@@ -329,12 +375,12 @@ export default function AboutSection() {
             <div className="flex flex-col items-center mb-10">
               <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
                 <span className="flex h-2 w-2 rounded-full bg-primary mr-2 animate-pulse"></span>
-                Our Principles
+                {t("coreValues.sectionLabel")}
               </div>
               <h3 className="text-3xl font-bold text-saudi-black mb-2 text-center">
-                Our Core{" "}
+                {t("coreValues.titlePart1")}{" "}
                 <span className="text-primary relative">
-                  Values
+                  {t("coreValues.titlePart2")}
                   <svg
                     className="absolute -bottom-1 left-0 w-full h-2 text-primary/20"
                     viewBox="0 0 200 8"
@@ -350,8 +396,7 @@ export default function AboutSection() {
                 </span>
               </h3>
               <p className="text-gray-600 max-w-xl text-center">
-                The principles that guide our work and define our commitment to
-                excellence
+                {t("coreValues.subtitle")}
               </p>
             </div>
 
@@ -383,7 +428,13 @@ export default function AboutSection() {
                   style={{ willChange: "transform" }}
                 >
                   {/* Decorative corner accent */}
-                  <div className="absolute top-0 right-0 w-16 h-16 bg-primary/5 rounded-bl-3xl transform -translate-y-8 translate-x-8 group-hover:translate-y-0 group-hover:translate-x-0 transition-transform duration-500"></div>
+                  <div
+                    className={`absolute top-0 ${
+                      isRTL ? "left-0" : "right-0"
+                    } w-16 h-16 bg-primary/5 rounded-bl-3xl transform -translate-y-8 ${
+                      isRTL ? "-translate-x-8" : "translate-x-8"
+                    } group-hover:translate-y-0 group-hover:translate-x-0 transition-transform duration-500`}
+                  ></div>
 
                   {/* Icon with enhanced styling */}
                   <div className="relative h-14 w-14 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center mb-5 mx-auto transform group-hover:scale-110 transition-transform duration-300">

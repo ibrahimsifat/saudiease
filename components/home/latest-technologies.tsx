@@ -1,28 +1,32 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { useInView } from "react-intersection-observer"
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
+import Link from "next/link";
+import { useInView } from "react-intersection-observer";
 
 // Add these CSS utility classes
 const styles = {
   "perspective-1000": "perspective-[1000px]",
   "transform-style-3d": "transform-style-preserve-3d",
   "rotate-y-10": "rotate-y-[10deg]",
-}
+};
 
-export default function LatestTechnologies() {
+export default function LatestTechnologies({ locale }: { locale: string }) {
+  const t = useTranslations("latestTechnologies");
+  const isRtl = locale === "ar";
+
   const { ref, inView } = useInView({
     threshold: 0.1,
     triggerOnce: true,
-  })
+  });
 
   // Replace the technologies array with this updated version that includes SVG icons
   const technologies = [
     {
-      name: "React",
-      description: "Building interactive user interfaces",
+      name: t("technologies.react.name"),
+      description: t("technologies.react.description"),
       icon: (
         <svg viewBox="0 0 24 24" className="h-12 w-12 text-[#61DAFB]">
           <path
@@ -33,11 +37,18 @@ export default function LatestTechnologies() {
       ),
     },
     {
-      name: "Next.js",
-      description: "The React framework for production",
+      name: t("technologies.nextjs.name"),
+      description: t("technologies.nextjs.description"),
       icon: (
         <svg viewBox="0 0 180 180" className="h-12 w-12">
-          <mask height="180" id="mask0_408_134" maskUnits="userSpaceOnUse" width="180" x="0" y="0">
+          <mask
+            height="180"
+            id="mask0_408_134"
+            maskUnits="userSpaceOnUse"
+            width="180"
+            x="0"
+            y="0"
+          >
             <circle cx="90" cy="90" fill="black" r="90"></circle>
           </mask>
           <g mask="url(#mask0_408_134)">
@@ -46,7 +57,13 @@ export default function LatestTechnologies() {
               d="M149.508 157.52L69.142 54H54V125.97H66.1136V69.3836L139.999 164.845C143.333 162.614 146.509 160.165 149.508 157.52Z"
               fill="url(#paint0_linear_408_134)"
             ></path>
-            <rect fill="url(#paint1_linear_408_134)" height="72" width="12" x="115" y="54"></rect>
+            <rect
+              fill="url(#paint1_linear_408_134)"
+              height="72"
+              width="12"
+              x="115"
+              y="54"
+            ></rect>
           </g>
           <defs>
             <linearGradient
@@ -76,8 +93,8 @@ export default function LatestTechnologies() {
       ),
     },
     {
-      name: "Node.js",
-      description: "JavaScript runtime for backend",
+      name: t("technologies.nodejs.name"),
+      description: t("technologies.nodejs.description"),
       icon: (
         <svg viewBox="0 0 24 24" className="h-12 w-12 text-[#539e43]">
           <path
@@ -88,8 +105,8 @@ export default function LatestTechnologies() {
       ),
     },
     {
-      name: "TypeScript",
-      description: "Typed JavaScript for better code",
+      name: t("technologies.typescript.name"),
+      description: t("technologies.typescript.description"),
       icon: (
         <svg viewBox="0 0 24 24" className="h-12 w-12 text-[#3178c6]">
           <path
@@ -100,8 +117,8 @@ export default function LatestTechnologies() {
       ),
     },
     {
-      name: "Tailwind CSS",
-      description: "Utility-first CSS framework",
+      name: t("technologies.tailwind.name"),
+      description: t("technologies.tailwind.description"),
       icon: (
         <svg viewBox="0 0 24 24" className="h-12 w-12 text-[#38bdf8]">
           <path
@@ -112,8 +129,8 @@ export default function LatestTechnologies() {
       ),
     },
     {
-      name: "MongoDB",
-      description: "NoSQL database solution",
+      name: t("technologies.mongodb.name"),
+      description: t("technologies.mongodb.description"),
       icon: (
         <svg viewBox="0 0 24 24" className="h-12 w-12 text-[#47A248]">
           <path
@@ -123,10 +140,13 @@ export default function LatestTechnologies() {
         </svg>
       ),
     },
-  ]
+  ];
 
   return (
-    <section ref={ref} className="py-28 relative overflow-hidden bg-gradient-to-b from-gray-50 via-white to-gray-50">
+    <section
+      ref={ref}
+      className="py-28 relative overflow-hidden bg-gradient-to-b from-gray-50 via-white to-gray-50"
+    >
       {/* Modern Background Elements */}
       <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-br from-primary/10 to-purple-500/5 rounded-full blur-[100px] opacity-70"></div>
       <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-blue-500/10 to-primary/5 rounded-full blur-[100px] opacity-70"></div>
@@ -165,8 +185,8 @@ export default function LatestTechnologies() {
             transition={{ duration: 0.5 }}
             className="inline-flex items-center px-4 py-1.5 rounded-full bg-gradient-to-r from-primary/20 to-blue-600/20 backdrop-blur-sm text-primary text-sm font-medium mb-6 border border-primary/10"
           >
-            <span className="flex h-2.5 w-2.5 rounded-full bg-gradient-to-r from-primary to-blue-600 mr-2 animate-pulse"></span>
-            Cutting-Edge Technology
+            <span className="flex h-2.5 w-2.5 rounded-full bg-gradient-to-r from-primary to-blue-600 mr-2 rtl:ml-2 rtl:mr-0 animate-pulse"></span>
+            {t("badge")}
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -174,7 +194,7 @@ export default function LatestTechnologies() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-saudi-black via-primary/90 to-blue-600/90"
           >
-            Built With Modern Technologies
+            {t("title")}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -182,8 +202,7 @@ export default function LatestTechnologies() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-lg text-gray-600 max-w-2xl mx-auto"
           >
-            We leverage the latest technologies to deliver high-performance, scalable solutions that keep you ahead of
-            the competition
+            {t("description")}
           </motion.p>
         </div>
 
@@ -221,7 +240,12 @@ export default function LatestTechnologies() {
                         <rect width="1" height="1" fill="currentColor" />
                       </pattern>
                     </defs>
-                    <rect width="100%" height="100%" fill={`url(#tech-pattern-${index})`} className="text-primary" />
+                    <rect
+                      width="100%"
+                      height="100%"
+                      fill={`url(#tech-pattern-${index})`}
+                      className="text-primary"
+                    />
                     {/* Circuit-like lines */}
                     <path
                       d="M20,20 L80,20 L80,80 L20,80 Z"
@@ -261,8 +285,8 @@ export default function LatestTechnologies() {
                       {tech.icon}
 
                       {/* Animated dots */}
-                      <div className="absolute -right-1 -top-1 h-2 w-2 rounded-full bg-primary animate-pulse"></div>
-                      <div className="absolute -left-1 -bottom-1 h-2 w-2 rounded-full bg-blue-600 animate-pulse delay-300"></div>
+                      <div className="absolute -right-1 -top-1 rtl:-left-1 rtl:-right-auto h-2 w-2 rounded-full bg-primary animate-pulse"></div>
+                      <div className="absolute -left-1 -bottom-1 rtl:-right-1 rtl:-left-auto h-2 w-2 rounded-full bg-blue-600 animate-pulse delay-300"></div>
                     </div>
                   </div>
 
@@ -274,11 +298,31 @@ export default function LatestTechnologies() {
                   <p className="text-gray-600 text-sm">{tech.description}</p>
 
                   {/* Tech-inspired decorative elements */}
-                  <div className="absolute bottom-3 right-3 w-6 h-6 opacity-30 group-hover:opacity-70 transition-opacity duration-500">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-primary">
-                      <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="1" fill="none" />
-                      <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="1" fill="none" />
-                      <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="1" fill="none" />
+                  <div className="absolute bottom-3 right-3 rtl:left-3 rtl:right-auto w-6 h-6 opacity-30 group-hover:opacity-70 transition-opacity duration-500">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="text-primary"
+                    >
+                      <path
+                        d="M12 2L2 7L12 12L22 7L12 2Z"
+                        stroke="currentColor"
+                        strokeWidth="1"
+                        fill="none"
+                      />
+                      <path
+                        d="M2 17L12 22L22 17"
+                        stroke="currentColor"
+                        strokeWidth="1"
+                        fill="none"
+                      />
+                      <path
+                        d="M2 12L12 17L22 12"
+                        stroke="currentColor"
+                        strokeWidth="1"
+                        fill="none"
+                      />
                     </svg>
                   </div>
                 </div>
@@ -295,14 +339,13 @@ export default function LatestTechnologies() {
         >
           <Link href="/tech-stack">
             <Button className="relative overflow-hidden bg-gradient-to-r from-primary to-blue-600 hover:from-blue-600 hover:to-primary text-white px-8 py-6 rounded-xl text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-105 group">
-              <span className="relative z-10">Explore Our Tech Stack</span>
-              <span className="absolute inset-0 bg-white/10 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500"></span>
-              <span className="absolute top-0 right-0 h-full w-8 bg-white/20 skew-x-[20deg] transform translate-x-10 group-hover:translate-x-32 transition-transform duration-1000"></span>
+              <span className="relative z-10">{t("exploreButton")}</span>
+              <span className="absolute inset-0 bg-white/10 scale-x-0 group-hover:scale-x-100 origin-left rtl:origin-right transition-transform duration-500"></span>
+              <span className="absolute top-0 right-0 rtl:right-auto rtl:left-0 h-full w-8 bg-white/20 skew-x-[20deg] rtl:-skew-x-[20deg] transform translate-x-10 rtl:-translate-x-10 group-hover:translate-x-32 rtl:group-hover:-translate-x-32 transition-transform duration-1000"></span>
             </Button>
           </Link>
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
-

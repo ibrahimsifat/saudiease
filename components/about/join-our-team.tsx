@@ -1,15 +1,30 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { useInView } from "react-intersection-observer"
-import { Button } from "@/components/ui/button"
-import Image from "next/image"
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { useInView } from "react-intersection-observer";
 
-export default function JoinOurTeam() {
+// Update the component to accept isRTL prop
+interface JoinOurTeamProps {
+  title: string;
+  subtitle: string;
+  description: string;
+  buttonText: string;
+  isRTL?: boolean;
+}
+
+export default function JoinOurTeam({
+  title,
+  subtitle,
+  description,
+  buttonText,
+  isRTL = false,
+}: JoinOurTeamProps) {
   const { ref, inView } = useInView({
     threshold: 0.1,
     triggerOnce: true,
-  })
+  });
 
   const benefits = [
     "Competitive salary and benefits package",
@@ -18,10 +33,15 @@ export default function JoinOurTeam() {
     "Collaborative and innovative work environment",
     "Health insurance and wellness programs",
     "Regular team building activities",
-  ]
+  ];
 
   return (
-    <section ref={ref} className="py-20 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
+    <section
+      ref={ref}
+      className={`py-20 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden ${
+        isRTL ? "rtl:text-right" : ""
+      }`}
+    >
       {/* Background Elements */}
       <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-primary/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-primary/5 rounded-full blur-3xl"></div>
@@ -39,20 +59,33 @@ export default function JoinOurTeam() {
                 <span className="flex h-2 w-2 rounded-full bg-primary mr-2"></span>
                 Careers
               </div>
-              <h2 className="text-3xl font-bold text-saudi-black mb-6">Join Our Team</h2>
+              <h2 className="text-3xl font-bold text-saudi-black mb-6">
+                {title || "Join Our Team"}
+              </h2>
               <p className="text-gray-600 mb-6">
-                We're always looking for talented individuals to join our team. At Saudi Ease, you'll have the
-                opportunity to work on exciting projects, grow professionally, and make a real impact in the digital
-                landscape of Saudi Arabia.
+                {description ||
+                  "We're always looking for talented individuals to join our team. At Saudi Ease, you'll have the opportunity to work on exciting projects, grow professionally, and make a real impact in the digital landscape of Saudi Arabia."}
               </p>
 
-              <h3 className="text-xl font-bold text-saudi-black mb-4">Why Work With Us?</h3>
+              <h3 className="text-xl font-bold text-saudi-black mb-4">
+                Why Work With Us?
+              </h3>
               <ul className="space-y-3 mb-8">
                 {benefits.map((benefit, index) => (
                   <li key={index} className="flex items-start">
                     <div className="flex-shrink-0 h-5 w-5 rounded-full bg-primary/10 flex items-center justify-center mt-0.5">
-                      <svg className="h-3 w-3 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      <svg
+                        className="h-3 w-3 text-primary"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
                       </svg>
                     </div>
                     <span className="ml-2 text-gray-600">{benefit}</span>
@@ -60,7 +93,9 @@ export default function JoinOurTeam() {
                 ))}
               </ul>
 
-              <Button className="bg-primary hover:bg-primary/90 text-white">View Open Positions</Button>
+              <Button className="bg-primary hover:bg-primary/90 text-white">
+                {buttonText || "View Open Positions"}
+              </Button>
             </motion.div>
 
             <motion.div
@@ -78,7 +113,9 @@ export default function JoinOurTeam() {
               <div className="absolute inset-0 bg-gradient-to-r from-primary/40 to-transparent mix-blend-multiply"></div>
 
               <div className="absolute bottom-8 left-8 right-8 bg-white/90 backdrop-blur-sm p-6 rounded-lg shadow-lg">
-                <h3 className="text-lg font-bold text-saudi-black mb-2">Current Openings</h3>
+                <h3 className="text-lg font-bold text-saudi-black mb-2">
+                  Current Openings
+                </h3>
                 <ul className="space-y-2">
                   <li className="flex justify-between items-center">
                     <span className="text-gray-700">Senior Web Developer</span>
@@ -93,7 +130,9 @@ export default function JoinOurTeam() {
                     </span>
                   </li>
                   <li className="flex justify-between items-center">
-                    <span className="text-gray-700">Digital Marketing Specialist</span>
+                    <span className="text-gray-700">
+                      Digital Marketing Specialist
+                    </span>
                     <span className="bg-primary/10 text-primary text-xs font-medium px-2 py-1 rounded-full">
                       Riyadh
                     </span>
@@ -105,6 +144,5 @@ export default function JoinOurTeam() {
         </div>
       </div>
     </section>
-  )
+  );
 }
-

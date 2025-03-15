@@ -1,49 +1,62 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { useInView } from "react-intersection-observer"
-import { Button } from "@/components/ui/button"
-import { HelpCircle, MessageSquare, Phone, FileText, Video } from "lucide-react"
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import {
+  FileText,
+  HelpCircle,
+  MessageSquare,
+  Phone,
+  Video,
+} from "lucide-react";
+import { useTranslations } from "next-intl";
+import { useInView } from "react-intersection-observer";
 
 export default function SupportOptions() {
   const { ref, inView } = useInView({
     threshold: 0.1,
     triggerOnce: true,
-  })
+  });
+
+  // Get translations
+  const t = useTranslations("contact.support");
 
   const supportOptions = [
     {
-      title: "Live Chat",
-      description: "Chat with our support team in real-time during business hours.",
+      title: t("liveChat.title"),
+      description: t("liveChat.description"),
       icon: <MessageSquare className="h-6 w-6 text-primary" />,
-      action: "Start Chat",
+      action: t("liveChat.action"),
       url: "#chat",
     },
     {
-      title: "Phone Support",
-      description: "Speak directly with our customer service representatives.",
+      title: t("phone.title"),
+      description: t("phone.description"),
       icon: <Phone className="h-6 w-6 text-primary" />,
-      action: "Call Now",
+      action: t("phone.action"),
       url: "tel:+966558845503",
     },
     {
-      title: "Submit a Ticket",
-      description: "Create a support ticket for technical issues or inquiries.",
+      title: t("ticket.title"),
+      description: t("ticket.description"),
       icon: <FileText className="h-6 w-6 text-primary" />,
-      action: "Create Ticket",
+      action: t("ticket.action"),
       url: "#ticket",
     },
     {
-      title: "Video Consultation",
-      description: "Schedule a video call with our experts for personalized assistance.",
+      title: t("video.title"),
+      description: t("video.description"),
       icon: <Video className="h-6 w-6 text-primary" />,
-      action: "Book Session",
+      action: t("video.action"),
       url: "#consultation",
     },
-  ]
+  ];
 
   return (
-    <section ref={ref} className="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+    <section
+      ref={ref}
+      className="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden"
+    >
       {/* Background Elements */}
       <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-primary/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-primary/5 rounded-full blur-3xl"></div>
@@ -57,7 +70,7 @@ export default function SupportOptions() {
             className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4"
           >
             <span className="flex h-2 w-2 rounded-full bg-primary mr-2"></span>
-            Customer Support
+            {t("badge") || "Customer Support"}
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -65,7 +78,7 @@ export default function SupportOptions() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-3xl md:text-4xl font-bold text-saudi-black mb-6"
           >
-            Support Options
+            {t("title")}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -73,7 +86,7 @@ export default function SupportOptions() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-lg text-gray-600"
           >
-            Choose the support option that works best for you
+            {t("description")}
           </motion.p>
         </div>
 
@@ -89,9 +102,14 @@ export default function SupportOptions() {
               <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                 {option.icon}
               </div>
-              <h3 className="text-xl font-bold text-saudi-black mb-2">{option.title}</h3>
+              <h3 className="text-xl font-bold text-saudi-black mb-2">
+                {option.title}
+              </h3>
               <p className="text-gray-600 mb-6">{option.description}</p>
-              <Button className="w-full bg-primary hover:bg-primary/90 text-white" asChild>
+              <Button
+                className="w-full bg-primary hover:bg-primary/90 text-white"
+                asChild
+              >
                 <a href={option.url}>{option.action}</a>
               </Button>
             </motion.div>
@@ -110,16 +128,16 @@ export default function SupportOptions() {
             </div>
           </div>
           <div className="md:w-3/4 text-center md:text-left">
-            <h3 className="text-2xl font-bold text-saudi-black mb-2">Need Specialized Assistance?</h3>
-            <p className="text-gray-600 mb-4">
-              Our dedicated account managers are available to provide personalized support for complex projects and
-              enterprise clients. Schedule a consultation to discuss your specific needs.
-            </p>
-            <Button className="bg-primary hover:bg-primary/90 text-white">Request Consultation</Button>
+            <h3 className="text-2xl font-bold text-saudi-black mb-2">
+              {t("specialized.title")}
+            </h3>
+            <p className="text-gray-600 mb-4">{t("specialized.description")}</p>
+            <Button className="bg-primary hover:bg-primary/90 text-white">
+              {t("specialized.action")}
+            </Button>
           </div>
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
-

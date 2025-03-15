@@ -1,23 +1,32 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { motion } from "framer-motion"
-import { useInView } from "react-intersection-observer"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { CheckCircle, AlertCircle, Send } from "lucide-react"
-
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
+import { motion } from "framer-motion";
+import { AlertCircle, CheckCircle, Send } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { useState } from "react";
+import { useInView } from "react-intersection-observer";
 export default function ContactForm() {
   const { ref, inView } = useInView({
     threshold: 0.1,
     triggerOnce: true,
-  })
+  });
+
+  // Get translations
+  const t = useTranslations("contact.form");
 
   const [formData, setFormData] = useState({
     name: "",
@@ -29,74 +38,76 @@ export default function ContactForm() {
     timeframe: "",
     message: "",
     hearAbout: "google",
-  })
+  });
 
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitSuccess, setSubmitSuccess] = useState(false)
-  const [submitError, setSubmitError] = useState(false)
-  const [phoneError, setPhoneError] = useState("")
-  const [emailError, setEmailError] = useState("")
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
+  const [phoneError, setPhoneError] = useState("");
+  const [emailError, setEmailError] = useState("");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
 
     // Validate Saudi phone number
     if (name === "phone") {
-      const saudiPhoneRegex = /^(05|5)(5|0|3|6|4|9|1|8|7)([0-9]{7})$/
+      const saudiPhoneRegex = /^(05|5)(5|0|3|6|4|9|1|8|7)([0-9]{7})$/;
       if (value && !saudiPhoneRegex.test(value)) {
-        setPhoneError("Please enter a valid Saudi phone number (05xxxxxxxx)")
+        setPhoneError(t("phoneError"));
       } else {
-        setPhoneError("")
+        setPhoneError("");
       }
     }
 
     // Validate email
     if (name === "email") {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (value && !emailRegex.test(value)) {
-        setEmailError("Please enter a valid email address")
+        setEmailError(t("emailError"));
       } else {
-        setEmailError("")
+        setEmailError("");
       }
     }
-  }
+  };
 
   const handleSelectChange = (name: string, value: string) => {
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleRadioChange = (value: string) => {
-    setFormData((prev) => ({ ...prev, hearAbout: value }))
-  }
+    setFormData((prev) => ({ ...prev, hearAbout: value }));
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
 
     // Validate form
-    const saudiPhoneRegex = /^(05|5)(5|0|3|6|4|9|1|8|7)([0-9]{7})$/
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    const saudiPhoneRegex = /^(05|5)(5|0|3|6|4|9|1|8|7)([0-9]{7})$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!emailRegex.test(formData.email)) {
-      setEmailError("Please enter a valid email address")
-      return
+      setEmailError(t("emailError"));
+      return;
     }
 
     if (formData.phone && !saudiPhoneRegex.test(formData.phone)) {
-      setPhoneError("Please enter a valid Saudi phone number (05xxxxxxxx)")
-      return
+      setPhoneError(t("phoneError"));
+      return;
     }
 
-    setIsSubmitting(true)
-    setSubmitError(false)
+    setIsSubmitting(true);
+    setSubmitError(false);
 
     // Simulate form submission
     setTimeout(() => {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
 
       // Simulate successful submission (90% of the time)
       if (Math.random() > 0.1) {
-        setSubmitSuccess(true)
+        setSubmitSuccess(true);
         setFormData({
           name: "",
           email: "",
@@ -107,18 +118,18 @@ export default function ContactForm() {
           timeframe: "",
           message: "",
           hearAbout: "google",
-        })
+        });
 
         // Reset success message after 5 seconds
         setTimeout(() => {
-          setSubmitSuccess(false)
-        }, 5000)
+          setSubmitSuccess(false);
+        }, 5000);
       } else {
         // Simulate error
-        setSubmitError(true)
+        setSubmitError(true);
       }
-    }, 1500)
-  }
+    }, 1500);
+  };
 
   const services = [
     "Website Development",
@@ -128,11 +139,22 @@ export default function ContactForm() {
     "Graphic Design & Branding",
     "Digital Marketing",
     "Other",
-  ]
+  ];
 
-  const budgetRanges = ["SAR 5,000 - 10,000", "SAR 10,000 - 25,000", "SAR 25,000 - 50,000", "SAR 50,000+"]
+  const budgetRanges = [
+    "SAR 5,000 - 10,000",
+    "SAR 10,000 - 25,000",
+    "SAR 25,000 - 50,000",
+    "SAR 50,000+",
+  ];
 
-  const timeframes = ["Immediately", "1-3 months", "3-6 months", "6+ months", "Not sure yet"]
+  const timeframes = [
+    "Immediately",
+    "1-3 months",
+    "3-6 months",
+    "6+ months",
+    "Not sure yet",
+  ];
 
   return (
     <motion.div
@@ -143,24 +165,24 @@ export default function ContactForm() {
       className="bg-white rounded-xl shadow-xl p-8 border border-gray-100 mb-16"
     >
       <div className="mb-8">
-        <h2 className="text-2xl font-bold text-saudi-black mb-2">Send Us a Message</h2>
-        <p className="text-gray-600">
-          Fill out the form below with your project details, and our team will get back to you within 24 hours.
-        </p>
+        <h2 className="text-2xl font-bold text-saudi-black mb-2">
+          {t("title")}
+        </h2>
+        <p className="text-gray-600">{t("description")}</p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-2">
             <Label htmlFor="name" className="text-sm font-medium">
-              Full Name <span className="text-primary">*</span>
+              {t("fullName")} <span className="text-primary">*</span>
             </Label>
             <Input
               id="name"
               name="name"
               value={formData.name}
               onChange={handleChange}
-              placeholder="Your name"
+              placeholder={t("fullName")}
               className="border-gray-200 focus:border-primary"
               required
             />
@@ -168,7 +190,7 @@ export default function ContactForm() {
 
           <div className="space-y-2">
             <Label htmlFor="email" className="text-sm font-medium">
-              Email Address <span className="text-primary">*</span>
+              {t("email")} <span className="text-primary">*</span>
             </Label>
             <div className="relative">
               <Input
@@ -178,7 +200,9 @@ export default function ContactForm() {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="your.email@example.com"
-                className={`border-gray-200 focus:border-primary ${emailError ? "border-red-500" : ""}`}
+                className={`border-gray-200 focus:border-primary ${
+                  emailError ? "border-red-500" : ""
+                }`}
                 required
               />
               {emailError && (
@@ -187,12 +211,14 @@ export default function ContactForm() {
                 </div>
               )}
             </div>
-            {emailError && <p className="text-red-500 text-xs mt-1">{emailError}</p>}
+            {emailError && (
+              <p className="text-red-500 text-xs mt-1">{emailError}</p>
+            )}
           </div>
 
           <div className="space-y-2">
             <Label htmlFor="phone" className="text-sm font-medium">
-              Phone Number
+              {t("phone")}
             </Label>
             <div className="relative">
               <Input
@@ -201,7 +227,9 @@ export default function ContactForm() {
                 value={formData.phone}
                 onChange={handleChange}
                 placeholder="05xxxxxxxx"
-                className={`border-gray-200 focus:border-primary ${phoneError ? "border-red-500" : ""}`}
+                className={`border-gray-200 focus:border-primary ${
+                  phoneError ? "border-red-500" : ""
+                }`}
               />
               {phoneError && (
                 <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
@@ -209,19 +237,21 @@ export default function ContactForm() {
                 </div>
               )}
             </div>
-            {phoneError && <p className="text-red-500 text-xs mt-1">{phoneError}</p>}
+            {phoneError && (
+              <p className="text-red-500 text-xs mt-1">{phoneError}</p>
+            )}
           </div>
 
           <div className="space-y-2">
             <Label htmlFor="company" className="text-sm font-medium">
-              Company Name
+              {t("company")}
             </Label>
             <Input
               id="company"
               name="company"
               value={formData.company}
               onChange={handleChange}
-              placeholder="Your company"
+              placeholder={t("company")}
               className="border-gray-200 focus:border-primary"
             />
           </div>
@@ -230,11 +260,15 @@ export default function ContactForm() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="space-y-2">
             <Label htmlFor="service" className="text-sm font-medium">
-              Service Interested In <span className="text-primary">*</span>
+              {t("service")} <span className="text-primary">*</span>
             </Label>
-            <Select required onValueChange={(value) => handleSelectChange("service", value)} value={formData.service}>
+            <Select
+              required
+              onValueChange={(value) => handleSelectChange("service", value)}
+              value={formData.service}
+            >
               <SelectTrigger className="border-gray-200 focus:border-primary">
-                <SelectValue placeholder="Select a service" />
+                <SelectValue placeholder={t("service")} />
               </SelectTrigger>
               <SelectContent>
                 {services.map((service) => (
@@ -247,10 +281,13 @@ export default function ContactForm() {
           </div>
 
           <div className="space-y-2">
-            <Label className="text-sm font-medium">Budget Range</Label>
-            <Select onValueChange={(value) => handleSelectChange("budget", value)} value={formData.budget}>
+            <Label className="text-sm font-medium">{t("budget")}</Label>
+            <Select
+              onValueChange={(value) => handleSelectChange("budget", value)}
+              value={formData.budget}
+            >
               <SelectTrigger className="border-gray-200 focus:border-primary">
-                <SelectValue placeholder="Select budget range" />
+                <SelectValue placeholder={t("budget")} />
               </SelectTrigger>
               <SelectContent>
                 {budgetRanges.map((range) => (
@@ -263,10 +300,13 @@ export default function ContactForm() {
           </div>
 
           <div className="space-y-2">
-            <Label className="text-sm font-medium">Project Timeframe</Label>
-            <Select onValueChange={(value) => handleSelectChange("timeframe", value)} value={formData.timeframe}>
+            <Label className="text-sm font-medium">{t("timeframe")}</Label>
+            <Select
+              onValueChange={(value) => handleSelectChange("timeframe", value)}
+              value={formData.timeframe}
+            >
               <SelectTrigger className="border-gray-200 focus:border-primary">
-                <SelectValue placeholder="Select timeframe" />
+                <SelectValue placeholder={t("timeframe")} />
               </SelectTrigger>
               <SelectContent>
                 {timeframes.map((timeframe) => (
@@ -281,14 +321,14 @@ export default function ContactForm() {
 
         <div className="space-y-2">
           <Label htmlFor="message" className="text-sm font-medium">
-            Project Details <span className="text-primary">*</span>
+            {t("details")} <span className="text-primary">*</span>
           </Label>
           <Textarea
             id="message"
             name="message"
             value={formData.message}
             onChange={handleChange}
-            placeholder="Tell us about your project requirements, goals, and any specific questions you have..."
+            placeholder={t("details")}
             rows={5}
             className="border-gray-200 focus:border-primary resize-none"
             required
@@ -296,31 +336,34 @@ export default function ContactForm() {
         </div>
 
         <div className="space-y-2">
-          <Label className="text-sm font-medium">How did you hear about us?</Label>
-          <RadioGroup value={formData.hearAbout} onValueChange={handleRadioChange}>
+          <Label className="text-sm font-medium">{t("hearAbout")}</Label>
+          <RadioGroup
+            value={formData.hearAbout}
+            onValueChange={handleRadioChange}
+          >
             <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="google" id="google" />
                 <Label htmlFor="google" className="text-sm">
-                  Google
+                  {t("google")}
                 </Label>
               </div>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="social" id="social" />
                 <Label htmlFor="social" className="text-sm">
-                  Social Media
+                  {t("social")}
                 </Label>
               </div>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="referral" id="referral" />
                 <Label htmlFor="referral" className="text-sm">
-                  Referral
+                  {t("referral")}
                 </Label>
               </div>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="other" id="other" />
                 <Label htmlFor="other" className="text-sm">
-                  Other
+                  {t("other")}
                 </Label>
               </div>
             </div>
@@ -328,7 +371,11 @@ export default function ContactForm() {
         </div>
 
         <div className="pt-4 border-t border-gray-100">
-          <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-white" disabled={isSubmitting}>
+          <Button
+            type="submit"
+            className="w-full bg-primary hover:bg-primary/90 text-white"
+            disabled={isSubmitting}
+          >
             {isSubmitting ? (
               <span className="flex items-center">
                 <svg
@@ -337,19 +384,26 @@ export default function ContactForm() {
                   fill="none"
                   viewBox="0 0 24 24"
                 >
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
                   <path
                     className="opacity-75"
                     fill="currentColor"
                     d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                   ></path>
                 </svg>
-                Processing...
+                {t("processing")}
               </span>
             ) : (
               <span className="flex items-center">
                 <Send className="mr-2 h-4 w-4" />
-                Send Message
+                {t("submit")}
               </span>
             )}
           </Button>
@@ -359,8 +413,8 @@ export default function ContactForm() {
           <div className="bg-green-50 border border-green-200 text-green-700 p-4 rounded-md flex items-start animate-fade-in">
             <CheckCircle className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0" />
             <div>
-              <p className="font-medium">Thank you for contacting us!</p>
-              <p className="text-sm">Your message has been sent successfully. We'll get back to you within 24 hours.</p>
+              <p className="font-medium">{t("success")}</p>
+              <p className="text-sm">{t("successDetail")}</p>
             </div>
           </div>
         )}
@@ -369,15 +423,12 @@ export default function ContactForm() {
           <div className="bg-red-50 border border-red-200 text-red-700 p-4 rounded-md flex items-start animate-fade-in">
             <AlertCircle className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0" />
             <div>
-              <p className="font-medium">Something went wrong</p>
-              <p className="text-sm">
-                There was an error sending your message. Please try again or contact us directly by phone.
-              </p>
+              <p className="font-medium">{t("error")}</p>
+              <p className="text-sm">{t("errorDetail")}</p>
             </div>
           </div>
         )}
       </form>
     </motion.div>
-  )
+  );
 }
-

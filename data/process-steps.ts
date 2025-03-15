@@ -1,62 +1,110 @@
-import { ClipboardList, PenTool, Code, Zap, Rocket, HeartHandshake } from "lucide-react"
-import type { LucideIcon } from "lucide-react"
+import {
+  Code,
+  FileSearch,
+  LifeBuoy,
+  Lightbulb,
+  PenTool,
+  Rocket,
+  TestTube,
+} from "lucide-react";
 
-export interface ProcessStep {
-  id: string
-  icon: LucideIcon
-  title: string
-  description: string
-  detailedDescription?: string
-}
-
-export const processSteps: ProcessStep[] = [
+export const processSteps = [
   {
     id: "discovery",
-    icon: ClipboardList,
-    title: "Discovery",
-    description: "We start by understanding your business, goals, and requirements through in-depth consultation.",
-    detailedDescription:
-      "Our discovery phase involves comprehensive research about your business, industry, competitors, and target audience. We conduct stakeholder interviews and workshops to gather requirements and establish project goals.",
+    title: {
+      en: "Discovery & Planning",
+      ar: "الاكتشاف والتخطيط",
+      bn: "আবিষ্কার এবং পরিকল্পনা",
+    },
+    description: {
+      en: "We begin by understanding your business goals, target audience, and specific requirements to create a detailed project roadmap.",
+      ar: "نبدأ بفهم أهداف عملك والجمهور المستهدف والمتطلبات المحددة لإنشاء خارطة طريق مفصلة للمشروع.",
+      bn: "আমরা আপনার ব্যবসার লক্ষ্য, টার্গেট অডিয়েন্স এবং নির্দিষ্ট প্রয়োজনীয়তা বুঝে একটি বিস্তারিত প্রকল্প রোডম্যাপ তৈরি করি।",
+    },
+    icon: FileSearch,
+  },
+  {
+    id: "strategy",
+    title: {
+      en: "Strategy Development",
+      ar: "تطوير الاستراتيجية",
+      bn: "কৌশল উন্নয়ন",
+    },
+    description: {
+      en: "We craft a comprehensive strategy tailored to your business needs and aligned with Saudi market requirements.",
+      ar: "نقوم بصياغة استراتيجية شاملة مصممة خصيصًا لاحتياجات عملك ومتوافقة مع متطلبات السوق السعودي.",
+      bn: "আমরা আপনার ব্যবসার প্রয়োজনীয়তা অনুযায়ী এবং সৌদি বাজারের প্রয়োজনীয়তার সাথে সামঞ্জস্যপূর্ণ একটি ব্যাপক কৌশল তৈরি করি।",
+    },
+    icon: Lightbulb,
   },
   {
     id: "design",
+    title: {
+      en: "Design & Prototyping",
+      ar: "التصميم والنماذج الأولية",
+      bn: "ডিজাইন এবং প্রোটোটাইপিং",
+    },
+    description: {
+      en: "Our designers create visually appealing and user-friendly interfaces that reflect your brand identity and meet user expectations.",
+      ar: "يقوم مصممونا بإنشاء واجهات جذابة بصريًا وسهلة الاستخدام تعكس هوية علامتك التجارية وتلبي توقعات المستخدم.",
+      bn: "আমাদের ডিজাইনাররা দৃশ্যত আকর্ষণীয় এবং ব্যবহারকারী-বান্ধব ইন্টারফেস তৈরি করে যা আপনার ব্র্যান্ড আইডেন্টিটি প্রতিফলিত করে এবং ব্যবহারকারীর প্রত্যাশা পূরণ করে।",
+    },
     icon: PenTool,
-    title: "Design",
-    description: "Our designers create visually appealing mockups and prototypes tailored to your brand.",
-    detailedDescription:
-      "We create wireframes, mockups, and interactive prototypes that visualize the user experience. Our design process is iterative, incorporating your feedback at every stage to ensure the final design meets your expectations.",
   },
   {
     id: "development",
+    title: {
+      en: "Development",
+      ar: "التطوير",
+      bn: "ডেভেলপমেন্ট",
+    },
+    description: {
+      en: "Our expert developers build your solution using the latest technologies and best practices, ensuring high performance and scalability.",
+      ar: "يقوم مطورونا الخبراء ببناء الحل الخاص بك باستخدام أحدث التقنيات وأفضل الممارسات، مما يضمن الأداء العالي وقابلية التوسع.",
+      bn: "আমাদের বিশেষজ্ঞ ডেভেলপাররা সর্বাধুনিক প্রযুক্তি এবং সেরা অনুশীলন ব্যবহার করে আপনার সমাধান তৈরি করে, উচ্চ কার্যক্ষমতা এবং স্কেলেবিলিটি নিশ্চিত করে।",
+    },
     icon: Code,
-    title: "Development",
-    description: "Our developers bring the designs to life with clean, efficient, and scalable code.",
-    detailedDescription:
-      "Our development team uses the latest technologies and best practices to build robust, scalable solutions. We follow agile methodologies, with regular sprints and demos to keep you involved throughout the development process.",
   },
   {
     id: "testing",
-    icon: Zap,
-    title: "Testing",
-    description: "Rigorous testing ensures your solution works flawlessly across all devices and browsers.",
-    detailedDescription:
-      "We conduct comprehensive testing including functionality testing, compatibility testing across devices and browsers, performance testing, security testing, and user acceptance testing to ensure a high-quality final product.",
+    title: {
+      en: "Testing & Quality Assurance",
+      ar: "الاختبار وضمان الجودة",
+      bn: "টেস্টিং এবং কোয়ালিটি অ্যাসুরেন্স",
+    },
+    description: {
+      en: "We rigorously test all aspects of your solution to ensure it meets the highest quality standards and functions flawlessly.",
+      ar: "نختبر بدقة جميع جوانب الحل الخاص بك للتأكد من أنه يلبي أعلى معايير الجودة ويعمل بشكل مثالي.",
+      bn: "আমরা আপনার সমাধানের সমস্ত দিক কঠোরভাবে পরীক্ষা করি যাতে এটি সর্বোচ্চ মানের মান পূরণ করে এবং নিখুঁতভাবে কাজ করে।",
+    },
+    icon: TestTube,
   },
   {
     id: "launch",
+    title: {
+      en: "Launch & Deployment",
+      ar: "الإطلاق والنشر",
+      bn: "লঞ্চ এবং ডেপ্লয়মেন্ট",
+    },
+    description: {
+      en: "We handle the smooth deployment of your solution, ensuring a seamless transition and minimal disruption to your operations.",
+      ar: "نتعامل مع النشر السلس للحل الخاص بك، مما يضمن انتقالًا سلسًا وحدًا أدنى من الاضطراب في عملياتك.",
+      bn: "আমরা আপনার সমাধানের মসৃণ ডেপ্লয়মেন্ট পরিচালনা করি, নিরবচ্ছিন্ন ট্রানজিশন এবং আপনার অপারেশনে সর্বনিম্ন বিঘ্ন নিশ্চিত করি।",
+    },
     icon: Rocket,
-    title: "Launch",
-    description: "We deploy your solution and ensure everything is running smoothly for your users.",
-    detailedDescription:
-      "Our launch process includes final quality checks, deployment to production servers, domain configuration, and monitoring to ensure a smooth transition. We provide training and documentation to help your team manage the new system.",
   },
   {
     id: "support",
-    icon: HeartHandshake,
-    title: "Support",
-    description: "Our relationship doesn't end at launch. We provide ongoing support and maintenance.",
-    detailedDescription:
-      "We offer various support and maintenance packages to ensure your digital solution continues to perform optimally. Our support includes regular updates, security patches, performance optimization, and technical assistance.",
+    title: {
+      en: "Ongoing Support",
+      ar: "الدعم المستمر",
+      bn: "চলমান সমর্থন",
+    },
+    description: {
+      en: "We provide continuous support and maintenance to ensure your solution remains up-to-date, secure, and optimized for performance.",
+      ar: "نقدم دعمًا وصيانة مستمرين لضمان بقاء الحل الخاص بك محدثًا وآمنًا ومحسنًا للأداء.",
+      bn: "আমরা আপনার সমাধান আপ-টু-ডেট, সুরক্ষিত এবং কার্যক্ষমতার জন্য অপ্টিমাইজড থাকে তা নিশ্চিত করতে নিরন্তর সমর্থন এবং রক্ষণাবেক্ষণ প্রদান করি।",
+    },
+    icon: LifeBuoy,
   },
-]
-
+];

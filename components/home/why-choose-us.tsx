@@ -44,27 +44,6 @@ export default function WhyChooseUs() {
     },
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  };
-
   return (
     <section
       className="py-24 relative overflow-hidden bg-gradient-to-b from-white to-gray-50"
@@ -245,7 +224,7 @@ export default function WhyChooseUs() {
               </div>
 
               {/* Animated border */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary/50 via-purple-500/50 to-primary/50 rtl:bg-gradient-to-l opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500"></div>
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary/50 via-purple-500/50 to-primary/50 rtl:bg-gradient-to-l opacity-0 group-hover:opacity-50 blur-xl duration-500"></div>
             </motion.div>
           ))}
         </div>
@@ -256,12 +235,10 @@ export default function WhyChooseUs() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.5 }}
-          className="mt-20 bg-white rounded-2xl p-8 shadow-lg border border-gray-100 relative overflow-hidden"
+          className="mt-20 bg-white rounded-2xl p-8 shadow-md border border-gray-100 relative overflow-hidden"
         >
           <div
-            className={`absolute inset-0 ${
-              isRTL ? "bg-gradient-to-l" : "bg-gradient-to-r"
-            } from-primary/5 to-transparent`}
+            className={`absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent`}
           ></div>
           <div className="relative z-10">
             <h3 className="text-2xl font-bold text-center mb-10">
