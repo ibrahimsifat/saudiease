@@ -2,26 +2,45 @@
 
 import { motion } from "framer-motion";
 import { Award, CheckCircle, Shield } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { useParams } from "next/navigation";
 
 export default function WhyChooseUs() {
+  const params = useParams();
+  const locale = (params?.locale as string) || "en";
+  const isRTL = locale === "ar";
+  const t = useTranslations("whyChooseUs");
+
   const features = [
     {
       icon: <Shield className="h-10 w-10 text-primary" />,
-      title: "Trusted by Saudi Businesses",
-      description:
-        "We've built a reputation for reliability and excellence across Saudi Arabia.",
+      title: t("feature1.title"),
+      description: t("feature1.description"),
+      benefits: [
+        t("feature1.benefit1"),
+        t("feature1.benefit2"),
+        t("feature1.benefit3"),
+      ],
     },
     {
       icon: <Award className="h-10 w-10 text-primary" />,
-      title: "Saudi-Focused Expertise",
-      description:
-        "Our deep understanding of the local market ensures solutions tailored to Saudi needs.",
+      title: t("feature2.title"),
+      description: t("feature2.description"),
+      benefits: [
+        t("feature2.benefit1"),
+        t("feature2.benefit2"),
+        t("feature2.benefit3"),
+      ],
     },
     {
       icon: <CheckCircle className="h-10 w-10 text-primary" />,
-      title: "Your Success, Our Priority",
-      description:
-        "We measure our success by the results we deliver for our clients.",
+      title: t("feature3.title"),
+      description: t("feature3.description"),
+      benefits: [
+        t("feature3.benefit1"),
+        t("feature3.benefit2"),
+        t("feature3.benefit3"),
+      ],
     },
   ];
 
@@ -47,7 +66,10 @@ export default function WhyChooseUs() {
   };
 
   return (
-    <section className="py-24 relative overflow-hidden bg-gradient-to-b from-white to-gray-50">
+    <section
+      className="py-24 relative overflow-hidden bg-gradient-to-b from-white to-gray-50"
+      dir={isRTL ? "rtl" : "ltr"}
+    >
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-primary/5 rounded-full blur-[100px]"></div>
@@ -122,20 +144,18 @@ export default function WhyChooseUs() {
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.5 }}
             >
-              <span className="relative flex h-2 w-2 mr-2">
+              <span className="relative flex h-2 w-2 mr-2 rtl:mr-0 rtl:ml-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
               </span>
-              Why Saudi Businesses Trust Us
+              {t("sectionLabel")}
             </motion.div>
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-saudi-black to-primary">
-            Why Choose Us?
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-saudi-black to-primary rtl:bg-gradient-to-l">
+            {t("title")}
           </h2>
           <p className="text-gray-600 max-w-3xl mx-auto text-lg">
-            Saudi Ease delivers exceptional digital solutions with a focus on
-            quality, innovation, and client satisfaction. Our deep understanding
-            of the Saudi market gives us a unique advantage.
+            {t("description")}
           </p>
         </motion.div>
 
@@ -149,12 +169,12 @@ export default function WhyChooseUs() {
               transition={{ duration: 0.5, delay: index * 0.2 }}
               whileHover={{
                 y: -10,
-                // boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.1)",
+                boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.1)",
                 transition: { duration: 0.3 },
               }}
               className="relative group"
             >
-              <div className="bg-white rounded-2xl p-8 shadow border border-gray-100 h-full z-10 relative overflow-hidden">
+              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 h-full z-10 relative overflow-hidden">
                 {/* Decorative corner elements */}
                 <div className="absolute top-0 right-0 w-20 h-20 opacity-10 group-hover:opacity-20 transition-opacity">
                   <svg
@@ -207,63 +227,25 @@ export default function WhyChooseUs() {
                   className="border-t border-gray-100 pt-4 mt-4"
                 >
                   <h4 className="text-sm font-semibold text-primary mb-2">
-                    Key Benefits:
+                    {isRTL ? "الفوائد الرئيسية:" : "Key Benefits:"}
                   </h4>
                   <ul className="text-sm text-gray-600 space-y-2">
-                    {index === 0 && (
-                      <>
-                        <li className="flex items-center">
-                          <CheckCircle className="h-4 w-4 text-primary mr-2" />
-                          <span>Trusted by 200+ Saudi businesses</span>
-                        </li>
-                        <li className="flex items-center">
-                          <CheckCircle className="h-4 w-4 text-primary mr-2" />
-                          <span>95% client retention rate</span>
-                        </li>
-                        <li className="flex items-center">
-                          <CheckCircle className="h-4 w-4 text-primary mr-2" />
-                          <span>Award-winning service quality</span>
-                        </li>
-                      </>
-                    )}
-                    {index === 1 && (
-                      <>
-                        <li className="flex items-center">
-                          <CheckCircle className="h-4 w-4 text-primary mr-2" />
-                          <span>10+ years in the Saudi market</span>
-                        </li>
-                        <li className="flex items-center">
-                          <CheckCircle className="h-4 w-4 text-primary mr-2" />
-                          <span>Compliant with local regulations</span>
-                        </li>
-                        <li className="flex items-center">
-                          <CheckCircle className="h-4 w-4 text-primary mr-2" />
-                          <span>Culturally-aware solutions</span>
-                        </li>
-                      </>
-                    )}
-                    {index === 2 && (
-                      <>
-                        <li className="flex items-center">
-                          <CheckCircle className="h-4 w-4 text-primary mr-2" />
-                          <span>Dedicated account managers</span>
-                        </li>
-                        <li className="flex items-center">
-                          <CheckCircle className="h-4 w-4 text-primary mr-2" />
-                          <span>24/7 support in Arabic & English</span>
-                        </li>
-                        <li className="flex items-center">
-                          <CheckCircle className="h-4 w-4 text-primary mr-2" />
-                          <span>Transparent reporting</span>
-                        </li>
-                      </>
-                    )}
+                    {feature.benefits.map((benefit, i) => (
+                      <li key={i} className="flex items-center">
+                        <CheckCircle
+                          className={`h-4 w-4 text-primary ${
+                            isRTL ? "ml-2" : "mr-2"
+                          }`}
+                        />
+                        <span>{benefit}</span>
+                      </li>
+                    ))}
                   </ul>
                 </motion.div>
               </div>
 
               {/* Animated border */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary/50 via-purple-500/50 to-primary/50 opacity-0 group-hover:opacity-60 blur-xl transition-opacity duration-500"></div>
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary/50 via-purple-500/50 to-primary/50 rtl:bg-gradient-to-l opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500"></div>
             </motion.div>
           ))}
         </div>
@@ -276,10 +258,14 @@ export default function WhyChooseUs() {
           transition={{ duration: 0.7, delay: 0.5 }}
           className="mt-20 bg-white rounded-2xl p-8 shadow-lg border border-gray-100 relative overflow-hidden"
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent"></div>
+          <div
+            className={`absolute inset-0 ${
+              isRTL ? "bg-gradient-to-l" : "bg-gradient-to-r"
+            } from-primary/5 to-transparent`}
+          ></div>
           <div className="relative z-10">
             <h3 className="text-2xl font-bold text-center mb-10">
-              Our Impact in Numbers
+              {t("stats.title")}
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               <div className="text-center">
@@ -292,7 +278,7 @@ export default function WhyChooseUs() {
                 >
                   200+
                 </motion.div>
-                <p className="text-gray-600">Saudi Clients</p>
+                <p className="text-gray-600">{t("stats.clients")}</p>
               </div>
               <div className="text-center">
                 <motion.div
@@ -304,7 +290,7 @@ export default function WhyChooseUs() {
                 >
                   95%
                 </motion.div>
-                <p className="text-gray-600">Client Retention</p>
+                <p className="text-gray-600">{t("stats.retention")}</p>
               </div>
               <div className="text-center">
                 <motion.div
@@ -316,7 +302,7 @@ export default function WhyChooseUs() {
                 >
                   10+
                 </motion.div>
-                <p className="text-gray-600">Years Experience</p>
+                <p className="text-gray-600">{t("stats.experience")}</p>
               </div>
               <div className="text-center">
                 <motion.div
@@ -328,7 +314,7 @@ export default function WhyChooseUs() {
                 >
                   500+
                 </motion.div>
-                <p className="text-gray-600">Projects Delivered</p>
+                <p className="text-gray-600">{t("stats.projects")}</p>
               </div>
             </div>
           </div>

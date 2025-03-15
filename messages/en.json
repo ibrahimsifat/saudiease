@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "SaudiEase - Digital Solutions for Saudi Businesses",
-    "description": "We offer comprehensive digital solutions tailored for Saudi businesses, helping you thrive in the digital age."
+    "description": "We provide comprehensive digital solutions tailored for Saudi businesses, helping you thrive in the digital age."
   },
   "navigation": {
     "home": "Home",
@@ -9,7 +9,50 @@
     "services": "Services",
     "portfolio": "Portfolio",
     "blog": "Blog",
-    "contact": "Contact"
+    "contact": "Contact",
+    "getQuote": "Get a Quote",
+    "search": "Search",
+    "faq": "FAQ",
+    "ourStory": "Our Story",
+    "ourStoryDescription": "Learn about our journey and mission",
+    "ourTeam": "Our Team",
+    "ourTeamDescription": "Meet our expert professionals",
+    "coreValues": "Core Values",
+    "coreValuesDescription": "What drives our business",
+    "achievements": "Achievements",
+    "achievementsDescription": "Our awards and recognition",
+    "servicesDropdownDescription": "Comprehensive digital solutions for Saudi businesses",
+    "needCustomSolution": "Need a custom solution?"
+  },
+  "hero": {
+    "leadingDigitalSolutions": "Leading Digital Solutions in Saudi Arabia",
+    "premierDigitalSolutions": "Premier Digital Solutions",
+    "forSaudiBusinesses": "for Saudi Businesses",
+    "vision2030Aligned": "Vision 2030 Aligned",
+    "heroDescription": "We provide comprehensive digital transformation services across Saudi Arabia, helping businesses thrive in the digital landscape with tailored solutions that align with Saudi Vision 2030 and ZATCA compliance requirements.",
+    "getStarted": "Get Started",
+    "exploreServices": "Explore Services",
+    "watchVideo": "Watch Video",
+    "trustedBy": "Trusted by 500+ Saudi businesses",
+    "rating": "4.9/5 Rating",
+    "vision2030Partner": "Vision 2030 Partner",
+    "zatcaCompliant": "ZATCA Compliant",
+    "eInvoicingReady": "E-invoicing ready",
+    "digitalGrowth": "Digital Growth",
+    "heroImageAlt": "Digital transformation services for Saudi businesses",
+    "projectsCompleted": "Projects Completed",
+    "clientSatisfaction": "Client Satisfaction",
+    "yearsExperience": "Years Experience",
+    "citiesServed": "Saudi Cities Served",
+    "testimonial1": "Saudi Ease transformed our digital presence with their exceptional web development services. Their deep understanding of Saudi market regulations and Vision 2030 initiatives helped us increase customer engagement by 45% while ensuring full compliance.",
+    "testimonialAuthor1": "Ahmed Al-Saud",
+    "testimonialCompany1": "RiyadhTech Solutions",
+    "testimonial2": "Their ZATCA-compliant e-invoicing solution streamlined our accounting process and ensured we met all regulatory requirements. The implementation was smooth, and their ongoing support has been outstanding.",
+    "testimonialAuthor2": "Fatima Khalid",
+    "testimonialCompany2": "Saudi Business Solutions",
+    "testimonial3": "The bilingual branding package they created perfectly captured our company's vision and values. Their understanding of both Arabic and English markets helped us stand out in the competitive Saudi business landscape.",
+    "testimonialAuthor3": "Mohammed Al-Harbi",
+    "testimonialCompany3": "Gulf Innovations Group"
   },
   "services": {
     "title": "Comprehensive Digital Services",
@@ -28,6 +71,292 @@
   "common": {
     "languageName": "English",
     "switchLanguage": "Switch language",
-    "currentLanguage": "Current language: English"
+    "currentLanguage": "Current Language: English",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "notFound": "Page not found",
+    "backToHome": "Back to home"
+  },
+  "trustedBy": {
+    "title": "Trusted By Leading Saudi Organizations",
+    "subtitle": "Empowering the Kingdom's most innovative companies with cutting-edge digital solutions",
+    "partnerAltText": "Trusted Partner of Saudi Ease",
+    "footer": "Join hundreds of successful businesses across Saudi Arabia who trust our expertise to navigate the Kingdom's digital landscape."
+  },
+  "industries": {
+    "sectionLabel": "INDUSTRIES",
+    "titleStart": "Digital Solutions",
+    "titleHighlight": "Across Industries",
+    "description": "We deliver tailored digital solutions that drive innovation and growth across diverse sectors in Saudi Arabia.",
+    "retail": "Retail & E-commerce",
+    "retailDescription": "Digital solutions for retail businesses, from e-commerce platforms to inventory management systems.",
+    "corporate": "Corporate & Enterprise",
+    "corporateDescription": "Enterprise-grade solutions for large corporations, including digital transformation and IT consulting.",
+    "smb": "Small & Medium Business",
+    "smbDescription": "Affordable digital solutions for SMBs, helping establish online presence and streamline operations.",
+    "education": "Education",
+    "educationDescription": "Digital solutions for educational institutions, including learning management systems and student portals.",
+    "healthcare": "Healthcare",
+    "healthcareDescription": "Specialized solutions for healthcare providers, including appointment systems and patient portals.",
+    "manufacturing": "Manufacturing",
+    "manufacturingDescription": "Digital solutions for manufacturing businesses, including inventory and supply chain optimization.",
+    "realEstate": "Real Estate",
+    "realEstateDescription": "Property management systems, virtual tours, and marketing solutions for real estate businesses.",
+    "travel": "Travel & Hospitality",
+    "travelDescription": "Booking systems, customer experience platforms, and marketing solutions for the hospitality sector.",
+    "tag1": "Digital Strategy",
+    "tag2": "Custom Solutions",
+    "tag3": "Data Analytics",
+    "learnMore": "Learn more",
+    "carouselControl": "Go to slide {number}",
+    "expertiseTitle": "Industry Expertise",
+    "expertiseDescription": "Our team brings specialized knowledge across multiple industries, allowing us to create solutions that address your unique challenges.",
+    "industriesServed": "Industries Served",
+    "projectsCompleted": "Projects Completed",
+    "clientRetention": "Client Retention",
+    "yearsExperience": "Years Experience",
+    "scheduleConsultation": "Schedule Consultation",
+    "viewCaseStudies": "View Case Studies",
+    "expertiseImageAlt": "Industry expertise",
+    "enterpriseSolutions": "Enterprise Solutions",
+    "retailInnovation": "Retail Innovation"
+  },
+  "services": {
+    "title": "Comprehensive Digital Services",
+    "subtitle": "Our Expertise",
+    "description": "We offer a wide range of digital solutions tailored for Saudi businesses, helping you thrive in the digital age",
+    "viewAll": "View All Services",
+    "viewDetails": "View Details",
+    "categories": {
+      "all": "All Services",
+      "development": "Development",
+      "design": "Design",
+      "marketing": "Marketing",
+      "finance": "Finance"
+    },
+    "serviceItems": {
+      "web-development": {
+        "title": "Website Development",
+        "description": "Custom, responsive websites tailored to your business needs with SEO optimization and seamless user experience.",
+        "features": {
+          "0": "Custom website design and development",
+          "1": "Content management systems",
+          "2": "Multilingual support (Arabic/English)"
+        }
+      },
+      "mobile-app-development": {
+        "title": "Mobile App Development",
+        "description": "Native and cross-platform mobile applications for iOS and Android that extend your business reach to mobile users.",
+        "features": {
+          "0": "Native iOS and Android development",
+          "1": "Cross-platform solutions",
+          "2": "UI/UX design optimized for mobile"
+        }
+      },
+      "custom-cms-development": {
+        "title": "Custom CMS Development",
+        "description": "Tailor-made content management systems that give you complete control over your digital content with Arabic language support.",
+        "features": {
+          "0": "User-friendly admin interface",
+          "1": "Custom content types and fields",
+          "2": "Role-based access control"
+        }
+      },
+      "e-commerce-solutions": {
+        "title": "E-commerce Solutions",
+        "description": "Comprehensive online store development with secure payment gateways, inventory management, and Saudi shipping integration.",
+        "features": {
+          "0": "Responsive product catalogs",
+          "1": "Integration with Saudi payment gateways",
+          "2": "Inventory management"
+        }
+      },
+      "enterprise-solutions": {
+        "title": "Enterprise Solutions",
+        "description": "Scalable, secure enterprise applications that streamline operations and enhance productivity for Saudi organizations.",
+        "features": {
+          "0": "Custom ERP and CRM systems",
+          "1": "Business process automation",
+          "2": "Data analytics and reporting"
+        }
+      },
+      "api-development": {
+        "title": "API Development & Integration",
+        "description": "Custom API development and third-party system integration to connect your business systems seamlessly.",
+        "features": {
+          "0": "RESTful API development",
+          "1": "Third-party API integration",
+          "2": "Microservices architecture"
+        }
+      },
+      "e-invoicing": {
+        "title": "E-Invoicing & Accounts",
+        "description": "ZATCA-compliant electronic invoicing solutions and seamless account management for Saudi businesses.",
+        "features": {
+          "0": "ZATCA-compliant e-invoicing",
+          "1": "Automated invoice generation",
+          "2": "Integration with accounting software"
+        }
+      },
+      "logo-design": {
+        "title": "Logo Design",
+        "description": "Professional, memorable logo design that captures your brand essence and resonates with Saudi audiences.",
+        "features": {
+          "0": "Multiple concept designs",
+          "1": "Vector file formats",
+          "2": "Brand guidelines"
+        }
+      },
+      "brand-identity": {
+        "title": "Brand Identity Design",
+        "description": "Comprehensive brand identity development including logo, color palette, typography, and brand guidelines.",
+        "features": {
+          "0": "Logo design",
+          "1": "Color palette development",
+          "2": "Typography selection"
+        }
+      },
+      "corporate-profile": {
+        "title": "Corporate Profile Design",
+        "description": "Impressive corporate profiles and company brochures that showcase your business professionally to Saudi stakeholders.",
+        "features": {
+          "0": "Print and digital formats",
+          "1": "Professional copywriting",
+          "2": "Arabic and English versions"
+        }
+      },
+      "ui-ux-design": {
+        "title": "UI/UX Design",
+        "description": "User-centered interface and experience design that enhances usability and engagement for Saudi users.",
+        "features": {
+          "0": "User research and personas",
+          "1": "Wireframing and prototyping",
+          "2": "Responsive design for all devices"
+        }
+      },
+      "motion-graphics": {
+        "title": "Motion Graphics & Animation",
+        "description": "Engaging motion graphics and animations that bring your brand to life and capture audience attention.",
+        "features": {
+          "0": "2D and 3D animation",
+          "1": "Explainer videos",
+          "2": "Social media animations"
+        }
+      },
+      "print-design": {
+        "title": "Print Design",
+        "description": "High-quality print materials including brochures, business cards, and marketing collateral with bilingual support.",
+        "features": {
+          "0": "Business cards and stationery",
+          "1": "Brochures and catalogs",
+          "2": "Packaging design"
+        }
+      },
+      "digital-marketing": {
+        "title": "Digital Marketing",
+        "description": "Comprehensive digital marketing strategies that increase your online visibility and drive growth in the Saudi market.",
+        "features": {
+          "0": "Search engine optimization (SEO)",
+          "1": "Pay-per-click (PPC) advertising",
+          "2": "Social media marketing"
+        }
+      },
+      "seo-services": {
+        "title": "SEO Services",
+        "description": "Specialized search engine optimization for Saudi businesses to improve rankings on Google and local search engines.",
+        "features": {
+          "0": "Keyword research and optimization",
+          "1": "On-page and off-page SEO",
+          "2": "Local SEO for Saudi market"
+        }
+      },
+      "social-media-marketing": {
+        "title": "Social Media Marketing",
+        "description": "Strategic social media campaigns that build engagement with Saudi audiences across popular platforms.",
+        "features": {
+          "0": "Platform-specific strategy",
+          "1": "Content creation and curation",
+          "2": "Paid social campaigns"
+        }
+      },
+      "email-marketing": {
+        "title": "Email Marketing",
+        "description": "Targeted email campaigns that nurture leads and build customer relationships with Saudi audiences.",
+        "features": {
+          "0": "Campaign strategy development",
+          "1": "Email template design",
+          "2": "Automated email sequences"
+        }
+      },
+      "content-marketing": {
+        "title": "Content Marketing",
+        "description": "Strategic content creation and distribution that establishes your authority in the Saudi market.",
+        "features": {
+          "0": "Content strategy development",
+          "1": "Blog and article writing",
+          "2": "Infographic creation"
+        }
+      },
+      "video-marketing": {
+        "title": "Video Marketing",
+        "description": "Compelling video content that engages Saudi audiences and drives brand awareness across digital channels.",
+        "features": {
+          "0": "Video strategy development",
+          "1": "Professional video production",
+          "2": "YouTube channel optimization"
+        }
+      },
+      "marketing-analytics": {
+        "title": "Marketing Analytics",
+        "description": "Comprehensive data analysis and reporting to optimize your marketing performance in the Saudi market.",
+        "features": {
+          "0": "Custom dashboard development",
+          "1": "Multi-channel tracking",
+          "2": "Competitor benchmarking"
+        }
+      },
+      "influencer-marketing": {
+        "title": "Influencer Marketing",
+        "description": "Strategic partnerships with Saudi influencers to amplify your brand message and reach targeted audiences.",
+        "features": {
+          "0": "Influencer identification and vetting",
+          "1": "Campaign strategy development",
+          "2": "Performance tracking"
+        }
+      }
+    }
+  },
+  "whyChooseUs": {
+    "sectionLabel": "Why Saudi Businesses Trust Us",
+    "title": "Why Choose Us?",
+    "description": "Saudi Ease delivers exceptional digital solutions with a focus on quality, innovation, and client satisfaction. Our deep understanding of the Saudi market gives us a unique advantage.",
+    "feature1": {
+      "title": "Trusted by Saudi Businesses",
+      "description": "We've built a reputation for reliability and excellence across Saudi Arabia.",
+      "benefit1": "Trusted by 200+ Saudi businesses",
+      "benefit2": "95% client retention rate",
+      "benefit3": "Award-winning service quality"
+    },
+    "feature2": {
+      "title": "Saudi-Focused Expertise",
+      "description": "Our deep understanding of the local market ensures solutions tailored to Saudi needs.",
+      "benefit1": "10+ years in the Saudi market",
+      "benefit2": "Compliant with local regulations",
+      "benefit3": "Culturally-aware solutions"
+    },
+    "feature3": {
+      "title": "Your Success, Our Priority",
+      "description": "We measure our success by the results we deliver for our clients.",
+      "benefit1": "Dedicated account managers",
+      "benefit2": "24/7 support in Arabic & English",
+      "benefit3": "Transparent reporting"
+    },
+    "stats": {
+      "title": "Our Impact in Numbers",
+      "clients": "Saudi Clients",
+      "retention": "Client Retention",
+      "experience": "Years Experience",
+      "projects": "Projects Delivered"
+    }
   }
 }

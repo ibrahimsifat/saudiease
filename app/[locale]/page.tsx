@@ -13,6 +13,7 @@ import ClientBlogSection from "@/components/home/blog-client-section";
 import ClientCTASection from "@/components/home/cta-client-section";
 import ClientFeaturesSection from "@/components/home/features-client-section";
 import ClientIndustriesSection from "@/components/home/industries-client-section";
+import IndustriesSection from "@/components/home/industries-section";
 import ClientLatestTechnologies from "@/components/home/latest-technologies-client-section";
 import ClientProcessSection from "@/components/home/process-client-section";
 import ClientTestimonialsSection from "@/components/home/testimonialsSection-client-section";
@@ -55,7 +56,8 @@ export default async function Home() {
 
       {/* Trusted By Section */}
       <TrustedBy />
-
+      {/* industries section */}
+      <IndustriesSection />
       {/* Services Section */}
       <ServicesSection />
 

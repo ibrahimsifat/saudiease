@@ -3,6 +3,7 @@
 import OptimizedImage from "@/components/optimized-image";
 import { Button } from "@/components/ui/button";
 import { getOptimizedAnimations } from "@/lib/performance-optimizations";
+import { cn } from "@/lib/utils";
 import {
   AnimatePresence,
   motion,
@@ -21,10 +22,11 @@ import {
   Users,
   X,
 } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
 
-// SEO-optimized testimonials with relevant Saudi business context
+// Testimonials data structure
 const testimonials = [
   {
     text: "Saudi Ease transformed our digital presence with their exceptional web development services. Their deep understanding of Saudi market regulations and Vision 2030 initiatives helped us increase customer engagement by 45% while ensuring full compliance.",
@@ -50,6 +52,10 @@ const testimonials = [
 ];
 
 export default function HeroSection() {
+  const t = useTranslations("hero");
+  const locale = useLocale();
+  const isRTL = locale === "ar";
+
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [showVideo, setShowVideo] = useState(false);
   const { ref, inView } = useInView({
@@ -128,22 +134,22 @@ export default function HeroSection() {
   const stats = [
     {
       value: "250+",
-      label: "Projects Completed",
+      label: t("projectsCompleted", { defaultMessage: "Projects Completed" }),
       icon: <CheckCircle className="h-5 w-5 text-green-500" />,
     },
     {
       value: "98%",
-      label: "Client Satisfaction",
+      label: t("clientSatisfaction", { defaultMessage: "Client Satisfaction" }),
       icon: <Users className="h-5 w-5 text-blue-500" />,
     },
     {
       value: "5+",
-      label: "Years Experience",
+      label: t("yearsExperience", { defaultMessage: "Years Experience" }),
       icon: <BarChart className="h-5 w-5 text-purple-500" />,
     },
     {
       value: "15+",
-      label: "Saudi Cities Served",
+      label: t("citiesServed", { defaultMessage: "Saudi Cities Served" }),
       icon: <Globe className="h-5 w-5 text-amber-500" />,
     },
   ];
@@ -195,9 +201,9 @@ export default function HeroSection() {
     <section
       id="home"
       ref={containerRef}
-      className="relative pt-16 pb-16 md:pt-14 md:pb-24 overflow-hidden"
+      className="relative pt-16 pb-16 md:pt-16 md:pb-24 overflow-hidden"
     >
-      {/* Video Modal - Only render when shown for better performance */}
+      {/* Video Modal - Only render when shown */}
       <AnimatePresence>
         {showVideo && (
           <motion.div
@@ -374,7 +380,12 @@ export default function HeroSection() {
         style={{ y, opacity }}
         className="container mx-auto px-4 relative"
       >
-        <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 xl:gap-16 items-center">
+        <div
+          className={cn(
+            "relative grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 xl:gap-16 items-center",
+            isRTL && "lg:flex-row-reverse"
+          )}
+        >
           {/* Decorative elements - lightweight and static */}
           <div className="absolute -top-20 -left-20 w-40 h-40 bg-primary/5 rounded-full blur-3xl"></div>
           <div className="absolute -bottom-20 -right-20 w-60 h-60 bg-blue-500/5 rounded-full blur-3xl"></div>
@@ -394,7 +405,11 @@ export default function HeroSection() {
           {/* Trust indicators - important for SEO and conversion */}
           <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-gray-100 flex items-center gap-2 text-xs text-gray-600 z-10">
             <span className="flex h-2 w-2 rounded-full bg-green-500 mr-1"></span>
-            <span>Trusted by 500+ Saudi businesses</span>
+            <span>
+              {t("trustedBy", {
+                defaultMessage: "Trusted by 500+ Saudi businesses",
+              })}
+            </span>
             <span className="mx-2">•</span>
             <span className="flex items-center">
               <svg
@@ -432,7 +447,7 @@ export default function HeroSection() {
               >
                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
               </svg>
-              4.9/5 Rating
+              {t("rating", { defaultMessage: "4.9/5 Rating" })}
             </span>
             <span className="mx-2">•</span>
             <span className="flex items-center">
@@ -449,41 +464,60 @@ export default function HeroSection() {
                   d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              Vision 2030 Partner
+              {t("vision2030Partner", {
+                defaultMessage: "Vision 2030 Partner",
+              })}
             </span>
           </div>
           <motion.div
             ref={ref}
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: isRTL ? 50 : -50 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, ease: "easeOut" }}
-            className="flex flex-col space-y-6 lg:col-span-6"
+            className={cn(
+              "flex flex-col space-y-6 lg:col-span-6",
+              isRTL && "text-right"
+            )}
           >
             <motion.div
-              className="inline-flex items-center px-3 py-1 rounded-full bg-gradient-to-r from-primary/20 to-primary/5 text-primary text-sm font-medium mb-2 backdrop-blur-sm"
+              className={cn(
+                "inline-flex items-center px-3 py-1 rounded-full bg-gradient-to-r from-primary/20 to-primary/5 text-primary text-sm font-medium mb-2 backdrop-blur-sm"
+              )}
               initial={{ opacity: 0, y: -20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               <motion.span
-                className="flex h-2 w-2 rounded-full bg-primary mr-2"
+                className={cn(
+                  "flex h-2 w-2 rounded-full bg-primary",
+                  isRTL ? "ml-2" : "mr-2"
+                )}
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
               ></motion.span>
               <span className="animate-typing overflow-hidden whitespace-nowrap border-r-2 border-r-primary pr-1">
-                Leading Digital Solutions in Saudi Arabia
+                {t("leadingDigitalSolutions", {
+                  defaultMessage: "Leading Digital Solutions in Saudi Arabia",
+                })}
               </span>
             </motion.div>
 
             {/* SEO-optimized heading with Saudi-specific keywords */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-saudi-black leading-tight">
+            <h1
+              className={cn(
+                "text-4xl md:text-5xl lg:text-6xl font-bold text-saudi-black leading-tight",
+                isRTL && "text-right"
+              )}
+            >
               <motion.span
                 className="block"
                 initial={{ opacity: 0, y: 20 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.3 }}
               >
-                Premier Digital Solutions
+                {t("premierDigitalSolutions", {
+                  defaultMessage: "Premier Digital Solutions",
+                })}
               </motion.span>
               <motion.span
                 className="relative inline-block"
@@ -492,7 +526,9 @@ export default function HeroSection() {
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
                 <span className="relative z-10 bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
-                  for Saudi Businesses
+                  {t("forSaudiBusinesses", {
+                    defaultMessage: "for Saudi Businesses",
+                  })}
                 </span>
                 <motion.svg
                   initial={{ pathLength: 0, opacity: 0 }}
@@ -523,25 +559,27 @@ export default function HeroSection() {
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.5 }}
               >
-                Vision 2030 Aligned
+                {t("vision2030Aligned", {
+                  defaultMessage: "Vision 2030 Aligned",
+                })}
               </motion.span>
             </h1>
 
             {/* SEO-optimized description with Saudi-specific keywords */}
             <motion.p
-              className="text-lg text-gray-600 max-w-lg"
+              className={"text-lg text-gray-600 max-w-lg"}
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.6 }}
             >
-              We provide comprehensive digital transformation services across
-              Saudi Arabia, helping businesses thrive in the digital landscape
-              with tailored solutions that align with Saudi Vision 2030 and
-              ZATCA compliance requirements.
+              {t("heroDescription", {
+                defaultMessage:
+                  "We provide comprehensive digital transformation services across Saudi Arabia, helping businesses thrive in the digital landscape with tailored solutions that align with Saudi Vision 2030 and ZATCA compliance requirements.",
+              })}
             </motion.p>
 
             <motion.div
-              className="flex flex-col sm:flex-row gap-4 pt-2"
+              className={"flex flex-col sm:flex-row gap-4 pt-2"}
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.7 }}
@@ -551,9 +589,24 @@ export default function HeroSection() {
                 className="bg-primary hover:bg-primary/90 text-white group transition-all duration-300 transform hover:translate-y-[-2px] relative overflow-hidden"
                 asChild
               >
-                <a href="#contact" className="flex items-center">
-                  <span className="relative z-10">Get Started</span>
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1 relative z-10" />
+                <a
+                  href="#contact"
+                  className={cn(
+                    "flex items-center",
+                    isRTL && "flex-row-reverse"
+                  )}
+                >
+                  <span className="relative z-10">
+                    {t("getStarted", { defaultMessage: "Get Started" })}
+                  </span>
+                  <ArrowRight
+                    className={cn(
+                      "h-4 w-4 transition-transform group-hover:translate-x-1 relative z-10",
+                      isRTL
+                        ? "mr-2 rotate-180 group-hover:translate-x-[-0.25rem]"
+                        : "ml-2"
+                    )}
+                  />
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-r from-primary to-primary/80"
                     initial={{ x: "-100%" }}
@@ -568,9 +621,22 @@ export default function HeroSection() {
                 className="border-primary text-primary hover:bg-primary/10 transition-all duration-300 transform hover:translate-y-[-2px]"
                 asChild
               >
-                <a href="#services" className="flex items-center">
-                  Explore Services
-                  <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                <a
+                  href="#services"
+                  className={cn(
+                    "flex items-center",
+                    isRTL && "flex-row-reverse"
+                  )}
+                >
+                  {t("exploreServices", { defaultMessage: "Explore Services" })}
+                  <ChevronRight
+                    className={cn(
+                      "h-4 w-4 transition-transform group-hover:translate-x-1",
+                      isRTL
+                        ? "mr-2 rotate-180 group-hover:translate-x-[-0.25rem]"
+                        : "ml-2"
+                    )}
+                  />
                 </a>
               </Button>
               <Button
@@ -579,10 +645,15 @@ export default function HeroSection() {
                 className="text-saudi-black hover:bg-gray-100 transition-all duration-300 transform hover:translate-y-[-2px]"
                 onClick={() => setShowVideo(true)}
               >
-                <div className="mr-2 h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center">
+                <div
+                  className={cn(
+                    "h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center",
+                    isRTL ? "ml-2" : "mr-2"
+                  )}
+                >
                   <Play className="h-3 w-3 text-primary" />
                 </div>
-                Watch Video
+                {t("watchVideo", { defaultMessage: "Watch Video" })}
               </Button>
             </motion.div>
 
@@ -590,7 +661,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.5, delay: 0.9 }}
-              className="mt-8 relative group"
+              className={"mt-8 relative group"}
             >
               {/* Subtle gradient border */}
               <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/10 via-blue-400/10 to-purple-400/10 rounded-lg opacity-70 group-hover:opacity-100 transition duration-300"></div>
@@ -611,16 +682,26 @@ export default function HeroSection() {
                       className="text-center max-w-md mx-auto"
                     >
                       <motion.p
-                        className="text-gray-700 text-xs md:text-sm leading-relaxed line-clamp-3"
+                        className={cn(
+                          "text-gray-700 text-xs md:text-sm leading-relaxed line-clamp-3",
+                          isRTL && "text-right"
+                        )}
                         initial={{ scale: 0.98 }}
                         animate={{ scale: 1 }}
                         transition={{ duration: 0.4 }}
                       >
-                        "{testimonials[currentTestimonial].text}"
+                        "
+                        {t(`testimonial${currentTestimonial + 1}`, {
+                          defaultMessage: testimonials[currentTestimonial].text,
+                        })}
+                        "
                       </motion.p>
 
                       <motion.div
-                        className="mt-2 flex items-center justify-center space-x-1.5"
+                        className={cn(
+                          "mt-2 flex items-center justify-center space-x-1.5",
+                          isRTL && "flex-row-reverse space-x-reverse"
+                        )}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.2, duration: 0.4 }}
@@ -631,17 +712,29 @@ export default function HeroSection() {
                               testimonials[currentTestimonial].image ||
                               "/placeholder.svg"
                             }
-                            alt={testimonials[currentTestimonial].author}
+                            alt={t(
+                              `testimonialAuthor${currentTestimonial + 1}`,
+                              {
+                                defaultMessage:
+                                  testimonials[currentTestimonial].author,
+                              }
+                            )}
                             fill
                             className="object-cover"
                           />
                         </div>
-                        <div className="text-left">
+                        <div className={cn("text-left", isRTL && "text-right")}>
                           <p className="text-primary text-xs font-medium">
-                            {testimonials[currentTestimonial].author}
+                            {t(`testimonialAuthor${currentTestimonial + 1}`, {
+                              defaultMessage:
+                                testimonials[currentTestimonial].author,
+                            })}
                           </p>
                           <p className="text-[10px] text-gray-500">
-                            {testimonials[currentTestimonial].company}
+                            {t(`testimonialCompany${currentTestimonial + 1}`, {
+                              defaultMessage:
+                                testimonials[currentTestimonial].company,
+                            })}
                           </p>
                         </div>
                       </motion.div>
@@ -669,7 +762,7 @@ export default function HeroSection() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: isRTL ? -50 : 50 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
             className="lg:col-span-6 relative"
@@ -763,7 +856,10 @@ export default function HeroSection() {
               {/* Main Image with optimized loading */}
               <OptimizedImage
                 src="/placeholder.svg?height=1000&width=800"
-                alt="Digital transformation services for Saudi businesses"
+                alt={t("heroImageAlt", {
+                  defaultMessage:
+                    "Digital transformation services for Saudi businesses",
+                })}
                 fill
                 className="object-cover"
                 priority
@@ -785,7 +881,10 @@ export default function HeroSection() {
                     className="absolute top-[10%] right-[10%] z-20"
                   >
                     <motion.div
-                      className="bg-white/90 backdrop-blur-sm rounded-lg shadow-lg p-3 flex items-center space-x-2 w-48 transform rotate-3"
+                      className={cn(
+                        "bg-white/90 backdrop-blur-sm rounded-lg shadow-lg p-3 flex items-center space-x-2 w-48 transform rotate-3",
+                        isRTL && "flex-row-reverse space-x-reverse"
+                      )}
                       whileHover={{ y: -5, rotate: 0 }}
                       transition={{ duration: 0.3 }}
                     >
@@ -804,10 +903,16 @@ export default function HeroSection() {
                           />
                         </svg>
                       </div>
-                      <div className="text-left">
-                        <p className="text-xs font-medium">ZATCA Compliant</p>
+                      <div className={cn("text-left", isRTL && "text-right")}>
+                        <p className="text-xs font-medium">
+                          {t("zatcaCompliant", {
+                            defaultMessage: "ZATCA Compliant",
+                          })}
+                        </p>
                         <p className="text-xs text-gray-500">
-                          E-invoicing ready
+                          {t("eInvoicingReady", {
+                            defaultMessage: "E-invoicing ready",
+                          })}
                         </p>
                       </div>
                     </motion.div>
@@ -824,8 +929,17 @@ export default function HeroSection() {
                       whileHover={{ y: -5, rotate: 0 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <div className="flex justify-between items-center mb-2">
-                        <p className="text-xs font-medium">Digital Growth</p>
+                      <div
+                        className={cn(
+                          "flex justify-between items-center mb-2",
+                          isRTL && "flex-row-reverse"
+                        )}
+                      >
+                        <p className="text-xs font-medium">
+                          {t("digitalGrowth", {
+                            defaultMessage: "Digital Growth",
+                          })}
+                        </p>
                         <span className="text-xs text-green-600">+45%</span>
                       </div>
                       <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
@@ -872,7 +986,7 @@ export default function HeroSection() {
             </div>
 
             {/* Stats Cards */}
-            <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-[90%] grid grid-cols-4 gap-3">
+            <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-[90%] grid grid-cols-4 gap-3 z-30">
               {stats.map((stat, index) => (
                 <CounterAnimation
                   key={index}

@@ -1,106 +1,104 @@
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import PreFooterCTA from "@/components/pre-footer-cta";
+import ScrollToTop from "@/components/scroll-to-top";
 import { ThemeProvider } from "@/components/theme-provider";
 import WhatsAppButton from "@/components/whatsapp-button";
-import { localeMetadata } from "@/config/i18n";
-import { Locale, routing } from "@/i18n/routing";
-import { baseSeoMetadata, generateGlobalSchema } from "@/lib/seo-utils";
+import { type Locale, localeMetadata, locales } from "@/config/i18n";
+import { getAllTranslations } from "@/lib/get-translation-namespace";
+import {
+  generateGlobalSchema,
+  generateLocalizedMetadata,
+} from "@/lib/seo-utils";
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
-import { Inter } from "next/font/google";
+import { Cairo, Inter, Noto_Sans_Bengali } from "next/font/google";
+import { notFound } from "next/navigation";
 import Script from "next/script";
 import type React from "react";
-import { ReactNode, Suspense } from "react";
-import "./globals.css";
-import NotFound from "./not-founds";
+import { Suspense } from "react";
+import "../globals.css";
+// import { SpeedInsights } from "@vercel/speed-insights/next";
+// import { Analytics } from "@vercel/analytics/react";
 
-// Optimize font loading
+// Optimize font loading with display swap and preload
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   preload: true,
   variable: "--font-inter",
+  fallback: ["system-ui", "sans-serif"],
 });
 
-type SupportedLocale = (typeof routing.locales)[number];
-type Props = {
-  children: ReactNode;
-  params: { locale: string };
-};
+// Cairo font for Arabic
+const cairo = Cairo({
+  subsets: ["arabic"],
+  display: "swap",
+  preload: true,
+  variable: "--font-cairo",
+  fallback: ["system-ui", "sans-serif"],
+});
 
-export function generateStaticParams() {
-  return routing.locales.map((locale) => ({ locale }));
-}
+// Noto Sans Bengali for Bengali
+const notoBengali = Noto_Sans_Bengali({
+  subsets: ["bengali"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+  preload: true,
+  variable: "--font-noto-bengali",
+  fallback: ["system-ui", "sans-serif"],
+});
+
 // Generate metadata for the page
 export async function generateMetadata({
   params,
 }: {
   params: { locale: string };
 }): Promise<Metadata> {
+  const locale = (await params.locale) as Locale;
   // Validate that the locale is supported
-  if (!routing.locales.includes(params.locale as Locale)) {
-    return baseSeoMetadata;
+  if (!locales.includes(locale as Locale)) {
+    notFound();
   }
 
-  try {
-    // Load messages for the locale
-    const messages = await import(`../../messages/${params.locale}.json`);
-
-    return {
-      ...baseSeoMetadata,
-      metadataBase: new URL("https://saudiease.com"),
-      title: messages.meta?.title || baseSeoMetadata.title,
-      description: messages.meta?.description || baseSeoMetadata.description,
-      verification: {
-        google: "google-site-verification-code",
-      },
-      category: "technology",
-      alternates: {
-        canonical: "/",
-        languages: {
-          en: "/en",
-          ar: "/ar",
-          bn: "/bn",
-        },
-      },
-    };
-  } catch (error) {
-    return baseSeoMetadata;
-  }
-}
-function isValidLocale(locale: string): locale is SupportedLocale {
-  return routing.locales.includes(locale as SupportedLocale);
+  return generateLocalizedMetadata(locale as Locale, "meta");
 }
 
-export default async function RootLayout({
+// Generate static params for all supported locales
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
+
+export default async function LocaleLayout({
   children,
-  params,
+  params: { locale },
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: { locale: Locale };
 }) {
-  const { locale } = await params;
-
-  // Ensure that the incoming `locale` is valid
-  if (!isValidLocale(locale)) {
-    NotFound();
+  // Validate that the locale is supported
+  if (!locales.includes(locale)) {
+    notFound();
   }
 
-  // Enable static rendering
-  setRequestLocale(locale);
-  const globalSchema = generateGlobalSchema();
   // Load messages for the locale
   let messages;
   try {
-    messages = (await import(`../../messages/${locale}.json`)).default;
+    messages = await getAllTranslations(locale);
   } catch (error) {
-    NotFound();
+    notFound();
   }
+
+  const globalSchema = generateGlobalSchema();
   const { dir } = localeMetadata[locale];
+
   return (
-    <html lang="en" suppressHydrationWarning className={inter.variable}>
+    <html
+      lang={locale}
+      dir={dir}
+      suppressHydrationWarning
+      className={`${inter.variable} ${cairo.variable} ${notoBengali.variable}`}
+    >
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -128,6 +126,17 @@ export default async function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="theme-color" content="#e63e65" />
 
+        {/* Add hreflang tags for SEO */}
+        <link rel="alternate" href="https://saudiease.com/en" hrefLang="en" />
+        <link rel="alternate" href="https://saudiease.com/ar" hrefLang="ar" />
+        <link rel="alternate" href="https://saudiease.com/bn" hrefLang="bn" />
+        <link
+          rel="alternate"
+          href="https://saudiease.com/"
+          hrefLang="x-default"
+        />
+
+        {/* Add structured data */}
         <Script
           id="schema-global"
           type="application/ld+json"
@@ -151,7 +160,15 @@ export default async function RootLayout({
           `}
         </Script>
       </head>
-      <body className={`${inter.className} ${dir === "rtl" ? "rtl" : ""}`}>
+      <body
+        className={`${
+          locale === "ar"
+            ? cairo.className
+            : locale === "bn"
+            ? notoBengali.className
+            : inter.className
+        } ${dir === "rtl" ? "rtl" : ""}`}
+      >
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ThemeProvider
             attribute="class"
@@ -168,8 +185,13 @@ export default async function RootLayout({
               <Footer />
             </div>
             <WhatsAppButton />
+            <ScrollToTop />
           </ThemeProvider>
         </NextIntlClientProvider>
+
+        {/* Performance monitoring */}
+        {/* <SpeedInsights />
+        <Analytics /> */}
       </body>
     </html>
   );

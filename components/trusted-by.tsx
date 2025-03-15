@@ -1,24 +1,37 @@
-"use client"
-import { motion } from "framer-motion"
-import Image from "next/image"
+"use client";
+import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
+import Image from "next/image";
+import { useParams } from "next/navigation";
 
 export default function TrustedBy() {
+  const params = useParams();
+  const locale = (params?.locale as string) || "en";
+  const isRTL = locale === "ar";
+  const t = useTranslations("trustedBy");
+
   // Trusted partners with more specific Saudi companies
   const partners = [
     { name: "Saudi Aramco", logo: "/placeholder.svg?height=60&width=120" },
     { name: "SABIC", logo: "/placeholder.svg?height=60&width=120" },
     { name: "STC", logo: "/placeholder.svg?height=60&width=120" },
     { name: "Almarai", logo: "/placeholder.svg?height=60&width=120" },
-    { name: "Saudi National Bank", logo: "/placeholder.svg?height=60&width=120" },
-    { name: "Saudi Electricity Company", logo: "/placeholder.svg?height=60&width=120" },
+    {
+      name: "Saudi National Bank",
+      logo: "/placeholder.svg?height=60&width=120",
+    },
+    {
+      name: "Saudi Electricity Company",
+      logo: "/placeholder.svg?height=60&width=120",
+    },
     { name: "NEOM", logo: "/placeholder.svg?height=60&width=120" },
     { name: "Red Sea Global", logo: "/placeholder.svg?height=60&width=120" },
     { name: "Ma'aden", logo: "/placeholder.svg?height=60&width=120" },
     { name: "Saudia Airlines", logo: "/placeholder.svg?height=60&width=120" },
-  ]
+  ];
 
   // Double the partners array for seamless infinite scroll
-  const allPartners = [...partners, ...partners]
+  const allPartners = [...partners, ...partners];
 
   return (
     <section className="py-16 bg-gradient-to-r from-slate-50 to-white relative overflow-hidden">
@@ -35,19 +48,17 @@ export default function TrustedBy() {
           className="text-center mb-12"
         >
           <h2 className="text-3xl font-bold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/80">
-            Trusted By Leading Saudi Organizations
+            {t("title")}
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Empowering the Kingdom's most innovative companies with cutting-edge digital solutions
-          </p>
+          <p className="text-gray-600 max-w-2xl mx-auto">{t("subtitle")}</p>
         </motion.div>
 
-        {/* Auto-scrolling carousel */}
-        <div className="relative overflow-hidden py-8 before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-24 before:bg-gradient-to-r before:from-slate-50 before:to-transparent after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-24 after:bg-gradient-to-l after:from-slate-50 after:to-transparent">
-          {/* First row - scrolling left to right */}
+        {/* Auto-scrolling carousel - direction changes based on RTL */}
+        <div className="relative overflow-hidden py-8 before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-24 before:bg-gradient-to-r before:from-slate-50 before:to-transparent after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-24 after:bg-gradient-to-l after:from-slate-50 after:to-transparent rtl:before:left-auto rtl:before:right-0 rtl:before:bg-gradient-to-l rtl:before:from-slate-50 rtl:before:to-transparent rtl:after:right-auto rtl:after:left-0 rtl:after:bg-gradient-to-r rtl:after:from-slate-50 rtl:after:to-transparent">
+          {/* First row - scrolling direction based on RTL */}
           <motion.div
             className="flex items-center mb-10 gap-16"
-            animate={{ x: [0, -1920] }}
+            animate={{ x: isRTL ? [0, 1920] : [0, -1920] }}
             transition={{
               x: {
                 repeat: Number.POSITIVE_INFINITY,
@@ -65,7 +76,7 @@ export default function TrustedBy() {
                 >
                   <Image
                     src={partner.logo || "/placeholder.svg"}
-                    alt={`${partner.name} - Trusted Partner of Saudi Ease`}
+                    alt={`${partner.name} - ${t("partnerAltText")}`}
                     width={120}
                     height={60}
                     className="object-contain max-h-12 transition-all duration-300 filter grayscale group-hover:grayscale-0 group-hover:scale-110"
@@ -76,10 +87,10 @@ export default function TrustedBy() {
             ))}
           </motion.div>
 
-          {/* Second row - scrolling right to left */}
+          {/* Second row - scrolling in opposite direction */}
           <motion.div
             className="flex items-center gap-16"
-            animate={{ x: [-1920, 0] }}
+            animate={{ x: [1920, 0] }}
             transition={{
               x: {
                 repeat: Number.POSITIVE_INFINITY,
@@ -97,7 +108,7 @@ export default function TrustedBy() {
                 >
                   <Image
                     src={partner.logo || "/placeholder.svg"}
-                    alt={`${partner.name} - Trusted Partner of Saudi Ease`}
+                    alt={`${partner.name} - ${t("partnerAltText")}`}
                     width={120}
                     height={60}
                     className="object-contain max-h-12 transition-all duration-300 filter grayscale group-hover:grayscale-0 group-hover:scale-110"
@@ -117,12 +128,10 @@ export default function TrustedBy() {
           className="text-center mt-12"
         >
           <p className="text-sm text-gray-500 max-w-xl mx-auto">
-            Join hundreds of successful businesses across Saudi Arabia who trust our expertise to navigate the Kingdom's
-            digital landscape.
+            {t("footer")}
           </p>
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
-
