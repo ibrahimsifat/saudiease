@@ -90,7 +90,7 @@ export default function TrustedBy() {
           {/* Second row - scrolling in opposite direction */}
           <motion.div
             className="flex items-center gap-16"
-            animate={{ x: [1920, 0] }}
+            animate={{ x: isRTL ? [0, -1920] : [0, 1920] }}
             transition={{
               x: {
                 repeat: Number.POSITIVE_INFINITY,

@@ -12,13 +12,12 @@
     "contact": "Contact",
     "getQuote": "Get a Quote",
     "search": "Search",
-    "faq": "FAQ",
-    "ourStory": "Our Story",
-    "ourStoryDescription": "Learn about our journey and mission",
-    "ourTeam": "Our Team",
-    "ourTeamDescription": "Meet our expert professionals",
-    "coreValues": "Core Values",
-    "coreValuesDescription": "What drives our business",
+    "industries": "Industry Expertise",
+    "industriesDescription": "Sectors where we deliver transformative results",
+    "features": "Key Features",
+    "featuresDescription": "Our innovative solutions and capabilities",
+    "faq": "Frequently Asked Questions",
+    "faqDescription": "Get answers about our business and services",
     "achievements": "Achievements",
     "achievementsDescription": "Our awards and recognition",
     "servicesDropdownDescription": "Comprehensive digital solutions for Saudi businesses",
@@ -467,6 +466,393 @@
       "overview": "Our Timely Delivery feature ensures your digital projects are completed on schedule and within budget, with transparent communication throughout the process and rigorous project management methodologies."
     }
   },
+  "featuresDetailsPage": {
+    "seoTitle": "Saudi Ease Features",
+    "backToFeatures": "Back to Features",
+    "featureSpotlight": "Feature Spotlight",
+    "requestDemo": "Request a Demo",
+    "learnMore": "Learn More",
+    "keyBenefits": "Key Benefits",
+    "benefitsDescription": "Discover how our {feature} feature can transform your business operations and drive growth.",
+    "keyFeatures": "Key Features",
+    "caseStudy": "Case Study",
+    "faq": "FAQ",
+    "results": "Results",
+    "discussYourProject": "Discuss Your Project",
+    "relatedFeatures": "Related Features",
+    "relatedFeaturesDescription": "Explore other features that work well with {feature} to create a comprehensive digital solution.",
+    "readyToImplement": "Ready to Implement {feature} in Your Business?",
+    "ctaDescription": "Our team of experts is ready to help you leverage this feature to drive growth and success for your Saudi business.",
+    "contactUs": "Contact Us",
+    "exploreServices": "Explore Services",
+    "notFound": {
+      "title": "Feature Not Found",
+      "description": "The requested feature could not be found."
+    },
+    "detail": {
+      "performance": {
+        "title": "Fast Performance",
+        "subtitle": "Lightning-fast digital experiences for Saudi businesses",
+        "description": "Learn about our Fast Performance feature and how it can benefit your Saudi business with enhanced speed, efficiency, and user experience.",
+        "overview": "Our Fast Performance feature ensures your digital platforms load quickly and operate smoothly, providing an exceptional user experience that keeps customers engaged and satisfied.",
+        "shortDescription": "Lightning-fast loading times and smooth operation for your digital platforms",
+        "benefits": [
+          "Reduced bounce rates with pages that load in under 2 seconds",
+          "Improved user engagement and conversion rates",
+          "Better search engine rankings with optimized performance",
+          "Enhanced mobile experience with fast-loading responsive designs",
+          "Reduced server costs with optimized resource usage"
+        ],
+        "keyFeatures": [
+          {
+            "title": "Advanced Caching",
+            "description": "Intelligent caching mechanisms that store frequently accessed data for faster retrieval."
+          },
+          {
+            "title": "Image Optimization",
+            "description": "Automatic image compression and lazy loading to reduce page load times."
+          },
+          {
+            "title": "Code Minification",
+            "description": "Removal of unnecessary characters from code without changing functionality."
+          },
+          {
+            "title": "Content Delivery Network",
+            "description": "Strategic distribution of servers to deliver content faster to users across Saudi Arabia."
+          }
+        ],
+        "caseStudy": {
+          "title": "How a Saudi E-commerce Platform Increased Sales by 35%",
+          "description": "A leading Saudi e-commerce platform was struggling with slow page load times, resulting in high bounce rates and abandoned carts. After implementing our Fast Performance solutions, they saw a dramatic improvement in user experience.",
+          "results": [
+            "Page load time reduced from 5.2 seconds to 1.8 seconds",
+            "Bounce rate decreased by 42%",
+            "Mobile conversions increased by 28%",
+            "Overall sales increased by 35% within three months"
+          ]
+        },
+        "faq": [
+          {
+            "question": "How does page speed affect my business?",
+            "answer": "Page speed directly impacts user experience, conversion rates, and search engine rankings. Studies show that 53% of mobile users abandon sites that take longer than 3 seconds to load, and Google uses page speed as a ranking factor for both mobile and desktop searches."
+          },
+          {
+            "question": "Will improving performance require a complete redesign of my website?",
+            "answer": "Not necessarily. Our performance optimization process begins with a thorough audit to identify specific bottlenecks. In many cases, we can significantly improve performance through targeted optimizations without requiring a complete redesign."
+          },
+          {
+            "question": "How do you ensure fast performance for users across Saudi Arabia?",
+            "answer": "We utilize a combination of local servers, content delivery networks with nodes in the Middle East, and optimization techniques specifically designed for the Saudi internet infrastructure to ensure fast loading times throughout the Kingdom."
+          },
+          {
+            "question": "Can you optimize performance for Arabic content and RTL layouts?",
+            "answer": "Absolutely. We have specialized expertise in optimizing Arabic websites with RTL layouts, ensuring that the unique characteristics of Arabic typography and design don't negatively impact performance."
+          }
+        ]
+      },
+      "security": {
+        "title": "Secure Solutions",
+        "subtitle": "Enterprise-grade security for Saudi businesses",
+        "description": "Learn about our Secure Solutions feature and how it can protect your Saudi business from cyber threats while ensuring compliance with local regulations.",
+        "overview": "Our Secure Solutions feature provides comprehensive protection for your digital assets, ensuring compliance with Saudi regulations while safeguarding sensitive data from increasingly sophisticated cyber threats.",
+        "shortDescription": "Comprehensive protection for your digital assets and sensitive data",
+        "benefits": [
+          "Protection against the latest cyber threats and vulnerabilities",
+          "Compliance with Saudi data protection regulations",
+          "Enhanced customer trust with visible security measures",
+          "Reduced risk of data breaches and associated costs",
+          "Regular security audits and updates to maintain protection"
+        ],
+        "keyFeatures": [
+          {
+            "title": "Advanced Encryption",
+            "description": "End-to-end encryption for sensitive data both in transit and at rest."
+          },
+          {
+            "title": "Multi-factor Authentication",
+            "description": "Additional security layers beyond passwords to verify user identities."
+          },
+          {
+            "title": "Regular Security Audits",
+            "description": "Proactive identification and remediation of potential vulnerabilities."
+          },
+          {
+            "title": "Compliance Management",
+            "description": "Ensuring adherence to Saudi regulations including CITC and NCA requirements."
+          }
+        ],
+        "caseStudy": {
+          "title": "Securing a Saudi Financial Institution Against Cyber Threats",
+          "description": "A prominent Saudi financial services provider needed to strengthen their digital security posture while maintaining a seamless user experience. Our comprehensive security solution provided the protection they needed without compromising on performance.",
+          "results": [
+            "Zero security breaches since implementation",
+            "100% compliance with Saudi financial regulations",
+            "Reduced unauthorized access attempts by 94%",
+            "Customer trust metrics improved by 28%"
+          ]
+        },
+        "faq": [
+          {
+            "question": "How do you stay current with evolving security threats?",
+            "answer": "Our security team continuously monitors global threat intelligence feeds, participates in security communities, and undergoes regular training. We implement a proactive approach to security, regularly updating our systems and conducting penetration testing to identify and address vulnerabilities before they can be exploited."
+          },
+          {
+            "question": "What Saudi-specific security regulations do you address?",
+            "answer": "We ensure compliance with all relevant Saudi regulations, including the Essential Cybersecurity Controls (ECC) from the National Cybersecurity Authority (NCA), CITC regulations, and Saudi Data & AI Authority (SDAIA) requirements. Our solutions are also designed to help clients meet international standards like ISO 27001 and GDPR where applicable."
+          },
+          {
+            "question": "How do you balance security with user experience?",
+            "answer": "We design security measures that provide robust protection while minimizing friction in the user experience. This includes implementing contextual security that adapts based on risk factors, using biometric authentication where appropriate, and designing intuitive security interfaces that guide users through secure processes."
+          },
+          {
+            "question": "Can you help with security training for our staff?",
+            "answer": "Yes, we offer comprehensive security awareness training programs customized for Saudi businesses. These programs cover best practices, common threats specific to the Saudi market, and practical exercises to help staff recognize and respond appropriately to security threats."
+          }
+        ]
+      },
+      "responsive": {
+        "title": "Mobile Responsive",
+        "subtitle": "Seamless experiences across all devices",
+        "description": "Learn about our Mobile Responsive feature and how it ensures your digital platforms work perfectly on all devices used by Saudi consumers.",
+        "overview": "Our Mobile Responsive feature ensures your digital platforms look and function perfectly on all devices, from desktop computers to smartphones, providing a consistent and optimized experience for all users.",
+        "shortDescription": "Perfect user experience across all devices and screen sizes",
+        "benefits": [
+          "Reach the 97% of Saudi consumers who access the internet via mobile devices",
+          "Provide consistent brand experience across all screen sizes",
+          "Improve SEO rankings with mobile-friendly designs",
+          "Reduce development and maintenance costs with a single responsive solution",
+          "Future-proof your digital presence for new devices and screen sizes"
+        ],
+        "keyFeatures": [
+          {
+            "title": "Fluid Grid Layouts",
+            "description": "Designs that automatically adjust to any screen size or resolution."
+          },
+          {
+            "title": "Touch-Optimized Interfaces",
+            "description": "Interactive elements designed specifically for touch navigation."
+          },
+          {
+            "title": "Adaptive Images",
+            "description": "Images that automatically resize and optimize for different devices."
+          },
+          {
+            "title": "Cross-Browser Compatibility",
+            "description": "Consistent experience across all popular browsers used in Saudi Arabia."
+          }
+        ],
+        "caseStudy": {
+          "title": "How a Saudi Retailer Increased Mobile Conversions by 65%",
+          "description": "A major Saudi retail chain was losing mobile customers due to a poor smartphone shopping experience. After implementing our responsive design solutions, they saw dramatic improvements in mobile engagement and sales.",
+          "results": [
+            "Mobile traffic increased by 42% within two months",
+            "Average time on site from mobile users increased by 3.5 minutes",
+            "Mobile conversion rate improved by 65%",
+            "Customer satisfaction scores for mobile experience increased from 3.2/5 to 4.7/5"
+          ]
+        },
+        "faq": [
+          {
+            "question": "Is responsive design really necessary if I already have a mobile app?",
+            "answer": "Yes, absolutely. While mobile apps provide a dedicated experience for committed users, responsive websites serve as the first point of contact for new customers. Many users prefer to browse websites before downloading an app, and search engines primarily index web content, not app content. A responsive website ensures you don't miss out on these potential customers."
+          },
+          {
+            "question": "How do you handle Arabic text and RTL layouts in responsive designs?",
+            "answer": "We have specialized expertise in responsive RTL layouts for Arabic content. Our approach includes proper text flow management, appropriate font scaling, and careful consideration of how UI elements should reposition in RTL layouts at different screen sizes. We also ensure that mixed content (Arabic and English) displays correctly across all devices."
+          },
+          {
+            "question": "Will responsive design slow down my website?",
+            "answer": "When implemented correctly, responsive design should not significantly impact performance. Our approach includes performance optimization techniques such as conditional loading (only loading resources needed for the current device), proper image optimization, and efficient CSS. In fact, our responsive solutions often improve performance by eliminating the need for redirects to separate mobile sites."
+          },
+          {
+            "question": "How do you test responsive designs for the Saudi market?",
+            "answer": "We conduct extensive testing on the most popular devices and browsers used in Saudi Arabia, including various Android phones, iPhones, and tablets at different screen sizes and resolutions. We also test on common network conditions experienced in different regions of Saudi Arabia to ensure good performance even in areas with slower connections."
+          }
+        ]
+      },
+      "local-expertise": {
+        "title": "Local Expertise",
+        "subtitle": "Deep understanding of the Saudi market",
+        "description": "Learn about our Local Expertise feature and how it ensures your digital solutions are perfectly tailored to the Saudi market and culture.",
+        "overview": "Our Local Expertise feature provides you with insights and solutions specifically tailored to the Saudi market, ensuring cultural relevance, regulatory compliance, and alignment with local business practices.",
+        "shortDescription": "Saudi-specific insights and culturally relevant solutions",
+        "benefits": [
+          "Culturally appropriate content and design that resonates with Saudi audiences",
+          "Culturally appropriate content and design that resonates with Saudi audiences",
+          "Full compliance with Saudi regulations and business requirements",
+          "Localized user experiences that feel familiar to Saudi customers",
+          "Strategic guidance on navigating the unique Saudi business landscape",
+          "Competitive advantage through deep market understanding"
+        ],
+        "keyFeatures": [
+          {
+            "title": "Cultural Adaptation",
+            "description": "Content and design elements tailored to Saudi cultural preferences and sensitivities."
+          },
+          {
+            "title": "Arabic Optimization",
+            "description": "Perfect RTL layouts, typography, and user interfaces for Arabic language users."
+          },
+          {
+            "title": "Regulatory Compliance",
+            "description": "Built-in compliance with Saudi laws including CITC, NCA, and SDAIA requirements."
+          },
+          {
+            "title": "Local Market Insights",
+            "description": "Strategic guidance based on deep understanding of Saudi consumer behavior."
+          }
+        ],
+        "caseStudy": {
+          "title": "How Local Expertise Helped a Global Brand Succeed in Saudi Arabia",
+          "description": "An international brand was struggling to gain traction in the Saudi market despite significant marketing investment. By leveraging our local expertise, we helped them adapt their digital presence to better resonate with Saudi consumers.",
+          "results": [
+            "User engagement increased by 87% after cultural adaptation",
+            "Conversion rates improved by 53% with localized user journeys",
+            "Customer acquisition costs decreased by 41%",
+            "Brand perception scores among Saudi consumers improved from 62% to 89%"
+          ]
+        },
+        "faq": [
+          {
+            "question": "How does your local expertise translate into better digital solutions?",
+            "answer": "Our team includes Saudi nationals and long-term residents who deeply understand the cultural nuances, consumer behaviors, and business practices unique to the Kingdom. This expertise informs every aspect of our work, from user interface design and content creation to technical implementation and strategic planning. The result is digital solutions that feel authentically Saudi rather than merely translated or adapted from Western models."
+          },
+          {
+            "question": "Can you help international businesses enter the Saudi market?",
+            "answer": "Absolutely. We specialize in helping international businesses successfully enter and thrive in the Saudi market. Our services include market research, localization strategy, regulatory guidance, cultural adaptation, and connecting you with the right local partners. We help you avoid common pitfalls and accelerate your path to success in Saudi Arabia."
+          },
+          {
+            "question": "How do you stay current with Saudi regulations and market trends?",
+            "answer": "We maintain close relationships with regulatory bodies, participate in industry forums, and continuously monitor policy developments. Our team regularly conducts market research and analysis to track evolving consumer preferences and competitive landscapes. This ongoing commitment to market intelligence ensures our clients benefit from the most current insights and compliance guidance."
+          },
+          {
+            "question": "Do you provide bilingual (Arabic/English) solutions?",
+            "answer": "Yes, we excel at creating truly bilingual digital experiences that work seamlessly in both Arabic and English. Rather than treating one language as an afterthought, we design with both languages in mind from the beginning, ensuring proper layout, typography, and user experience for both language options. We also provide professional translation services that capture the right tone and cultural context."
+          }
+        ]
+      },
+      "growth": {
+        "title": "Growth Focused",
+        "subtitle": "Strategic solutions for business expansion",
+        "description": "Learn about our Growth Focused feature and how it can help your Saudi business expand, attract new customers, and increase revenue.",
+        "overview": "Our Growth Focused feature provides strategic digital solutions designed to help your Saudi business expand, attract new customers, and increase revenue through data-driven optimization and scalable architecture.",
+        "shortDescription": "Strategic solutions to expand your business and increase revenue",
+        "benefits": [
+          "Scalable solutions that grow with your business needs",
+          "Data-driven insights to identify growth opportunities",
+          "Conversion optimization to increase customer acquisition",
+          "Customer retention strategies to maximize lifetime value",
+          "Competitive analysis to help you outperform in the Saudi market"
+        ],
+        "keyFeatures": [
+          {
+            "title": "Scalable Architecture",
+            "description": "Technical foundations that can handle growing traffic and expanding business needs."
+          },
+          {
+            "title": "Conversion Optimization",
+            "description": "Continuous improvement of user journeys to increase conversion rates."
+          },
+          {
+            "title": "Analytics Integration",
+            "description": "Comprehensive data collection and analysis to inform growth strategies."
+          },
+          {
+            "title": "Marketing Technology",
+            "description": "Integration with marketing tools to automate and optimize customer acquisition."
+          }
+        ],
+        "caseStudy": {
+          "title": "Accelerating Growth for a Saudi Startup",
+          "description": "A promising Saudi startup had a great product but was struggling to scale their customer base. Our growth-focused approach helped them identify and remove barriers to growth while implementing systems to support rapid expansion.",
+          "results": [
+            "Customer acquisition increased by 215% in six months",
+            "Customer lifetime value improved by 47%",
+            "Successfully scaled to handle 10x traffic without performance issues",
+            "Secured Series A funding based on improved growth metrics"
+          ]
+        },
+        "faq": [
+          {
+            "question": "How do you measure the success of growth initiatives?",
+            "answer": "We establish clear KPIs at the beginning of each project, tailored to your specific business goals. These typically include metrics like conversion rates, customer acquisition cost, lifetime value, retention rates, and revenue growth. We implement comprehensive analytics to track these metrics and provide regular reports with actionable insights."
+          },
+          {
+            "question": "Can your growth solutions adapt to changing market conditions?",
+            "answer": "Absolutely. Our growth frameworks are designed to be agile and responsive to changing market dynamics. We implement continuous monitoring and testing systems that allow for quick pivots when needed. Additionally, we build modular solutions that can be reconfigured as your business evolves or market conditions change."
+          },
+          {
+            "question": "How do you balance short-term growth with long-term sustainability?",
+            "answer": "We believe sustainable growth comes from building strong foundations. While we implement tactics to drive immediate results, we always ensure these align with long-term strategic objectives. Our approach includes building brand equity, focusing on customer satisfaction, and creating scalable systems rather than just pursuing quick wins that might compromise future growth."
+          },
+          {
+            "question": "Do you provide ongoing growth support after the initial implementation?",
+            "answer": "Yes, we offer ongoing growth partnerships where we continue to optimize and evolve your digital presence based on performance data and changing business needs. Many clients find this approach valuable as it provides continuous improvement without the need to manage multiple vendors or build an extensive in-house team."
+          }
+        ]
+      },
+      "timely": {
+        "title": "Timely Delivery",
+        "subtitle": "Reliable project execution and delivery",
+        "description": "Learn about our Timely Delivery feature and how it ensures your digital projects are completed on schedule and within budget.",
+        "overview": "Our Timely Delivery feature ensures your digital projects are completed on schedule and within budget, with transparent communication throughout the process and rigorous project management methodologies.",
+        "shortDescription": "On-time, on-budget project completion with transparent communication",
+        "benefits": [
+          "Predictable timelines for better business planning",
+          "Reduced time-to-market for competitive advantage",
+          "Transparent progress tracking and reporting",
+          "Efficient resource allocation and cost management",
+          "Minimized business disruption during implementation"
+        ],
+        "keyFeatures": [
+          {
+            "title": "Agile Methodology",
+            "description": "Flexible, iterative approach that delivers value throughout the project lifecycle."
+          },
+          {
+            "title": "Dedicated Project Management",
+            "description": "Experienced project managers who ensure smooth execution and timely delivery."
+          },
+          {
+            "title": "Transparent Reporting",
+            "description": "Regular updates and clear visibility into project progress and milestones."
+          },
+          {
+            "title": "Risk Management",
+            "description": "Proactive identification and mitigation of potential delays or issues."
+          }
+        ],
+        "caseStudy": {
+          "title": "Delivering a Complex E-Government Portal on Time",
+          "description": "A Saudi government entity needed a sophisticated digital portal delivered within a strict timeline to meet regulatory requirements. Despite the complexity and scale of the project, our timely delivery approach ensured successful completion within the mandated timeframe.",
+          "results": [
+            "Completed 2 weeks ahead of the critical deadline",
+            "Delivered within budget despite scope expansions",
+            "Achieved 100% of required functionality",
+            "Received commendation from ministry leadership for execution quality"
+          ]
+        },
+        "faq": [
+          {
+            "question": "How do you handle unexpected challenges that might cause delays?",
+            "answer": "We build buffer time into our project plans specifically to accommodate unexpected challenges. Additionally, our risk management process identifies potential issues early, allowing us to develop mitigation strategies before they impact timelines. When unforeseen issues do arise, we immediately assess the impact, present options to the client, and implement the agreed-upon solution with transparency throughout the process."
+          },
+          {
+            "question": "Can you accommodate changing requirements during a project?",
+            "answer": "Yes, our agile methodology is designed to accommodate evolving requirements. We work in sprints with regular review points where changes can be incorporated. For significant changes, we provide clear impact assessments on timeline, budget, and other project parameters, allowing you to make informed decisions about how to proceed."
+          },
+          {
+            "question": "How do you ensure quality isn't compromised when meeting tight deadlines?",
+            "answer": "Quality assurance is integrated throughout our development process, not just added at the end. We implement automated testing, continuous integration, and regular code reviews to maintain quality standards while working efficiently. When timelines are particularly tight, we may suggest a phased approach, delivering critical functionality first while maintaining our quality standards."
+          },
+          {
+            "question": "What is your track record for on-time delivery?",
+            "answer": "We're proud to maintain a 94% on-time delivery rate across all projects, with the remaining 6% typically involving significant scope changes requested by clients. For fixed-scope projects with clearly defined requirements, our on-time delivery rate exceeds 98%. We consider our ability to deliver reliably a core competitive advantage and a key reason clients choose to work with us repeatedly."
+          }
+        ]
+      }
+    }
+  },
   "process": {
     "sectionLabel": "Our Proven Methodology",
     "title": "Streamlined Process",
@@ -668,6 +1054,7 @@
   },
   "footer": {
     "logoAlt": "Saudi Ease Logo",
+    "faq": "FAQ",
     "quickLinksTitle": "Quick Links",
     "servicesTitle": "Our Services",
     "resourcesTitle": "Resources",
@@ -1809,6 +2196,925 @@
       "description": "Our team of experts is ready to help you implement these features and customize them to your specific business needs.",
       "getStartedButton": "Get Started",
       "exploreServicesButton": "Explore Services"
+    }
+  },
+  "legal": {
+    "title": "Legal Hub | Saudi Ease",
+    "description": "Legal information, privacy policy, terms of service, and other legal documents for Saudi Ease.",
+    "backToHome": "Back to Home",
+    "pageTitle": "Legal Hub",
+    "lastUpdated": "Last Updated",
+    "introText": "Welcome to the Saudi Ease Legal Hub. Here you'll find all the legal documents governing your use of our services. We believe in transparency and clarity in our legal terms to build trust with our clients and users.",
+    "documents": {
+      "privacyPolicy": {
+        "title": "Privacy Policy",
+        "description": "How we collect, use, and protect your personal information",
+        "updated": "March 10, 2025"
+      },
+      "termsOfService": {
+        "title": "Terms of Service",
+        "description": "The terms governing your use of our services",
+        "updated": "March 5, 2025"
+      },
+      "cookiePolicy": {
+        "title": "Cookie Policy",
+        "description": "How we use cookies and similar technologies",
+        "updated": "February 28, 2025"
+      },
+      "dataProcessing": {
+        "title": "Data Processing Agreement",
+        "description": "Terms for processing personal data in compliance with regulations",
+        "updated": "February 15, 2025"
+      },
+      "acceptableUse": {
+        "title": "Acceptable Use Policy",
+        "description": "Guidelines for acceptable use of our services",
+        "updated": "January 20, 2025"
+      },
+      "serviceLevelAgreement": {
+        "title": "Service Level Agreement",
+        "description": "Our commitments regarding service availability and support",
+        "updated": "January 10, 2025"
+      }
+    },
+    "readDocument": "Read Document",
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "questions": {
+        "howOftenUpdated": {
+          "question": "How often are these documents updated?",
+          "answer": "We review our legal documents regularly to ensure they comply with current laws and regulations. Documents are updated as needed, and the \"Last Updated\" date on each document indicates when it was last revised."
+        },
+        "notificationOfChanges": {
+          "question": "How will I be notified of changes to these documents?",
+          "answer": "For significant changes, we'll notify you via email or through a prominent notice on our website. Continued use of our services after changes indicates your acceptance of the updated terms."
+        },
+        "agreementRequired": {
+          "question": "Do I need to agree to all these documents?",
+          "answer": "Yes, by using our services, you agree to be bound by all applicable legal documents. If you don't agree with any terms, you should discontinue use of our services and contact us to discuss your concerns."
+        },
+        "saudiCompliance": {
+          "question": "How do these documents comply with Saudi regulations?",
+          "answer": "Our legal documents are drafted in compliance with Saudi Arabian laws and regulations, including those related to e-commerce, data protection, and consumer rights. We regularly review and update them to ensure continued compliance."
+        }
+      }
+    },
+    "legalQuestions": {
+      "title": "Have Legal Questions?",
+      "description": "If you have any questions or concerns about our legal documents or need clarification on specific terms, our legal team is here to help.",
+      "contactTeam": "Contact Our Legal Team",
+      "emailUs": "Email: legal@saudiease.com"
+    },
+    "footer": {
+      "faq": "FAQ",
+      "copyright": "© {year} Saudi Ease. All rights reserved.",
+      "privacyPolicy": "Privacy Policy",
+      "termsOfService": "Terms of Service"
+    }
+  },
+  "estimator": {
+    "metadata": {
+      "title": "Project Estimator | Get Instant Cost & Timeline Estimates",
+      "description": "Use our interactive project estimator to get instant cost and timeline estimates for your digital project. Plan your budget and timeline with Saudi Ease.",
+      "keywords": "project estimator, cost calculator, digital project timeline, web development cost, app development cost, Saudi Arabia digital services pricing"
+    },
+    "hero": {
+      "badge": "Interactive Project Estimator",
+      "title": "Get an Instant Estimate for Your Project",
+      "description": "Use our interactive estimator to get an approximate cost and timeline for your digital project. Adjust parameters to see how different choices affect your project scope."
+    },
+    "steps": {
+      "projectDetails": "Project Details",
+      "features": "Features",
+      "businessInfo": "Business Info",
+      "contact": "Contact"
+    },
+    "step1": {
+      "title": "Project Type & Complexity",
+      "projectTypeQuestion": "What type of project do you need?",
+      "complexityTitle": "Project Complexity",
+      "costMultiplier": "{{multiplier}}x cost multiplier",
+      "complexityGuide": {
+        "title": "Complexity Guide:",
+        "basic": "Simple design, limited features, standard functionality",
+        "standard": "Custom design, common features, some integrations",
+        "advanced": "Complex design, advanced features, multiple integrations",
+        "enterprise": "Highly customized, complex architecture, extensive integrations"
+      },
+      "urgencyTitle": "Project Urgency",
+      "standardTimeline": "Standard Timeline",
+      "urgentHigherCost": "Urgent (Higher Cost)",
+      "standardTimelineLabel": "Standard Timeline",
+      "standardCost": "(1x cost)",
+      "expedited": "Expedited",
+      "expeditedCost": "({{multiplier}}x cost)"
+    },
+    "step2": {
+      "title": "Project Features",
+      "selectFeaturesTitle": "Select the features you need",
+      "selectFeaturesDescription": "Choose the features that are essential for your {{projectType}}. Each feature affects the overall cost and timeline.",
+      "weeks": "{{count}} week",
+      "weeks_plural": "{{count}} weeks",
+      "maintenancePlanTitle": "Maintenance Plan",
+      "maintenancePlanDescription": "Choose a maintenance plan to keep your project running smoothly after launch."
+    },
+    "step3": {
+      "title": "Business Information",
+      "companySizeTitle": "Company Size",
+      "companySizeDescription": "The size of your organization helps us tailor the solution to your specific needs.",
+      "companyInfoTitle": "Company Information",
+      "companyName": "Company Name",
+      "companyNamePlaceholder": "Your company name",
+      "industry": "Industry",
+      "selectIndustry": "Select your industry"
+    },
+    "step4": {
+      "title": "Contact Information",
+      "yourDetailsTitle": "Your Details",
+      "fullName": "Full Name",
+      "fullNamePlaceholder": "Your  \"Your Details",
+      "email": "Email Address",
+      "emailPlaceholder": "your.email@example.com",
+      "phone": "Phone Number",
+      "phonePlaceholder": "+966 5X XXX XXXX",
+      "position": "Position",
+      "positionPlaceholder": "Your position",
+      "additionalInfo": "Additional Information",
+      "additionalInfoPlaceholder": "Tell us more about your project requirements..."
+    },
+    "navigation": {
+      "continueToFeatures": "Continue to Features",
+      "continueToBusinessInfo": "Continue to Business Info",
+      "continueToContact": "Continue to Contact Info",
+      "getEstimate": "Get Your Estimate",
+      "back": "Back"
+    },
+    "results": {
+      "calculating": "Calculating Your Estimate...",
+      "pleaseWait": "Please wait while we process your project details.",
+      "title": "Your Project Estimate",
+      "subtitle": "Based on the information you provided",
+      "estimatedCost": "Estimated Cost",
+      "oneTimeCost": "One-time project cost",
+      "monthlyMaintenance": "Monthly Maintenance",
+      "estimatedTimeline": "Estimated Timeline",
+      "weeks": "week",
+      "weeks_plural": "weeks",
+      "fromKickoffToLaunch": "From kickoff to launch",
+      "approximateLaunchDate": "Approximate Launch Date",
+      "projectSummary": "Project Summary",
+      "projectType": "Project Type",
+      "complexity": "Complexity",
+      "selectedFeatures": "Selected Features",
+      "noFeaturesSelected": "No additional features selected",
+      "maintenancePlan": "Maintenance Plan",
+      "nextSteps": "Next Steps",
+      "nextStepsDescription": "This is an estimate based on the information provided. For a detailed proposal and to discuss your project further:",
+      "scheduleConsultation": "Schedule Consultation",
+      "downloadEstimate": "Download Estimate",
+      "shareEstimate": "Share Estimate",
+      "needChanges": "Need to make changes? You can go back and adjust your selections.",
+      "startOver": "Start Over"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "description": "Have questions about our estimator or project process? Find answers to common questions below.",
+      "tabs": {
+        "estimator": "About the Estimator",
+        "process": "Our Process",
+        "pricing": "Pricing & Payment"
+      },
+      "estimator": {
+        "q1": "How accurate is this estimate?",
+        "a1": "This estimator provides an approximate cost and timeline based on the information you provide. The final cost may vary based on detailed requirements, which we'll discuss during a consultation.",
+        "q2": "Can I change my selections later?",
+        "a2": "Yes, you can go back and adjust your selections at any time before submitting. After submission, we'll discuss any changes during the consultation.",
+        "q3": "Is my information secure?",
+        "a3": "Yes, all information submitted through this estimator is encrypted and secure. We do not share your information with third parties."
+      },
+      "process": {
+        "q1": "What happens after I submit my estimate request?",
+        "a1": "Our team will review your requirements and schedule a consultation to discuss your project in detail. We'll then provide a detailed proposal with exact pricing and timeline.",
+        "q2": "How long does the development process take?",
+        "a2": "Development timelines vary based on project complexity and scope. The estimator provides an approximate timeline, which we'll refine during our consultation based on your specific requirements.",
+        "q3": "Do you provide support after launch?",
+        "a3": "Yes, we offer various maintenance plans to ensure your project continues to run smoothly after launch. These include bug fixes, security updates, and ongoing support."
+      },
+      "pricing": {
+        "q1": "What payment methods do you accept?",
+        "a1": "We accept bank transfers, credit cards, and digital payment methods. Payment terms and schedules will be outlined in your project proposal.",
+        "q2": "Do you require a deposit?",
+        "a2": "Yes, we typically require a 50% deposit to begin work, with the remaining balance due upon project completion. For larger projects, we can arrange milestone-based payments.",
+        "q3": "Are there any hidden costs?",
+        "a3": "No, we provide transparent pricing with no hidden costs. Any additional requirements or changes to the project scope will be discussed and approved before implementation."
+      }
+    },
+    "cta": {
+      "title": "Ready to Start Your Project?",
+      "description": "Get in touch with our team to discuss your project requirements and turn your vision into reality.",
+      "scheduleConsultation": "Schedule a Consultation",
+      "contactUs": "Contact Us"
+    },
+    "common": {
+      "month": "month"
+    },
+    "projectTypes": {
+      "website": {
+        "name": "Website",
+        "description": "Custom website development with responsive design and content management system."
+      },
+      "ecommerce": {
+        "name": "E-Commerce Platform",
+        "description": "Full-featured online store with product catalog, secure checkout, and inventory management."
+      },
+      "mobileApp": {
+        "name": "Mobile Application",
+        "description": "Native or cross-platform mobile application for iOS and Android devices."
+      },
+      "customSoftware": {
+        "name": "Custom Software",
+        "description": "Bespoke software solution tailored to your specific business requirements."
+      },
+      "eInvoicing": {
+        "name": "E-Invoicing Solution",
+        "description": "ZATCA-compliant e-invoicing system with integration to your existing systems."
+      },
+      "digitalMarketing": {
+        "name": "Digital Marketing",
+        "description": "Comprehensive digital marketing strategy and implementation."
+      }
+    },
+    "complexity": {
+      "basic": {
+        "name": "Basic"
+      },
+      "standard": {
+        "name": "Standard"
+      },
+      "advanced": {
+        "name": "Advanced"
+      },
+      "enterprise": {
+        "name": "Enterprise"
+      }
+    },
+    "features": {
+      "userAuth": {
+        "name": "User Authentication",
+        "description": "Secure login, registration, and user profile management."
+      },
+      "paymentGateway": {
+        "name": "Payment Gateway Integration",
+        "description": "Integration with popular payment gateways like Mada, Apple Pay, and credit cards."
+      },
+      "multiLanguage": {
+        "name": "Multi-language Support",
+        "description": "Support for Arabic, English, and other languages with RTL compatibility."
+      },
+      "analytics": {
+        "name": "Advanced Analytics",
+        "description": "Detailed analytics dashboard with custom reports and insights."
+      },
+      "apiIntegration": {
+        "name": "Third-party API Integration",
+        "description": "Integration with external services and APIs."
+      },
+      "seoOptimization": {
+        "name": "SEO Optimization",
+        "description": "On-page and technical SEO optimization for better search engine rankings."
+      },
+      "contentManagement": {
+        "name": "Advanced Content Management",
+        "description": "Sophisticated content management system with workflow and approval processes."
+      },
+      "socialIntegration": {
+        "name": "Social Media Integration",
+        "description": "Integration with social media platforms for sharing and authentication."
+      },
+      "offlineMode": {
+        "name": "Offline Mode",
+        "description": "Ability to use the application without an internet connection."
+      },
+      "pushNotifications": {
+        "name": "Push Notifications",
+        "description": "Real-time push notifications to engage users."
+      },
+      "reporting": {
+        "name": "Custom Reporting",
+        "description": "Customizable reports and dashboards for business intelligence."
+      },
+      "zatcaCompliance": {
+        "name": "ZATCA Compliance",
+        "description": "Full compliance with Saudi Arabian tax authority requirements."
+      }
+    },
+    "teamSize": {
+      "small": {
+        "name": "Small (1-10 employees)"
+      },
+      "medium": {
+        "name": "Medium (11-50 employees)"
+      },
+      "large": {
+        "name": "Large (51-200 employees)"
+      },
+      "enterprise": {
+        "name": "Enterprise (201+ employees)"
+      }
+    },
+    "maintenancePlans": {
+      "basic": {
+        "name": "Basic Support",
+        "features": [
+          "Bug fixes",
+          "Security updates",
+          "Email support (business hours)",
+          "Monthly performance report"
+        ]
+      },
+      "standard": {
+        "name": "Standard Support",
+        "features": [
+          "All Basic Support features",
+          "Minor feature updates",
+          "Phone support (business hours)",
+          "Weekly backups",
+          "Monthly performance optimization"
+        ]
+      },
+      "premium": {
+        "name": "Premium Support",
+        "features": [
+          "All Standard Support features",
+          "Priority bug fixes",
+          "Quarterly feature additions",
+          "24/7 emergency support",
+          "Dedicated account manager",
+          "Daily backups",
+          "Monthly strategy consultation"
+        ]
+      }
+    },
+    "industries": {
+      "retail": "Retail & E-commerce",
+      "healthcare": "Healthcare",
+      "finance": "Finance & Banking",
+      "education": "Education",
+      "manufacturing": "Manufacturing",
+      "technology": "Technology",
+      "hospitality": "Hospitality & Tourism",
+      "realEstate": "Real Estate",
+      "government": "Government",
+      "other": "Other"
+    }
+  },
+  "privacyPolicy": {
+    "metadata": {
+      "title": "Privacy Policy | Saudi Ease",
+      "description": "Learn how Saudi Ease collects, uses, and protects your personal information in compliance with Saudi data protection regulations."
+    },
+    "title": "Privacy Policy",
+    "backToHome": "Back to Home",
+    "lastUpdatedLabel": "Last Updated",
+    "lastUpdated": "March 10, 2025",
+    "introduction": "At Saudi Ease, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our services.",
+    "sections": {
+      "informationCollection": "Information Collection",
+      "informationUse": "Information Use",
+      "informationSharing": "Information Sharing",
+      "dataSecurity": "Data Security",
+      "yourRights": "Your Rights",
+      "cookies": "Cookies"
+    },
+    "informationCollection": {
+      "title": "Information Collection",
+      "intro": "We collect several types of information from and about users of our services, including:",
+      "types": [
+        {
+          "title": "Personal Information",
+          "description": "Name, email address, phone number, company name, and other contact details you provide when you register for our services, submit inquiries, or request information."
+        },
+        {
+          "title": "Business Information",
+          "description": "Information about your business needs, requirements, and preferences related to our services."
+        },
+        {
+          "title": "Technical Information",
+          "description": "Internet protocol (IP) address, browser type, device information, operating system, and other technology identifiers when you use our website."
+        },
+        {
+          "title": "Usage Information",
+          "description": "Information about how you use our website and services, including pages visited, time spent, and interaction data."
+        },
+        {
+          "title": "Marketing Information",
+          "description": "Your preferences in receiving marketing communications from us."
+        }
+      ],
+      "howWeCollect": {
+        "intro": "We collect this information when you:",
+        "methods": [
+          "Fill out forms on our website",
+          "Subscribe to our newsletter or marketing communications",
+          "Request a quote or consultation",
+          "Engage with our services",
+          "Participate in surveys or feedback requests",
+          "Interact with our website through cookies and similar technologies"
+        ]
+      }
+    },
+    "informationUse": {
+      "title": "Information Use",
+      "intro": "We use the information we collect for various purposes, including:",
+      "purposes": [
+        "Providing, maintaining, and improving our services",
+        "Processing and fulfilling your requests",
+        "Communicating with you about our services, updates, and promotions",
+        "Personalizing your experience with our services",
+        "Analyzing usage patterns to enhance our website and services",
+        "Protecting our rights, property, or safety, and that of our users",
+        "Complying with legal obligations and resolving disputes"
+      ],
+      "legalBasis": {
+        "intro": "We process your personal information based on one or more of the following legal grounds:",
+        "grounds": [
+          "Your consent",
+          "Performance of a contract with you",
+          "Compliance with legal obligations",
+          "Our legitimate business interests"
+        ]
+      }
+    },
+    "informationSharing": {
+      "title": "Information Sharing",
+      "intro": "We may share your information with:",
+      "recipients": [
+        {
+          "title": "Service Providers",
+          "description": "Third-party vendors who perform services on our behalf, such as web hosting, data analysis, payment processing, and customer service."
+        },
+        {
+          "title": "Business Partners",
+          "description": "Trusted partners who help us provide and improve our services."
+        },
+        {
+          "title": "Legal Authorities",
+          "description": "When required by law, court order, or governmental regulation."
+        },
+        {
+          "title": "Corporate Transactions",
+          "description": "In connection with a merger, acquisition, or sale of assets."
+        }
+      ],
+      "noSelling": "We do not sell your personal information to third parties. Any third parties with whom we share your information are contractually obligated to use it only for the purposes for which it was disclosed."
+    },
+    "dataSecurity": {
+      "title": "Data Security",
+      "intro": "We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. These measures include:",
+      "measures": [
+        "Encryption of sensitive data",
+        "Secure network architecture",
+        "Regular security assessments",
+        "Access controls and authentication procedures",
+        "Staff training on data protection"
+      ],
+      "disclaimer": "While we strive to protect your personal information, no method of transmission over the Internet or electronic storage is 100% secure. We cannot guarantee absolute security of your data.",
+      "retention": "We retain your personal information only for as long as necessary to fulfill the purposes for which it was collected, including legal, accounting, or reporting requirements."
+    },
+    "yourRights": {
+      "title": "Your Rights",
+      "intro": "Depending on your location, you may have certain rights regarding your personal information, including:",
+      "rights": [
+        {
+          "title": "Access",
+          "description": "Request access to your personal information."
+        },
+        {
+          "title": "Correction",
+          "description": "Request correction of inaccurate or incomplete information."
+        },
+        {
+          "title": "Deletion",
+          "description": "Request deletion of your personal information in certain circumstances."
+        },
+        {
+          "title": "Restriction",
+          "description": "Request restriction of processing of your personal information."
+        },
+        {
+          "title": "Data Portability",
+          "description": "Request transfer of your personal information to another service provider."
+        },
+        {
+          "title": "Objection",
+          "description": "Object to processing of your personal information."
+        },
+        {
+          "title": "Withdrawal of Consent",
+          "description": "Withdraw consent where processing is based on consent."
+        }
+      ],
+      "howToExercise": "To exercise these rights, please contact us using the information provided in the \"Contact Information\" section. We will respond to your request within the timeframe required by applicable law."
+    },
+    "cookies": {
+      "title": "Cookies and Similar Technologies",
+      "intro": "We use cookies and similar technologies to enhance your experience on our website. Cookies are small text files stored on your device that help us:",
+      "purposes": [
+        "Remember your preferences and settings",
+        "Understand how you use our website",
+        "Improve our services",
+        "Provide personalized content and advertisements"
+      ],
+      "types": {
+        "intro": "We use the following types of cookies:",
+        "list": [
+          {
+            "title": "Essential Cookies",
+            "description": "Necessary for the website to function properly."
+          },
+          {
+            "title": "Analytical/Performance Cookies",
+            "description": "Help us understand how visitors interact with our website."
+          },
+          {
+            "title": "Functionality Cookies",
+            "description": "Remember your preferences and settings."
+          },
+          {
+            "title": "Targeting Cookies",
+            "description": "Record your visit to our website, the pages you visit, and the links you follow."
+          }
+        ]
+      },
+      "control": "You can control cookies through your browser settings. However, disabling certain cookies may limit your ability to use some features of our website."
+    },
+    "children": {
+      "title": "Children's Privacy",
+      "policy": "Our services are not directed to individuals under the age of 18. We do not knowingly collect personal information from children. If you are a parent or guardian and believe that your child has provided us with personal information, please contact us, and we will take steps to delete such information."
+    },
+    "internationalTransfers": {
+      "title": "International Data Transfers",
+      "intro": "Your personal information may be transferred to and processed in countries other than the one in which you reside. These countries may have data protection laws that are different from those in your country.",
+      "safeguards": {
+        "intro": "When we transfer your personal information to other countries, we take appropriate safeguards to ensure that your information receives an adequate level of protection, including:",
+        "measures": [
+          "Using approved standard contractual clauses",
+          "Ensuring third-party service providers adhere to data protection principles",
+          "Implementing appropriate technical and organizational measures"
+        ]
+      }
+    },
+    "changes": {
+      "title": "Changes to This Privacy Policy",
+      "policy": "We may update this Privacy Policy from time to time to reflect changes in our practices or legal requirements. We will notify you of any material changes by posting the updated Privacy Policy on our website and updating the \"Last Updated\" date.",
+      "recommendation": "We encourage you to review this Privacy Policy periodically to stay informed about how we collect, use, and protect your information."
+    },
+    "contact": {
+      "title": "Contact Information",
+      "intro": "If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us at:",
+      "company": "Saudi Ease",
+      "address": {
+        "line1": "King Fahd Road, Al Olaya District",
+        "line2": "Riyadh, Saudi Arabia"
+      },
+      "email": "Email",
+      "phone": "Phone"
+    },
+    "footer": {
+      "privacyMatters": "Your Privacy Matters",
+      "acknowledgement": "By using Saudi Ease's services, you acknowledge that you have read and understood this Privacy Policy. We are committed to protecting your privacy and handling your data with transparency and care.",
+      "copyright": "Saudi Ease. All rights reserved.",
+      "termsOfService": "Terms of Service",
+      "legalHub": "Legal Hub"
+    }
+  },
+  "techStack": {
+    "metadata": {
+      "title": "Our Technology Stack | Saudi Ease - Digital Solutions for Saudi Businesses",
+      "description": "Explore the cutting-edge technologies we use to build powerful, scalable, and efficient digital solutions for businesses in Saudi Arabia."
+    },
+    "hero": {
+      "badge": "Technology Stack",
+      "title": "Cutting-Edge Technologies for Saudi Businesses",
+      "description": "We leverage the latest technologies to build robust, scalable, and efficient digital solutions tailored for the Saudi market. Our tech stack is carefully selected to ensure optimal performance, security, and user experience."
+    },
+    "tabs": {
+      "badge": "Our Tech Stack",
+      "title": "Technologies We Use",
+      "description": "We use a diverse range of modern technologies to deliver high-quality digital solutions for our clients."
+    },
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "database": "Database",
+      "mobile": "Mobile",
+      "design": "Design",
+      "devops": "DevOps"
+    },
+    "technologies": {
+      "react": "A JavaScript library for building user interfaces with reusable components.",
+      "nextjs": "A React framework that enables server-side rendering and static site generation for better performance and SEO.",
+      "typescript": "A strongly typed programming language that builds on JavaScript, giving better tooling at any scale.",
+      "tailwind": "A utility-first CSS framework for rapidly building custom user interfaces.",
+      "framer": "A production-ready motion library for React that makes creating animations easy.",
+      "redux": "A predictable state container for JavaScript apps, helping manage application state.",
+      "nodejs": "A JavaScript runtime built on Chrome's V8 JavaScript engine for building scalable network applications.",
+      "express": "A minimal and flexible Node.js web application framework for building APIs and web applications.",
+      "nestjs": "A progressive Node.js framework for building efficient and scalable server-side applications.",
+      "graphql": "A query language for APIs and a runtime for executing those queries with your existing data.",
+      "restapi": "An architectural style for designing networked applications, emphasizing simplicity and scalability.",
+      "mongodb": "A document-based NoSQL database that provides high performance, high availability, and easy scalability.",
+      "postgresql": "A powerful, open-source object-relational database system with a strong reputation for reliability.",
+      "mysql": "An open-source relational database management system that is widely used for web applications.",
+      "redis": "An in-memory data structure store, used as a database, cache, and message broker.",
+      "firebase": "A platform developed by Google for creating mobile and web applications, providing various services.",
+      "reactnative": "A framework for building native mobile applications using React and JavaScript.",
+      "flutter": "Google's UI toolkit for building natively compiled applications for mobile, web, and desktop from a single codebase.",
+      "ios": "Native iOS development using Swift, Apple's powerful and intuitive programming language.",
+      "android": "Native Android development using Kotlin, a modern programming language for Android development.",
+      "figma": "A collaborative interface design tool that enables real-time collaboration for design teams.",
+      "adobexd": "A vector-based user experience design tool for web and mobile apps.",
+      "photoshop": "Industry-standard software for creating and editing raster images and graphics.",
+      "illustrator": "Vector graphics editor for creating logos, icons, drawings, typography, and illustrations.",
+      "docker": "A platform for developing, shipping, and running applications in containers.",
+      "kubernetes": "An open-source system for automating deployment, scaling, and management of containerized applications.",
+      "aws": "Amazon Web Services, a comprehensive cloud computing platform offering various services.",
+      "cicd": "Continuous Integration and Continuous Deployment for automating the software delivery process.",
+      "vercel": "A platform for frontend frameworks and static sites, providing serverless functions and global CDN."
+    },
+    "process": {
+      "badge": "Development Process",
+      "title": "Our Approach to Development",
+      "description": "We follow a structured development process to ensure high-quality, efficient, and timely delivery of projects.",
+      "steps": {
+        "1": {
+          "title": "Planning & Analysis",
+          "description": "We start by understanding your business requirements and planning the project architecture and technology stack."
+        },
+        "2": {
+          "title": "Design & Prototyping",
+          "description": "Our designers create wireframes and prototypes to visualize the user interface and experience."
+        },
+        "3": {
+          "title": "Development & Testing",
+          "description": "Our developers build the solution using the selected technologies, with continuous testing throughout."
+        },
+        "4": {
+          "title": "Deployment & Support",
+          "description": "We deploy the solution to production and provide ongoing support and maintenance."
+        }
+      }
+    },
+    "security": {
+      "badge": "Security & Compliance",
+      "title": "Secure and Compliant Solutions",
+      "description": "We prioritize security and compliance in all our solutions, especially for the Saudi market.",
+      "items": {
+        "1": {
+          "title": "ZATCA Compliance",
+          "description": "Our e-invoicing solutions comply with Zakat, Tax and Customs Authority regulations in Saudi Arabia."
+        },
+        "2": {
+          "title": "Data Encryption",
+          "description": "We implement end-to-end encryption to protect sensitive data during transmission and storage."
+        },
+        "3": {
+          "title": "Authentication & Authorization",
+          "description": "Robust user authentication and role-based access control to protect your application."
+        },
+        "4": {
+          "title": "Regular Security Audits",
+          "description": "We conduct regular security audits and vulnerability assessments to identify and fix potential issues."
+        },
+        "5": {
+          "title": "GDPR & CCPA Compliance",
+          "description": "Our solutions are designed to comply with global data protection regulations."
+        },
+        "6": {
+          "title": "Secure Payment Processing",
+          "description": "Integration with secure payment gateways that comply with PCI DSS standards."
+        }
+      }
+    },
+    "performance": {
+      "badge": "Performance Optimization",
+      "title": "Fast and Efficient Solutions",
+      "description": "We optimize our solutions for maximum performance and efficiency.",
+      "items": {
+        "1": {
+          "title": "Code Optimization",
+          "description": "We write clean, efficient code and use modern techniques to optimize performance."
+        },
+        "2": {
+          "title": "Image & Asset Optimization",
+          "description": "We optimize images and assets to reduce load times and improve user experience."
+        },
+        "3": {
+          "title": "Caching Strategies",
+          "description": "We implement effective caching strategies to reduce server load and improve response times."
+        },
+        "4": {
+          "title": "CDN Integration",
+          "description": "We use Content Delivery Networks to deliver content faster to users across Saudi Arabia and beyond."
+        }
+      }
+    }
+  },
+  "termsOfService": {
+    "metadata": {
+      "title": "Terms of Service | Saudi Ease",
+      "description": "The terms and conditions governing your use of Saudi Ease services and platform."
+    },
+    "title": "Terms of Service",
+    "backToHome": "Back to Home",
+    "lastUpdated": "Last Updated: {date}",
+    "lastUpdatedDate": "March 5, 2025",
+    "disclaimer": "Please read these Terms of Service carefully before using our services. By accessing or using Saudi Ease's services, you agree to be bound by these terms and conditions.",
+    "sections": {
+      "introduction": {
+        "title": "Introduction",
+        "paragraph1": "Welcome to Saudi Ease. These Terms of Service govern your use of our website, products, and services. By accessing or using our services, you agree to be bound by these Terms of Service and our Privacy Policy.",
+        "paragraph2": "Saudi Ease provides digital solutions including web development, e-commerce solutions, ZATCA-compliant e-invoicing, branding, and digital marketing services. Our services are designed to help businesses across Saudi Arabia achieve their digital transformation goals in alignment with Vision 2030.",
+        "paragraph3": "If you do not agree with any part of these terms, you may not use our services. Please read these terms carefully before proceeding."
+      },
+      "services": {
+        "title": "Services",
+        "paragraph1": "Saudi Ease offers a range of digital services including but not limited to:",
+        "servicesList": [
+          "Website and mobile application development",
+          "E-commerce solutions with SADAD integration",
+          "ZATCA-compliant e-invoicing systems",
+          "Graphic design and branding",
+          "Digital marketing and SEO services",
+          "IT consulting and digital transformation services"
+        ],
+        "paragraph2": "Service descriptions, deliverables, timelines, and costs will be outlined in individual project proposals or agreements. Saudi Ease reserves the right to modify, suspend, or discontinue any aspect of our services at any time.",
+        "paragraph3": "While we strive to ensure high quality and timely delivery of all services, we cannot guarantee specific results or outcomes from the use of our services."
+      },
+      "userResponsibilities": {
+        "title": "User Responsibilities",
+        "paragraph1": "When using our services, you agree to:",
+        "responsibilitiesList": [
+          "Provide accurate and complete information as required for service delivery",
+          "Maintain the confidentiality of any account credentials provided to you",
+          "Use our services in compliance with all applicable laws and regulations, including Saudi Arabian laws",
+          "Not use our services for any illegal or unauthorized purpose",
+          "Not infringe upon the intellectual property rights of others",
+          "Provide timely feedback and approvals as required for project progression",
+          "Make payments according to the agreed payment schedule"
+        ],
+        "paragraph2": "You are responsible for ensuring that any content you provide for use in our services complies with all applicable laws and does not infringe upon the rights of any third party."
+      },
+      "intellectualProperty": {
+        "title": "Intellectual Property",
+        "paragraph1": "Unless otherwise specified in a written agreement:",
+        "ipRightsList": [
+          "Saudi Ease retains ownership of all intellectual property rights in our services, including but not limited to software, designs, methodologies, and processes",
+          "Upon full payment, clients receive a non-exclusive license to use the deliverables for their intended purpose",
+          "Clients retain ownership of their pre-existing intellectual property and content provided to Saudi Ease for use in the services",
+          "Saudi Ease may use client projects in our portfolio and marketing materials unless explicitly prohibited in writing"
+        ],
+        "paragraph2": "You agree not to reproduce, duplicate, copy, sell, resell, or exploit any portion of our services without express written permission from Saudi Ease."
+      },
+      "payment": {
+        "title": "Payment Terms",
+        "paragraph1": "Payment terms will be specified in individual project proposals or agreements. Generally:",
+        "paymentTermsList": [
+          "A non-refundable deposit is required to commence work",
+          "Payment schedules are typically tied to project milestones",
+          "Final deliverables will be released upon receipt of full payment",
+          "Late payments may incur additional fees and result in work suspension",
+          "All prices are quoted in Saudi Riyal (SAR) unless otherwise specified",
+          "Payment methods accepted include bank transfer, credit card, and SADAD"
+        ],
+        "paragraph2": "For subscription-based services, payments are due according to the subscription terms. Failure to make timely payments may result in service suspension or termination."
+      },
+      "termination": {
+        "title": "Termination",
+        "paragraph1": "Either party may terminate the service agreement:",
+        "terminationConditionsList": [
+          "As specified in the individual project agreement",
+          "If the other party breaches a material term of the agreement",
+          "By providing written notice according to the notice period specified in the agreement"
+        ],
+        "paragraph2": "Upon termination:",
+        "postTerminationList": [
+          "Client shall pay for all services rendered up to the termination date",
+          "Saudi Ease shall deliver all completed work for which payment has been received",
+          "Any confidential information shall be returned or destroyed as requested"
+        ],
+        "paragraph3": "Saudi Ease reserves the right to terminate services immediately if a client violates these Terms of Service or engages in illegal or fraudulent activities."
+      },
+      "limitationOfLiability": {
+        "title": "Limitation of Liability",
+        "paragraph1": "To the maximum extent permitted by law:",
+        "limitationsList": [
+          "Saudi Ease shall not be liable for any indirect, incidental, special, consequential, or punitive damages",
+          "Our total liability for any claims arising from or related to our services shall not exceed the amount paid by the client for the specific service giving rise to the claim",
+          "We do not warrant that our services will be uninterrupted, error-free, or completely secure",
+          "We are not responsible for third-party services or products integrated with our services"
+        ],
+        "paragraph2": "Some jurisdictions do not allow the exclusion of certain warranties or the limitation of liability for certain damages, so some of the above limitations may not apply to you."
+      },
+      "governingLaw": {
+        "title": "Governing Law",
+        "paragraph1": "These Terms of Service shall be governed by and construed in accordance with the laws of the Kingdom of Saudi Arabia, without regard to its conflict of law provisions.",
+        "paragraph2": "Any disputes arising from or relating to these terms or our services shall be subject to the exclusive jurisdiction of the courts in Riyadh, Saudi Arabia."
+      },
+      "changes": {
+        "title": "Changes to Terms",
+        "paragraph1": "Saudi Ease reserves the right to modify these Terms of Service at any time. We will provide notice of significant changes through our website or by direct communication.",
+        "paragraph2": "Your continued use of our services after such modifications constitutes your acceptance of the updated terms. If you do not agree to the modified terms, you should discontinue use of our services."
+      },
+      "contact": {
+        "title": "Contact Information",
+        "paragraph1": "If you have any questions about these Terms of Service, please contact us at:",
+        "companyName": "Saudi Ease",
+        "address1": "King Fahd Road, Al Olaya District",
+        "address2": "Riyadh, Saudi Arabia",
+        "email": "Email: info@saudiease.com",
+        "phone": "Phone: +966 558845503"
+      }
+    },
+    "acceptanceOfTerms": {
+      "title": "Acceptance of Terms",
+      "description": "By using Saudi Ease's services, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services."
+    },
+    "copyright": "© {year} Saudi Ease. All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "legalHub": "Legal Hub"
+  },
+  "faqPage": {
+    "metadata": {
+      "title": "Frequently Asked Questions | Saudi Ease",
+      "description": "Find answers to common questions about our web development, e-invoicing, digital marketing, and other services for Saudi businesses."
+    },
+    "title": "Frequently Asked Questions",
+    "description": "Find answers to common questions about our services, processes, and technologies. If you can't find what you're looking for, please contact our support team.",
+    "loading": "Loading...",
+    "searchPlaceholder": "Search questions or answers...",
+    "clearFilters": "Clear Filters",
+    "allCategories": "All Categories",
+
+    "showingResults": "Showing {filtered} of {total} questions{category, select, '' {} other { in {category}}}{query, select, '' {} other { matching \"{query}\"}}",
+    "noResults": "No results found",
+    "noResultsDescription": "We couldn't find any FAQs matching your search criteria. Please try different keywords or browse all categories.",
+    "stillHaveQuestions": "Still have questions?",
+    "contactSupportDescription": "If you couldn't find the answer to your question, our support team is here to help. Contact us and we'll get back to you as soon as possible.",
+    "contactSupport": "Contact Support",
+    "callUs": "Call Us",
+    "showing": "Showing",
+    "of": "of",
+    "questionsA": "questions",
+    "in": "in",
+    "matching": "matching",
+    "questions": [
+      {
+        "question": "What types of digital services do you offer?",
+        "answer": "We offer a wide range of digital services including web development, e-invoicing solutions, graphic design & branding, and digital marketing."
+      },
+      {
+        "question": "How can I request a quote for my project?",
+        "answer": "You can request a quote by filling out the contact form on this page or by contacting us directly via phone or email."
+      },
+      {
+        "question": "What is the typical turnaround time for a project?",
+        "answer": "The turnaround time varies depending on the scope and complexity of the project. We'll provide a detailed timeline during the initial consultation."
+      },
+      {
+        "question": "Do you offer ongoing support and maintenance?",
+        "answer": "Yes, we offer ongoing support and maintenance packages to ensure your digital solutions remain up-to-date and perform optimally."
+      },
+      {
+        "question": "Are your e-invoicing solutions ZATCA compliant?",
+        "answer": "Yes, our e-invoicing solutions are fully compliant with ZATCA regulations in Saudi Arabia."
+      }
+    ]
+  },
+  "search": {
+    "placeholder": "Search for services, projects, blog posts, and more...",
+    "noResults": "No results found",
+    "noResultsDescription": "We couldn't find any matches for \"{query}\". Try checking for typos or using different keywords.",
+    "recentSearches": "Recent Searches",
+    "clearAll": "Clear all",
+    "popularSearches": "Popular Searches",
+    "quickLinks": "Quick Links",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "blog": "Blog",
+    "contactUs": "Contact Us",
+    "all": "All",
+    "pages": "Pages",
+    "projects": "Projects",
+    "navigate": "to navigate",
+    "select": "to select",
+    "close": "to close",
+    "closeButton": "Close",
+    "loading": "Loading...",
+    "keyboardShortcuts": {
+      "navigate": "to navigate",
+      "select": "to select",
+      "close": "to close"
     }
   }
 }

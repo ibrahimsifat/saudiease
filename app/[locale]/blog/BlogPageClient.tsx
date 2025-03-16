@@ -11,7 +11,8 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { blogPosts } from "@/data/blog-posts";
+import { Locale } from "@/config/i18n";
+import { getBlogs } from "@/data/blog-posts/index";
 import { useMobile } from "@/hooks/use-mobile";
 import { ArrowRight, Calendar, Search } from "lucide-react";
 import Image from "next/image";
@@ -128,7 +129,7 @@ export default function BlogPageClient({ locale = "en" }: { locale?: string }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const isMobile = useMobile();
-
+  const blogPosts = getBlogs(locale as Locale);
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState("all");
   const [filteredPosts, setFilteredPosts] = useState(blogPosts);

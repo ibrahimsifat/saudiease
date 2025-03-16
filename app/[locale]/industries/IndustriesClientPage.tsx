@@ -1,8 +1,5 @@
 "use client";
 
-import ContactSection from "@/components/contact-section";
-import Footer from "@/components/footer";
-import Navbar from "@/components/navbar";
 import { Button } from "@/components/ui/button";
 import { businessCategories } from "@/data/business-categories";
 import { motion } from "framer-motion";
@@ -14,7 +11,7 @@ import { useParams } from "next/navigation";
 
 export default function IndustriesClientPage() {
   const params = useParams();
-  const locale = params.locale || "en";
+  const locale = params.locale || "ar";
   const isRTL = locale === "ar";
   const t = useTranslations("industriesPage");
 
@@ -22,8 +19,6 @@ export default function IndustriesClientPage() {
 
   return (
     <main className="min-h-screen">
-      <Navbar />
-
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">
         {/* Background elements */}
@@ -408,9 +403,6 @@ export default function IndustriesClientPage() {
           </div>
         </div>
       </section>
-
-      <ContactSection />
-      <Footer />
     </main>
   );
 }

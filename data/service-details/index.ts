@@ -1,5 +1,6 @@
 import type { Locale } from "@/config/i18n";
-import { serviceDetails as arServiceDetails } from "./ar";
+import { serviceDetailsAR as arServiceDetails } from "./ar";
+import { serviceDetailsBn as bnServiceDetails } from "./bn";
 import { serviceDetails as enServiceDetails } from "./en";
 
 // Map of locale to service details
@@ -7,7 +8,7 @@ const serviceDetailsMap = {
   en: enServiceDetails,
   ar: arServiceDetails,
   // Add other languages as they become available
-  bn: enServiceDetails, // Fallback to English for Bengali until translated
+  bn: bnServiceDetails, // Fallback to English for Bengali until translated
 };
 
 // Function to get service details for a specific locale

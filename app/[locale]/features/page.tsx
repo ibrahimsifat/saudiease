@@ -7,7 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { features } from "@/data/features";
+import { getFeatures } from "@/data/features/index";
 import { generateWebsiteSchema } from "@/lib/schema";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import type { Metadata } from "next";
@@ -39,8 +39,10 @@ export default async function FeaturesPage({
   params: { locale?: string };
 }) {
   const t = await getTranslations("featuresPage");
-
-  const isRTL = params.locale === "ar";
+  const { locale } = await params;
+  console.log(locale);
+  const isRTL = locale === "ar";
+  const features = getFeatures(locale);
 
   return (
     <main className="min-h-screen">

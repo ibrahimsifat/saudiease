@@ -8,6 +8,6 @@ const BlogSection = dynamic(() => import("@/components/home/blog-section"), {
   ssr: false,
 });
 
-export default function ClientBlogSection() {
-  return <BlogSection />;
+export default function ClientBlogSection({ locale }: { locale: string }) {
+  return <BlogSection locale={locale} />;
 }

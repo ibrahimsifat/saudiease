@@ -1,22 +1,36 @@
-import { faqs } from "@/data/faq";
 import { generateFAQSchema, generatePageMetadata } from "@/lib/seo-utils";
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import Script from "next/script";
 import { Suspense } from "react";
 import FAQPageClient from "./FAQPageClient";
 
-export const metadata: Metadata = generatePageMetadata({
-  title: "Frequently Asked Questions | Saudi Ease",
-  description:
-    "Find answers to common questions about our web development, e-invoicing, digital marketing, and other services for Saudi businesses.",
-  path: "/faq",
-});
+type Props = {
+  params: { locale: string };
+};
 
-export default function FAQPage() {
+export async function generateMetadata({
+  params: { locale },
+}: Props): Promise<Metadata> {
+  const t = await getTranslations({ locale, namespace: "faqPage" });
+
+  return generatePageMetadata({
+    title: t("metadata.title"),
+    description: t("metadata.description"),
+    path: `/${locale}/faq`,
+  });
+}
+
+export default async function FAQPage({ params: { locale } }: Props) {
+  // unstable_setRequestLocale(locale);
+
+  const t = await getTranslations({ locale, namespace: "faqPage" });
+
+  // Generate FAQ schema with translated content
   const faqSchema = generateFAQSchema(
-    faqs.map((faq) => ({
-      question: faq.question,
-      answer: faq.answer,
+    Array.from({ length: 5 }, (_, i) => ({
+      question: t(`questions.${i}.question`),
+      answer: t(`questions.${i}.answer`),
     }))
   );
 
@@ -30,11 +44,11 @@ export default function FAQPage() {
       <Suspense
         fallback={
           <div className="min-h-screen flex items-center justify-center">
-            Loading...
+            {t("loading")}
           </div>
         }
       >
-        <FAQPageClient />
+        <FAQPageClient locale={locale} />
       </Suspense>
     </>
   );

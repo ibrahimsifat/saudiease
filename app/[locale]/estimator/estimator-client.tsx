@@ -1,337 +1,425 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { motion } from "framer-motion"
-import { useRouter } from "next/navigation"
-import Link from "next/link"
+import { motion } from "framer-motion";
 import {
   Calculator,
-  Clock,
   Calendar,
-  DollarSign,
-  Users,
-  Layers,
-  Code,
-  Smartphone,
-  Globe,
-  Database,
-  PieChart,
   CheckCircle,
   ChevronRight,
-  Send,
+  Clock,
+  Code,
+  Database,
+  DollarSign,
   Download,
+  Globe,
+  Layers,
+  PieChart,
+  Send,
   Share2,
-} from "lucide-react"
+  Smartphone,
+  Users,
+} from "lucide-react";
+import { useTranslations } from "next-intl";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Slider } from "@/components/ui/slider"
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Label } from "@/components/ui/label"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Progress } from "@/components/ui/progress"
-import { Badge } from "@/components/ui/badge"
-import { cn } from "@/lib/utils"
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Progress } from "@/components/ui/progress";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Slider } from "@/components/ui/slider";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Textarea } from "@/components/ui/textarea";
+import { cn } from "@/lib/utils";
 
-// Project types with their base costs and timelines
-const PROJECT_TYPES = [
-  {
-    id: "website",
-    name: "Website",
-    icon: <Globe className="h-5 w-5" />,
-    basePrice: 5000,
-    baseTimeWeeks: 4,
-    description: "Custom website development with responsive design and content management system.",
-  },
-  {
-    id: "ecommerce",
-    name: "E-Commerce Platform",
-    icon: <DollarSign className="h-5 w-5" />,
-    basePrice: 12000,
-    baseTimeWeeks: 8,
-    description: "Full-featured online store with product catalog, secure checkout, and inventory management.",
-  },
-  {
-    id: "mobile-app",
-    name: "Mobile Application",
-    icon: <Smartphone className="h-5 w-5" />,
-    basePrice: 15000,
-    baseTimeWeeks: 10,
-    description: "Native or cross-platform mobile application for iOS and Android devices.",
-  },
-  {
-    id: "custom-software",
-    name: "Custom Software",
-    icon: <Code className="h-5 w-5" />,
-    basePrice: 20000,
-    baseTimeWeeks: 12,
-    description: "Bespoke software solution tailored to your specific business requirements.",
-  },
-  {
-    id: "e-invoicing",
-    name: "E-Invoicing Solution",
-    icon: <Database className="h-5 w-5" />,
-    basePrice: 8000,
-    baseTimeWeeks: 6,
-    description: "ZATCA-compliant e-invoicing system with integration to your existing systems.",
-  },
-  {
-    id: "digital-marketing",
-    name: "Digital Marketing",
-    icon: <PieChart className="h-5 w-5" />,
-    basePrice: 3500,
-    baseTimeWeeks: 4,
-    description: "Comprehensive digital marketing strategy and implementation.",
-  },
-]
+type EstimatorClientProps = {
+  locale: string;
+};
 
-// Complexity levels with their multipliers
-const COMPLEXITY_LEVELS = [
-  { id: "basic", name: "Basic", priceMultiplier: 1, timeMultiplier: 1 },
-  { id: "standard", name: "Standard", priceMultiplier: 1.5, timeMultiplier: 1.3 },
-  { id: "advanced", name: "Advanced", priceMultiplier: 2, timeMultiplier: 1.7 },
-  { id: "enterprise", name: "Enterprise", priceMultiplier: 3, timeMultiplier: 2.5 },
-]
+export default function EstimatorClient({ locale }: EstimatorClientProps) {
+  const t = useTranslations("estimator");
+  const isRTL = locale === "ar";
+  const router = useRouter();
+  const [currentStep, setCurrentStep] = useState(1);
+  const [projectType, setProjectType] = useState<string>("website");
+  const [complexity, setComplexity] = useState<string>("standard");
+  const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
+  const [teamSize, setTeamSize] = useState<string>("medium");
+  const [urgencyMultiplier, setUrgencyMultiplier] = useState<number>(1);
+  const [maintenancePlan, setMaintenancePlan] = useState<string>("standard");
+  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [phone, setPhone] = useState<string>("");
+  const [company, setCompany] = useState<string>("");
+  const [message, setMessage] = useState<string>("");
+  const [estimatedPrice, setEstimatedPrice] = useState<number>(0);
+  const [estimatedTimeWeeks, setEstimatedTimeWeeks] = useState<number>(0);
+  const [isCalculating, setIsCalculating] = useState<boolean>(false);
+  const [showResults, setShowResults] = useState<boolean>(false);
+  const [progress, setProgress] = useState<number>(25);
 
-// Features with their additional costs and time
-const FEATURES = [
-  {
-    id: "user-auth",
-    name: "User Authentication",
-    additionalPrice: 1500,
-    additionalTimeWeeks: 1,
-    applicableTo: ["website", "ecommerce", "mobile-app", "custom-software"],
-    description: "Secure login, registration, and user profile management.",
-  },
-  {
-    id: "payment-gateway",
-    name: "Payment Gateway Integration",
-    additionalPrice: 2000,
-    additionalTimeWeeks: 1.5,
-    applicableTo: ["ecommerce", "mobile-app", "custom-software"],
-    description: "Integration with popular payment gateways like Mada, Apple Pay, and credit cards.",
-  },
-  {
-    id: "multi-language",
-    name: "Multi-language Support",
-    additionalPrice: 1800,
-    additionalTimeWeeks: 1,
-    applicableTo: ["website", "ecommerce", "mobile-app", "custom-software", "e-invoicing"],
-    description: "Support for Arabic, English, and other languages with RTL compatibility.",
-  },
-  {
-    id: "analytics",
-    name: "Advanced Analytics",
-    additionalPrice: 1200,
-    additionalTimeWeeks: 0.5,
-    applicableTo: ["website", "ecommerce", "mobile-app", "custom-software", "digital-marketing"],
-    description: "Detailed analytics dashboard with custom reports and insights.",
-  },
-  {
-    id: "api-integration",
-    name: "Third-party API Integration",
-    additionalPrice: 2500,
-    additionalTimeWeeks: 2,
-    applicableTo: ["website", "ecommerce", "mobile-app", "custom-software", "e-invoicing"],
-    description: "Integration with external services and APIs.",
-  },
-  {
-    id: "seo-optimization",
-    name: "SEO Optimization",
-    additionalPrice: 1000,
-    additionalTimeWeeks: 1,
-    applicableTo: ["website", "ecommerce", "digital-marketing"],
-    description: "On-page and technical SEO optimization for better search engine rankings.",
-  },
-  {
-    id: "content-management",
-    name: "Advanced Content Management",
-    additionalPrice: 1500,
-    additionalTimeWeeks: 1,
-    applicableTo: ["website", "ecommerce"],
-    description: "Sophisticated content management system with workflow and approval processes.",
-  },
-  {
-    id: "social-integration",
-    name: "Social Media Integration",
-    additionalPrice: 800,
-    additionalTimeWeeks: 0.5,
-    applicableTo: ["website", "ecommerce", "mobile-app", "digital-marketing"],
-    description: "Integration with social media platforms for sharing and authentication.",
-  },
-  {
-    id: "offline-mode",
-    name: "Offline Mode",
-    additionalPrice: 2000,
-    additionalTimeWeeks: 1.5,
-    applicableTo: ["mobile-app", "custom-software"],
-    description: "Ability to use the application without an internet connection.",
-  },
-  {
-    id: "push-notifications",
-    name: "Push Notifications",
-    additionalPrice: 1200,
-    additionalTimeWeeks: 1,
-    applicableTo: ["mobile-app"],
-    description: "Real-time push notifications to engage users.",
-  },
-  {
-    id: "reporting",
-    name: "Custom Reporting",
-    additionalPrice: 1800,
-    additionalTimeWeeks: 1.5,
-    applicableTo: ["ecommerce", "custom-software", "e-invoicing", "digital-marketing"],
-    description: "Customizable reports and dashboards for business intelligence.",
-  },
-  {
-    id: "zatca-compliance",
-    name: "ZATCA Compliance",
-    additionalPrice: 3000,
-    additionalTimeWeeks: 2,
-    applicableTo: ["ecommerce", "custom-software", "e-invoicing"],
-    description: "Full compliance with Saudi Arabian tax authority requirements.",
-  },
-]
+  // Project types with their base costs and timelines
+  const PROJECT_TYPES = [
+    {
+      id: "website",
+      name: t("projectTypes.website.name"),
+      icon: <Globe className="h-5 w-5" />,
+      basePrice: 5000,
+      baseTimeWeeks: 4,
+      description: t("projectTypes.website.description"),
+    },
+    {
+      id: "ecommerce",
+      name: t("projectTypes.ecommerce.name"),
+      icon: <DollarSign className="h-5 w-5" />,
+      basePrice: 12000,
+      baseTimeWeeks: 8,
+      description: t("projectTypes.ecommerce.description"),
+    },
+    {
+      id: "mobile-app",
+      name: t("projectTypes.mobileApp.name"),
+      icon: <Smartphone className="h-5 w-5" />,
+      basePrice: 15000,
+      baseTimeWeeks: 10,
+      description: t("projectTypes.mobileApp.description"),
+    },
+    {
+      id: "custom-software",
+      name: t("projectTypes.customSoftware.name"),
+      icon: <Code className="h-5 w-5" />,
+      basePrice: 20000,
+      baseTimeWeeks: 12,
+      description: t("projectTypes.customSoftware.description"),
+    },
+    {
+      id: "e-invoicing",
+      name: t("projectTypes.eInvoicing.name"),
+      icon: <Database className="h-5 w-5" />,
+      basePrice: 8000,
+      baseTimeWeeks: 6,
+      description: t("projectTypes.eInvoicing.description"),
+    },
+    {
+      id: "digital-marketing",
+      name: t("projectTypes.digitalMarketing.name"),
+      icon: <PieChart className="h-5 w-5" />,
+      basePrice: 3500,
+      baseTimeWeeks: 4,
+      description: t("projectTypes.digitalMarketing.description"),
+    },
+  ];
 
-// Team size multipliers
-const TEAM_SIZE_MULTIPLIERS = [
-  { id: "small", name: "Small (1-10 employees)", priceMultiplier: 0.8, timeMultiplier: 0.9 },
-  { id: "medium", name: "Medium (11-50 employees)", priceMultiplier: 1, timeMultiplier: 1 },
-  { id: "large", name: "Large (51-200 employees)", priceMultiplier: 1.2, timeMultiplier: 1.1 },
-  { id: "enterprise", name: "Enterprise (201+ employees)", priceMultiplier: 1.5, timeMultiplier: 1.3 },
-]
+  // Complexity levels with their multipliers
+  const COMPLEXITY_LEVELS = [
+    {
+      id: "basic",
+      name: t("complexity.basic.name"),
+      priceMultiplier: 1,
+      timeMultiplier: 1,
+    },
+    {
+      id: "standard",
+      name: t("complexity.standard.name"),
+      priceMultiplier: 1.5,
+      timeMultiplier: 1.3,
+    },
+    {
+      id: "advanced",
+      name: t("complexity.advanced.name"),
+      priceMultiplier: 2,
+      timeMultiplier: 1.7,
+    },
+    {
+      id: "enterprise",
+      name: t("complexity.enterprise.name"),
+      priceMultiplier: 3,
+      timeMultiplier: 2.5,
+    },
+  ];
 
-// Maintenance plans
-const MAINTENANCE_PLANS = [
-  {
-    id: "basic",
-    name: "Basic Support",
-    monthlyPrice: 500,
-    features: ["Bug fixes", "Security updates", "Email support (business hours)", "Monthly performance report"],
-  },
-  {
-    id: "standard",
-    name: "Standard Support",
-    monthlyPrice: 1200,
-    features: [
-      "All Basic Support features",
-      "Minor feature updates",
-      "Phone support (business hours)",
-      "Weekly backups",
-      "Monthly performance optimization",
-    ],
-  },
-  {
-    id: "premium",
-    name: "Premium Support",
-    monthlyPrice: 2500,
-    features: [
-      "All Standard Support features",
-      "Priority bug fixes",
-      "Quarterly feature additions",
-      "24/7 emergency support",
-      "Dedicated account manager",
-      "Daily backups",
-      "Monthly strategy consultation",
-    ],
-  },
-]
+  // Features with their additional costs and time
+  const FEATURES = [
+    {
+      id: "user-auth",
+      name: t("features.userAuth.name"),
+      additionalPrice: 1500,
+      additionalTimeWeeks: 1,
+      applicableTo: ["website", "ecommerce", "mobile-app", "custom-software"],
+      description: t("features.userAuth.description"),
+    },
+    {
+      id: "payment-gateway",
+      name: t("features.paymentGateway.name"),
+      additionalPrice: 2000,
+      additionalTimeWeeks: 1.5,
+      applicableTo: ["ecommerce", "mobile-app", "custom-software"],
+      description: t("features.paymentGateway.description"),
+    },
+    {
+      id: "multi-language",
+      name: t("features.multiLanguage.name"),
+      additionalPrice: 1800,
+      additionalTimeWeeks: 1,
+      applicableTo: [
+        "website",
+        "ecommerce",
+        "mobile-app",
+        "custom-software",
+        "e-invoicing",
+      ],
+      description: t("features.multiLanguage.description"),
+    },
+    {
+      id: "analytics",
+      name: t("features.analytics.name"),
+      additionalPrice: 1200,
+      additionalTimeWeeks: 0.5,
+      applicableTo: [
+        "website",
+        "ecommerce",
+        "mobile-app",
+        "custom-software",
+        "digital-marketing",
+      ],
+      description: t("features.analytics.description"),
+    },
+    {
+      id: "api-integration",
+      name: t("features.apiIntegration.name"),
+      additionalPrice: 2500,
+      additionalTimeWeeks: 2,
+      applicableTo: [
+        "website",
+        "ecommerce",
+        "mobile-app",
+        "custom-software",
+        "e-invoicing",
+      ],
+      description: t("features.apiIntegration.description"),
+    },
+    {
+      id: "seo-optimization",
+      name: t("features.seoOptimization.name"),
+      additionalPrice: 1000,
+      additionalTimeWeeks: 1,
+      applicableTo: ["website", "ecommerce", "digital-marketing"],
+      description: t("features.seoOptimization.description"),
+    },
+    {
+      id: "content-management",
+      name: t("features.contentManagement.name"),
+      additionalPrice: 1500,
+      additionalTimeWeeks: 1,
+      applicableTo: ["website", "ecommerce"],
+      description: t("features.contentManagement.description"),
+    },
+    {
+      id: "social-integration",
+      name: t("features.socialIntegration.name"),
+      additionalPrice: 800,
+      additionalTimeWeeks: 0.5,
+      applicableTo: ["website", "ecommerce", "mobile-app", "digital-marketing"],
+      description: t("features.socialIntegration.description"),
+    },
+    {
+      id: "offline-mode",
+      name: t("features.offlineMode.name"),
+      additionalPrice: 2000,
+      additionalTimeWeeks: 1.5,
+      applicableTo: ["mobile-app", "custom-software"],
+      description: t("features.offlineMode.description"),
+    },
+    {
+      id: "push-notifications",
+      name: t("features.pushNotifications.name"),
+      additionalPrice: 1200,
+      additionalTimeWeeks: 1,
+      applicableTo: ["mobile-app"],
+      description: t("features.pushNotifications.description"),
+    },
+    {
+      id: "reporting",
+      name: t("features.reporting.name"),
+      additionalPrice: 1800,
+      additionalTimeWeeks: 1.5,
+      applicableTo: [
+        "ecommerce",
+        "custom-software",
+        "e-invoicing",
+        "digital-marketing",
+      ],
+      description: t("features.reporting.description"),
+    },
+    {
+      id: "zatca-compliance",
+      name: t("features.zatcaCompliance.name"),
+      additionalPrice: 3000,
+      additionalTimeWeeks: 2,
+      applicableTo: ["ecommerce", "custom-software", "e-invoicing"],
+      description: t("features.zatcaCompliance.description"),
+    },
+  ];
 
-export default function EstimatorClient() {
-  const router = useRouter()
-  const [currentStep, setCurrentStep] = useState(1)
-  const [projectType, setProjectType] = useState<string>("website")
-  const [complexity, setComplexity] = useState<string>("standard")
-  const [selectedFeatures, setSelectedFeatures] = useState<string[]>([])
-  const [teamSize, setTeamSize] = useState<string>("medium")
-  const [urgencyMultiplier, setUrgencyMultiplier] = useState<number>(1)
-  const [maintenancePlan, setMaintenancePlan] = useState<string>("standard")
-  const [name, setName] = useState<string>("")
-  const [email, setEmail] = useState<string>("")
-  const [phone, setPhone] = useState<string>("")
-  const [company, setCompany] = useState<string>("")
-  const [message, setMessage] = useState<string>("")
-  const [estimatedPrice, setEstimatedPrice] = useState<number>(0)
-  const [estimatedTimeWeeks, setEstimatedTimeWeeks] = useState<number>(0)
-  const [isCalculating, setIsCalculating] = useState<boolean>(false)
-  const [showResults, setShowResults] = useState<boolean>(false)
-  const [progress, setProgress] = useState<number>(25)
+  // Team size multipliers
+  const TEAM_SIZE_MULTIPLIERS = [
+    {
+      id: "small",
+      name: t("teamSize.small.name"),
+      priceMultiplier: 0.8,
+      timeMultiplier: 0.9,
+    },
+    {
+      id: "medium",
+      name: t("teamSize.medium.name"),
+      priceMultiplier: 1,
+      timeMultiplier: 1,
+    },
+    {
+      id: "large",
+      name: t("teamSize.large.name"),
+      priceMultiplier: 1.2,
+      timeMultiplier: 1.1,
+    },
+    {
+      id: "enterprise",
+      name: t("teamSize.enterprise.name"),
+      priceMultiplier: 1.5,
+      timeMultiplier: 1.3,
+    },
+  ];
+
+  // Maintenance plans
+  const MAINTENANCE_PLANS = [
+    {
+      id: "basic",
+      name: t("maintenancePlans.basic.name"),
+      monthlyPrice: 500,
+      features: t("maintenancePlans.basic.features", {
+        returnObjects: true,
+      }) as string[],
+    },
+    {
+      id: "standard",
+      name: t("maintenancePlans.standard.name"),
+      monthlyPrice: 1200,
+      features: t("maintenancePlans.standard.features", {
+        returnObjects: true,
+      }) as string[],
+    },
+    {
+      id: "premium",
+      name: t("maintenancePlans.premium.name"),
+      monthlyPrice: 2500,
+      features: t("maintenancePlans.premium.features", {
+        returnObjects: true,
+      }) as string[],
+    },
+  ];
 
   // Calculate the estimate whenever relevant inputs change
   useEffect(() => {
-    calculateEstimate()
-  }, [projectType, complexity, selectedFeatures, teamSize, urgencyMultiplier, maintenancePlan])
+    calculateEstimate();
+  }, [
+    projectType,
+    complexity,
+    selectedFeatures,
+    teamSize,
+    urgencyMultiplier,
+    maintenancePlan,
+  ]);
 
   // Update progress based on current step
   useEffect(() => {
-    setProgress(currentStep * 25)
-  }, [currentStep])
+    setProgress(currentStep * 25);
+  }, [currentStep]);
 
   const calculateEstimate = () => {
-    const selectedProjectType = PROJECT_TYPES.find((type) => type.id === projectType)
-    const selectedComplexity = COMPLEXITY_LEVELS.find((level) => level.id === complexity)
-    const selectedTeamSizeMultiplier = TEAM_SIZE_MULTIPLIERS.find((size) => size.id === teamSize)
+    const selectedProjectType = PROJECT_TYPES.find(
+      (type) => type.id === projectType
+    );
+    const selectedComplexity = COMPLEXITY_LEVELS.find(
+      (level) => level.id === complexity
+    );
+    const selectedTeamSizeMultiplier = TEAM_SIZE_MULTIPLIERS.find(
+      (size) => size.id === teamSize
+    );
 
-    if (!selectedProjectType || !selectedComplexity || !selectedTeamSizeMultiplier) return
+    if (
+      !selectedProjectType ||
+      !selectedComplexity ||
+      !selectedTeamSizeMultiplier
+    )
+      return;
 
     // Base calculation
     const basePrice =
-      selectedProjectType.basePrice * selectedComplexity.priceMultiplier * selectedTeamSizeMultiplier.priceMultiplier
+      selectedProjectType.basePrice *
+      selectedComplexity.priceMultiplier *
+      selectedTeamSizeMultiplier.priceMultiplier;
     const baseTime =
-      selectedProjectType.baseTimeWeeks * selectedComplexity.timeMultiplier * selectedTeamSizeMultiplier.timeMultiplier
+      selectedProjectType.baseTimeWeeks *
+      selectedComplexity.timeMultiplier *
+      selectedTeamSizeMultiplier.timeMultiplier;
 
     // Add feature costs and time
-    let featurePrice = 0
-    let featureTime = 0
+    let featurePrice = 0;
+    let featureTime = 0;
 
     selectedFeatures.forEach((featureId) => {
-      const feature = FEATURES.find((f) => f.id === featureId)
+      const feature = FEATURES.find((f) => f.id === featureId);
       if (feature) {
-        featurePrice += feature.additionalPrice
-        featureTime += feature.additionalTimeWeeks
+        featurePrice += feature.additionalPrice;
+        featureTime += feature.additionalTimeWeeks;
       }
-    })
+    });
 
     // Apply urgency multiplier (affects both price and time)
-    const totalPrice = (basePrice + featurePrice) * urgencyMultiplier
+    const totalPrice = (basePrice + featurePrice) * urgencyMultiplier;
     // For urgent projects, we can reduce time but at a higher cost
     const totalTime =
-      urgencyMultiplier < 1 ? baseTime + featureTime - (1 - urgencyMultiplier) * 5 : baseTime + featureTime
+      urgencyMultiplier < 1
+        ? baseTime + featureTime - (1 - urgencyMultiplier) * 5
+        : baseTime + featureTime;
 
     // Set the calculated values
-    setEstimatedPrice(Math.round(totalPrice))
-    setEstimatedTimeWeeks(Math.round(totalTime * 10) / 10) // Round to 1 decimal place
-  }
+    setEstimatedPrice(Math.round(totalPrice));
+    setEstimatedTimeWeeks(Math.round(totalTime * 10) / 10); // Round to 1 decimal place
+  };
 
   const handleFeatureToggle = (featureId: string) => {
     setSelectedFeatures((prev) =>
-      prev.includes(featureId) ? prev.filter((id) => id !== featureId) : [...prev, featureId],
-    )
-  }
+      prev.includes(featureId)
+        ? prev.filter((id) => id !== featureId)
+        : [...prev, featureId]
+    );
+  };
 
   const handleNextStep = () => {
     if (currentStep < 4) {
-      setCurrentStep((prev) => prev + 1)
-      window.scrollTo({ top: 0, behavior: "smooth" })
+      setCurrentStep((prev) => prev + 1);
+      window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
       // Final step - show results
-      setIsCalculating(true)
+      setIsCalculating(true);
       setTimeout(() => {
-        setIsCalculating(false)
-        setShowResults(true)
-      }, 1500)
+        setIsCalculating(false);
+        setShowResults(true);
+      }, 1500);
     }
-  }
+  };
 
   const handlePrevStep = () => {
     if (currentStep > 1) {
-      setCurrentStep((prev) => prev - 1)
-      window.scrollTo({ top: 0, behavior: "smooth" })
+      setCurrentStep((prev) => prev - 1);
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
-  }
+  };
 
   const handleSubmit = () => {
     // In a real application, you would send this data to your backend
@@ -349,27 +437,32 @@ export default function EstimatorClient() {
       message,
       estimatedPrice,
       estimatedTimeWeeks,
-    })
+    });
 
     // Redirect to consultation page
-    router.push("/schedule-consultation")
-  }
+    router.push(`/${locale}/schedule-consultation`);
+  };
 
   const getApplicableFeatures = () => {
-    return FEATURES.filter((feature) => feature.applicableTo.includes(projectType))
-  }
+    return FEATURES.filter((feature) =>
+      feature.applicableTo.includes(projectType)
+    );
+  };
 
   const getMaintenancePlanDetails = () => {
-    return MAINTENANCE_PLANS.find((plan) => plan.id === maintenancePlan)
-  }
+    return MAINTENANCE_PLANS.find((plan) => plan.id === maintenancePlan);
+  };
 
   const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat("en-SA", {
-      style: "currency",
-      currency: "SAR",
-      maximumFractionDigits: 0,
-    }).format(amount)
-  }
+    return new Intl.NumberFormat(
+      locale === "ar" ? "ar-SA" : locale === "bn" ? "bn-BD" : "en-SA",
+      {
+        style: "currency",
+        currency: "SAR",
+        maximumFractionDigits: 0,
+      }
+    ).format(amount);
+  };
 
   // Animation variants
   const containerVariants = {
@@ -381,7 +474,7 @@ export default function EstimatorClient() {
         delayChildren: 0.2,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
@@ -390,10 +483,13 @@ export default function EstimatorClient() {
       opacity: 1,
       transition: { duration: 0.5 },
     },
-  }
+  };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-gray-50 to-white">
+    <div
+      className="min-h-screen bg-gradient-to-b from-white via-gray-50 to-white"
+      dir={isRTL ? "rtl" : "ltr"}
+    >
       {/* Hero Section */}
       <section className="pt-32 pb-16 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-blue-500/5 z-0"></div>
@@ -410,8 +506,8 @@ export default function EstimatorClient() {
               transition={{ duration: 0.5 }}
               className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4"
             >
-              <Calculator className="w-4 h-4 mr-2" />
-              Interactive Project Estimator
+              <Calculator className={cn("w-4 h-4", isRTL ? "ml-2" : "mr-2")} />
+              {t("hero.badge")}
             </motion.div>
 
             <motion.h1
@@ -420,7 +516,7 @@ export default function EstimatorClient() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-600"
             >
-              Get an Instant Estimate for Your Project
+              {t("hero.title")}
             </motion.h1>
 
             <motion.p
@@ -429,8 +525,7 @@ export default function EstimatorClient() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-lg text-gray-600 mb-8"
             >
-              Use our interactive estimator to get an approximate cost and timeline for your digital project. Adjust
-              parameters to see how different choices affect your project scope.
+              {t("hero.description")}
             </motion.p>
 
             {!showResults && (
@@ -444,10 +539,10 @@ export default function EstimatorClient() {
                   <div className="w-full">
                     <Progress value={progress} className="h-2" />
                     <div className="flex justify-between mt-2 text-sm text-gray-500">
-                      <span>Project Details</span>
-                      <span>Features</span>
-                      <span>Business Info</span>
-                      <span>Contact</span>
+                      <span>{t("steps.projectDetails")}</span>
+                      <span>{t("steps.features")}</span>
+                      <span>{t("steps.businessInfo")}</span>
+                      <span>{t("steps.contact")}</span>
                     </div>
                   </div>
                 </div>
@@ -470,13 +565,23 @@ export default function EstimatorClient() {
                   animate="visible"
                   className="bg-white rounded-2xl shadow-xl p-6 md:p-8"
                 >
-                  <motion.h2 variants={itemVariants} className="text-2xl font-bold mb-6 flex items-center">
-                    <Layers className="mr-2 h-6 w-6 text-primary" />
-                    Project Type & Complexity
+                  <motion.h2
+                    variants={itemVariants}
+                    className="text-2xl font-bold mb-6 flex items-center"
+                  >
+                    <Layers
+                      className={cn(
+                        "h-6 w-6 text-primary",
+                        isRTL ? "ml-2" : "mr-2"
+                      )}
+                    />
+                    {t("step1.title")}
                   </motion.h2>
 
                   <motion.div variants={itemVariants} className="mb-8">
-                    <h3 className="text-lg font-medium mb-4">What type of project do you need?</h3>
+                    <h3 className="text-lg font-medium mb-4">
+                      {t("step1.projectTypeQuestion")}
+                    </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                       {PROJECT_TYPES.map((type) => (
                         <div
@@ -485,29 +590,36 @@ export default function EstimatorClient() {
                             "border rounded-xl p-4 cursor-pointer transition-all",
                             projectType === type.id
                               ? "border-primary bg-primary/5 shadow-md"
-                              : "border-gray-200 hover:border-primary/50 hover:shadow-sm",
+                              : "border-gray-200 hover:border-primary/50 hover:shadow-sm"
                           )}
                           onClick={() => setProjectType(type.id)}
                         >
                           <div className="flex items-center mb-2">
                             <div
                               className={cn(
-                                "w-8 h-8 rounded-full flex items-center justify-center mr-3",
-                                projectType === type.id ? "bg-primary text-white" : "bg-gray-100 text-gray-500",
+                                "w-8 h-8 rounded-full flex items-center justify-center",
+                                isRTL ? "ml-3" : "mr-3",
+                                projectType === type.id
+                                  ? "bg-primary text-white"
+                                  : "bg-gray-100 text-gray-500"
                               )}
                             >
                               {type.icon}
                             </div>
                             <h4 className="font-medium">{type.name}</h4>
                           </div>
-                          <p className="text-sm text-gray-500">{type.description}</p>
+                          <p className="text-sm text-gray-500">
+                            {type.description}
+                          </p>
                         </div>
                       ))}
                     </div>
                   </motion.div>
 
                   <motion.div variants={itemVariants} className="mb-8">
-                    <h3 className="text-lg font-medium mb-4">Project Complexity</h3>
+                    <h3 className="text-lg font-medium mb-4">
+                      {t("step1.complexityTitle")}
+                    </h3>
                     <RadioGroup
                       value={complexity}
                       onValueChange={setComplexity}
@@ -515,19 +627,28 @@ export default function EstimatorClient() {
                     >
                       {COMPLEXITY_LEVELS.map((level) => (
                         <div key={level.id} className="relative">
-                          <RadioGroupItem value={level.id} id={`complexity-${level.id}`} className="peer sr-only" />
+                          <RadioGroupItem
+                            value={level.id}
+                            id={`complexity-${level.id}`}
+                            className="peer sr-only"
+                          />
                           <Label
                             htmlFor={`complexity-${level.id}`}
                             className={cn(
                               "flex flex-col items-center justify-between rounded-xl border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary",
-                              complexity === level.id && "border-primary bg-primary/5",
+                              complexity === level.id &&
+                                "border-primary bg-primary/5"
                             )}
                           >
                             <div className="mb-2 text-center">
-                              <span className="text-lg font-medium">{level.name}</span>
+                              <span className="text-lg font-medium">
+                                {level.name}
+                              </span>
                             </div>
                             <div className="text-xs text-center text-gray-500">
-                              {level.priceMultiplier}x cost multiplier
+                              {t("step1.costMultiplier", {
+                                multiplier: level.priceMultiplier,
+                              })}
                             </div>
                           </Label>
                         </div>
@@ -535,30 +656,42 @@ export default function EstimatorClient() {
                     </RadioGroup>
 
                     <div className="mt-4 bg-blue-50 p-4 rounded-lg">
-                      <h4 className="font-medium text-blue-700 mb-2">Complexity Guide:</h4>
+                      <h4 className="font-medium text-blue-700 mb-2">
+                        {t("step1.complexityGuide.title")}
+                      </h4>
                       <ul className="text-sm text-blue-600 space-y-1">
                         <li>
-                          <strong>Basic:</strong> Simple design, limited features, standard functionality
+                          <strong>{t("complexity.basic.name")}:</strong>{" "}
+                          {t("step1.complexityGuide.basic")}
                         </li>
                         <li>
-                          <strong>Standard:</strong> Custom design, common features, some integrations
+                          <strong>{t("complexity.standard.name")}:</strong>{" "}
+                          {t("step1.complexityGuide.standard")}
                         </li>
                         <li>
-                          <strong>Advanced:</strong> Complex design, advanced features, multiple integrations
+                          <strong>{t("complexity.advanced.name")}:</strong>{" "}
+                          {t("step1.complexityGuide.advanced")}
                         </li>
                         <li>
-                          <strong>Enterprise:</strong> Highly customized, complex architecture, extensive integrations
+                          <strong>{t("complexity.enterprise.name")}:</strong>{" "}
+                          {t("step1.complexityGuide.enterprise")}
                         </li>
                       </ul>
                     </div>
                   </motion.div>
 
                   <motion.div variants={itemVariants} className="mb-8">
-                    <h3 className="text-lg font-medium mb-4">Project Urgency</h3>
+                    <h3 className="text-lg font-medium mb-4">
+                      {t("step1.urgencyTitle")}
+                    </h3>
                     <div className="space-y-4">
                       <div className="flex items-center justify-between">
-                        <span className="text-sm text-gray-500">Standard Timeline</span>
-                        <span className="text-sm text-gray-500">Urgent (Higher Cost)</span>
+                        <span className="text-sm text-gray-500">
+                          {t("step1.standardTimeline")}
+                        </span>
+                        <span className="text-sm text-gray-500">
+                          {t("step1.urgentHigherCost")}
+                        </span>
                       </div>
                       <Slider
                         defaultValue={[1]}
@@ -566,28 +699,74 @@ export default function EstimatorClient() {
                         min={0.8}
                         step={0.1}
                         value={[urgencyMultiplier]}
-                        onValueChange={(value) => setUrgencyMultiplier(value[0])}
+                        onValueChange={(value) =>
+                          setUrgencyMultiplier(value[0])
+                        }
                         className="w-full"
                       />
                       <div className="flex items-center justify-between text-sm">
                         <span className="flex items-center">
-                          <Calendar className="h-4 w-4 mr-1 text-green-500" />
-                          <span className="text-green-600">Standard Timeline</span>
-                          <span className="ml-1 text-gray-500">(1x cost)</span>
+                          <Calendar
+                            className={cn(
+                              "h-4 w-4 text-green-500",
+                              isRTL ? "ml-1" : "mr-1"
+                            )}
+                          />
+                          <span className="text-green-600">
+                            {t("step1.standardTimelineLabel")}
+                          </span>
+                          <span
+                            className={cn(
+                              "text-gray-500",
+                              isRTL ? "mr-1" : "ml-1"
+                            )}
+                          >
+                            {t("step1.standardCost")}
+                          </span>
                         </span>
                         <span className="flex items-center">
-                          <Clock className="h-4 w-4 mr-1 text-amber-500" />
-                          <span className="text-amber-600">Expedited</span>
-                          <span className="ml-1 text-gray-500">({urgencyMultiplier.toFixed(1)}x cost)</span>
+                          <Clock
+                            className={cn(
+                              "h-4 w-4 text-amber-500",
+                              isRTL ? "ml-1" : "mr-1"
+                            )}
+                          />
+                          <span className="text-amber-600">
+                            {t("step1.expedited")}
+                          </span>
+                          <span
+                            className={cn(
+                              "text-gray-500",
+                              isRTL ? "mr-1" : "ml-1"
+                            )}
+                          >
+                            {t("step1.expeditedCost", {
+                              multiplier: urgencyMultiplier.toFixed(1),
+                            })}
+                          </span>
                         </span>
                       </div>
                     </div>
                   </motion.div>
 
-                  <motion.div variants={itemVariants} className="flex justify-end">
-                    <Button onClick={handleNextStep} className="bg-primary hover:bg-primary/90">
-                      Continue to Features
-                      <ChevronRight className="ml-2 h-4 w-4" />
+                  <motion.div
+                    variants={itemVariants}
+                    className={cn(
+                      "flex",
+                      isRTL ? "justify-start" : "justify-end"
+                    )}
+                  >
+                    <Button
+                      onClick={handleNextStep}
+                      className="bg-primary hover:bg-primary/90"
+                    >
+                      {t("navigation.continueToFeatures")}
+                      <ChevronRight
+                        className={cn(
+                          "h-4 w-4",
+                          isRTL ? "mr-2 rotate-180" : "ml-2"
+                        )}
+                      />
                     </Button>
                   </motion.div>
                 </motion.div>
@@ -601,17 +780,29 @@ export default function EstimatorClient() {
                   animate="visible"
                   className="bg-white rounded-2xl shadow-xl p-6 md:p-8"
                 >
-                  <motion.h2 variants={itemVariants} className="text-2xl font-bold mb-6 flex items-center">
-                    <Code className="mr-2 h-6 w-6 text-primary" />
-                    Project Features
+                  <motion.h2
+                    variants={itemVariants}
+                    className="text-2xl font-bold mb-6 flex items-center"
+                  >
+                    <Code
+                      className={cn(
+                        "h-6 w-6 text-primary",
+                        isRTL ? "ml-2" : "mr-2"
+                      )}
+                    />
+                    {t("step2.title")}
                   </motion.h2>
 
                   <motion.div variants={itemVariants} className="mb-8">
-                    <h3 className="text-lg font-medium mb-4">Select the features you need</h3>
+                    <h3 className="text-lg font-medium mb-4">
+                      {t("step2.selectFeaturesTitle")}
+                    </h3>
                     <p className="text-gray-500 mb-6">
-                      Choose the features that are essential for your{" "}
-                      {PROJECT_TYPES.find((t) => t.id === projectType)?.name.toLowerCase()}. Each feature affects the
-                      overall cost and timeline.
+                      {t("step2.selectFeaturesDescription", {
+                        projectType: PROJECT_TYPES.find(
+                          (type) => type.id === projectType
+                        )?.name.toLowerCase(),
+                      })}
                     </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -622,7 +813,7 @@ export default function EstimatorClient() {
                             "border rounded-xl p-4 cursor-pointer transition-all",
                             selectedFeatures.includes(feature.id)
                               ? "border-primary bg-primary/5 shadow-md"
-                              : "border-gray-200 hover:border-primary/50 hover:shadow-sm",
+                              : "border-gray-200 hover:border-primary/50 hover:shadow-sm"
                           )}
                           onClick={() => handleFeatureToggle(feature.id)}
                         >
@@ -630,13 +821,18 @@ export default function EstimatorClient() {
                             <Checkbox
                               id={`feature-${feature.id}`}
                               checked={selectedFeatures.includes(feature.id)}
-                              className="mt-1 mr-3"
+                              className={cn("mt-1", isRTL ? "ml-3" : "mr-3")}
                             />
                             <div>
-                              <label htmlFor={`feature-${feature.id}`} className="font-medium cursor-pointer">
+                              <label
+                                htmlFor={`feature-${feature.id}`}
+                                className="font-medium cursor-pointer"
+                              >
                                 {feature.name}
                               </label>
-                              <p className="text-sm text-gray-500 mt-1">{feature.description}</p>
+                              <p className="text-sm text-gray-500 mt-1">
+                                {feature.description}
+                              </p>
                               <div className="flex items-center mt-2 text-xs text-gray-500">
                                 <span className="flex items-center mr-3">
                                   <DollarSign className="h-3 w-3 mr-1 text-primary" />
@@ -644,7 +840,10 @@ export default function EstimatorClient() {
                                 </span>
                                 <span className="flex items-center">
                                   <Clock className="h-3 w-3 mr-1 text-amber-500" />
-                                  {feature.additionalTimeWeeks} {feature.additionalTimeWeeks === 1 ? "week" : "weeks"}
+                                  {feature.additionalTimeWeeks}{" "}
+                                  {t("step2.weeks", {
+                                    count: feature.additionalTimeWeeks,
+                                  })}
                                 </span>
                               </div>
                             </div>
@@ -655,9 +854,11 @@ export default function EstimatorClient() {
                   </motion.div>
 
                   <motion.div variants={itemVariants} className="mb-8">
-                    <h3 className="text-lg font-medium mb-4">Maintenance Plan</h3>
+                    <h3 className="text-lg font-medium mb-4">
+                      {t("step2.maintenancePlanTitle")}
+                    </h3>
                     <p className="text-gray-500 mb-6">
-                      Choose a maintenance plan to keep your project running smoothly after launch.
+                      {t("step2.maintenancePlanDescription")}
                     </p>
 
                     <RadioGroup
@@ -667,24 +868,37 @@ export default function EstimatorClient() {
                     >
                       {MAINTENANCE_PLANS.map((plan) => (
                         <div key={plan.id} className="relative">
-                          <RadioGroupItem value={plan.id} id={`plan-${plan.id}`} className="peer sr-only" />
+                          <RadioGroupItem
+                            value={plan.id}
+                            id={`plan-${plan.id}`}
+                            className="peer sr-only"
+                          />
                           <Label
                             htmlFor={`plan-${plan.id}`}
                             className={cn(
                               "flex flex-col h-full justify-between rounded-xl border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary",
-                              maintenancePlan === plan.id && "border-primary bg-primary/5",
+                              maintenancePlan === plan.id &&
+                                "border-primary bg-primary/5"
                             )}
                           >
                             <div className="mb-2">
-                              <span className="text-lg font-medium">{plan.name}</span>
+                              <span className="text-lg font-medium">
+                                {plan.name}
+                              </span>
                               <p className="text-sm text-primary font-bold mt-1">
-                                {formatCurrency(plan.monthlyPrice)}/month
+                                {formatCurrency(plan.monthlyPrice)}/
+                                {t("common.month")}
                               </p>
                             </div>
                             <ul className="text-xs text-gray-500 space-y-1 mt-2">
                               {plan.features.map((feature, index) => (
                                 <li key={index} className="flex items-start">
-                                  <CheckCircle className="h-3 w-3 text-green-500 mr-1 mt-0.5 flex-shrink-0" />
+                                  <CheckCircle
+                                    className={cn(
+                                      "h-3 w-3 text-green-500 mt-0.5 flex-shrink-0",
+                                      isRTL ? "ml-1" : "mr-1"
+                                    )}
+                                  />
                                   <span>{feature}</span>
                                 </li>
                               ))}
@@ -695,13 +909,30 @@ export default function EstimatorClient() {
                     </RadioGroup>
                   </motion.div>
 
-                  <motion.div variants={itemVariants} className="flex justify-between">
+                  <motion.div
+                    variants={itemVariants}
+                    className="flex justify-between"
+                  >
                     <Button onClick={handlePrevStep} variant="outline">
-                      Back
+                      {isRTL && (
+                        <ChevronRight className="ml-2 h-4 w-4 rotate-180" />
+                      )}
+                      {t("navigation.back")}
+                      {!isRTL && (
+                        <ChevronRight className="mr-2 h-4 w-4 rotate-180" />
+                      )}
                     </Button>
-                    <Button onClick={handleNextStep} className="bg-primary hover:bg-primary/90">
-                      Continue to Business Info
-                      <ChevronRight className="ml-2 h-4 w-4" />
+                    <Button
+                      onClick={handleNextStep}
+                      className="bg-primary hover:bg-primary/90"
+                    >
+                      {t("navigation.continueToBusinessInfo")}
+                      <ChevronRight
+                        className={cn(
+                          "h-4 w-4",
+                          isRTL ? "mr-2 rotate-180" : "ml-2"
+                        )}
+                      />
                     </Button>
                   </motion.div>
                 </motion.div>
@@ -715,15 +946,25 @@ export default function EstimatorClient() {
                   animate="visible"
                   className="bg-white rounded-2xl shadow-xl p-6 md:p-8"
                 >
-                  <motion.h2 variants={itemVariants} className="text-2xl font-bold mb-6 flex items-center">
-                    <Users className="mr-2 h-6 w-6 text-primary" />
-                    Business Information
+                  <motion.h2
+                    variants={itemVariants}
+                    className="text-2xl font-bold mb-6 flex items-center"
+                  >
+                    <Users
+                      className={cn(
+                        "h-6 w-6 text-primary",
+                        isRTL ? "ml-2" : "mr-2"
+                      )}
+                    />
+                    {t("step3.title")}
                   </motion.h2>
 
                   <motion.div variants={itemVariants} className="mb-8">
-                    <h3 className="text-lg font-medium mb-4">Company Size</h3>
+                    <h3 className="text-lg font-medium mb-4">
+                      {t("step3.companySizeTitle")}
+                    </h3>
                     <p className="text-gray-500 mb-6">
-                      The size of your organization helps us tailor the solution to your specific needs.
+                      {t("step3.companySizeDescription")}
                     </p>
 
                     <RadioGroup
@@ -733,16 +974,23 @@ export default function EstimatorClient() {
                     >
                       {TEAM_SIZE_MULTIPLIERS.map((size) => (
                         <div key={size.id} className="relative">
-                          <RadioGroupItem value={size.id} id={`size-${size.id}`} className="peer sr-only" />
+                          <RadioGroupItem
+                            value={size.id}
+                            id={`size-${size.id}`}
+                            className="peer sr-only"
+                          />
                           <Label
                             htmlFor={`size-${size.id}`}
                             className={cn(
                               "flex flex-col items-center justify-between rounded-xl border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary",
-                              teamSize === size.id && "border-primary bg-primary/5",
+                              teamSize === size.id &&
+                                "border-primary bg-primary/5"
                             )}
                           >
                             <div className="mb-2 text-center">
-                              <span className="text-lg font-medium">{size.name}</span>
+                              <span className="text-lg font-medium">
+                                {size.name}
+                              </span>
                             </div>
                           </Label>
                         </div>
@@ -751,46 +999,85 @@ export default function EstimatorClient() {
                   </motion.div>
 
                   <motion.div variants={itemVariants} className="mb-8">
-                    <h3 className="text-lg font-medium mb-4">Company Information</h3>
+                    <h3 className="text-lg font-medium mb-4">
+                      {t("step3.companyInfoTitle")}
+                    </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <Label htmlFor="company">Company Name</Label>
+                        <Label htmlFor="company">
+                          {t("step3.companyName")}
+                        </Label>
                         <Input
                           id="company"
-                          placeholder="Your company name"
+                          placeholder={t("step3.companyNamePlaceholder")}
                           value={company}
                           onChange={(e) => setCompany(e.target.value)}
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="industry">Industry</Label>
+                        <Label htmlFor="industry">{t("step3.industry")}</Label>
                         <select
                           id="industry"
                           className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                         >
-                          <option value="">Select your industry</option>
-                          <option value="retail">Retail & E-commerce</option>
-                          <option value="healthcare">Healthcare</option>
-                          <option value="finance">Finance & Banking</option>
-                          <option value="education">Education</option>
-                          <option value="manufacturing">Manufacturing</option>
-                          <option value="technology">Technology</option>
-                          <option value="hospitality">Hospitality & Tourism</option>
-                          <option value="real-estate">Real Estate</option>
-                          <option value="government">Government</option>
-                          <option value="other">Other</option>
+                          <option value="">{t("step3.selectIndustry")}</option>
+                          <option value="retail">
+                            {t("industries.retail")}
+                          </option>
+                          <option value="healthcare">
+                            {t("industries.healthcare")}
+                          </option>
+                          <option value="finance">
+                            {t("industries.finance")}
+                          </option>
+                          <option value="education">
+                            {t("industries.education")}
+                          </option>
+                          <option value="manufacturing">
+                            {t("industries.manufacturing")}
+                          </option>
+                          <option value="technology">
+                            {t("industries.technology")}
+                          </option>
+                          <option value="hospitality">
+                            {t("industries.hospitality")}
+                          </option>
+                          <option value="real-estate">
+                            {t("industries.realEstate")}
+                          </option>
+                          <option value="government">
+                            {t("industries.government")}
+                          </option>
+                          <option value="other">{t("industries.other")}</option>
                         </select>
                       </div>
                     </div>
                   </motion.div>
 
-                  <motion.div variants={itemVariants} className="flex justify-between">
+                  <motion.div
+                    variants={itemVariants}
+                    className="flex justify-between"
+                  >
                     <Button onClick={handlePrevStep} variant="outline">
-                      Back
+                      {isRTL && (
+                        <ChevronRight className="ml-2 h-4 w-4 rotate-180" />
+                      )}
+                      {t("navigation.back")}
+                      {!isRTL && (
+                        <ChevronRight className="mr-2 h-4 w-4 rotate-180" />
+                      )}
                     </Button>
-                    <Button onClick={handleNextStep} className="bg-primary hover:bg-primary/90">
-                      Continue to Contact Info
-                      <ChevronRight className="ml-2 h-4 w-4" />
+                    <Button
+                      onClick={handleNextStep}
+                      className="bg-primary hover:bg-primary/90"
+                    >
+                      {t("navigation.continueToContact")}
+                      <ChevronRight
+                        className={cn(
+                          "h-4 w-4",
+                          isRTL ? "mr-2 rotate-180" : "ml-2"
+                        )}
+                      />
                     </Button>
                   </motion.div>
                 </motion.div>
@@ -804,55 +1091,70 @@ export default function EstimatorClient() {
                   animate="visible"
                   className="bg-white rounded-2xl shadow-xl p-6 md:p-8"
                 >
-                  <motion.h2 variants={itemVariants} className="text-2xl font-bold mb-6 flex items-center">
-                    <Users className="mr-2 h-6 w-6 text-primary" />
-                    Contact Information
+                  <motion.h2
+                    variants={itemVariants}
+                    className="text-2xl font-bold mb-6 flex items-center"
+                  >
+                    <Users
+                      className={cn(
+                        "h-6 w-6 text-primary",
+                        isRTL ? "ml-2" : "mr-2"
+                      )}
+                    />
+                    {t("step4.title")}
                   </motion.h2>
 
                   <motion.div variants={itemVariants} className="mb-8">
-                    <h3 className="text-lg font-medium mb-4">Your Details</h3>
+                    <h3 className="text-lg font-medium mb-4">
+                      {t("step4.yourDetailsTitle")}
+                    </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <Label htmlFor="name">Full Name</Label>
+                        <Label htmlFor="name">{t("step4.fullName")}</Label>
                         <Input
                           id="name"
-                          placeholder="Your full name"
+                          placeholder={t("step4.fullNamePlaceholder")}
                           value={name}
                           onChange={(e) => setName(e.target.value)}
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="email">Email Address</Label>
+                        <Label htmlFor="email">{t("step4.email")}</Label>
                         <Input
                           id="email"
                           type="email"
-                          placeholder="your.email@example.com"
+                          placeholder={t("step4.emailPlaceholder")}
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="phone">Phone Number</Label>
+                        <Label htmlFor="phone">{t("step4.phone")}</Label>
                         <Input
                           id="phone"
-                          placeholder="+966 5X XXX XXXX"
+                          placeholder={t("step4.phonePlaceholder")}
                           value={phone}
                           onChange={(e) => setPhone(e.target.value)}
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="position">Position</Label>
-                        <Input id="position" placeholder="Your position" />
+                        <Label htmlFor="position">{t("step4.position")}</Label>
+                        <Input
+                          id="position"
+                          placeholder={t("step4.positionPlaceholder")}
+                        />
                       </div>
                     </div>
                   </motion.div>
 
                   <motion.div variants={itemVariants} className="mb-8">
                     <div className="space-y-2">
-                      <Label htmlFor="message">Additional Information</Label>
+                      <Label htmlFor="message">
+                        {t("step4.additionalInfo")}
+                      </Label>
                       <Textarea
                         id="message"
-                        placeholder="Tell us more about your project requirements..."
+                        placeholder={t("step4.additionalInfoPlaceholder")}
                         className="min-h-[120px]"
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
@@ -860,13 +1162,27 @@ export default function EstimatorClient() {
                     </div>
                   </motion.div>
 
-                  <motion.div variants={itemVariants} className="flex justify-between">
+                  <motion.div
+                    variants={itemVariants}
+                    className="flex justify-between"
+                  >
                     <Button onClick={handlePrevStep} variant="outline">
-                      Back
+                      {isRTL && (
+                        <ChevronRight className="ml-2 h-4 w-4 rotate-180" />
+                      )}
+                      {t("navigation.back")}
+                      {!isRTL && (
+                        <ChevronRight className="mr-2 h-4 w-4 rotate-180" />
+                      )}
                     </Button>
-                    <Button onClick={handleNextStep} className="bg-primary hover:bg-primary/90">
-                      Get Your Estimate
-                      <Calculator className="ml-2 h-4 w-4" />
+                    <Button
+                      onClick={handleNextStep}
+                      className="bg-primary hover:bg-primary/90"
+                    >
+                      {t("navigation.getEstimate")}
+                      <Calculator
+                        className={cn("h-4 w-4", isRTL ? "mr-2" : "ml-2")}
+                      />
                     </Button>
                   </motion.div>
                 </motion.div>
@@ -878,8 +1194,10 @@ export default function EstimatorClient() {
               {isCalculating ? (
                 <div className="bg-white rounded-2xl shadow-xl p-8 text-center">
                   <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-primary mx-auto mb-6"></div>
-                  <h2 className="text-2xl font-bold mb-4">Calculating Your Estimate...</h2>
-                  <p className="text-gray-500">Please wait while we process your project details.</p>
+                  <h2 className="text-2xl font-bold mb-4">
+                    {t("results.calculating")}
+                  </h2>
+                  <p className="text-gray-500">{t("results.pleaseWait")}</p>
                 </div>
               ) : (
                 <motion.div
@@ -889,26 +1207,42 @@ export default function EstimatorClient() {
                   className="bg-white rounded-2xl shadow-xl overflow-hidden"
                 >
                   <div className="bg-gradient-to-r from-primary to-blue-600 p-8 text-white">
-                    <h2 className="text-3xl font-bold mb-2">Your Project Estimate</h2>
-                    <p className="opacity-90">Based on the information you provided</p>
+                    <h2 className="text-3xl font-bold mb-2">
+                      {t("results.title")}
+                    </h2>
+                    <p className="opacity-90">{t("results.subtitle")}</p>
                   </div>
 
                   <div className="p-8">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                       <div className="bg-gray-50 rounded-xl p-6 border border-gray-100">
                         <h3 className="text-lg font-medium mb-4 flex items-center">
-                          <DollarSign className="h-5 w-5 text-primary mr-2" />
-                          Estimated Cost
+                          <DollarSign
+                            className={cn(
+                              "h-5 w-5 text-primary",
+                              isRTL ? "ml-2" : "mr-2"
+                            )}
+                          />
+                          {t("results.estimatedCost")}
                         </h3>
-                        <div className="text-4xl font-bold text-primary mb-2">{formatCurrency(estimatedPrice)}</div>
-                        <p className="text-sm text-gray-500 mb-4">One-time project cost</p>
+                        <div className="text-4xl font-bold text-primary mb-2">
+                          {formatCurrency(estimatedPrice)}
+                        </div>
+                        <p className="text-sm text-gray-500 mb-4">
+                          {t("results.oneTimeCost")}
+                        </p>
 
                         {maintenancePlan && (
                           <div className="mt-4 pt-4 border-t border-gray-200">
                             <div className="flex justify-between items-center">
-                              <span className="text-sm text-gray-600">Monthly Maintenance:</span>
+                              <span className="text-sm text-gray-600">
+                                {t("results.monthlyMaintenance")}:
+                              </span>
                               <span className="font-medium">
-                                {formatCurrency(getMaintenancePlanDetails()?.monthlyPrice || 0)}/month
+                                {formatCurrency(
+                                  getMaintenancePlanDetails()?.monthlyPrice || 0
+                                )}
+                                /{t("common.month")}
                               </span>
                             </div>
                           </div>
@@ -917,23 +1251,42 @@ export default function EstimatorClient() {
 
                       <div className="bg-gray-50 rounded-xl p-6 border border-gray-100">
                         <h3 className="text-lg font-medium mb-4 flex items-center">
-                          <Clock className="h-5 w-5 text-primary mr-2" />
-                          Estimated Timeline
+                          <Clock
+                            className={cn(
+                              "h-5 w-5 text-primary",
+                              isRTL ? "ml-2" : "mr-2"
+                            )}
+                          />
+                          {t("results.estimatedTimeline")}
                         </h3>
-                        <div className="text-4xl font-bold text-primary mb-2">{estimatedTimeWeeks} weeks</div>
-                        <p className="text-sm text-gray-500 mb-4">From kickoff to launch</p>
+                        <div className="text-4xl font-bold text-primary mb-2">
+                          {estimatedTimeWeeks}{" "}
+                          {t("results.weeks", { count: estimatedTimeWeeks })}
+                        </div>
+                        <p className="text-sm text-gray-500 mb-4">
+                          {t("results.fromKickoffToLaunch")}
+                        </p>
 
                         <div className="mt-4 pt-4 border-t border-gray-200">
                           <div className="flex justify-between items-center">
-                            <span className="text-sm text-gray-600">Approximate Launch Date:</span>
+                            <span className="text-sm text-gray-600">
+                              {t("results.approximateLaunchDate")}:
+                            </span>
                             <span className="font-medium">
-                              {new Date(Date.now() + estimatedTimeWeeks * 7 * 24 * 60 * 60 * 1000).toLocaleDateString(
-                                "en-US",
+                              {new Date(
+                                Date.now() +
+                                  estimatedTimeWeeks * 7 * 24 * 60 * 60 * 1000
+                              ).toLocaleDateString(
+                                locale === "ar"
+                                  ? "ar-SA"
+                                  : locale === "bn"
+                                  ? "bn-BD"
+                                  : "en-US",
                                 {
                                   year: "numeric",
                                   month: "long",
                                   day: "numeric",
-                                },
+                                }
                               )}
                             </span>
                           </div>
@@ -942,43 +1295,84 @@ export default function EstimatorClient() {
                     </div>
 
                     <div className="mb-8">
-                      <h3 className="text-lg font-medium mb-4">Project Summary</h3>
+                      <h3 className="text-lg font-medium mb-4">
+                        {t("results.projectSummary")}
+                      </h3>
                       <div className="bg-gray-50 rounded-xl p-6 border border-gray-100">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                           <div>
-                            <h4 className="font-medium text-gray-700 mb-2">Project Type</h4>
+                            <h4 className="font-medium text-gray-700 mb-2">
+                              {t("results.projectType")}
+                            </h4>
                             <div className="flex items-center">
-                              <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mr-2">
-                                {PROJECT_TYPES.find((t) => t.id === projectType)?.icon}
+                              <div
+                                className={cn(
+                                  "w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center",
+                                  isRTL ? "ml-2" : "mr-2"
+                                )}
+                              >
+                                {
+                                  PROJECT_TYPES.find(
+                                    (t) => t.id === projectType
+                                  )?.icon
+                                }
                               </div>
-                              <span>{PROJECT_TYPES.find((t) => t.id === projectType)?.name}</span>
+                              <span>
+                                {
+                                  PROJECT_TYPES.find(
+                                    (t) => t.id === projectType
+                                  )?.name
+                                }
+                              </span>
                             </div>
                           </div>
 
                           <div>
-                            <h4 className="font-medium text-gray-700 mb-2">Complexity</h4>
-                            <Badge variant="outline" className="bg-primary/5 text-primary border-primary/20">
-                              {COMPLEXITY_LEVELS.find((c) => c.id === complexity)?.name}
+                            <h4 className="font-medium text-gray-700 mb-2">
+                              {t("results.complexity")}
+                            </h4>
+                            <Badge
+                              variant="outline"
+                              className="bg-primary/5 text-primary border-primary/20"
+                            >
+                              {
+                                COMPLEXITY_LEVELS.find(
+                                  (c) => c.id === complexity
+                                )?.name
+                              }
                             </Badge>
                           </div>
 
                           <div>
-                            <h4 className="font-medium text-gray-700 mb-2">Selected Features</h4>
+                            <h4 className="font-medium text-gray-700 mb-2">
+                              {t("results.selectedFeatures")}
+                            </h4>
                             <div className="flex flex-wrap gap-2">
                               {selectedFeatures.length > 0 ? (
                                 selectedFeatures.map((featureId) => (
-                                  <Badge key={featureId} variant="outline" className="bg-gray-100">
-                                    {FEATURES.find((f) => f.id === featureId)?.name}
+                                  <Badge
+                                    key={featureId}
+                                    variant="outline"
+                                    className="bg-gray-100"
+                                  >
+                                    {
+                                      FEATURES.find((f) => f.id === featureId)
+                                        ?.name
+                                    }
                                   </Badge>
                                 ))
                               ) : (
-                                <span className="text-sm text-gray-500">No additional features selected</span>
+                                <span className="text-sm text-gray-500">
+                                  {t("results.noFeaturesSelected")}
+                                </span>
                               )}
                             </div>
                           </div>
 
                           <div>
-                            <h4 className="font-medium text-gray-700 mb-2">Maintenance Plan</h4>
+                            <h4 className="font-medium text-gray-700 mb-2">
+                              {t("results.maintenancePlan")}
+                            </h4>
                             <Badge className="bg-blue-100 text-blue-700 hover:bg-blue-100 border-blue-200">
                               {getMaintenancePlanDetails()?.name}
                             </Badge>
@@ -988,24 +1382,40 @@ export default function EstimatorClient() {
                     </div>
 
                     <div className="mb-8">
-                      <h3 className="text-lg font-medium mb-4">Next Steps</h3>
+                      <h3 className="text-lg font-medium mb-4">
+                        {t("results.nextSteps")}
+                      </h3>
                       <div className="bg-primary/5 rounded-xl p-6 border border-primary/10">
                         <p className="text-gray-600 mb-4">
-                          This is an estimate based on the information provided. For a detailed proposal and to discuss
-                          your project further:
+                          {t("results.nextStepsDescription")}
                         </p>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                          <Button onClick={handleSubmit} className="bg-primary hover:bg-primary/90">
-                            <Calendar className="mr-2 h-4 w-4" />
-                            Schedule Consultation
+                          <Button
+                            onClick={handleSubmit}
+                            className="bg-primary hover:bg-primary/90"
+                          >
+                            <Calendar
+                              className={cn("h-4 w-4", isRTL ? "ml-2" : "mr-2")}
+                            />
+                            {t("results.scheduleConsultation")}
                           </Button>
-                          <Button variant="outline" className="border-primary text-primary hover:bg-primary/5">
-                            <Download className="mr-2 h-4 w-4" />
-                            Download Estimate
+                          <Button
+                            variant="outline"
+                            className="border-primary text-primary hover:bg-primary/5"
+                          >
+                            <Download
+                              className={cn("h-4 w-4", isRTL ? "ml-2" : "mr-2")}
+                            />
+                            {t("results.downloadEstimate")}
                           </Button>
-                          <Button variant="outline" className="border-primary text-primary hover:bg-primary/5">
-                            <Share2 className="mr-2 h-4 w-4" />
-                            Share Estimate
+                          <Button
+                            variant="outline"
+                            className="border-primary text-primary hover:bg-primary/5"
+                          >
+                            <Share2
+                              className={cn("h-4 w-4", isRTL ? "ml-2" : "mr-2")}
+                            />
+                            {t("results.shareEstimate")}
                           </Button>
                         </div>
                       </div>
@@ -1013,16 +1423,16 @@ export default function EstimatorClient() {
 
                     <div className="text-center">
                       <p className="text-sm text-gray-500 mb-4">
-                        Need to make changes? You can go back and adjust your selections.
+                        {t("results.needChanges")}
                       </p>
                       <Button
                         variant="ghost"
                         onClick={() => {
-                          setShowResults(false)
-                          setCurrentStep(1)
+                          setShowResults(false);
+                          setCurrentStep(1);
                         }}
                       >
-                        Start Over
+                        {t("results.startOver")}
                       </Button>
                     </div>
                   </div>
@@ -1037,48 +1447,49 @@ export default function EstimatorClient() {
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
-            <p className="text-gray-600">
-              Have questions about our estimator or project process? Find answers to common questions below.
-            </p>
+            <h2 className="text-3xl font-bold mb-4">{t("faq.title")}</h2>
+            <p className="text-gray-600">{t("faq.description")}</p>
           </div>
 
           <div className="max-w-3xl mx-auto">
             <Tabs defaultValue="estimator" className="w-full">
               <TabsList className="grid w-full grid-cols-3 mb-8">
-                <TabsTrigger value="estimator">About the Estimator</TabsTrigger>
-                <TabsTrigger value="process">Our Process</TabsTrigger>
-                <TabsTrigger value="pricing">Pricing & Payment</TabsTrigger>
+                <TabsTrigger value="estimator">
+                  {t("faq.tabs.estimator")}
+                </TabsTrigger>
+                <TabsTrigger value="process">
+                  {t("faq.tabs.process")}
+                </TabsTrigger>
+                <TabsTrigger value="pricing">
+                  {t("faq.tabs.pricing")}
+                </TabsTrigger>
               </TabsList>
 
               <TabsContent value="estimator" className="space-y-4">
                 <Card>
                   <CardContent className="pt-6">
-                    <h3 className="text-lg font-medium mb-2">How accurate is this estimate?</h3>
-                    <p className="text-gray-600">
-                      This estimator provides an approximate cost and timeline based on the information you provide. The
-                      final cost may vary based on detailed requirements, which we'll discuss during a consultation.
-                    </p>
+                    <h3 className="text-lg font-medium mb-2">
+                      {t("faq.estimator.q1")}
+                    </h3>
+                    <p className="text-gray-600">{t("faq.estimator.a1")}</p>
                   </CardContent>
                 </Card>
 
                 <Card>
                   <CardContent className="pt-6">
-                    <h3 className="text-lg font-medium mb-2">Can I change my selections later?</h3>
-                    <p className="text-gray-600">
-                      Yes, you can go back and adjust your selections at any time before submitting. After submission,
-                      we'll discuss any changes during the consultation.
-                    </p>
+                    <h3 className="text-lg font-medium mb-2">
+                      {t("faq.estimator.q2")}
+                    </h3>
+                    <p className="text-gray-600">{t("faq.estimator.a2")}</p>
                   </CardContent>
                 </Card>
 
                 <Card>
                   <CardContent className="pt-6">
-                    <h3 className="text-lg font-medium mb-2">Is my information secure?</h3>
-                    <p className="text-gray-600">
-                      Yes, all information submitted through this estimator is encrypted and secure. We do not share
-                      your information with third parties.
-                    </p>
+                    <h3 className="text-lg font-medium mb-2">
+                      {t("faq.estimator.q3")}
+                    </h3>
+                    <p className="text-gray-600">{t("faq.estimator.a3")}</p>
                   </CardContent>
                 </Card>
               </TabsContent>
@@ -1086,32 +1497,28 @@ export default function EstimatorClient() {
               <TabsContent value="process" className="space-y-4">
                 <Card>
                   <CardContent className="pt-6">
-                    <h3 className="text-lg font-medium mb-2">What happens after I submit my estimate request?</h3>
-                    <p className="text-gray-600">
-                      Our team will review your requirements and schedule a consultation to discuss your project in
-                      detail. We'll then provide a detailed proposal with exact pricing and timeline.
-                    </p>
+                    <h3 className="text-lg font-medium mb-2">
+                      {t("faq.process.q1")}
+                    </h3>
+                    <p className="text-gray-600">{t("faq.process.a1")}</p>
                   </CardContent>
                 </Card>
 
                 <Card>
                   <CardContent className="pt-6">
-                    <h3 className="text-lg font-medium mb-2">How long does the development process take?</h3>
-                    <p className="text-gray-600">
-                      Development timelines vary based on project complexity and scope. The estimator provides an
-                      approximate timeline, which we'll refine during our consultation based on your specific
-                      requirements.
-                    </p>
+                    <h3 className="text-lg font-medium mb-2">
+                      {t("faq.process.q2")}
+                    </h3>
+                    <p className="text-gray-600">{t("faq.process.a2")}</p>
                   </CardContent>
                 </Card>
 
                 <Card>
                   <CardContent className="pt-6">
-                    <h3 className="text-lg font-medium mb-2">Do you provide support after launch?</h3>
-                    <p className="text-gray-600">
-                      Yes, we offer various maintenance plans to ensure your project continues to run smoothly after
-                      launch. These include bug fixes, security updates, and ongoing support.
-                    </p>
+                    <h3 className="text-lg font-medium mb-2">
+                      {t("faq.process.q3")}
+                    </h3>
+                    <p className="text-gray-600">{t("faq.process.a3")}</p>
                   </CardContent>
                 </Card>
               </TabsContent>
@@ -1119,31 +1526,28 @@ export default function EstimatorClient() {
               <TabsContent value="pricing" className="space-y-4">
                 <Card>
                   <CardContent className="pt-6">
-                    <h3 className="text-lg font-medium mb-2">What payment methods do you accept?</h3>
-                    <p className="text-gray-600">
-                      We accept bank transfers, credit cards, and digital payment methods. Payment terms and schedules
-                      will be outlined in your project proposal.
-                    </p>
+                    <h3 className="text-lg font-medium mb-2">
+                      {t("faq.pricing.q1")}
+                    </h3>
+                    <p className="text-gray-600">{t("faq.pricing.a1")}</p>
                   </CardContent>
                 </Card>
 
                 <Card>
                   <CardContent className="pt-6">
-                    <h3 className="text-lg font-medium mb-2">Do you require a deposit?</h3>
-                    <p className="text-gray-600">
-                      Yes, we typically require a 50% deposit to begin work, with the remaining balance due upon project
-                      completion. For larger projects, we can arrange milestone-based payments.
-                    </p>
+                    <h3 className="text-lg font-medium mb-2">
+                      {t("faq.pricing.q2")}
+                    </h3>
+                    <p className="text-gray-600">{t("faq.pricing.a2")}</p>
                   </CardContent>
                 </Card>
 
                 <Card>
                   <CardContent className="pt-6">
-                    <h3 className="text-lg font-medium mb-2">Are there any hidden costs?</h3>
-                    <p className="text-gray-600">
-                      No, we provide transparent pricing with no hidden costs. Any additional requirements or changes to
-                      the project scope will be discussed and approved before implementation.
-                    </p>
+                    <h3 className="text-lg font-medium mb-2">
+                      {t("faq.pricing.q3")}
+                    </h3>
+                    <p className="text-gray-600">{t("faq.pricing.a3")}</p>
                   </CardContent>
                 </Card>
               </TabsContent>
@@ -1156,21 +1560,34 @@ export default function EstimatorClient() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="bg-gradient-to-r from-primary to-blue-600 rounded-2xl p-8 md:p-12 text-white text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Start Your Project?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              {t("cta.title")}
+            </h2>
             <p className="text-xl opacity-90 max-w-2xl mx-auto mb-8">
-              Get in touch with our team to discuss your project requirements and turn your vision into reality.
+              {t("cta.description")}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Button className="bg-white text-primary hover:bg-gray-100" size="lg" asChild>
-                <Link href="/schedule-consultation">
-                  <Calendar className="mr-2 h-5 w-5" />
-                  Schedule a Consultation
+              <Button
+                className="bg-white text-primary hover:bg-gray-100"
+                size="lg"
+                asChild
+              >
+                <Link href={`/${locale}/schedule-consultation`}>
+                  <Calendar
+                    className={cn("h-5 w-5", isRTL ? "ml-2" : "mr-2")}
+                  />
+                  {t("cta.scheduleConsultation")}
                 </Link>
               </Button>
-              <Button variant="outline" className="border-white text-white hover:bg-white/10" size="lg" asChild>
-                <Link href="/contact">
-                  <Send className="mr-2 h-5 w-5" />
-                  Contact Us
+              <Button
+                variant="outline"
+                className="border-white text-white hover:bg-white/10"
+                size="lg"
+                asChild
+              >
+                <Link href={`/${locale}/contact`}>
+                  <Send className={cn("h-5 w-5", isRTL ? "ml-2" : "mr-2")} />
+                  {t("cta.contactUs")}
                 </Link>
               </Button>
             </div>
@@ -1178,6 +1595,5 @@ export default function EstimatorClient() {
         </div>
       </section>
     </div>
-  )
+  );
 }
-

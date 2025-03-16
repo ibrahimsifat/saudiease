@@ -1,12 +1,26 @@
-import type { Metadata } from "next"
-import LegalHubClient from "./LegalHubClient"
+import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
+import LegalHubClient from "./LegalHubClient";
 
-export const metadata: Metadata = {
-  title: "Legal Hub | Saudi Ease",
-  description: "Legal information, privacy policy, terms of service, and other legal documents for Saudi Ease.",
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  const t = await getTranslations({ locale, namespace: "legal" });
+
+  return {
+    title: t("title"),
+    description: t("description"),
+  } as Metadata;
 }
 
-export default function LegalHubPage() {
-  return <LegalHubClient />
-}
+export default async function LegalHubPage({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  const t = await getTranslations({ locale, namespace: "legal" });
 
+  return <LegalHubClient locale={locale} />;
+}

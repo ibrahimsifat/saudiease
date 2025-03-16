@@ -1,20 +1,33 @@
-import type { Metadata } from "next"
-import { TechStackPage } from "./tech-stack-client"
+import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
+import TechStackPage from "./tech-stack-client";
 
-export const metadata: Metadata = {
-  title: "Our Technology Stack | Saudi Ease - Digital Solutions for Saudi Businesses",
-  description:
-    "Explore the cutting-edge technologies we use to build powerful, scalable, and efficient digital solutions for businesses in Saudi Arabia.",
-  openGraph: {
-    title: "Our Technology Stack | Saudi Ease - Digital Solutions for Saudi Businesses",
-    description:
-      "Explore the cutting-edge technologies we use to build powerful, scalable, and efficient digital solutions for businesses in Saudi Arabia.",
-    type: "website",
-    url: "https://saudiease.com/tech-stack",
-  },
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const t = await getTranslations({
+    locale: params.locale,
+    namespace: "techStack.metadata",
+  });
+
+  return {
+    title: t("title"),
+    description: t("description"),
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      type: "website",
+      url: `https://saudiease.com/${params.locale}/tech-stack`,
+    },
+  };
 }
 
-export default function TechStack() {
-  return <TechStackPage />
+export default async function TechStack({
+  params,
+}: {
+  params: { locale: string };
+}) {
+  return <TechStackPage locale={params.locale} />;
 }
-

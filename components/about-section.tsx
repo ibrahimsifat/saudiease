@@ -342,7 +342,7 @@ export default function AboutSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.4 }}
-          className="relative bg-gradient-to-br from-white via-white to-gray-50 p-10 rounded-3xl shadow-2xl border border-gray-100 overflow-hidden"
+          className="relative bg-gradient-to-br from-white via-white to-gray-50 p-10 rounded-3xl border border-gray-100 overflow-hidden"
           style={{ willChange: "opacity, transform" }}
         >
           {/* Decorative elements */}
@@ -424,7 +424,7 @@ export default function AboutSection() {
                         }
                       : {}
                   }
-                  className="relative bg-white p-6 rounded-xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 group overflow-hidden"
+                  className="relative bg-white p-6 rounded-xl border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 group overflow-hidden"
                   style={{ willChange: "transform" }}
                 >
                   {/* Decorative corner accent */}

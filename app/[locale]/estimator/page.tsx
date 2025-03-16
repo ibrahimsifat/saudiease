@@ -1,17 +1,25 @@
-import type { Metadata } from "next"
-import { generatePageMetadata } from "@/lib/seo-utils"
-import EstimatorClient from "./estimator-client"
+import { generatePageMetadata } from "@/lib/seo-utils";
+import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
+import EstimatorClient from "./estimator-client";
 
-export const metadata: Metadata = generatePageMetadata({
-  title: "Project Estimator | Get Instant Cost & Timeline Estimates",
-  description:
-    "Use our interactive project estimator to get instant cost and timeline estimates for your digital project. Plan your budget and timeline with Saudi Ease.",
-  path: "/estimator",
-  keywords:
-    "project estimator, cost calculator, digital project timeline, web development cost, app development cost, Saudi Arabia digital services pricing",
-})
+type Props = {
+  params: { locale: string };
+};
 
-export default function EstimatorPage() {
-  return <EstimatorClient />
+export async function generateMetadata({
+  params: { locale },
+}: Props): Promise<Metadata> {
+  const t = await getTranslations({ locale, namespace: "estimator" });
+
+  return generatePageMetadata({
+    title: t("metadata.title"),
+    description: t("metadata.description"),
+    path: "/estimator",
+    keywords: t("metadata.keywords"),
+  });
 }
 
+export default async function EstimatorPage({ params: { locale } }: Props) {
+  return <EstimatorClient locale={locale} />;
+}

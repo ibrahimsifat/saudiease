@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { type Locale, localeMetadata } from "@/config/i18n";
+import { getServiceDetails } from "@/data/service-details/index";
 import { services } from "@/data/services";
 import { generateServiceSchema } from "@/lib/schema";
 import * as LucideIcons from "lucide-react";
@@ -23,17 +24,16 @@ import Link from "next/link";
 import Script from "next/script";
 
 export default function ServiceDetailClient({
-  serviceDetail,
-  serviceData,
-  params,
+  id,
+  locale,
 }: {
-  serviceDetail: any;
-  serviceData: any;
-  params: { id: string; locale: Locale };
+  id: string;
+  locale: Locale;
 }) {
   const t = useTranslations("serviceDetail");
-  const isRtl = localeMetadata[params.locale].dir === "rtl";
-
+  const isRtl = localeMetadata[locale].dir === "rtl";
+  const serviceDetails = getServiceDetails(locale);
+  const serviceDetail = serviceDetails[id];
   // Get related services
   const relatedServicesData = serviceDetail.relatedServices
     .map((id: string) => services.find((service) => service.id === id))
@@ -69,21 +69,24 @@ export default function ServiceDetailClient({
       name: t("pricing.essential.name"),
       price: t("pricing.essential.price"),
       description: t("pricing.essential.description"),
-      features: t("pricing.essential.features", { returnObjects: true }),
+      featuresCount: 4,
+      tierKey: "essential",
       recommended: false,
     },
     {
       name: t("pricing.professional.name"),
       price: t("pricing.professional.price"),
       description: t("pricing.professional.description"),
-      features: t("pricing.professional.features", { returnObjects: true }),
+      featuresCount: 5,
+      tierKey: "professional",
       recommended: true,
     },
     {
       name: t("pricing.enterprise.name"),
       price: t("pricing.enterprise.price"),
       description: t("pricing.enterprise.description"),
-      features: t("pricing.enterprise.features", { returnObjects: true }),
+      featuresCount: 6,
+      tierKey: "enterprise",
       recommended: false,
     },
   ];
@@ -217,7 +220,7 @@ export default function ServiceDetailClient({
             >
               <li className="inline-flex items-center">
                 <Link
-                  href={`/${params.locale}`}
+                  href={`/${locale}`}
                   className="text-gray-600 hover:text-primary transition-colors"
                 >
                   {t("breadcrumbs.home")}
@@ -235,7 +238,7 @@ export default function ServiceDetailClient({
                     }`}
                   />
                   <Link
-                    href={`/${params.locale}/services`}
+                    href={`/${locale}/services`}
                     className={`${
                       isRtl ? "mr-1" : "ml-1"
                     } text-gray-600 hover:text-primary transition-colors`}
@@ -717,9 +720,7 @@ export default function ServiceDetailClient({
                       {t("specs.performance.title")}
                     </h4>
                     <ul className="space-y-2">
-                      {t("specs.performance.points", {
-                        returnObjects: true,
-                      }).map((point: string, index: number) => (
+                      {Array.from({ length: 2 }).map((_, index) => (
                         <li
                           key={index}
                           className={`flex items-start ${
@@ -733,7 +734,9 @@ export default function ServiceDetailClient({
                           >
                             <Check className="h-3 w-3 text-primary" />
                           </div>
-                          <span className="text-gray-700 text-sm">{point}</span>
+                          <span className="text-gray-700 text-sm">
+                            {t(`specs.performance.points.${index}`)}
+                          </span>
                         </li>
                       ))}
                     </ul>
@@ -744,38 +747,9 @@ export default function ServiceDetailClient({
                       {t("specs.security.title")}
                     </h4>
                     <ul className="space-y-2">
-                      {t("specs.security.points", { returnObjects: true }).map(
-                        (point: string, index: number) => (
-                          <li
-                            key={index}
-                            className={`flex items-start ${
-                              isRtl ? "flex-row-reverse text-right" : ""
-                            }`}
-                          >
-                            <div
-                              className={`flex-shrink-0 h-5 w-5 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 ${
-                                isRtl ? "ml-2" : "mr-2"
-                              }`}
-                            >
-                              <Check className="h-3 w-3 text-primary" />
-                            </div>
-                            <span className="text-gray-700 text-sm">
-                              {point}
-                            </span>
-                          </li>
-                        )
-                      )}
-                    </ul>
-                  </div>
-
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-saudi-black mb-2">
-                      {t("specs.compatibility.title")}
-                    </h4>
-                    <ul className="space-y-2">
-                      {t("specs.compatibility.points", {
-                        returnObjects: true,
-                      }).map((point: string, index: number) => (
+                      {Array.from({
+                        length: 2,
+                      }).map((_, index) => (
                         <li
                           key={index}
                           className={`flex items-start ${
@@ -789,7 +763,36 @@ export default function ServiceDetailClient({
                           >
                             <Check className="h-3 w-3 text-primary" />
                           </div>
-                          <span className="text-gray-700 text-sm">{point}</span>
+                          <span className="text-gray-700 text-sm">
+                            {t(`specs.security.points.${index}`)}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="bg-gray-50 p-4 rounded-lg">
+                    <h4 className="font-semibold text-saudi-black mb-2">
+                      {t("specs.compatibility.title")}
+                    </h4>
+                    <ul className="space-y-2">
+                      {Array.from({ length: 2 }).map((_, index) => (
+                        <li
+                          key={index}
+                          className={`flex items-start ${
+                            isRtl ? "flex-row-reverse text-right" : ""
+                          }`}
+                        >
+                          <div
+                            className={`flex-shrink-0 h-5 w-5 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 ${
+                              isRtl ? "ml-2" : "mr-2"
+                            }`}
+                          >
+                            <Check className="h-3 w-3 text-primary" />
+                          </div>
+                          <span className="text-gray-700 text-sm">
+                            {t(`specs.compatibility.points.${index}`)}
+                          </span>
                         </li>
                       ))}
                     </ul>
@@ -800,27 +803,25 @@ export default function ServiceDetailClient({
                       {t("specs.support.title")}
                     </h4>
                     <ul className="space-y-2">
-                      {t("specs.support.points", { returnObjects: true }).map(
-                        (point: string, index: number) => (
-                          <li
-                            key={index}
-                            className={`flex items-start ${
-                              isRtl ? "flex-row-reverse text-right" : ""
+                      {Array.from({ length: 2 }).map((_, index) => (
+                        <li
+                          key={index}
+                          className={`flex items-start ${
+                            isRtl ? "flex-row-reverse text-right" : ""
+                          }`}
+                        >
+                          <div
+                            className={`flex-shrink-0 h-5 w-5 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 ${
+                              isRtl ? "ml-2" : "mr-2"
                             }`}
                           >
-                            <div
-                              className={`flex-shrink-0 h-5 w-5 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 ${
-                                isRtl ? "ml-2" : "mr-2"
-                              }`}
-                            >
-                              <Check className="h-3 w-3 text-primary" />
-                            </div>
-                            <span className="text-gray-700 text-sm">
-                              {point}
-                            </span>
-                          </li>
-                        )
-                      )}
+                            <Check className="h-3 w-3 text-primary" />
+                          </div>
+                          <span className="text-gray-700 text-sm">
+                            {t(`specs.support.points.${index}`)}
+                          </span>
+                        </li>
+                      ))}
                     </ul>
                   </div>
                 </div>
@@ -1127,8 +1128,8 @@ export default function ServiceDetailClient({
                   </div>
 
                   <ul className="space-y-4 mb-8">
-                    {tier.features.map(
-                      (feature: string, featureIndex: number) => (
+                    {Array.from({ length: tier.featuresCount }).map(
+                      (_, featureIndex) => (
                         <li
                           key={featureIndex}
                           className={`flex items-start ${
@@ -1142,7 +1143,11 @@ export default function ServiceDetailClient({
                           >
                             <Check className="h-3 w-3 text-primary" />
                           </div>
-                          <span className="text-gray-700">{feature}</span>
+                          <span className="text-gray-700">
+                            {t(
+                              `pricing.${tier.tierKey}.features.${featureIndex}`
+                            )}
+                          </span>
                         </li>
                       )
                     )}
@@ -1578,7 +1583,7 @@ export default function ServiceDetailClient({
             {relatedServicesData.map((service: any, index: number) => (
               <Link
                 key={index}
-                href={`/${params.locale}/services/${service.id}`}
+                href={`/${locale}/services/${service.id}`}
                 className="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden hover:shadow-lg transition-all group"
               >
                 <div className="h-48 relative">
@@ -1620,9 +1625,7 @@ export default function ServiceDetailClient({
               className="border-primary text-primary hover:bg-primary/10"
               asChild
             >
-              <Link href={`/${params.locale}/services`}>
-                {t("viewAllServices")}
-              </Link>
+              <Link href={`/${locale}/services`}>{t("viewAllServices")}</Link>
             </Button>
           </div>
         </div>

@@ -20,6 +20,7 @@ import ClientWhyChooseUs from "@/components/home/why-choose-client-section";
 import ServicesSection from "@/components/services-section";
 import TrustedBy from "@/components/trusted-by";
 import { LoadingFallback } from "@/components/ui/loading-fallback";
+import { Locale } from "@/config/i18n";
 import type {} from "next";
 import { getTranslations } from "next-intl/server";
 export async function generateMetadata(): Promise<Metadata> {
@@ -31,7 +32,11 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function Home() {
+export default async function Home({
+  params: { locale },
+}: {
+  params: { locale: Locale };
+}) {
   return (
     <>
       {/* Structured Data */}
@@ -57,7 +62,7 @@ export default async function Home() {
       <TrustedBy />
 
       {/* Services Section */}
-      <ServicesSection />
+      <ServicesSection locale={locale} />
 
       {/* Why Choose Us Section */}
       <Suspense fallback={<LoadingFallback height="400px" />}>
@@ -94,7 +99,7 @@ export default async function Home() {
 
       {/* Blog Section */}
       <Suspense fallback={<LoadingFallback height="400px" />}>
-        <ClientBlogSection />
+        <ClientBlogSection locale={locale} />
       </Suspense>
 
       {/* CTA Section */}

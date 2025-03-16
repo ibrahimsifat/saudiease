@@ -1,4 +1,5 @@
-import { blogPosts } from "@/data/blog-posts";
+import { Locale } from "@/config/i18n";
+import { getBlogs } from "@/data/blog-posts/index";
 import { generateBlogPostSchema } from "@/lib/schema";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
@@ -14,6 +15,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug, locale } = params;
+  const blogPosts = getBlogs(locale as Locale);
   const post = blogPosts.find((post) => post.slug === slug);
 
   if (!post) {
@@ -51,7 +53,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export async function generateStaticParams() {
+export async function generateStaticParams({
+  params,
+}: Props): Promise<Metadata> {
+  const { locale } = params;
+  const blogPosts = getBlogs(locale as Locale);
   return blogPosts.map((post) => ({
     slug: post.slug,
   }));
@@ -59,6 +65,7 @@ export async function generateStaticParams() {
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug, locale } = params;
+  const blogPosts = getBlogs(locale as Locale);
   const post = blogPosts.find((post) => post.slug === slug);
 
   if (!post) {

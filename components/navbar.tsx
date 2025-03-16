@@ -2,8 +2,9 @@
 
 import SearchDialog from "@/components/search-dialog";
 import { Button } from "@/components/ui/button";
+import { Locale } from "@/config/i18n";
 import { companyInfo } from "@/data/company-info";
-import { services } from "@/data/services";
+import { getServices } from "@/data/services/index";
 import { useMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
@@ -26,13 +27,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import LanguageSwitcher from "./language-switcher";
-
 export default function Navbar() {
   const t = useTranslations("navigation");
   const common = useTranslations("common");
   const locale = useLocale();
   const isRTL = locale === "ar";
-
+  const services = getServices(locale as Locale);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const isMobile = useMobile();
@@ -124,7 +124,7 @@ export default function Navbar() {
                     {categoryServices.map((service) => (
                       <Link
                         key={service.id}
-                        href={`/services/${service.id}`}
+                        href={`${locale}/services/${service.id}`}
                         className={cn(
                           "group flex items-center bg-gray-50 dark:bg-gray-800/50 hover:bg-primary/5 dark:hover:bg-primary/10 px-3 py-2 rounded-md transition-colors",
                           isRTL ? "flex-row-reverse text-right" : "text-left"
@@ -167,27 +167,26 @@ export default function Navbar() {
       dropdownContent: (
         <div className="grid grid-cols-2 gap-4 p-4">
           <Link
-            href="/about#our-story"
+            href={`/industries`}
             className={cn(
-              "flex items-start p-3 rounded-lg hover:bg-gray-50 transition-colors group",
-              isRTL ? "flex-row-reverse text-right" : "text-left"
+              "flex items-start p-3 rounded-lg hover:bg-gray-50 transition-colors group"
             )}
           >
             <div className={isRTL ? "mr-0" : "ml-0"}>
               <p className="text-sm font-medium text-gray-900 group-hover:text-primary transition-colors">
-                {t("ourStory", {
+                {t("industries", {
                   defaultMessage: "Our Story",
                 })}
               </p>
               <p className="text-xs text-gray-500 mt-1">
-                {t("ourStoryDescription", {
+                {t("industriesDescription", {
                   defaultMessage: "Learn about our journey and mission",
                 })}
               </p>
             </div>
           </Link>
           <Link
-            href="/about#team"
+            href={`/features`}
             className={cn(
               "flex items-start p-3 rounded-lg hover:bg-gray-50 transition-colors group",
               isRTL ? "flex-row-reverse text-right" : "text-left"
@@ -195,19 +194,19 @@ export default function Navbar() {
           >
             <div className={isRTL ? "mr-0" : "ml-0"}>
               <p className="text-sm font-medium text-gray-900 group-hover:text-primary transition-colors">
-                {t("ourTeam", {
+                {t("features", {
                   defaultMessage: "Our Team",
                 })}
               </p>
               <p className="text-xs text-gray-500 mt-1">
-                {t("ourTeamDescription", {
+                {t("featuresDescription", {
                   defaultMessage: "Meet our expert professionals",
                 })}
               </p>
             </div>
           </Link>
           <Link
-            href="/about#values"
+            href={`/faq`}
             className={cn(
               "flex items-start p-3 rounded-lg hover:bg-gray-50 transition-colors group",
               isRTL ? "flex-row-reverse text-right" : "text-left"
@@ -215,33 +214,13 @@ export default function Navbar() {
           >
             <div className={isRTL ? "mr-0" : "ml-0"}>
               <p className="text-sm font-medium text-gray-900 group-hover:text-primary transition-colors">
-                {t("coreValues", {
+                {t("faq", {
                   defaultMessage: "Core Values",
                 })}
               </p>
               <p className="text-xs text-gray-500 mt-1">
-                {t("coreValuesDescription", {
+                {t("faqDescription", {
                   defaultMessage: "What drives our business",
-                })}
-              </p>
-            </div>
-          </Link>
-          <Link
-            href="/about#achievements"
-            className={cn(
-              "flex items-start p-3 rounded-lg hover:bg-gray-50 transition-colors group",
-              isRTL ? "flex-row-reverse text-right" : "text-left"
-            )}
-          >
-            <div className={isRTL ? "mr-0" : "ml-0"}>
-              <p className="text-sm font-medium text-gray-900 group-hover:text-primary transition-colors">
-                {t("achievements", {
-                  defaultMessage: "Achievements",
-                })}
-              </p>
-              <p className="text-xs text-gray-500 mt-1">
-                {t("achievementsDescription", {
-                  defaultMessage: "Our awards and recognition",
                 })}
               </p>
             </div>
@@ -368,12 +347,7 @@ export default function Navbar() {
         )}
       >
         <div className="container mx-auto px-4">
-          <div
-            className={cn(
-              "flex justify-between items-center",
-              isRTL && "flex-row-reverse"
-            )}
-          >
+          <div className={"flex justify-between items-center"}>
             {/* Logo */}
             <Link href="/" className="relative z-10 group">
               <div className="relative h-10 w-40 transition-transform duration-300 group-hover:scale-105">
@@ -388,12 +362,7 @@ export default function Navbar() {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav
-              className={cn(
-                "hidden lg:flex items-center space-x-4",
-                isRTL && "flex-row-reverse space-x-reverse"
-              )}
-            >
+            <nav className={cn("hidden lg:flex items-center space-x-4")}>
               {navLinks.map((link) => (
                 <div
                   key={link.name}
@@ -486,7 +455,7 @@ export default function Navbar() {
                 className="bg-primary hover:bg-primary/90 text-white shadow-md hover:shadow-lg transition-all"
                 asChild
               >
-                <Link href="/contact">{t("getQuote")}</Link>
+                <Link href="/estimator">{t("getQuote")}</Link>
               </Button>
             </div>
 

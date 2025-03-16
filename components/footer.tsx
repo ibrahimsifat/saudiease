@@ -548,10 +548,10 @@ export default function Footer() {
                   {t("termsOfService")}
                 </Link>
                 <Link
-                  href="/cookie-policy"
+                  href="/faq"
                   className="text-gray-400 hover:text-primary text-sm transition-colors"
                 >
-                  {t("cookiePolicy")}
+                  {t("faq")}
                 </Link>
                 <Link
                   href="/sitemap.xml"

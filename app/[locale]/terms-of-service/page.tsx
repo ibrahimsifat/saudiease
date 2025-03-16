@@ -1,12 +1,24 @@
-import type { Metadata } from "next"
-import TermsOfServiceClient from "./TermsOfServiceClient"
+import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
+import TermsOfServiceClient from "./TermsOfServiceClient";
 
-export const metadata: Metadata = {
-  title: "Terms of Service | Saudi Ease",
-  description: "The terms and conditions governing your use of Saudi Ease services and platform.",
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const t = await getTranslations({ locale, namespace: "termsOfService" });
+
+  return {
+    title: t("metadata.title"),
+    description: t("metadata.description"),
+  };
 }
 
-export default function TermsOfServicePage() {
-  return <TermsOfServiceClient />
+export default async function TermsOfServicePage({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  return <TermsOfServiceClient locale={locale} />;
 }
-

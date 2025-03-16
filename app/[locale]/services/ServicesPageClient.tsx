@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { type Locale, localeMetadata } from "@/config/i18n";
-import { services } from "@/data/services";
+import { getServices } from "@/data/services/index";
 import { ArrowRight, Filter, Search } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
@@ -16,7 +16,7 @@ export default function ServicesPageClient({ locale }: { locale: Locale }) {
   const isRtl = localeMetadata[locale].dir === "rtl";
   const [searchTerm, setSearchTerm] = useState("");
   const [activeCategory, setActiveCategory] = useState("all");
-
+  const services = getServices(locale);
   // Get unique categories
   const categories = [
     "all",

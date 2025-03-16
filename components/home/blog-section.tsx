@@ -2,7 +2,9 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { blogPosts } from "@/data/blog-posts";
+import { Locale } from "@/config/i18n";
+import { getBlogs } from "@/data/blog-posts/index";
+
 import { generateBlogPostSchema } from "@/lib/schema";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Calendar, User } from "lucide-react";
@@ -11,10 +13,10 @@ import Image from "next/image";
 import Link from "next/link";
 import Script from "next/script";
 
-export default function BlogSection() {
+export default function BlogSection({ locale }: { locale: string }) {
   const t = useTranslations("blogSection");
   const isRTL = document.documentElement.dir === "rtl";
-
+  const blogPosts = getBlogs(locale as Locale);
   const ArrowIcon = isRTL ? ArrowLeft : ArrowRight;
 
   const containerVariants = {
@@ -173,6 +175,7 @@ export default function BlogSection() {
         >
           {blogPosts
             .filter((post) => !post.featured)
+            .slice(4)
             .map((post) => (
               <motion.div
                 key={post.id}

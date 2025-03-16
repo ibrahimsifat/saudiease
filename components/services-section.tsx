@@ -10,15 +10,16 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { services } from "@/data/services";
+import { Locale } from "@/config/i18n";
+import { getServices } from "@/data/services/index";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, ChevronRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useMemo, useState } from "react";
-
-export default function ServicesSection() {
+export default function ServicesSection({ locale }: { locale: string }) {
   const t = useTranslations("services");
+  const services = getServices(locale as Locale);
   const [activeCategory, setActiveCategory] = useState("all");
 
   const categories = [
@@ -97,7 +98,7 @@ export default function ServicesSection() {
         </div>
 
         {/* Modern category tabs */}
-        <div className="flex justify-center mb-12 overflow-x-auto hide-scrollbar">
+        <div className="flex justify-center mb-5 overflow-x-auto hide-scrollbar pb-4">
           <div className="bg-white border border-gray-100 p-1.5 shadow-lg rounded-full flex space-x-1 will-change-transform">
             {categories.map((category) => (
               <button
