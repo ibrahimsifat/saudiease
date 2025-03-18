@@ -2,10 +2,10 @@
 
 import { Button } from "@/components/ui/button";
 import { Locale, localeMetadata } from "@/config/i18n";
+import { Link } from "@/i18n/routing";
 import { motion } from "framer-motion";
 import { ArrowLeft, Clock, Lock, Shield } from "lucide-react";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
 
 export default function PrivacyPolicyClient({ locale }: { locale: Locale }) {
   const t = useTranslations("privacyPolicy");

@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Locale, localeMetadata } from "@/config/i18n";
+import { Link } from "@/i18n/routing";
 import { motion } from "framer-motion";
 import {
   ArrowLeft,
@@ -16,7 +17,6 @@ import {
   Shield,
 } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
-import Link from "next/link";
 
 export default function LegalHubClient({ locale }: { locale: Locale }) {
   const t = useTranslations("legal");
@@ -30,42 +30,42 @@ export default function LegalHubClient({ locale }: { locale: Locale }) {
       title: t("documents.privacyPolicy.title"),
       description: t("documents.privacyPolicy.description"),
       icon: <FileLock className="h-6 w-6 text-primary" />,
-      link: `/${locale}/privacy-policy`,
+      link: `/privacy-policy`,
       updated: t("documents.privacyPolicy.updated"),
     },
     {
       title: t("documents.termsOfService.title"),
       description: t("documents.termsOfService.description"),
       icon: <FileCheck className="h-6 w-6 text-primary" />,
-      link: `/${locale}/terms-of-service`,
+      link: `/terms-of-service`,
       updated: t("documents.termsOfService.updated"),
     },
     {
       title: t("documents.cookiePolicy.title"),
       description: t("documents.cookiePolicy.description"),
       icon: <FileText className="h-6 w-6 text-primary" />,
-      link: `/${locale}/cookie-policy`,
+      link: `/cookie-policy`,
       updated: t("documents.cookiePolicy.updated"),
     },
     {
       title: t("documents.dataProcessing.title"),
       description: t("documents.dataProcessing.description"),
       icon: <Shield className="h-6 w-6 text-primary" />,
-      link: `/${locale}/data-processing-agreement`,
+      link: `/data-processing-agreement`,
       updated: t("documents.dataProcessing.updated"),
     },
     {
       title: t("documents.acceptableUse.title"),
       description: t("documents.acceptableUse.description"),
       icon: <FileWarning className="h-6 w-6 text-primary" />,
-      link: `/${locale}/acceptable-use-policy`,
+      link: `/acceptable-use-policy`,
       updated: t("documents.acceptableUse.updated"),
     },
     {
       title: t("documents.serviceLevelAgreement.title"),
       description: t("documents.serviceLevelAgreement.description"),
       icon: <Scale className="h-6 w-6 text-primary" />,
-      link: `/${locale}/service-level-agreement`,
+      link: `/service-level-agreement`,
       updated: t("documents.serviceLevelAgreement.updated"),
     },
   ];
@@ -83,7 +83,7 @@ export default function LegalHubClient({ locale }: { locale: Locale }) {
           >
             <Button variant="ghost" className="mb-6" asChild>
               <Link
-                href={`/${locale}`}
+                href={`/`}
                 className="flex items-center text-gray-600 hover:text-primary rtl:flex-row-reverse"
               >
                 <ArrowLeft
@@ -308,7 +308,7 @@ export default function LegalHubClient({ locale }: { locale: Locale }) {
             >
               <Button asChild>
                 <Link
-                  href={`/${locale}/contact`}
+                  href={`/contact`}
                   className={`flex items-center ${
                     isRtl ? "flex-row-reverse" : ""
                   }`}
@@ -351,13 +351,13 @@ export default function LegalHubClient({ locale }: { locale: Locale }) {
                 }`}
               >
                 <Link
-                  href={`/${locale}/privacy-policy`}
+                  href={`/privacy-policy`}
                   className="text-sm text-primary hover:underline"
                 >
                   {t("footer.privacyPolicy")}
                 </Link>
                 <Link
-                  href={`/${locale}/terms-of-service`}
+                  href={`/terms-of-service`}
                   className="text-sm text-primary hover:underline"
                 >
                   {t("footer.termsOfService")}

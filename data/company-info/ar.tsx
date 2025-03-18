@@ -1,9 +1,10 @@
+import { CONSTANT } from "@/config/constants";
 import type { CompanyInfo } from "./types";
 
 export const companyInfoAr: CompanyInfo = {
   name: "سعودي إيز",
   mapUrl: "",
-  logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-2uPrncLtACMXwrkeKKR3zcpbiBlQJS.png",
+  logo: CONSTANT.images.logo,
   tagline: "حلول إبداعية لاحتياجاتك",
   description:
     "سعودي إيز هي شركة رائدة في مجال الخدمات الرقمية في المملكة العربية السعودية، مكرسة لمساعدة الشركات على الازدهار في المشهد الرقمي من خلال حلول مخصصة لاحتياجاتها الفريدة. نحن نجمع بين الخبرة التقنية والفهم العميق للسوق المحلي لتقديم نتائج استثنائية لعملائنا.",

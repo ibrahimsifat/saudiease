@@ -12,10 +12,10 @@ import {
 } from "@/components/ui/card";
 import { Locale } from "@/config/i18n";
 import { getServices } from "@/data/services/index";
+import { Link } from "@/i18n/routing";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, ChevronRight } from "lucide-react";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
 import { useMemo, useState } from "react";
 export default function ServicesSection({ locale }: { locale: Locale }) {
   const t = useTranslations("services");

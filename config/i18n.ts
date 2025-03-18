@@ -19,7 +19,7 @@ export const localeMetadata: Record<Locale, { dir: "ltr" | "rtl" }> = {
   bn: { dir: "ltr" },
 };
 
-export const defaultLocale: Locale = "en";
+export const defaultLocale: Locale = "ar";
 
 // Paths that don't require a locale prefix
 export const pathsWithoutLocale = [

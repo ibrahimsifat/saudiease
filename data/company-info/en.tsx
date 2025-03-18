@@ -1,8 +1,9 @@
+import { CONSTANT } from "@/config/constants";
 import type { CompanyInfo } from "./types";
 
 export const companyInfoEn: CompanyInfo = {
   name: "Saudi Ease",
-  logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-2uPrncLtACMXwrkeKKR3zcpbiBlQJS.png",
+  logo: CONSTANT.images.logo,
   tagline: "Creative Solutions for Your Needs",
   mapUrl: "",
   description:

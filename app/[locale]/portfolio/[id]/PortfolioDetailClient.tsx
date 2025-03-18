@@ -4,6 +4,7 @@ import type React from "react";
 
 import { Locale } from "@/config/i18n";
 import type { Project } from "@/data/projects";
+import { Link } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
@@ -30,7 +31,6 @@ import {
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 // Animation variants
@@ -293,17 +293,14 @@ export default function PortfolioDetailClient({
         <div className="container mx-auto px-4 relative z-10">
           {/* Breadcrumb */}
           <div className={`flex items-center text-white/80 mb-8`}>
-            <Link
-              href={`/${locale}`}
-              className="hover:text-white transition-colors"
-            >
+            <Link href={`/`} className="hover:text-white transition-colors">
               {t("breadcrumb.home")}
             </Link>
             <ChevronRightIcon
               className={`w-4 h-4 mx-2 ${isRtl ? "rotate-180" : ""}`}
             />
             <Link
-              href={`/${locale}/portfolio`}
+              href={`/portfolio`}
               className="hover:text-white transition-colors"
             >
               {t("breadcrumb.portfolio")}
@@ -426,7 +423,7 @@ export default function PortfolioDetailClient({
                   {t("visitProject")}
                 </Link>
                 <Link
-                  href={`/${locale}/contact`}
+                  href={`/contact`}
                   className="flex items-center gap-2 px-6 py-3 bg-white/20 backdrop-blur-sm text-white font-medium rounded-lg hover:bg-white/30 transition-colors"
                 >
                   <ArrowRightIcon className="w-4 h-4" />
@@ -511,7 +508,7 @@ export default function PortfolioDetailClient({
             }`}
           >
             <Link
-              href={`/${locale}/portfolio`}
+              href={`/portfolio`}
               className={`flex items-center gap-2 text-primary font-medium hover:underline ${
                 isRtl ? "flex-row-reverse" : ""
               }`}
@@ -1250,7 +1247,7 @@ export default function PortfolioDetailClient({
                 </h3>
                 <p className="mb-6 text-white/90">{t("discussHelp")}</p>
                 <Link
-                  href={`/${locale}/contact`}
+                  href={`/contact`}
                   className="block w-full py-3 bg-white text-primary font-medium rounded-lg text-center hover:bg-gray-100 transition-colors"
                 >
                   {t("getInTouch")}
@@ -1267,7 +1264,7 @@ export default function PortfolioDetailClient({
                     {relatedProjects.map((relatedProject) => (
                       <Link
                         key={relatedProject.id}
-                        href={`/${locale}/portfolio/${relatedProject.id}`}
+                        href={`/portfolio/${relatedProject.id}`}
                         className={`flex items-start group hover:bg-gray-50 p-2 rounded-lg transition-colors ${
                           isRtl ? "flex-row-reverse" : ""
                         }`}
@@ -1332,7 +1329,7 @@ export default function PortfolioDetailClient({
               {relatedProjects.map((relatedProject) => (
                 <Link
                   key={relatedProject.id}
-                  href={`/${locale}/portfolio/${relatedProject.id}`}
+                  href={`/portfolio/${relatedProject.id}`}
                   className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
                 >
                   {/* Image */}

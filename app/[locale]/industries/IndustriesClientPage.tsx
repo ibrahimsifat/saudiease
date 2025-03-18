@@ -2,11 +2,11 @@
 
 import { Button } from "@/components/ui/button";
 import { businessCategories } from "@/data/business-categories";
+import { Link } from "@/i18n/routing";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Building2, CheckCircle2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import Link from "next/link";
 import { useParams } from "next/navigation";
 
 export default function IndustriesClientPage() {

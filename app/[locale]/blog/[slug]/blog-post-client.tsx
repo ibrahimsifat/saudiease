@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/tooltip";
 import { blogPosts } from "@/data/blog-posts";
 import { toast } from "@/hooks/use-toast";
+import { Link } from "@/i18n/routing";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
   AlertCircle,
@@ -38,7 +39,6 @@ import {
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Script from "next/script";
 import { useEffect, useRef, useState } from "react";
@@ -182,9 +182,7 @@ export default function BlogPostClient({ post, locale, schema }) {
       <div className="container mx-auto px-4 py-16 text-center">
         <h1 className="text-3xl font-bold mb-4">{t("postNotFound")}</h1>
         <p className="mb-8">{t("postNotFoundDescription")}</p>
-        <Button onClick={() => router.push(`/${locale}/blog`)}>
-          {t("backToBlog")}
-        </Button>
+        <Button onClick={() => router.push(`/blog`)}>{t("backToBlog")}</Button>
       </div>
     );
   }
@@ -218,7 +216,7 @@ export default function BlogPostClient({ post, locale, schema }) {
                 transition={{ duration: 0.5 }}
               >
                 <Link
-                  href={`/${locale}/blog`}
+                  href={`/blog`}
                   className={`inline-flex items-center text-primary hover:text-primary/80 mb-6 ${
                     isRTL ? "flex-row-reverse" : ""
                   }`}
@@ -522,7 +520,7 @@ export default function BlogPostClient({ post, locale, schema }) {
                   <div className="flex flex-wrap gap-2">
                     {post.tags.map((tag: string, index: number) => (
                       <Link
-                        href={`/${locale}/blog/tag/${tag
+                        href={`/blog/tag/${tag
                           .toLowerCase()
                           .replace(/\s+/g, "-")}`}
                         key={index}
@@ -936,10 +934,7 @@ export default function BlogPostClient({ post, locale, schema }) {
               className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8"
             >
               {prevPost && (
-                <Link
-                  href={`/${locale}/blog/${prevPost.slug}`}
-                  className="group"
-                >
+                <Link href={`/blog/${prevPost.slug}`} className="group">
                   <Card
                     className={`h-full hover:shadow-md transition-shadow ${
                       isRTL
@@ -970,10 +965,7 @@ export default function BlogPostClient({ post, locale, schema }) {
                 </Link>
               )}
               {nextPost && (
-                <Link
-                  href={`/${locale}/blog/${nextPost.slug}`}
-                  className="group"
-                >
+                <Link href={`/blog/${nextPost.slug}`} className="group">
                   <Card
                     className={`h-full hover:shadow-md transition-shadow ${
                       isRTL
@@ -1176,7 +1168,7 @@ export default function BlogPostClient({ post, locale, schema }) {
                   <div className="space-y-4">
                     {relatedPosts.map((relatedPost) => (
                       <Link
-                        href={`/${locale}/blog/${relatedPost.slug}`}
+                        href={`/blog/${relatedPost.slug}`}
                         key={relatedPost.id}
                         className="group block"
                       >
@@ -1231,7 +1223,7 @@ export default function BlogPostClient({ post, locale, schema }) {
                 <div className="mt-6 pt-4 border-t border-gray-100">
                   <Button variant="outline" className="w-full">
                     <Link
-                      href={`/${locale}/blog`}
+                      href={`/blog`}
                       className={`flex items-center justify-center w-full ${
                         isRTL ? "flex-row-reverse" : ""
                       }`}

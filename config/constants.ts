@@ -14,6 +14,7 @@ export const CONSTANT = {
     10: "/images/blogs/10.webp",
   },
   images: {
+    logo:"/images/logo.webp",
     subscribe: "/images/subscribe.svg",
     contact: "/images/contact.svg",
     homeAbout: "/images/about-us.webp",

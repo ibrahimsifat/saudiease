@@ -9,11 +9,11 @@ import {
 } from "@/components/ui/card";
 import { Locale } from "@/config/i18n";
 import { getFeatures } from "@/data/features/index";
+import { Link } from "@/i18n/routing";
 import { generateWebsiteSchema } from "@/lib/schema";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import Link from "next/link";
 
 export async function generateMetadata({
   params,

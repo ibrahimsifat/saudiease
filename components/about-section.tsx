@@ -3,6 +3,7 @@
 import OptimizedImage from "@/components/optimized-image";
 import { Button } from "@/components/ui/button";
 import { CONSTANT } from "@/config/constants";
+import { Link } from "@/i18n/routing";
 import { getOptimizedAnimations } from "@/lib/performance-optimizations";
 import { motion, useInView } from "framer-motion";
 import {
@@ -14,7 +15,6 @@ import {
   Zap,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useRef, useState } from "react";
 

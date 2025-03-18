@@ -6,11 +6,11 @@ import { Input } from "@/components/ui/input";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Locale } from "@/config/i18n";
 import { projects } from "@/data/projects";
+import { Link } from "@/i18n/routing";
 import { motion } from "framer-motion";
 import { ArrowRight, ExternalLink, Filter, Search } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function PortfolioPageClient({ locale }: { locale: Locale }) {
@@ -94,7 +94,7 @@ export default function PortfolioPageClient({ locale }: { locale: Locale }) {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Button asChild>
-                <Link href={`/${locale}/contact`} className="flex items-center">
+                <Link href={`/contact`} className="flex items-center">
                   {t("hero.startProject")}
                   <ArrowIcon className={`${isRtl ? "mr-2" : "ml-2"} h-4 w-4`} />
                 </Link>
@@ -251,7 +251,7 @@ export default function PortfolioPageClient({ locale }: { locale: Locale }) {
                       <div className="flex gap-3">
                         <Button size="sm" asChild>
                           <Link
-                            href={`/${locale}/portfolio/${project.id}`}
+                            href={`/portfolio/${project.id}`}
                             className="flex items-center"
                           >
                             {t("projectDetail.viewProject")}
@@ -313,15 +313,13 @@ export default function PortfolioPageClient({ locale }: { locale: Locale }) {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild>
-                <Link href={`/${locale}/contact`} className="flex items-center">
+                <Link href={`/contact`} className="flex items-center">
                   {t("cta.startProject")}
                   <ArrowIcon className={`${isRtl ? "mr-2" : "ml-2"} h-4 w-4`} />
                 </Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
-                <Link href={`/${locale}/services`}>
-                  {t("cta.exploreServices")}
-                </Link>
+                <Link href={`/services`}>{t("cta.exploreServices")}</Link>
               </Button>
             </div>
           </div>

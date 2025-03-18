@@ -1,18 +1,27 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { motion } from "framer-motion"
-import NextImage from "next/image"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { ExternalLink, ArrowRight, Code, Layers, ChevronRight } from "lucide-react"
-import { projects } from "@/data/projects"
+import { Button } from "@/components/ui/button";
+import { projects } from "@/data/projects";
+import { Link } from "@/i18n/routing";
+import { motion } from "framer-motion";
+import {
+  ArrowRight,
+  ChevronRight,
+  Code,
+  ExternalLink,
+  Layers,
+} from "lucide-react";
+import NextImage from "next/image";
+import { useState } from "react";
 
 export default function PortfolioSection() {
-  const [activeProject, setActiveProject] = useState(0)
+  const [activeProject, setActiveProject] = useState(0);
 
   return (
-    <section id="portfolio" className="py-20 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
+    <section
+      id="portfolio"
+      className="py-20 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden"
+    >
       {/* Background Elements */}
       <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-white to-transparent"></div>
       <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-white to-transparent"></div>
@@ -29,7 +38,8 @@ export default function PortfolioSection() {
           <div
             className="absolute inset-0"
             style={{
-              backgroundImage: "radial-gradient(circle at 1px 1px, rgba(0,0,0,0.15) 1px, transparent 0)",
+              backgroundImage:
+                "radial-gradient(circle at 1px 1px, rgba(0,0,0,0.15) 1px, transparent 0)",
               backgroundSize: "40px 40px",
             }}
           ></div>
@@ -79,8 +89,9 @@ export default function PortfolioSection() {
           </h2>
 
           <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-            Explore our recent projects and see how we've helped businesses across Saudi Arabia achieve their digital
-            goals with innovative solutions and cutting-edge technology.
+            Explore our recent projects and see how we've helped businesses
+            across Saudi Arabia achieve their digital goals with innovative
+            solutions and cutting-edge technology.
           </p>
 
           {/* Floating badges */}
@@ -111,8 +122,16 @@ export default function PortfolioSection() {
           <div className="w-full lg:w-1/3 flex flex-col space-y-4 relative">
             {/* Decorative corner element */}
             <div className="absolute -top-4 -left-4 w-16 h-16 pointer-events-none opacity-30">
-              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 0L100 0L100 20L20 20L20 100L0 100L0 0Z" fill="currentColor" className="text-primary" />
+              <svg
+                viewBox="0 0 100 100"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 0L100 0L100 20L20 20L20 100L0 100L0 0Z"
+                  fill="currentColor"
+                  className="text-primary"
+                />
               </svg>
             </div>
 
@@ -126,7 +145,9 @@ export default function PortfolioSection() {
                 whileHover={{
                   scale: activeProject === index ? 1 : 1.02,
                   boxShadow:
-                    activeProject === index ? "0 10px 30px rgba(0, 0, 0, 0.1)" : "0 5px 15px rgba(0, 0, 0, 0.05)",
+                    activeProject === index
+                      ? "0 10px 30px rgba(0, 0, 0, 0.1)"
+                      : "0 5px 15px rgba(0, 0, 0, 0.05)",
                 }}
                 className={`cursor-pointer p-6 rounded-xl transition-all duration-300 relative overflow-hidden group ${
                   activeProject === index
@@ -155,17 +176,27 @@ export default function PortfolioSection() {
                     {project.category}
                   </span>
                   <motion.div
-                    animate={activeProject === index ? { rotate: 90 } : { rotate: 0 }}
+                    animate={
+                      activeProject === index ? { rotate: 90 } : { rotate: 0 }
+                    }
                     transition={{ duration: 0.3 }}
                   >
                     <ArrowRight
-                      className={`h-5 w-5 ${activeProject === index ? "text-primary" : "text-gray-400 group-hover:text-primary/70"}`}
+                      className={`h-5 w-5 ${
+                        activeProject === index
+                          ? "text-primary"
+                          : "text-gray-400 group-hover:text-primary/70"
+                      }`}
                     />
                   </motion.div>
                 </div>
 
                 <h3
-                  className={`text-xl font-bold ${activeProject === index ? "text-primary" : "text-saudi-black group-hover:text-primary/90"}`}
+                  className={`text-xl font-bold ${
+                    activeProject === index
+                      ? "text-primary"
+                      : "text-saudi-black group-hover:text-primary/90"
+                  }`}
                 >
                   {project.title}
                 </h3>
@@ -182,11 +213,15 @@ export default function PortfolioSection() {
                     className="mt-4 pt-4 border-t border-gray-100 flex items-center"
                   >
                     <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center mr-3">
-                      <span className="text-xs font-bold text-gray-500">{project.title.charAt(0)}</span>
+                      <span className="text-xs font-bold text-gray-500">
+                        {project.title.charAt(0)}
+                      </span>
                     </div>
                     <div>
                       <p className="text-xs text-gray-500">Client</p>
-                      <p className="text-sm font-medium">{project.title.split(" ")[0]} Inc.</p>
+                      <p className="text-sm font-medium">
+                        {project.title.split(" ")[0]} Inc.
+                      </p>
                     </div>
                   </motion.div>
                 )}
@@ -205,8 +240,16 @@ export default function PortfolioSection() {
           >
             {/* Decorative corner elements */}
             <div className="absolute top-0 right-0 w-20 h-20 pointer-events-none opacity-10">
-              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M100 0L0 0L0 20L80 20L80 100L100 100L100 0Z" fill="currentColor" className="text-primary" />
+              <svg
+                viewBox="0 0 100 100"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M100 0L0 0L0 20L80 20L80 100L100 100L100 0Z"
+                  fill="currentColor"
+                  className="text-primary"
+                />
               </svg>
             </div>
 
@@ -230,8 +273,12 @@ export default function PortfolioSection() {
                   <span className="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-xs font-medium inline-block mb-3">
                     {projects[activeProject].category}
                   </span>
-                  <h3 className="text-2xl md:text-3xl font-bold mb-2">{projects[activeProject].title}</h3>
-                  <p className="text-white/80 max-w-xl">{projects[activeProject].description}</p>
+                  <h3 className="text-2xl md:text-3xl font-bold mb-2">
+                    {projects[activeProject].title}
+                  </h3>
+                  <p className="text-white/80 max-w-xl">
+                    {projects[activeProject].description}
+                  </p>
                 </motion.div>
               </div>
 
@@ -243,7 +290,9 @@ export default function PortfolioSection() {
                 className="absolute -bottom-10 right-8 w-[100px] h-[200px] rounded-xl overflow-hidden border-[3px] border-white shadow-lg"
               >
                 <NextImage
-                  src={projects[activeProject].mobileImage || "/placeholder.svg"}
+                  src={
+                    projects[activeProject].mobileImage || "/placeholder.svg"
+                  }
                   alt={`${projects[activeProject].title} mobile view`}
                   fill
                   className="object-cover"
@@ -273,7 +322,11 @@ export default function PortfolioSection() {
 
               {/* Project details with improved layout */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                >
                   <h4 className="text-lg font-semibold text-saudi-black mb-4 flex items-center">
                     <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10 mr-3">
                       <Layers className="h-4 w-4 text-primary" />
@@ -290,8 +343,18 @@ export default function PortfolioSection() {
                         className="flex items-start group"
                       >
                         <div className="flex-shrink-0 h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 group-hover:bg-primary/20 transition-colors">
-                          <svg className="h-3 w-3 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                          <svg
+                            className="h-3 w-3 text-primary"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M5 13l4 4L19 7"
+                            />
                           </svg>
                         </div>
                         <span className="ml-3 text-gray-700 group-hover:text-gray-900 transition-colors">
@@ -302,7 +365,11 @@ export default function PortfolioSection() {
                   </ul>
                 </motion.div>
 
-                <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                >
                   {/* Project timeline - new informative element */}
                   <h4 className="text-lg font-semibold text-saudi-black mb-4 flex items-center">
                     <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10 mr-3">
@@ -316,7 +383,9 @@ export default function PortfolioSection() {
                       <div className="absolute -left-[25px] w-5 h-5 rounded-full bg-primary/20 border-2 border-primary flex items-center justify-center">
                         <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
                       </div>
-                      <h5 className="text-sm font-semibold">Discovery & Planning</h5>
+                      <h5 className="text-sm font-semibold">
+                        Discovery & Planning
+                      </h5>
                       <p className="text-xs text-gray-500">2 weeks</p>
                     </div>
 
@@ -324,7 +393,9 @@ export default function PortfolioSection() {
                       <div className="absolute -left-[25px] w-5 h-5 rounded-full bg-primary/20 border-2 border-primary flex items-center justify-center">
                         <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
                       </div>
-                      <h5 className="text-sm font-semibold">Design & Development</h5>
+                      <h5 className="text-sm font-semibold">
+                        Design & Development
+                      </h5>
                       <p className="text-xs text-gray-500">6 weeks</p>
                     </div>
 
@@ -332,7 +403,9 @@ export default function PortfolioSection() {
                       <div className="absolute -left-[25px] w-5 h-5 rounded-full bg-primary/20 border-2 border-primary flex items-center justify-center">
                         <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
                       </div>
-                      <h5 className="text-sm font-semibold">Testing & Deployment</h5>
+                      <h5 className="text-sm font-semibold">
+                        Testing & Deployment
+                      </h5>
                       <p className="text-xs text-gray-500">2 weeks</p>
                     </div>
 
@@ -344,17 +417,26 @@ export default function PortfolioSection() {
                           viewBox="0 0 24 24"
                           stroke="currentColor"
                         >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={3}
+                            d="M5 13l4 4L19 7"
+                          />
                         </svg>
                       </div>
-                      <h5 className="text-sm font-semibold text-green-600">Completed & Launched</h5>
+                      <h5 className="text-sm font-semibold text-green-600">
+                        Completed & Launched
+                      </h5>
                       <p className="text-xs text-gray-500">Ongoing support</p>
                     </div>
                   </div>
 
                   {/* Results section with improved styling */}
                   <div className="mt-6 pt-6 border-t border-gray-100">
-                    <h4 className="text-lg font-semibold text-saudi-black mb-4">Project Impact</h4>
+                    <h4 className="text-lg font-semibold text-saudi-black mb-4">
+                      Project Impact
+                    </h4>
                     <div className="grid grid-cols-2 gap-4">
                       {projects[activeProject].stats.map((stat, index) => (
                         <motion.div
@@ -362,14 +444,19 @@ export default function PortfolioSection() {
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.1 * index + 0.4 }}
-                          whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
+                          whileHover={{
+                            y: -5,
+                            boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)",
+                          }}
                           className="bg-gradient-to-br from-gray-50 to-white p-4 rounded-lg border border-gray-100 shadow-sm transition-all duration-300"
                         >
                           <div className="flex items-center text-gray-600 mb-2">
                             <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center mr-2">
                               {stat.icon}
                             </div>
-                            <span className="text-xs font-medium">{stat.label}</span>
+                            <span className="text-xs font-medium">
+                              {stat.label}
+                            </span>
                           </div>
                           <p className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/80">
                             {stat.value}
@@ -388,19 +475,28 @@ export default function PortfolioSection() {
                 transition={{ delay: 0.5 }}
                 className="mb-6 p-4 bg-gray-50 rounded-lg border border-gray-100 relative"
               >
-                <div className="absolute -top-3 -left-3 text-primary text-4xl opacity-20">"</div>
-                <div className="absolute -bottom-3 -right-3 text-primary text-4xl opacity-20">"</div>
+                <div className="absolute -top-3 -left-3 text-primary text-4xl opacity-20">
+                  "
+                </div>
+                <div className="absolute -bottom-3 -right-3 text-primary text-4xl opacity-20">
+                  "
+                </div>
                 <p className="text-gray-600 italic text-sm">
-                  "The team delivered an exceptional solution that exceeded our expectations. The project was completed
-                  on time and within budget, and the results have been outstanding."
+                  "The team delivered an exceptional solution that exceeded our
+                  expectations. The project was completed on time and within
+                  budget, and the results have been outstanding."
                 </p>
                 <div className="mt-3 flex items-center">
                   <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center mr-2">
-                    <span className="text-xs font-bold">{projects[activeProject].title.charAt(0)}</span>
+                    <span className="text-xs font-bold">
+                      {projects[activeProject].title.charAt(0)}
+                    </span>
                   </div>
                   <div>
                     <p className="text-sm font-medium">Client Representative</p>
-                    <p className="text-xs text-gray-500">{projects[activeProject].title.split(" ")[0]} Inc.</p>
+                    <p className="text-xs text-gray-500">
+                      {projects[activeProject].title.split(" ")[0]} Inc.
+                    </p>
                   </div>
                 </div>
               </motion.div>
@@ -422,8 +518,15 @@ export default function PortfolioSection() {
                   </a>
                 </Button>
 
-                <Button variant="outline" className="border-primary text-primary hover:bg-primary/5 group" asChild>
-                  <Link href={`/portfolio/${projects[activeProject].id}`} className="flex items-center">
+                <Button
+                  variant="outline"
+                  className="border-primary text-primary hover:bg-primary/5 group"
+                  asChild
+                >
+                  <Link
+                    href={`/portfolio/${projects[activeProject].id}`}
+                    className="flex items-center"
+                  >
                     <span>View Case Study</span>
                     <ChevronRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
@@ -441,9 +544,12 @@ export default function PortfolioSection() {
           transition={{ duration: 0.5 }}
           className="text-center mt-16 mb-8"
         >
-          <h3 className="text-2xl font-bold text-saudi-black mb-2">Ready to Explore More?</h3>
+          <h3 className="text-2xl font-bold text-saudi-black mb-2">
+            Ready to Explore More?
+          </h3>
           <p className="text-gray-600 max-w-2xl mx-auto mb-6">
-            Discover our complete portfolio of successful projects across various industries.
+            Discover our complete portfolio of successful projects across
+            various industries.
           </p>
 
           <div className="flex flex-wrap justify-center gap-4">
@@ -457,13 +563,16 @@ export default function PortfolioSection() {
               </Link>
             </Button>
 
-            <Button variant="outline" className="border-primary text-primary hover:bg-primary/5" asChild>
+            <Button
+              variant="outline"
+              className="border-primary text-primary hover:bg-primary/5"
+              asChild
+            >
               <Link href="/contact">Request a Consultation</Link>
             </Button>
           </div>
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
-

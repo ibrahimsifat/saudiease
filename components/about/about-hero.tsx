@@ -1,9 +1,9 @@
 "use client";
 
+import { Link } from "@/i18n/routing";
 import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import { useInView } from "react-intersection-observer";
 
 // Update the component to accept translated content

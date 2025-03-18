@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { CONSTANT } from "@/config/constants";
+import { Link } from "@/i18n/routing";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
   ArrowLeft,
@@ -17,7 +18,6 @@ import {
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useRef } from "react";
 import { useInView } from "react-intersection-observer";

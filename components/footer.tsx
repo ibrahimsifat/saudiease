@@ -2,13 +2,12 @@
 
 import type React from "react";
 
-import { motion } from "framer-motion";
-import Link from "next/link";
-// Fix the Image import to avoid conflicts with the native Image constructor
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { CONSTANT } from "@/config/constants";
 import { getCompanyInfo } from "@/data/company-info/index";
+import { Link } from "@/i18n/routing";
+import { motion } from "framer-motion";
 import { ArrowRight, ChevronRight, Mail, MapPin, Phone } from "lucide-react";
 import { useTranslations } from "next-intl";
 import NextImage from "next/image";

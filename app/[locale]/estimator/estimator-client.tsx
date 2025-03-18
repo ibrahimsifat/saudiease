@@ -20,7 +20,6 @@ import {
   Users,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -36,6 +35,7 @@ import { Slider } from "@/components/ui/slider";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import { Locale } from "@/config/i18n";
+import { Link } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
 
 type EstimatorClientProps = {
@@ -508,7 +508,7 @@ export default function EstimatorClient({ locale }: EstimatorClientProps) {
     });
 
     // Redirect to consultation page
-    router.push(`/${locale}/schedule-consultation`);
+    router.push(`/schedule-consultation`);
   };
 
   const getApplicableFeatures = () => {
@@ -1640,7 +1640,7 @@ export default function EstimatorClient({ locale }: EstimatorClientProps) {
                 size="lg"
                 asChild
               >
-                <Link href={`/${locale}/schedule-consultation`}>
+                <Link href={`/schedule-consultation`}>
                   <Calendar
                     className={cn("h-5 w-5", isRTL ? "ml-2" : "mr-2")}
                   />
@@ -1653,7 +1653,7 @@ export default function EstimatorClient({ locale }: EstimatorClientProps) {
                 size="lg"
                 asChild
               >
-                <Link href={`/${locale}/contact`}>
+                <Link href={`/contact`}>
                   <Send className={cn("h-5 w-5", isRTL ? "ml-2" : "mr-2")} />
                   {t("cta.contactUs")}
                 </Link>

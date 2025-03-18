@@ -1,10 +1,10 @@
 "use client";
 
 import type { Locale } from "@/config/i18n";
+import { Link } from "@/i18n/routing";
 import { getTranslations } from "@/lib/get-translation-namespace";
 import { ArrowLeft } from "lucide-react";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
 
 export async function generateMetadata({
   params,

@@ -11,11 +11,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { type Locale } from "@/config/i18n";
 import { featureDetails } from "@/data/feature-details";
 import { features } from "@/data/features";
+import { Link } from "@/i18n/routing";
 import { generateServiceSchema } from "@/lib/schema";
 import { ArrowLeft, ArrowRight, CheckCircle } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 export default function FeatureDetailPageClient({
@@ -63,7 +63,7 @@ export default function FeatureDetailPageClient({
             >
               <div className="w-full md:w-1/2">
                 <Link
-                  href={`/${locale}/features`}
+                  href={`/features`}
                   className={`inline-flex items-center text-primary hover:text-primary/80 mb-4 ${
                     isRTL ? "flex-row-reverse" : ""
                   }`}
@@ -103,7 +103,7 @@ export default function FeatureDetailPageClient({
                 </p>
                 <div className={`flex flex-wrap gap-4 `}>
                   <Button size="lg" className="bg-primary hover:bg-primary/90">
-                    <Link href={`/${locale}/contact`}>{t("requestDemo")}</Link>
+                    <Link href={`/contact`}>{t("requestDemo")}</Link>
                   </Button>
                   <Button
                     size="lg"
@@ -249,9 +249,7 @@ export default function FeatureDetailPageClient({
 
                   <div className={`mt-8 ${isRTL ? "text-right" : ""}`}>
                     <Button className="bg-primary hover:bg-primary/90">
-                      <Link href={`/${locale}/contact`}>
-                        {t("discussYourProject")}
-                      </Link>
+                      <Link href={`/contact`}>{t("discussYourProject")}</Link>
                     </Button>
                   </div>
                 </div>
@@ -330,7 +328,7 @@ export default function FeatureDetailPageClient({
                       }`}
                     >
                       <Link
-                        href={`/${locale}/features/${relatedFeature?.id}`}
+                        href={`/features/${relatedFeature?.id}`}
                         className={`flex items-center w-full ${
                           isRTL
                             ? "flex-row-reverse justify-between"
@@ -375,16 +373,14 @@ export default function FeatureDetailPageClient({
                   }`}
                 >
                   <Button size="lg" className="bg-primary hover:bg-primary/90">
-                    <Link href={`/${locale}/contact`}>{t("contactUs")}</Link>
+                    <Link href={`/contact`}>{t("contactUs")}</Link>
                   </Button>
                   <Button
                     size="lg"
                     variant="outline"
                     className="border-primary text-primary hover:bg-primary/10"
                   >
-                    <Link href={`/${locale}/services`}>
-                      {t("exploreServices")}
-                    </Link>
+                    <Link href={`/services`}>{t("exploreServices")}</Link>
                   </Button>
                 </div>
               </div>

@@ -4,13 +4,13 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Locale } from "@/config/i18n";
 import { getBlogs } from "@/data/blog-posts/index";
+import { Link } from "@/i18n/routing";
 
 import { generateBlogPostSchema } from "@/lib/schema";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Calendar, User } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import Link from "next/link";
 import Script from "next/script";
 
 export default function BlogSection({ locale }: { locale: Locale }) {
