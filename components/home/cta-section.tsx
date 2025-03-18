@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { Link } from "@/i18n/routing";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -49,10 +50,10 @@ export default function CTASection() {
               className="bg-primary hover:bg-primary/90 text-white group"
               asChild
             >
-              <a href="#contact" className="flex items-center">
+              <Link href="/contact" className="flex items-center">
                 {t("primaryButton")}
-                <ArrowRight className="ml-2 rtl:ml-0 rtl:mr-2 h-4 w-4 transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1 rtl:group-hover:translate-x-0 rtl:rotate-180" />
-              </a>
+                <ArrowRight className="ml-2 rtl:ml-0 rtl:mr-2 h-4 w-4 transition-transform group-hover:translate-x-1  rtl:group-hover:translate-x-0 rtl:rotate-180" />
+              </Link>
             </Button>
             <Button
               size="lg"
@@ -60,7 +61,7 @@ export default function CTASection() {
               className="border-primary text-primary hover:bg-primary/10"
               asChild
             >
-              <a href="#services">{t("secondaryButton")}</a>
+              <Link href="/services">{t("secondaryButton")}</Link>
             </Button>
           </motion.div>
 

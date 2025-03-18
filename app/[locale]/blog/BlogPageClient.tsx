@@ -14,6 +14,7 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Locale } from "@/config/i18n";
 import { getBlogs } from "@/data/blog-posts/index";
 import { useMobile } from "@/hooks/use-mobile";
+import { searchBlogPosts } from "@/lib/blog";
 import { ArrowRight, Calendar, Search } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -143,7 +144,11 @@ export default function BlogPageClient({ locale = "en" }: { locale?: string }) {
 
     if (query) {
       setFilteredPosts(
-        searchBlogPosts(query, category !== "all" ? category : undefined)
+        searchBlogPosts(
+          query,
+          category !== "all" ? category : undefined,
+          locale
+        )
       );
     } else if (category !== "all") {
       setFilteredPosts(blogPosts.filter((post) => post.category === category));
@@ -294,7 +299,7 @@ export default function BlogPageClient({ locale = "en" }: { locale?: string }) {
                     >
                       <div className="relative h-48">
                         <OptimizedImage
-                          src={post.coverImage}
+                          src={post.image}
                           alt={post.title}
                           fill
                           className="object-cover"
@@ -306,7 +311,7 @@ export default function BlogPageClient({ locale = "en" }: { locale?: string }) {
                             {post.category}
                           </Badge>
                           <div className="text-xs text-muted-foreground">
-                            {post.readingTime} {t.readingTime}
+                            {post.date} {t.readingTime}
                           </div>
                         </div>
                         <CardTitle className="line-clamp-2">
@@ -325,8 +330,8 @@ export default function BlogPageClient({ locale = "en" }: { locale?: string }) {
                         <div className="flex items-center gap-2">
                           <div className="relative h-8 w-8 rounded-full overflow-hidden">
                             <Image
-                              src={post.author.avatar || "/placeholder.svg"}
-                              alt={post.author.name}
+                              src={post.authorImage || "/placeholder.svg"}
+                              alt={post.author}
                               fill
                               className="object-cover"
                             />
@@ -335,7 +340,7 @@ export default function BlogPageClient({ locale = "en" }: { locale?: string }) {
                             <span className="text-muted-foreground">
                               {t.by}{" "}
                             </span>
-                            {post.author.name}
+                            {post.author}
                           </div>
                         </div>
                         <Button variant="ghost" size="sm" asChild>
@@ -373,7 +378,7 @@ export default function BlogPageClient({ locale = "en" }: { locale?: string }) {
                       <div key={post.slug} className="flex gap-3">
                         <div className="relative h-16 w-16 flex-shrink-0 rounded-md overflow-hidden">
                           <Image
-                            src={post.coverImage || "/placeholder.svg"}
+                            src={post.image || "/placeholder.svg"}
                             alt={post.title}
                             fill
                             className="object-cover"

@@ -1,6 +1,6 @@
-import { companyInfo } from "@/data/company-info"
-import type { Service } from "@/data/services"
-import type { FAQ } from "@/data/faq"
+import { companyInfo } from "@/data/company-info/index";
+import type { FAQ } from "@/data/faq";
+import type { Service } from "@/data/services";
 
 // Generate Organization Schema
 export function generateOrganizationSchema() {
@@ -11,7 +11,7 @@ export function generateOrganizationSchema() {
     url: "https://saudiease.com",
     logo: "https://saudiease.com/logo.png",
     description: companyInfo.description,
-  }
+  };
 }
 
 // Generate Service Schema
@@ -21,7 +21,7 @@ export function generateServiceSchema(service: Service) {
     "@type": "Service",
     name: service.title,
     description: service.description,
-  }
+  };
 }
 
 // Generate FAQ Schema
@@ -37,7 +37,7 @@ export function generateFAQSchema(faqs: FAQ[]) {
         text: faq.answer,
       },
     })),
-  }
+  };
 }
 
 // Generate Website Schema
@@ -48,7 +48,7 @@ export function generateWebsiteSchema() {
     name: companyInfo.name,
     url: "https://saudiease.com",
     description: companyInfo.description,
-  }
+  };
 }
 
 // Generate LocalBusiness Schema
@@ -69,7 +69,7 @@ export function generateLocalBusinessSchema(props: any) {
       addressRegion: props.address.addressRegion,
       addressCountry: props.address.addressCountry,
     },
-  }
+  };
 }
 
 // Generate BlogPost Schema
@@ -84,6 +84,5 @@ export function generateBlogPostSchema(post: any) {
       "@type": "Person",
       name: post.author,
     },
-  }
+  };
 }
-

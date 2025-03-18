@@ -85,12 +85,12 @@ export default function TermsOfServiceClient({ locale }: { locale: string }) {
               >
                 {t("sections.introduction.title")}
               </a>
-              <a
-                href="#services"
+              <Link
+                href="/services"
                 className="bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-full text-sm text-gray-700 transition-colors"
               >
                 {t("sections.services.title")}
-              </a>
+              </Link>
               <a
                 href="#user-responsibilities"
                 className="bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-full text-sm text-gray-700 transition-colors"

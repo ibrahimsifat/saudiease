@@ -1,7 +1,9 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { CONSTANT } from "@/config/constants";
 import { features } from "@/data/features";
+import { Link } from "@/i18n/routing";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
@@ -152,16 +154,16 @@ export default function FeaturesShowcase() {
                 className="bg-primary hover:bg-primary/90 text-white"
                 asChild
               >
-                <a href="#services">{t("exploreServices")}</a>
+                <Link href="/services">{t("exploreServices")}</Link>
               </Button>
             </motion.div>
           </div>
 
           <motion.div style={{ y }} className="relative hidden lg:block">
             <div className="relative h-[600px] w-full">
-              <div className="absolute top-0 left-[10%] rtl:left-auto rtl:right-[10%] w-[80%] h-[80%] rounded-2xl overflow-hidden shadow-xl">
+              <div className="absolute top-0 left-[10%] rtl:left-auto rtl:right-[10%] w-[80%] h-[80%] rounded-2xl overflow-hidden">
                 <Image
-                  src="/placeholder.svg?height=800&width=600"
+                  src={CONSTANT.images.homeFeature}
                   alt={t("imageAlt")}
                   fill
                   className="object-cover"

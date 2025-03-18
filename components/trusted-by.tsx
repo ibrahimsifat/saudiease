@@ -1,4 +1,5 @@
 "use client";
+import { CONSTANT } from "@/config/constants";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
@@ -12,22 +13,22 @@ export default function TrustedBy() {
 
   // Trusted partners with more specific Saudi companies
   const partners = [
-    { name: "Saudi Aramco", logo: "/placeholder.svg?height=60&width=120" },
-    { name: "SABIC", logo: "/placeholder.svg?height=60&width=120" },
-    { name: "STC", logo: "/placeholder.svg?height=60&width=120" },
-    { name: "Almarai", logo: "/placeholder.svg?height=60&width=120" },
+    // { name: "Saudi Aramco", logo: "/placeholder.svg?height=60&width=120" },
+    { name: "Right Visa", logo: CONSTANT.clients.rightVisa },
+    { name: "Kullesh", logo: CONSTANT.clients.kullesh },
+    { name: "UPF", logo: CONSTANT.clients.upf },
     {
-      name: "Saudi National Bank",
-      logo: "/placeholder.svg?height=60&width=120",
+      name: "Next Ride",
+      logo: CONSTANT.clients.nextRide,
     },
     {
-      name: "Saudi Electricity Company",
-      logo: "/placeholder.svg?height=60&width=120",
+      name: "ranchi-university",
+      logo: CONSTANT.clients.ranchiUniversity,
     },
-    { name: "NEOM", logo: "/placeholder.svg?height=60&width=120" },
-    { name: "Red Sea Global", logo: "/placeholder.svg?height=60&width=120" },
-    { name: "Ma'aden", logo: "/placeholder.svg?height=60&width=120" },
-    { name: "Saudia Airlines", logo: "/placeholder.svg?height=60&width=120" },
+    { name: "Sarah", logo: CONSTANT.clients.sarah },
+    { name: "KIC Ads", logo: CONSTANT.clients.kic },
+    { name: "24 Deals", logo: CONSTANT.clients.deals },
+    // { name: "Saudia Airlines", logo: "/placeholder.svg?height=60&width=120" },
   ];
 
   // Double the partners array for seamless infinite scroll

@@ -7,9 +7,8 @@ type Props = {
   params: { locale: string };
 };
 
-export async function generateMetadata({
-  params: { locale },
-}: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "estimator" });
 
   return generatePageMetadata({
@@ -20,6 +19,8 @@ export async function generateMetadata({
   });
 }
 
-export default async function EstimatorPage({ params: { locale } }: Props) {
+export default async function EstimatorPage({ params }: Props) {
+  const { locale } = await params;
+
   return <EstimatorClient locale={locale} />;
 }

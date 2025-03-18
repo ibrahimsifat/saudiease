@@ -6,10 +6,11 @@ import ContactClient from "./ContactClient";
 
 // Generate metadata for the page with proper localization
 export async function generateMetadata({
-  params: { locale },
+  params,
 }: {
   params: { locale: Locale };
 }): Promise<Metadata> {
+  const { locale } = await params;
   return generateLocalizedMetadata(locale, "contact");
 }
 

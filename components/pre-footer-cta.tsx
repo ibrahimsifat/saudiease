@@ -5,6 +5,7 @@ import type React from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { CONSTANT } from "@/config/constants";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import {
@@ -20,10 +21,17 @@ import {
   Zap,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
-import Image from "next/image";
+import { default as Image, default as NextImage } from "next/image";
 import { useState } from "react";
 import { useInView } from "react-intersection-observer";
-
+const partners = [
+  CONSTANT.clients.deals,
+  CONSTANT.clients.kic,
+  CONSTANT.clients.kullesh,
+  CONSTANT.clients.nextRide,
+  CONSTANT.clients.ranchiUniversity,
+  CONSTANT.clients.sarah,
+];
 export default function PreFooterCTA() {
   const t = useTranslations("preFooterCTA");
 
@@ -329,7 +337,7 @@ export default function PreFooterCTA() {
               <div className="lg:col-span-2 bg-gradient-to-br from-primary to-primary/80 text-white relative overflow-hidden">
                 <div className="absolute inset-0 opacity-20">
                   <Image
-                    src="/placeholder.svg?height=800&width=600"
+                    src={CONSTANT.images.contact}
                     alt={t("officeImageAlt")}
                     fill
                     className="object-cover"
@@ -448,11 +456,20 @@ export default function PreFooterCTA() {
             </p>
             <div className="flex flex-wrap justify-center items-center gap-8 opacity-70">
               {/* Client logos would go here */}
-              {Array.from({ length: 5 }).map((_, i) => (
+
+              {partners.map((partner, index) => (
                 <div
-                  key={i}
-                  className="h-8 w-24 bg-gray-200 dark:bg-gray-700 rounded opacity-50"
-                ></div>
+                  key={index}
+                  className="bg-white p-4 rounded-lg flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300"
+                >
+                  <NextImage
+                    src={partner || "/placeholder.svg"}
+                    alt={`${t("partner")} ${index + 1}`}
+                    width={120}
+                    height={60}
+                    className="object-contain h-8 w-24"
+                  />
+                </div>
               ))}
             </div>
           </motion.div>

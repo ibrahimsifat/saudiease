@@ -1018,6 +1018,7 @@
     "description": "Our team of Saudi digital experts is ready to help your business thrive in the digital landscape. Reach out today and discover how we can elevate your brand.",
     "quickContact": "Quick Contact",
     "scheduleCall": "Schedule a Call",
+    "partner": "Partner",
     "form": {
       "name": "Your Name",
       "namePlaceholder": "Enter your name",
@@ -1379,6 +1380,17 @@
       "phoneError": "Please enter a valid Saudi phone number (05xxxxxxxx)",
       "emailError": "Please enter a valid email address"
     },
+    "contactInfoTitle": "Contact Information",
+    "getInTouch": "Get in Touch",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address",
+    "workingHours": "Working Hours",
+    "followUs": "Follow Us",
+    "socialMediaText": "Stay connected with us on social media for the latest updates and news.",
+    "officeLocationsTitle": "Our Office Locations",
+    "officeLocationsSubtitle": "Visit us at one of our convenient office locations throughout Saudi Arabia.",
+    "viewLargerMap": "View larger map",
     "info": {
       "title": "Contact Information",
       "phone": "Phone",
@@ -1504,6 +1516,98 @@
       "description": "Let's discuss how we can help your business achieve its digital goals with our expertise in web development, e-commerce, and digital marketing.",
       "primaryButton": "Start Your Project",
       "secondaryButton": "Explore Our Services"
+    }
+  },
+  "portfolioPage": {
+    "title": "Our Portfolio | Saudi Ease Digital Solutions",
+    "description": "Explore our portfolio of successful digital projects across Saudi Arabia. View our web development, e-commerce, and digital marketing case studies.",
+    "hero": {
+      "title": "Our Portfolio",
+      "description": "Explore our collection of successful digital projects across Saudi Arabia. From e-commerce solutions to ZATCA-compliant systems, discover how we've helped businesses achieve their digital transformation goals.",
+      "startProject": "Start Your Project",
+      "browseProjects": "Browse Projects",
+      "stats": {
+        "projects": "250+ Projects",
+        "industries": "15+ Industries",
+        "awardWinning": "Award-Winning"
+      }
+    },
+    "filter": {
+      "search": "Search projects by name, technology or description...",
+      "filterBy": "Filter by Category:",
+      "all": "all"
+    },
+    "noProjects": {
+      "title": "No projects found",
+      "description": "We couldn't find any projects matching your search criteria. Please try different keywords or browse all projects.",
+      "clearFilters": "Clear Filters"
+    },
+    "cta": {
+      "title": "Ready to Create Your Success Story?",
+      "description": "Let's work together to build your next digital project. Our team of Saudi market experts is ready to help you achieve your business goals.",
+      "startProject": "Start Your Project",
+      "exploreServices": "Explore Our Services"
+    },
+    "projectDetail": {
+      "breadcrumb": {
+        "home": "Home",
+        "portfolio": "Portfolio"
+      },
+      "client": "Client",
+      "duration": "Duration",
+      "completed": "Completed",
+      "save": "Save",
+      "share": "Share",
+      "visitProject": "Visit Project",
+      "requestSimilar": "Request Similar Project",
+      "featured": "Featured",
+      "overview": "Overview",
+      "challenge": "Challenge",
+      "solution": "Solution",
+      "results": "Results",
+      "gallery": "Gallery",
+      "testimonial": "Testimonial",
+      "keyFeatures": "Key Features",
+      "technologiesUsed": "Technologies Used",
+      "projectTimeline": "Project Timeline",
+      "performanceMetrics": "Performance Metrics",
+      "clientTestimonial": "Client Testimonial",
+      "projectResources": "Project Resources",
+      "caseStudy": "Project Case Study",
+      "presentation": "Project Presentation",
+      "download": "Download",
+      "projectInfo": "Project Information",
+      "category": "Category",
+      "interestedSimilar": "Interested in a similar project?",
+      "discussHelp": "Let's discuss how we can help you achieve your business goals with a custom digital solution.",
+      "getInTouch": "Get in Touch",
+      "relatedProjects": "Related Projects",
+      "viewProject": "View Project",
+      "backToPortfolio": "Back to Portfolio",
+      "technicalExcellence": "Technical Excellence",
+      "technicalDescription": "We implemented cutting-edge technologies and best practices to ensure a robust, scalable solution.",
+      "userCenteredDesign": "User-Centered Design",
+      "userCenteredDescription": "Our approach focused on creating an intuitive, accessible experience for all users.",
+      "scalableArchitecture": "Scalable Architecture",
+      "scalableDescription": "We designed a flexible system that can grow with the client's needs and adapt to future requirements.",
+      "efficientDelivery": "Efficient Delivery",
+      "efficientDescription": "Our agile methodology ensured timely delivery while maintaining the highest quality standards.",
+      "timeline": {
+        "discovery": "Discovery & Planning",
+        "discoveryDesc": "Initial client meetings, requirement gathering, and project planning.",
+        "design": "Design Phase",
+        "designDesc": "Creating wireframes, mockups, and getting client approval on designs.",
+        "development": "Development",
+        "developmentDesc": "Frontend and backend development, implementing core features.",
+        "testing": "Testing & QA",
+        "testingDesc": "Thorough testing, bug fixing, and quality assurance.",
+        "deployment": "Deployment",
+        "deploymentDesc": "Final deployment, client training, and project handover."
+      },
+      "downloadPortfolio": "Download Our Portfolio",
+      "portfolioDescription": "Get our complete portfolio with detailed case studies and project insights.",
+      "downloadPDF": "Download PDF",
+      "liveDemo": "Live Site"
     }
   },
   "blog": {
@@ -3116,5 +3220,11 @@
       "select": "to select",
       "close": "to close"
     }
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "description": "The page you are looking for does not exist or has been moved.",
+    "message": "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.",
+    "returnHome": "Return to Homepage"
   }
 }

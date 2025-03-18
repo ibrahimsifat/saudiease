@@ -1,24 +1,25 @@
-"use client"
+"use client";
 
-import { useRef } from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
-import { useInView } from "react-intersection-observer"
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { Heart, BookOpen, Users, Leaf } from "lucide-react"
+import { Button } from "@/components/ui/button";
+import { Link } from "@/i18n/routing";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { BookOpen, Heart, Leaf, Users } from "lucide-react";
+import Image from "next/image";
+import { useRef } from "react";
+import { useInView } from "react-intersection-observer";
 
 export default function CSRSection() {
-  const containerRef = useRef(null)
+  const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"],
-  })
+  });
 
-  const y = useTransform(scrollYProgress, [0, 1], [0, -50])
+  const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
   const { ref, inView } = useInView({
     threshold: 0.1,
     triggerOnce: true,
-  })
+  });
 
   const initiatives = [
     {
@@ -45,7 +46,7 @@ export default function CSRSection() {
       description:
         "We provide free digital services to selected non-profit organizations that are making a positive impact in Saudi society.",
     },
-  ]
+  ];
 
   return (
     <section ref={containerRef} className="py-20 relative overflow-hidden">
@@ -54,16 +55,22 @@ export default function CSRSection() {
       <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-primary/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-primary/5 rounded-full blur-3xl"></div>
 
-      <motion.div ref={ref} style={{ y }} className="container mx-auto px-4 relative">
+      <motion.div
+        ref={ref}
+        style={{ y }}
+        className="container mx-auto px-4 relative"
+      >
         <div className="text-center mb-16">
           <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
             <span className="flex h-2 w-2 rounded-full bg-primary mr-2"></span>
             Giving Back
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-saudi-black mb-4">Corporate Social Responsibility</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-saudi-black mb-4">
+            Corporate Social Responsibility
+          </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            At Saudi Ease, we're committed to making a positive impact in our communities and contributing to Saudi
-            Vision 2030.
+            At Saudi Ease, we're committed to making a positive impact in our
+            communities and contributing to Saudi Vision 2030.
           </p>
         </div>
 
@@ -74,7 +81,12 @@ export default function CSRSection() {
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
             <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-xl">
-              <Image src="/placeholder.svg?height=800&width=1200" alt="CSR initiatives" fill className="object-cover" />
+              <Image
+                src="/placeholder.svg?height=800&width=1200"
+                alt="CSR initiatives"
+                fill
+                className="object-cover"
+              />
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/40 to-transparent mix-blend-multiply"></div>
             </div>
           </motion.div>
@@ -95,7 +107,9 @@ export default function CSRSection() {
                       {initiative.icon}
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-saudi-black mb-2">{initiative.title}</h3>
+                      <h3 className="text-xl font-bold text-saudi-black mb-2">
+                        {initiative.title}
+                      </h3>
                       <p className="text-gray-600">{initiative.description}</p>
                     </div>
                   </div>
@@ -111,14 +125,18 @@ export default function CSRSection() {
 
         <div className="mt-16 text-center">
           <p className="text-gray-600 mb-4">
-            Want to partner with us on our CSR initiatives? We're always looking for like-minded organizations.
+            Want to partner with us on our CSR initiatives? We're always looking
+            for like-minded organizations.
           </p>
-          <Button variant="outline" className="border-primary text-primary hover:bg-primary/10" asChild>
-            <a href="#contact">Contact Us</a>
+          <Button
+            variant="outline"
+            className="border-primary text-primary hover:bg-primary/10"
+            asChild
+          >
+            <Link href="/contact">Contact Us</Link>
           </Button>
         </div>
       </motion.div>
     </section>
-  )
+  );
 }
-

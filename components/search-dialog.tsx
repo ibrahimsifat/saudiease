@@ -5,6 +5,7 @@ import type React from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Locale } from "@/config/i18n";
 import {
   getSearchSuggestions,
   popularSearchTerms,
@@ -82,7 +83,10 @@ export default function SearchDialog({ isOpen, onClose }: SearchDialogProps) {
     }
 
     // Get search suggestions immediately for autocomplete
-    const quickSuggestions = getSearchSuggestions(searchQuery);
+    const quickSuggestions = getSearchSuggestions(
+      searchQuery,
+      locale as Locale
+    );
     setSuggestions(quickSuggestions);
 
     // Debounce the full search for performance
@@ -94,7 +98,7 @@ export default function SearchDialog({ isOpen, onClose }: SearchDialogProps) {
         activeTab === "all" ? [] : [activeTab as SearchResultType];
 
       // Perform search
-      const results = searchContent(searchQuery, filterTypes);
+      const results = searchContent(searchQuery, filterTypes, locale as Locale);
       setSearchResults(results);
       setIsLoading(false);
       setShowNoResults(results.length === 0);
@@ -605,15 +609,17 @@ export default function SearchDialog({ isOpen, onClose }: SearchDialogProps) {
                         isRTL && "justify-end"
                       )}
                     >
-                      {popularSearchTerms.map((term, index) => (
-                        <button
-                          key={index}
-                          className="px-3 py-1.5 bg-gray-100 hover:bg-gray-200 rounded-full text-sm text-gray-700"
-                          onClick={() => handleSuggestionClick(term)}
-                        >
-                          {term}
-                        </button>
-                      ))}
+                      {popularSearchTerms[locale as Locale].map(
+                        (term, index) => (
+                          <button
+                            key={index}
+                            className="px-3 py-1.5 bg-gray-100 hover:bg-gray-200 rounded-full text-sm text-gray-700"
+                            onClick={() => handleSuggestionClick(term)}
+                          >
+                            {term}
+                          </button>
+                        )
+                      )}
                     </div>
                   </div>
 

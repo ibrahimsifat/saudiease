@@ -1,20 +1,21 @@
-import { services } from "@/data/services"
-import { projects } from "@/data/projects"
-import { blogPosts } from "@/data/blog-posts"
+import { Locale } from "@/config/i18n";
+import { getBlogs } from "@/data/blog-posts/index";
+import { getProjects } from "@/data/projects/index";
+import { getServices } from "@/data/services/index";
 
 // Define search result types
-export type SearchResultType = "service" | "project" | "blog" | "page"
+export type SearchResultType = "service" | "project" | "blog" | "page";
 
 export interface SearchResult {
-  id: string | number
-  title: string
-  description: string
-  type: SearchResultType
-  url: string
-  image?: string
-  category?: string
-  tags?: string[]
-  relevance: number // Higher is more relevant
+  id: string | number;
+  title: string;
+  description: string;
+  type: SearchResultType;
+  url: string;
+  image?: string;
+  category?: string;
+  tags?: string[];
+  relevance: number; // Higher is more relevant
 }
 
 // Static pages for search
@@ -22,7 +23,8 @@ const pages = [
   {
     id: "home",
     title: "Home",
-    description: "Saudi Ease - Leading Digital Solutions Provider in Saudi Arabia",
+    description:
+      "Saudi Ease - Leading Digital Solutions Provider in Saudi Arabia",
     url: "/",
   },
   {
@@ -37,20 +39,30 @@ const pages = [
     description: "Get in touch with Saudi Ease for your digital needs",
     url: "/contact",
   },
-]
+];
 
 // Search function that searches across all content types
-export function searchContent(query: string, filters: SearchResultType[] = []): SearchResult[] {
-  if (!query.trim()) return []
-
-  const normalizedQuery = query.toLowerCase().trim()
-  const terms = normalizedQuery.split(/\s+/)
-  const results: SearchResult[] = []
+export function searchContent(
+  query: string,
+  filters: SearchResultType[] = [],
+  locale: Locale
+): SearchResult[] {
+  if (!query.trim()) return [];
+  const services = getServices(locale);
+  const projects = getProjects(locale);
+  const blogPosts = getBlogs(locale);
+  const normalizedQuery = query.toLowerCase().trim();
+  const terms = normalizedQuery.split(/\s+/);
+  const results: SearchResult[] = [];
 
   // Search in services
   if (filters.length === 0 || filters.includes("service")) {
     services.forEach((service) => {
-      const relevance = calculateRelevance(service.title, service.description, terms)
+      const relevance = calculateRelevance(
+        service.title,
+        service.description,
+        terms
+      );
       if (relevance > 0) {
         results.push({
           id: service.id,
@@ -59,18 +71,20 @@ export function searchContent(query: string, filters: SearchResultType[] = []): 
           type: "service",
           url: `/services/${service.id}`,
           relevance,
-        })
+        });
       }
-    })
+    });
   }
 
   // Search in projects
   if (filters.length === 0 || filters.includes("project")) {
     projects.forEach((project) => {
-      const relevance = calculateRelevance(project.title, project.description, terms, [
-        project.category,
-        ...project.technologies,
-      ])
+      const relevance = calculateRelevance(
+        project.title,
+        project.description,
+        terms,
+        [project.category, ...project.technologies]
+      );
       if (relevance > 0) {
         results.push({
           id: project.id,
@@ -81,15 +95,18 @@ export function searchContent(query: string, filters: SearchResultType[] = []): 
           image: project.image,
           category: project.category,
           relevance,
-        })
+        });
       }
-    })
+    });
   }
 
   // Search in blog posts
   if (filters.length === 0 || filters.includes("blog")) {
     blogPosts.forEach((post) => {
-      const relevance = calculateRelevance(post.title, post.excerpt, terms, [...post.tags, post.category])
+      const relevance = calculateRelevance(post.title, post.excerpt, terms, [
+        ...post.tags,
+        post.category,
+      ]);
       if (relevance > 0) {
         results.push({
           id: post.id,
@@ -101,15 +118,15 @@ export function searchContent(query: string, filters: SearchResultType[] = []): 
           category: post.category,
           tags: post.tags,
           relevance,
-        })
+        });
       }
-    })
+    });
   }
 
   // Search in pages
   if (filters.length === 0 || filters.includes("page")) {
     pages.forEach((page) => {
-      const relevance = calculateRelevance(page.title, page.description, terms)
+      const relevance = calculateRelevance(page.title, page.description, terms);
       if (relevance > 0) {
         results.push({
           id: page.id,
@@ -118,105 +135,136 @@ export function searchContent(query: string, filters: SearchResultType[] = []): 
           type: "page",
           url: page.url,
           relevance,
-        })
+        });
       }
-    })
+    });
   }
 
   // Sort by relevance (highest first)
-  return results.sort((a, b) => b.relevance - a.relevance)
+  return results.sort((a, b) => b.relevance - a.relevance);
 }
 
 // Calculate relevance score based on matches in title, description, and tags
-function calculateRelevance(title: string, description: string, searchTerms: string[], tags: string[] = []): number {
-  const normalizedTitle = title.toLowerCase()
-  const normalizedDesc = description.toLowerCase()
-  const normalizedTags = tags.map((tag) => tag.toLowerCase())
+function calculateRelevance(
+  title: string,
+  description: string,
+  searchTerms: string[],
+  tags: string[] = []
+): number {
+  const normalizedTitle = title.toLowerCase();
+  const normalizedDesc = description.toLowerCase();
+  const normalizedTags = tags.map((tag) => tag.toLowerCase());
 
-  let score = 0
+  let score = 0;
 
   // Check for exact matches in title (highest weight)
   if (normalizedTitle.includes(searchTerms.join(" "))) {
-    score += 10
+    score += 10;
   }
 
   // Check for individual term matches
   searchTerms.forEach((term) => {
     // Title matches (high weight)
     if (normalizedTitle.includes(term)) {
-      score += 5
+      score += 5;
 
       // Bonus for term at the beginning of title
       if (normalizedTitle.startsWith(term)) {
-        score += 3
+        score += 3;
       }
     }
 
     // Description matches (medium weight)
     if (normalizedDesc.includes(term)) {
-      score += 3
+      score += 3;
     }
 
     // Tag matches (high weight)
     normalizedTags.forEach((tag) => {
       if (tag.includes(term) || term.includes(tag)) {
-        score += 4
+        score += 4;
       }
-    })
-  })
+    });
+  });
 
-  return score
+  return score;
 }
 
 // Get search suggestions based on partial input
-export function getSearchSuggestions(partialQuery: string): string[] {
-  if (!partialQuery.trim() || partialQuery.length < 2) return []
-
-  const normalizedQuery = partialQuery.toLowerCase().trim()
-  const suggestions = new Set<string>()
+export function getSearchSuggestions(
+  partialQuery: string,
+  locale: Locale
+): string[] {
+  if (!partialQuery.trim() || partialQuery.length < 2) return [];
+  const services = getServices(locale);
+  const projects = getProjects(locale);
+  const blogPosts = getBlogs(locale);
+  const normalizedQuery = partialQuery.toLowerCase().trim();
+  const suggestions = new Set<string>();
 
   // Collect potential suggestions from services
   services.forEach((service) => {
     if (service.title.toLowerCase().includes(normalizedQuery)) {
-      suggestions.add(service.title)
+      suggestions.add(service.title);
     }
-  })
+  });
 
   // Collect from projects
   projects.forEach((project) => {
     if (project.title.toLowerCase().includes(normalizedQuery)) {
-      suggestions.add(project.title)
+      suggestions.add(project.title);
     }
     if (project.category.toLowerCase().includes(normalizedQuery)) {
-      suggestions.add(project.category)
+      suggestions.add(project.category);
     }
-  })
+  });
 
   // Collect from blog posts
   blogPosts.forEach((post) => {
     if (post.title.toLowerCase().includes(normalizedQuery)) {
-      suggestions.add(post.title)
+      suggestions.add(post.title);
     }
     post.tags.forEach((tag) => {
       if (tag.toLowerCase().includes(normalizedQuery)) {
-        suggestions.add(tag)
+        suggestions.add(tag);
       }
-    })
-  })
+    });
+  });
 
   // Convert to array, limit to 5 suggestions
-  return Array.from(suggestions).slice(0, 5)
+  return Array.from(suggestions).slice(0, 5);
 }
 
 // Popular search terms
-export const popularSearchTerms = [
-  "web development",
-  "e-invoicing",
-  "ZATCA compliance",
-  "mobile app",
-  "digital marketing",
-  "SEO",
-  "graphic design",
-  "Saudi business",
-]
-
+export const popularSearchTerms = {
+  en: [
+    "web development",
+    "e-invoicing",
+    "ZATCA compliance",
+    "mobile app",
+    "digital marketing",
+    "SEO",
+    "graphic design",
+    "Saudi business",
+  ],
+  ar: [
+    "تطوير الويب",
+    "الفواتير الإلكترونية",
+    "الامتثال لزكاة",
+    "تطبيق محمول",
+    "التسويق الرقمي",
+    "تحسين محركات البحث",
+    "تصميم جرافيك",
+    "الأعمال السعودية",
+  ],
+  bn: [
+    "ওয়েব ডেভেলপমেন্ট",
+    "ই-ইনভয়েসিং",
+    "ZATCA কমপ্লায়েন্স",
+    "মোবাইল অ্যাপ",
+    "ডিজিটাল মার্কেটিং",
+    "এসইও",
+    "গ্রাফিক ডিজাইন",
+    "সৌদি ব্যবসা",
+  ],
+};

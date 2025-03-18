@@ -1,5 +1,5 @@
 import { type Locale, locales } from "@/config/i18n";
-import { companyInfo } from "@/data/company-info";
+import { companyInfo } from "@/data/company-info/index";
 import type { Metadata } from "next/types";
 
 // Generate Organization Schema

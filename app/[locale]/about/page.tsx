@@ -10,6 +10,7 @@ import Partners from "@/components/about/partners";
 import TeamSection from "@/components/about/team-section";
 import Testimonials from "@/components/about/testimonials";
 import Timeline from "@/components/about/timeline";
+import { Locale } from "@/config/i18n";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
@@ -18,8 +19,12 @@ type Props = {
 };
 
 export async function generateMetadata({
-  params: { locale },
-}: Props): Promise<Metadata> {
+  params,
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const resolvedParams = await params;
+  const locale = resolvedParams.locale as Locale;
   const t = await getTranslations({ locale, namespace: "aboutPage.metadata" });
 
   return {
@@ -40,7 +45,8 @@ export async function generateMetadata({
   };
 }
 
-export default async function AboutPage({ params: { locale } }: Props) {
+export default async function AboutPage({ params }: Props) {
+  const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "aboutPage" });
 
   // Check if the locale is RTL

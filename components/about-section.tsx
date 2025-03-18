@@ -2,6 +2,7 @@
 
 import OptimizedImage from "@/components/optimized-image";
 import { Button } from "@/components/ui/button";
+import { CONSTANT } from "@/config/constants";
 import { getOptimizedAnimations } from "@/lib/performance-optimizations";
 import { motion, useInView } from "framer-motion";
 import {
@@ -202,9 +203,9 @@ export default function AboutSection() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="relative"
           >
-            <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-xl">
+            <div className="relative h-[500px] rounded-2xl overflow-hidden ">
               <OptimizedImage
-                src="/placeholder.svg?height=1000&width=800"
+                src={CONSTANT.images.homeAbout}
                 alt={t("imageAlt")}
                 fill
                 className="object-cover"
@@ -212,7 +213,7 @@ export default function AboutSection() {
               />
 
               {/* Overlay gradient */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 to-transparent mix-blend-multiply"></div>
+              {/* <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 to-transparent mix-blend-multiply"></div> */}
 
               {/* Stats overlay */}
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">

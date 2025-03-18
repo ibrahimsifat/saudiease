@@ -2,7 +2,9 @@
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { CONSTANT } from "@/config/constants";
 import { testimonials } from "@/data/testimonials";
+import { Link } from "@/i18n/routing";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
@@ -34,12 +36,12 @@ export default function TestimonialsSection() {
   };
 
   const partners = [
-    "/placeholder.svg?height=80&width=160",
-    "/placeholder.svg?height=80&width=160",
-    "/placeholder.svg?height=80&width=160",
-    "/placeholder.svg?height=80&width=160",
-    "/placeholder.svg?height=80&width=160",
-    "/placeholder.svg?height=80&width=160",
+    CONSTANT.clients.deals,
+    CONSTANT.clients.kic,
+    CONSTANT.clients.kullesh,
+    CONSTANT.clients.nextRide,
+    CONSTANT.clients.ranchiUniversity,
+    CONSTANT.clients.sarah,
   ];
 
   return (
@@ -388,7 +390,7 @@ export default function TestimonialsSection() {
 
         <div className="text-center">
           <Button className="bg-primary hover:bg-primary/90 text-white" asChild>
-            <a href="#contact">{t("becomeNextSuccess")}</a>
+            <Link href="/contact">{t("becomeNextSuccess")}</Link>
           </Button>
         </div>
       </div>

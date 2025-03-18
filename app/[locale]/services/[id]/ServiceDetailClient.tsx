@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { type Locale, localeMetadata } from "@/config/i18n";
 import { getServiceDetails } from "@/data/service-details/index";
 import { services } from "@/data/services";
+import { Link } from "@/i18n/routing";
 import { generateServiceSchema } from "@/lib/schema";
 import * as LucideIcons from "lucide-react";
 import {
@@ -20,7 +21,6 @@ import {
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import Link from "next/link";
 import Script from "next/script";
 
 export default function ServiceDetailClient({
@@ -137,12 +137,12 @@ export default function ServiceDetailClient({
             </a>
           </li>
           <li>
-            <a
-              href="#features"
+            <Link
+              href="/features"
               className="text-gray-600 hover:text-primary transition-colors"
             >
               {t("sections.features")}
-            </a>
+            </Link>
           </li>
           <li>
             <a
@@ -169,12 +169,12 @@ export default function ServiceDetailClient({
             </a>
           </li>
           <li>
-            <a
-              href="#case-studies"
+            <Link
+              href="/estimator"
               className="text-gray-600 hover:text-primary transition-colors"
             >
               {t("sections.caseStudies")}
-            </a>
+            </Link>
           </li>
           <li>
             <a
@@ -199,7 +199,7 @@ export default function ServiceDetailClient({
             className="w-full bg-primary hover:bg-primary/90 text-white"
             asChild
           >
-            <a href="#contact">{t("contactUs")}</a>
+            <Link href="/contact">{t("contactUs")}</Link>
           </Button>
         </div>
       </div>
@@ -326,18 +326,14 @@ export default function ServiceDetailClient({
                 )}
               </div>
 
-              <div
-                className={`flex flex-col sm:flex-row gap-4 ${
-                  isRtl ? "sm:flex-row-reverse" : ""
-                }`}
-              >
+              <div className={`flex flex-col sm:flex-row gap-4`}>
                 <Button
                   size="lg"
                   className="bg-primary hover:bg-primary/90 text-white"
                   asChild
                 >
-                  <a
-                    href="#contact"
+                  <Link
+                    href="/contact"
                     className={`flex items-center ${
                       isRtl ? "flex-row-reverse" : ""
                     }`}
@@ -348,7 +344,7 @@ export default function ServiceDetailClient({
                         isRtl ? "mr-2 rotate-180" : "ml-2"
                       } h-4 w-4`}
                     />
-                  </a>
+                  </Link>
                 </Button>
                 <Button
                   size="lg"
@@ -709,7 +705,7 @@ export default function ServiceDetailClient({
                   className="bg-primary hover:bg-primary/90 text-white"
                   asChild
                 >
-                  <a href="#contact">{t("requestDetailedSpecs")}</a>
+                  <Link href="/contact">{t("requestDetailedSpecs")}</Link>
                 </Button>
               </div>
 
@@ -970,7 +966,7 @@ export default function ServiceDetailClient({
               className="bg-primary hover:bg-primary/90 text-white"
               asChild
             >
-              <a href="#contact">{t("discussTechStack")}</a>
+              <Link href="/contact">{t("discussTechStack")}</Link>
             </Button>
           </div>
         </div>
@@ -1061,7 +1057,7 @@ export default function ServiceDetailClient({
                       className="bg-primary hover:bg-primary/90 text-white"
                       asChild
                     >
-                      <a href="#contact">{t("similarResults")}</a>
+                      <Link href="/contact">{t("similarResults")}</Link>
                     </Button>
                   </div>
                 </div>
@@ -1162,11 +1158,11 @@ export default function ServiceDetailClient({
                     variant={tier.recommended ? "default" : "outline"}
                     asChild
                   >
-                    <a href="#contact">
+                    <Link href="/contact">
                       {tier.price === t("pricing.enterprise.price")
                         ? t("contactForQuote")
                         : t("getStarted")}
-                    </a>
+                    </Link>
                   </Button>
                 </div>
               </div>
@@ -1223,7 +1219,7 @@ export default function ServiceDetailClient({
                   className="w-full bg-primary hover:bg-primary/90 text-white"
                   asChild
                 >
-                  <a href="#contact">{t("scheduleConsultation")}</a>
+                  <Link href="/contact">{t("scheduleConsultation")}</Link>
                 </Button>
               </div>
             </div>
@@ -1347,217 +1343,8 @@ export default function ServiceDetailClient({
                 className="bg-primary hover:bg-primary/90 text-white"
                 asChild
               >
-                <a href="#contact">{t("askQuestion")}</a>
+                <Link href="/contact">{t("askQuestion")}</Link>
               </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="py-20 bg-white scroll-mt-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div
-              className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
-                isRtl ? "rtl" : "ltr"
-              }`}
-            >
-              <div>
-                <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-                  <span className="flex h-2 w-2 rounded-full bg-primary mr-2"></span>
-                  {t("getInTouch")}
-                </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-saudi-black mb-6">
-                  {t("startYourProject")}
-                </h2>
-                <p className="text-lg text-gray-600 mb-8">
-                  {t("contactDescription", { service: serviceDetail.title })}
-                </p>
-
-                <div className="space-y-6 mb-8">
-                  <div
-                    className={`flex items-start ${
-                      isRtl ? "flex-row-reverse text-right" : ""
-                    }`}
-                  >
-                    <div
-                      className={`flex-shrink-0 h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center ${
-                        isRtl ? "ml-4" : "mr-4"
-                      }`}
-                    >
-                      <LucideIcons.Phone className="h-5 w-5 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-saudi-black mb-1">
-                        {t("callUs")}
-                      </h3>
-                      <p className="text-gray-600">+966 12 345 6789</p>
-                      <p className="text-sm text-gray-500">
-                        {t("businessHours")}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div
-                    className={`flex items-start ${
-                      isRtl ? "flex-row-reverse text-right" : ""
-                    }`}
-                  >
-                    <div
-                      className={`flex-shrink-0 h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center ${
-                        isRtl ? "ml-4" : "mr-4"
-                      }`}
-                    >
-                      <LucideIcons.Mail className="h-5 w-5 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-saudi-black mb-1">
-                        {t("emailUs")}
-                      </h3>
-                      <p className="text-gray-600">info@saudiease.com</p>
-                      <p className="text-sm text-gray-500">
-                        {t("responseTime")}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div
-                    className={`flex items-start ${
-                      isRtl ? "flex-row-reverse text-right" : ""
-                    }`}
-                  >
-                    <div
-                      className={`flex-shrink-0 h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center ${
-                        isRtl ? "ml-4" : "mr-4"
-                      }`}
-                    >
-                      <LucideIcons.MapPin className="h-5 w-5 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-saudi-black mb-1">
-                        {t("visitUs")}
-                      </h3>
-                      <p className="text-gray-600">{t("officeAddress")}</p>
-                      <p className="text-sm text-gray-500">
-                        {t("appointmentRequired")}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex space-x-4">
-                  <a
-                    href="#"
-                    className="h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors"
-                  >
-                    <LucideIcons.Twitter className="h-5 w-5" />
-                  </a>
-                  <a
-                    href="#"
-                    className="h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors"
-                  >
-                    <LucideIcons.Linkedin className="h-5 w-5" />
-                  </a>
-                  <a
-                    href="#"
-                    className="h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors"
-                  >
-                    <LucideIcons.Instagram className="h-5 w-5" />
-                  </a>
-                </div>
-              </div>
-
-              <div className="bg-white p-8 rounded-2xl shadow-xl border border-gray-100">
-                <h3 className="text-2xl font-bold text-saudi-black mb-6">
-                  {t("contactForm")}
-                </h3>
-
-                <form className="space-y-6">
-                  <div>
-                    <label
-                      htmlFor="name"
-                      className="block text-sm font-medium text-gray-700 mb-1"
-                    >
-                      {t("yourName")}
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
-                      placeholder={t("namePlaceholder")}
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium text-gray-700 mb-1"
-                    >
-                      {t("yourEmail")}
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
-                      placeholder={t("emailPlaceholder")}
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="phone"
-                      className="block text-sm font-medium text-gray-700 mb-1"
-                    >
-                      {t("yourPhone")}
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
-                      placeholder={t("phonePlaceholder")}
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="message"
-                      className="block text-sm font-medium text-gray-700 mb-1"
-                    >
-                      {t("yourMessage")}
-                    </label>
-                    <textarea
-                      id="message"
-                      rows={4}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
-                      placeholder={t("messagePlaceholder", {
-                        service: serviceDetail.title,
-                      })}
-                    ></textarea>
-                  </div>
-
-                  <div className="flex items-center">
-                    <input
-                      type="checkbox"
-                      id="consent"
-                      className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
-                    />
-                    <label
-                      htmlFor="consent"
-                      className="ml-2 block text-sm text-gray-700"
-                    >
-                      {t("privacyConsent")}
-                    </label>
-                  </div>
-
-                  <Button
-                    type="submit"
-                    className="w-full bg-primary hover:bg-primary/90 text-white"
-                  >
-                    {t("submitRequest")}
-                  </Button>
-                </form>
-              </div>
             </div>
           </div>
         </div>
@@ -1583,7 +1370,7 @@ export default function ServiceDetailClient({
             {relatedServicesData.map((service: any, index: number) => (
               <Link
                 key={index}
-                href={`/${locale}/services/${service.id}`}
+                href={`/services/${service.id}`}
                 className="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden hover:shadow-lg transition-all group"
               >
                 <div className="h-48 relative">
@@ -1625,7 +1412,7 @@ export default function ServiceDetailClient({
               className="border-primary text-primary hover:bg-primary/10"
               asChild
             >
-              <Link href={`/${locale}/services`}>{t("viewAllServices")}</Link>
+              <Link href={`/services`}>{t("viewAllServices")}</Link>
             </Button>
           </div>
         </div>

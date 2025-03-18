@@ -122,24 +122,28 @@ export default function EstimatorClient({ locale }: EstimatorClientProps) {
       name: t("complexity.basic.name"),
       priceMultiplier: 1,
       timeMultiplier: 1,
+      costMultiplier: 1,
     },
     {
       id: "standard",
       name: t("complexity.standard.name"),
       priceMultiplier: 1.5,
       timeMultiplier: 1.3,
+      costMultiplier: 1.2,
     },
     {
       id: "advanced",
       name: t("complexity.advanced.name"),
       priceMultiplier: 2,
       timeMultiplier: 1.7,
+      costMultiplier: 1.5,
     },
     {
       id: "enterprise",
       name: t("complexity.enterprise.name"),
       priceMultiplier: 3,
       timeMultiplier: 2.5,
+      costMultiplier: 2,
     },
   ];
 
@@ -300,25 +304,88 @@ export default function EstimatorClient({ locale }: EstimatorClientProps) {
       id: "basic",
       name: t("maintenancePlans.basic.name"),
       monthlyPrice: 500,
-      features: t("maintenancePlans.basic.features", {
-        returnObjects: true,
-      }) as string[],
+      features: {
+        en: [
+          "Bug fixes",
+          "Security updates",
+          "Email support (business hours)",
+          "Monthly performance report",
+        ],
+        bn: [
+          "বাগ ফিক্স",
+          "সিকিউরিটি আপডেট",
+          "ইমেইল সাপোর্ট (অফিস আওয়ার্স)",
+          "মাসিক পারফরম্যান্স রিপোর্ট",
+        ],
+        ar: [
+          "إصلاح الأخطاء",
+          "تحديثات الأمان",
+          "دعم البريد الإلكتروني (ساعات العمل)",
+          "تقرير أداء شهري",
+        ],
+      },
     },
     {
       id: "standard",
       name: t("maintenancePlans.standard.name"),
       monthlyPrice: 1200,
-      features: t("maintenancePlans.standard.features", {
-        returnObjects: true,
-      }) as string[],
+      features: {
+        en: [
+          "All Basic Support features",
+          "Minor feature updates",
+          "Phone support (business hours)",
+          "Weekly backups",
+          "Monthly performance optimization",
+        ],
+        bn: [
+          "সমস্ত বেসিক সাপোর্ট বৈশিষ্ট্য",
+          "মাইনর ফিচার আপডেট",
+          "ফোন সাপোর্ট (অফিস আওয়ার্স)",
+          "সাপ্তাহিক ব্যাকআপ",
+          "মাসিক পারফরম্যান্স অপটিমাইজেশন",
+        ],
+        ar: [
+          "جميع ميزات الدعم الأساسي",
+          "تحديثات الميزات الصغيرة",
+          "دعم الهاتف (ساعات العمل)",
+          "نسخ احتياطية أسبوعية",
+          "تحسين الأداء الشهري",
+        ],
+      },
     },
     {
       id: "premium",
       name: t("maintenancePlans.premium.name"),
       monthlyPrice: 2500,
-      features: t("maintenancePlans.premium.features", {
-        returnObjects: true,
-      }) as string[],
+      features: {
+        en: [
+          "All Standard Support features",
+          "Priority bug fixes",
+          "Quarterly feature additions",
+          "24/7 emergency support",
+          "Dedicated account manager",
+          "Daily backups",
+          "Monthly strategy consultation",
+        ],
+        bn: [
+          "সমস্ত স্ট্যান্ডার্ড সাপোর্ট বৈশিষ্ট্য",
+          "অগ্রাধিকার বাগ ফিক্স",
+          "ত্রৈমাসিক ফিচার যোগ",
+          "24/7 জরুরি সাপোর্ট",
+          "নিবেদিত অ্যাকাউন্ট ম্যানেজার",
+          "দৈনিক ব্যাকআপ",
+          "মাসিক কৌশলগত পরামর্শ",
+        ],
+        ar: [
+          "جميع ميزات الدعم القياسي",
+          "إصلاحات الأخطاء ذات الأولوية",
+          "إضافات ميزات ربع سنوية",
+          "دعم الطوارئ على مدار الساعة",
+          "مدير حساب مخصص",
+          "نسخ احتياطية يومية",
+          "استشارة استراتيجية شهرية",
+        ],
+      },
     },
   ];
 
@@ -648,7 +715,7 @@ export default function EstimatorClient({ locale }: EstimatorClientProps) {
                             <div className="text-xs text-center text-gray-500">
                               {t("step1.costMultiplier", {
                                 multiplier: level.priceMultiplier,
-                              })}
+                              }) || `${level.priceMultiplier}x cost multiplier`}
                             </div>
                           </Label>
                         </div>
@@ -891,7 +958,7 @@ export default function EstimatorClient({ locale }: EstimatorClientProps) {
                               </p>
                             </div>
                             <ul className="text-xs text-gray-500 space-y-1 mt-2">
-                              {plan.features.map((feature, index) => (
+                              {plan.features.en.map((feature, index) => (
                                 <li key={index} className="flex items-start">
                                   <CheckCircle
                                     className={cn(

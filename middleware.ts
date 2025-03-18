@@ -1,24 +1,20 @@
 import createMiddleware from "next-intl/middleware";
-import { defaultLocale, locales } from "./config/i18n";
+import { NextRequest, NextResponse } from "next/server";
+import { routing } from "./i18n/routing";
 
-export default createMiddleware({
-  // A list of all locales that are supported
-  locales,
+const intlMiddleware = createMiddleware(routing);
+export default function middleware(req: NextRequest) {
+  // Early return for static files and API routes
+  if (req.nextUrl.pathname.includes(".")) {
+    return NextResponse.next();
+  }
+  return intlMiddleware(req);
+}
 
-  // Used when no locale matches
-  defaultLocale,
-
-  // Locale detection strategies
-  localeDetection: true,
-
-  // Locale prefix strategy
-  localePrefix: "always", // 'as-needed' | 'never'
-});
-
+// Optimize matcher pattern
 export const config = {
-  // Match all pathnames except for
-  // - files with extensions (e.g. static files)
-  // - api routes
-  // - _next paths (Next.js internals)
-  matcher: ["/((?!api|_next|.*\\..*).*)"],
+  matcher: [
+    // Skip all internal paths (_next) and static files
+    "/((?!_next|api|.*\\..*).*)",
+  ],
 };

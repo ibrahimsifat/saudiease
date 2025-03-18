@@ -55,7 +55,7 @@ export async function generateMetadata({
 }: {
   params: { locale: string };
 }): Promise<Metadata> {
-  const locale = (await params.locale) as Locale;
+  const { locale } = await params;
   // Validate that the locale is supported
   if (!locales.includes(locale as Locale)) {
     notFound();
@@ -71,16 +71,18 @@ export function generateStaticParams() {
 
 export default async function LocaleLayout({
   children,
-  params: { locale },
+  params,
 }: {
   children: React.ReactNode;
   params: { locale: Locale };
 }) {
+  // Await the params before destructuring
+  const { locale } = await params;
+
   // Validate that the locale is supported
   if (!locales.includes(locale)) {
     notFound();
   }
-
   // Load messages for the locale
   let messages;
   try {
@@ -182,7 +184,7 @@ export default async function LocaleLayout({
               <Suspense fallback={null}>
                 <PreFooterCTA />
               </Suspense>
-              <Footer />
+              <Footer locale={locale} />
             </div>
             <WhatsAppButton />
             <ScrollToTop />

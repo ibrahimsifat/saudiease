@@ -20,7 +20,6 @@ import ClientWhyChooseUs from "@/components/home/why-choose-client-section";
 import ServicesSection from "@/components/services-section";
 import TrustedBy from "@/components/trusted-by";
 import { LoadingFallback } from "@/components/ui/loading-fallback";
-import { Locale } from "@/config/i18n";
 import type {} from "next";
 import { getTranslations } from "next-intl/server";
 export async function generateMetadata(): Promise<Metadata> {
@@ -32,11 +31,12 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function Home({
-  params: { locale },
-}: {
-  params: { locale: Locale };
-}) {
+type Props = {
+  params: { locale: string };
+};
+
+export default async function Home({ params }: Props) {
+  const { locale } = await params;
   return (
     <>
       {/* Structured Data */}

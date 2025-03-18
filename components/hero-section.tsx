@@ -2,6 +2,8 @@
 
 import OptimizedImage from "@/components/optimized-image";
 import { Button } from "@/components/ui/button";
+import { CONSTANT } from "@/config/constants";
+import { Link } from "@/i18n/routing";
 import { getOptimizedAnimations } from "@/lib/performance-optimizations";
 import { cn } from "@/lib/utils";
 import {
@@ -589,8 +591,8 @@ export default function HeroSection() {
                 className="bg-primary hover:bg-primary/90 text-white group transition-all duration-300 transform hover:translate-y-[-2px] relative overflow-hidden"
                 asChild
               >
-                <a
-                  href="#contact"
+                <Link
+                  href="/contact"
                   className={cn(
                     "flex items-center",
                     isRTL && "flex-row-reverse"
@@ -613,7 +615,7 @@ export default function HeroSection() {
                     whileHover={{ x: 0 }}
                     transition={{ duration: 0.4 }}
                   />
-                </a>
+                </Link>
               </Button>
               <Button
                 size="lg"
@@ -621,8 +623,8 @@ export default function HeroSection() {
                 className="border-primary text-primary hover:bg-primary/10 transition-all duration-300 transform hover:translate-y-[-2px]"
                 asChild
               >
-                <a
-                  href="#services"
+                <Link
+                  href="/services"
                   className={cn(
                     "flex items-center",
                     isRTL && "flex-row-reverse"
@@ -637,7 +639,7 @@ export default function HeroSection() {
                         : "ml-2"
                     )}
                   />
-                </a>
+                </Link>
               </Button>
               <Button
                 size="lg"
@@ -767,9 +769,8 @@ export default function HeroSection() {
             transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
             className="lg:col-span-6 relative"
           >
-            <div className="relative h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
+            <div className="relative h-[400px] md:h-[500px] rounded-2xl overflow-hidden">
               {/* Animated gradient background - lightweight */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-blue-50/30 to-purple-50/20"></div>
 
               {/* Animated mesh gradient - only if complex animations are enabled */}
               {animations.enableComplexAnimations && (
@@ -855,7 +856,7 @@ export default function HeroSection() {
 
               {/* Main Image with optimized loading */}
               <OptimizedImage
-                src="/placeholder.svg?height=1000&width=800"
+                src={CONSTANT.images.hero}
                 alt={t("heroImageAlt", {
                   defaultMessage:
                     "Digital transformation services for Saudi businesses",
@@ -869,7 +870,6 @@ export default function HeroSection() {
               />
 
               {/* Overlay gradient */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary/40 to-transparent mix-blend-multiply z-10"></div>
 
               {/* Floating Elements - Render after initial load for better performance */}
               {isLoaded && animations.enableComplexAnimations && (

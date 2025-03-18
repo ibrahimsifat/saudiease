@@ -11,6 +11,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { type Locale } from "@/config/i18n";
 import { featureDetails } from "@/data/feature-details";
 import { features } from "@/data/features";
+import { generateServiceSchema } from "@/lib/schema";
 import { ArrowLeft, ArrowRight, CheckCircle } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
@@ -39,12 +40,12 @@ export default function FeatureDetailPageClient({
 
   return (
     <>
-      {/* <script
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(generateServiceSchema(feature)),
         }}
-      /> */}
+      />
       <main className="min-h-screen">
         {/* Hero Section */}
         <section className="relative py-16 md:py-24 overflow-hidden">
@@ -100,11 +101,7 @@ export default function FeatureDetailPageClient({
                 <p className="text-gray-600 mb-8">
                   {t(`detail.${id}.overview`)}
                 </p>
-                <div
-                  className={`flex flex-wrap gap-4 ${
-                    isRTL ? "flex-row-reverse" : ""
-                  }`}
-                >
+                <div className={`flex flex-wrap gap-4 `}>
                   <Button size="lg" className="bg-primary hover:bg-primary/90">
                     <Link href={`/${locale}/contact`}>{t("requestDemo")}</Link>
                   </Button>

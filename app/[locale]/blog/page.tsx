@@ -6,7 +6,9 @@ export async function generateMetadata({
 }: {
   params: { locale?: string };
 }): Promise<Metadata> {
-  const locale = params.locale || "en";
+  // First, await the params object
+  const resolvedParams = await params;
+  const locale = resolvedParams.locale || "en";
 
   const metadata: Record<string, Metadata> = {
     en: {
@@ -66,6 +68,6 @@ export default async function BlogPage({
 }: {
   params: { locale?: string };
 }) {
-  const locale = (await params.locale) || "en";
+  const { locale } = await params;
   return <BlogPageClient locale={locale} />;
 }

@@ -1,39 +1,41 @@
-import type { Locale } from "@/config/i18n";
-import { getAllTranslations } from "@/lib/get-translation-namespace";
+import { localeMetadata } from "@/config/i18n";
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import PortfolioPageClient from "./PortfolioPageClient";
 
 type Props = {
-  params: { locale: Locale };
+  params: { locale: string };
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { locale } = params;
-  const translations = await getAllTranslations(locale);
-  const t = translations.portfolio || {};
+  const t = await getTranslations({
+    locale: params.locale,
+    namespace: "portfolioPage",
+  });
 
   return {
-    title: t.metadata?.title || "Our Portfolio | Saudi Ease Digital Solutions",
-    description:
-      t.metadata?.description ||
-      "Explore our portfolio of successful digital projects across Saudi Arabia. View our web development, e-commerce, and digital marketing case studies.",
+    title: t("title"),
+    description: t("description"),
     keywords:
-      t.metadata?.keywords ||
       "Saudi digital portfolio, web development projects, Saudi e-commerce case studies, ZATCA e-invoicing implementations, Saudi Arabia digital marketing success stories",
     openGraph: {
-      title: t.metadata?.ogTitle || "Portfolio | Saudi Ease Digital Solutions",
-      description:
-        t.metadata?.ogDescription ||
-        "Explore our portfolio of successful digital projects across Saudi Arabia.",
-      url: "https://saudiease.com/portfolio",
+      title: t("title"),
+      description: t("description"),
+      url: `https://saudiease.com/${params.locale}/portfolio`,
       siteName: "Saudi Ease",
-      locale: locale,
+      locale: params.locale,
       type: "website",
     },
   };
 }
 
-export default async function PortfolioPage({ params }: Props) {
-  const { locale } = await params;
-  return <PortfolioPageClient locale={locale} />;
+export default function PortfolioPage({ params }: Props) {
+  const dir =
+    localeMetadata[params.locale as keyof typeof localeMetadata]?.dir || "ltr";
+
+  return (
+    <div dir={dir}>
+      <PortfolioPageClient locale={params.locale} />
+    </div>
+  );
 }

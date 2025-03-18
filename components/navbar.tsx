@@ -3,7 +3,7 @@
 import SearchDialog from "@/components/search-dialog";
 import { Button } from "@/components/ui/button";
 import { Locale } from "@/config/i18n";
-import { companyInfo } from "@/data/company-info";
+import { getCompanyInfo } from "@/data/company-info/index";
 import { getServices } from "@/data/services/index";
 import { useMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
@@ -23,7 +23,8 @@ import {
 import { useLocale, useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 import Image from "next/image";
-import Link from "next/link";
+
+import { Link } from "@/i18n/routing";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import LanguageSwitcher from "./language-switcher";
@@ -42,7 +43,7 @@ export default function Navbar() {
   const { theme, setTheme } = useTheme();
   const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
+  const companyInfo = getCompanyInfo(locale as Locale);
   // Handle scroll event to change navbar appearance
   useEffect(() => {
     const handleScroll = () => {
@@ -124,7 +125,7 @@ export default function Navbar() {
                     {categoryServices.map((service) => (
                       <Link
                         key={service.id}
-                        href={`${locale}/services/${service.id}`}
+                        href={`/services/${service.id}`}
                         className={cn(
                           "group flex items-center bg-gray-50 dark:bg-gray-800/50 hover:bg-primary/5 dark:hover:bg-primary/10 px-3 py-2 rounded-md transition-colors",
                           isRTL ? "flex-row-reverse text-right" : "text-left"
@@ -228,16 +229,16 @@ export default function Navbar() {
         </div>
       ),
     },
-    {
-      name: t("portfolio"),
-      href: "/portfolio",
-      hasDropdown: false,
-    },
-    {
-      name: t("blog"),
-      href: "/blog",
-      hasDropdown: false,
-    },
+    // {
+    //   name: t("portfolio"),
+    //   href: "/portfolio",
+    //   hasDropdown: false,
+    // },
+    // {
+    //   name: t("blog"),
+    //   href: "/blog",
+    //   hasDropdown: false,
+    // },
     {
       name: t("contact"),
       href: "/contact",

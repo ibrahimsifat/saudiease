@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { CONSTANT } from "@/config/constants";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
   ArrowLeft,
@@ -265,18 +266,22 @@ export default function IndustriesSection() {
                       </div>
 
                       {/* Card footer */}
-                      <div className="flex justify-between items-center mt-4 pt-4 border-t border-gray-100">
-                        <span className="text-sm text-primary font-medium">
-                          {t("learnMore")}
-                        </span>
-                        <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center">
-                          {isRTL ? (
-                            <ArrowLeft className="h-4 w-4 text-primary" />
-                          ) : (
-                            <ArrowRight className="h-4 w-4 text-primary" />
-                          )}
+                      <Link
+                        href={`industries/${industry.name?.toLocaleLowerCase()}`}
+                      >
+                        <div className="flex justify-between items-center mt-4 pt-4 border-t border-gray-100">
+                          <span className="text-sm text-primary font-medium">
+                            {t("learnMore")}
+                          </span>
+                          <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center">
+                            {isRTL ? (
+                              <ArrowLeft className="h-4 w-4 text-primary" />
+                            ) : (
+                              <ArrowRight className="h-4 w-4 text-primary" />
+                            )}
+                          </div>
                         </div>
-                      </div>
+                      </Link>
                     </div>
                   </motion.div>
                 ))}
@@ -364,15 +369,13 @@ export default function IndustriesSection() {
               {/* Image section */}
               <div className="relative h-full min-h-[300px] bg-gray-100">
                 <Image
-                  src="/placeholder.svg?height=400&width=600"
+                  src={CONSTANT.images.homeIndustryExperts}
                   alt={t("expertiseImageAlt")}
                   fill
                   className="object-cover"
                 />
                 <div
-                  className={`absolute inset-0 ${
-                    isRTL ? "bg-gradient-to-l" : "bg-gradient-to-r"
-                  } from-primary/30 to-transparent mix-blend-multiply`}
+                  className={`absolute inset-0 bg-gradient-to-l from-primary/30 to-transparent mix-blend-multiply`}
                 ></div>
 
                 {/* Floating industry badges */}

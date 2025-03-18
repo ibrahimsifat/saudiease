@@ -7,14 +7,16 @@ import Link from "next/link";
 // Fix the Image import to avoid conflicts with the native Image constructor
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { companyInfo } from "@/data/company-info";
+import { CONSTANT } from "@/config/constants";
+import { getCompanyInfo } from "@/data/company-info/index";
 import { ArrowRight, ChevronRight, Mail, MapPin, Phone } from "lucide-react";
 import { useTranslations } from "next-intl";
 import NextImage from "next/image";
 import { useState } from "react";
-
-export default function Footer() {
+import { Locale } from "../config/i18n";
+export default function Footer({ locale }: { locale: string }) {
   const t = useTranslations("footer");
+  const companyInfo = getCompanyInfo(locale as Locale);
   const currentYear = new Date().getFullYear();
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
@@ -54,11 +56,11 @@ export default function Footer() {
   const resources = [
     {
       name: t("resources.digitalTransformation"),
-      link: "/resources/digital-transformation",
+      link: "/services/digital-transformation",
     },
     {
       name: t("resources.zatcaCompliance"),
-      link: "/resources/zatca-compliance",
+      link: "/services/zatca-compliance",
     },
     { name: t("resources.careers"), link: "/careers" },
   ];
@@ -155,7 +157,7 @@ export default function Footer() {
               <div className="hidden md:flex justify-end">
                 <div className="relative h-32 w-32">
                   <NextImage
-                    src="/placeholder.svg?height=200&width=200"
+                    src={CONSTANT.images.subscribe}
                     alt={t("newsletter.illustrationAlt")}
                     fill
                     className="object-contain"

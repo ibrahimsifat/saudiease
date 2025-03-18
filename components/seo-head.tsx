@@ -1,18 +1,18 @@
-import Head from "next/head"
-import { companyInfo } from "@/data/company-info"
+import { companyInfo } from "@/data/company-info/index";
+import Head from "next/head";
 
 type SEOHeadProps = {
-  title?: string
-  description?: string
-  canonicalUrl?: string
-  ogImage?: string
-  ogType?: "website" | "article" | "profile"
-  twitterCard?: "summary" | "summary_large_image"
-  keywords?: string[]
-  author?: string
-  publishedTime?: string
-  modifiedTime?: string
-}
+  title?: string;
+  description?: string;
+  canonicalUrl?: string;
+  ogImage?: string;
+  ogType?: "website" | "article" | "profile";
+  twitterCard?: "summary" | "summary_large_image";
+  keywords?: string[];
+  author?: string;
+  publishedTime?: string;
+  modifiedTime?: string;
+};
 
 export default function SEOHead({
   title = "Saudi Ease - Creative Digital Solutions for Saudi Businesses",
@@ -33,7 +33,9 @@ export default function SEOHead({
   publishedTime,
   modifiedTime,
 }: SEOHeadProps) {
-  const fullTitle = title.includes("Saudi Ease") ? title : `${title} | Saudi Ease`
+  const fullTitle = title.includes("Saudi Ease")
+    ? title
+    : `${title} | Saudi Ease`;
 
   return (
     <Head>
@@ -64,14 +66,26 @@ export default function SEOHead({
       <meta property="twitter:creator" content="@saudiease" />
 
       {/* Article specific meta (for blog posts) */}
-      {ogType === "article" && publishedTime && <meta property="article:published_time" content={publishedTime} />}
-      {ogType === "article" && modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
-      {ogType === "article" && <meta property="article:publisher" content={companyInfo.website} />}
+      {ogType === "article" && publishedTime && (
+        <meta property="article:published_time" content={publishedTime} />
+      )}
+      {ogType === "article" && modifiedTime && (
+        <meta property="article:modified_time" content={modifiedTime} />
+      )}
+      {ogType === "article" && (
+        <meta property="article:publisher" content={companyInfo.website} />
+      )}
 
       {/* Additional meta tags for better SEO */}
       <meta name="robots" content="index, follow" />
-      <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-      <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+      <meta
+        name="googlebot"
+        content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+      />
+      <meta
+        name="bingbot"
+        content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+      />
       <meta name="application-name" content="Saudi Ease" />
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -82,6 +96,5 @@ export default function SEOHead({
       <meta name="msapplication-tap-highlight" content="no" />
       <meta name="theme-color" content="#e63e65" />
     </Head>
-  )
+  );
 }
-

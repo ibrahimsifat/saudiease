@@ -1,14 +1,15 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { motion } from "framer-motion"
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { businessCategories } from "@/data/business-categories"
+import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { businessCategories } from "@/data/business-categories";
+import { Link } from "@/i18n/routing";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { useState } from "react";
 
 export default function BusinessCategories() {
-  const [activeTab, setActiveTab] = useState("retail")
+  const [activeTab, setActiveTab] = useState("retail");
 
   return (
     <section className="py-20 relative overflow-hidden">
@@ -42,14 +43,20 @@ export default function BusinessCategories() {
                 viewBox="0 0 200 8"
                 preserveAspectRatio="none"
               >
-                <path d="M0,5 C50,0 150,0 200,5" stroke="currentColor" strokeWidth="4" fill="none" />
+                <path
+                  d="M0,5 C50,0 150,0 200,5"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                  fill="none"
+                />
               </svg>
             </span>
           </h2>
           <p className="text-gray-600 max-w-3xl mx-auto text-lg leading-relaxed">
-            We understand the unique challenges and opportunities across different Saudi business sectors. Our solutions
-            are customized to meet industry-specific requirements and compliance standards, helping businesses thrive in
-            the Kingdom's dynamic economy.
+            We understand the unique challenges and opportunities across
+            different Saudi business sectors. Our solutions are customized to
+            meet industry-specific requirements and compliance standards,
+            helping businesses thrive in the Kingdom's dynamic economy.
           </p>
 
           {/* Stats row */}
@@ -97,7 +104,11 @@ export default function BusinessCategories() {
           </div>
         </motion.div>
 
-        <Tabs defaultValue="retail" className="w-full" onValueChange={setActiveTab}>
+        <Tabs
+          defaultValue="retail"
+          className="w-full"
+          onValueChange={setActiveTab}
+        >
           <div className="flex justify-center mb-12 overflow-x-auto pb-2 hide-scrollbar">
             <TabsList className="bg-white border border-gray-100 p-1.5 shadow-lg rounded-full">
               {businessCategories.map((category) => (
@@ -107,7 +118,9 @@ export default function BusinessCategories() {
                   className="data-[state=active]:bg-primary data-[state=active]:text-white data-[state=active]:shadow-md flex items-center gap-2 px-5 py-2.5 rounded-full transition-all duration-300 hover:bg-gray-50"
                 >
                   {<category.icon className="h-5 w-5" />}
-                  <span className="hidden sm:inline font-medium">{category.name}</span>
+                  <span className="hidden sm:inline font-medium">
+                    {category.name}
+                  </span>
                 </TabsTrigger>
               ))}
             </TabsList>
@@ -128,8 +141,12 @@ export default function BusinessCategories() {
                       <span className="flex h-2 w-2 rounded-full bg-primary mr-2"></span>
                       {category.name} Solutions
                     </div>
-                    <h3 className="text-2xl font-bold text-saudi-black mb-4">{category.name}</h3>
-                    <p className="text-gray-600 mb-6 leading-relaxed">{category.description}</p>
+                    <h3 className="text-2xl font-bold text-saudi-black mb-4">
+                      {category.name}
+                    </h3>
+                    <p className="text-gray-600 mb-6 leading-relaxed">
+                      {category.description}
+                    </p>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                       {category.services.map((service, index) => (
@@ -141,7 +158,12 @@ export default function BusinessCategories() {
                               viewBox="0 0 24 24"
                               stroke="currentColor"
                             >
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M5 13l4 4L19 7"
+                              />
                             </svg>
                           </div>
                           <span className="ml-2.5 text-gray-700 group-hover:text-primary transition-colors duration-300">
@@ -153,47 +175,53 @@ export default function BusinessCategories() {
 
                     {/* Industry stats */}
                     <div className="bg-gray-50 p-4 rounded-xl mb-6">
-                      <h4 className="text-sm font-semibold text-gray-700 mb-3">Industry Insights</h4>
+                      <h4 className="text-sm font-semibold text-gray-700 mb-3">
+                        Industry Insights
+                      </h4>
                       <div className="grid grid-cols-2 gap-4">
                         <div className="flex items-center">
                           <div className="w-2 h-8 bg-primary rounded-full mr-3"></div>
                           <div>
-                            <div className="text-sm text-gray-500">Market Size</div>
+                            <div className="text-sm text-gray-500">
+                              Market Size
+                            </div>
                             <div className="font-medium">
                               {category.id === "retail"
                                 ? "SAR 375B"
                                 : category.id === "healthcare"
-                                  ? "SAR 185B"
-                                  : category.id === "manufacturing"
-                                    ? "SAR 420B"
-                                    : category.id === "finance"
-                                      ? "SAR 510B"
-                                      : category.id === "government"
-                                        ? "SAR 290B"
-                                        : category.id === "education"
-                                          ? "SAR 150B"
-                                          : "SAR 200B+"}
+                                ? "SAR 185B"
+                                : category.id === "manufacturing"
+                                ? "SAR 420B"
+                                : category.id === "finance"
+                                ? "SAR 510B"
+                                : category.id === "government"
+                                ? "SAR 290B"
+                                : category.id === "education"
+                                ? "SAR 150B"
+                                : "SAR 200B+"}
                             </div>
                           </div>
                         </div>
                         <div className="flex items-center">
                           <div className="w-2 h-8 bg-primary/60 rounded-full mr-3"></div>
                           <div>
-                            <div className="text-sm text-gray-500">Growth Rate</div>
+                            <div className="text-sm text-gray-500">
+                              Growth Rate
+                            </div>
                             <div className="font-medium">
                               {category.id === "retail"
                                 ? "8.5%"
                                 : category.id === "healthcare"
-                                  ? "12.3%"
-                                  : category.id === "manufacturing"
-                                    ? "7.2%"
-                                    : category.id === "finance"
-                                      ? "9.1%"
-                                      : category.id === "government"
-                                        ? "5.4%"
-                                        : category.id === "education"
-                                          ? "11.7%"
-                                          : "8.0%+"}{" "}
+                                ? "12.3%"
+                                : category.id === "manufacturing"
+                                ? "7.2%"
+                                : category.id === "finance"
+                                ? "9.1%"
+                                : category.id === "government"
+                                ? "5.4%"
+                                : category.id === "education"
+                                ? "11.7%"
+                                : "8.0%+"}{" "}
                               YoY
                             </div>
                           </div>
@@ -207,7 +235,7 @@ export default function BusinessCategories() {
                         size="lg"
                         asChild
                       >
-                        <a href="#contact">Get Started</a>
+                        <Link href="/contact">Get Started</Link>
                       </Button>
                       <Button
                         variant="outline"
@@ -233,10 +261,13 @@ export default function BusinessCategories() {
 
                     {/* Floating info card */}
                     <div className="absolute bottom-6 right-6 bg-white/90 backdrop-blur-sm p-4 rounded-xl shadow-lg max-w-xs border border-white/50">
-                      <h4 className="font-bold text-primary mb-1">Vision 2030 Alignment</h4>
+                      <h4 className="font-bold text-primary mb-1">
+                        Vision 2030 Alignment
+                      </h4>
                       <p className="text-sm text-gray-700">
-                        Our {category.name.toLowerCase()} solutions support Saudi Vision 2030 goals by enhancing
-                        efficiency, digital transformation, and sustainable growth.
+                        Our {category.name.toLowerCase()} solutions support
+                        Saudi Vision 2030 goals by enhancing efficiency, digital
+                        transformation, and sustainable growth.
                       </p>
                     </div>
                   </div>
@@ -257,6 +288,5 @@ export default function BusinessCategories() {
         </Tabs>
       </div>
     </section>
-  )
+  );
 }
-

@@ -1,6 +1,6 @@
 "use client";
 
-import { companyInfo } from "@/data/company-info";
+import { companyInfo } from "@/data/company-info/index";
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -10,7 +10,7 @@ export default function WhatsAppButton() {
   const [isVisible, setIsVisible] = useState(false);
 
   // WhatsApp number - replace with your actual WhatsApp business number
-  const whatsappNumber = companyInfo.contact.whatsapp || "+966500000000";
+  const whatsappNumber = companyInfo.contact.whatsapp || "+966558845503";
 
   // Pre-filled message
   const message = encodeURIComponent(
