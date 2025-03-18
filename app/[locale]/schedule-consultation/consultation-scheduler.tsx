@@ -42,6 +42,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, CalendarIcon, Check, Clock, Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 
@@ -141,6 +142,7 @@ const services = [
 ];
 
 export default function ConsultationScheduler() {
+  const { executeRecaptcha } = useGoogleReCaptcha();
   const router = useRouter();
   const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -164,17 +166,56 @@ export default function ConsultationScheduler() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      // Get reCAPTCHA token
+      let recaptchaToken = "";
+      if (executeRecaptcha) {
+        recaptchaToken = await executeRecaptcha("consultation_form");
+      }
 
-    console.log(values);
-    setIsSubmitting(false);
-    setIsSuccess(true);
+      // Send data to API
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          type: "consultation",
+          data: {
+            name: values.fullName,
+            email: values.email,
+            phone: values.phone,
+            companyName: values.companyName,
+            companySize: values.companySize,
+            industry: values.industry,
+            serviceInterest: values.serviceInterest,
+            consultationDate: values.consultationDate,
+            consultationTime: values.consultationTime,
+            consultationType: values.consultationType,
+            projectDescription: values.projectDescription,
+            hearAboutUs: values.hearAboutUs,
+            recaptchaToken,
+          },
+        }),
+      });
 
-    // Redirect to thank you page or show success message
-    setTimeout(() => {
-      router.push("/");
-    }, 3000);
+      const result = await response.json();
+
+      if (result.success) {
+        setIsSuccess(true);
+
+        // Redirect to thank you page or show success message
+        setTimeout(() => {
+          router.push("/");
+        }, 3000);
+      } else {
+        console.error("Error submitting form:", result.error);
+        setIsSubmitting(false);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setIsSubmitting(false);
+    }
   }
 
   // Next step handler

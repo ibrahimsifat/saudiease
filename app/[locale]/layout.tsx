@@ -1,6 +1,7 @@
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import PreFooterCTA from "@/components/pre-footer-cta";
+import { RecaptchaProvider } from "@/components/recaptcha-provider";
 import ScrollToTop from "@/components/scroll-to-top";
 import { ThemeProvider } from "@/components/theme-provider";
 import WhatsAppButton from "@/components/whatsapp-button";
@@ -180,7 +181,9 @@ export default async function LocaleLayout({
           >
             <div className="flex flex-col min-h-screen">
               <Navbar />
-              <main className="flex-grow">{children}</main>
+              <main className="flex-grow">
+                <RecaptchaProvider>{children}</RecaptchaProvider>
+              </main>
               <Suspense fallback={null}>
                 <PreFooterCTA />
               </Suspense>

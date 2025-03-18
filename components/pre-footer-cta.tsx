@@ -9,6 +9,7 @@ import { CONSTANT } from "@/config/constants";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import {
+  AlertCircle,
   ArrowRight,
   Award,
   Calendar,
@@ -23,7 +24,9 @@ import {
 import { useTranslations } from "next-intl";
 import { default as Image, default as NextImage } from "next/image";
 import { useState } from "react";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { useInView } from "react-intersection-observer";
+
 const partners = [
   CONSTANT.clients.deals,
   CONSTANT.clients.kic,
@@ -34,6 +37,9 @@ const partners = [
 ];
 export default function PreFooterCTA() {
   const t = useTranslations("preFooterCTA");
+  const [submitError, setSubmitError] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -46,19 +52,62 @@ export default function PreFooterCTA() {
     threshold: 0.1,
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real implementation, you would send this data to your backend
-    console.log({ name, email, message });
-    setSubmitted(true);
+    // Validate form
+    if (!name || !email || !message) {
+      return;
+    }
 
-    // Reset form after submission
-    setTimeout(() => {
-      setName("");
-      setEmail("");
-      setMessage("");
-      setSubmitted(false);
-    }, 3000);
+    setIsSubmitting(true);
+    setSubmitError(false);
+
+    try {
+      // Get reCAPTCHA token
+      let recaptchaToken = "";
+      if (executeRecaptcha) {
+        recaptchaToken = await executeRecaptcha("footer_contact_form");
+      }
+
+      // Send data to API
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          type: "contact",
+          data: {
+            name,
+            email,
+            message,
+            hearAbout: "footer",
+            recaptchaToken,
+          },
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitted(true);
+
+        // Reset form after submission
+        setTimeout(() => {
+          setName("");
+          setEmail("");
+          setMessage("");
+          setSubmitted(false);
+        }, 3000);
+      } else {
+        setSubmitError(true);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setSubmitError(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const containerVariants = {
@@ -199,23 +248,60 @@ export default function PreFooterCTA() {
                           required
                         />
                       </div>
-
                       <Button
                         type="submit"
                         className="w-full bg-primary hover:bg-primary/90 text-white"
+                        disabled={isSubmitting}
                       >
-                        {submitted ? (
+                        {isSubmitting ? (
                           <span className="flex items-center">
-                            <CheckCircle className="mr-2 rtl:ml-2 rtl:mr-0 h-4 w-4" />
-                            {t("form.messageSent")}
+                            <svg
+                              className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                            >
+                              <circle
+                                className="opacity-25"
+                                cx="12"
+                                cy="12"
+                                r="10"
+                                stroke="currentColor"
+                                strokeWidth="4"
+                              ></circle>
+                              <path
+                                className="opacity-75"
+                                fill="currentColor"
+                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                              ></path>
+                            </svg>
+                            Processing...
+                          </span>
+                        ) : submitted ? (
+                          <span className="flex items-center">
+                            <CheckCircle className="mr-2 h-4 w-4" />
+                            Message Sent!
                           </span>
                         ) : (
                           <span className="flex items-center">
-                            {t("form.sendMessage")}
-                            <ArrowRight className="ml-2 rtl:mr-2 rtl:ml-0 h-4 w-4" />
+                            Send Message
+                            <ArrowRight className="ml-2 h-4 w-4" />
                           </span>
                         )}
                       </Button>
+
+                      {submitError && (
+                        <div className="bg-red-50 border border-red-200 text-red-700 p-4 rounded-md flex items-start animate-fade-in">
+                          <AlertCircle className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0" />
+                          <div>
+                            <p className="font-medium">Something went wrong</p>
+                            <p className="text-sm">
+                              There was an error sending your message. Please
+                              try again or contact us directly by phone.
+                            </p>
+                          </div>
+                        </div>
+                      )}
                     </form>
                   )}
 
@@ -251,7 +337,12 @@ export default function PreFooterCTA() {
                         </div>
                       </div>
 
-                      <Button className="w-full bg-primary hover:bg-primary/90 text-white">
+                      <Button
+                        className="w-full bg-primary hover:bg-primary/90 text-white"
+                        onClick={() =>
+                          (window.location.href = "/schedule-consultation")
+                        }
+                      >
                         <Calendar className="mr-2 rtl:ml-2 rtl:mr-0 h-4 w-4" />
                         {t("scheduleConsultation")}
                       </Button>

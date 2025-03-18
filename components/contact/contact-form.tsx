@@ -18,6 +18,7 @@ import { motion } from "framer-motion";
 import { AlertCircle, CheckCircle, Send } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { useInView } from "react-intersection-observer";
 export default function ContactForm() {
   const { ref, inView } = useInView({
@@ -27,7 +28,7 @@ export default function ContactForm() {
 
   // Get translations
   const t = useTranslations("contact.form");
-
+  const { executeRecaptcha } = useGoogleReCaptcha();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -81,7 +82,7 @@ export default function ContactForm() {
     setFormData((prev) => ({ ...prev, hearAbout: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     // Validate form
@@ -101,12 +102,31 @@ export default function ContactForm() {
     setIsSubmitting(true);
     setSubmitError(false);
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      // Get reCAPTCHA token
+      let recaptchaToken = "";
+      if (executeRecaptcha) {
+        recaptchaToken = await executeRecaptcha("contact_form");
+      }
 
-      // Simulate successful submission (90% of the time)
-      if (Math.random() > 0.1) {
+      // Send data to API
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          type: "contact",
+          data: {
+            ...formData,
+            recaptchaToken,
+          },
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
         setSubmitSuccess(true);
         setFormData({
           name: "",
@@ -125,10 +145,14 @@ export default function ContactForm() {
           setSubmitSuccess(false);
         }, 5000);
       } else {
-        // Simulate error
         setSubmitError(true);
       }
-    }, 1500);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setSubmitError(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const services = [
