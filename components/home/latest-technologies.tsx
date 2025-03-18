@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { Locale } from "@/config/i18n";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
@@ -13,7 +14,7 @@ const styles = {
   "rotate-y-10": "rotate-y-[10deg]",
 };
 
-export default function LatestTechnologies({ locale }: {}) {
+export default function LatestTechnologies({ locale }: { locale: Locale }) {
   const t = useTranslations("latestTechnologies");
   const isRtl = locale === "ar";
 
@@ -22,7 +23,6 @@ export default function LatestTechnologies({ locale }: {}) {
     triggerOnce: true,
   });
 
-  // Replace the technologies array with this updated version that includes SVG icons
   const technologies = [
     {
       name: t("technologies.react.name"),
@@ -40,53 +40,50 @@ export default function LatestTechnologies({ locale }: {}) {
       name: t("technologies.nextjs.name"),
       description: t("technologies.nextjs.description"),
       icon: (
-        <svg viewBox="0 0 180 180" className="h-12 w-12">
-          <mask
-            height="180"
-            id="mask0_408_134"
-            maskUnits="userSpaceOnUse"
-            width="180"
-            x="0"
-            y="0"
-          >
-            <circle cx="90" cy="90" fill="black" r="90"></circle>
-          </mask>
-          <g mask="url(#mask0_408_134)">
-            <circle cx="90" cy="90" fill="black" r="90"></circle>
+        <svg
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+          fillRule="evenodd"
+          clip-rule="evenodd"
+          stroke-linejoin="round"
+          stroke-miterlimit="2"
+        >
+          <g transform="translate(.722 .64) scale(6.375)">
+            <circle cx="40" cy="40" r="40" />
             <path
-              d="M149.508 157.52L69.142 54H54V125.97H66.1136V69.3836L139.999 164.845C143.333 162.614 146.509 160.165 149.508 157.52Z"
-              fill="url(#paint0_linear_408_134)"
-            ></path>
-            <rect
-              fill="url(#paint1_linear_408_134)"
-              height="72"
-              width="12"
-              x="115"
-              y="54"
-            ></rect>
+              d="M66.448 70.009L30.73 24H24v31.987h5.384v-25.15l32.838 42.427a40.116 40.116 0 004.226-3.255z"
+              fill="url(#prefix___Linear1)"
+              fillRule="nonzero"
+            />
+            <path
+              fill="url(#prefix___Linear2)"
+              d="M51.111 24h5.333v32h-5.333z"
+            />
           </g>
           <defs>
             <linearGradient
+              id="prefix___Linear1"
+              x1="0"
+              y1="0"
+              x2="1"
+              y2="0"
               gradientUnits="userSpaceOnUse"
-              id="paint0_linear_408_134"
-              x1="109"
-              x2="144.5"
-              y1="116.5"
-              y2="160.5"
+              gradientTransform="rotate(51.103 -29.93 76.555) scale(25.1269)"
             >
-              <stop stopColor="white"></stop>
-              <stop offset="1" stopColor="white" stopOpacity="0"></stop>
+              <stop offset="0" stop-color="#fff" />
+              <stop offset="1" stop-color="#fff" stop-opacity="0" />
             </linearGradient>
             <linearGradient
+              id="prefix___Linear2"
+              x1="0"
+              y1="0"
+              x2="1"
+              y2="0"
               gradientUnits="userSpaceOnUse"
-              id="paint1_linear_408_134"
-              x1="121"
-              x2="120.799"
-              y1="54"
-              y2="106.875"
+              gradientTransform="rotate(90.218 14.934 38.787) scale(23.50017)"
             >
-              <stop stopColor="white"></stop>
-              <stop offset="1" stopColor="white" stopOpacity="0"></stop>
+              <stop offset="0" stop-color="#fff" />
+              <stop offset="1" stop-color="#fff" stop-opacity="0" />
             </linearGradient>
           </defs>
         </svg>

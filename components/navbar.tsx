@@ -14,10 +14,8 @@ import {
   Mail,
   MapPin,
   Menu,
-  Moon,
   Phone,
   Search,
-  Sun,
   X,
 } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
@@ -572,7 +570,7 @@ export default function Navbar() {
                       isRTL && "flex-row-reverse space-x-reverse"
                     )}
                   >
-                    <button
+                    {/* <button
                       onClick={() =>
                         setTheme(theme === "dark" ? "light" : "dark")
                       }
@@ -584,7 +582,7 @@ export default function Navbar() {
                       ) : (
                         <Moon className="h-5 w-5" />
                       )}
-                    </button>
+                    </button> */}
                     <LanguageSwitcher />
                   </div>
                 </div>

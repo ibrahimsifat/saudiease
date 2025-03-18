@@ -46,7 +46,7 @@ export default function TrustedBy() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12"
+          className="text-center md:mb-12 mb-4"
         >
           <h2 className="text-3xl font-bold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/80">
             {t("title")}
@@ -55,10 +55,10 @@ export default function TrustedBy() {
         </motion.div>
 
         {/* Auto-scrolling carousel - direction changes based on RTL */}
-        <div className="relative overflow-hidden py-8 before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-24 before:bg-gradient-to-r before:from-slate-50 before:to-transparent after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-24 after:bg-gradient-to-l after:from-slate-50 after:to-transparent rtl:before:left-auto rtl:before:right-0 rtl:before:bg-gradient-to-l rtl:before:from-slate-50 rtl:before:to-transparent rtl:after:right-auto rtl:after:left-0 rtl:after:bg-gradient-to-r rtl:after:from-slate-50 rtl:after:to-transparent">
+        <div className="relative overflow-hidden md:py-8 py-4 before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-24 before:bg-gradient-to-r before:from-slate-50 before:to-transparent after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-24 after:bg-gradient-to-l after:from-slate-50 after:to-transparent rtl:before:left-auto rtl:before:right-0 rtl:before:bg-gradient-to-l rtl:before:from-slate-50 rtl:before:to-transparent rtl:after:right-auto rtl:after:left-0 rtl:after:bg-gradient-to-r rtl:after:from-slate-50 rtl:after:to-transparent">
           {/* First row - scrolling direction based on RTL */}
           <motion.div
-            className="flex items-center mb-10 gap-16"
+            className="flex items-center md:mb-10 mb-2 md:gap-16 gap-4"
             animate={{ x: isRTL ? [0, 1920] : [0, -1920] }}
             transition={{
               x: {
@@ -73,7 +73,7 @@ export default function TrustedBy() {
               <div key={`row1-${index}`} className="flex-shrink-0 group">
                 <motion.div
                   whileHover={{ y: -5 }}
-                  className="relative p-5 rounded-lg bg-white/50 backdrop-blur-sm border border-gray-100 shadow-sm group-hover:shadow-md transition-all duration-300 h-24 w-40 flex items-center justify-center"
+                  className="relative md:p-5 p-2 rounded-lg bg-white/50 backdrop-blur-sm border border-gray-100 shadow-sm group-hover:shadow-md transition-all duration-300 md:h-24 h-14 md:w-40 w-20 flex items-center justify-center"
                 >
                   <Image
                     src={partner.logo || "/placeholder.svg"}
@@ -90,7 +90,7 @@ export default function TrustedBy() {
 
           {/* Second row - scrolling in opposite direction */}
           <motion.div
-            className="flex items-center gap-16"
+            className="flex items-center md:gap-16 gap-4"
             animate={{ x: isRTL ? [0, -1920] : [0, 1920] }}
             transition={{
               x: {
@@ -105,7 +105,7 @@ export default function TrustedBy() {
               <div key={`row2-${index}`} className="flex-shrink-0 group">
                 <motion.div
                   whileHover={{ y: -5 }}
-                  className="relative p-5 rounded-lg bg-white/50 backdrop-blur-sm border border-gray-100 shadow-sm group-hover:shadow-md transition-all duration-300 h-24 w-40 flex items-center justify-center"
+                  className="relative md:p-5 p-2 rounded-lg bg-white/50 backdrop-blur-sm border border-gray-100 shadow-sm group-hover:shadow-md transition-all duration-300 md:h-24 h-14 md:w-40 w-20 flex items-center justify-center"
                 >
                   <Image
                     src={partner.logo || "/placeholder.svg"}

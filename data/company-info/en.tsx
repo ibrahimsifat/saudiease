@@ -3,7 +3,7 @@ import type { CompanyInfo } from "./types";
 
 export const companyInfoEn: CompanyInfo = {
   name: "Saudi Ease",
-  logo: CONSTANT.images.logo,
+  logo: CONSTANT.images.logo.en,
   tagline: "Creative Solutions for Your Needs",
   mapUrl: "",
   description:

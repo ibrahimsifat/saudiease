@@ -21,7 +21,7 @@ export async function generateMetadata({
     title: t("meta.title"),
     description: t("meta.description"),
     keywords: t("meta.keywords", { returnObjects: true }),
-    path: `/${params.locale}/services`,
+    path: `/${locale}/services`,
   });
 }
 
@@ -47,7 +47,7 @@ export default async function ServicesPage({ params }: Props) {
           ),
         }}
       />
-      <ServicesPageClient locale={params.locale} />
+      <ServicesPageClient locale={locale} />
     </>
   );
 }

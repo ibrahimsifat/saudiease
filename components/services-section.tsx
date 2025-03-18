@@ -99,12 +99,12 @@ export default function ServicesSection({ locale }: { locale: Locale }) {
 
         {/* Modern category tabs */}
         <div className="flex justify-center mb-5 overflow-x-auto hide-scrollbar pb-4">
-          <div className="bg-white border border-gray-100 p-1.5 shadow-lg rounded-full flex space-x-1 will-change-transform">
+          <div className="bg-white border border-gray-100 p-1.5 shadow-md md:rounded-full rounded flex space-x-1 will-change-transform flex-wrap">
             {categories.map((category) => (
               <button
                 key={category.id}
                 onClick={() => setActiveCategory(category.id)}
-                className={`relative px-5 py-2.5 rounded-full transition-all duration-300 font-medium text-sm flex items-center space-x-2 ${
+                className={`relative md:px-5 px-2 md:py-2.5 py-2 md:rounded-full rounded-md transition-all duration-300 font-medium text-sm flex items-center space-x-2 ${
                   activeCategory === category.id
                     ? "bg-primary text-white shadow-md"
                     : "bg-transparent text-gray-600 hover:bg-gray-100"

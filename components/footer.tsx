@@ -245,13 +245,16 @@ export default function Footer({ locale }: { locale: Locale }) {
               variants={itemVariants}
               className="lg:col-span-4 space-y-6"
             >
-              <Link href="/" className="inline-block">
+              <Link
+                href="/"
+                className="inline-block bg-white border rounded-md"
+              >
                 <div className="relative h-12 w-48">
                   <NextImage
                     src={companyInfo.logo}
                     alt={t("logoAlt")}
                     fill
-                    className="object-contain brightness-200 contrast-200"
+                    className="object-contain brightness-100 contrast-200"
                   />
                 </div>
               </Link>

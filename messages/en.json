@@ -3226,5 +3226,11 @@
     "description": "The page you are looking for does not exist or has been moved.",
     "message": "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.",
     "returnHome": "Return to Homepage"
+  },
+  "whatsappButton": {
+    "chatWithUs": "Chat with us on WhatsApp",
+    "replyTime": "We typically reply within minutes",
+    "startChat": "Start Chat",
+    "message": "Hello! I'm interested in your services and would like to know more."
   }
 }

@@ -14,7 +14,7 @@ export const CONSTANT = {
     10: "/images/blogs/10.webp",
   },
   images: {
-    logo:"/images/logo.webp",
+    // logo:"/images/logo.webp",
     subscribe: "/images/subscribe.svg",
     contact: "/images/contact.svg",
     homeAbout: "/images/about-us.webp",
@@ -22,6 +22,11 @@ export const CONSTANT = {
     homeFeature: "/images/home_features.webp",
     homeIndustryExperts: "/images/industryexpertise.webp",
     author: "/images/author.png",
+    logo: {
+      en: "/images/logos/en-logo.png",
+      ar: "/images/logos/ar-logo.png",
+      bn: "/images/logos/bn-logo.png",
+    },
   },
   clients: {
     kullesh: "/images/clients/kullesh.webp",

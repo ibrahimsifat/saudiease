@@ -203,7 +203,7 @@ export default function HeroSection() {
     <section
       id="home"
       ref={containerRef}
-      className="relative pt-16 pb-16 md:pt-16 md:pb-24 overflow-hidden"
+      className="relative pt-8 pb-12 md:pt-16 md:pb-24 overflow-hidden"
     >
       {/* Video Modal - Only render when shown */}
       <AnimatePresence>
@@ -405,7 +405,7 @@ export default function HeroSection() {
           )}
 
           {/* Trust indicators - important for SEO and conversion */}
-          <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-gray-100 flex items-center gap-2 text-xs text-gray-600 z-10">
+          <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-gray-100 md:flex hidden items-center gap-2 text-xs text-gray-600 z-10">
             <span className="flex h-2 w-2 rounded-full bg-green-500 mr-1"></span>
             <span>
               {t("trustedBy", {
@@ -413,7 +413,7 @@ export default function HeroSection() {
               })}
             </span>
             <span className="mx-2">•</span>
-            <span className="flex items-center">
+            <span className="md:flex items-center hidden">
               <svg
                 className="h-3 w-3 text-amber-500 mr-1"
                 fill="currentColor"
@@ -471,6 +471,7 @@ export default function HeroSection() {
               })}
             </span>
           </div>
+
           <motion.div
             ref={ref}
             initial={{ opacity: 0, x: isRTL ? 50 : -50 }}
@@ -663,7 +664,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.5, delay: 0.9 }}
-              className={"mt-8 relative group"}
+              className={"mt-8 relative group hidden md:block"}
             >
               {/* Subtle gradient border */}
               <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/10 via-blue-400/10 to-purple-400/10 rounded-lg opacity-70 group-hover:opacity-100 transition duration-300"></div>
@@ -767,7 +768,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, x: isRTL ? -50 : 50 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-            className="lg:col-span-6 relative"
+            className="lg:col-span-6 relative hidden md:block"
           >
             <div className="relative h-[400px] md:h-[500px] rounded-2xl overflow-hidden">
               {/* Animated gradient background - lightweight */}
