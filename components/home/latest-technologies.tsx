@@ -13,7 +13,7 @@ const styles = {
   "rotate-y-10": "rotate-y-[10deg]",
 };
 
-export default function LatestTechnologies({ locale }: { locale: string }) {
+export default function LatestTechnologies({ locale }: {}) {
   const t = useTranslations("latestTechnologies");
   const isRtl = locale === "ar";
 

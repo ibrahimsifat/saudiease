@@ -14,7 +14,7 @@ import { useTranslations } from "next-intl";
 import NextImage from "next/image";
 import { useState } from "react";
 import { Locale } from "../config/i18n";
-export default function Footer({ locale }: { locale: string }) {
+export default function Footer({ locale }: { locale: Locale }) {
   const t = useTranslations("footer");
   const companyInfo = getCompanyInfo(locale as Locale);
   const currentYear = new Date().getFullYear();

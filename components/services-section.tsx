@@ -17,7 +17,7 @@ import { ArrowRight, ChevronRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useMemo, useState } from "react";
-export default function ServicesSection({ locale }: { locale: string }) {
+export default function ServicesSection({ locale }: { locale: Locale }) {
   const t = useTranslations("services");
   const services = getServices(locale as Locale);
   const [activeCategory, setActiveCategory] = useState("all");

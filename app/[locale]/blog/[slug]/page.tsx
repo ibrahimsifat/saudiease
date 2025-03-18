@@ -9,7 +9,7 @@ import BlogPostClient from "./blog-post-client";
 type Props = {
   params: {
     slug: string;
-    locale: string;
+    locale: Locale;
   };
 };
 

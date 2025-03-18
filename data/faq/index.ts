@@ -1,3 +1,4 @@
+import { Locale } from "@/config/i18n";
 import { arFAQCategories, arFAQs } from "./ar";
 import { bnFAQCategories, bnFAQs } from "./bn";
 import { enFAQCategories, enFAQs } from "./en";
@@ -9,7 +10,7 @@ export type FAQ = {
   answer: string;
 };
 
-export const getFAQs = (locale: string) => {
+export const getFAQs = (locale: Locale) => {
   switch (locale) {
     case "ar":
       return arFAQs;
@@ -20,7 +21,7 @@ export const getFAQs = (locale: string) => {
   }
 };
 
-export const getFAQCategories = (locale: string) => {
+export const getFAQCategories = (locale: Locale) => {
   switch (locale) {
     case "ar":
       return arFAQCategories;

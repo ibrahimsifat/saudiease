@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Locale } from "@/config/i18n";
 import { projects } from "@/data/projects";
 import { motion } from "framer-motion";
 import { ArrowRight, ExternalLink, Filter, Search } from "lucide-react";
@@ -12,7 +13,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-export default function PortfolioPageClient({ locale }: { locale: string }) {
+export default function PortfolioPageClient({ locale }: { locale: Locale }) {
   const t = useTranslations("portfolioPage");
   const isRtl = locale === "ar";
 

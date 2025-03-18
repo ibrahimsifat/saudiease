@@ -1,5 +1,6 @@
 "use client";
 
+import { Locale } from "@/config/i18n";
 import dynamic from "next/dynamic";
 import { LoadingFallback } from "../ui/loading-fallback";
 
@@ -8,6 +9,6 @@ const BlogSection = dynamic(() => import("@/components/home/blog-section"), {
   ssr: false,
 });
 
-export default function ClientBlogSection({ locale }: { locale: string }) {
+export default function ClientBlogSection({ locale }: { locale: Locale }) {
   return <BlogSection locale={locale} />;
 }

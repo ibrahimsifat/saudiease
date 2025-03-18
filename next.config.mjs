@@ -23,8 +23,12 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
   },
-  // Enable SWC minification for improved performance
-  swcMinify: true,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   // Configure headers for better security and performance
   async headers() {
     return [

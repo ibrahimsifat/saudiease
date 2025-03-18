@@ -1,10 +1,11 @@
+import { Locale } from "@/config/i18n";
 import { businessCategories } from "@/data/business-categories";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import IndustryDetailClient from "./IndustryDetailClient";
 
 type Props = {
-  params: { id: string; locale: string };
+  params: { id: string; locale: Locale };
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

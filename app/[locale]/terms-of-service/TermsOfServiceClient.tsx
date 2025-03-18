@@ -1,12 +1,13 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { Locale } from "@/config/i18n";
 import { motion } from "framer-motion";
 import { ArrowLeft, Clock, FileText, Scale, Shield } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 
-export default function TermsOfServiceClient({ locale }: { locale: string }) {
+export default function TermsOfServiceClient({ locale }: { locale: Locale }) {
   const t = useTranslations("termsOfService");
   const isRTL = locale === "ar";
 

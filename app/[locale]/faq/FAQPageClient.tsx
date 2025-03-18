@@ -9,6 +9,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Locale } from "@/config/i18n";
 import { getFAQCategories, getFAQs } from "@/data/faq/index";
 import { motion } from "framer-motion";
 import { Filter, Search, X } from "lucide-react";
@@ -18,7 +19,7 @@ import { useEffect, useMemo, useState } from "react";
 // Import the FAQ data
 
 type FAQPageClientProps = {
-  locale: string;
+  locale: Locale;
 };
 
 export default function FAQPageClient({ locale }: FAQPageClientProps) {

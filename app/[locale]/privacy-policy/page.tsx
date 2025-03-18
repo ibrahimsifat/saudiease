@@ -1,12 +1,14 @@
+import { Locale } from "@/config/i18n";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import PrivacyPolicyClient from "./PrivacyPolicyClient";
 
 export async function generateMetadata({
-  params: { locale },
+  params,
 }: {
-  params: { locale: string };
+  params: { locale: Locale };
 }): Promise<Metadata> {
+  const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "privacyPolicy" });
 
   return {
@@ -18,7 +20,7 @@ export async function generateMetadata({
 export default async function PrivacyPolicyPage({
   params: { locale },
 }: {
-  params: { locale: string };
+  params: { locale: Locale };
 }) {
   return <PrivacyPolicyClient locale={locale} />;
 }

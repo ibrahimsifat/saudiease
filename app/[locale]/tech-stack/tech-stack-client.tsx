@@ -10,6 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Locale } from "@/config/i18n";
 import { motion } from "framer-motion";
 import {
   Cloud,
@@ -27,7 +28,7 @@ import {
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
-export default function TechStackPage({ locale }: { locale: string }) {
+export default function TechStackPage({ locale }: { locale: Locale }) {
   const t = useTranslations("techStack");
   const isRTL = locale === "ar" || locale === "bn";
   const [activeTab, setActiveTab] = useState("frontend");

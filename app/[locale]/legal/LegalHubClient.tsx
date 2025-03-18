@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { localeMetadata } from "@/config/i18n";
+import { Locale, localeMetadata } from "@/config/i18n";
 import { motion } from "framer-motion";
 import {
   ArrowLeft,
@@ -18,7 +18,7 @@ import {
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 
-export default function LegalHubClient({ locale }: { locale: string }) {
+export default function LegalHubClient({ locale }: { locale: Locale }) {
   const t = useTranslations("legal");
   const currentLocale = useLocale();
   const isRtl =

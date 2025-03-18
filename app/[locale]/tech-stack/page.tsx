@@ -1,3 +1,4 @@
+import { Locale } from "@/config/i18n";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import TechStackPage from "./tech-stack-client";
@@ -5,7 +6,7 @@ import TechStackPage from "./tech-stack-client";
 export async function generateMetadata({
   params,
 }: {
-  params: { locale: string };
+  params: { locale: Locale };
 }): Promise<Metadata> {
   const t = await getTranslations({
     locale: params.locale,
@@ -27,7 +28,7 @@ export async function generateMetadata({
 export default async function TechStack({
   params,
 }: {
-  params: { locale: string };
+  params: { locale: Locale };
 }) {
   return <TechStackPage locale={params.locale} />;
 }

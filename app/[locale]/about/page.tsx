@@ -15,13 +15,13 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
 type Props = {
-  params: { locale: string };
+  params: { locale: Locale };
 };
 
 export async function generateMetadata({
   params,
 }: {
-  params: { locale: string };
+  params: { locale: Locale };
 }): Promise<Metadata> {
   const resolvedParams = await params;
   const locale = resolvedParams.locale as Locale;

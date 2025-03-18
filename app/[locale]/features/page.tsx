@@ -7,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Locale } from "@/config/i18n";
 import { getFeatures } from "@/data/features/index";
 import { generateWebsiteSchema } from "@/lib/schema";
 import { ArrowRight, CheckCircle } from "lucide-react";
@@ -15,10 +16,11 @@ import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 
 export async function generateMetadata({
-  params: { locale },
+  params,
 }: {
-  params: { locale: string };
+  params: { locale: Locale };
 }): Promise<Metadata> {
+  const { locale } = await params;
   const t = await getTranslations("featuresPage.metadata");
 
   return {
@@ -36,13 +38,13 @@ export async function generateMetadata({
 export default async function FeaturesPage({
   params,
 }: {
-  params: { locale?: string };
+  params: { locale?: Locale };
 }) {
   const t = await getTranslations("featuresPage");
   const { locale } = await params;
   console.log(locale);
   const isRTL = locale === "ar";
-  const features = getFeatures(locale);
+  const features = getFeatures(locale as Locale);
 
   return (
     <main className="min-h-screen">

@@ -53,7 +53,7 @@ const notoBengali = Noto_Sans_Bengali({
 export async function generateMetadata({
   params,
 }: {
-  params: { locale: string };
+  params: { locale: Locale };
 }): Promise<Metadata> {
   const { locale } = await params;
   // Validate that the locale is supported

@@ -2,6 +2,7 @@
 
 import type React from "react";
 
+import { Locale } from "@/config/i18n";
 import type { Project } from "@/data/projects";
 import { cn } from "@/lib/utils";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -59,7 +60,7 @@ export default function PortfolioDetailClient({
 }: {
   project: Project;
   relatedProjects: Project[];
-  locale: string;
+  locale: Locale;
 }) {
   const t = useTranslations("portfolioPage.projectDetail");
   const isRtl = locale === "ar";

@@ -1,3 +1,4 @@
+import { Locale } from "@/config/i18n";
 import { generateFAQSchema, generatePageMetadata } from "@/lib/seo-utils";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
@@ -6,7 +7,7 @@ import { Suspense } from "react";
 import FAQPageClient from "./FAQPageClient";
 
 type Props = {
-  params: { locale: string };
+  params: { locale: Locale };
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

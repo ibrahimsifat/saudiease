@@ -7,7 +7,7 @@ import { notFound } from "next/navigation";
 import PortfolioDetailClient from "./PortfolioDetailClient";
 
 type Props = {
-  params: { id: string; locale: string };
+  params: { id: string; locale: Locale };
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
