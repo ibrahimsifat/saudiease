@@ -43,9 +43,9 @@ export default function LatestTechnologies({ locale }: { locale: Locale }) {
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
           fillRule="evenodd"
-          clip-rule="evenodd"
-          stroke-linejoin="round"
-          stroke-miterlimit="2"
+          clipRule="evenodd"
+          strokeLinejoin="round"
+          strokeMiterlimit="2"
         >
           <g transform="translate(.722 .64) scale(6.375)">
             <circle cx="40" cy="40" r="40" />
@@ -69,8 +69,8 @@ export default function LatestTechnologies({ locale }: { locale: Locale }) {
               gradientUnits="userSpaceOnUse"
               gradientTransform="rotate(51.103 -29.93 76.555) scale(25.1269)"
             >
-              <stop offset="0" stop-color="#fff" />
-              <stop offset="1" stop-color="#fff" stop-opacity="0" />
+              <stop offset="0" stopColor="#fff" />
+              <stop offset="1" stopColor="#fff" stopOpacity="0" />
             </linearGradient>
             <linearGradient
               id="prefix___Linear2"
@@ -81,8 +81,8 @@ export default function LatestTechnologies({ locale }: { locale: Locale }) {
               gradientUnits="userSpaceOnUse"
               gradientTransform="rotate(90.218 14.934 38.787) scale(23.50017)"
             >
-              <stop offset="0" stop-color="#fff" />
-              <stop offset="1" stop-color="#fff" stop-opacity="0" />
+              <stop offset="0" stopColor="#fff" />
+              <stop offset="1" stopColor="#fff" stopOpacity="0" />
             </linearGradient>
           </defs>
         </svg>

@@ -207,7 +207,7 @@ export default function AboutSection() {
                 fill
                 className="object-cover"
                 loading="lazy"
-                fetchpriority="low"
+                fetchPriority="low"
               />
             </Suspense>
           </motion.div>

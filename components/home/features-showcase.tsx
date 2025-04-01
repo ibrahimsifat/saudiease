@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { CONSTANT } from "@/config/constants";
 import { features } from "@/data/features";
 import { Link } from "@/i18n/routing";
+import { useScroll, useTransform } from "framer-motion";
 import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
 import Image from "next/image";

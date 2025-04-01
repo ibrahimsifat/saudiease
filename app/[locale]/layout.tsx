@@ -11,6 +11,8 @@ import {
   generateGlobalSchema,
   generateLocalizedMetadata,
 } from "@/lib/seo-utils";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { Cairo, Inter, Noto_Sans_Bengali } from "next/font/google";
@@ -19,8 +21,6 @@ import Script from "next/script";
 import type React from "react";
 import { Suspense } from "react";
 import "../globals.css";
-// import { SpeedInsights } from "@vercel/speed-insights/next";
-// import { Analytics } from "@vercel/analytics/react";
 
 // Optimize font loading with display swap and preload
 const inter = Inter({
@@ -189,6 +189,8 @@ export default async function LocaleLayout({
               </Suspense>
               <Footer locale={locale} />
             </div>
+            <Analytics/>
+            <SpeedInsights/>
             <WhatsAppButton />
             <ScrollToTop />
           </ThemeProvider>
