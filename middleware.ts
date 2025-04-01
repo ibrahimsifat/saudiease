@@ -11,10 +11,10 @@ export default function middleware(req: NextRequest) {
   return intlMiddleware(req);
 }
 
-// Optimize matcher pattern
+// Fixed matcher pattern
 export const config = {
   matcher: [
     // Skip all internal paths (_next) and static files
-    "/((?!_next|api|.*\\..*).*)",
+    "/((?!_next|api|.*\\.).*).*",  
   ],
 };

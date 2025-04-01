@@ -20,7 +20,7 @@ export const routing = defineRouting({
     "/privacy-policy": "/privacy-policy",
     "/terms-of-service": "/terms-of-service",
     "/legal": "/legal",
-    "*/": "*/",
+     "/:path*": "/:path*", 
     "/pathnames": {
       en: "/pathnames",
       bn: "/pfadnamen",

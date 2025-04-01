@@ -4,10 +4,83 @@ import { Button } from "@/components/ui/button";
 import { CONSTANT } from "@/config/constants";
 import { features } from "@/data/features";
 import { Link } from "@/i18n/routing";
-import { motion, useScroll, useTransform } from "framer-motion";
 import { useTranslations } from "next-intl";
+import dynamic from "next/dynamic";
 import Image from "next/image";
-import { useRef } from "react";
+import { memo, useRef } from "react";
+
+// Dynamically import motion to reduce initial bundle size
+const MotionDiv = dynamic(
+  () => import("framer-motion").then((mod) => mod.motion.div),
+  { ssr: false }
+);
+const MotionSection = dynamic(
+  () => import("framer-motion").then((mod) => mod.motion.section),
+  { ssr: false }
+);
+
+// Memoized Feature Card Component
+const FeatureCard = memo(({ feature, t }) => {
+  return (
+    <MotionDiv
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+      className="group relative overflow-hidden bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-500 border border-gray-100"
+    >
+      <div className="absolute top-0 right-0 rtl:right-auto rtl:left-0 w-20 h-20 -mr-10 rtl:mr-0 rtl:-ml-10 -mt-10 bg-primary/10 rounded-full transform rotate-12 group-hover:scale-150 transition-transform duration-700"></div>
+      <div className="relative p-6 z-10">
+        <div className="relative mb-5">
+          <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-primary/5 rounded-lg blur-sm transform group-hover:scale-110 transition-all duration-300"></div>
+          <div className="relative h-14 w-14 rounded-lg bg-gradient-to-br from-primary/20 to-white flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+            <feature.icon className="h-7 w-7 text-primary group-hover:text-primary/90 transition-colors duration-300" />
+          </div>
+        </div>
+        <h3 className="text-xl font-semibold text-saudi-black mb-3 group-hover:text-primary transition-colors duration-300">
+          {t(`features.${feature.id}.title`)}
+          <span className="block h-0.5 w-0 bg-primary group-hover:w-1/3 transition-all duration-500 mt-1"></span>
+        </h3>
+        <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300 leading-relaxed">
+          {t(`features.${feature.id}.description`)}
+        </p>
+        <div className="mt-4 overflow-hidden h-0 group-hover:h-6 transition-all duration-300">
+          <a
+            href={`/features/${feature.id}`}
+            className="text-primary font-medium text-sm flex items-center"
+            aria-label={`Learn more about ${t(`features.${feature.id}.title`)}`}
+          >
+            {t("learnMore")}
+            <svg
+              className="w-4 h-4 ml-1 rtl:ml-0 rtl:mr-1 transform group-hover:translate-x-1 rtl:group-hover:translate-x-0 transition-transform duration-300"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+                className="rtl:hidden"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                className="hidden rtl:block"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div className="h-1 w-0 bg-gradient-to-r from-primary/80 to-primary/40 group-hover:w-full transition-all duration-500"></div>
+    </MotionDiv>
+  );
+});
+
+FeatureCard.displayName = "FeatureCard";
 
 export default function FeaturesShowcase() {
   const t = useTranslations("featuresShowcase");
@@ -20,19 +93,22 @@ export default function FeaturesShowcase() {
   const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
 
   return (
-    <section
+    <MotionSection
       ref={containerRef}
       className="py-20 overflow-hidden relative"
       id="features"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
     >
-      {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-[30%] -right-[5%] rtl:-right-auto rtl:-left-[5%] w-[30%] h-[40%] bg-primary/5 rounded-full blur-3xl"></div>
         <div className="absolute -bottom-[10%] left-[20%] rtl:left-auto rtl:right-[20%] w-[40%] h-[30%] bg-primary/5 rounded-full blur-3xl"></div>
       </div>
 
       <div className="container mx-auto px-4 relative">
-        <motion.div
+        <MotionDiv
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -43,7 +119,7 @@ export default function FeaturesShowcase() {
             <span className="flex h-2 w-2 rounded-full bg-primary mr-2 rtl:mr-0 rtl:ml-2"></span>
             {t("sectionLabel")}
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-saudi-black mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-saudi-black mb-4">
             {t("titleStart")}{" "}
             <span className="text-primary relative">
               {t("titleHighlight")}
@@ -60,89 +136,21 @@ export default function FeaturesShowcase() {
                 />
               </svg>
             </span>
-          </h2>
+          </h1>
           <p className="text-gray-600 max-w-2xl mx-auto text-lg">
             {t("description")}
           </p>
-        </motion.div>
+        </MotionDiv>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {features.map((feature, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="group relative overflow-hidden bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-500 border border-gray-100"
-                >
-                  {/* Decorative corner accent */}
-                  <div className="absolute top-0 right-0 rtl:right-auto rtl:left-0 w-20 h-20 -mr-10 rtl:mr-0 rtl:-ml-10 -mt-10 bg-primary/10 rounded-full transform rotate-12 group-hover:scale-150 transition-transform duration-700"></div>
-
-                  {/* Card content */}
-                  <div className="relative p-6 z-10">
-                    {/* Icon with gradient background */}
-                    <div className="relative mb-5">
-                      <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-primary/5 rounded-lg blur-sm transform group-hover:scale-110 transition-all duration-300"></div>
-                      <div className="relative h-14 w-14 rounded-lg bg-gradient-to-br from-primary/20 to-white flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-                        {
-                          <feature.icon className="h-7 w-7 text-primary group-hover:text-primary/90 transition-colors duration-300" />
-                        }
-                      </div>
-                    </div>
-
-                    {/* Title with underline effect */}
-                    <h3 className="text-xl font-semibold text-saudi-black mb-3 group-hover:text-primary transition-colors duration-300">
-                      {t(`features.${feature.id}.title`)}
-                      <span className="block h-0.5 w-0 bg-primary group-hover:w-1/3 transition-all duration-500 mt-1"></span>
-                    </h3>
-
-                    {/* Description with improved typography */}
-                    <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300 leading-relaxed">
-                      {t(`features.${feature.id}.description`)}
-                    </p>
-
-                    {/* Learn more link that appears on hover */}
-                    <div className="mt-4 overflow-hidden h-0 group-hover:h-6 transition-all duration-300">
-                      <a
-                        href={`/features/${feature.id}`}
-                        className="text-primary font-medium text-sm flex items-center"
-                      >
-                        {t("learnMore")}
-                        <svg
-                          className="w-4 h-4 ml-1 rtl:ml-0 rtl:mr-1 transform group-hover:translate-x-1  rtl:group-hover:translate-x-0 transition-transform duration-300"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M14 5l7 7m0 0l-7 7m7-7H3"
-                            className="rtl:hidden"
-                          />
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M10 19l-7-7m0 0l7-7m-7 7h18"
-                            className="hidden rtl:block"
-                          />
-                        </svg>
-                      </a>
-                    </div>
-                  </div>
-
-                  {/* Bottom accent bar */}
-                  <div className="h-1 w-0 bg-gradient-to-r from-primary/80 to-primary/40 group-hover:w-full transition-all duration-500"></div>
-                </motion.div>
+                <FeatureCard key={index} feature={feature} t={t} />
               ))}
             </div>
 
-            <motion.div
+            <MotionDiv
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -154,12 +162,14 @@ export default function FeaturesShowcase() {
                 className="bg-primary hover:bg-primary/90 text-white"
                 asChild
               >
-                <Link href="/services">{t("exploreServices")}</Link>
+                <Link href="/services" aria-label="Explore our services">
+                  {t("exploreServices")}
+                </Link>
               </Button>
-            </motion.div>
+            </MotionDiv>
           </div>
 
-          <motion.div style={{ y }} className="relative hidden lg:block">
+          <MotionDiv style={{ y }} className="relative hidden lg:block">
             <div className="relative h-[600px] w-full">
               <div className="absolute top-0 left-[10%] rtl:left-auto rtl:right-[10%] w-[80%] h-[80%] rounded-2xl overflow-hidden">
                 <Image
@@ -167,11 +177,11 @@ export default function FeaturesShowcase() {
                   alt={t("imageAlt")}
                   fill
                   className="object-cover"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 to-transparent mix-blend-multiply"></div>
               </div>
 
-              {/* Decorative elements */}
               <div className="absolute top-[15%] -left-[5%] rtl:left-auto rtl:-right-[5%] h-[200px] w-[200px]">
                 <div className="relative h-full w-full">
                   <div className="absolute inset-0 rounded-full border-2 border-dashed border-primary/30 animate-spin-slow"></div>
@@ -184,7 +194,6 @@ export default function FeaturesShowcase() {
                 </div>
               </div>
 
-              {/* Feature cards */}
               <div className="absolute top-[10%] -right-[10%] rtl:right-auto rtl:-left-[10%] bg-white p-4 rounded-lg shadow-lg max-w-[200px]">
                 <div className="flex items-center mb-2">
                   <div className="h-8 w-8 rounded-full bg-green-100 flex items-center justify-center mr-2 rtl:mr-0 rtl:ml-2">
@@ -231,9 +240,9 @@ export default function FeaturesShowcase() {
                 </p>
               </div>
             </div>
-          </motion.div>
+          </MotionDiv>
         </div>
       </div>
-    </section>
+    </MotionSection>
   );
 }

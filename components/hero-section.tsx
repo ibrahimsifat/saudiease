@@ -25,7 +25,7 @@ import {
   X,
 } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
 
 // Testimonials data structure
@@ -53,7 +53,40 @@ const testimonials = [
   },
 ];
 
-export default function HeroSection() {
+const CounterAnimation = memo(({ value, label, icon }) => {
+  const count = useMotionValue(0);
+  const roundedCount = useSpring(count, { stiffness: 100, damping: 30 });
+  const [displayValue, setDisplayValue] = useState(0);
+
+  useEffect(() => {
+    const numericValue = Number.parseInt(value.replace(/\D/g, ""));
+    count.set(numericValue);
+  }, [value, count]);
+
+  useEffect(() => {
+    const unsubscribe = roundedCount.onChange((v) => {
+      setDisplayValue(Math.round(v));
+    });
+    return unsubscribe;
+  }, [roundedCount]);
+
+  return (
+    <motion.div
+      className="bg-white/90 backdrop-blur-sm rounded-lg shadow-lg p-3 text-center transform transition-all duration-300 hover:scale-105"
+      whileHover={{ y: -5 }}
+    >
+      <div className="flex justify-center mb-2">{icon}</div>
+      <p className="text-2xl font-bold text-primary">
+        {value.includes("+") ? displayValue + "+" : displayValue}
+      </p>
+      <p className="text-xs text-gray-600">{label}</p>
+    </motion.div>
+  );
+});
+
+CounterAnimation.displayName = "CounterAnimation";
+
+const HeroSection = () => {
   const t = useTranslations("hero");
   const locale = useLocale();
   const isRTL = locale === "ar";
@@ -65,7 +98,6 @@ export default function HeroSection() {
     triggerOnce: true,
   });
 
-  // Get animation settings based on device capabilities
   const animations = useMemo(() => getOptimizedAnimations(), []);
 
   const containerRef = useRef(null);
@@ -74,7 +106,6 @@ export default function HeroSection() {
     offset: ["start start", "end start"],
   });
 
-  // Optimize animations with reduced motion preference
   const y = useTransform(
     scrollYProgress,
     [0, 1],
@@ -82,86 +113,44 @@ export default function HeroSection() {
   );
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
-  // Smooth counter animation for statistics
-  const CounterAnimation = ({ value, label, icon }) => {
-    const count = useMotionValue(0);
-    const roundedCount = useSpring(count, { stiffness: 100, damping: 30 });
-    const [displayValue, setDisplayValue] = useState(0);
-
-    useEffect(() => {
-      if (inView) {
-        const numericValue = Number.parseInt(value.replace(/\D/g, ""));
-        count.set(numericValue);
-      }
-    }, [inView, count, value]);
-
-    useEffect(() => {
-      const unsubscribe = roundedCount.onChange((v) => {
-        setDisplayValue(Math.round(v));
-      });
-      return unsubscribe;
-    }, [roundedCount]);
-
-    return (
-      <motion.div
-        className="bg-white/90 backdrop-blur-sm rounded-lg shadow-lg p-3 text-center transform transition-all duration-300 hover:scale-105"
-        whileHover={{ y: -5 }}
-      >
-        <div className="flex justify-center mb-2">{icon}</div>
-        <p className="text-2xl font-bold text-primary">
-          {value.includes("+") ? displayValue + "+" : displayValue}
-        </p>
-        <p className="text-xs text-gray-600">{label}</p>
-      </motion.div>
-    );
-  };
-
-  // Auto-advance testimonials with throttled state updates
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
-  // Lazy load images and defer non-critical animations
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
-    // Simulate image loading completion
     const timer = setTimeout(() => setIsLoaded(true), 100);
     return () => clearTimeout(timer);
   }, []);
 
-  // SEO-optimized statistics with relevant metrics
-  const stats = [
-    {
-      value: "250+",
-      label: t("projectsCompleted", { defaultMessage: "Projects Completed" }),
-      icon: <CheckCircle className="h-5 w-5 text-green-500" />,
-    },
-    {
-      value: "98%",
-      label: t("clientSatisfaction", { defaultMessage: "Client Satisfaction" }),
-      icon: <Users className="h-5 w-5 text-blue-500" />,
-    },
-    {
-      value: "5+",
-      label: t("yearsExperience", { defaultMessage: "Years Experience" }),
-      icon: <BarChart className="h-5 w-5 text-purple-500" />,
-    },
-    {
-      value: "15+",
-      label: t("citiesServed", { defaultMessage: "Saudi Cities Served" }),
-      icon: <Globe className="h-5 w-5 text-amber-500" />,
-    },
-  ];
+  const stats = useMemo(
+    () => [
+      {
+        value: "250+",
+        label: t("projectsCompleted", { defaultMessage: "Projects Completed" }),
+        icon: <CheckCircle className="h-5 w-5 text-green-500" />,
+      },
+      {
+        value: "98%",
+        label: t("clientSatisfaction", {
+          defaultMessage: "Client Satisfaction",
+        }),
+        icon: <Users className="h-5 w-5 text-blue-500" />,
+      },
+      {
+        value: "5+",
+        label: t("yearsExperience", { defaultMessage: "Years Experience" }),
+        icon: <BarChart className="h-5 w-5 text-purple-500" />,
+      },
+      {
+        value: "15+",
+        label: t("citiesServed", { defaultMessage: "Saudi Cities Served" }),
+        icon: <Globe className="h-5 w-5 text-amber-500" />,
+      },
+    ],
+    [t]
+  );
 
-  // Optimize particle rendering with memoization and throttling
   const renderParticles = useCallback(() => {
     if (!isLoaded || !inView || !animations.enableBackgroundEffects)
       return null;
 
-    // Reduce particle count for better performance
     const particleCount = animations.reducedMotion ? 5 : 10;
 
     return [...Array(particleCount)].map((_, i) => (
@@ -196,8 +185,14 @@ export default function HeroSection() {
     animations.reducedMotion,
   ]);
 
-  // Memoize particles for performance
   const particles = useMemo(() => renderParticles(), [renderParticles]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section
@@ -205,7 +200,6 @@ export default function HeroSection() {
       ref={containerRef}
       className="relative pt-8 pb-12 md:pt-16 md:pb-24 overflow-hidden"
     >
-      {/* Video Modal - Only render when shown */}
       <AnimatePresence>
         {showVideo && (
           <motion.div
@@ -245,12 +239,9 @@ export default function HeroSection() {
         )}
       </AnimatePresence>
 
-      {/* Advanced Background Elements - conditionally rendered based on device capability */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Gradient background - always render as it's lightweight */}
         <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-white"></div>
 
-        {/* Conditionally render animated elements based on device capability */}
         {animations.enableBackgroundEffects && (
           <>
             <motion.div
@@ -308,7 +299,6 @@ export default function HeroSection() {
           </>
         )}
 
-        {/* Animated floating elements - only if complex animations are enabled */}
         {animations.enableComplexAnimations && (
           <>
             <motion.div
@@ -333,7 +323,6 @@ export default function HeroSection() {
           </>
         )}
 
-        {/* SVG pattern overlay - lightweight background element */}
         <svg
           className="absolute inset-0 w-full h-full opacity-[0.03]"
           xmlns="http://www.w3.org/2000/svg"
@@ -371,7 +360,6 @@ export default function HeroSection() {
         </svg>
       </div>
 
-      {/* Animated Particles - Render only after initial load and if background effects are enabled */}
       {animations.enableBackgroundEffects && (
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {particles}
@@ -388,11 +376,9 @@ export default function HeroSection() {
             isRTL && "lg:flex-row-reverse"
           )}
         >
-          {/* Decorative elements - lightweight and static */}
           <div className="absolute -top-20 -left-20 w-40 h-40 bg-primary/5 rounded-full blur-3xl"></div>
           <div className="absolute -bottom-20 -right-20 w-60 h-60 bg-blue-500/5 rounded-full blur-3xl"></div>
 
-          {/* Animated grid lines - only if complex animations are enabled */}
           {animations.enableComplexAnimations && (
             <div className="absolute inset-0 overflow-hidden opacity-10 pointer-events-none">
               <div className="h-full w-px bg-gradient-to-b from-transparent via-primary/20 to-transparent absolute left-1/4"></div>
@@ -404,7 +390,6 @@ export default function HeroSection() {
             </div>
           )}
 
-          {/* Trust indicators - important for SEO and conversion */}
           <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-gray-100 md:flex hidden items-center gap-2 text-xs text-gray-600 z-10">
             <span className="flex h-2 w-2 rounded-full bg-green-500 mr-1"></span>
             <span>
@@ -505,7 +490,6 @@ export default function HeroSection() {
               </span>
             </motion.div>
 
-            {/* SEO-optimized heading with Saudi-specific keywords */}
             <h1
               className={cn(
                 "text-4xl md:text-5xl lg:text-6xl font-bold text-saudi-black leading-tight",
@@ -568,7 +552,6 @@ export default function HeroSection() {
               </motion.span>
             </h1>
 
-            {/* SEO-optimized description with Saudi-specific keywords */}
             <motion.p
               className={"text-lg text-gray-600 max-w-lg"}
               initial={{ opacity: 0, y: 20 }}
@@ -666,12 +649,9 @@ export default function HeroSection() {
               transition={{ duration: 0.5, delay: 0.9 }}
               className={"mt-8 relative group hidden md:block"}
             >
-              {/* Subtle gradient border */}
               <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/10 via-blue-400/10 to-purple-400/10 rounded-lg opacity-70 group-hover:opacity-100 transition duration-300"></div>
 
-              {/* Testimonial Section */}
               <div className="relative bg-white/95 backdrop-blur-sm p-3 rounded-lg shadow-sm border border-gray-50 overflow-hidden">
-                {/* Simplified gradient accent */}
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary/40 via-blue-400/30 to-purple-400/20"></div>
 
                 <div className="h-[90px] flex items-center justify-center">
@@ -745,7 +725,6 @@ export default function HeroSection() {
                   </AnimatePresence>
                 </div>
 
-                {/* Minimal navigation dots */}
                 <div className="flex justify-center space-x-1">
                   {testimonials.map((_, index) => (
                     <button
@@ -771,9 +750,6 @@ export default function HeroSection() {
             className="lg:col-span-6 relative hidden md:block"
           >
             <div className="relative h-[400px] md:h-[500px] rounded-2xl overflow-hidden">
-              {/* Animated gradient background - lightweight */}
-
-              {/* Animated mesh gradient - only if complex animations are enabled */}
               {animations.enableComplexAnimations && (
                 <div className="absolute inset-0 opacity-30">
                   <svg
@@ -822,7 +798,6 @@ export default function HeroSection() {
                     <rect width="100%" height="100%" fill="url(#grad1)" />
                     <rect width="100%" height="100%" fill="url(#grad2)" />
 
-                    {/* Animated mesh nodes - reduced for better performance */}
                     {isLoaded &&
                       animations.enableComplexAnimations &&
                       [...Array(3)].map((_, i) => (
@@ -855,7 +830,6 @@ export default function HeroSection() {
                 </div>
               )}
 
-              {/* Main Image with optimized loading */}
               <OptimizedImage
                 src={CONSTANT.images.hero}
                 alt={t("heroImageAlt", {
@@ -870,9 +844,6 @@ export default function HeroSection() {
                 previewSrc="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjEwMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2Y4ZjhmOCIvPjwvc3ZnPg=="
               />
 
-              {/* Overlay gradient */}
-
-              {/* Floating Elements - Render after initial load for better performance */}
               {isLoaded && animations.enableComplexAnimations && (
                 <>
                   <motion.div
@@ -986,7 +957,6 @@ export default function HeroSection() {
               )}
             </div>
 
-            {/* Stats Cards */}
             <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-[90%] grid grid-cols-4 gap-3 z-30">
               {stats.map((stat, index) => (
                 <CounterAnimation
@@ -1002,4 +972,6 @@ export default function HeroSection() {
       </motion.div>
     </section>
   );
-}
+};
+
+export default memo(HeroSection);

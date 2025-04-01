@@ -16,7 +16,6 @@ const styles = {
 
 export default function LatestTechnologies({ locale }: { locale: Locale }) {
   const t = useTranslations("latestTechnologies");
-  const isRtl = locale === "ar";
 
   const { ref, inView } = useInView({
     threshold: 0.1,

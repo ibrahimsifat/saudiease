@@ -1,11 +1,11 @@
 "use client";
 
-import SearchDialog from "@/components/search-dialog";
 import { Button } from "@/components/ui/button";
 import { Locale } from "@/config/i18n";
 import { getCompanyInfo } from "@/data/company-info/index";
 import { getServices } from "@/data/services/index";
 import { useMobile } from "@/hooks/use-mobile";
+import { Link } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import {
@@ -19,14 +19,17 @@ import {
   X,
 } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
-import { useTheme } from "next-themes";
+import dynamic from "next/dynamic";
 import Image from "next/image";
-
-import { Link } from "@/i18n/routing";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { memo, useCallback, useEffect, useRef, useState } from "react";
 import LanguageSwitcher from "./language-switcher";
-export default function Navbar() {
+
+const SearchDialog = dynamic(() => import("@/components/search-dialog"), {
+  ssr: false,
+});
+
+const Navbar = () => {
   const t = useTranslations("navigation");
   const common = useTranslations("common");
   const locale = useLocale();
@@ -38,222 +41,208 @@ export default function Navbar() {
   const pathname = usePathname();
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
-  const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const companyInfo = getCompanyInfo(locale as Locale);
-  // Handle scroll event to change navbar appearance
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
+  const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+  const handleScroll = useCallback(() => {
+    setIsScrolled(window.scrollY > 10);
   }, []);
 
-  // Close mobile menu when route changes
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [handleScroll]);
+
   useEffect(() => {
     setIsMenuOpen(false);
   }, [pathname]);
 
-  // Handle dropdown hover
-  const handleDropdownEnter = (dropdown: string) => {
+  const handleDropdownEnter = useCallback((dropdown: string) => {
     if (dropdownTimeoutRef.current) {
       clearTimeout(dropdownTimeoutRef.current);
     }
     setActiveDropdown(dropdown);
-  };
+  }, []);
 
-  const handleDropdownLeave = () => {
+  const handleDropdownLeave = useCallback(() => {
     dropdownTimeoutRef.current = setTimeout(() => {
       setActiveDropdown(null);
     }, 200);
-  };
+  }, []);
 
-  // Group services by category
-  const serviceCategories = services.reduce((acc, service) => {
-    const category = service.category || "Other";
-    if (!acc[category]) {
-      acc[category] = [];
-    }
-    acc[category].push(service);
-    return acc;
-  }, {} as Record<string, typeof services>);
+  const serviceCategories = useCallback(() => {
+    return services.reduce((acc, service) => {
+      const category = service.category || "Other";
+      if (!acc[category]) {
+        acc[category] = [];
+      }
+      acc[category].push(service);
+      return acc;
+    }, {} as Record<string, typeof services>);
+  }, [services]);
 
-  // Format category names
-  const formatCategoryName = (category: string) => {
+  const formatCategoryName = useCallback((category: string) => {
     return category.charAt(0).toUpperCase() + category.slice(1);
-  };
+  }, []);
 
-  // Navbar links with dropdown menus
-  const navLinks = [
-    {
-      name: t("home"),
-      href: "/",
-      hasDropdown: false,
-    },
-    {
-      name: t("services"),
-      href: "/services",
-      hasDropdown: true,
-      dropdownId: "services",
-      dropdownContent: (
-        <div className="p-6 w-full">
-          <div className="mb-4 pb-2 border-b border-gray-100 dark:border-gray-700">
-            <h3 className="text-sm font-semibold text-primary">
-              {t("services")}
-            </h3>
-            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-              {t("servicesDropdownDescription", {
-                defaultMessage:
-                  "Comprehensive digital solutions for Saudi businesses",
-              })}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 gap-6">
-            {Object.entries(serviceCategories).map(
-              ([category, categoryServices]) => (
-                <div key={category} className="space-y-3">
-                  <h4 className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                    {formatCategoryName(category)}
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {categoryServices.map((service) => (
-                      <Link
-                        key={service.id}
-                        href={`/services/${service.id}`}
-                        className={cn(
-                          "group flex items-center bg-gray-50 dark:bg-gray-800/50 hover:bg-primary/5 dark:hover:bg-primary/10 px-3 py-2 rounded-md transition-colors",
-                          isRTL ? "flex-row-reverse text-right" : "text-left"
-                        )}
-                      >
-                        <div className="flex-shrink-0 h-8 w-8 rounded-md bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                          {<service.icon className="h-4 w-4 text-primary" />}
-                        </div>
-                        <div className={isRTL ? "mr-3" : "ml-3"}>
-                          <p className="text-sm font-medium text-gray-900 dark:text-gray-100 group-hover:text-primary transition-colors">
-                            {service.title}
-                          </p>
-                        </div>
-                      </Link>
-                    ))}
+  const navLinks = useCallback(
+    () => [
+      {
+        name: t("home"),
+        href: "/",
+        hasDropdown: false,
+      },
+      {
+        name: t("services"),
+        href: "/services",
+        hasDropdown: true,
+        dropdownId: "services",
+        dropdownContent: (
+          <div className="p-6 w-full">
+            <div className="mb-4 pb-2 border-b border-gray-100 dark:border-gray-700">
+              <h3 className="text-sm font-semibold text-primary">
+                {t("services")}
+              </h3>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                {t("servicesDropdownDescription", {
+                  defaultMessage:
+                    "Comprehensive digital solutions for Saudi businesses",
+                })}
+              </p>
+            </div>
+            <div className="grid grid-cols-1 gap-6">
+              {Object.entries(serviceCategories()).map(
+                ([category, categoryServices]) => (
+                  <div key={category} className="space-y-3">
+                    <h4 className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                      {formatCategoryName(category)}
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {categoryServices.map((service) => (
+                        <Link
+                          key={service.id}
+                          href={`/services/${service.id}`}
+                          className={cn(
+                            "group flex items-center bg-gray-50 dark:bg-gray-800/50 hover:bg-primary/5 dark:hover:bg-primary/10 px-3 py-2 rounded-md transition-colors",
+                            isRTL ? "flex-row-reverse text-right" : "text-left"
+                          )}
+                        >
+                          <div className="flex-shrink-0 h-8 w-8 rounded-md bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                            {<service.icon className="h-4 w-4 text-primary" />}
+                          </div>
+                          <div className={isRTL ? "mr-3" : "ml-3"}>
+                            <p className="text-sm font-medium text-gray-900 dark:text-gray-100 group-hover:text-primary transition-colors">
+                              {service.title}
+                            </p>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              )
-            )}
+                )
+              )}
+            </div>
+            <div className="mt-6 pt-4 border-t border-gray-100 dark:border-gray-700 flex justify-between items-center">
+              <p className="text-xs text-gray-500 dark:text-gray-400">
+                {t("needCustomSolution", {
+                  defaultMessage: "Need a custom solution?",
+                })}
+              </p>
+              <Button size="sm" variant="outline" asChild className="text-xs">
+                <Link href="/contact">{t("contact")}</Link>
+              </Button>
+            </div>
           </div>
-
-          <div className="mt-6 pt-4 border-t border-gray-100 dark:border-gray-700 flex justify-between items-center">
-            <p className="text-xs text-gray-500 dark:text-gray-400">
-              {t("needCustomSolution", {
-                defaultMessage: "Need a custom solution?",
-              })}
-            </p>
-            <Button size="sm" variant="outline" asChild className="text-xs">
-              <Link href="/contact">{t("contact")}</Link>
-            </Button>
+        ),
+      },
+      {
+        name: t("about"),
+        href: "/about",
+        hasDropdown: true,
+        dropdownId: "about",
+        dropdownContent: (
+          <div className="grid grid-cols-2 gap-4 p-4">
+            <Link
+              href={`/industries`}
+              className={cn(
+                "flex items-start p-3 rounded-lg hover:bg-gray-50 transition-colors group"
+              )}
+            >
+              <div className={isRTL ? "mr-0" : "ml-0"}>
+                <p className="text-sm font-medium text-gray-900 group-hover:text-primary transition-colors">
+                  {t("industries", {
+                    defaultMessage: "Our Story",
+                  })}
+                </p>
+                <p className="text-xs text-gray-500 mt-1">
+                  {t("industriesDescription", {
+                    defaultMessage: "Learn about our journey and mission",
+                  })}
+                </p>
+              </div>
+            </Link>
+            <Link
+              href={`/features`}
+              className={cn(
+                "flex items-start p-3 rounded-lg hover:bg-gray-50 transition-colors group",
+                isRTL ? "flex-row-reverse text-right" : "text-left"
+              )}
+            >
+              <div className={isRTL ? "mr-0" : "ml-0"}>
+                <p className="text-sm font-medium text-gray-900 group-hover:text-primary transition-colors">
+                  {t("features", {
+                    defaultMessage: "Our Team",
+                  })}
+                </p>
+                <p className="text-xs text-gray-500 mt-1">
+                  {t("featuresDescription", {
+                    defaultMessage: "Meet our expert professionals",
+                  })}
+                </p>
+              </div>
+            </Link>
+            <Link
+              href={`/faq`}
+              className={cn(
+                "flex items-start p-3 rounded-lg hover:bg-gray-50 transition-colors group",
+                isRTL ? "flex-row-reverse text-right" : "text-left"
+              )}
+            >
+              <div className={isRTL ? "mr-0" : "ml-0"}>
+                <p className="text-sm font-medium text-gray-900 group-hover:text-primary transition-colors">
+                  {t("faq", {
+                    defaultMessage: "Core Values",
+                  })}
+                </p>
+                <p className="text-xs text-gray-500 mt-1">
+                  {t("faqDescription", {
+                    defaultMessage: "What drives our business",
+                  })}
+                </p>
+              </div>
+            </Link>
           </div>
-        </div>
-      ),
-    },
-    {
-      name: t("about"),
-      href: "/about",
-      hasDropdown: true,
-      dropdownId: "about",
-      dropdownContent: (
-        <div className="grid grid-cols-2 gap-4 p-4">
-          <Link
-            href={`/industries`}
-            className={cn(
-              "flex items-start p-3 rounded-lg hover:bg-gray-50 transition-colors group"
-            )}
-          >
-            <div className={isRTL ? "mr-0" : "ml-0"}>
-              <p className="text-sm font-medium text-gray-900 group-hover:text-primary transition-colors">
-                {t("industries", {
-                  defaultMessage: "Our Story",
-                })}
-              </p>
-              <p className="text-xs text-gray-500 mt-1">
-                {t("industriesDescription", {
-                  defaultMessage: "Learn about our journey and mission",
-                })}
-              </p>
-            </div>
-          </Link>
-          <Link
-            href={`/features`}
-            className={cn(
-              "flex items-start p-3 rounded-lg hover:bg-gray-50 transition-colors group",
-              isRTL ? "flex-row-reverse text-right" : "text-left"
-            )}
-          >
-            <div className={isRTL ? "mr-0" : "ml-0"}>
-              <p className="text-sm font-medium text-gray-900 group-hover:text-primary transition-colors">
-                {t("features", {
-                  defaultMessage: "Our Team",
-                })}
-              </p>
-              <p className="text-xs text-gray-500 mt-1">
-                {t("featuresDescription", {
-                  defaultMessage: "Meet our expert professionals",
-                })}
-              </p>
-            </div>
-          </Link>
-          <Link
-            href={`/faq`}
-            className={cn(
-              "flex items-start p-3 rounded-lg hover:bg-gray-50 transition-colors group",
-              isRTL ? "flex-row-reverse text-right" : "text-left"
-            )}
-          >
-            <div className={isRTL ? "mr-0" : "ml-0"}>
-              <p className="text-sm font-medium text-gray-900 group-hover:text-primary transition-colors">
-                {t("faq", {
-                  defaultMessage: "Core Values",
-                })}
-              </p>
-              <p className="text-xs text-gray-500 mt-1">
-                {t("faqDescription", {
-                  defaultMessage: "What drives our business",
-                })}
-              </p>
-            </div>
-          </Link>
-        </div>
-      ),
-    },
-    // {
-    //   name: t("portfolio"),
-    //   href: "/portfolio",
-    //   hasDropdown: false,
-    // },
-    // {
-    //   name: t("blog"),
-    //   href: "/blog",
-    //   hasDropdown: false,
-    // },
-    {
-      name: t("contact"),
-      href: "/contact",
-      hasDropdown: false,
-    },
-    {
-      name: t("faq", {
-        defaultMessage: "FAQ",
-      }),
-      href: "/faq",
-      hasDropdown: false,
-    },
-  ];
+        ),
+      },
+      {
+        name: t("contact"),
+        href: "/contact",
+        hasDropdown: false,
+      },
+      {
+        name: t("faq", {
+          defaultMessage: "FAQ",
+        }),
+        href: "/faq",
+        hasDropdown: false,
+      },
+    ],
+    [t, serviceCategories, formatCategoryName, isRTL]
+  );
 
   return (
     <>
-      {/* Top bar with contact info */}
       <div className="bg-primary text-white py-2 hidden md:block">
         <div className="container mx-auto px-4">
           <div
@@ -336,7 +325,6 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-      {/* Main navbar */}
       <header
         className={cn(
           "sticky top-0 z-40 w-full transition-all duration-300",
@@ -347,7 +335,6 @@ export default function Navbar() {
       >
         <div className="container mx-auto px-4">
           <div className={"flex justify-between items-center"}>
-            {/* Logo */}
             <Link href="/" className="relative z-10 group">
               <div className="relative h-10 w-40 transition-transform duration-300 group-hover:scale-105">
                 <Image
@@ -359,10 +346,8 @@ export default function Navbar() {
                 />
               </div>
             </Link>
-
-            {/* Desktop Navigation */}
             <nav className={cn("hidden lg:flex items-center space-x-4")}>
-              {navLinks.map((link) => (
+              {navLinks().map((link) => (
                 <div
                   key={link.name}
                   className="relative"
@@ -389,8 +374,6 @@ export default function Navbar() {
                         )}
                       />
                     )}
-
-                    {/* Animated underline */}
                     <span
                       className={cn(
                         "absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform",
@@ -398,8 +381,6 @@ export default function Navbar() {
                       )}
                     ></span>
                   </Link>
-
-                  {/* Mega dropdown */}
                   <AnimatePresence>
                     {link.hasDropdown && activeDropdown === link.dropdownId && (
                       <motion.div
@@ -431,8 +412,6 @@ export default function Navbar() {
                 </div>
               ))}
             </nav>
-
-            {/* Desktop Action Buttons */}
             <div
               className={cn(
                 "hidden lg:flex items-center space-x-4",
@@ -457,8 +436,6 @@ export default function Navbar() {
                 <Link href="/estimator">{t("getQuote")}</Link>
               </Button>
             </div>
-
-            {/* Mobile Menu Button */}
             <div
               className={cn(
                 "flex lg:hidden items-center space-x-4",
@@ -488,8 +465,6 @@ export default function Navbar() {
             </div>
           </div>
         </div>
-
-        {/* Mobile Menu */}
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
@@ -500,7 +475,7 @@ export default function Navbar() {
               className="lg:hidden bg-white dark:bg-gray-900 overflow-hidden"
             >
               <div className="container mx-auto px-4 py-4 space-y-4">
-                {navLinks.map((link) => (
+                {navLinks().map((link) => (
                   <div key={link.name}>
                     <Link
                       href={link.href}
@@ -570,19 +545,6 @@ export default function Navbar() {
                       isRTL && "flex-row-reverse space-x-reverse"
                     )}
                   >
-                    {/* <button
-                      onClick={() =>
-                        setTheme(theme === "dark" ? "light" : "dark")
-                      }
-                      className="text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary"
-                      aria-label="Toggle theme"
-                    >
-                      {theme === "dark" ? (
-                        <Sun className="h-5 w-5" />
-                      ) : (
-                        <Moon className="h-5 w-5" />
-                      )}
-                    </button> */}
                     <LanguageSwitcher />
                   </div>
                 </div>
@@ -728,4 +690,6 @@ export default function Navbar() {
       />
     </>
   );
-}
+};
+
+export default memo(Navbar);
