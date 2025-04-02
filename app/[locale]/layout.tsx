@@ -104,8 +104,14 @@ export default async function LocaleLayout({
     >
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="Saudi Ease" />
+        <link
+          rel="apple-touch-icon"
+          href="/images/logos/apple-touch-icon.png"
+        />
 
         {/* Preconnect to domains for faster loading */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -117,21 +123,20 @@ export default async function LocaleLayout({
         <link rel="preconnect" href="https://www.googletagmanager.com" />
 
         {/* Preload critical assets */}
-        <link rel="preload" as="image" href="/logo.svg" />
-        <link
-          rel="preload"
-          as="font"
-          href="/fonts/inter-var.woff2"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
+        <link rel="preload" as="image" href="/images/logos/ar-logo.png" />
+        <link rel="preload" as="image" href="/images/logos/en-logo.png" />
+        <link rel="preload" as="image" href="/images/logos/bn-logo.png" />
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="theme-color" content="#e63e65" />
 
         {/* Add hreflang tags for SEO */}
+        <link
+          rel="alternate"
+          href="https://saudiease.com/"
+          hrefLang="x-default"
+        />
         <link rel="alternate" href="https://saudiease.com/en" hrefLang="en" />
-        <link rel="alternate" href="https://saudiease.com/ar" hrefLang="ar" />
         <link rel="alternate" href="https://saudiease.com/bn" hrefLang="bn" />
         <link
           rel="alternate"
@@ -146,7 +151,7 @@ export default async function LocaleLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
         />
 
-        {/* Google Analytics - Load with proper strategy */}
+        {/* Google Analytics  */}
         <Script
           strategy="afterInteractive"
           src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
@@ -179,26 +184,24 @@ export default async function LocaleLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <div className="flex flex-col min-h-screen">
-              <Navbar />
-              <main className="flex-grow">
-                <RecaptchaProvider>{children}</RecaptchaProvider>
-              </main>
-              <Suspense fallback={null}>
-                <PreFooterCTA />
-              </Suspense>
-              <Footer locale={locale} />
-            </div>
-            <Analytics/>
-            <SpeedInsights/>
+            <RecaptchaProvider>
+              <div className="flex flex-col min-h-screen">
+                <Navbar />
+                <main className="flex-grow">{children}</main>
+                <Suspense fallback={null}>
+                  <PreFooterCTA />
+                </Suspense>
+                <Footer locale={locale} />
+              </div>
+            </RecaptchaProvider>
             <WhatsAppButton />
             <ScrollToTop />
           </ThemeProvider>
         </NextIntlClientProvider>
 
         {/* Performance monitoring */}
-        {/* <SpeedInsights />
-        <Analytics /> */}
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );

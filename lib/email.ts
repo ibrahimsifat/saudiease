@@ -95,7 +95,7 @@ export async function sendEmail(
     // Send email using Resend
     const result = await resend.emails.send({
       from: "Saudi Ease <no-reply@saudiease.com>",
-      to: ["info@upfcont.com"], // Main recipient
+      to: ["ibrahimsifat.me@gmail.com"], // Main recipient
       cc: data.email, // Send a copy to the submitter
       subject: subjects[type],
       react: emailContent,

@@ -1,9 +1,9 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import Image, { type ImageProps } from "next/image"
-import { cn } from "@/lib/utils"
 import { shouldUseReducedData } from "@/lib/performance-optimizations"
+import { cn } from "@/lib/utils"
+import Image, { type ImageProps } from "next/image"
+import { useEffect, useState } from "react"
 
 interface OptimizedImageProps extends Omit<ImageProps, "onLoad" | "onError"> {
   lowQualitySrc?: string
@@ -13,7 +13,7 @@ interface OptimizedImageProps extends Omit<ImageProps, "onLoad" | "onError"> {
   fadeIn?: boolean
   fallbackSrc?: string
   previewSrc?: string
-  onLoadingComplete?: () => void
+  onLoad?: () => void
   priority?: boolean
 }
 
@@ -33,7 +33,7 @@ export default function OptimizedImage({
   fadeIn = true,
   fallbackSrc = "/placeholder.svg",
   previewSrc,
-  onLoadingComplete,
+  onLoad,
   priority = false,
   ...props
 }: OptimizedImageProps) {
@@ -61,8 +61,8 @@ export default function OptimizedImage({
   // Handle successful image load
   const handleLoad = () => {
     setIsLoaded(true)
-    if (onLoadingComplete) {
-      onLoadingComplete()
+    if (onLoad) {
+      onLoad()
     }
   }
 
@@ -122,7 +122,7 @@ export default function OptimizedImage({
         loading={priority ? "eager" : "lazy"}
         placeholder={placeholder}
         blurDataURL={blurDataURL}
-        onLoadingComplete={handleLoad}
+        onLoad={handleLoad}
         onError={handleError}
         className={cn("transition-all duration-300", isLoaded ? "scale-100" : "scale-[1.01]", props.className)}
         {...props}
