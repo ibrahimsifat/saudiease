@@ -61,7 +61,8 @@
     "loading": "Loading...",
     "error": "An error occurred",
     "notFound": "Page not found",
-    "backToHome": "Back to home"
+    "backToHome": "Back to home",
+    "selectLanguage": "Select Language"
   },
   "trustedBy": {
     "title": "Trusted By Leading Saudi Organizations",

@@ -454,7 +454,8 @@
     "loading": "جاري التحميل...",
     "error": "حدث خطأ",
     "notFound": "الصفحة غير موجودة",
-    "backToHome": "العودة إلى الصفحة الرئيسية"
+    "backToHome": "العودة إلى الصفحة الرئيسية",
+    "selectLanguage": "تغيير اللغة"
   },
   "industries": {
     "sectionLabel": "القطاعات",

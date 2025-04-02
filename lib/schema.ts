@@ -9,7 +9,7 @@ export function generateOrganizationSchema() {
     "@type": "Organization",
     name: companyInfo.name,
     url: "https://saudiease.com",
-    logo: "https://saudiease.com/logo.png",
+    logo: "https://saudiease.com/images/logos/ar-logo.png",
     description: companyInfo.description,
   };
 }
