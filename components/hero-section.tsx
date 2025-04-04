@@ -53,36 +53,46 @@ const testimonials = [
   },
 ];
 
-const CounterAnimation = memo(({ value, label, icon }) => {
-  const count = useMotionValue(0);
-  const roundedCount = useSpring(count, { stiffness: 100, damping: 30 });
-  const [displayValue, setDisplayValue] = useState(0);
+const CounterAnimation = memo(
+  ({
+    value,
+    label,
+    icon,
+  }: {
+    value: string;
+    label: string;
+    icon: React.ReactNode;
+  }) => {
+    const count = useMotionValue(0);
+    const roundedCount = useSpring(count, { stiffness: 100, damping: 30 });
+    const [displayValue, setDisplayValue] = useState(0);
 
-  useEffect(() => {
-    const numericValue = Number.parseInt(value.replace(/\D/g, ""));
-    count.set(numericValue);
-  }, [value, count]);
+    useEffect(() => {
+      const numericValue = Number.parseInt(value.replace(/\D/g, ""));
+      count.set(numericValue);
+    }, [value, count]);
 
-  useEffect(() => {
-    const unsubscribe = roundedCount.onChange((v) => {
-      setDisplayValue(Math.round(v));
-    });
-    return unsubscribe;
-  }, [roundedCount]);
+    useEffect(() => {
+      const unsubscribe = roundedCount.onChange((v) => {
+        setDisplayValue(Math.round(v));
+      });
+      return unsubscribe;
+    }, [roundedCount]);
 
-  return (
-    <motion.div
-      className="bg-white/90 backdrop-blur-sm rounded-lg shadow-lg p-3 text-center transform transition-all duration-300 hover:scale-105"
-      whileHover={{ y: -5 }}
-    >
-      <div className="flex justify-center mb-2">{icon}</div>
-      <p className="text-2xl font-bold text-primary">
-        {value.includes("+") ? displayValue + "+" : displayValue}
-      </p>
-      <p className="text-xs text-gray-600">{label}</p>
-    </motion.div>
-  );
-});
+    return (
+      <motion.div
+        className="bg-white/90 backdrop-blur-sm rounded-lg shadow-lg p-3 text-center transform transition-all duration-300 hover:scale-105"
+        whileHover={{ y: -5 }}
+      >
+        <div className="flex justify-center mb-2">{icon}</div>
+        <p className="text-2xl font-bold text-primary">
+          {value.includes("+") ? displayValue + "+" : displayValue}
+        </p>
+        <p className="text-xs text-gray-600">{label}</p>
+      </motion.div>
+    );
+  }
+);
 
 CounterAnimation.displayName = "CounterAnimation";
 
@@ -576,7 +586,7 @@ const HeroSection = () => {
                 asChild
               >
                 <Link
-                  href="/contact"
+                  href="/schedule-consultation"
                   className={cn(
                     "flex items-center",
                     isRTL && "flex-row-reverse"

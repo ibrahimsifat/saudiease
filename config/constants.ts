@@ -22,6 +22,14 @@ export const CONSTANT = {
     homeFeature: "/images/home_features.webp",
     homeIndustryExperts: "/images/industryexpertise.webp",
     author: "/images/author.png",
+    iconLogo: "/images/logos/icon-logo.png",
+    iconLogoSVG: "/images/logos/icon-logo-svg.svg",
+    nextjsLogo: "/images/nextjs-icon.png",
+    notFound: "/images/not-found.svg",
+    project: {
+      eCommerce: "/images/projects/1.png",
+      medicalCenter: "/images/projects/2.png",
+    },
     logo: {
       en: "/images/logos/en-logo.png",
       ar: "/images/logos/ar-logo.png",

@@ -2378,6 +2378,12 @@
     }
   },
   "estimator": {
+    "sendingEstimate": "Sending estimate...",
+    "emailEstimate": "Email Estimate",
+    "estimateSentSuccessfully": "Estimate sent successfully to your email!",
+    "failedToSendEstimate": "Failed to send estimate. Please try again or contact support.",
+    "estimateSent": "Estimate sent successfully to your email!",
+    "estimateSentError": "Failed to send estimate. Please try again or contact support.",
     "metadata": {
       "title": "Project Estimator | Get Instant Cost & Timeline Estimates",
       "description": "Use our interactive project estimator to get instant cost and timeline estimates for your digital project. Plan your budget and timeline with Saudi Ease.",
@@ -2398,7 +2404,7 @@
       "title": "Project Type & Complexity",
       "projectTypeQuestion": "What type of project do you need?",
       "complexityTitle": "Project Complexity",
-      "costMultiplier": "{{multiplier}}x cost multiplier",
+      "costMultiplier": "x cost multiplier",
       "complexityGuide": {
         "title": "Complexity Guide:",
         "basic": "Simple design, limited features, standard functionality",
@@ -2412,7 +2418,7 @@
       "standardTimelineLabel": "Standard Timeline",
       "standardCost": "(1x cost)",
       "expedited": "Expedited",
-      "expeditedCost": "({{multiplier}}x cost)"
+      "expeditedCost": "x cost"
     },
     "step2": {
       "title": "Project Features",

@@ -16,7 +16,7 @@ export default function ContactHero() {
   const t = useTranslations("contact.hero");
 
   return (
-    <section className="relative pt-32 pb-32 overflow-hidden">
+    <section className="relative pt-16 pb-16 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-white"></div>
 

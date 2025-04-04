@@ -254,7 +254,7 @@ export default function ConsultationScheduler() {
 
   if (isSuccess) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 py-20">
+      <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 py-12 md:py-20">
         <div className="container max-w-4xl mx-auto px-4">
           <motion.div
             initial="hidden"

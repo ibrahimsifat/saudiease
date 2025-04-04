@@ -379,7 +379,7 @@ export default function Footer({ locale }: { locale: Locale }) {
                 ))}
               </ul>
 
-              <div className="pt-6 mt-6 border-t border-white/10">
+              {/* <div className="pt-6 mt-6 border-t border-white/10">
                 <h4 className="text-white font-medium mb-3">{t("weAccept")}</h4>
                 <div className="flex space-x-3 rtl:space-x-reverse">
                   <div className="bg-white/10 h-8 w-12 rounded flex items-center justify-center">
@@ -431,7 +431,7 @@ export default function Footer({ locale }: { locale: Locale }) {
                     </svg>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </motion.div>
           </motion.div>
 
@@ -535,8 +535,8 @@ export default function Footer({ locale }: { locale: Locale }) {
             {/* Copyright and Secondary Links */}
             <div className="flex flex-col md:flex-row justify-between items-center">
               <p className="text-gray-400 text-sm mb-4 md:mb-0">
-                &copy; {currentYear} {t("copyright")} | {t("saudiCR")}:
-                1234567890
+                &copy; {currentYear} {t("copyright")} |
+                {/* {t("saudiCR")}:1234567890 */}
               </p>
               <div className="flex flex-wrap justify-center gap-6">
                 <Link

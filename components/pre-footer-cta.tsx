@@ -428,10 +428,10 @@ export default function PreFooterCTA() {
               <div className="lg:col-span-2 bg-gradient-to-br from-primary to-primary/80 text-white relative overflow-hidden">
                 <div className="absolute inset-0 opacity-20">
                   <Image
-                    src={CONSTANT.images.contact}
+                    src={CONSTANT.images.iconLogo}
                     alt={t("officeImageAlt")}
                     fill
-                    className="object-cover"
+                    className="object-cover opacity-35"
                   />
                 </div>
 

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import {
+  AlertCircle,
   Calculator,
   Calendar,
   CheckCircle,
@@ -13,6 +14,7 @@ import {
   Download,
   Globe,
   Layers,
+  Mail,
   PieChart,
   Send,
   Share2,
@@ -34,9 +36,14 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Slider } from "@/components/ui/slider";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
+import { CONSTANT } from "@/config/constants";
 import { Locale } from "@/config/i18n";
+import { useToast } from "@/hooks/use-toast";
 import { Link } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 type EstimatorClientProps = {
   locale: Locale;
@@ -63,6 +70,11 @@ export default function EstimatorClient({ locale }: EstimatorClientProps) {
   const [isCalculating, setIsCalculating] = useState<boolean>(false);
   const [showResults, setShowResults] = useState<boolean>(false);
   const [progress, setProgress] = useState<number>(25);
+  const { toast } = useToast();
+  const { executeRecaptcha } = useGoogleReCaptcha();
+  const [emailStatus, setEmailStatus] = useState<
+    "idle" | "sending" | "success" | "error"
+  >("idle");
 
   // Project types with their base costs and timelines
   const PROJECT_TYPES = [
@@ -467,6 +479,427 @@ export default function EstimatorClient({ locale }: EstimatorClientProps) {
         : [...prev, featureId]
     );
   };
+  // function to send the estimate via email
+  const sendEstimateEmail = async () => {
+    if (!email || !name) {
+      toast({
+        title: "Missing Information",
+        description:
+          "Please provide your name and email to receive the estimate.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setEmailStatus("sending");
+
+    try {
+      // Get reCAPTCHA token
+      // Get reCAPTCHA token
+      let recaptchaToken = "";
+      if (executeRecaptcha) {
+        recaptchaToken = await executeRecaptcha("estimator");
+      }
+
+      // Prepare the data for the email
+      const quoteData = {
+        name,
+        email,
+        phone,
+        company,
+        projectType:
+          PROJECT_TYPES.find((t) => t.id === projectType)?.name || projectType,
+        complexity:
+          COMPLEXITY_LEVELS.find((c) => c.id === complexity)?.name ||
+          complexity,
+        features: selectedFeatures.map(
+          (id) => FEATURES.find((f) => f.id === id)?.name || id
+        ),
+        estimatedPrice,
+        estimatedTimeWeeks,
+        maintenancePlan:
+          MAINTENANCE_PLANS.find((p) => p.id === maintenancePlan)?.name ||
+          maintenancePlan,
+        message,
+        recaptchaToken,
+      };
+
+      // Send the email
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          type: "quote",
+          data: quoteData,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setEmailStatus("success");
+        toast({
+          title: "Estimate Sent!",
+          description: "We've sent your project estimate to your email.",
+          variant: "default",
+        });
+      } else {
+        throw new Error(result.error || "Failed to send email");
+      }
+    } catch (error) {
+      console.error("Error sending estimate email:", error);
+      setEmailStatus("error");
+      toast({
+        title: "Error",
+        description: "Failed to send the estimate. Please try again later.",
+        variant: "destructive",
+      });
+    }
+  };
+  const handleDownloadEstimate = async () => {
+    try {
+      const estimateElement = document.getElementById("estimate-container");
+      if (!estimateElement) {
+        throw new Error("Estimate container not found");
+      }
+
+      // Create a simplified version of the estimate for PDF generation
+      const pdfContent = document.createElement("div");
+      pdfContent.innerHTML = estimateElement.innerHTML;
+      pdfContent.style.width = "800px";
+      pdfContent.style.padding = "20px";
+      pdfContent.style.backgroundColor = "#ffffff";
+
+      // Replace problematic gradient backgrounds with solid colors
+      const gradientElements = pdfContent.querySelectorAll(
+        '[class*="bg-gradient"]'
+      );
+      gradientElements.forEach((el) => {
+        (el as HTMLElement).style.background = "#e63e65"; // Use saudi-red as fallback
+      });
+
+      // Replace any oklch colors with hex equivalents
+      const colorElements = pdfContent.querySelectorAll(
+        '[class*="text-primary"], [class*="bg-primary"], [class*="border-primary"]'
+      );
+      colorElements.forEach((el) => {
+        (el as HTMLElement).style.color = "#e63e65"; // For text
+        (el as HTMLElement).style.backgroundColor = "#ffffff"; // For backgrounds
+        (el as HTMLElement).style.borderColor = "#e63e65"; // For borders
+      });
+
+      // Temporarily append to document but hide it
+      pdfContent.style.position = "absolute";
+      pdfContent.style.left = "-9999px";
+      document.body.appendChild(pdfContent);
+
+      // Use html2canvas with more reliable settings
+      const canvas = await html2canvas(pdfContent, {
+        scale: 1.5,
+        useCORS: true,
+        logging: false,
+        backgroundColor: "#ffffff",
+        allowTaint: true,
+        foreignObjectRendering: false, // Disable for better compatibility
+      });
+
+      // Remove the temporary element
+      document.body.removeChild(pdfContent);
+
+      // Generate PDF
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF({
+        orientation: "portrait",
+        unit: "mm",
+        format: "a4",
+      });
+
+      // Calculate dimensions to fit A4
+      const imgWidth = 210; // A4 width in mm
+      const pageHeight = 297; // A4 height in mm
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+      // Create a logo image
+      const logoImg = new Image();
+      logoImg.crossOrigin = "anonymous";
+      logoImg.src = CONSTANT.images.logo[locale];
+
+      // Wait for logo to load
+      await new Promise((resolve, reject) => {
+        logoImg.onload = resolve;
+        logoImg.onerror = reject;
+      });
+
+      // Add custom header with logo
+      pdf.setFillColor(230, 62, 101); // saudi-red
+      pdf.rect(0, 0, 210, 30, "F");
+
+      // Add logo to the header (positioned on the left)
+      const logoCanvas = document.createElement("canvas");
+      logoCanvas.width = logoImg.width;
+      logoCanvas.height = logoImg.height;
+      const logoCtx = logoCanvas.getContext("2d");
+      logoCtx?.drawImage(logoImg, 0, 0);
+      const logoDataUrl = logoCanvas.toDataURL("image/png");
+      pdf.addImage(logoDataUrl, "PNG", 10, 5, 40, 20);
+
+      // Add header text
+      pdf.setTextColor(255, 255, 255);
+      pdf.setFontSize(16);
+      pdf.text("Project Estimate", 105, 15, { align: "center" });
+      pdf.setFontSize(10);
+      pdf.text("Custom Digital Solutions for Your Business", 105, 22, {
+        align: "center",
+      });
+
+      // Add the image with some padding from the header
+      pdf.addImage(imgData, "PNG", 0, 35, imgWidth, imgHeight);
+
+      // If content spans multiple pages
+      let heightLeft = imgHeight;
+      let position = 35; // Start position after header
+
+      // Add new pages if the content is longer than one page
+      while (heightLeft > pageHeight - position - 20) {
+        // 20mm for footer
+        position = 0;
+        pdf.addPage();
+        pdf.addImage(
+          imgData,
+          "PNG",
+          0,
+          position - (pageHeight - 35 - 20),
+          imgWidth,
+          imgHeight
+        );
+        heightLeft -= pageHeight - 35 - 20;
+
+        // Add header to new page
+        pdf.setFillColor(230, 62, 101); // saudi-red
+        pdf.rect(0, 0, 210, 30, "F");
+        pdf.addImage(logoDataUrl, "PNG", 10, 5, 40, 20);
+        pdf.setTextColor(255, 255, 255);
+        pdf.setFontSize(16);
+        pdf.text("Project Estimate", 105, 15, { align: "center" });
+        pdf.setFontSize(10);
+        pdf.text("Custom Digital Solutions for Your Business", 105, 22, {
+          align: "center",
+        });
+      }
+
+      // Add enhanced footer with company info
+      const pageCount = pdf.getNumberOfPages();
+      for (let i = 1; i <= pageCount; i++) {
+        pdf.setPage(i);
+
+        // Footer background
+        pdf.setFillColor(245, 245, 245);
+        pdf.rect(0, pageHeight - 20, 210, 20, "F");
+
+        // Footer content
+        pdf.setTextColor(100, 100, 100);
+        pdf.setFontSize(8);
+
+        // Left side - company info
+        pdf.text("Saudi Ease Technologies", 10, pageHeight - 14);
+        pdf.text("Riyadh, Saudi Arabia", 10, pageHeight - 10);
+        pdf.text("info@saudiease.com | +966 12 345 6789", 10, pageHeight - 6);
+
+        // Right side - date and page number
+        const today = new Date().toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        });
+        pdf.text(`Generated: ${today}`, 150, pageHeight - 14);
+        pdf.text(`Page ${i} of ${pageCount}`, 150, pageHeight - 6);
+
+        // Center - copyright
+        pdf.text(
+          `© ${new Date().getFullYear()} Saudi Ease. All rights reserved.`,
+          105,
+          pageHeight - 10,
+          {
+            align: "center",
+          }
+        );
+      }
+
+      // Save the PDF
+      pdf.save(
+        `SaudiEase_Project_Estimate_${
+          new Date().toISOString().split("T")[0]
+        }.pdf`
+      );
+    } catch (error) {
+      console.error("Error generating PDF:", error);
+
+      // Fallback method if the first approach fails
+      try {
+        // Create a simpler version with just the essential information
+        const pdf = new jsPDF();
+
+        // Add logo
+        const logoImg = new Image();
+        logoImg.crossOrigin = "anonymous";
+        logoImg.src = CONSTANT.images.logo[locale];
+
+        // Wait for logo to load
+        await new Promise((resolve, reject) => {
+          logoImg.onload = resolve;
+          logoImg.onerror = () => {
+            console.error("Logo failed to load, continuing without it");
+            resolve(null);
+          };
+        }).catch(() => null); // Continue even if logo fails to load
+
+        // Add header with logo if available
+        try {
+          const logoCanvas = document.createElement("canvas");
+          logoCanvas.width = logoImg.width;
+          logoCanvas.height = logoImg.height;
+          const logoCtx = logoCanvas.getContext("2d");
+          logoCtx?.drawImage(logoImg, 0, 0);
+          const logoDataUrl = logoCanvas.toDataURL("image/png");
+
+          // Add logo
+          pdf.addImage(logoDataUrl, "PNG", 10, 10, 40, 20);
+        } catch (logoError) {
+          console.error("Error adding logo to fallback PDF:", logoError);
+        }
+
+        // Add title
+        pdf.setFontSize(20);
+        pdf.setTextColor(230, 62, 101); // saudi-red
+        pdf.text("Project Estimate", 105, 20, { align: "center" });
+
+        // Add estimate details
+        pdf.setFontSize(12);
+        pdf.setTextColor(0, 0, 0);
+
+        let yPos = 40;
+
+        // Project type
+        pdf.setFontSize(14);
+        pdf.text("Project Details", 20, yPos);
+        yPos += 10;
+
+        pdf.setFontSize(12);
+        pdf.text(
+          `Project Type: ${
+            PROJECT_TYPES.find((t) => t.id === projectType)?.name || projectType
+          }`,
+          20,
+          yPos
+        );
+        yPos += 8;
+
+        pdf.text(
+          `Complexity: ${
+            COMPLEXITY_LEVELS.find((c) => c.id === complexity)?.name ||
+            complexity
+          }`,
+          20,
+          yPos
+        );
+        yPos += 8;
+
+        pdf.text(`Estimated Cost: ${formatCurrency(estimatedPrice)}`, 20, yPos);
+        yPos += 8;
+
+        pdf.text(`Timeline: ${estimatedTimeWeeks} weeks`, 20, yPos);
+        yPos += 8;
+
+        pdf.text(
+          `Maintenance Plan: ${
+            MAINTENANCE_PLANS.find((p) => p.id === maintenancePlan)?.name ||
+            maintenancePlan
+          }`,
+          20,
+          yPos
+        );
+        yPos += 8;
+
+        // Selected features
+        if (selectedFeatures.length > 0) {
+          yPos += 10;
+          pdf.setFontSize(14);
+          pdf.text("Selected Features", 20, yPos);
+          yPos += 10;
+
+          pdf.setFontSize(12);
+          selectedFeatures.forEach((featureId) => {
+            const feature = FEATURES.find((f) => f.id === featureId);
+            if (feature) {
+              pdf.text(`• ${feature.name}`, 20, yPos);
+              yPos += 8;
+            }
+          });
+        }
+
+        // Add contact info
+        yPos += 10;
+        pdf.setFontSize(14);
+        pdf.text("Contact Information", 20, yPos);
+        yPos += 10;
+
+        pdf.setFontSize(12);
+        if (name) pdf.text(`Name: ${name}`, 20, yPos);
+        yPos += 8;
+
+        if (email) pdf.text(`Email: ${email}`, 20, yPos);
+        yPos += 8;
+
+        if (phone) pdf.text(`Phone: ${phone}`, 20, yPos);
+        yPos += 8;
+
+        if (company) pdf.text(`Company: ${company}`, 20, yPos);
+
+        // Add enhanced footer
+        pdf.setFillColor(245, 245, 245);
+        pdf.rect(0, 277, 210, 20, "F");
+
+        pdf.setFontSize(10);
+        pdf.setTextColor(100, 100, 100);
+        pdf.text("Saudi Ease Technologies | Riyadh, Saudi Arabia", 105, 283, {
+          align: "center",
+        });
+        pdf.text(`info@saudiease.com | +966 12 345 6789`, 105, 288, {
+          align: "center",
+        });
+        pdf.text(
+          `© ${new Date().getFullYear()} Saudi Ease. All rights reserved.`,
+          105,
+          293,
+          { align: "center" }
+        );
+
+        // Save the PDF
+        pdf.save(
+          `SaudiEase_Project_Estimate_${
+            new Date().toISOString().split("T")[0]
+          }.pdf`
+        );
+
+        toast({
+          title: "Download complete!",
+          description:
+            "Your estimate has been downloaded using the alternative method.",
+          variant: "default",
+        });
+      } catch (fallbackError) {
+        console.error("Fallback PDF generation failed:", fallbackError);
+        toast({
+          title: "Download failed",
+          description:
+            "We couldn't generate your PDF. Please try the email option instead.",
+          variant: "destructive",
+        });
+      }
+    }
+  };
 
   const handleNextStep = () => {
     if (currentStep < 4) {
@@ -475,10 +908,14 @@ export default function EstimatorClient({ locale }: EstimatorClientProps) {
     } else {
       // Final step - show results
       setIsCalculating(true);
-      setTimeout(() => {
-        setIsCalculating(false);
-        setShowResults(true);
-      }, 1500);
+      setEmailStatus("sending");
+      sendEstimateEmail();
+      if (emailStatus === "success") {
+        setTimeout(() => {
+          setIsCalculating(false);
+          setShowResults(true);
+        }, 1500);
+      }
     }
   };
 
@@ -714,9 +1151,9 @@ export default function EstimatorClient({ locale }: EstimatorClientProps) {
                               </span>
                             </div>
                             <div className="text-xs text-center text-gray-500">
-                              {t("step1.costMultiplier", {
-                                multiplier: level.priceMultiplier,
-                              }) || `${level.priceMultiplier}x cost multiplier`}
+                              {`${level.priceMultiplier} ${t(
+                                "step1.costMultiplier"
+                              )}`}
                             </div>
                           </Label>
                         </div>
@@ -808,9 +1245,9 @@ export default function EstimatorClient({ locale }: EstimatorClientProps) {
                               isRTL ? "mr-1" : "ml-1"
                             )}
                           >
-                            {t("step1.expeditedCost", {
-                              multiplier: urgencyMultiplier.toFixed(1),
-                            })}
+                            {`${urgencyMultiplier.toFixed(1)} ${t(
+                              "step1.expeditedCost"
+                            )}`}
                           </span>
                         </span>
                       </div>
@@ -1247,7 +1684,17 @@ export default function EstimatorClient({ locale }: EstimatorClientProps) {
                       onClick={handleNextStep}
                       className="bg-primary hover:bg-primary/90"
                     >
-                      {t("navigation.getEstimate")}
+                      {emailStatus === "sending" ? (
+                        <>
+                          <span className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-primary border-t-transparent"></span>
+                          {t("sendingEstimate")}
+                        </>
+                      ) : (
+                        <>
+                          <Mail className="mr-2 h-4 w-4" />
+                          {t("navigation.getEstimate")}
+                        </>
+                      )}
                       <Calculator
                         className={cn("h-4 w-4", isRTL ? "mr-2" : "ml-2")}
                       />
@@ -1273,6 +1720,7 @@ export default function EstimatorClient({ locale }: EstimatorClientProps) {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5 }}
                   className="bg-white rounded-2xl shadow-xl overflow-hidden"
+                  id="estimate-container"
                 >
                   <div className="bg-gradient-to-r from-primary to-blue-600 p-8 text-white">
                     <h2 className="text-3xl font-bold mb-2">
@@ -1470,6 +1918,7 @@ export default function EstimatorClient({ locale }: EstimatorClientProps) {
                           <Button
                             variant="outline"
                             className="border-primary text-primary hover:bg-primary/5"
+                            onClick={handleDownloadEstimate}
                           >
                             <Download
                               className={cn("h-4 w-4", isRTL ? "ml-2" : "mr-2")}
@@ -1486,6 +1935,20 @@ export default function EstimatorClient({ locale }: EstimatorClientProps) {
                             {t("results.shareEstimate")}
                           </Button>
                         </div>
+
+                        {emailStatus === "success" && (
+                          <div className="mt-4 p-3 bg-green-50 text-green-700 rounded-md text-sm flex items-center">
+                            <CheckCircle className="h-4 w-4 mr-2" />
+                            {t("estimateSentSuccessfully")}
+                          </div>
+                        )}
+
+                        {emailStatus === "error" && (
+                          <div className="mt-4 p-3 bg-red-50 text-red-700 rounded-md text-sm flex items-center">
+                            <AlertCircle className="h-4 w-4 mr-2" />
+                            {t("failedToSendEstimate")}
+                          </div>
+                        )}
                       </div>
                     </div>
 

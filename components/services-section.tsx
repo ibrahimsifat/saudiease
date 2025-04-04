@@ -105,8 +105,6 @@ export default function ServicesSection({ locale }: { locale: Locale }) {
 
         {/* Category Tabs */}
         <nav aria-label="Service categories">
-          {" "}
-          {/* Added aria-label for accessibility */}
           <div className="flex justify-center mb-5 overflow-x-auto hide-scrollbar pb-4">
             <div className="bg-white border border-gray-100 p-1.5 shadow-md md:rounded-full rounded flex space-x-1 will-change-transform flex-wrap">
               {categories.map((category) => (

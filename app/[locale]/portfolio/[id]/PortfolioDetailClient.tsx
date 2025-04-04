@@ -3,7 +3,7 @@
 import type React from "react";
 
 import { Locale } from "@/config/i18n";
-import type { Project } from "@/data/projects";
+import { Project } from "@/data/projects/ar";
 import { Link } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
 import { motion, useScroll, useTransform } from "framer-motion";

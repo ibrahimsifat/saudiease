@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { CONSTANT } from "@/config/constants";
 import { Locale } from "@/config/i18n";
 import { getCompanyInfo } from "@/data/company-info/index";
 import { getServices } from "@/data/services/index";
@@ -9,8 +10,10 @@ import { Link } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import {
+  Briefcase,
   ChevronDown,
   ChevronRight,
+  ImageIcon,
   Mail,
   MapPin,
   Menu,
@@ -230,13 +233,13 @@ const Navbar = () => {
         href: "/contact",
         hasDropdown: false,
       },
-      {
-        name: t("faq", {
-          defaultMessage: "FAQ",
-        }),
-        href: "/faq",
-        hasDropdown: false,
-      },
+      // {
+      //   name: t("faq", {
+      //     defaultMessage: "FAQ",
+      //   }),
+      //   href: "/faq",
+      //   hasDropdown: false,
+      // },
     ],
     [t, serviceCategories, formatCategoryName, isRTL]
   );
@@ -330,7 +333,7 @@ const Navbar = () => {
           "sticky top-0 z-40 w-full transition-all duration-300",
           isScrolled
             ? "bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg py-2 border-b border-gray-200/50 dark:border-gray-800/50"
-            : "bg-transparent py-4"
+            : "bg-white py-4"
         )}
       >
         <div className="container mx-auto px-4">
@@ -478,7 +481,7 @@ const Navbar = () => {
                 {navLinks().map((link) => (
                   <div key={link.name}>
                     <Link
-                      href={link.href}
+                      href={link.href as string}
                       className={cn(
                         "block px-3 py-2 rounded-md text-base font-medium",
                         pathname === link.href
@@ -554,133 +557,42 @@ const Navbar = () => {
         </AnimatePresence>
       </header>
       {isMobile && (
-        <div className="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-900 shadow-lg border-t border-gray-200 dark:border-gray-800 z-40">
-          <div className="grid grid-cols-5 h-16">
-            <Link
-              href="/"
-              className={cn(
-                "flex flex-col items-center justify-center text-xs font-medium",
-                pathname === "/"
-                  ? "text-primary"
-                  : "text-gray-500 dark:text-gray-400"
-              )}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 mb-1"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                />
-              </svg>
-              <span>{t("home")}</span>
-            </Link>
-            <Link
-              href="/services"
-              className={cn(
-                "flex flex-col items-center justify-center text-xs font-medium",
-                pathname === "/services"
-                  ? "text-primary"
-                  : "text-gray-500 dark:text-gray-400"
-              )}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 mb-1"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                />
-              </svg>
-              <span>{t("services")}</span>
-            </Link>
-            <Link
-              href="/portfolio"
-              className={cn(
-                "flex flex-col items-center justify-center text-xs font-medium",
-                pathname === "/portfolio"
-                  ? "text-primary"
-                  : "text-gray-500 dark:text-gray-400"
-              )}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 mb-1"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                />
-              </svg>
-              <span>{t("portfolio")}</span>
-            </Link>
-            <Link
-              href="/blog"
-              className={cn(
-                "flex flex-col items-center justify-center text-xs font-medium",
-                pathname === "/blog"
-                  ? "text-primary"
-                  : "text-gray-500 dark:text-gray-400"
-              )}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 mb-1"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
-                />
-              </svg>
-              <span>{t("blog")}</span>
-            </Link>
-            <Link
-              href="/contact"
-              className={cn(
-                "flex flex-col items-center justify-center text-xs font-medium",
-                pathname === "/contact"
-                  ? "text-primary"
-                  : "text-gray-500 dark:text-gray-400"
-              )}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 mb-1"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                />
-              </svg>
-              <span>{t("contact")}</span>
-            </Link>
+        <div className="fixed bottom-0 left-0 right-0 z-40 pb-safe">
+          <div className="mx-4 mb-2 bg-white/80 dark:bg-gray-900/90 backdrop-blur-lg rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:border-gray-800/50 overflow-hidden border-2 border-primary/20">
+            <div className="grid grid-cols-4 h-16">
+              <NavItem
+                href="/"
+                isActive={pathname === `/${locale}`}
+                icon={
+                  <Image
+                    src={CONSTANT.images.iconLogoSVG}
+                    width={26}
+                    height={26}
+                    alt="Home"
+                  />
+                }
+                label={t("home")}
+              />
+              <NavItem
+                href="/services"
+                isActive={pathname.startsWith(`/${locale}/services`)}
+                icon={<Briefcase className="h-5 w-5" />}
+                label={t("services")}
+              />
+              <NavItem
+                href="/portfolio"
+                isActive={pathname.startsWith(`/${locale}/portfolio`)}
+                icon={<ImageIcon className="h-5 w-5" />}
+                label={t("portfolio")}
+              />
+
+              <NavItem
+                href={`/contact`}
+                isActive={pathname.startsWith(`/${locale}/contact`)}
+                icon={<Mail className="h-5 w-5 font-bold" />}
+                label={t("contact")}
+              />
+            </div>
           </div>
         </div>
       )}
@@ -693,3 +605,70 @@ const Navbar = () => {
 };
 
 export default memo(Navbar);
+const NavItem = ({
+  href,
+  isActive,
+  icon,
+  label,
+}: {
+  href: string;
+  isActive: boolean;
+  icon: React.ReactNode;
+  label: string;
+}) => {
+  return (
+    <Link
+      href={href}
+      className={cn(
+        "relative flex flex-col items-center justify-center text-xs font-medium transition-all duration-200",
+        isActive
+          ? "text-primary"
+          : "text-gray-800 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300"
+      )}
+    >
+      <div className="relative">
+        {/* Icon with 3D effect when active */}
+        <div
+          className={cn(
+            "relative flex items-center justify-center mb-1 transition-all duration-200",
+            isActive ? "transform -translate-y-1 scale-110" : ""
+          )}
+        >
+          {/* Shadow for 3D effect */}
+          {isActive && (
+            <div className="absolute -bottom-1 w-full h-2 bg-primary/20 blur-md rounded-full" />
+          )}
+
+          {/* The icon */}
+          <div
+            className={cn(
+              "transition-all duration-200",
+              isActive ? "text-primary" : "text-gray-500 dark:text-gray-400"
+            )}
+          >
+            {icon}
+          </div>
+        </div>
+
+        {/* Label */}
+        <span
+          className={cn(
+            "transition-all duration-200",
+            isActive ? "font-bold" : ""
+          )}
+        >
+          {label}
+        </span>
+
+        {/* Dot indicator for active item */}
+        {isActive && (
+          <motion.div
+            layoutId="activeNavIndicator"
+            className="absolute -bottom-1 w-1 h-1 rounded-full bg-primary"
+            transition={{ type: "spring", stiffness: 500, damping: 30 }}
+          />
+        )}
+      </div>
+    </Link>
+  );
+};

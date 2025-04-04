@@ -1,7 +1,8 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { projects } from "@/data/projects";
+import { Locale } from "@/config/i18n";
+import { getProjects } from "@/data/projects/index";
 import { Link } from "@/i18n/routing";
 import { motion } from "framer-motion";
 import {
@@ -11,10 +12,12 @@ import {
   ExternalLink,
   Layers,
 } from "lucide-react";
+import { useLocale } from "next-intl";
 import NextImage from "next/image";
 import { useState } from "react";
-
 export default function PortfolioSection() {
+  const locale = useLocale();
+  const projects = getProjects(locale as Locale);
   const [activeProject, setActiveProject] = useState(0);
 
   return (

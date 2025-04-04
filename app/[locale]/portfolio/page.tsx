@@ -8,8 +8,9 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
   const t = await getTranslations({
-    locale: params.locale,
+    locale: locale,
     namespace: "portfolioPage",
   });
 
@@ -21,21 +22,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: t("title"),
       description: t("description"),
-      url: `https://saudiease.com/${params.locale}/portfolio`,
+      url: `https://saudiease.com/${locale}/portfolio`,
       siteName: "Saudi Ease",
-      locale: params.locale,
+      locale: locale,
       type: "website",
     },
   };
 }
 
-export default function PortfolioPage({ params }: Props) {
+export default async function PortfolioPage({ params }: Props) {
+  const { locale } = await params;
   const dir =
-    localeMetadata[params.locale as keyof typeof localeMetadata]?.dir || "ltr";
+    localeMetadata[locale as keyof typeof localeMetadata]?.dir || "ltr";
 
   return (
     <div dir={dir}>
-      <PortfolioPageClient locale={params.locale} />
+      <PortfolioPageClient locale={locale} />
     </div>
   );
 }

@@ -1,5 +1,4 @@
 import { Locale, localeMetadata } from "@/config/i18n";
-import { projects } from "@/data/projects";
 import { getProjects } from "@/data/projects/index";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
@@ -12,6 +11,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const id = Number.parseInt(params.id);
+  const projects = getProjects(params.locale as Locale);
   const project = projects.find((p) => p.id === id);
   const t = await getTranslations({
     locale: params.locale,
@@ -36,7 +36,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export async function generateStaticParams() {
+export async function generateStaticParams({ params }: Props) {
+  const projects = getProjects(params.locale as Locale);
   return projects.map((project) => ({
     id: project.id.toString(),
   }));

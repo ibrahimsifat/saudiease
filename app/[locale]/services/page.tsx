@@ -20,7 +20,7 @@ export async function generateMetadata({
   return generatePageMetadata({
     title: t("meta.title"),
     description: t("meta.description"),
-    keywords: t("meta.keywords", { returnObjects: true }),
+    keywords: t("meta.keywords"),
     path: `/${locale}/services`,
   });
 }

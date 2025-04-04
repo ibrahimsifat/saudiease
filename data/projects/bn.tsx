@@ -1,3 +1,4 @@
+import { CONSTANT } from "@/config/constants";
 import type { JSX } from "react";
 
 export interface Project {
@@ -39,8 +40,8 @@ export const projects = [
       "গ্রাহক রিভিউ এবং রেটিং সিস্টেম",
     ],
     technologies: ["Next.js", "Tailwind CSS", "Node.js", "MongoDB", "Stripe"],
-    image: "/placeholder.svg?height=800&width=1200",
-    mobileImage: "/placeholder.svg?height=600&width=300",
+    image: CONSTANT.images.project.eCommerce,
+    mobileImage: CONSTANT.images.project.eCommerce,
     stats: [
       {
         icon: (
@@ -87,7 +88,7 @@ export const projects = [
         value: "4.9/5",
       },
     ],
-    link: "#",
+    link: "https://24deals.store/",
     client: "আল-মদিনা রিটেইল গ্রুপ",
     duration: "4 মাস",
     completionDate: "মার্চ ২০২৩",
@@ -112,8 +113,8 @@ export const projects = [
       "ক্লিনিক অবস্থানের ইন্টারেক্টিভ ম্যাপ",
     ],
     technologies: ["React", "Tailwind CSS", "Firebase", "Google Maps API"],
-    image: "/placeholder.svg?height=800&width=1200",
-    mobileImage: "/placeholder.svg?height=600&width=300",
+    image: CONSTANT.images.project.medicalCenter,
+    mobileImage: CONSTANT.images.project.medicalCenter,
     stats: [
       {
         icon: (

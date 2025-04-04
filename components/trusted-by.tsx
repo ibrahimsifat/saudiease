@@ -114,7 +114,38 @@ const TrustedBy = () => {
               >
                 <motion.div
                   whileHover={{ y: -5 }}
-                  className="relative md:p-5 p-2 rounded-lg bg-white/50 backdrop-blur-sm border border-gray-100 shadow-sm group-hover:shadow-md transition-all duration-300 md:h-24 h-14 md:w-40 w-20 flex items-center justify-center"
+                  className="relative md:p-5 p-2 rounded-lg bg-white/50 backdrop-blur-sm border border-gray-100 shadow-sm group-hover:shadow-md transition-all duration-300 md:h-24 h-18 md:w-40 w-26 flex items-center justify-center"
+                >
+                  <Image
+                    src={partner.logo || "/placeholder.svg"}
+                    alt={`${partner.name} - ${t("partnerAltText")}`}
+                    width={120}
+                    height={60}
+                    className="object-contain max-h-12 transition-all duration-300 filter grayscale group-hover:grayscale-0 group-hover:scale-110"
+                    priority={index < 4} // Prioritize loading above-the-fold images
+                    loading={index >= 4 ? "lazy" : "eager"} // Lazy load off-screen images
+                  />
+                  <div className="absolute -bottom-2 left-0 right-0 mx-auto w-3/4 h-[1px] bg-gradient-to-r from-transparent via-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                </motion.div>
+              </div>
+            ))}
+          </motion.div>
+          {/* Second row - scrolling in opposite direction */}
+
+          <motion.div
+            role="listitem"
+            className="flex items-center md:mb-10 mb-2 md:gap-16 gap-4"
+            animate={controlsRow1}
+          >
+            {allPartners.reverse().map((partner, index) => (
+              <div
+                key={`row2-${index}`}
+                className="flex-shrink-0 group"
+                role="listitem"
+              >
+                <motion.div
+                  whileHover={{ y: -5 }}
+                  className="relative md:p-5 p-2 rounded-lg bg-white/50 backdrop-blur-sm border border-gray-100 shadow-sm group-hover:shadow-md transition-all duration-300 md:h-24 h-18 md:w-40 w-26 flex items-center justify-center"
                 >
                   <Image
                     src={partner.logo || "/placeholder.svg"}
@@ -131,8 +162,7 @@ const TrustedBy = () => {
             ))}
           </motion.div>
 
-          {/* Second row - scrolling in opposite direction */}
-          <motion.div
+          {/* <motion.div
             role="listitem"
             className="flex items-center md:gap-16 gap-4"
             animate={controlsRow2}
@@ -153,13 +183,14 @@ const TrustedBy = () => {
                     width={120}
                     height={60}
                     className="object-contain max-h-12 transition-all duration-300 filter grayscale group-hover:grayscale-0 group-hover:scale-110"
-                    loading="lazy" // Lazy load off-screen images
+                    priority={index < 4} // Prioritize loading above-the-fold images
+                    loading={index >= 4 ? "lazy" : "eager"}
                   />
                   <div className="absolute -bottom-2 left-0 right-0 mx-auto w-3/4 h-[1px] bg-gradient-to-r from-transparent via-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 </motion.div>
               </div>
             ))}
-          </motion.div>
+          </motion.div> */}
         </div>
 
         <footer className="text-center mt-12">

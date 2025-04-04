@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { CONSTANT } from "@/config/constants";
 import { type Locale, localeMetadata } from "@/config/i18n";
 import { getServices } from "@/data/services/index";
 import { ArrowRight, Filter, Search } from "lucide-react";
@@ -36,7 +37,7 @@ export default function ServicesPageClient({ locale }: { locale: Locale }) {
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary/10 via-white to-gray-50 py-24">
+      <section className="relative bg-gradient-to-br from-primary/10 via-white to-gray-50 py-12 md:py-24">
         <div className="absolute inset-0 bg-grid-pattern opacity-[0.015] pointer-events-none"></div>
         <div className="container mx-auto px-4 relative">
           <div className="max-w-3xl mx-auto text-center">
@@ -109,7 +110,7 @@ export default function ServicesPageClient({ locale }: { locale: Locale }) {
               value={activeCategory}
               onValueChange={setActiveCategory}
             >
-              <TabsList className="bg-gray-100 p-1 rounded-lg">
+              <TabsList className="w-full justify-start mb-4 overflow-auto">
                 {categories.map((category) => (
                   <TabsTrigger
                     key={category}
@@ -165,7 +166,7 @@ export default function ServicesPageClient({ locale }: { locale: Locale }) {
               <div className="col-span-full text-center py-12">
                 <div className="mb-4">
                   <Image
-                    src="/placeholder.svg?height=200&width=200"
+                    src={CONSTANT.images.notFound}
                     alt="No results"
                     width={200}
                     height={200}

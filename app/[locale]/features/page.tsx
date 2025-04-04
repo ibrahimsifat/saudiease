@@ -57,7 +57,7 @@ export default async function FeaturesPage({
       />
 
       {/* Hero Section */}
-      <section className="relative py-20 md:py-28 overflow-hidden">
+      <section className="relative py-12 md:py-28 overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-[10%] -right-[5%] rtl:-left-[5%] rtl:right-auto w-[30%] h-[40%] bg-primary/5 rounded-full blur-3xl"></div>

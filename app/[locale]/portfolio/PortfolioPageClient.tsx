@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Locale } from "@/config/i18n";
-import { projects } from "@/data/projects";
+import { getProjects } from "@/data/projects";
 import { Link } from "@/i18n/routing";
 import { motion } from "framer-motion";
 import { ArrowRight, ExternalLink, Filter, Search } from "lucide-react";
@@ -16,7 +16,7 @@ import { useEffect, useState } from "react";
 export default function PortfolioPageClient({ locale }: { locale: Locale }) {
   const t = useTranslations("portfolioPage");
   const isRtl = locale === "ar";
-
+  const projects = getProjects(locale);
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredProjects, setFilteredProjects] = useState(projects);
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -63,7 +63,7 @@ export default function PortfolioPageClient({ locale }: { locale: Locale }) {
   return (
     <div className="bg-gradient-to-b from-white to-gray-50">
       {/* Hero Section */}
-      <section className="pt-24 pb-16 relative overflow-hidden">
+      <section className="md:pt-20 pt-16 pb-16 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-primary/10 z-0"></div>
 
         {/* Decorative elements */}
@@ -216,7 +216,7 @@ export default function PortfolioPageClient({ locale }: { locale: Locale }) {
                               {project.category}
                             </span>
                             <span className="bg-white/20 backdrop-blur-sm text-white text-xs px-2 py-1 rounded-full">
-                              {project.year}
+                              {project.completionDate}
                             </span>
                           </div>
                         </div>
