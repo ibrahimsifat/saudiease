@@ -701,6 +701,17 @@
     }
   },
   "about": {
+    "whyWorkWithUs": "لماذا تعمل معنا?",
+    "benefits": {
+      "competitiveSalary": "الراتب المنافس",
+      "flexibleWork": "العمل المرن",
+      "professionalDevelopment": "التطوير المهني",
+      "collaborativeEnvironment": "البيئة المشتركة والابتكارية",
+      "healthInsurance": "التأمين الصحي والصحة العامة",
+      "regularTeamBuilding": "الأنشطة المبتكرة لبناء الفريق"
+    },
+    "careers": "الوظائف المتاحة",
+    "currentOpenings": "الوظائف المتاحة",
     "sectionLabel": "عن سعودي إيز",
     "title": {
       "part1": "نقود التحول الرقمي في ",
@@ -1439,6 +1450,7 @@
       "description": "ابق على اطلاع بأحدث أخبارنا ورؤانا وعروضنا الخاصة.",
       "emailPlaceholder": "عنوان بريدك الإلكتروني",
       "subscribe": "اشترك",
+      "subscribing": "اشتراك...",
       "thankYou": "شكرًا لاشتراكك في نشرتنا الإخبارية!",
       "illustrationAlt": "رسم توضيحي للنشرة الإخبارية"
     },

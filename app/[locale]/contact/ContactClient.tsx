@@ -3,7 +3,6 @@ import ContactFAQ from "@/components/contact/contact-faq";
 import ContactForm from "@/components/contact/contact-form";
 import ContactHero from "@/components/contact/contact-hero";
 import ContactInfo from "@/components/contact/contact-info";
-import OfficeLocations from "@/components/contact/office-locations";
 import SupportOptions from "@/components/contact/support-options";
 import type { Locale } from "@/config/i18n";
 
@@ -28,7 +27,7 @@ export default function ContactClient({ locale }: { locale: Locale }) {
       </section>
 
       {/* Office Locations */}
-      <OfficeLocations />
+      {/* <OfficeLocations /> */}
 
       {/* Support Options */}
       <SupportOptions />

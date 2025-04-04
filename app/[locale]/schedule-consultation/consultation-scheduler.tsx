@@ -40,6 +40,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
 import { motion } from "framer-motion";
 import { ArrowRight, CalendarIcon, Check, Clock, Loader2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
@@ -142,6 +143,7 @@ const services = [
 ];
 
 export default function ConsultationScheduler() {
+  const { t } = useTranslations("scheduleConsultation");
   const { executeRecaptcha } = useGoogleReCaptcha();
   const router = useRouter();
   const [step, setStep] = useState(1);

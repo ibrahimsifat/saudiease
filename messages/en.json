@@ -314,6 +314,17 @@
     }
   },
   "about": {
+    "whyWorkWithUs": "Why Work With Us?",
+    "benefits": {
+      "competitiveSalary": "Competitive salary",
+      "flexibleWork": "Flexible work arrangements",
+      "professionalDevelopment": "Professional development opportunities",
+      "collaborativeEnvironment": "Collaborative and innovative work environment",
+      "healthInsurance": "Health insurance and wellness programs",
+      "regularTeamBuilding": "Regular team building activities"
+    },
+    "careers": "Careers",
+    "currentOpenings": "Current Openings",
     "sectionLabel": "About Saudi Ease",
     "title": {
       "part1": "Leading Digital Transformation in ",
@@ -1076,6 +1087,7 @@
       "description": "Stay updated with our latest news, insights, and special offers.",
       "emailPlaceholder": "Your email address",
       "subscribe": "Subscribe",
+      "subscribing": "Subscribing...",
       "thankYou": "Thank you for subscribing to our newsletter!",
       "illustrationAlt": "Newsletter illustration"
     },
@@ -3239,5 +3251,32 @@
     "replyTime": "We typically reply within minutes",
     "startChat": "Start Chat",
     "message": "Hello! I'm interested in your services and would like to know more."
+  },
+  "scheduleConsultation": {
+    "title": "Schedule a Consultation",
+    "description": "Book a personalized consultation with our digital transformation experts to discuss your business needs and explore tailored solutions.",
+    "success": {
+      "title": "Consultation Scheduled Successfully!",
+      "description": "Thank you for scheduling a consultation with Saudi Ease. We've sent a confirmation email with all the details. Our team will contact you shortly to confirm your appointment.",
+      "whatHappensNext": "What happens next?",
+      "returnToHomepage": "Return to Homepage",
+      "calendarInvitation": "You'll receive a calendar invitation for your scheduled consultation",
+      "consultantPrep": "Our consultant will prepare for your meeting based on the information provided",
+      "reminder": "We'll send you a reminder 24 hours before your scheduled time",
+      "consultation": "During the consultation, we'll discuss your needs and recommend tailored solutions"
+    },
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "companyName": "Company Name",
+      "projectDescription": "Project Description",
+      "hearAboutUs": "How did you hear about us?",
+      "consultationType": "Consultation Type",
+      "yourInformation": "Your Information",
+      "consultationDetails": "Consultation Details",
+      "projectInformation": "Project Information",
+      "submit": "Submit"
+    }
   }
 }

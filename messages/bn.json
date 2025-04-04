@@ -57,6 +57,17 @@
     "testimonialCompany3": "গাল্ফ ইনোভেশনস গ্রুপ"
   },
   "about": {
+    "whyWorkWithUs": "আমাদের সাথে কাজ করতে চান?",
+    "benefits": {
+      "competitiveSalary": "প্রতিযোগিতামূলক দর",
+      "flexibleWork": "স্থানান্তরিত কাজ",
+      "professionalDevelopment": "প্রতিযোগিতামূলক দর",
+      "collaborativeEnvironment": "স্থানান্তরিত কাজ",
+      "healthInsurance": "স্থানান্তরিত কাজ",
+      "regularTeamBuilding": "স্থানান্তরিত কাজ"
+    },
+    "careers": "কারিয়ার",
+    "currentOpenings": "এখনের প্রতিবেদন",
     "sectionLabel": "সৌদি ইজ সম্পর্কে",
     "title": {
       "part1": "সৌদি আরবে ডিজিটাল রূপান্তরের ",
@@ -1078,6 +1089,7 @@
       "description": "আমাদের সর্বশেষ খবর, অন্তর্দৃষ্টি এবং বিশেষ অফার সম্পর্কে আপডেট থাকুন।",
       "emailPlaceholder": "আপনার ইমেইল ঠিকানা",
       "subscribe": "সাবস্ক্রাইব",
+      "subscribing": "সাবস্ক্রাইবিং...",
       "thankYou": "আমাদের নিউজলেটারে সাবস্ক্রাইব করার জন্য আপনাকে ধন্যবাদ!",
       "illustrationAlt": "নিউজলেটার ইলাস্ট্রেশন"
     },

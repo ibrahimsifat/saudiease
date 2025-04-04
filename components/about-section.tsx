@@ -202,7 +202,7 @@ export default function AboutSection() {
               fallback={<div className="h-[500px] bg-gray-100 rounded-2xl" />}
             >
               <OptimizedImage
-                src={CONSTANT.images.homeAbout}
+                src={CONSTANT.images.aboutUs}
                 alt={t("imageAlt")}
                 fill
                 className="object-cover"

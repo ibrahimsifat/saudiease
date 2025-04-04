@@ -1,5 +1,8 @@
 "use client";
 
+import { CONSTANT } from "@/config/constants";
+import { useMemo } from "react";
+
 // Update the component to accept isRTL prop
 interface PartnersProps {
   title: string;
@@ -14,6 +17,19 @@ export default function Partners({
   description,
   isRTL = false,
 }: PartnersProps) {
+  const partners = useMemo(
+    () => [
+      { name: "Right Visa", logo: CONSTANT.clients.rightVisa },
+      { name: "Kullesh", logo: CONSTANT.clients.kullesh },
+      { name: "UPF", logo: CONSTANT.clients.upf },
+      { name: "Next Ride", logo: CONSTANT.clients.nextRide },
+      { name: "ranchi-university", logo: CONSTANT.clients.ranchiUniversity },
+      { name: "Sarah", logo: CONSTANT.clients.sarah },
+      { name: "KIC Ads", logo: CONSTANT.clients.kic },
+      { name: "24 Deals", logo: CONSTANT.clients.deals },
+    ],
+    []
+  );
   return (
     <section className={`w-full ${isRTL ? "rtl:text-right" : ""}`}>
       <div className="container px-4 md:px-6">
@@ -31,13 +47,13 @@ export default function Partners({
           </div>
         </div>
         <div className="mx-auto grid max-w-5xl grid-cols-2 gap-8 py-12 md:grid-cols-4">
-          {Array.from({ length: 8 }).map((_, index) => (
+          {partners.map((partner, index) => (
             <div key={index} className="flex items-center justify-center">
               <img
-                alt="Partner logo"
+                alt={partner.name}
                 className="aspect-[2/1] object-contain"
                 height="60"
-                src="/placeholder-logo.svg"
+                src={partner.logo}
                 width="120"
               />
             </div>

@@ -1,5 +1,7 @@
 "use client";
 
+import { CONSTANT } from "@/config/constants";
+
 // Update the component to accept isRTL prop
 interface OurStoryProps {
   title: string;
@@ -54,7 +56,7 @@ export default function OurStory({
               alt={imageAlt}
               className="aspect-[4/3] object-cover w-full h-full rounded-lg"
               height="400"
-              src="/placeholder.svg?height=400&width=600"
+              src={CONSTANT.images.ourStory}
               width="600"
             />
           </div>

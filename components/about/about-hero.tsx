@@ -1,5 +1,6 @@
 "use client";
 
+import { CONSTANT } from "@/config/constants";
 import { Link } from "@/i18n/routing";
 import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
@@ -62,7 +63,7 @@ export default function AboutHero({
   });
 
   return (
-    <section className="relative pt-32 pb-20 overflow-hidden rtl:text-right">
+    <section className="relative pt-16 pb-20 overflow-hidden rtl:text-right">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-white"></div>
 
@@ -235,9 +236,9 @@ export default function AboutHero({
             transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
             className="order-1 lg:order-2 rtl:lg:order-1 relative"
           >
-            <div className="relative h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
+            <div className="relative h-[400px] md:h-[500px] rounded-2xl overflow-hidden">
               <Image
-                src="/placeholder.svg?height=1000&width=800"
+                src={CONSTANT.images.aboutUs}
                 alt={imageAlt}
                 fill
                 className="object-cover"

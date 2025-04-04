@@ -1,7 +1,9 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { CONSTANT } from "@/config/constants";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useInView } from "react-intersection-observer";
 
@@ -26,13 +28,15 @@ export default function JoinOurTeam({
     triggerOnce: true,
   });
 
+  const t = useTranslations("about");
+
   const benefits = [
-    "Competitive salary and benefits package",
-    "Flexible work arrangements",
-    "Professional development opportunities",
-    "Collaborative and innovative work environment",
-    "Health insurance and wellness programs",
-    "Regular team building activities",
+    t("benefits.competitiveSalary"),
+    t("benefits.flexibleWork"),
+    t("benefits.professionalDevelopment"),
+    t("benefits.collaborativeEnvironment"),
+    t("benefits.healthInsurance"),
+    t("benefits.regularTeamBuilding"),
   ];
 
   return (
@@ -57,7 +61,7 @@ export default function JoinOurTeam({
             >
               <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
                 <span className="flex h-2 w-2 rounded-full bg-primary mr-2"></span>
-                Careers
+                {t("careers")}
               </div>
               <h2 className="text-3xl font-bold text-saudi-black mb-6">
                 {title || "Join Our Team"}
@@ -68,7 +72,7 @@ export default function JoinOurTeam({
               </p>
 
               <h3 className="text-xl font-bold text-saudi-black mb-4">
-                Why Work With Us?
+                {t("whyWorkWithUs")}
               </h3>
               <ul className="space-y-3 mb-8">
                 {benefits.map((benefit, index) => (
@@ -105,7 +109,7 @@ export default function JoinOurTeam({
               className="relative h-full min-h-[300px] lg:min-h-full"
             >
               <Image
-                src="/placeholder.svg?height=800&width=600"
+                src={CONSTANT.images.joinOurTeam}
                 alt="Saudi Ease team members"
                 fill
                 className="object-cover"
@@ -114,7 +118,7 @@ export default function JoinOurTeam({
 
               <div className="absolute bottom-8 left-8 right-8 bg-white/90 backdrop-blur-sm p-6 rounded-lg shadow-lg">
                 <h3 className="text-lg font-bold text-saudi-black mb-2">
-                  Current Openings
+                  {t("currentOpenings")}
                 </h3>
                 <ul className="space-y-2">
                   <li className="flex justify-between items-center">

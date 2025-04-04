@@ -5,14 +5,16 @@ import { motion } from "framer-motion";
 import {
   FileText,
   HelpCircle,
+  Link,
   MessageSquare,
   Phone,
   Video,
 } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useInView } from "react-intersection-observer";
 
 export default function SupportOptions() {
+  const locale = useLocale();
   const { ref, inView } = useInView({
     threshold: 0.1,
     triggerOnce: true,
@@ -27,7 +29,7 @@ export default function SupportOptions() {
       description: t("liveChat.description"),
       icon: <MessageSquare className="h-6 w-6 text-primary" />,
       action: t("liveChat.action"),
-      url: "#chat",
+      url: `https://wa.me/966558845503`,
     },
     {
       title: t("phone.title"),
@@ -41,14 +43,14 @@ export default function SupportOptions() {
       description: t("ticket.description"),
       icon: <FileText className="h-6 w-6 text-primary" />,
       action: t("ticket.action"),
-      url: "#ticket",
+      url: `${locale}/contact`,
     },
     {
       title: t("video.title"),
       description: t("video.description"),
       icon: <Video className="h-6 w-6 text-primary" />,
       action: t("video.action"),
-      url: "#consultation",
+      url: `https://wa.me/966558845503`,
     },
   ];
 
@@ -132,9 +134,11 @@ export default function SupportOptions() {
               {t("specialized.title")}
             </h3>
             <p className="text-gray-600 mb-4">{t("specialized.description")}</p>
-            <Button className="bg-primary hover:bg-primary/90 text-white">
-              {t("specialized.action")}
-            </Button>
+            <Link href={"/schedule-consultation"}>
+              <Button className="bg-primary hover:bg-primary/90 text-white">
+                {t("specialized.action")}
+              </Button>
+            </Link>
           </div>
         </motion.div>
       </div>

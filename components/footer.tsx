@@ -19,13 +19,39 @@ export default function Footer({ locale }: { locale: Locale }) {
   const currentYear = new Date().getFullYear();
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
+    if (!email) return;
+    try {
+      setLoading(true);
+      setError(null);
+
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Failed to subscribe");
+      }
+
       setSubscribed(true);
       setEmail("");
+      // Reset the subscribed state after 3 seconds
       setTimeout(() => setSubscribed(false), 3000);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An error occurred");
+      console.error("Subscription error:", err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -126,21 +152,44 @@ export default function Footer({ locale }: { locale: Locale }) {
                 <form
                   onSubmit={handleSubscribe}
                   className="flex flex-col sm:flex-row gap-3"
+                  aria-label="Newsletter subscription form"
                 >
-                  <Input
-                    type="email"
-                    placeholder={t("newsletter.emailPlaceholder")}
-                    className="flex-grow border-gray-200"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                  />
+                  <div className="flex-grow relative">
+                    <Input
+                      type="email"
+                      placeholder="Your email address"
+                      className={`flex-grow border-gray-200 ${
+                        error ? "border-red-300" : ""
+                      }`}
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      disabled={loading}
+                      required
+                      aria-label="Email address for newsletter"
+                      aria-invalid={error ? "true" : "false"}
+                    />
+                    {error && (
+                      <p className="text-red-500 text-xs mt-1 absolute">
+                        {error}
+                      </p>
+                    )}
+                  </div>
                   <Button
                     type="submit"
                     className="bg-primary hover:bg-primary/90 text-white whitespace-nowrap"
+                    disabled={loading}
                   >
-                    {t("newsletter.subscribe")}
-                    <ArrowRight className="ml-2 rtl:mr-2 rtl:ml-0 h-4 w-4" />
+                    {loading ? (
+                      <>
+                        <span className="mr-2 inline-block h-4 w-4 animate-spin rounded-full border-2 border-solid border-current border-r-transparent"></span>
+                        {t("newsletter.subscribing")}
+                      </>
+                    ) : (
+                      <>
+                        {t("newsletter.subscribe")}
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </>
+                    )}
                   </Button>
                 </form>
                 {subscribed && (
