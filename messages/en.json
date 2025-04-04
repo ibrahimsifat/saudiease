@@ -2269,11 +2269,11 @@
       "faq5": {
         "question": "What ongoing support do you provide for {industry} businesses after implementation?",
         "answer": "We provide comprehensive support including 24/7 technical assistance, regular updates to keep your systems current with Saudi regulations, performance optimization, staff training, and strategic consultations to ensure your digital solutions continue to meet your evolving business needs."
-      },
-      "moreQuestionsTitle": "Have more questions?",
-      "moreQuestionsDescription": "Our team of {industry} experts is ready to help you find the right solutions for your business.",
-      "contactButton": "Contact Our Experts"
+      }
     },
+    "moreQuestionsTitle": "Have more questions?",
+    "moreQuestionsDescription": "Our team of {industry} experts is ready to help you find the right solutions for your business.",
+    "contactButton": "Contact Our Experts",
     "relatedIndustries": {
       "title": "Explore Related Industries",
       "description": "Discover our solutions for other sectors that might complement your {industry} business",
@@ -3252,31 +3252,92 @@
     "startChat": "Start Chat",
     "message": "Hello! I'm interested in your services and would like to know more."
   },
+
   "scheduleConsultation": {
-    "title": "Schedule a Consultation",
-    "description": "Book a personalized consultation with our digital transformation experts to discuss your business needs and explore tailored solutions.",
-    "success": {
-      "title": "Consultation Scheduled Successfully!",
-      "description": "Thank you for scheduling a consultation with Saudi Ease. We've sent a confirmation email with all the details. Our team will contact you shortly to confirm your appointment.",
-      "whatHappensNext": "What happens next?",
-      "returnToHomepage": "Return to Homepage",
-      "calendarInvitation": "You'll receive a calendar invitation for your scheduled consultation",
-      "consultantPrep": "Our consultant will prepare for your meeting based on the information provided",
-      "reminder": "We'll send you a reminder 24 hours before your scheduled time",
-      "consultation": "During the consultation, we'll discuss your needs and recommend tailored solutions"
+    "title": "Schedule a Personalized Consultation",
+    "description": "Book a one-on-one session with our digital transformation experts to discuss your business needs and explore tailored solutions.",
+    "steps": {
+      "step1": "Your Information",
+      "step2": "Consultation Details",
+      "step3": "Project Information"
     },
     "form": {
-      "name": "Name",
-      "email": "Email",
-      "phone": "Phone",
+      "fullName": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
       "companyName": "Company Name",
+      "companySize": "Company Size",
+      "employees": "Employees",
+      "selectCompanySize": "Select Company Size",
+      "industry": "Industry",
+      "selectIndustry": "Select Industry",
+      "selectService": "Select Service",
+      "selectDate": "Select Date",
+      "selectTime": "Select Time",
+      "selectType": "Select Type",
+      "selectMeetingType": "Select Meeting Type",
+      "selectHearAboutUs": "How did you hear about us?",
+      "serviceInterest": "Service of Interest",
+      "consultationDate": "Consultation Date",
+      "consultationTime": "Consultation Time",
+      "consultationType": "Consultation Type",
       "projectDescription": "Project Description",
       "hearAboutUs": "How did you hear about us?",
-      "consultationType": "Consultation Type",
-      "yourInformation": "Your Information",
-      "consultationDetails": "Consultation Details",
-      "projectInformation": "Project Information",
-      "submit": "Submit"
+      "virtualMeeting": "Virtual Meeting (Zoom/Teams)",
+      "inPersonMeeting": "In-Person Meeting (Riyadh Office)",
+      "section1Title": "Tell us about yourself",
+      "section2Title": "Schedule your consultation",
+      "section3Title": "Share your project details",
+      "step1Description": "Please provide your contact and company information",
+      "step2Description": "Select your preferred date, time and consultation type",
+      "step3Description": "Help us understand your project requirements",
+      "hearAboutUsOptions": {
+        "search": "Search",
+        "social": "Social Media",
+        "referral": "Referral",
+        "event": "Event",
+        "advertisement": "Advertisement",
+        "other": "Other"
+      },
+      "projectDescriptionPlaceholder": "Describe your project in detail",
+      "projectDescriptionHelp": "Provide a detailed description of your project, including your goals, challenges, and any specific requirements.",
+      "whatToExpect": {
+        "title": "What to expect",
+        "description": "Your consultation will last approximately 45 minutes. Our expert will discuss your business needs, answer your questions, and recommend tailored solutions for your specific challenges."
+      }
+    },
+    "success": {
+      "title": "Consultation Scheduled Successfully!",
+      "message": "Thank you for scheduling a consultation with Saudi Ease. We've sent a confirmation email with all the details. Our team will contact you shortly to confirm your appointment.",
+      "nextSteps": "What happens next?",
+
+      "returnHome": "Return to Homepage"
+    },
+    "benefits": [
+      {
+        "title": "Expert Consultation",
+        "description": "Our consultants have deep industry knowledge and technical expertise to guide your digital journey."
+      },
+      {
+        "title": "Tailored Solutions",
+        "description": "We provide customized recommendations based on your specific business needs and goals."
+      },
+      {
+        "title": "No Obligation",
+        "description": "The consultation is completely free with no obligation to purchase any services."
+      }
+    ],
+    "buttons": {
+      "back": "Back",
+      "continue": "Continue",
+      "submit": "Schedule Consultation",
+      "submitting": "Submitting..."
+    },
+    "validation": {
+      "required": "This field is required",
+      "email": "Please enter a valid email address",
+      "minLength": "Must be at least {min} characters",
+      "maxLength": "Must not exceed {max} characters"
     }
   }
 }

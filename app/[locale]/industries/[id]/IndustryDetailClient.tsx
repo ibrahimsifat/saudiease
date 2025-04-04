@@ -269,19 +269,23 @@ export default function IndustryDetailClient({ id }: { id?: string }) {
               </div>
 
               <div className="flex flex-wrap gap-4">
-                <Button
-                  size="lg"
-                  className="bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20"
-                >
-                  {t("hero.getStartedButton")}
-                </Button>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="border-primary text-primary hover:bg-primary/5"
-                >
-                  {t("hero.scheduleButton")}
-                </Button>
+                <Link href="/contact">
+                  <Button
+                    size="lg"
+                    className="bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20"
+                  >
+                    {t("hero.getStartedButton")}
+                  </Button>
+                </Link>
+                <Link href="/contact">
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="border-primary text-primary hover:bg-primary/5"
+                  >
+                    {t("hero.scheduleButton")}
+                  </Button>
+                </Link>
               </div>
 
               {/* Industry stats */}
@@ -550,9 +554,11 @@ export default function IndustryDetailClient({ id }: { id?: string }) {
                       </div>
                     </div>
 
-                    <Button className="bg-primary hover:bg-primary/90 text-white">
-                      {t("overview.scheduleButton")}
-                    </Button>
+                    <Link href="/schedule-consultation">
+                      <Button className="bg-primary hover:bg-primary/90 text-white">
+                        {t("overview.scheduleButton")}
+                      </Button>
+                    </Link>
                   </div>
 
                   <div className="relative h-[400px] lg:h-auto">
@@ -686,9 +692,11 @@ export default function IndustryDetailClient({ id }: { id?: string }) {
                 </div>
 
                 <div className="mt-12 text-center">
-                  <Button className="bg-primary hover:bg-primary/90 text-white">
-                    {t("features.exploreButton")}
-                  </Button>
+                  <Link href="/features">
+                    <Button className="bg-primary hover:bg-primary/90 text-white">
+                      {t("features.exploreButton")}
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </TabsContent>
@@ -806,16 +814,18 @@ export default function IndustryDetailClient({ id }: { id?: string }) {
 
                 <div className="mt-8 p-6 bg-gray-50 rounded-xl border border-gray-100">
                   <h4 className="font-bold text-saudi-black mb-2">
-                    {t("faqs.moreQuestionsTitle")}
+                    {t("moreQuestionsTitle")}
                   </h4>
                   <p className="text-gray-600 mb-4">
-                    {t("faqs.moreQuestionsDescription", {
+                    {t("moreQuestionsDescription", {
                       industry: industry.name.toLowerCase(),
                     })}
                   </p>
-                  <Button className="bg-primary hover:bg-primary/90 text-white">
-                    {t("faqs.contactButton")}
-                  </Button>
+                  <Link href="/contact">
+                    <Button className="bg-primary hover:bg-primary/90 text-white">
+                      {t("contactButton")}
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </TabsContent>
@@ -922,19 +932,23 @@ export default function IndustryDetailClient({ id }: { id?: string }) {
               </p>
 
               <div className="flex flex-wrap gap-4">
-                <Button
-                  size="lg"
-                  className="bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20"
-                >
-                  {t("cta.scheduleButton")}
-                </Button>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="border-primary text-primary hover:bg-primary/5"
-                >
-                  {t("cta.caseStudiesButton")}
-                </Button>
+                <Link href="/schedule-consultation">
+                  <Button
+                    size="lg"
+                    className="bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20"
+                  >
+                    {t("cta.scheduleButton")}
+                  </Button>
+                </Link>
+                <Link href="/case-studies">
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="border-primary text-primary hover:bg-primary/5"
+                  >
+                    {t("cta.caseStudiesButton")}
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>

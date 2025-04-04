@@ -40,7 +40,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
 import { motion } from "framer-motion";
 import { ArrowRight, CalendarIcon, Check, Clock, Loader2 } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
@@ -89,63 +89,161 @@ const formSchema = z.object({
     }),
   hearAboutUs: z.string().optional(),
 });
-
 // Available time slots
-const timeSlots = [
-  "09:00 AM",
-  "09:30 AM",
-  "10:00 AM",
-  "10:30 AM",
-  "11:00 AM",
-  "11:30 AM",
-  "12:00 PM",
-  "12:30 PM",
-  "01:00 PM",
-  "01:30 PM",
-  "02:00 PM",
-  "02:30 PM",
-  "03:00 PM",
-  "03:30 PM",
-  "04:00 PM",
-  "04:30 PM",
-];
+const timeSlots = {
+  en: [
+    "09:00 AM",
+    "09:30 AM",
+    "10:00 AM",
+    "10:30 AM",
+    "11:00 AM",
+    "11:30 AM",
+    "12:00 PM",
+    "12:30 PM",
+    "01:00 PM",
+    "01:30 PM",
+    "02:00 PM",
+    "02:30 PM",
+    "03:00 PM",
+    "03:30 PM",
+    "04:00 PM",
+    "04:30 PM",
+  ],
+  ar: [
+    "٠٩:٠٠ ص",
+    "٠٩:٣٠ ص",
+    "١٠:٠٠ ص",
+    "١٠:٣٠ ص",
+    "١١:٠٠ ص",
+    "١١:٣٠ ص",
+    "١٢:٠٠ م",
+    "١٢:٣٠ م",
+    "٠١:٠٠ م",
+    "٠١:٣٠ م",
+    "٠٢:٠٠ م",
+    "٠٢:٣٠ م",
+    "٠٣:٠٠ م",
+    "٠٣:٣٠ م",
+    "٠٤:٠٠ م",
+    "٠٤:٣٠ م",
+  ],
+  bn: [
+    "০৯:০০ সকাল",
+    "০৯:৩০ সকাল",
+    "১০:০০ সকাল",
+    "১০:৩০ সকাল",
+    "১১:০০ সকাল",
+    "১১:৩০ সকাল",
+    "১২:০০ দুপুর",
+    "১২:৩০ দুপুর",
+    "০১:০০ দুপুর",
+    "০১:৩০ দুপুর",
+    "০২:০০ দুপুর",
+    "০২:৩০ দুপুর",
+    "০৩:০০ বিকেল",
+    "০৩:৩০ বিকেল",
+    "০৪:০০ বিকেল",
+    "০৪:৩০ বিকেল",
+  ],
+};
 
 // Industry options
-const industries = [
-  "Retail & E-commerce",
-  "Corporate & Enterprise",
-  "Small & Medium Business",
-  "Education",
-  "Healthcare",
-  "Manufacturing",
-  "Real Estate",
-  "Travel & Hospitality",
-  "Financial Services",
-  "Government",
-  "Technology",
-  "Other",
-];
+const industries = {
+  en: [
+    "Retail & E-commerce",
+    "Corporate & Enterprise",
+    "Small & Medium Business",
+    "Education",
+    "Healthcare",
+    "Manufacturing",
+    "Real Estate",
+    "Travel & Hospitality",
+    "Financial Services",
+    "Government",
+    "Technology",
+    "Other",
+  ],
+  ar: [
+    "البيع بالتجزئة والتجارة الإلكترونية",
+    "الشركات والمؤسسات",
+    "الأعمال الصغيرة والمتوسطة",
+    "التعليم",
+    "الرعاية الصحية",
+    "التصنيع",
+    "العقارات",
+    "السفر والضيافة",
+    "الخدمات المالية",
+    "الحكومة",
+    "التكنولوجيا",
+    "أخرى",
+  ],
+  bn: [
+    "খুচরা ও ই-কমার্স",
+    "কর্পোরেট ও এন্টারপ্রাইজ",
+    "ক্ষুদ্র ও মাঝারি ব্যবসা",
+    "শিক্ষা",
+    "স্বাস্থ্যসেবা",
+    "উৎপাদন",
+    "রিয়েল এস্টেট",
+    "ভ্রমণ ও আতিথেয়তা",
+    "আর্থিক সেবা",
+    "সরকারি সংস্থা",
+    "প্রযুক্তি",
+    "অন্যান্য",
+  ],
+};
 
 // Service options
-const services = [
-  "Digital Transformation",
-  "Web Development",
-  "Mobile App Development",
-  "E-commerce Solutions",
-  "UI/UX Design",
-  "Cloud Solutions",
-  "AI & Machine Learning",
-  "Digital Marketing",
-  "IT Consulting",
-  "Cybersecurity",
-  "Business Intelligence",
-  "Other",
-];
+const services = {
+  en: [
+    "Digital Transformation",
+    "Web Development",
+    "Mobile App Development",
+    "E-commerce Solutions",
+    "UI/UX Design",
+    "Cloud Solutions",
+    "AI & Machine Learning",
+    "Digital Marketing",
+    "IT Consulting",
+    "Cybersecurity",
+    "Business Intelligence",
+    "Other",
+  ],
+  ar: [
+    "التحول الرقمي",
+    "تطوير الويب",
+    "تطوير تطبيقات الهواتف المحمولة",
+    "حلول التجارة الإلكترونية",
+    "تصميم واجهات المستخدم وتجربة المستخدم (UI/UX)",
+    "حلول السحابة",
+    "الذكاء الاصطناعي والتعلم الآلي",
+    "التسويق الرقمي",
+    "استشارات تقنية المعلومات",
+    "الأمن السيبراني",
+    "ذكاء الأعمال",
+    "أخرى",
+  ],
+  bn: [
+    "ডিজিটাল রূপান্তর",
+    "ওয়েব ডেভেলপমেন্ট",
+    "মোবাইল অ্যাপ্লিকেশন ডেভেলপমেন্ট",
+    "ই-কমার্স সমাধান",
+    "UI/UX ডিজাইন",
+    "ক্লাউড সমাধান",
+    "এআই এবং মেশিন লার্নিং",
+    "ডিজিটাল মার্কেটিং",
+    "আইটি পরামর্শ",
+    "সাইবার সিকিউরিটি",
+    "ব্যবসায়িক বুদ্ধিমত্তা",
+    "অন্যান্য",
+  ],
+};
 
 export default function ConsultationScheduler() {
-  const { t } = useTranslations("scheduleConsultation");
+  const t = useTranslations("scheduleConsultation");
   const { executeRecaptcha } = useGoogleReCaptcha();
   const router = useRouter();
+  const locale = useLocale();
   const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -167,7 +265,7 @@ export default function ConsultationScheduler() {
   // Handle form submission
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
-
+    console.log(values);
     try {
       // Get reCAPTCHA token
       let recaptchaToken = "";
@@ -222,6 +320,7 @@ export default function ConsultationScheduler() {
 
   // Next step handler
   const handleNextStep = async () => {
+    console.log(step);
     if (step === 1) {
       const isValid = await form.trigger([
         "fullName",
@@ -253,6 +352,26 @@ export default function ConsultationScheduler() {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
+  const successSteps = {
+    en: [
+      "You'll receive a calendar invitation for your scheduled consultation",
+      "Our consultant will prepare for your meeting based on the information provided",
+      "We'll send you a reminder 24 hours before your scheduled time",
+      "During the consultation, we'll discuss your needs and recommend tailored solutions",
+    ],
+    ar: [
+      "سوف تتلقى دعوة تقويم لموعد الاستشارة المجدول",
+      "سيقوم مستشارنا بالتحضير لاجتماعك بناءً على المعلومات المقدمة",
+      "سوف نرسل إليك تذكيرًا قبل 24 ساعة من الموعد المحدد",
+      "خلال الاستشارة، سنناقش احتياجاتك ونوصي بحلول مخصصة",
+    ],
+    bn: [
+      "আপনি আপনার নির্ধারিত পরামর্শ সেশনের জন্য একটি ক্যালেন্ডার আমন্ত্রণ পাবেন",
+      "আপনার প্রদত্ত তথ্যের ভিত্তিতে আমাদের পরামর্শক সেশনের জন্য প্রস্তুতি নেবেন",
+      "নির্ধারিত সময়ের ২৪ ঘণ্টা আগে আমরা আপনাকে একটি স্মরণ করিয়ে দেব",
+      "পরামর্শ সেশনে আমরা আপনার প্রয়োজনগুলো আলোচনা করব এবং উপযুক্ত সমাধানের পরামর্শ দেব",
+    ],
+  };
 
   if (isSuccess) {
     return (
@@ -268,38 +387,33 @@ export default function ConsultationScheduler() {
               <Check className="h-10 w-10 text-green-600" />
             </div>
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Consultation Scheduled Successfully!
+              {t("success.title")}
             </h1>
-            <p className="text-lg text-gray-600 mb-8">
-              Thank you for scheduling a consultation with Saudi Ease. We've
-              sent a confirmation email with all the details. Our team will
-              contact you shortly to confirm your appointment.
-            </p>
+            <p className="text-lg text-gray-600 mb-8">{t("success.message")}</p>
             <div className="bg-white rounded-xl shadow-md p-6 mb-8 border border-gray-100">
-              <h2 className="text-xl font-semibold mb-4">What happens next?</h2>
+              <h2 className="text-xl font-semibold mb-4">
+                {t("success.nextSteps")}
+              </h2>
               <ul className="space-y-4">
-                {[
-                  "You'll receive a calendar invitation for your scheduled consultation",
-                  "Our consultant will prepare for your meeting based on the information provided",
-                  "We'll send you a reminder 24 hours before your scheduled time",
-                  "During the consultation, we'll discuss your needs and recommend tailored solutions",
-                ].map((step, index) => (
-                  <li key={index} className="flex items-start">
-                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mr-3 mt-0.5">
-                      <span className="text-sm font-medium text-primary">
-                        {index + 1}
-                      </span>
-                    </div>
-                    <span className="text-gray-700">{step}</span>
-                  </li>
-                ))}
+                {successSteps[locale as keyof typeof successSteps].map(
+                  (step, index) => (
+                    <li key={index} className="flex items-start">
+                      <div className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mr-3 mt-0.5">
+                        <span className="text-sm font-medium text-primary">
+                          {index + 1}
+                        </span>
+                      </div>
+                      <span className="text-gray-700">{step}</span>
+                    </li>
+                  )
+                )}
               </ul>
             </div>
             <Button
               onClick={() => router.push("/")}
               className="bg-primary hover:bg-primary/90 text-white px-8"
             >
-              Return to Homepage
+              {t("success.returnHome")}
             </Button>
           </motion.div>
         </div>
@@ -325,11 +439,10 @@ export default function ConsultationScheduler() {
             <div className="h-px w-10 bg-primary/30"></div>
           </div>
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Schedule a Personalized Consultation
+            {t("title")}
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Book a one-on-one session with our digital transformation experts to
-            discuss your business needs and explore tailored solutions.
+            {t("description")}
           </p>
         </motion.div>
 
@@ -363,9 +476,9 @@ export default function ConsultationScheduler() {
           </div>
           <div className="flex justify-center mt-2">
             <div className="text-sm text-gray-500 grid grid-cols-3 w-full max-w-md">
-              <span className="text-center">Your Information</span>
-              <span className="text-center">Consultation Details</span>
-              <span className="text-center">Project Information</span>
+              <span className="text-center">{t("steps.step1")}</span>
+              <span className="text-center">{t("steps.step2")}</span>
+              <span className="text-center">{t("steps.step3")}</span>
             </div>
           </div>
         </div>
@@ -381,16 +494,14 @@ export default function ConsultationScheduler() {
           <Card className="border border-gray-100 shadow-md">
             <CardHeader>
               <CardTitle>
-                {step === 1 && "Tell us about yourself"}
-                {step === 2 && "Schedule your consultation"}
-                {step === 3 && "Share your project details"}
+                {step === 1 && t("form.section1Title")}
+                {step === 2 && t("form.section2Title")}
+                {step === 3 && t("form.section3Title")}
               </CardTitle>
               <CardDescription>
-                {step === 1 &&
-                  "Please provide your contact and company information"}
-                {step === 2 &&
-                  "Select your preferred date, time and consultation type"}
-                {step === 3 && "Help us understand your project requirements"}
+                {step === 1 && t("form.step1Description")}
+                {step === 2 && t("form.step2Description")}
+                {step === 3 && t("form.step3Description")}
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -408,11 +519,13 @@ export default function ConsultationScheduler() {
                           name="fullName"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel>Full Name</FormLabel>
+                              <FormLabel>{t("form.fullName")}</FormLabel>
                               <FormControl>
                                 <Input placeholder="John Doe" {...field} />
                               </FormControl>
-                              <FormMessage />
+                              <FormMessage>
+                                {form.formState.errors.fullName?.message}
+                              </FormMessage>
                             </FormItem>
                           )}
                         />
@@ -421,7 +534,7 @@ export default function ConsultationScheduler() {
                           name="email"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel>Email Address</FormLabel>
+                              <FormLabel>{t("form.email")}</FormLabel>
                               <FormControl>
                                 <Input
                                   placeholder="john@example.com"
@@ -429,7 +542,9 @@ export default function ConsultationScheduler() {
                                   {...field}
                                 />
                               </FormControl>
-                              <FormMessage />
+                              <FormMessage>
+                                {form.formState.errors.email?.message}
+                              </FormMessage>
                             </FormItem>
                           )}
                         />
@@ -441,14 +556,16 @@ export default function ConsultationScheduler() {
                           name="phone"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel>Phone Number</FormLabel>
+                              <FormLabel>{t("form.phone")}</FormLabel>
                               <FormControl>
                                 <Input
                                   placeholder="+966 50 123 4567"
                                   {...field}
                                 />
                               </FormControl>
-                              <FormMessage />
+                              <FormMessage>
+                                {form.formState.errors.phone?.message}
+                              </FormMessage>
                             </FormItem>
                           )}
                         />
@@ -457,11 +574,13 @@ export default function ConsultationScheduler() {
                           name="companyName"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel>Company Name</FormLabel>
+                              <FormLabel>{t("form.companyName")}</FormLabel>
                               <FormControl>
                                 <Input placeholder="Acme Inc." {...field} />
                               </FormControl>
-                              <FormMessage />
+                              <FormMessage>
+                                {form.formState.errors.companyName?.message}
+                              </FormMessage>
                             </FormItem>
                           )}
                         />
@@ -473,35 +592,39 @@ export default function ConsultationScheduler() {
                           name="companySize"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel>Company Size</FormLabel>
+                              <FormLabel>{t("form.companySize")}</FormLabel>
                               <Select
                                 onValueChange={field.onChange}
                                 defaultValue={field.value}
                               >
                                 <FormControl>
                                   <SelectTrigger>
-                                    <SelectValue placeholder="Select company size" />
+                                    <SelectValue
+                                      placeholder={t("form.selectCompanySize")}
+                                    />
                                   </SelectTrigger>
                                 </FormControl>
                                 <SelectContent>
                                   <SelectItem value="1-10">
-                                    1-10 employees
+                                    1-10 {t("form.employees")}
                                   </SelectItem>
                                   <SelectItem value="11-50">
-                                    11-50 employees
+                                    11-50 {t("form.employees")}
                                   </SelectItem>
                                   <SelectItem value="51-200">
-                                    51-200 employees
+                                    51-200 {t("form.employees")}
                                   </SelectItem>
                                   <SelectItem value="201-500">
-                                    201-500 employees
+                                    201-500 {t("form.employees")}
                                   </SelectItem>
                                   <SelectItem value="501+">
-                                    501+ employees
+                                    501+ {t("form.employees")}
                                   </SelectItem>
                                 </SelectContent>
                               </Select>
-                              <FormMessage />
+                              <FormMessage>
+                                {form.formState.errors.companySize?.message}
+                              </FormMessage>
                             </FormItem>
                           )}
                         />
@@ -510,18 +633,22 @@ export default function ConsultationScheduler() {
                           name="industry"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel>Industry</FormLabel>
+                              <FormLabel>{t("form.industry")}</FormLabel>
                               <Select
                                 onValueChange={field.onChange}
                                 defaultValue={field.value}
                               >
                                 <FormControl>
                                   <SelectTrigger>
-                                    <SelectValue placeholder="Select your industry" />
+                                    <SelectValue
+                                      placeholder={t("form.selectIndustry")}
+                                    />
                                   </SelectTrigger>
                                 </FormControl>
                                 <SelectContent>
-                                  {industries.map((industry) => (
+                                  {industries[
+                                    locale as keyof typeof industries
+                                  ].map((industry) => (
                                     <SelectItem
                                       key={industry}
                                       value={industry
@@ -533,7 +660,9 @@ export default function ConsultationScheduler() {
                                   ))}
                                 </SelectContent>
                               </Select>
-                              <FormMessage />
+                              <FormMessage>
+                                {form.formState.errors.industry?.message}
+                              </FormMessage>
                             </FormItem>
                           )}
                         />
@@ -549,30 +678,36 @@ export default function ConsultationScheduler() {
                         name="serviceInterest"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Service of Interest</FormLabel>
+                            <FormLabel>{t("form.serviceInterest")}</FormLabel>
                             <Select
                               onValueChange={field.onChange}
                               defaultValue={field.value}
                             >
                               <FormControl>
                                 <SelectTrigger>
-                                  <SelectValue placeholder="Select a service" />
+                                  <SelectValue
+                                    placeholder={t("form.selectService")}
+                                  />
                                 </SelectTrigger>
                               </FormControl>
                               <SelectContent>
-                                {services.map((service) => (
-                                  <SelectItem
-                                    key={service}
-                                    value={service
-                                      .toLowerCase()
-                                      .replace(/\s+/g, "-")}
-                                  >
-                                    {service}
-                                  </SelectItem>
-                                ))}
+                                {services[locale as keyof typeof services].map(
+                                  (service) => (
+                                    <SelectItem
+                                      key={service}
+                                      value={service
+                                        .toLowerCase()
+                                        .replace(/\s+/g, "-")}
+                                    >
+                                      {service}
+                                    </SelectItem>
+                                  )
+                                )}
                               </SelectContent>
                             </Select>
-                            <FormMessage />
+                            <FormMessage>
+                              {form.formState.errors.serviceInterest?.message}
+                            </FormMessage>
                           </FormItem>
                         )}
                       />
@@ -582,7 +717,7 @@ export default function ConsultationScheduler() {
                         name="consultationDate"
                         render={({ field }) => (
                           <FormItem className="flex flex-col">
-                            <FormLabel>Consultation Date</FormLabel>
+                            <FormLabel>{t("form.consultationDate")}</FormLabel>
                             <Popover>
                               <PopoverTrigger asChild>
                                 <FormControl>
@@ -596,7 +731,7 @@ export default function ConsultationScheduler() {
                                     {field.value ? (
                                       format(field.value, "PPP")
                                     ) : (
-                                      <span>Pick a date</span>
+                                      <span>{t("form.selectDate")}</span>
                                     )}
                                     <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                                   </Button>
@@ -624,7 +759,9 @@ export default function ConsultationScheduler() {
                                 />
                               </PopoverContent>
                             </Popover>
-                            <FormMessage />
+                            <FormMessage>
+                              {form.formState.errors.consultationDate?.message}
+                            </FormMessage>
                           </FormItem>
                         )}
                       />
@@ -635,25 +772,36 @@ export default function ConsultationScheduler() {
                           name="consultationTime"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel>Consultation Time</FormLabel>
+                              <FormLabel>
+                                {t("form.consultationTime")}
+                              </FormLabel>
                               <Select
                                 onValueChange={field.onChange}
                                 defaultValue={field.value}
                               >
                                 <FormControl>
                                   <SelectTrigger>
-                                    <SelectValue placeholder="Select a time" />
+                                    <SelectValue
+                                      placeholder={t("form.selectTime")}
+                                    />
                                   </SelectTrigger>
                                 </FormControl>
                                 <SelectContent>
-                                  {timeSlots.map((time) => (
+                                  {timeSlots[
+                                    locale as keyof typeof timeSlots
+                                  ].map((time) => (
                                     <SelectItem key={time} value={time}>
                                       {time}
                                     </SelectItem>
                                   ))}
                                 </SelectContent>
                               </Select>
-                              <FormMessage />
+                              <FormMessage>
+                                {
+                                  form.formState.errors.consultationTime
+                                    ?.message
+                                }
+                              </FormMessage>
                             </FormItem>
                           )}
                         />
@@ -664,7 +812,7 @@ export default function ConsultationScheduler() {
                         name="consultationType"
                         render={({ field }) => (
                           <FormItem className="space-y-3">
-                            <FormLabel>Consultation Type</FormLabel>
+                            <FormLabel>{t("form.consultationType")}</FormLabel>
                             <FormControl>
                               <RadioGroup
                                 onValueChange={field.onChange}
@@ -677,7 +825,7 @@ export default function ConsultationScheduler() {
                                     id="virtual"
                                   />
                                   <Label htmlFor="virtual">
-                                    Virtual Meeting (Zoom/Teams)
+                                    {t("form.virtualMeeting")}
                                   </Label>
                                 </div>
                                 <div className="flex items-center space-x-2">
@@ -686,12 +834,14 @@ export default function ConsultationScheduler() {
                                     id="inPerson"
                                   />
                                   <Label htmlFor="inPerson">
-                                    In-Person Meeting (Riyadh Office)
+                                    {t("form.inPersonMeeting")}
                                   </Label>
                                 </div>
                               </RadioGroup>
                             </FormControl>
-                            <FormMessage />
+                            <FormMessage>
+                              {form.formState.errors.consultationType?.message}
+                            </FormMessage>
                           </FormItem>
                         )}
                       />
@@ -706,19 +856,27 @@ export default function ConsultationScheduler() {
                         name="projectDescription"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Project Description</FormLabel>
+                            <FormLabel>
+                              {t("form.projectDescription")}
+                            </FormLabel>
                             <FormControl>
                               <Textarea
-                                placeholder="Please describe your project, goals, and any specific requirements..."
+                                placeholder={t(
+                                  "form.projectDescriptionPlaceholder"
+                                )}
                                 className="resize-none min-h-[120px]"
                                 {...field}
                               />
                             </FormControl>
                             <FormDescription>
-                              This helps us prepare for your consultation and
-                              provide relevant solutions.
+                              {t("form.projectDescriptionHelp")}
                             </FormDescription>
-                            <FormMessage />
+                            <FormMessage>
+                              {
+                                form.formState.errors.projectDescription
+                                  ?.message
+                              }
+                            </FormMessage>
                           </FormItem>
                         )}
                       />
@@ -728,33 +886,37 @@ export default function ConsultationScheduler() {
                         name="hearAboutUs"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>How did you hear about us?</FormLabel>
+                            <FormLabel>{t("form.hearAboutUs")}</FormLabel>
                             <Select
                               onValueChange={field.onChange}
                               defaultValue={field.value}
                             >
                               <FormControl>
                                 <SelectTrigger>
-                                  <SelectValue placeholder="Select an option" />
+                                  <SelectValue
+                                    placeholder={t("form.selectHearAboutUs")}
+                                  />
                                 </SelectTrigger>
                               </FormControl>
                               <SelectContent>
                                 <SelectItem value="search">
-                                  Search Engine (Google, Bing, etc.)
+                                  {t("form.hearAboutUsOptions.search")}
                                 </SelectItem>
                                 <SelectItem value="social">
-                                  Social Media
+                                  {t("form.hearAboutUsOptions.social")}
                                 </SelectItem>
                                 <SelectItem value="referral">
-                                  Referral from a Friend/Colleague
+                                  {t("form.hearAboutUsOptions.referral")}
                                 </SelectItem>
                                 <SelectItem value="event">
-                                  Event or Conference
+                                  {t("form.hearAboutUsOptions.event")}
                                 </SelectItem>
                                 <SelectItem value="advertisement">
-                                  Advertisement
+                                  {t("form.hearAboutUsOptions.advertisement")}
                                 </SelectItem>
-                                <SelectItem value="other">Other</SelectItem>
+                                <SelectItem value="other">
+                                  {t("form.hearAboutUsOptions.other")}
+                                </SelectItem>
                               </SelectContent>
                             </Select>
                             <FormMessage />
@@ -768,60 +930,58 @@ export default function ConsultationScheduler() {
                             <div className="bg-blue-100 p-1 rounded-full mr-2">
                               <Clock className="h-4 w-4 text-blue-600" />
                             </div>
-                            What to expect
+                            {t("form.whatToExpect.title")}
                           </h3>
                           <p className="text-sm text-blue-700 mt-1">
-                            Your consultation will last approximately 45
-                            minutes. Our expert will discuss your business
-                            needs, answer your questions, and recommend tailored
-                            solutions for your specific challenges.
+                            {t("form.whatToExpect.description")}
                           </p>
                         </div>
                       </div>
                     </div>
                   )}
+
+                  <CardFooter className="flex justify-between border-t border-gray-100 pt-6">
+                    {step > 1 ? (
+                      <Button
+                        type="button"
+                        variant="outline"
+                        onClick={handlePrevStep}
+                      >
+                        {t("buttons.back")}
+                      </Button>
+                    ) : (
+                      <div></div>
+                    )}
+
+                    {step < 3 ? (
+                      <Button
+                        type="button"
+                        onClick={handleNextStep}
+                        className="bg-primary hover:bg-primary/90 text-white"
+                      >
+                        {t("buttons.continue")}
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    ) : (
+                      <Button
+                        onClick={form.handleSubmit(onSubmit)}
+                        className="bg-primary hover:bg-primary/90 text-white"
+                        disabled={isSubmitting}
+                      >
+                        {isSubmitting ? (
+                          <>
+                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                            {t("buttons.submitting")}
+                          </>
+                        ) : (
+                          <>{t("buttons.submit")}</>
+                        )}
+                      </Button>
+                    )}
+                  </CardFooter>
                 </form>
               </Form>
             </CardContent>
-            <CardFooter className="flex justify-between border-t border-gray-100 pt-6">
-              {step > 1 ? (
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={handlePrevStep}
-                >
-                  Back
-                </Button>
-              ) : (
-                <div></div>
-              )}
-
-              {step < 3 ? (
-                <Button
-                  type="button"
-                  onClick={handleNextStep}
-                  className="bg-primary hover:bg-primary/90 text-white"
-                >
-                  Continue
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              ) : (
-                <Button
-                  onClick={form.handleSubmit(onSubmit)}
-                  className="bg-primary hover:bg-primary/90 text-white"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? (
-                    <>
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                      Submitting...
-                    </>
-                  ) : (
-                    <>Schedule Consultation</>
-                  )}
-                </Button>
-              )}
-            </CardFooter>
           </Card>
         </motion.div>
 
@@ -832,53 +992,33 @@ export default function ConsultationScheduler() {
           variants={fadeIn}
           className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6"
         >
-          {[
-            {
-              title: "Expert Consultation",
-              description:
-                "Our consultants have deep industry knowledge and technical expertise to guide your digital journey.",
-              icon: (
-                <div className="p-2 bg-primary/10 rounded-full">
-                  <Check className="h-5 w-5 text-primary" />
+          {t
+            .raw("benefits")
+            .map(
+              (
+                benefit: { title: string; description: string },
+                index: number
+              ) => (
+                <div
+                  key={index}
+                  className="bg-white p-6 rounded-xl shadow-sm border border-gray-100"
+                >
+                  <div className="flex items-start">
+                    <div className="p-2 bg-primary/10 rounded-full">
+                      <Check className="h-5 w-5 text-primary" />
+                    </div>
+                    <div className="ml-4">
+                      <h3 className="font-medium text-gray-900">
+                        {benefit.title}
+                      </h3>
+                      <p className="text-sm text-gray-600 mt-1">
+                        {benefit.description}
+                      </p>
+                    </div>
+                  </div>
                 </div>
-              ),
-            },
-            {
-              title: "Tailored Solutions",
-              description:
-                "We provide customized recommendations based on your specific business needs and goals.",
-              icon: (
-                <div className="p-2 bg-primary/10 rounded-full">
-                  <Check className="h-5 w-5 text-primary" />
-                </div>
-              ),
-            },
-            {
-              title: "No Obligation",
-              description:
-                "The consultation is completely free with no obligation to purchase any services.",
-              icon: (
-                <div className="p-2 bg-primary/10 rounded-full">
-                  <Check className="h-5 w-5 text-primary" />
-                </div>
-              ),
-            },
-          ].map((item, index) => (
-            <div
-              key={index}
-              className="bg-white p-6 rounded-xl shadow-sm border border-gray-100"
-            >
-              <div className="flex items-start">
-                {item.icon}
-                <div className="ml-4">
-                  <h3 className="font-medium text-gray-900">{item.title}</h3>
-                  <p className="text-sm text-gray-600 mt-1">
-                    {item.description}
-                  </p>
-                </div>
-              </div>
-            </div>
-          ))}
+              )
+            )}
         </motion.div>
       </div>
     </div>
