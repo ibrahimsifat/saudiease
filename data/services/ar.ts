@@ -1,3 +1,4 @@
+import { CONSTANT } from "@/config/constants";
 import type { LucideIcon } from "lucide-react";
 import {
   BarChart3,
@@ -5,20 +6,13 @@ import {
   Database,
   FileText,
   Image,
-  Instagram,
   Layers,
-  Mail,
-  MessageSquare,
   Monitor,
   Palette,
   PenTool,
   Printer,
-  Search,
   ShoppingCart,
   Smartphone,
-  TrendingUp,
-  Users,
-  Youtube,
 } from "lucide-react";
 
 export interface Service {
@@ -26,6 +20,7 @@ export interface Service {
   icon: LucideIcon;
   title: string;
   description: string;
+  image: string;
   longDescription?: string;
   benefits?: string[];
   features?: string[];
@@ -37,6 +32,7 @@ export const services: Service[] = [
     id: "web-development",
     icon: Monitor,
     title: "تطوير المواقع الإلكترونية",
+    image: CONSTANT.images.service.webDevelopment,
     description:
       "مواقع إلكترونية مخصصة وسريعة الاستجابة مصممة وفقًا لاحتياجات عملك مع تحسين محركات البحث (SEO) وتجربة مستخدم سلسة.",
     longDescription:
@@ -59,6 +55,7 @@ export const services: Service[] = [
   },
   {
     id: "mobile-app-development",
+    image: CONSTANT.images.service.mobileDevelopment,
     icon: Smartphone,
     title: "تطوير تطبيقات الجوال",
     description:
@@ -83,6 +80,7 @@ export const services: Service[] = [
   },
   {
     id: "custom-cms-development",
+    image: CONSTANT.images.service.customCmsDevelopment,
     icon: Code,
     title: "تطوير أنظمة إدارة المحتوى المخصصة",
     description:
@@ -107,6 +105,7 @@ export const services: Service[] = [
   },
   {
     id: "e-commerce-solutions",
+    image: CONSTANT.images.service.eCommerceSolutions,
     icon: ShoppingCart,
     title: "حلول التجارة الإلكترونية",
     description:
@@ -131,6 +130,7 @@ export const services: Service[] = [
   },
   {
     id: "api-development",
+    image: CONSTANT.images.service.apiDevelopment,
     icon: Database,
     title: "تطوير واجهات برمجة التطبيقات (API) والتكامل",
     description:
@@ -155,6 +155,7 @@ export const services: Service[] = [
   },
   {
     id: "e-invoicing",
+    image: CONSTANT.images.service.eInvoicing,
     icon: FileText,
     title: "الفواتير الإلكترونية والحسابات",
     description:
@@ -179,6 +180,7 @@ export const services: Service[] = [
   },
   {
     id: "logo-design",
+    image: CONSTANT.images.service.logoDesign,
     icon: PenTool,
     title: "تصميم الشعارات",
     description:
@@ -203,6 +205,7 @@ export const services: Service[] = [
   },
   {
     id: "brand-identity",
+    image: CONSTANT.images.service.brandIdentity,
     icon: Layers,
     title: "تصميم الهوية البصرية",
     description:
@@ -227,6 +230,7 @@ export const services: Service[] = [
   },
   {
     id: "corporate-profile",
+    image: CONSTANT.images.service.corporateProfile,
     icon: Palette,
     title: "تصميم البروفايلات المؤسسية",
     description:
@@ -251,6 +255,7 @@ export const services: Service[] = [
   },
   {
     id: "ui-ux-design",
+    image: CONSTANT.images.service.uiUxDesign,
     icon: Image,
     title: "تصميم واجهة المستخدم/تجربة المستخدم",
     description:
@@ -275,6 +280,7 @@ export const services: Service[] = [
   },
   {
     id: "print-design",
+    image: CONSTANT.images.service.printDesign,
     icon: Printer,
     title: "تصميم المواد المطبوعة",
     description:
@@ -299,6 +305,7 @@ export const services: Service[] = [
   },
   {
     id: "digital-marketing",
+    image: CONSTANT.images.service.digitalMarketing,
     icon: BarChart3,
     title: "التسويق الرقمي",
     description:
@@ -318,173 +325,6 @@ export const services: Service[] = [
       "التسويق عبر وسائل التواصل الاجتماعي",
       "التسويق بالمحتوى",
       "حملات التسويق عبر البريد الإلكتروني",
-    ],
-    category: "marketing",
-  },
-  {
-    id: "seo-services",
-    icon: Search,
-    title: "خدمات تحسين محركات البحث (SEO)",
-    description:
-      "تحسين محركات البحث المتخصص للشركات السعودية لتحسين الترتيب على Google ومحركات البحث المحلية.",
-    longDescription:
-      "تم تصميم خدمات تحسين محركات البحث (SEO) لدينا خصيصًا للسوق السعودي، مما يساعد عملك على الترتيب بشكل أعلى في نتائج البحث المحلية والدولية. ننفذ استراتيجيات مثبتة تعزز حركة المرور العضوية وزيادة التحويلات.",
-    benefits: [
-      "تحسين ترتيب محركات البحث",
-      "زيادة حركة المرور العضوية",
-      "تعزيز الظهور عبر الإنترنت",
-      "زيادة جودة العملاء المحتملين",
-      "نتائج مستدامة على المدى الطويل",
-    ],
-    features: [
-      "بحث الكلمات المفتاحية والتحسين",
-      "تحسين محركات البحث على الصفحة وخارجها",
-      "مراجعات تقنية لتحسين محركات البحث",
-      "تحسين محركات البحث المحلي للسوق السعودي",
-      "تقارير أداء منتظمة",
-    ],
-    category: "marketing",
-  },
-  {
-    id: "social-media-marketing",
-    icon: Instagram,
-    title: "التسويق عبر وسائل التواصل الاجتماعي",
-    description:
-      "حملات تسويقية استراتيجية على وسائل التواصل الاجتماعي تبني التفاعل مع الجمهور السعودي عبر المنصات الشهيرة.",
-    longDescription:
-      "نطور وننفذ استراتيجيات وسائل التواصل الاجتماعي التي تربط علامتك التجارية بالجمهور السعودي على منصات مثل Twitter و Instagram و Snapchat و LinkedIn. تبني حملاتنا التفاعل، وزيادة المتابعين، ودفع التحويلات.",
-    benefits: [
-      "زيادة الوعي بالعلامة التجارية",
-      "تحسين تفاعل الجمهور",
-      "تعزيز ولاء العملاء",
-      "قناة اتصال مباشرة",
-      "فرص إعلانية مستهدفة",
-    ],
-    features: [
-      "استراتيجية مخصصة لكل منصة",
-      "إنشاء المحتوى وتجميعه",
-      "إدارة المجتمع",
-      "حملات وسائل التواصل الاجتماعي المدفوعة",
-      "تحليلات الأداء",
-    ],
-    category: "marketing",
-  },
-  {
-    id: "email-marketing",
-    icon: Mail,
-    title: "التسويق عبر البريد الإلكتروني",
-    description:
-      "حملات بريد إلكتروني مستهدفة تعزز العملاء المحتملين وتبني علاقات مع العملاء السعوديين.",
-    longDescription:
-      "تساعد خدمات التسويق عبر البريد الإلكتروني لدينا الشركات السعودية على بناء والحفاظ على العلاقات مع العملاء من خلال حملات مستهدفة وشخصية. ننشئ محتوى جذابًا يعزز الفتح والنقرات والتحويلات.",
-    benefits: [
-      "اتصال مباشر مع العملاء",
-      "نتائج قابلة للقياس بدرجة عالية",
-      "زيادة الاحتفاظ بالعملاء",
-      "قناة تسويقية فعالة من حيث التكلفة",
-      "تفاعل عملاء شخصي",
-    ],
-    features: [
-      "تطوير استراتيجية الحملة",
-      "تصميم قوالب البريد الإلكتروني",
-      "تقسيم القوائم وإدارتها",
-      "تسلسلات بريد إلكتروني آلية",
-      "تتبع الأداء والتحسين",
-    ],
-    category: "marketing",
-  },
-  {
-    id: "content-marketing",
-    icon: MessageSquare,
-    title: "التسويق بالمحتوى",
-    description: "إنشاء وتوزيع محتوى استراتيجي يؤسس لسلطتك في السوق السعودي.",
-    longDescription:
-      "ننشئ ونوزع محتوى قيمًا وذو صلة يجذب جمهورك المستهدف في السعودية. تبني استراتيجيات التسويق بالمحتوى لدينا سلطة العلامة التجارية، وتزيد من حركة المرور، وتولد العملاء المحتملين.",
-    benefits: [
-      "تأسيس السلطة في الصناعة",
-      "تحسين ترتيب محركات البحث",
-      "زيادة حركة المرور إلى الموقع",
-      "تعزيز ثقة العملاء",
-      "إنشاء أصول تسويقية طويلة الأمد",
-    ],
-    features: [
-      "تطوير استراتيجية المحتوى",
-      "كتابة المدونات والمقالات",
-      "إنشاء الرسوم البيانية",
-      "تطوير الكتب الإلكترونية والأوراق البيضاء",
-      "توزيع المحتوى",
-    ],
-    category: "marketing",
-  },
-  {
-    id: "video-marketing",
-    icon: Youtube,
-    title: "التسويق بالفيديو",
-    description:
-      "محتوى فيديو جذاب يتفاعل مع الجمهور السعودي ويدفع الوعي بالعلامة التجارية عبر القنوات الرقمية.",
-    longDescription:
-      "تخلق خدمات التسويق بالفيديو لدينا محتوى مرئيًا جذابًا يتوافق مع الجمهور السعودي. نطور ونوزع مقاطع فيديو تروي قصة علامتك التجارية، وتعرض المنتجات، وتعزز التفاعل عبر القنوات الرقمية.",
-    benefits: [
-      "زيادة معدلات التفاعل",
-      "تعزيز استبقاء الرسالة",
-      "تحسين معدلات التحويل",
-      "تواصل عاطفي أقوى",
-      "محتوى متعدد الاستخدامات للعديد من المنصات",
-    ],
-    features: [
-      "تطوير استراتيجية الفيديو",
-      "إنتاج فيديو احترافي",
-      "الرسوم المتحركة والرسوم الحركية",
-      "تحسين قنوات YouTube",
-      "حملات إعلانية بالفيديو",
-    ],
-    category: "marketing",
-  },
-  {
-    id: "marketing-analytics",
-    icon: TrendingUp,
-    title: "تحليلات التسويق",
-    description:
-      "تحليل بيانات وإعداد تقارير شاملة لتحسين أداء التسويق في السوق السعودي.",
-    longDescription:
-      "توفر خدمات تحليلات التسويق لدينا رؤى عميقة حول أداء التسويق الخاص بك، مما يساعدك على اتخاذ قرارات مدعومة بالبيانات. نتعقب ونحلل ونبلغ عن المقاييس الرئيسية لتحسين جهودك التسويقية باستمرار.",
-    benefits: [
-      "اتخاذ قرارات مدعومة بالبيانات",
-      "تحسين عائد الاستثمار التسويقي",
-      "رؤية واضحة للأداء",
-      "تحديد فرص التحسين",
-      "تخصيص ميزانية التسويق بشكل مثالي",
-    ],
-    features: [
-      "تطوير لوحات تحكم مخصصة",
-      "التتبع متعدد القنوات",
-      "تحليل مسار التحويل",
-      "قياس الأداء مقابل المنافسين",
-      "تقارير أداء منتظمة",
-    ],
-    category: "marketing",
-  },
-  {
-    id: "influencer-marketing",
-    icon: Users,
-    title: "التسويق عبر المؤثرين",
-    description:
-      "شراكات استراتيجية مع المؤثرين السعوديين لتضخيم رسالة علامتك التجارية والوصول إلى الجماهير المستهدفة.",
-    longDescription:
-      "نربط علامتك التجارية بالمؤثرين السعوديين المناسبين لتوسيع نطاق وصولك وبناء المصداقية. تحدد استراتيجيات التسويق عبر المؤثرين لدينا الشركاء المناسبين، وتطور حملات أصيلة، وتقيس التأثير الحقيقي.",
-    benefits: [
-      "توسيع نطاق الوصول للجمهور",
-      "تعزيز مصداقية العلامة التجارية",
-      "إنشاء محتوى أصيل",
-      "زيادة التفاعل على وسائل التواصل الاجتماعي",
-      "الوصول إلى الأسواق المتخصصة",
-    ],
-    features: [
-      "تحديد المؤثرين وفحصهم",
-      "تطوير استراتيجية الحملة",
-      "تعاون في إنشاء المحتوى",
-      "تتبع الأداء",
-      "قياس عائد الاستثمار",
     ],
     category: "marketing",
   },

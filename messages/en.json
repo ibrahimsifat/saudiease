@@ -3339,5 +3339,58 @@
       "minLength": "Must be at least {min} characters",
       "maxLength": "Must not exceed {max} characters"
     }
+  },
+
+  "BusinessCategories": {
+    "header": {
+      "tagline": "Saudi Industry Solutions",
+      "title": {
+        "part1": "Tailored For",
+        "part2": "Saudi Industries"
+      },
+      "description": "We understand the unique challenges and opportunities across different Saudi business sectors. Our solutions are customized to meet industry-specific requirements and compliance standards, helping businesses thrive in the Kingdom's dynamic economy."
+    },
+    "stats": {
+      "satisfaction": "Client Satisfaction",
+      "industries": "Industries Served",
+      "projects": "Projects Completed",
+      "experience": "Years Experience"
+    },
+    "category": {
+      "solutions": "{category} Solutions",
+      "insights": "Industry Insights",
+      "marketSize": "Market Size",
+      "growthRate": "Growth Rate",
+      "yoy": "YoY",
+      "marketValues": {
+        "retail": "SAR 375B",
+        "healthcare": "SAR 185B",
+        "manufacturing": "SAR 420B",
+        "finance": "SAR 510B",
+        "government": "SAR 290B",
+        "education": "SAR 150B",
+        "default": "SAR 200B+"
+      },
+      "growthValues": {
+        "retail": "8.5%",
+        "healthcare": "12.3%",
+        "manufacturing": "7.2%",
+        "finance": "9.1%",
+        "government": "5.4%",
+        "education": "11.7%",
+        "default": "8.0%+"
+      }
+    },
+    "buttons": {
+      "getStarted": "Get Started",
+      "learnMore": "Learn More"
+    },
+    "visionCard": {
+      "title": "Vision 2030 Alignment",
+      "description": "Our {category} solutions support Saudi Vision 2030 goals by enhancing efficiency, digital transformation, and sustainable growth."
+    },
+    "badge": {
+      "certified": "Saudi Certified"
+    }
   }
 }

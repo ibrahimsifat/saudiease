@@ -2,13 +2,18 @@
 
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { businessCategories } from "@/data/business-categories";
+import { Locale } from "@/config/i18n";
+import { getBusinessCategories } from "@/data/business-categories";
 import { Link } from "@/i18n/routing";
 import { motion } from "framer-motion";
+import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import { useState } from "react";
 
 export default function BusinessCategories() {
+  const locale = useLocale();
+  const t = useTranslations("BusinessCategories");
+  const businessCategories = getBusinessCategories(locale as Locale);
   const [activeTab, setActiveTab] = useState("retail");
 
   return (
@@ -32,12 +37,12 @@ export default function BusinessCategories() {
         >
           <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
             <span className="flex h-2 w-2 rounded-full bg-primary mr-2"></span>
-            Saudi Industry Solutions
+            {t("header.tagline")}
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-saudi-black mb-6">
-            Tailored For{" "}
+            {t("header.title.part1")}{" "}
             <span className="text-primary relative inline-block">
-              Saudi Industries
+              {t("header.title.part2")}
               <svg
                 className="absolute -bottom-2 left-0 w-full h-3 text-primary/20"
                 viewBox="0 0 200 8"
@@ -53,10 +58,7 @@ export default function BusinessCategories() {
             </span>
           </h2>
           <p className="text-gray-600 max-w-3xl mx-auto text-lg leading-relaxed">
-            We understand the unique challenges and opportunities across
-            different Saudi business sectors. Our solutions are customized to
-            meet industry-specific requirements and compliance standards,
-            helping businesses thrive in the Kingdom's dynamic economy.
+            {t("header.description")}
           </p>
 
           {/* Stats row */}
@@ -69,7 +71,9 @@ export default function BusinessCategories() {
               className="bg-white rounded-xl p-4 shadow-md border border-gray-100"
             >
               <div className="text-3xl font-bold text-primary mb-1">95%</div>
-              <div className="text-sm text-gray-600">Client Satisfaction</div>
+              <div className="text-sm text-gray-600">
+                {t("stats.satisfaction")}
+              </div>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -79,7 +83,9 @@ export default function BusinessCategories() {
               className="bg-white rounded-xl p-4 shadow-md border border-gray-100"
             >
               <div className="text-3xl font-bold text-primary mb-1">12+</div>
-              <div className="text-sm text-gray-600">Industries Served</div>
+              <div className="text-sm text-gray-600">
+                {t("stats.industries")}
+              </div>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -89,7 +95,7 @@ export default function BusinessCategories() {
               className="bg-white rounded-xl p-4 shadow-md border border-gray-100"
             >
               <div className="text-3xl font-bold text-primary mb-1">200+</div>
-              <div className="text-sm text-gray-600">Projects Completed</div>
+              <div className="text-sm text-gray-600">{t("stats.projects")}</div>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -99,7 +105,9 @@ export default function BusinessCategories() {
               className="bg-white rounded-xl p-4 shadow-md border border-gray-100"
             >
               <div className="text-3xl font-bold text-primary mb-1">8+</div>
-              <div className="text-sm text-gray-600">Years Experience</div>
+              <div className="text-sm text-gray-600">
+                {t("stats.experience")}
+              </div>
             </motion.div>
           </div>
         </motion.div>
@@ -109,13 +117,13 @@ export default function BusinessCategories() {
           className="w-full"
           onValueChange={setActiveTab}
         >
-          <div className="flex justify-center mb-12 overflow-x-auto pb-2 hide-scrollbar">
-            <TabsList className="bg-white border border-gray-100 p-1.5 shadow-lg rounded-full">
+          <div className="flex justify-center mb-12 overflow-x-auto pb-4 hide-scrollbar">
+            <TabsList className="bg-white border border-gray-100 p-1.5 shadow-md rounded-full">
               {businessCategories.map((category) => (
                 <TabsTrigger
                   key={category.id}
                   value={category.id}
-                  className="data-[state=active]:bg-primary data-[state=active]:text-white data-[state=active]:shadow-md flex items-center gap-2 px-5 py-2.5 rounded-full transition-all duration-300 hover:bg-gray-50"
+                  className="data-[state=active]:bg-primary data-[state=active]:text-white data-[state=active]:shadow-md flex items-center gap-2 px-5 py-2.5 rounded-full transition-all duration-300 hover:bg-gray-50 flex-wrap"
                 >
                   {<category.icon className="h-5 w-5" />}
                   <span className="hidden sm:inline font-medium">
@@ -139,7 +147,7 @@ export default function BusinessCategories() {
                   <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
                     <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
                       <span className="flex h-2 w-2 rounded-full bg-primary mr-2"></span>
-                      {category.name} Solutions
+                      {t("category.solutions", { category: category.name })}
                     </div>
                     <h3 className="text-2xl font-bold text-saudi-black mb-4">
                       {category.name}
@@ -176,29 +184,29 @@ export default function BusinessCategories() {
                     {/* Industry stats */}
                     <div className="bg-gray-50 p-4 rounded-xl mb-6">
                       <h4 className="text-sm font-semibold text-gray-700 mb-3">
-                        Industry Insights
+                        {t("category.insights")}
                       </h4>
                       <div className="grid grid-cols-2 gap-4">
                         <div className="flex items-center">
                           <div className="w-2 h-8 bg-primary rounded-full mr-3"></div>
                           <div>
                             <div className="text-sm text-gray-500">
-                              Market Size
+                              {t("category.marketSize")}
                             </div>
                             <div className="font-medium">
                               {category.id === "retail"
-                                ? "SAR 375B"
+                                ? t("category.marketValues.retail")
                                 : category.id === "healthcare"
-                                ? "SAR 185B"
+                                ? t("category.marketValues.healthcare")
                                 : category.id === "manufacturing"
-                                ? "SAR 420B"
+                                ? t("category.marketValues.manufacturing")
                                 : category.id === "finance"
-                                ? "SAR 510B"
+                                ? t("category.marketValues.finance")
                                 : category.id === "government"
-                                ? "SAR 290B"
+                                ? t("category.marketValues.government")
                                 : category.id === "education"
-                                ? "SAR 150B"
-                                : "SAR 200B+"}
+                                ? t("category.marketValues.education")
+                                : t("category.marketValues.default")}
                             </div>
                           </div>
                         </div>
@@ -206,23 +214,23 @@ export default function BusinessCategories() {
                           <div className="w-2 h-8 bg-primary/60 rounded-full mr-3"></div>
                           <div>
                             <div className="text-sm text-gray-500">
-                              Growth Rate
+                              {t("category.growthRate")}
                             </div>
                             <div className="font-medium">
                               {category.id === "retail"
-                                ? "8.5%"
+                                ? t("category.growthValues.retail")
                                 : category.id === "healthcare"
-                                ? "12.3%"
+                                ? t("category.growthValues.healthcare")
                                 : category.id === "manufacturing"
-                                ? "7.2%"
+                                ? t("category.growthValues.manufacturing")
                                 : category.id === "finance"
-                                ? "9.1%"
+                                ? t("category.growthValues.finance")
                                 : category.id === "government"
-                                ? "5.4%"
+                                ? t("category.growthValues.government")
                                 : category.id === "education"
-                                ? "11.7%"
-                                : "8.0%+"}{" "}
-                              YoY
+                                ? t("category.growthValues.education")
+                                : t("category.growthValues.default")}{" "}
+                              {t("category.yoy")}
                             </div>
                           </div>
                         </div>
@@ -235,7 +243,7 @@ export default function BusinessCategories() {
                         size="lg"
                         asChild
                       >
-                        <Link href="/contact">Get Started</Link>
+                        <Link href="/contact">{t("buttons.getStarted")}</Link>
                       </Button>
                       <Button
                         variant="outline"
@@ -243,7 +251,9 @@ export default function BusinessCategories() {
                         size="lg"
                         asChild
                       >
-                        <a href={`/industries/${category.id}`}>Learn More</a>
+                        <a href={`/industries/${category.id}`}>
+                          {t("buttons.learnMore")}
+                        </a>
                       </Button>
                     </div>
                   </div>
@@ -262,12 +272,12 @@ export default function BusinessCategories() {
                     {/* Floating info card */}
                     <div className="absolute bottom-6 right-6 bg-white/90 backdrop-blur-sm p-4 rounded-xl shadow-lg max-w-xs border border-white/50">
                       <h4 className="font-bold text-primary mb-1">
-                        Vision 2030 Alignment
+                        {t("visionCard.title")}
                       </h4>
                       <p className="text-sm text-gray-700">
-                        Our {category.name.toLowerCase()} solutions support
-                        Saudi Vision 2030 goals by enhancing efficiency, digital
-                        transformation, and sustainable growth.
+                        {t("visionCard.description", {
+                          category: category.name,
+                        })}
                       </p>
                     </div>
                   </div>
@@ -279,7 +289,9 @@ export default function BusinessCategories() {
                   {/* Floating badges */}
                   <div className="absolute top-4 left-4 bg-white py-1.5 px-3 rounded-full shadow-md flex items-center">
                     <span className="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></span>
-                    <span className="text-sm font-medium">Saudi Certified</span>
+                    <span className="text-sm font-medium">
+                      {t("badge.certified")}
+                    </span>
                   </div>
                 </div>
               </motion.div>

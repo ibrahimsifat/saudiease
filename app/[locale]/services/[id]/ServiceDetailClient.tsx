@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { type Locale, localeMetadata } from "@/config/i18n";
 import { getServiceDetails } from "@/data/service-details/index";
-import { services } from "@/data/services";
+import { getServices } from "@/data/services";
 import { Link } from "@/i18n/routing";
 import { generateServiceSchema } from "@/lib/schema";
 import * as LucideIcons from "lucide-react";
@@ -34,11 +34,11 @@ export default function ServiceDetailClient({
   const isRtl = localeMetadata[locale].dir === "rtl";
   const serviceDetails = getServiceDetails(locale);
   const serviceDetail = serviceDetails[id];
+  const services = getServices(locale);
   // Get related services
   const relatedServicesData = serviceDetail.relatedServices
     .map((id: string) => services.find((service) => service.id === id))
     .filter(Boolean);
-
   // Get Lucide icons dynamically
   const getIcon = (iconName: string) => {
     const Icon = (LucideIcons as any)[iconName] || LucideIcons.HelpCircle;
@@ -205,7 +205,7 @@ export default function ServiceDetailClient({
       </div>
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary/10 via-white to-gray-50 py-24">
+      <section className="relative bg-gradient-to-br from-primary/10 via-white to-gray-50 py-8 md:py-16">
         <div className="absolute inset-0 bg-grid-pattern opacity-[0.015] pointer-events-none"></div>
         <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-primary/5 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-primary/5 rounded-full blur-3xl"></div>
@@ -390,7 +390,7 @@ export default function ServiceDetailClient({
                 isRtl ? "lg:order-1" : ""
               } relative`}
             >
-              <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-2xl">
+              <div className="relative h-[400px] rounded-2xl overflow-hidden">
                 <Image
                   src={serviceDetail.heroImage || "/placeholder.svg"}
                   alt={serviceDetail.title}
@@ -1375,7 +1375,7 @@ export default function ServiceDetailClient({
               >
                 <div className="h-48 relative">
                   <Image
-                    src="/placeholder.svg?height=600&width=800"
+                    src={service.image}
                     alt={service.title}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"

@@ -1,7 +1,9 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { businessCategories } from "@/data/business-categories";
+import { CONSTANT } from "@/config/constants";
+import { Locale } from "@/config/i18n";
+import { getBusinessCategories } from "@/data/business-categories";
 import { Link } from "@/i18n/routing";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Building2, CheckCircle2 } from "lucide-react";
@@ -14,7 +16,7 @@ export default function IndustriesClientPage() {
   const locale = params.locale || "ar";
   const isRTL = locale === "ar";
   const t = useTranslations("industriesPage");
-
+  const businessCategories = getBusinessCategories(locale as Locale);
   const ArrowIcon = isRTL ? ArrowLeft : ArrowRight;
 
   return (
@@ -206,7 +208,7 @@ export default function IndustriesClientPage() {
 
               <div className="relative h-[400px] lg:h-auto">
                 <Image
-                  src="/placeholder.svg?height=600&width=800"
+                  src={CONSTANT.images.vision2030}
                   alt={t("vision2030.imageAlt")}
                   fill
                   className="object-cover"

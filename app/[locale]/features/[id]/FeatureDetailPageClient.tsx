@@ -9,8 +9,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { type Locale } from "@/config/i18n";
-import { featureDetails } from "@/data/feature-details";
-import { features } from "@/data/features";
+import { getFeatureDetails } from "@/data/feature-details";
+import { getFeatures } from "@/data/features";
 import { Link } from "@/i18n/routing";
 import { generateServiceSchema } from "@/lib/schema";
 import { ArrowLeft, ArrowRight, CheckCircle } from "lucide-react";
@@ -25,6 +25,7 @@ export default function FeatureDetailPageClient({
   id: string;
   locale: Locale;
 }) {
+  const features = getFeatures(locale as Locale);
   const feature = features.find((f) => f.id === id);
   const t = useTranslations("featuresDetailsPage");
   const isRTL = true;
@@ -32,7 +33,7 @@ export default function FeatureDetailPageClient({
   if (!feature) {
     notFound();
   }
-
+  const featureDetails = getFeatureDetails(locale);
   const details = featureDetails[id];
   const relatedFeaturesList = details.relatedFeatures
     .map((id) => features.find((f) => f.id === id))

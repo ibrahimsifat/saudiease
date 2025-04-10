@@ -8,11 +8,11 @@ import { Suspense } from "react";
 
 // Static components
 import AboutSection from "@/components/about-section";
+import BusinessCategories from "@/components/business-categories";
 import HeroSection from "@/components/hero-section";
 import ClientBlogSection from "@/components/home/blog-client-section";
 import ClientCTASection from "@/components/home/cta-client-section";
 import ClientFeaturesSection from "@/components/home/features-client-section";
-import ClientIndustriesSection from "@/components/home/industries-client-section";
 import ClientLatestTechnologies from "@/components/home/latest-technologies-client-section";
 import ClientProcessSection from "@/components/home/process-client-section";
 import ClientTestimonialsSection from "@/components/home/testimonialsSection-client-section";
@@ -55,54 +55,40 @@ export default async function Home({ params }: Props) {
           __html: JSON.stringify(generateWebsiteSchema()),
         }}
       />
-
       {/* Hero Section */}
       <HeroSection />
-
       {/* Trusted By Section */}
       <TrustedBy />
-
       {/* Services Section */}
       <ServicesSection locale={locale} />
-
       {/* Why Choose Us Section */}
       <Suspense fallback={<LoadingFallback height="400px" />}>
         <ClientWhyChooseUs />
       </Suspense>
-
       {/* About Section */}
       <AboutSection />
-
+      {/* Business Categories */}
+      <BusinessCategories />
       {/* Features Showcase */}
       <Suspense fallback={<LoadingFallback height="400px" />}>
         <ClientFeaturesSection />
       </Suspense>
-
       {/* Process Section */}
       <Suspense fallback={<LoadingFallback height="400px" />}>
         <ClientProcessSection />
       </Suspense>
-
       {/* Latest Technologies */}
       <Suspense fallback={<LoadingFallback height="300px" />}>
         <ClientLatestTechnologies />
       </Suspense>
-
-      {/* Industries Section */}
-      <Suspense fallback={<LoadingFallback height="400px" />}>
-        <ClientIndustriesSection />
-      </Suspense>
-
       {/* Testimonials Section */}
       <Suspense fallback={<LoadingFallback height="400px" />}>
         <ClientTestimonialsSection />
       </Suspense>
-
       {/* Blog Section */}
       <Suspense fallback={<LoadingFallback height="400px" />}>
         <ClientBlogSection locale={locale} />
       </Suspense>
-
       {/* CTA Section */}
       <Suspense fallback={<LoadingFallback height="300px" />}>
         <ClientCTASection />

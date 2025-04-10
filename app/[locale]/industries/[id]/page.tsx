@@ -1,5 +1,5 @@
 import { Locale } from "@/config/i18n";
-import { businessCategories } from "@/data/business-categories";
+import { getBusinessCategories } from "@/data/business-categories";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import IndustryDetailClient from "./IndustryDetailClient";
@@ -9,7 +9,8 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const industry = businessCategories.find(
+  const { locale } = await params;
+  const industry = getBusinessCategories(locale).find(
     (category) => category.id === params.id
   );
   const t = await getTranslations({

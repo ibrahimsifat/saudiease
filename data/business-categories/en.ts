@@ -1,15 +1,23 @@
-import { Building2, ShoppingBag, Briefcase, GraduationCap, Stethoscope, Factory } from "lucide-react"
-import type { LucideIcon } from "lucide-react"
+import { CONSTANT } from "@/config/constants";
+import type { LucideIcon } from "lucide-react";
+import {
+  Briefcase,
+  Building2,
+  Factory,
+  GraduationCap,
+  ShoppingBag,
+  Stethoscope,
+} from "lucide-react";
 
 export interface BusinessCategory {
-  id: string
-  name: string
-  icon: LucideIcon
-  description: string
-  services: string[]
-  image: string
-  metaDescription?: string
-  keywords?: string[]
+  id: string;
+  name: string;
+  icon: LucideIcon;
+  description: string;
+  services: string[];
+  image: string;
+  metaDescription?: string;
+  keywords?: string[];
 }
 
 export const businessCategories: BusinessCategory[] = [
@@ -25,10 +33,15 @@ export const businessCategories: BusinessCategory[] = [
       "Payment Gateway Integration",
       "Mobile Shopping Apps",
     ],
-    image: "/placeholder.svg?height=600&width=800",
+    image: CONSTANT.images.businessCategories.retail,
     metaDescription:
       "Comprehensive e-commerce solutions for Saudi retailers including website development, inventory management, and payment integration.",
-    keywords: ["Saudi e-commerce", "retail website development", "online store Saudi Arabia", "inventory management"],
+    keywords: [
+      "Saudi e-commerce",
+      "retail website development",
+      "online store Saudi Arabia",
+      "inventory management",
+    ],
   },
   {
     id: "corporate",
@@ -42,7 +55,7 @@ export const businessCategories: BusinessCategory[] = [
       "Digital Transformation",
       "IT Infrastructure",
     ],
-    image: "/placeholder.svg?height=600&width=800",
+    image: CONSTANT.images.businessCategories.corporate,
     metaDescription:
       "Enterprise-grade digital solutions for Saudi corporations including custom software development and digital transformation.",
     keywords: [
@@ -58,8 +71,13 @@ export const businessCategories: BusinessCategory[] = [
     icon: Briefcase,
     description:
       "Affordable digital solutions for SMBs in Saudi Arabia, helping you establish an online presence and streamline your operations.",
-    services: ["Business Website Development", "E-Invoicing Solutions", "Social Media Management", "Local SEO"],
-    image: "/placeholder.svg?height=600&width=800",
+    services: [
+      "Business Website Development",
+      "E-Invoicing Solutions",
+      "Social Media Management",
+      "Local SEO",
+    ],
+    image: CONSTANT.images.businessCategories.smb,
     metaDescription:
       "Affordable digital solutions for small and medium businesses in Saudi Arabia, from websites to e-invoicing and local SEO.",
     keywords: [
@@ -81,7 +99,7 @@ export const businessCategories: BusinessCategory[] = [
       "Student Portals",
       "Online Course Platforms",
     ],
-    image: "/placeholder.svg?height=600&width=800",
+    image: CONSTANT.images.businessCategories.education,
     metaDescription:
       "Digital solutions for Saudi educational institutions including learning management systems and student portals.",
     keywords: [
@@ -103,7 +121,7 @@ export const businessCategories: BusinessCategory[] = [
       "Patient Portals",
       "Medical Practice Management",
     ],
-    image: "/placeholder.svg?height=600&width=800",
+    image: CONSTANT.images.businessCategories.healthcare,
     metaDescription:
       "Digital healthcare solutions for Saudi medical providers including appointment systems and patient portals.",
     keywords: [
@@ -125,7 +143,7 @@ export const businessCategories: BusinessCategory[] = [
       "Supply Chain Optimization",
       "Industrial Automation",
     ],
-    image: "/placeholder.svg?height=600&width=800",
+    image: CONSTANT.images.businessCategories.manufacturing,
     metaDescription:
       "Digital solutions for Saudi manufacturing businesses including inventory management and supply chain optimization.",
     keywords: [
@@ -135,5 +153,4 @@ export const businessCategories: BusinessCategory[] = [
       "manufacturing digital solutions",
     ],
   },
-]
-
+];

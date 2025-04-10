@@ -1,3 +1,5 @@
+import { CONSTANT } from "@/config/constants";
+
 export interface FeatureDetail {
   title: string;
   subtitle: string;
@@ -24,7 +26,7 @@ export const featureDetails: Record<string, FeatureDetail> = {
   performance: {
     title: "Fast Performance",
     subtitle: "Lightning-fast digital experiences for Saudi businesses",
-    heroImage: "/placeholder.svg?height=600&width=800",
+    heroImage: CONSTANT.images.feature.performance,
     overview:
       "Our Fast Performance feature ensures your digital platforms load quickly and operate smoothly, providing an exceptional user experience that keeps customers engaged and satisfied.",
     benefits: [
@@ -97,7 +99,7 @@ export const featureDetails: Record<string, FeatureDetail> = {
   security: {
     title: "Secure Solutions",
     subtitle: "Enterprise-grade security for Saudi businesses",
-    heroImage: "/placeholder.svg?height=600&width=800",
+    heroImage: CONSTANT.images.feature.security,
     overview:
       "Our Secure Solutions feature provides comprehensive protection for your digital assets, ensuring compliance with Saudi regulations while safeguarding sensitive data from increasingly sophisticated cyber threats.",
     benefits: [
@@ -167,7 +169,7 @@ export const featureDetails: Record<string, FeatureDetail> = {
   responsive: {
     title: "Mobile Responsive",
     subtitle: "Seamless experiences across all devices",
-    heroImage: "/placeholder.svg?height=600&width=800",
+    heroImage: CONSTANT.images.feature.responsive,
     overview:
       "Our Mobile Responsive feature ensures your digital platforms look and function perfectly on all devices, from desktop computers to smartphones, providing a consistent and optimized experience for all users.",
     benefits: [
@@ -239,7 +241,7 @@ export const featureDetails: Record<string, FeatureDetail> = {
   "local-expertise": {
     title: "Local Expertise",
     subtitle: "Deep understanding of the Saudi market",
-    heroImage: "/placeholder.svg?height=600&width=800",
+    heroImage: CONSTANT.images.feature.localExpertise,
     overview:
       "Our Local Expertise feature provides you with insights and solutions specifically tailored to the Saudi market, ensuring cultural relevance, regulatory compliance, and alignment with local business practices.",
     benefits: [
@@ -313,7 +315,7 @@ export const featureDetails: Record<string, FeatureDetail> = {
   growth: {
     title: "Growth Focused",
     subtitle: "Strategic solutions for business expansion",
-    heroImage: "/placeholder.svg?height=600&width=800",
+    heroImage: CONSTANT.images.feature.growth,
     overview:
       "Our Growth Focused feature provides strategic digital solutions designed to help your Saudi business expand, attract new customers, and increase revenue through data-driven optimization and scalable architecture.",
     benefits: [
@@ -386,7 +388,7 @@ export const featureDetails: Record<string, FeatureDetail> = {
   timely: {
     title: "Timely Delivery",
     subtitle: "Reliable project execution and delivery",
-    heroImage: "/placeholder.svg?height=600&width=800",
+    heroImage: CONSTANT.images.feature.timely,
     overview:
       "Our Timely Delivery feature ensures your digital projects are completed on schedule and within budget, with transparent communication throughout the process and rigorous project management methodologies.",
     benefits: [

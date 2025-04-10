@@ -12,7 +12,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { blogPosts } from "@/data/blog-posts";
+import { getBlogs } from "@/data/blog-posts";
 import { toast } from "@/hooks/use-toast";
 import { Link } from "@/i18n/routing";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -126,6 +126,7 @@ export default function BlogPostClient({ post, locale, schema }) {
   }, [headings]);
 
   // Find previous and next posts
+  const blogPosts = getBlogs(locale);
   const currentIndex = blogPosts.findIndex((p) => p.slug === post.slug);
   const prevPost = currentIndex > 0 ? blogPosts[currentIndex - 1] : null;
   const nextPost =

@@ -22,6 +22,7 @@ export const routing = defineRouting({
     "/terms-of-service": "/terms-of-service",
     "/legal": "/legal",
     "/:path*": "/:path*",
+    "/services/:id": "/services/:id",
     "/pathnames": {
       en: "/pathnames",
       bn: "/pfadnamen",

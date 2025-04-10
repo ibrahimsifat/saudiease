@@ -1,3 +1,5 @@
+import { CONSTANT } from "@/config/constants";
+
 export interface FeatureDetail {
   title: string;
   subtitle: string;
@@ -24,7 +26,7 @@ export const featureDetails: Record<string, FeatureDetail> = {
   performance: {
     title: "দ্রুত পারফরম্যান্স",
     subtitle: "সৌদি ব্যবসার জন্য বিদ্যুতের গতির ডিজিটাল অভিজ্ঞতা",
-    heroImage: "/placeholder.svg?height=600&width=800",
+    heroImage: CONSTANT.images.feature.performance,
     overview:
       "আমাদের দ্রুত পারফরম্যান্স ফিচারটি নিশ্চিত করে যে আপনার ডিজিটাল প্ল্যাটফর্মগুলি দ্রুত লোড হয় এবং সুষমভাবে কাজ করে, যা গ্রাহকদেরকে সন্তুষ্ট এবং নিযুক্ত রাখে।",
     benefits: [
@@ -97,7 +99,7 @@ export const featureDetails: Record<string, FeatureDetail> = {
   security: {
     title: "নিরাপদ সমাধান",
     subtitle: "সৌদি ব্যবসার জন্য এন্টারপ্রাইজ-গ্রেড নিরাপত্তা",
-    heroImage: "/placeholder.svg?height=600&width=800",
+    heroImage: CONSTANT.images.feature.security,
     overview:
       "আমাদের নিরাপদ সমাধান ফিচারটি আপনার ডিজিটাল সম্পদগুলির জন্য ব্যাপক সুরক্ষা প্রদান করে, সৌদি প্রবিধান মেনে চলার সময় ক্রমবর্ধমান পরিশীলিত সাইবার হুমকি থেকে সংবেদনশীল ডেটা সুরক্ষিত করে।",
     benefits: [
@@ -169,7 +171,7 @@ export const featureDetails: Record<string, FeatureDetail> = {
   responsive: {
     title: "মোবাইল রেসপন্সিভ",
     subtitle: "সকল ডিভাইসে নিরবচ্ছিন্ন অভিজ্ঞতা",
-    heroImage: "/placeholder.svg?height=600&width=800",
+    heroImage: CONSTANT.images.feature.responsive,
     overview:
       "আমাদের মোবাইল রেসপন্সিভ ফিচারটি নিশ্চিত করে যে আপনার ডিজিটাল প্ল্যাটফর্মগুলি ডেস্কটপ কম্পিউটার থেকে স্মার্টফোন পর্যন্ত সকল ডিভাইসে নিখুঁতভাবে দেখায় এবং কাজ করে, সকল ব্যবহারকারীর জন্য একটি সামঞ্জস্যপূর্ণ এবং অপ্টিমাইজড অভিজ্ঞতা প্রদান করে।",
     benefits: [
@@ -243,7 +245,7 @@ export const featureDetails: Record<string, FeatureDetail> = {
   "local-expertise": {
     title: "স্থানীয় দক্ষতা",
     subtitle: "সৌদি বাজারের গভীর বোঝাপড়া",
-    heroImage: "/placeholder.svg?height=600&width=800",
+    heroImage: CONSTANT.images.feature.localExpertise,
     overview:
       "আমাদের স্থানীয় দক্ষতা ফিচারটি আপনাকে সৌদি বাজারের জন্য বিশেষভাবে উপযোগী অন্তর্দৃষ্টি এবং সমাধান প্রদান করে, যা সাংস্কৃতিক প্রাসঙ্গিকতা, নিয়ন্ত্রক সম্মতি এবং স্থানীয় ব্যবসায়িক অনুশীলনের সাথে সামঞ্জস্য নিশ্চিত করে।",
     benefits: [
@@ -316,7 +318,7 @@ export const featureDetails: Record<string, FeatureDetail> = {
   growth: {
     title: "বৃদ্ধি-কেন্দ্রিক",
     subtitle: "ব্যবসা সম্প্রসারণের জন্য কৌশলগত সমাধান",
-    heroImage: "/placeholder.svg?height=600&width=800",
+    heroImage: CONSTANT.images.feature.growth,
     overview:
       "আমাদের বৃদ্ধি-কেন্দ্রিক ফিচারটি কৌশলগত ডিজিটাল সমাধান প্রদান করে যা আপনার সৌদি ব্যবসাকে প্রসারিত করতে, নতুন গ্রাহক আকর্ষণ করতে এবং ডেটা-চালিত অপ্টিমাইজেশন এবং স্কেলযোগ্য আর্কিটেকচারের মাধ্যমে রাজস্ব বৃদ্ধি করতে সাহায্য করে।",
     benefits: [
@@ -389,7 +391,7 @@ export const featureDetails: Record<string, FeatureDetail> = {
   timely: {
     title: "সময়মত বিতরণ",
     subtitle: "নির্ভরযোগ্য প্রকল্প নির্বাহ এবং বিতরণ",
-    heroImage: "/placeholder.svg?height=600&width=800",
+    heroImage: CONSTANT.images.feature.timely,
     overview:
       "আমাদের সময়মত বিতরণ ফিচারটি নিশ্চিত করে যে আপনার ডিজিটাল প্রকল্পগুলি সময়সূচী এবং বাজেটের মধ্যে সম্পন্ন হয়, প্রক্রিয়া জুড়ে স্বচ্ছ যোগাযোগ এবং কঠোর প্রকল্প ব্যবস্থাপনা পদ্ধতির সাথে।",
     benefits: [

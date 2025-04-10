@@ -10,6 +10,7 @@ import Partners from "@/components/about/partners";
 import TeamSection from "@/components/about/team-section";
 import Testimonials from "@/components/about/testimonials";
 import Timeline from "@/components/about/timeline";
+import { CONSTANT } from "@/config/constants";
 import { Locale } from "@/config/i18n";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
@@ -35,7 +36,7 @@ export async function generateMetadata({
       description: t("ogDescription"),
       images: [
         {
-          url: "/placeholder.svg?height=630&width=1200",
+          url: CONSTANT.images.logo.en,
           width: 1200,
           height: 630,
           alt: t("ogImageAlt"),

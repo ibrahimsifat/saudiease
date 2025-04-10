@@ -8,9 +8,9 @@ export async function generateMetadata({
 }: {
   params: { id: string; locale: Locale };
 }): Promise<Metadata> {
-  const { locale } = await params;
+  const { locale, id } = await params;
   const serviceDetails = getServiceDetails(locale);
-  const service = serviceDetails[params.id];
+  const service = serviceDetails[id];
 
   if (!service) {
     return {

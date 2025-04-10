@@ -2,10 +2,12 @@
 
 import { Button } from "@/components/ui/button";
 import { CONSTANT } from "@/config/constants";
-import { features } from "@/data/features";
+import { Locale } from "@/config/i18n";
+import { getFeatures } from "@/data/features";
+import { Feature } from "@/data/features/en";
 import { Link } from "@/i18n/routing";
 import { useScroll, useTransform } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { memo, useRef } from "react";
@@ -21,7 +23,7 @@ const MotionSection = dynamic(
 );
 
 // Memoized Feature Card Component
-const FeatureCard = memo(({ feature, t }) => {
+const FeatureCard = memo(({ feature, t }: { feature: Feature; t: any }) => {
   return (
     <MotionDiv
       initial={{ opacity: 0, y: 20 }}
@@ -92,7 +94,8 @@ export default function FeaturesShowcase() {
   });
 
   const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
-
+  const locale = useLocale();
+  const features = getFeatures(locale as Locale);
   return (
     <MotionSection
       ref={containerRef}

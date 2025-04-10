@@ -3674,5 +3674,57 @@
       "minLength": "يجب أن يكون على الأقل {min} أحرف",
       "maxLength": "يجب ألا يتجاوز {max} أحرف"
     }
+  },
+  "BusinessCategories": {
+    "header": {
+      "tagline": "حلول الصناعة السعودية",
+      "title": {
+        "part1": "مصممة خصيصًا لـ",
+        "part2": "الصناعات السعودية"
+      },
+      "description": "نحن نتفهم التحديات والفرص الفريدة عبر مختلف القطاعات التجارية السعودية. تم تصميم حلولنا لتلبية المتطلبات الخاصة بالصناعة ومعايير الامتثال، مما يساعد الشركات على الازدهار في الاقتصاد الديناميكي للمملكة."
+    },
+    "stats": {
+      "satisfaction": "رضا العملاء",
+      "industries": "قطاعات خدمناها",
+      "projects": "مشاريع مكتملة",
+      "experience": "سنوات خبرة"
+    },
+    "category": {
+      "solutions": "حلول {category}",
+      "insights": "رؤى الصناعة",
+      "marketSize": "حجم السوق",
+      "growthRate": "معدل النمو",
+      "yoy": "سنويًا",
+      "marketValues": {
+        "retail": "375 مليار ريال",
+        "healthcare": "185 مليار ريال",
+        "manufacturing": "420 مليار ريال",
+        "finance": "510 مليار ريال",
+        "government": "290 مليار ريال",
+        "education": "150 مليار ريال",
+        "default": "+200 مليار ريال"
+      },
+      "growthValues": {
+        "retail": "8.5%",
+        "healthcare": "12.3%",
+        "manufacturing": "7.2%",
+        "finance": "9.1%",
+        "government": "5.4%",
+        "education": "11.7%",
+        "default": "+8.0%"
+      }
+    },
+    "buttons": {
+      "getStarted": "ابدأ الآن",
+      "learnMore": "تعرف أكثر"
+    },
+    "visionCard": {
+      "title": "محاذاة مع رؤية 2030",
+      "description": "تدعم حلولنا لـ {category} أهداف رؤية السعودية 2030 من خلال تعزيز الكفاءة والتحول الرقمي والنمو المستدام."
+    },
+    "badge": {
+      "certified": "معتمد سعوديًا"
+    }
   }
 }

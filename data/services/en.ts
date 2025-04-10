@@ -1,3 +1,4 @@
+import { CONSTANT } from "@/config/constants";
 import type { LucideIcon } from "lucide-react";
 import {
   BarChart3,
@@ -5,26 +6,20 @@ import {
   Database,
   FileText,
   Image,
-  Instagram,
   Layers,
-  Mail,
-  MessageSquare,
   Monitor,
   Palette,
   PenTool,
   Printer,
-  Search,
   ShoppingCart,
   Smartphone,
-  TrendingUp,
-  Users,
-  Youtube,
 } from "lucide-react";
 
 export interface Service {
   id: string;
   icon: LucideIcon;
   title: string;
+  image: string;
   description: string;
   longDescription?: string;
   benefits?: string[];
@@ -37,6 +32,7 @@ export const services: Service[] = [
     id: "web-development",
     icon: Monitor,
     title: "Website Development",
+    image: CONSTANT.images.service.webDevelopment,
     description:
       "Custom, responsive websites tailored to your business needs with SEO optimization and seamless user experience.",
     longDescription:
@@ -61,6 +57,7 @@ export const services: Service[] = [
     id: "mobile-app-development",
     icon: Smartphone,
     title: "Mobile App Development",
+    image: CONSTANT.images.service.mobileDevelopment,
     description:
       "Native and cross-platform mobile applications for iOS and Android that extend your business reach to mobile users.",
     longDescription:
@@ -85,6 +82,7 @@ export const services: Service[] = [
     id: "custom-cms-development",
     icon: Code,
     title: "Custom CMS Development",
+    image: CONSTANT.images.service.customCmsDevelopment,
     description:
       "Tailor-made content management systems that give you complete control over your digital content with Arabic language support.",
     longDescription:
@@ -109,6 +107,7 @@ export const services: Service[] = [
     id: "e-commerce-solutions",
     icon: ShoppingCart,
     title: "E-commerce Solutions",
+    image: CONSTANT.images.service.eCommerceSolutions,
     description:
       "Comprehensive online store development with secure payment gateways, inventory management, and Saudi shipping integration.",
     longDescription:
@@ -133,6 +132,7 @@ export const services: Service[] = [
     id: "api-development",
     icon: Database,
     title: "API Development & Integration",
+    image: CONSTANT.images.service.apiDevelopment,
     description:
       "Custom API development and third-party system integration to connect your business systems seamlessly.",
     longDescription:
@@ -157,6 +157,7 @@ export const services: Service[] = [
     id: "e-invoicing",
     icon: FileText,
     title: "E-Invoicing & Accounts",
+    image: CONSTANT.images.service.eInvoicing,
     description:
       "ZATCA-compliant electronic invoicing solutions and seamless account management for Saudi businesses.",
     longDescription:
@@ -181,6 +182,7 @@ export const services: Service[] = [
     id: "logo-design",
     icon: PenTool,
     title: "Logo Design",
+    image: CONSTANT.images.service.logoDesign,
     description:
       "Professional, memorable logo design that captures your brand essence and resonates with Saudi audiences.",
     longDescription:
@@ -205,6 +207,7 @@ export const services: Service[] = [
     id: "brand-identity",
     icon: Layers,
     title: "Brand Identity Design",
+    image: CONSTANT.images.service.brandIdentity,
     description:
       "Comprehensive brand identity development including logo, color palette, typography, and brand guidelines.",
     longDescription:
@@ -229,6 +232,7 @@ export const services: Service[] = [
     id: "corporate-profile",
     icon: Palette,
     title: "Corporate Profile Design",
+    image: CONSTANT.images.service.corporateProfile,
     description:
       "Impressive corporate profiles and company brochures that showcase your business professionally to Saudi stakeholders.",
     longDescription:
@@ -253,6 +257,7 @@ export const services: Service[] = [
     id: "ui-ux-design",
     icon: Image,
     title: "UI/UX Design",
+    image: CONSTANT.images.service.uiUxDesign,
     description:
       "User-centered interface and experience design that enhances usability and engagement for Saudi users.",
     longDescription:
@@ -277,6 +282,7 @@ export const services: Service[] = [
     id: "print-design",
     icon: Printer,
     title: "Print Design",
+    image: CONSTANT.images.service.printDesign,
     description:
       "High-quality print materials including brochures, business cards, and marketing collateral with bilingual support.",
     longDescription:
@@ -301,6 +307,7 @@ export const services: Service[] = [
     id: "digital-marketing",
     icon: BarChart3,
     title: "Digital Marketing",
+    image: CONSTANT.images.service.digitalMarketing,
     description:
       "Comprehensive digital marketing strategies that increase your online visibility and drive growth in the Saudi market.",
     longDescription:
@@ -318,174 +325,6 @@ export const services: Service[] = [
       "Social media marketing",
       "Content marketing",
       "Email marketing campaigns",
-    ],
-    category: "marketing",
-  },
-  {
-    id: "seo-services",
-    icon: Search,
-    title: "SEO Services",
-    description:
-      "Specialized search engine optimization for Saudi businesses to improve rankings on Google and local search engines.",
-    longDescription:
-      "Our SEO services are tailored specifically for the Saudi market, helping your business rank higher in local and international search results. We implement proven strategies that drive organic traffic and increase conversions.",
-    benefits: [
-      "Improved search engine rankings",
-      "Increased organic traffic",
-      "Enhanced online visibility",
-      "Higher quality leads",
-      "Long-term sustainable results",
-    ],
-    features: [
-      "Keyword research and optimization",
-      "On-page and off-page SEO",
-      "Technical SEO audits",
-      "Local SEO for Saudi market",
-      "Regular performance reporting",
-    ],
-    category: "marketing",
-  },
-  {
-    id: "social-media-marketing",
-    icon: Instagram,
-    title: "Social Media Marketing",
-    description:
-      "Strategic social media campaigns that build engagement with Saudi audiences across popular platforms.",
-    longDescription:
-      "We develop and execute social media strategies that connect your brand with Saudi audiences on platforms like Twitter, Instagram, Snapchat, and LinkedIn. Our campaigns build engagement, increase followers, and drive conversions.",
-    benefits: [
-      "Increased brand awareness",
-      "Improved audience engagement",
-      "Enhanced customer loyalty",
-      "Direct communication channel",
-      "Targeted advertising opportunities",
-    ],
-    features: [
-      "Platform-specific strategy",
-      "Content creation and curation",
-      "Community management",
-      "Paid social campaigns",
-      "Performance analytics",
-    ],
-    category: "marketing",
-  },
-  {
-    id: "email-marketing",
-    icon: Mail,
-    title: "Email Marketing",
-    description:
-      "Targeted email campaigns that nurture leads and build customer relationships with Saudi audiences.",
-    longDescription:
-      "Our email marketing services help Saudi businesses build and maintain relationships with customers through personalized, targeted campaigns. We create engaging content that drives opens, clicks, and conversions.",
-    benefits: [
-      "Direct communication with customers",
-      "Highly measurable results",
-      "Increased customer retention",
-      "Cost-effective marketing channel",
-      "Personalized customer engagement",
-    ],
-    features: [
-      "Campaign strategy development",
-      "Email template design",
-      "List segmentation and management",
-      "Automated email sequences",
-      "Performance tracking and optimization",
-    ],
-    category: "marketing",
-  },
-  {
-    id: "content-marketing",
-    icon: MessageSquare,
-    title: "Content Marketing",
-    description:
-      "Strategic content creation and distribution that establishes your authority in the Saudi market.",
-    longDescription:
-      "We create and distribute valuable, relevant content that attracts and engages your target audience in Saudi Arabia. Our content marketing strategies build brand authority, drive traffic, and generate leads.",
-    benefits: [
-      "Established industry authority",
-      "Improved search engine rankings",
-      "Increased website traffic",
-      "Enhanced customer trust",
-      "Long-term marketing asset creation",
-    ],
-    features: [
-      "Content strategy development",
-      "Blog and article writing",
-      "Infographic creation",
-      "Ebook and whitepaper development",
-      "Content distribution",
-    ],
-    category: "marketing",
-  },
-  {
-    id: "video-marketing",
-    icon: Youtube,
-    title: "Video Marketing",
-    description:
-      "Compelling video content that engages Saudi audiences and drives brand awareness across digital channels.",
-    longDescription:
-      "Our video marketing services create compelling visual content that resonates with Saudi audiences. We develop and distribute videos that tell your brand story, showcase products, and drive engagement across digital channels.",
-    benefits: [
-      "Increased engagement rates",
-      "Enhanced message retention",
-      "Improved conversion rates",
-      "Stronger emotional connection",
-      "Versatile content for multiple platforms",
-    ],
-    features: [
-      "Video strategy development",
-      "Professional video production",
-      "Animation and motion graphics",
-      "YouTube channel optimization",
-      "Video advertising campaigns",
-    ],
-    category: "marketing",
-  },
-  {
-    id: "marketing-analytics",
-    icon: TrendingUp,
-    title: "Marketing Analytics",
-    description:
-      "Comprehensive data analysis and reporting to optimize your marketing performance in the Saudi market.",
-    longDescription:
-      "Our marketing analytics services provide deep insights into your marketing performance, helping you make data-driven decisions. We track, analyze, and report on key metrics to continuously optimize your marketing efforts.",
-    benefits: [
-      "Data-driven decision making",
-      "Improved marketing ROI",
-      "Clear performance visibility",
-      "Identified improvement opportunities",
-      "Optimized marketing budget allocation",
-    ],
-    features: [
-      "Custom dashboard development",
-      "Multi-channel tracking",
-      "Conversion funnel analysis",
-      "Competitor benchmarking",
-      "Regular performance reporting",
-    ],
-    category: "marketing",
-  },
-  {
-    id: "influencer-marketing",
-    icon: Users,
-    title: "Influencer Marketing",
-    description:
-      "Strategic partnerships with Saudi influencers to amplify your brand message and reach targeted audiences.",
-    longDescription:
-      "We connect your brand with relevant Saudi influencers to expand your reach and build credibility. Our influencer marketing strategies identify the right partners, develop authentic campaigns, and measure real impact.",
-    benefits: [
-      "Expanded audience reach",
-      "Enhanced brand credibility",
-      "Authentic content creation",
-      "Increased social engagement",
-      "Access to niche markets",
-    ],
-    features: [
-      "Influencer identification and vetting",
-      "Campaign strategy development",
-      "Content collaboration",
-      "Performance tracking",
-      "ROI measurement",
     ],
     category: "marketing",
   },

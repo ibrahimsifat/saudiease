@@ -1,3 +1,5 @@
+import { CONSTANT } from "@/config/constants";
+
 export interface FeatureDetail {
   title: string;
   subtitle: string;
@@ -24,7 +26,7 @@ export const featureDetails: Record<string, FeatureDetail> = {
   performance: {
     title: "أداء سريع",
     subtitle: "تجارب رقمية فائقة السرعة للشركات السعودية",
-    heroImage: "/placeholder.svg?height=600&width=800",
+    heroImage: CONSTANT.images.feature.performance,
     overview:
       "تضمن ميزة الأداء السريع لدينا تحميل منصاتك الرقمية بسرعة وسلاسة، مما يوفر تجربة مستخدم استثنائية تحافظ على تفاعل العملاء ورضاهم.",
     benefits: [
@@ -93,7 +95,7 @@ export const featureDetails: Record<string, FeatureDetail> = {
   security: {
     title: "حلول آمنة",
     subtitle: "أمان على مستوى المؤسسات للشركات السعودية",
-    heroImage: "/placeholder.svg?height=600&width=800",
+    heroImage: CONSTANT.images.feature.security,
     overview:
       "توفر ميزة الحلول الآمنة لدينا حماية شاملة لأصولك الرقمية، مما يضمن الامتثال للوائح السعودية مع حماية البيانات الحساسة من التهديدات الإلكترونية المتطورة.",
     benefits: [
@@ -162,7 +164,7 @@ export const featureDetails: Record<string, FeatureDetail> = {
   responsive: {
     title: "تصميم متجاوب",
     subtitle: "تجارب سلسة عبر جميع الأجهزة",
-    heroImage: "/placeholder.svg?height=600&width=800",
+    heroImage: CONSTANT.images.feature.responsive,
     overview:
       "تضمن ميزة التصميم المتجاوب لدينا أن تبدو منصاتك الرقمية وتعمل بشكل مثالي على جميع الأجهزة، من أجهزة الكمبيوتر المكتبية إلى الهواتف الذكية، مما يوفر تجربة متسقة ومحسنة لجميع المستخدمين.",
     benefits: [
@@ -231,7 +233,7 @@ export const featureDetails: Record<string, FeatureDetail> = {
   "local-expertise": {
     title: "الخبرة المحلية",
     subtitle: "فهم عميق للسوق السعودي",
-    heroImage: "/placeholder.svg?height=600&width=800",
+    heroImage: CONSTANT.images.feature.localExpertise,
     overview:
       "توفر ميزة الخبرة المحلية لدينا رؤى وحلولًا مصممة خصيصًا للسوق السعودي، مما يضمن الملاءمة الثقافية والامتثال التنظيمي والانسجام مع الممارسات التجارية المحلية.",
     benefits: [
@@ -302,7 +304,7 @@ export const featureDetails: Record<string, FeatureDetail> = {
   growth: {
     title: "مركز على النمو",
     subtitle: "حلول استراتيجية لتوسيع الأعمال",
-    heroImage: "/placeholder.svg?height=600&width=800",
+    heroImage: CONSTANT.images.feature.growth,
     overview:
       "توفر ميزة التركيز على النمو لدينا حلولًا رقمية استراتيجية مصممة لمساعدة عملك السعودي على التوسع، وجذب عملاء جدد، وزيادة الإيرادات من خلال التحسين القائم على البيانات والهندسة القابلة للتطوير.",
     benefits: [
@@ -369,7 +371,7 @@ export const featureDetails: Record<string, FeatureDetail> = {
   timely: {
     title: "تسليم في الوقت المحدد",
     subtitle: "تنفيذ وتسليم مشاريع موثوق",
-    heroImage: "/placeholder.svg?height=600&width=800",
+    heroImage: CONSTANT.images.feature.timely,
     overview:
       "تضمن ميزة التسليم في الوقت المحدد لدينا إكمال مشاريعك الرقمية في الموعد المحدد وفي حدود الميزانية، مع تواصل شفاف طوال العملية ومنهجيات إدارة مشاريع صارمة.",
     benefits: [
