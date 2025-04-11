@@ -502,7 +502,7 @@ const HeroSection = () => {
 
             <h1
               className={cn(
-                "text-4xl md:text-5xl lg:text-6xl font-bold text-saudi-black leading-tight",
+                "text-3xl md:text-5xl lg:text-6xl font-bold text-saudi-black leading-tight",
                 isRTL && "text-right"
               )}
             >

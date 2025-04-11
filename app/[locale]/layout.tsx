@@ -154,14 +154,14 @@ export default async function LocaleLayout({
         {/* Google Analytics  */}
         <Script
           strategy="afterInteractive"
-          src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
+          src="https://www.googletagmanager.com/gtag/js?id=G-TF1Y9318JH"
         />
         <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-XXXXXXXXXX', {
+            gtag('config', 'G-TF1Y9318JH', {
               page_path: window.location.pathname,
               cookie_flags: 'SameSite=None;Secure'
             });

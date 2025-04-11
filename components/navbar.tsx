@@ -636,7 +636,7 @@ const NavItem = ({
         >
           {/* Shadow for 3D effect */}
           {isActive && (
-            <div className="absolute -bottom-1 w-full h-2 bg-primary/20 blur-md rounded-full" />
+            <div className="absolute -bottom-1 w-full h-1 bg-primary/20 blur-md rounded-full" />
           )}
 
           {/* The icon */}
