@@ -1,4 +1,5 @@
 import { Locale } from "@/config/i18n";
+import { keywords } from "@/data/keywords";
 import { generatePageMetadata } from "@/lib/seo-utils";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
@@ -16,7 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: t("metadata.title"),
     description: t("metadata.description"),
     path: "/estimator",
-    keywords: t("metadata.keywords"),
+    keywords: keywords[locale as keyof typeof keywords].join(", "),
   });
 }
 

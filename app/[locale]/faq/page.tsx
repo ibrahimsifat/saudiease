@@ -1,11 +1,11 @@
 import { Locale } from "@/config/i18n";
+import { keywords } from "@/data/keywords";
 import { generateFAQSchema, generatePageMetadata } from "@/lib/seo-utils";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import Script from "next/script";
 import { Suspense } from "react";
 import FAQPageClient from "./FAQPageClient";
-
 type Props = {
   params: { locale: Locale };
 };
@@ -18,6 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: t("metadata.title"),
     description: t("metadata.description"),
     path: `/${locale}/faq`,
+    keywords: keywords[locale as keyof typeof keywords].join(", "),
   });
 }
 

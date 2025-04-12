@@ -34,11 +34,13 @@ export default function ServiceDetailClient({
   const isRtl = localeMetadata[locale].dir === "rtl";
   const serviceDetails = getServiceDetails(locale);
   const serviceDetail = serviceDetails[id];
+
   const services = getServices(locale);
   // Get related services
-  const relatedServicesData = serviceDetail.relatedServices
+  const relatedServicesData = serviceDetail?.relatedServices
     .map((id: string) => services.find((service) => service.id === id))
     .filter(Boolean);
+
   // Get Lucide icons dynamically
   const getIcon = (iconName: string) => {
     const Icon = (LucideIcons as any)[iconName] || LucideIcons.HelpCircle;

@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/card";
 import { Locale } from "@/config/i18n";
 import { getFeatures } from "@/data/features/index";
+import { keywords } from "@/data/keywords";
 import { Link } from "@/i18n/routing";
 import { generateWebsiteSchema } from "@/lib/schema";
 import { ArrowRight, CheckCircle } from "lucide-react";
@@ -26,6 +27,7 @@ export async function generateMetadata({
   return {
     title: t("title"),
     description: t("description"),
+    keywords: keywords[locale as keyof typeof keywords].join(", "),
     openGraph: {
       title: t("title"),
       description: t("description"),

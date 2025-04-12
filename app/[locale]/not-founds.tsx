@@ -1,6 +1,7 @@
 "use client";
 
 import type { Locale } from "@/config/i18n";
+import { keywords } from "@/data/keywords";
 import { Link } from "@/i18n/routing";
 import { getTranslations } from "@/lib/get-translation-namespace";
 import { ArrowLeft } from "lucide-react";
@@ -11,13 +12,15 @@ export async function generateMetadata({
 }: {
   params: { locale: Locale };
 }) {
-  const t = await getTranslations(params.locale, "notFound");
+  const { locale } = await params;
+  const t = await getTranslations(locale, "notFound");
 
   return {
     title: t.title || "Page Not Found | Saudi Ease",
     description:
       t.description ||
       "The page you are looking for does not exist or has been moved.",
+    keywords: keywords[locale as keyof typeof keywords].join(", "),
   };
 }
 

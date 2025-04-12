@@ -12,6 +12,7 @@ import Testimonials from "@/components/about/testimonials";
 import Timeline from "@/components/about/timeline";
 import { CONSTANT } from "@/config/constants";
 import { Locale } from "@/config/i18n";
+import { keywords } from "@/data/keywords";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
@@ -31,6 +32,7 @@ export async function generateMetadata({
   return {
     title: t("title"),
     description: t("description"),
+    keywords: keywords[locale as keyof typeof keywords].join(", "),
     openGraph: {
       title: t("ogTitle"),
       description: t("ogDescription"),

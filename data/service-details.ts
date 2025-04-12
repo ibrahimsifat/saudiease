@@ -1,6 +1,4 @@
-import type { Service } from "./services";
-
-export interface ServiceDetail extends Service {
+export interface ServiceDetail {
   id: string;
   icon: any;
   title: string;

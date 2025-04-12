@@ -16,7 +16,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { motion } from "framer-motion";
 import { AlertCircle, CheckCircle, Send } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { useInView } from "react-intersection-observer";
@@ -25,7 +25,7 @@ export default function ContactForm() {
     threshold: 0.1,
     triggerOnce: true,
   });
-
+  const locale = useLocale();
   // Get translations
   const t = useTranslations("contact.form");
   const { executeRecaptcha } = useGoogleReCaptcha();
@@ -155,30 +155,68 @@ export default function ContactForm() {
     }
   };
 
-  const services = [
-    "Website Development",
-    "E-Commerce Solutions",
-    "Mobile App Development",
-    "E-Invoicing Systems",
-    "Graphic Design & Branding",
-    "Digital Marketing",
-    "Other",
-  ];
+  const services = {
+    en: [
+      "Website Development",
+      "E-Commerce Solutions",
+      "Mobile App Development",
+      "E-Invoicing Systems",
+      "Graphic Design & Branding",
+      "Digital Marketing",
+      "Other",
+    ],
+    ar: [
+      "تطوير المواقع الإلكترونية",
+      "حلول التجارة الإلكترونية",
+      "تطوير تطبيقات الجوال",
+      "أنظمة الفوترة الإلكترونية",
+      "تصميم الجرافيك والعلامات التجارية",
+      "التسويق الرقمي",
+      "أخرى",
+    ],
+    bn: [
+      "ওয়েবসাইট ডেভেলপমেন্ট",
+      "ই-কমার্স সল্যুশন",
+      "মোবাইল অ্যাপ ডেভেলপমেন্ট",
+      "ইনভয়েসিং সিস্টেম",
+      "গ্রাফিক ডিজাইন ও ব্র্যান্ডিং",
+      "ডিজিটাল মার্কেটিং",
+      "অন্যান্য",
+    ],
+  };
 
-  const budgetRanges = [
-    "SAR 5,000 - 10,000",
-    "SAR 10,000 - 25,000",
-    "SAR 25,000 - 50,000",
-    "SAR 50,000+",
-  ];
+  const budgetRanges = {
+    en: [
+      "SAR 5,000 - 10,000",
+      "SAR 10,000 - 25,000",
+      "SAR 25,000 - 50,000",
+      "SAR 50,000+",
+    ],
+    ar: [
+      "٥٬٠٠٠ - ١٠٬٠٠٠ ريال سعودي",
+      "١٠٬٠٠٠ - ٢٥٬٠٠٠ ريال سعودي",
+      "٢٥٬٠٠٠ - ٥٠٬٠٠٠ ريال سعودي",
+      "أكثر من ٥٠٬٠٠٠ ريال سعودي",
+    ],
+    bn: [
+      "SAR ৫,০০০ - ১০,০০০",
+      "SAR ১০,০০০ - ২৫,০০০",
+      "SAR ২৫,০০০ - ৫০,০০০",
+      "SAR ৫০,০০০+",
+    ],
+  };
 
-  const timeframes = [
-    "Immediately",
-    "1-3 months",
-    "3-6 months",
-    "6+ months",
-    "Not sure yet",
-  ];
+  const timeframes = {
+    en: [
+      "Immediately",
+      "1-3 months",
+      "3-6 months",
+      "6+ months",
+      "Not sure yet",
+    ],
+    ar: ["فورًا", "١-٣ أشهر", "٣-٦ أشهر", "أكثر من ٦ أشهر", "غير متأكد بعد"],
+    bn: ["অবিলম্বে", "১-৩ মাস", "৩-৬ মাস", "৬+ মাস", "এখনও নিশ্চিত নই"],
+  };
 
   return (
     <motion.div
@@ -295,11 +333,13 @@ export default function ContactForm() {
                 <SelectValue placeholder={t("service")} />
               </SelectTrigger>
               <SelectContent>
-                {services.map((service) => (
-                  <SelectItem key={service} value={service}>
-                    {service}
-                  </SelectItem>
-                ))}
+                {services[locale as keyof typeof services].map(
+                  (service: string) => (
+                    <SelectItem key={service} value={service}>
+                      {service}
+                    </SelectItem>
+                  )
+                )}
               </SelectContent>
             </Select>
           </div>
@@ -314,11 +354,13 @@ export default function ContactForm() {
                 <SelectValue placeholder={t("budget")} />
               </SelectTrigger>
               <SelectContent>
-                {budgetRanges.map((range) => (
-                  <SelectItem key={range} value={range}>
-                    {range}
-                  </SelectItem>
-                ))}
+                {budgetRanges[locale as keyof typeof budgetRanges].map(
+                  (range: string) => (
+                    <SelectItem key={range} value={range}>
+                      {range}
+                    </SelectItem>
+                  )
+                )}
               </SelectContent>
             </Select>
           </div>
@@ -333,11 +375,13 @@ export default function ContactForm() {
                 <SelectValue placeholder={t("timeframe")} />
               </SelectTrigger>
               <SelectContent>
-                {timeframes.map((timeframe) => (
-                  <SelectItem key={timeframe} value={timeframe}>
-                    {timeframe}
-                  </SelectItem>
-                ))}
+                {timeframes[locale as keyof typeof timeframes].map(
+                  (timeframe: string) => (
+                    <SelectItem key={timeframe} value={timeframe}>
+                      {timeframe}
+                    </SelectItem>
+                  )
+                )}
               </SelectContent>
             </Select>
           </div>

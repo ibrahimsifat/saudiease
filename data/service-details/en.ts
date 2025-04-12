@@ -1,7 +1,6 @@
 import { CONSTANT } from "@/config/constants";
-import { Service } from "../services";
 
-export interface ServiceDetail extends Service {
+export interface ServiceDetail {
   id: string;
   icon: any;
   title: string;

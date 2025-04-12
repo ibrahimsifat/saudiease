@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import ServicesPageClient from "./ServicesPageClient";
 
+import { keywords } from "@/data/keywords";
 import { getTranslations } from "next-intl/server";
 type Props = {
   params: { locale: Locale };
@@ -20,7 +21,7 @@ export async function generateMetadata({
   return generatePageMetadata({
     title: t("meta.title"),
     description: t("meta.description"),
-    keywords: t("meta.keywords"),
+    keywords: keywords[locale as keyof typeof keywords].join(", "),
     path: `/${locale}/services`,
   });
 }

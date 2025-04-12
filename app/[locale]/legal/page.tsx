@@ -1,4 +1,5 @@
 import { Locale } from "@/config/i18n";
+import { keywords } from "@/data/keywords";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import LegalHubClient from "./LegalHubClient";
@@ -14,6 +15,7 @@ export async function generateMetadata({
   return {
     title: t("title"),
     description: t("description"),
+    keywords: keywords[locale as keyof typeof keywords].join(", "),
   } as Metadata;
 }
 

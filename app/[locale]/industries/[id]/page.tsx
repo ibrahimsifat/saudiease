@@ -1,5 +1,6 @@
 import { Locale } from "@/config/i18n";
 import { getBusinessCategories } from "@/data/business-categories";
+import { keywords } from "@/data/keywords";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import IndustryDetailClient from "./IndustryDetailClient";
@@ -30,10 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       industry: industry.name,
       industryLower: industry.name.toLowerCase(),
     }),
-    keywords: t("keywords", {
-      industry: industry.name,
-      industryLower: industry.name.toLowerCase(),
-    }),
+    keywords: keywords[locale as keyof typeof keywords].join(", "),
   };
 }
 

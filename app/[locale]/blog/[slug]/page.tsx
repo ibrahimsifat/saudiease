@@ -1,11 +1,11 @@
 import { Locale } from "@/config/i18n";
 import { getBlogs } from "@/data/blog-posts/index";
+import { keywords } from "@/data/keywords";
 import { generateBlogPostSchema } from "@/lib/schema";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import BlogPostClient from "./blog-post-client";
-
 type Props = {
   params: {
     slug: string;
@@ -29,6 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${post.title} | ${t("title")}`,
     description: post.excerpt,
+    keywords: keywords[locale as keyof typeof keywords].join(", "),
     openGraph: {
       title: post.title,
       description: post.excerpt,
@@ -56,7 +57,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export async function generateStaticParams({
   params,
 }: Props): Promise<Metadata> {
-  const { locale } = params;
+  const { locale } = await params;
   const blogPosts = getBlogs(locale as Locale);
   return blogPosts.map((post) => ({
     slug: post.slug,
@@ -64,7 +65,7 @@ export async function generateStaticParams({
 }
 
 export default async function BlogPostPage({ params }: Props) {
-  const { slug, locale } = params;
+  const { slug, locale } = await params;
   const blogPosts = getBlogs(locale as Locale);
   const post = blogPosts.find((post) => post.slug === slug);
 

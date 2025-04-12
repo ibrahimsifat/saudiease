@@ -155,11 +155,10 @@ export default function ServicesPageClient({ locale }: { locale: Locale }) {
                           isRtl ? "mr-2 rotate-180" : "ml-2"
                         } h-4 w-4`}
                       />
+                      {/* Bottom border animation */}
+                      {/* <div className="  h-1 w-0 bg-primary absolute bottom-0 left-0 group-hover:w-full transition-all duration-300"></div> */}
                     </div>
                   </div>
-
-                  {/* Bottom border animation */}
-                  <div className="h-1 w-0 bg-primary absolute bottom-0 left-0 group-hover:w-full transition-all duration-300"></div>
                 </Link>
               ))
             ) : (
