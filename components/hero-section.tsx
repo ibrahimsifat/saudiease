@@ -15,6 +15,7 @@ import {
   useTransform,
 } from "framer-motion";
 import {
+  ArrowDown,
   ArrowRight,
   BarChart,
   CheckCircle,
@@ -204,12 +205,40 @@ const HeroSection = () => {
     return () => clearInterval(interval);
   }, []);
 
+  // Scroll indicator animation
+  const scrollIndicatorVariants = {
+    hidden: { opacity: 0, y: -45 },
+    visible: {
+      opacity: scrollY > 100 ? 0 : 1,
+      y: scrollY > 100 ? -20 : 0,
+      transition: { duration: 0.6 },
+    },
+  };
   return (
     <section
       id="home"
       ref={containerRef}
       className="relative pt-8 pb-12 md:pt-16 md:pb-24 overflow-hidden"
     >
+      {/* Scroll indicator */}
+      <motion.div
+        className="fixed bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center z-20"
+        variants={scrollIndicatorVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        {/* <span className="text-sm text-gray-700 mb-2">Scroll to explore</span> */}
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
+          transition={{
+            duration: 1.5,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: "easeInOut",
+          }}
+        >
+          <ArrowDown className="h-5 w-5 text-primary" />
+        </motion.div>
+      </motion.div>
       <AnimatePresence>
         {showVideo && (
           <motion.div
@@ -841,7 +870,7 @@ const HeroSection = () => {
               )}
 
               <OptimizedImage
-                src={CONSTANT.images.hero}
+                src={isRTL ? CONSTANT.images.heroAr : CONSTANT.images.hero}
                 alt={t("heroImageAlt", {
                   defaultMessage:
                     "Digital transformation services for Saudi businesses",

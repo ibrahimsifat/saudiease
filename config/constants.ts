@@ -22,6 +22,7 @@ export const CONSTANT = {
     aboutUs: "/images/about-us.png",
     joinOurTeam: "/images/careers.png",
     hero: "/images/hero.webp",
+    heroAr: "/images/hero-ar.webp",
     homeFeature: "/images/home_features.webp",
     homeIndustryExperts: "/images/industryexpertise.webp",
     author: "/images/author.png",
