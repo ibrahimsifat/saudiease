@@ -171,7 +171,7 @@ export const companyInfoEn: CompanyInfo = {
       },
       {
         platform: "LinkedIn",
-        url: "https://linkedin.com/company/saudiease",
+        url: "https://linkedin.com/company/saudiease0",
         icon: (
           <svg
             className="h-5 w-5"
