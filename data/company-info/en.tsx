@@ -139,7 +139,7 @@ export const companyInfoEn: CompanyInfo = {
     socialMedia: [
       {
         platform: "Facebook",
-        url: "https://facebook.com/saudiease",
+        url: "https://facebook.com/saudiease0",
         icon: (
           <svg
             className="h-5 w-5"
@@ -157,7 +157,7 @@ export const companyInfoEn: CompanyInfo = {
       },
       {
         platform: "Twitter",
-        url: "https://twitter.com/saudiease",
+        url: "https://twitter.com/saudiease0",
         icon: (
           <svg
             className="h-5 w-5"
@@ -189,7 +189,7 @@ export const companyInfoEn: CompanyInfo = {
       },
       {
         platform: "Instagram",
-        url: "https://instagram.com/saudiease",
+        url: "https://instagram.com/saudiease0",
         icon: (
           <svg
             className="h-5 w-5"
