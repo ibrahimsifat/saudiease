@@ -19,6 +19,7 @@ import ClientTestimonialsSection from "@/components/home/testimonialsSection-cli
 import ClientWhyChooseUs from "@/components/home/why-choose-client-section";
 import ServicesSection from "@/components/services-section";
 import TrustedBy from "@/components/trusted-by";
+import EMSProductSection from "@/components/ems-product-section";
 import { LoadingFallback } from "@/components/ui/loading-fallback";
 import { Locale } from "@/config/i18n";
 import { keywords } from "@/data/keywords";
@@ -67,6 +68,8 @@ export default async function Home({ params }: Props) {
       <TrustedBy />
       {/* Services Section */}
       <ServicesSection locale={locale} />
+      {/* EMS Product Section */}
+      <EMSProductSection />
       {/* Why Choose Us Section */}
       <Suspense fallback={<LoadingFallback height="400px" />}>
         <ClientWhyChooseUs />

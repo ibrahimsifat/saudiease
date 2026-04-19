@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "SaudiEase - Digital Solutions for Saudi Businesses",
-    "description": "We provide comprehensive digital solutions tailored for Saudi businesses, helping you thrive in the digital age."
+    "title": "Saudi Ease - Online Solutions for Your Business in Jubail",
+    "description": "Your complete digital partner in Jubail's industrial sector. We handle vendor registration, company branding, ZATCA e-invoicing, workforce management and more for contracting and construction companies."
   },
   "navigation": {
     "home": "Home",
@@ -24,11 +24,11 @@
     "needCustomSolution": "Need a custom solution?"
   },
   "hero": {
-    "leadingDigitalSolutions": "Leading Digital Solutions in Saudi Arabia",
-    "premierDigitalSolutions": "Premier Digital Solutions",
-    "forSaudiBusinesses": "for Saudi Businesses",
-    "vision2030Aligned": "Vision 2030 Aligned",
-    "heroDescription": "We provide comprehensive digital transformation services across Saudi Arabia, helping businesses thrive in the digital landscape with tailored solutions that align with Saudi Vision 2030 and ZATCA compliance requirements.",
+    "leadingDigitalSolutions": "Your Complete Digital Partner in Jubail",
+    "premierDigitalSolutions": "Complete Digital Solutions",
+    "forSaudiBusinesses": "for Industrial Companies",
+    "vision2030Aligned": "Contracting · Construction · Suppliers",
+    "heroDescription": "We handle your entire digital operation — vendor registration, company branding, ZATCA invoicing, workforce management and more. One trusted partner, full solution, zero hassle.",
     "getStarted": "Get Started",
     "exploreServices": "Explore Services",
     "watchVideo": "Watch Video",
@@ -52,6 +52,18 @@
     "testimonial3": "The bilingual branding package they created perfectly captured our company's vision and values. Their understanding of both Arabic and English markets helped us stand out in the competitive Saudi business landscape.",
     "testimonialAuthor3": "Mohammed Al-Harbi",
     "testimonialCompany3": "Gulf Innovations Group"
+  },
+  "ems": {
+    "sectionLabel": "Featured Product",
+    "title": "Employment Management System (EMS)",
+    "description": "The mission-critical workforce management platform for Jubail's industrial sector.",
+    "features": {
+      "attendance": "Workforce Attendance & Management",
+      "timesheet": "Automatic Timesheet Generation",
+      "documents": "Worker Document Storage (Iqama/Muqeem)",
+      "payroll": "Payroll & Invoice Integration"
+    },
+    "cta": "Request a Demo"
   },
 
   "common": {
@@ -109,9 +121,9 @@
     "retailInnovation": "Retail Innovation"
   },
   "services": {
-    "title": "Comprehensive Digital Services",
-    "subtitle": "Our Expertise",
-    "description": "We offer a wide range of digital solutions tailored for Saudi businesses, helping you thrive in the digital age",
+    "title": "Our Specialized Services",
+    "subtitle": "Expertise for the Industrial Sector",
+    "description": "We offer a wide range of digital and documentation services specifically tailored for contracting and construction businesses in Al Jubail.",
     "viewAll": "View All Services",
     "viewDetails": "View Details",
     "categories": {
@@ -871,35 +883,35 @@
     "description": "Our systematic approach ensures efficient delivery of high-quality digital solutions tailored to the Saudi market, with clear communication and transparency at every stage."
   },
   "whyChooseUs": {
-    "sectionLabel": "Why Saudi Businesses Trust Us",
-    "title": "Why Choose Us?",
-    "description": "Saudi Ease delivers exceptional digital solutions with a focus on quality, innovation, and client satisfaction. Our deep understanding of the Saudi market gives us a unique advantage.",
+    "sectionLabel": "Your Complete Digital Partner",
+    "title": "Why Choose Saudi Ease?",
+    "description": "We specialize in the industrial sector of Al Jubail, providing comprehensive digital and document solutions for contracting and construction companies.",
     "feature1": {
-      "title": "Trusted by Saudi Businesses",
-      "description": "We've built a reputation for reliability and excellence across Saudi Arabia.",
-      "benefit1": "Trusted by 200+ Saudi businesses",
-      "benefit2": "95% client retention rate",
-      "benefit3": "Award-winning service quality"
+      "title": "100% KSA Focused",
+      "description": "Our solutions are built specifically for the Saudi Arabian business landscape and local regulations.",
+      "benefit1": "Aramco & SABIC ready",
+      "benefit2": "ZATCA compliant",
+      "benefit3": "MOCI & CR expertise"
     },
     "feature2": {
-      "title": "Saudi-Focused Expertise",
-      "description": "Our deep understanding of the local market ensures solutions tailored to Saudi needs.",
-      "benefit1": "10+ years in the Saudi market",
-      "benefit2": "Compliant with local regulations",
-      "benefit3": "Culturally-aware solutions"
+      "title": "Bilingual AR / EN",
+      "description": "All our products, services, and documentation are provided in both Arabic and English as standard.",
+      "benefit1": "Arabic interface & PDF",
+      "benefit2": "Professional English docs",
+      "benefit3": "Culturally relevant branding"
     },
     "feature3": {
-      "title": "Your Success, Our Priority",
-      "description": "We measure our success by the results we deliver for our clients.",
-      "benefit1": "Dedicated account managers",
-      "benefit2": "24/7 support in Arabic & English",
-      "benefit3": "Transparent reporting"
+      "title": "1 Stop Full Solution",
+      "description": "From company branding to ZATCA invoicing and workforce management — we handle everything in one place.",
+      "benefit1": "Zero hassle operations",
+      "benefit2": "Monthly IT retainers",
+      "benefit3": "Custom software products"
     },
     "stats": {
-      "title": "Our Impact in Numbers",
-      "clients": "Saudi Clients",
-      "retention": "Client Retention",
-      "experience": "Years Experience",
+      "title": "Jubail Industrial Impact",
+      "clients": "Industrial Clients",
+      "retention": "Retention Rate",
+      "experience": "Jubail Based",
       "projects": "Projects Delivered"
     }
   },
@@ -1162,9 +1174,9 @@
     },
     "hero": {
       "title": "About Saudi Ease",
-      "subtitle": "Your Trusted Digital Partner in Saudi Arabia",
-      "description": "Saudi Ease is a leading digital solutions provider dedicated to helping businesses across Saudi Arabia thrive in the digital landscape. With deep local expertise and global standards, we deliver innovative, culturally-aware solutions that drive real business results.",
-      "imageAlt": "Saudi Ease Team"
+      "subtitle": "Your Industrial Digital Partner in Jubail",
+      "description": "Saudi Ease is a specialized digital solutions provider based in Al Jubail Industrial City. We help contracting, construction, and supplier companies handle their entire digital operation with zero hassle.",
+      "imageAlt": "Saudi Ease - Jubail Industrial Digital Partner"
     },
     "ourStory": {
       "title": "Our Story",
@@ -1407,16 +1419,16 @@
     "info": {
       "title": "Contact Information",
       "phone": "Phone",
-      "phoneSupport": "For general inquiries",
+      "phoneSupport": "Ibrahim Sifat",
       "email": "Email",
-      "emailResponse": "We'll respond within 24 hours",
-      "headquarters": "Headquarters",
-      "getDirections": "Get directions",
-      "businessHours": "Business Hours",
+      "emailResponse": "info@saudiease.com",
+      "headquarters": "Jubail Office",
+      "getDirections": "Beside Gulf Asian Medical",
+      "businessHours": "Jubail City Center, 35514",
       "connectWithUs": "Connect With Us",
-      "emergencySupport": "Emergency Support",
-      "emergencyDescription": "For urgent technical issues requiring immediate assistance:",
-      "emergencyAvailability": "Available 24/7 for existing clients"
+      "emergencySupport": "Call Us",
+      "emergencyDescription": "For immediate business solutions and support:",
+      "emergencyAvailability": "055 884 5503"
     },
     "locations": {
       "badge": "Visit Us",

@@ -4,12 +4,12 @@ import type { CompanyInfo } from "./types";
 export const companyInfoEn: CompanyInfo = {
   name: "Saudi Ease",
   logo: CONSTANT.images.logo.en,
-  tagline: "Creative Solutions for Your Needs",
+  tagline: "Your Complete Digital Partner in Jubail",
   mapUrl: "",
   description:
-    "Saudi Ease is a leading digital services provider in Saudi Arabia, dedicated to helping businesses thrive in the digital landscape with tailored solutions for their unique needs. We combine technical expertise with deep understanding of the local market to deliver exceptional results for our clients.",
+    "Saudi Ease is the specialized digital partner for Jubail's industrial sector. We handle vendor registration, company branding, ZATCA e-invoicing, and workforce management for contracting and construction companies.",
   shortDescription:
-    "A leading digital services provider in Saudi Arabia, helping businesses establish a strong online presence and streamline their operations.",
+    "Specialized digital partner for Jubail's industrial sector.",
   mission:
     "To empower Saudi businesses with innovative digital solutions that drive growth and success.",
   vision:
@@ -118,8 +118,8 @@ export const companyInfoEn: CompanyInfo = {
     phone: "+966 558845503",
     email: "info@saudiease.com",
     address: {
-      street: "King Fahd Road, Al Olaya District",
-      city: "Riyadh",
+      street: "Jubail City Center",
+      city: "Al Jubail",
       country: "Saudi Arabia",
     },
     businessHours: [

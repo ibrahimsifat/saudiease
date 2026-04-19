@@ -1,18 +1,17 @@
 import { CONSTANT } from "@/config/constants";
 import type { LucideIcon } from "lucide-react";
 import {
-  BarChart3,
-  Code,
-  Database,
-  FileText,
-  Image,
-  Layers,
   Monitor,
-  Palette,
-  PenTool,
-  Printer,
-  ShoppingCart,
   Smartphone,
+  Palette,
+  UserCheck,
+  ReceiptText,
+  Mail,
+  MapPin,
+  Briefcase,
+  Table,
+  ClipboardList,
+  LifeBuoy,
 } from "lucide-react";
 
 export interface Service {
@@ -29,27 +28,25 @@ export interface Service {
 
 export const services: Service[] = [
   {
-    id: "web-development",
+    id: "website-design-development",
     icon: Monitor,
-    title: "Website Development",
+    title: "Website Design & Development",
     image: CONSTANT.images.service.webDevelopment,
-    description:
-      "Custom, responsive websites tailored to your business needs with SEO optimization and seamless user experience.",
-    longDescription:
-      "Our expert team creates responsive, user-friendly websites that represent your brand perfectly. We focus on creating seamless user experiences that drive conversions and engagement while ensuring your site ranks well in search engines.",
+    description: "Professional sites that win clients and tenders in the industrial sector.",
+    longDescription: "We create high-performance, professional websites specifically designed for contracting and construction companies. Our sites are built to showcase your projects, certifications, and capabilities, helping you win more tenders and clients.",
     benefits: [
-      "Increased online visibility",
-      "Better user engagement",
-      "Higher conversion rates",
-      "Mobile-responsive designs",
-      "Search engine optimized code",
+      "Showcase project portfolios effectively",
+      "Highlight safety and quality certifications",
+      "Win more industrial tenders",
+      "Bilingual (Arabic/English) as standard",
+      "Mobile-friendly for field access"
     ],
     features: [
-      "Custom website design and development",
-      "Content management systems",
-      "E-commerce functionality",
-      "Multilingual support (Arabic/English)",
-      "Website maintenance and support",
+      "Custom industrial-themed design",
+      "Project gallery & case studies",
+      "Career/Hiring portal for workforce",
+      "Bilingual content management",
+      "SEO optimized for local searches"
     ],
     category: "development",
   },
@@ -58,274 +55,210 @@ export const services: Service[] = [
     icon: Smartphone,
     title: "Mobile App Development",
     image: CONSTANT.images.service.mobileDevelopment,
-    description:
-      "Native and cross-platform mobile applications for iOS and Android that extend your business reach to mobile users.",
-    longDescription:
-      "We develop high-performance mobile applications that provide seamless experiences across all devices. Our mobile solutions help Saudi businesses connect with customers on the go, increase engagement, and drive revenue through innovative features.",
+    description: "Custom apps for field teams and industrial management.",
+    longDescription: "Our custom mobile solutions are built for the unique needs of the industrial sector. From tracking workforce attendance on-site to managing equipment and materials, we build apps that improve field efficiency.",
     benefits: [
-      "Expanded customer reach",
-      "Increased brand loyalty",
-      "New revenue streams",
-      "Improved customer engagement",
-      "Competitive advantage in the Saudi market",
+      "Real-time site reporting",
+      "Improved field team coordination",
+      "Offline capabilities for remote sites",
+      "Direct communication with management"
     ],
     features: [
-      "Native iOS and Android development",
-      "Cross-platform solutions (React Native, Flutter)",
-      "UI/UX design optimized for mobile",
-      "Integration with device features",
-      "Ongoing maintenance and updates",
+      "Attendance & GPS tracking",
+      "Site photo/video reporting",
+      "Equipment maintenance logs",
+      "Material request systems"
     ],
     category: "development",
   },
   {
-    id: "custom-cms-development",
-    icon: Code,
-    title: "Custom CMS Development",
-    image: CONSTANT.images.service.customCmsDevelopment,
-    description:
-      "Tailor-made content management systems that give you complete control over your digital content with Arabic language support.",
-    longDescription:
-      "Our custom CMS solutions are built specifically for your business needs, allowing easy management of multilingual content. We create intuitive admin interfaces that empower your team to update content without technical knowledge.",
+    id: "company-profile-branding",
+    icon: Palette,
+    title: "Company Profile & Branding",
+    image: CONSTANT.images.service.brandIdentity,
+    description: "Logo, identity, and brochures designed for the Industrial Sector.",
+    longDescription: "We build a strong, professional identity for your business. For industrial companies, a high-quality company profile is essential for pre-qualification with major clients like Aramco and SABIC.",
     benefits: [
-      "Complete content control",
-      "Streamlined workflows",
-      "Reduced maintenance costs",
-      "Scalable architecture",
-      "Bilingual content management (Arabic/English)",
+      "Look professional to major clients",
+      "Consistent branding across all documents",
+      "Pre-qualification ready company profiles",
+      "Professional image in the market"
     ],
     features: [
-      "User-friendly admin interface",
-      "Custom content types and fields",
-      "Role-based access control",
-      "Workflow automation",
-      "API integration capabilities",
+      "Unique logo design",
+      "Bilingual Company Profile (PDF/Print)",
+      "Letterhead & Business Card design",
+      "Marketing brochures & flyers"
     ],
-    category: "development",
+    category: "design",
   },
   {
-    id: "e-commerce-solutions",
-    icon: ShoppingCart,
-    title: "E-commerce Solutions",
-    image: CONSTANT.images.service.eCommerceSolutions,
-    description:
-      "Comprehensive online store development with secure payment gateways, inventory management, and Saudi shipping integration.",
-    longDescription:
-      "We build powerful e-commerce platforms that help Saudi businesses sell products and services online. Our solutions include integration with local payment gateways, inventory management, and compliance with Saudi e-commerce regulations.",
-    benefits: [
-      "Increased sales opportunities",
-      "Automated business processes",
-      "Expanded market reach",
-      "Enhanced customer experience",
-      "Detailed sales analytics",
-    ],
-    features: [
-      "Responsive product catalogs",
-      "Secure checkout process",
-      "Integration with Saudi payment gateways",
-      "Inventory management",
-      "Order tracking and fulfillment",
-    ],
-    category: "development",
-  },
-  {
-    id: "api-development",
-    icon: Database,
-    title: "API Development & Integration",
+    id: "aramco-sabic-vendor-code",
+    icon: UserCheck,
+    title: "Aramco & SABIC Vendor Code",
     image: CONSTANT.images.service.apiDevelopment,
-    description:
-      "Custom API development and third-party system integration to connect your business systems seamlessly.",
-    longDescription:
-      "We develop robust APIs and integrate third-party systems to create a connected ecosystem for your business. Our integration solutions ensure smooth data flow between different platforms and applications.",
+    description: "Registration support for major industrial clients.",
+    longDescription: "Navigating the registration process for major industrial players like Saudi Aramco (Amana) and SABIC can be complex. We provide expert support to help your company obtain its vendor code and start participating in their ecosystem.",
     benefits: [
-      "Seamless system connectivity",
-      "Automated data exchange",
-      "Improved workflow efficiency",
-      "Enhanced functionality",
-      "Future-proof scalability",
+      "Access to multi-billion riyal tenders",
+      "Official vendor status with KSA giants",
+      "Expert guidance through the paperwork",
+      "Faster registration turnaround"
     ],
     features: [
-      "RESTful API development",
-      "Third-party API integration",
-      "Microservices architecture",
-      "API documentation",
-      "Performance optimization",
+      "Aramco (Amana) registration support",
+      "SABIC vendor code application",
+      "Document collection & verification",
+      "Follow-up with registration portals"
     ],
-    category: "development",
+    category: "consultation",
   },
   {
-    id: "e-invoicing",
-    icon: FileText,
-    title: "E-Invoicing & Accounts",
+    id: "zatca-e-invoicing",
+    icon: ReceiptText,
+    title: "ZATCA E-Invoicing",
     image: CONSTANT.images.service.eInvoicing,
-    description:
-      "ZATCA-compliant electronic invoicing solutions and seamless account management for Saudi businesses.",
-    longDescription:
-      "Our e-invoicing solutions help Saudi businesses comply with ZATCA regulations while streamlining their financial processes. We provide comprehensive account management tools that integrate with your existing systems.",
+    description: "Fatoorah-compliant electronic invoicing setup.",
+    longDescription: "Ensure your company is fully compliant with ZATCA (Fatoorah) regulations. We set up electronic invoicing systems that meet all phase 1 and phase 2 requirements, including XML generation and QR codes.",
     benefits: [
-      "ZATCA compliance",
-      "Reduced paperwork",
-      "Faster payment processing",
-      "Improved cash flow management",
-      "Automated financial reporting",
+      "Avoid heavy non-compliance fines",
+      "Fully compliant with KSA laws",
+      "Automated tax calculations",
+      "Easy audit preparation"
     ],
     features: [
-      "ZATCA-compliant e-invoicing",
-      "Automated invoice generation",
-      "Financial reporting tools",
-      "Integration with accounting software",
-      "Secure payment processing",
+      "Fatoorah Phase 2 integration",
+      "QR Code generation",
+      "ZATCA portal linking",
+      "Bilingual invoices (AR/EN)"
     ],
     category: "finance",
   },
   {
-    id: "logo-design",
-    icon: PenTool,
-    title: "Logo Design",
-    image: CONSTANT.images.service.logoDesign,
-    description:
-      "Professional, memorable logo design that captures your brand essence and resonates with Saudi audiences.",
-    longDescription:
-      "Our logo design process creates distinctive visual identities that represent your brand values and connect with Saudi audiences. We develop logos that work across all platforms while respecting cultural sensitivities.",
+    id: "professional-email-setup",
+    icon: Mail,
+    title: "Professional Email Setup",
+    image: CONSTANT.images.service.customCmsDevelopment,
+    description: "Business email with your own company domain.",
+    longDescription: "Stop using Gmail or Outlook for business. Build trust with clients and vendors by using professional email addresses (e.g., info@yourcompany.com). We handle the setup and management.",
     benefits: [
-      "Instant brand recognition",
-      "Professional market presence",
-      "Consistent brand identity",
-      "Cultural relevance",
-      "Versatile application across media",
+      "Build professional trust",
+      "Separate personal and business mail",
+      "Enhanced security features",
+      "Full control over company data"
     ],
     features: [
-      "Multiple concept designs",
-      "Unlimited revisions",
-      "Vector file formats",
-      "Brand guidelines",
-      "All necessary file formats",
+      "Custom domain (yourcompany.com)",
+      "Google Workspace/Microsoft 365 setup",
+      "Secure cloud storage",
+      "Sync across all devices"
     ],
-    category: "design",
+    category: "it-support",
   },
   {
-    id: "brand-identity",
-    icon: Layers,
-    title: "Brand Identity Design",
-    image: CONSTANT.images.service.brandIdentity,
-    description:
-      "Comprehensive brand identity development including logo, color palette, typography, and brand guidelines.",
-    longDescription:
-      "We create cohesive brand identities that communicate your values and differentiate you in the Saudi market. Our comprehensive approach ensures consistency across all touchpoints and builds a strong brand presence.",
-    benefits: [
-      "Consistent brand presentation",
-      "Increased brand recognition",
-      "Professional market presence",
-      "Clear brand communication",
-      "Strong competitive positioning",
-    ],
-    features: [
-      "Logo design",
-      "Color palette development",
-      "Typography selection",
-      "Brand guidelines documentation",
-      "Stationery design",
-    ],
-    category: "design",
-  },
-  {
-    id: "corporate-profile",
-    icon: Palette,
-    title: "Corporate Profile Design",
-    image: CONSTANT.images.service.corporateProfile,
-    description:
-      "Impressive corporate profiles and company brochures that showcase your business professionally to Saudi stakeholders.",
-    longDescription:
-      "Our corporate profile designs present your business professionally to Saudi stakeholders, investors, and clients. We create compelling visual narratives that highlight your achievements, services, and vision.",
-    benefits: [
-      "Professional company presentation",
-      "Enhanced credibility with stakeholders",
-      "Effective communication of company values",
-      "Impressive marketing material",
-      "Bilingual design capabilities",
-    ],
-    features: [
-      "Print and digital formats",
-      "Professional copywriting",
-      "Custom photography",
-      "Infographic design",
-      "Arabic and English versions",
-    ],
-    category: "design",
-  },
-  {
-    id: "ui-ux-design",
-    icon: Image,
-    title: "UI/UX Design",
-    image: CONSTANT.images.service.uiUxDesign,
-    description:
-      "User-centered interface and experience design that enhances usability and engagement for Saudi users.",
-    longDescription:
-      "Our UI/UX design services create intuitive, engaging digital experiences that meet the expectations of Saudi users. We focus on user research, information architecture, and visual design to maximize usability and satisfaction.",
-    benefits: [
-      "Improved user satisfaction",
-      "Increased conversion rates",
-      "Reduced bounce rates",
-      "Enhanced user engagement",
-      "Culturally appropriate design",
-    ],
-    features: [
-      "User research and personas",
-      "Wireframing and prototyping",
-      "Interactive design",
-      "Usability testing",
-      "Responsive design for all devices",
-    ],
-    category: "design",
-  },
-  {
-    id: "print-design",
-    icon: Printer,
-    title: "Print Design",
-    image: CONSTANT.images.service.printDesign,
-    description:
-      "High-quality print materials including brochures, business cards, and marketing collateral with bilingual support.",
-    longDescription:
-      "We design professional print materials that effectively communicate your message and reinforce your brand identity. Our print designs consider both aesthetic appeal and practical functionality for the Saudi market.",
-    benefits: [
-      "Professional brand representation",
-      "Consistent marketing materials",
-      "Effective communication tools",
-      "Bilingual design capabilities",
-      "High-quality production standards",
-    ],
-    features: [
-      "Business cards and stationery",
-      "Brochures and catalogs",
-      "Posters and banners",
-      "Packaging design",
-      "Exhibition materials",
-    ],
-    category: "design",
-  },
-  {
-    id: "digital-marketing",
-    icon: BarChart3,
-    title: "Digital Marketing",
+    id: "google-business-profile",
+    icon: MapPin,
+    title: "Google Business Profile",
     image: CONSTANT.images.service.digitalMarketing,
-    description:
-      "Comprehensive digital marketing strategies that increase your online visibility and drive growth in the Saudi market.",
-    longDescription:
-      "Our data-driven digital marketing strategies help Saudi businesses reach their target audience effectively. We create comprehensive campaigns across multiple channels to maximize your ROI and brand visibility.",
+    description: "Get found on Maps by industrial clients in Jubail.",
+    longDescription: "Industrial clients often search for local suppliers and contractors on Google Maps. We optimize your business profile to ensure you appear when they search for services in Jubail and surrounding areas.",
     benefits: [
-      "Increased website traffic",
-      "Higher conversion rates",
-      "Better ROI on marketing spend",
-      "Improved brand awareness",
-      "Data-driven marketing decisions",
+      "Appear in local search results",
+      "Get direct calls from clients",
+      "Showcase your location and office",
+      "Build trust through reviews"
     ],
     features: [
-      "Search engine optimization (SEO)",
-      "Pay-per-click (PPC) advertising",
-      "Social media marketing",
-      "Content marketing",
-      "Email marketing campaigns",
+      "Profile creation & optimization",
+      "Google Maps verification",
+      "Photo & project updates",
+      "Review management"
     ],
     category: "marketing",
   },
+  {
+    id: "business-setup-consultation",
+    icon: Briefcase,
+    title: "Business Setup Consultation",
+    image: CONSTANT.images.service.printDesign,
+    description: "CR registration & commercial license guidance.",
+    longDescription: "Planning to start or expand your construction or contracting business? We provide step-by-step guidance on CR registration, MOCI requirements, and obtaining the necessary commercial licenses in Saudi Arabia.",
+    benefits: [
+      "Start your business correctly",
+      "Meet all regulatory requirements",
+      "Avoid registration mistakes",
+      "Expert local knowledge"
+    ],
+    features: [
+      "Commercial Registration (CR) guidance",
+      "MOCI portal support",
+      "Chamber of Commerce registration",
+      "Activity selection advice"
+    ],
+    category: "consultation",
+  },
+  {
+    id: "excel-data-work",
+    icon: Table,
+    title: "Excel & Data Work",
+    image: CONSTANT.images.service.brandIdentity,
+    description: "Reports, trackers, and automated spreadsheets.",
+    longDescription: "We transform your messy data into clear, automated reports and trackers. From payroll calculations to material tracking and project progress reports, we build the Excel tools your team needs.",
+    benefits: [
+      "Save hours on manual reporting",
+      "Accurate payroll and tracking",
+      "Clear visual data (Dashboards)",
+      "Automated calculations"
+    ],
+    features: [
+      "Advanced Excel formulas & VBA",
+      "Automated Payroll spreadsheets",
+      "Project progress trackers",
+      "Dynamic data dashboards"
+    ],
+    category: "data",
+  },
+  {
+    id: "cv-document-preparation",
+    icon: ClipboardList,
+    title: "CV & Document Preparation",
+    image: CONSTANT.images.service.corporateProfile,
+    description: "Professional docs for industrial tenders and hiring.",
+    longDescription: "Industrial tenders often require specific documentation and CV formats. We prepare high-quality, professional documents and CVs for your key staff that meet the standards of major industrial clients.",
+    benefits: [
+      "Increase tender success rate",
+      "Professional staff representation",
+      "Ready-to-submit documentation",
+      "Saves management time"
+    ],
+    features: [
+      "ATS-friendly staff CVs",
+      "Tender response drafting",
+      "Technical proposal formatting",
+      "Policies & Procedures docs"
+    ],
+    category: "consultation",
+  },
+  {
+    id: "it-support-retainer",
+    icon: LifeBuoy,
+    title: "IT Support Retainer",
+    image: CONSTANT.images.service.uiUxDesign,
+    description: "Monthly support — your own IT department.",
+    longDescription: "Don't wait for things to break. Our monthly IT support retainer provides your company with a dedicated team to handle your email, security, website updates, and technical issues — giving you peace of mind.",
+    benefits: [
+      "Fixed monthly cost",
+      "Fast response for tech issues",
+      "Preventive maintenance",
+      "Safe and secure data"
+    ],
+    features: [
+      "Email & Domain management",
+      "Website monthly updates",
+      "Cybersecurity monitoring",
+      "Priority technical support"
+    ],
+    category: "it-support",
+  },
 ];
+
