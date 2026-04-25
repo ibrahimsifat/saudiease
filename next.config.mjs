@@ -1,14 +1,14 @@
 /** @type {import('next').NextConfig} */
 import createNextIntlPlugin from "next-intl/plugin";
 
-const withNextIntl = createNextIntlPlugin();
+const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: [
-      "placeholder.com",
-      "saudiease.com",
-      "hebbkx1anhila5yf.public.blob.vercel-storage.com",
+    remotePatterns: [
+      { hostname: "placeholder.com" },
+      { hostname: "saudiease.com" },
+      { hostname: "hebbkx1anhila5yf.public.blob.vercel-storage.com" },
     ],
     formats: ["image/avif", "image/webp"],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
@@ -17,14 +17,10 @@ const nextConfig = {
   },
   experimental: {
     optimizeCss: true,
-    optimizePackageImports: ["lucide-react", "framer-motion"],
     scrollRestoration: true,
   },
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
   },
   typescript: {
     ignoreBuildErrors: true,
