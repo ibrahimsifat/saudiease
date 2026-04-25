@@ -23,16 +23,41 @@ export async function generateMetadata({
     title: service.pageTitle,
     description: service.metaDescription,
     keywords: service.metaKeywords,
+    alternates: {
+      canonical: `https://saudiease.com/${locale}/services/${id}`,
+      languages: {
+        en: `https://saudiease.com/en/services/${id}`,
+        ar: `https://saudiease.com/ar/services/${id}`,
+        bn: `https://saudiease.com/bn/services/${id}`,
+      },
+    },
     openGraph: {
       title: service.pageTitle,
       description: service.metaDescription,
-      images: [service.heroImage],
+      url: `https://saudiease.com/${locale}/services/${id}`,
+      siteName: "SaudiEase",
+      type: "website",
+      images: [
+        {
+          url: service.heroImage?.startsWith("http")
+            ? service.heroImage
+            : `https://saudiease.com${service.heroImage}`,
+          width: 1200,
+          height: 630,
+          alt: service.pageTitle,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: service.pageTitle,
       description: service.metaDescription,
-      images: [service.heroImage],
+      images: [
+        service.heroImage?.startsWith("http")
+          ? service.heroImage
+          : `https://saudiease.com${service.heroImage}`,
+      ],
+      creator: "@saudiease0",
     },
   };
 }

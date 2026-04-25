@@ -2,25 +2,142 @@ import { type Locale, locales } from "@/config/i18n";
 import { companyInfo } from "@/data/company-info/index";
 import type { Metadata } from "next/types";
 
-// Generate Organization Schema
+const BASE_URL = "https://saudiease.com";
+
+// Generate enriched Organization Schema with full contact, social, and area info
 export function generateOrganizationSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": `${BASE_URL}/#organization`,
     name: companyInfo.name,
-    url: "https://saudiease.com",
-    logo: "https://saudiease.com/logo.png",
+    url: BASE_URL,
+    logo: {
+      "@type": "ImageObject",
+      url: `${BASE_URL}/images/logos/ar-logo.png`,
+      width: 512,
+      height: 512,
+    },
     description: companyInfo.description,
+    foundingDate: "2018",
+    founder: {
+      "@type": "Person",
+      name: "Ibrahim Sifat",
+    },
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Jubail City Center",
+      addressLocality: "Al Jubail",
+      addressRegion: "Eastern Province",
+      addressCountry: "SA",
+    },
+    telephone: "+966558845503",
+    email: "info@saudiease.com",
+    sameAs: [
+      "https://facebook.com/saudiease0",
+      "https://twitter.com/saudiease0",
+      "https://linkedin.com/company/saudiease0",
+      "https://instagram.com/saudiease0",
+    ],
+    areaServed: [
+      {
+        "@type": "City",
+        name: "Al Jubail",
+      },
+      {
+        "@type": "City",
+        name: "Dammam",
+      },
+      {
+        "@type": "City",
+        name: "Khobar",
+      },
+      {
+        "@type": "AdministrativeArea",
+        name: "Eastern Province",
+      },
+      {
+        "@type": "Country",
+        name: "Saudi Arabia",
+      },
+    ],
+    numberOfEmployees: {
+      "@type": "QuantitativeValue",
+      value: 35,
+    },
+    knowsLanguage: ["ar", "en", "bn"],
   };
 }
-// generateGlobalSchema function
+
+// Generate WebSite schema with search action
 export function generateGlobalSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": `${BASE_URL}/#website`,
     name: companyInfo.name,
-    url: "https://saudiease.com",
+    url: BASE_URL,
     description: companyInfo.description,
+    publisher: {
+      "@id": `${BASE_URL}/#organization`,
+    },
+    inLanguage: ["ar", "en", "bn"],
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${BASE_URL}/en/blog?q={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
+    },
+  };
+}
+
+// Generate LocalBusiness schema for Google Maps / local SEO
+export function generateLocalBusinessSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "@id": `${BASE_URL}/#localbusiness`,
+    name: companyInfo.name,
+    image: `${BASE_URL}/images/logos/ar-logo.png`,
+    url: BASE_URL,
+    telephone: "+966558845503",
+    email: "info@saudiease.com",
+    priceRange: "$$",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Jubail City Center",
+      addressLocality: "Al Jubail",
+      addressRegion: "Eastern Province",
+      postalCode: "35516",
+      addressCountry: "SA",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 27.0046,
+      longitude: 49.6625,
+    },
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+        opens: "09:00",
+        closes: "18:00",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: "Friday",
+        opens: "09:00",
+        closes: "13:00",
+      },
+    ],
+    sameAs: [
+      "https://facebook.com/saudiease0",
+      "https://twitter.com/saudiease0",
+      "https://linkedin.com/company/saudiease0",
+      "https://instagram.com/saudiease0",
+    ],
   };
 }
 
@@ -40,14 +157,24 @@ export function generateFAQSchema(faqs: any[]) {
   };
 }
 
-// Generate Website Schema
+// Generate Website Schema (alias for backward compat)
 export function generateWebsiteSchema() {
+  return generateGlobalSchema();
+}
+
+// Generate BreadcrumbList schema
+export function generateBreadcrumbSchema(
+  items: { name: string; url: string }[]
+) {
   return {
     "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: companyInfo.name,
-    url: "https://saudiease.com",
-    description: companyInfo.description,
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: item.url,
+    })),
   };
 }
 
@@ -57,7 +184,7 @@ export function generateAlternateUrls(path = "") {
   const languages: Record<string, string> = {};
 
   locales.forEach((locale) => {
-    languages[locale] = `https://saudiease.com/${locale}${cleanPath}`;
+    languages[locale] = `${BASE_URL}/${locale}${cleanPath}`;
   });
 
   return languages;
@@ -65,11 +192,11 @@ export function generateAlternateUrls(path = "") {
 
 // Base SEO metadata
 export const baseSeoMetadata = {
-  title: "SaudiEase - Digital Solutions for Saudi Businesses",
+  title: "SaudiEase - Professional IT & Digital Solutions in Eastern Province",
   description:
-    "We provide comprehensive digital solutions tailored for Saudi businesses, helping you thrive in the digital age.",
+    "SaudiEase provides professional IT and digital solutions for businesses in Al Jubail, Dammam, Khobar, and across the Eastern Province. Web development, mobile apps, e-invoicing, branding, and more.",
   keywords:
-    "digital solutions, saudi arabia, web development, app development, digital marketing",
+    "digital solutions, Saudi Arabia, Eastern Province, Al Jubail, web development, mobile apps, ZATCA e-invoicing, branding, digital marketing, Dammam, Khobar",
   authors: [{ name: "SaudiEase Team" }],
   creator: "SaudiEase",
   publisher: "SaudiEase",
@@ -80,31 +207,42 @@ export const baseSeoMetadata = {
     email: true,
     url: true,
   },
-  metadataBase: new URL("https://saudiease.com"),
+  metadataBase: new URL(BASE_URL),
   openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://saudiease.com",
-    title: "SaudiEase - Digital Solutions for Saudi Businesses",
+    type: "website" as const,
+    locale: "ar_SA",
+    url: BASE_URL,
+    title: "SaudiEase - Professional IT & Digital Solutions in Eastern Province",
     description:
-      "We provide comprehensive digital solutions tailored for Saudi businesses, helping you thrive in the digital age.",
+      "Professional IT and digital solutions for businesses in Al Jubail, Dammam, and the Eastern Province. Web development, mobile apps, e-invoicing, and more.",
     siteName: "SaudiEase",
     images: [
       {
-        url: "https://saudiease.com/og-image.jpg",
+        url: `${BASE_URL}/opengraph-image`,
         width: 1200,
         height: 630,
-        alt: "SaudiEase - Digital Solutions",
+        alt: "SaudiEase - Professional IT & Digital Solutions",
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
-    title: "SaudiEase - Digital Solutions for Saudi Businesses",
+    card: "summary_large_image" as const,
+    title: "SaudiEase - Professional IT & Digital Solutions in Eastern Province",
     description:
-      "We provide comprehensive digital solutions tailored for Saudi businesses, helping you thrive in the digital age.",
-    creator: "@saudiease",
-    images: ["https://saudiease.com/twitter-image.jpg"],
+      "Professional IT and digital solutions for businesses in Al Jubail, Dammam, and the Eastern Province.",
+    creator: "@saudiease0",
+    images: [`${BASE_URL}/opengraph-image`],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large" as const,
+      "max-snippet": -1,
+    },
   },
 };
 
@@ -114,11 +252,9 @@ export async function generateLocalizedMetadata(
   pageName: string
 ): Promise<Metadata> {
   try {
-    // Try to load the messages for the locale
     const messages = await import(`../messages/${locale}.json`);
     const pageMetadata = messages[pageName]?.meta || {};
 
-    // Get the appropriate locale for OpenGraph
     const ogLocale =
       locale === "en" ? "en_US" : locale === "ar" ? "ar_SA" : "bn_BD";
 
@@ -127,7 +263,7 @@ export async function generateLocalizedMetadata(
       title: pageMetadata.title || baseSeoMetadata.title,
       description: pageMetadata.description || baseSeoMetadata.description,
       alternates: {
-        canonical: `https://saudiease.com/${locale}`,
+        canonical: `${BASE_URL}/${locale}`,
         languages: generateAlternateUrls(),
       },
       openGraph: {
@@ -143,7 +279,6 @@ export async function generateLocalizedMetadata(
       },
     };
   } catch (error) {
-    // If there's an error loading the messages, return the base metadata
     return baseSeoMetadata;
   }
 }
@@ -152,30 +287,40 @@ export function generatePageMetadata({
   title,
   description,
   path = "/",
-  image = "/og-image.jpg",
+  image,
   keywords = "",
   type = "website",
+  locale = "ar",
 }: {
   title: string;
   description: string;
   path?: string;
   image?: string;
   keywords?: string;
-  type?: "website" | "article" | "product" | "service";
+  type?: "website" | "article";
+  locale?: string;
 }): Metadata {
-  const url = `https://saudiease.com${path}`;
+  const url = `${BASE_URL}${path}`;
+  const ogImage = image || `${BASE_URL}/opengraph-image`;
   return {
     title,
     description,
     keywords,
+    alternates: {
+      canonical: url,
+      languages: generateAlternateUrls(
+        path.replace(/^\/(en|ar|bn)/, "")
+      ),
+    },
     openGraph: {
       title,
       description,
       url,
       type,
+      siteName: "SaudiEase",
       images: [
         {
-          url: image,
+          url: ogImage,
           width: 1200,
           height: 630,
           alt: title,
@@ -186,10 +331,19 @@ export function generatePageMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: [image],
+      images: [ogImage],
+      creator: "@saudiease0",
     },
-    alternates: {
-      canonical: url,
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large" as const,
+        "max-snippet": -1,
+      },
     },
   };
 }

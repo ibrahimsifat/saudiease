@@ -25,20 +25,37 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   const t = await getTranslations({ locale, namespace: "blog" });
+  const postImage = post.image
+    ? post.image.startsWith("http")
+      ? post.image
+      : `https://saudiease.com${post.image}`
+    : "https://saudiease.com/opengraph-image";
 
   return {
     title: `${post.title} | ${t("title")}`,
-    description: post.excerpt,
-    keywords: keywords[locale as keyof typeof keywords].join(", "),
+    description: post.metaDescription || post.excerpt,
+    keywords: post.metaKeywords
+      ? post.metaKeywords.join(", ")
+      : keywords[locale as keyof typeof keywords].join(", "),
+    alternates: {
+      canonical: `https://saudiease.com/${locale}/blog/${slug}`,
+      languages: {
+        en: `https://saudiease.com/en/blog/${slug}`,
+        ar: `https://saudiease.com/ar/blog/${slug}`,
+        bn: `https://saudiease.com/bn/blog/${slug}`,
+      },
+    },
     openGraph: {
       title: post.title,
-      description: post.excerpt,
+      description: post.metaDescription || post.excerpt,
       type: "article",
       publishedTime: post.date,
       authors: [post.author],
+      url: `https://saudiease.com/${locale}/blog/${slug}`,
+      siteName: "SaudiEase",
       images: [
         {
-          url: post.image || "/placeholder.svg?height=1200&width=1200",
+          url: postImage,
           width: 1200,
           height: 630,
           alt: post.title,
@@ -48,8 +65,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     twitter: {
       card: "summary_large_image",
       title: post.title,
-      description: post.excerpt,
-      images: [post.image || "/placeholder.svg?height=1200&width=1200"],
+      description: post.metaDescription || post.excerpt,
+      images: [postImage],
+      creator: "@saudiease0",
     },
   };
 }

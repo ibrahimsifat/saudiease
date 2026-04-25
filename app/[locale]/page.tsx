@@ -1,4 +1,5 @@
 import {
+  generateLocalBusinessSchema,
   generateOrganizationSchema,
   generateWebsiteSchema,
 } from "@/lib/seo-utils";
@@ -35,6 +36,37 @@ export async function generateMetadata({
     title: t("title"),
     description: t("description"),
     keywords: keywords[locale as keyof typeof keywords].join(", "),
+    alternates: {
+      canonical: `https://saudiease.com/${locale}`,
+      languages: {
+        en: "https://saudiease.com/en",
+        ar: "https://saudiease.com/ar",
+        bn: "https://saudiease.com/bn",
+      },
+    },
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      url: `https://saudiease.com/${locale}`,
+      siteName: "SaudiEase",
+      locale: locale === "en" ? "en_US" : locale === "ar" ? "ar_SA" : "bn_BD",
+      type: "website",
+      images: [
+        {
+          url: "https://saudiease.com/opengraph-image",
+          width: 1200,
+          height: 630,
+          alt: "SaudiEase - Professional IT & Digital Solutions",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("title"),
+      description: t("description"),
+      images: ["https://saudiease.com/opengraph-image"],
+      creator: "@saudiease0",
+    },
   };
 }
 
@@ -59,6 +91,13 @@ export default async function Home({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(generateWebsiteSchema()),
+        }}
+      />
+      <Script
+        id="local-business-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateLocalBusinessSchema()),
         }}
       />
       {/* Hero Section */}

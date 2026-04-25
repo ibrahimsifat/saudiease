@@ -1,4 +1,5 @@
 import { Locale } from "@/config/i18n";
+import { generatePageMetadata } from "@/lib/seo-utils";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import TechStackPage from "./tech-stack-client";
@@ -8,21 +9,18 @@ export async function generateMetadata({
 }: {
   params: { locale: Locale };
 }): Promise<Metadata> {
+  const { locale } = await params;
   const t = await getTranslations({
-    locale: params.locale,
+    locale,
     namespace: "techStack.metadata",
   });
 
-  return {
+  return generatePageMetadata({
     title: t("title"),
     description: t("description"),
-    openGraph: {
-      title: t("title"),
-      description: t("description"),
-      type: "website",
-      url: `https://saudiease.com/${params.locale}/tech-stack`,
-    },
-  };
+    path: `/${locale}/tech-stack`,
+    locale,
+  });
 }
 
 export default async function TechStack({
@@ -30,5 +28,6 @@ export default async function TechStack({
 }: {
   params: { locale: Locale };
 }) {
-  return <TechStackPage locale={params.locale} />;
+  const { locale } = await params;
+  return <TechStackPage locale={locale} />;
 }

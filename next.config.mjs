@@ -51,6 +51,18 @@ const nextConfig = {
             key: "Referrer-Policy",
             value: "origin-when-cross-origin",
           },
+          {
+            key: "X-Frame-Options",
+            value: "SAMEORIGIN",
+          },
+          {
+            key: "Strict-Transport-Security",
+            value: "max-age=31536000; includeSubDomains",
+          },
+          {
+            key: "Permissions-Policy",
+            value: "camera=(), microphone=(), geolocation=(self)",
+          },
         ],
       },
       {
@@ -76,11 +88,6 @@ const nextConfig = {
   // Configure redirects for common paths
   async redirects() {
     return [
-      {
-        source: "/services",
-        destination: "/services",
-        permanent: true,
-      },
       {
         source: "/about-us",
         destination: "/about",

@@ -133,16 +133,18 @@ export default async function LocaleLayout({
         {/* Add hreflang tags for SEO */}
         <link
           rel="alternate"
-          href="https://saudiease.com/"
+          href="https://saudiease.com/ar"
           hrefLang="x-default"
         />
         <link rel="alternate" href="https://saudiease.com/en" hrefLang="en" />
+        <link rel="alternate" href="https://saudiease.com/ar" hrefLang="ar" />
         <link rel="alternate" href="https://saudiease.com/bn" hrefLang="bn" />
-        <link
-          rel="alternate"
-          href="https://saudiease.com/"
-          hrefLang="x-default"
-        />
+
+        {/* Geo meta tags for local SEO */}
+        <meta name="geo.region" content="SA-04" />
+        <meta name="geo.placename" content="Al Jubail, Eastern Province, Saudi Arabia" />
+        <meta name="geo.position" content="27.0046;49.6625" />
+        <meta name="ICBM" content="27.0046, 49.6625" />
 
         {/* Add structured data */}
         <Script

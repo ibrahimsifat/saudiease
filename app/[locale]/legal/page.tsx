@@ -1,5 +1,5 @@
 import { Locale } from "@/config/i18n";
-import { keywords } from "@/data/keywords";
+import { generatePageMetadata } from "@/lib/seo-utils";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import LegalHubClient from "./LegalHubClient";
@@ -12,11 +12,12 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "legal" });
 
-  return {
+  return generatePageMetadata({
     title: t("title"),
     description: t("description"),
-    keywords: keywords[locale as keyof typeof keywords].join(", "),
-  } as Metadata;
+    path: `/${locale}/legal`,
+    locale,
+  }) as Metadata;
 }
 
 export default async function LegalHubPage({
@@ -25,7 +26,6 @@ export default async function LegalHubPage({
   params: { locale: Locale };
 }) {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "legal" });
 
   return <LegalHubClient locale={locale} />;
 }
