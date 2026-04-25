@@ -15,7 +15,7 @@ import ClientCTASection from "@/components/home/cta-client-section";
 import ClientFeaturesSection from "@/components/home/features-client-section";
 import ClientLatestTechnologies from "@/components/home/latest-technologies-client-section";
 import ClientProcessSection from "@/components/home/process-client-section";
-import ClientWhyChooseUs from "@/components/home/why-choose-client-section";
+
 import ClientsSection from "@/components/clients-section";
 import ServicesSection from "@/components/services-section";
 import EMSProductSection from "@/components/ems-product-section";
@@ -69,10 +69,7 @@ export default async function Home({ params }: Props) {
       <ServicesSection locale={locale} />
       {/* EMS Product Section */}
       <EMSProductSection />
-      {/* Why Choose Us Section */}
-      <Suspense fallback={<LoadingFallback height="400px" />}>
-        <ClientWhyChooseUs />
-      </Suspense>
+
       {/* About Section */}
       <AboutSection />
       {/* Business Categories */}
