@@ -330,9 +330,9 @@ const Navbar = () => {
       </div>
       <header
         className={cn(
-          "sticky top-0 z-40 w-full transition-all duration-300",
+          "sticky top-0 z-40 w-full transition-all duration-150",
           isScrolled
-            ? "bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg py-2 border-b border-gray-200/50 dark:border-gray-800/50"
+            ? "bg-white/95 dark:bg-gray-900/95 backdrop-blur-md py-2 border-b border-gray-200/50 dark:border-gray-800/50"
             : "bg-white py-4"
         )}
       >

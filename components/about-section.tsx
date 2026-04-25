@@ -35,37 +35,6 @@ export default function AboutSection() {
   const locale = (useParams()?.locale as string) || "en";
   const isRTL = locale === "ar";
 
-  // Memoize core values to prevent re-renders
-  const coreValues = useMemo(
-    () => [
-      {
-        icon: <CheckCircle className="h-5 w-5 text-primary" />,
-        title: t("coreValues.excellence.title"),
-        description: t("coreValues.excellence.description"),
-      },
-      {
-        icon: <Award className="h-5 w-5 text-primary" />,
-        title: t("coreValues.innovation.title"),
-        description: t("coreValues.innovation.description"),
-      },
-      {
-        icon: <Users className="h-5 w-5 text-primary" />,
-        title: t("coreValues.clientCentric.title"),
-        description: t("coreValues.clientCentric.description"),
-      },
-      {
-        icon: <Globe className="h-5 w-5 text-primary" />,
-        title: t("coreValues.localExpertise.title"),
-        description: t("coreValues.localExpertise.description"),
-      },
-      {
-        icon: <Zap className="h-5 w-5 text-primary" />,
-        title: t("coreValues.agility.title"),
-        description: t("coreValues.agility.description"),
-      },
-    ],
-    [t]
-  );
 
   // Memoize tab content
   const tabContent = useMemo(
@@ -304,80 +273,6 @@ export default function AboutSection() {
           </motion.div>
         </div>
 
-        {/* Core Values Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.4 }}
-          className="relative bg-gradient-to-br from-white via-white to-gray-50 p-10 rounded-3xl border border-gray-100 overflow-hidden"
-          style={{ willChange: "opacity, transform" }}
-        >
-          <div className="relative">
-            <div className="flex flex-col items-center mb-10">
-              <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-                <span className="flex h-2 w-2 rounded-full bg-primary mr-2 animate-pulse"></span>
-                {t("coreValues.sectionLabel")}
-              </div>
-              <h2 className="text-3xl font-bold text-saudi-black mb-2 text-center">
-                {t("coreValues.titlePart1")}{" "}
-                <span className="text-primary relative">
-                  {t("coreValues.titlePart2")}
-                  <svg
-                    className="absolute -bottom-1 left-0 w-full h-2 text-primary/20"
-                    viewBox="0 0 200 8"
-                    preserveAspectRatio="none"
-                  >
-                    <path
-                      d="M0,5 C50,0 150,0 200,5"
-                      stroke="currentColor"
-                      strokeWidth="4"
-                      fill="none"
-                    />
-                  </svg>
-                </span>
-              </h2>
-              <p className="text-gray-600 max-w-xl text-center">
-                {t("coreValues.subtitle")}
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-              {coreValues.map((value, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{
-                    duration: 0.5,
-                    delay: 0.2 + index * 0.1,
-                    type: animations.enableAdvancedAnimations
-                      ? "spring"
-                      : "tween",
-                    stiffness: 100,
-                    damping: 15,
-                  }}
-                  className="relative bg-white p-6 rounded-xl border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 group overflow-hidden"
-                  style={{ willChange: "transform" }}
-                >
-                  <div className="relative h-14 w-14 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center mb-5 mx-auto transform group-hover:scale-110 transition-transform duration-300">
-                    <div className="text-primary transform group-hover:scale-110 transition-transform duration-300">
-                      {value.icon}
-                    </div>
-                  </div>
-
-                  <h3 className="text-lg font-semibold text-saudi-black mb-3 text-center relative">
-                    {value.title}
-                    <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-primary transform -translate-x-1/2 group-hover:w-1/2 transition-all duration-300"></span>
-                  </h3>
-
-                  <p className="text-gray-600 text-sm text-center">
-                    {value.description}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

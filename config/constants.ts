@@ -21,8 +21,8 @@ export const CONSTANT = {
     ourStory: "/images/our-story.png",
     aboutUs: "/images/about-us.png",
     joinOurTeam: "/images/careers.png",
-    hero: "/images/hero.webp",
-    heroAr: "/images/hero-ar.webp",
+    hero: "/images/hero_industrial.png",
+    heroAr: "/images/hero_industrial.png",
     homeFeature: "/images/home_features.webp",
     homeIndustryExperts: "/images/industryexpertise.webp",
     author: "/images/author.png",
@@ -46,7 +46,7 @@ export const CONSTANT = {
     service: {
       logoDesign: "/images/services/logo-design.webp",
       uiUxDesign: "/images/services/ui-ux-design.webp",
-      webDevelopment: "/images/services/web-development.webp",
+      webDevelopment: "/images/services/web_dev_industrial.png",
       eInvoicing: "/images/services/e-invoicing.webp",
       mobileDevelopment: "/images/services/mobile-app-development.webp",
       digitalMarketing: "/images/services/digital-marketing.webp",
@@ -56,6 +56,7 @@ export const CONSTANT = {
       apiDevelopment: "/images/services/api-development.webp",
       corporateProfile: "/images/services/corporate-profile.webp",
       printDesign: "/images/services/print-design.webp",
+      emsDashboard: "/images/products/ems_dashboard.png",
     },
     businessCategories: {
       retail: "/images/business-categories/retail.webp",

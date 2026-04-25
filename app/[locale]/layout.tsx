@@ -15,7 +15,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
-import { Cairo, Inter, Noto_Sans_Bengali } from "next/font/google";
+import { Cairo, Outfit, Noto_Sans_Bengali } from "next/font/google";
 import { notFound } from "next/navigation";
 import Script from "next/script";
 import type React from "react";
@@ -23,11 +23,11 @@ import { Suspense } from "react";
 import "../globals.css";
 
 // Optimize font loading with display swap and preload
-const inter = Inter({
+const outfit = Outfit({
   subsets: ["latin"],
   display: "swap",
   preload: true,
-  variable: "--font-inter",
+  variable: "--font-outfit",
   fallback: ["system-ui", "sans-serif"],
 });
 
@@ -100,7 +100,7 @@ export default async function LocaleLayout({
       lang={locale}
       dir={dir}
       suppressHydrationWarning
-      className={`${inter.variable} ${cairo.variable} ${notoBengali.variable}`}
+      className={`${outfit.variable} ${cairo.variable} ${notoBengali.variable}`}
     >
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -174,7 +174,7 @@ export default async function LocaleLayout({
             ? cairo.className
             : locale === "bn"
             ? notoBengali.className
-            : inter.className
+            : outfit.className
         } ${dir === "rtl" ? "rtl" : ""}`}
       >
         <NextIntlClientProvider locale={locale} messages={messages}>

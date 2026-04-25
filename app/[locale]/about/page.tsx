@@ -1,6 +1,5 @@
 import AboutHero from "@/components/about/about-hero";
 import Achievements from "@/components/about/achievements";
-import CoreValues from "@/components/about/core-values";
 import CSRInitiatives from "@/components/about/csr-initiatives";
 import JoinOurTeam from "@/components/about/join-our-team";
 import MissionVision from "@/components/about/mission-vision";
@@ -179,34 +178,6 @@ export default async function AboutPage({ params }: Props) {
         isRTL={isRTL}
       />
 
-      <CoreValues
-        title={t("coreValues.title")}
-        subtitle={t("coreValues.subtitle")}
-        description={t("coreValues.description")}
-        values={[
-          {
-            title: t("coreValues.values.innovation.title"),
-            description: t("coreValues.values.innovation.description"),
-            icon: "Lightbulb",
-          },
-          {
-            title: t("coreValues.values.integrity.title"),
-            description: t("coreValues.values.integrity.description"),
-            icon: "Shield",
-          },
-          {
-            title: t("coreValues.values.excellence.title"),
-            description: t("coreValues.values.excellence.description"),
-            icon: "Award",
-          },
-          {
-            title: t("coreValues.values.clientFocus.title"),
-            description: t("coreValues.values.clientFocus.description"),
-            icon: "Users",
-          },
-        ]}
-        isRTL={isRTL}
-      />
 
       <Timeline
         title={t("timeline.title")}

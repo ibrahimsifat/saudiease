@@ -1,0 +1,62 @@
+[
+  {
+    "name": "ZooMarket",
+    "logo": "/images/clients/kic.webp",
+    "homepageScreenshot": "/images/clients/screenshorts/zoomarket.jpg",
+    "websiteUrl": "https://www.zoomrkt.com/"
+  },
+  {
+    "name": "Luxury Housing",
+    "logo": "/images/clients/kic.webp",
+    "homepageScreenshot": "/images/clients/screenshorts/luxury.jpg",
+    "websiteUrl": "https://luxuryhousing.sa/"
+  },
+  {
+    "name": "Al Bishri Company",
+    "logo": "/images/clients/kic.webp",
+    "homepageScreenshot": "/images/clients/screenshorts/albishri.jpg",
+    "websiteUrl": "https://albishriksa.com"
+  },
+  {
+    "name": "Cobalt Core Contracting",
+    "logo": "/images/clients/kic.webp",
+    "homepageScreenshot": "/images/clients/screenshorts/ccc.jpg",
+    "websiteUrl": "https://www.cobaltcorecont.com/"
+  },
+  {
+    "name": "Solidcore International",
+    "logo": "/images/clients/kic.webp",
+    "homepageScreenshot": "/images/clients/screenshorts/solidcore.jpg",
+    "websiteUrl": "https://solidcoreinternational.com.sa"
+  },
+  {
+    "name": "Al Hajri Transport",
+    "logo": "/images/clients/kic.webp",
+    "homepageScreenshot": "/images/clients/screenshorts/al-hajiri.jpg",
+    "websiteUrl": "https://alhajritransport.com"
+  },
+  {
+    "name": "Evergreen Company",
+    "logo": "/images/clients/kic.webp",
+    "homepageScreenshot": "/images/clients/screenshorts/evergreen.jpg",
+    "websiteUrl": "https://evergreen.sa"
+  },
+  {
+    "name": "Faisal Bader Operational Company",
+    "logo": "/images/clients/kic.webp",
+    "homepageScreenshot": "/images/clients/screenshorts/faisaloperation.jpg",
+    "websiteUrl": "https://faisaloperation.com"
+  },
+  {
+    "name": "Rowzaa Store",
+    "logo": "/images/clients/kic.webp",
+    "homepageScreenshot": "/images/clients/screenshorts/rowza.jpg",
+    "websiteUrl": "https://rowzaa.com/"
+  },
+  {
+    "name": "Gulf Orbit Contracting",
+    "logo": "/images/clients/gulf-orbit.webp",
+    "homepageScreenshot": "/images/clients/screenshorts/gulf-orbit.jpg",
+    "websiteUrl": "https://gulforbit.sa/"
+  }
+]

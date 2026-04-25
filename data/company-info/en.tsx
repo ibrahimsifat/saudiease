@@ -4,36 +4,36 @@ import type { CompanyInfo } from "./types";
 export const companyInfoEn: CompanyInfo = {
   name: "Saudi Ease",
   logo: CONSTANT.images.logo.en,
-  tagline: "Your Complete Digital Partner in Jubail",
+  tagline: "Professional IT & Digital Solutions in Al Jubail",
   mapUrl: "",
   description:
-    "Saudi Ease is the specialized digital partner for Jubail's industrial sector. We handle vendor registration, company branding, ZATCA e-invoicing, and workforce management for contracting and construction companies.",
+    "Saudi Ease is a professional IT and digital solutions company based in Al Jubail, Saudi Arabia. Founded by Ibrahim Sifat, we serve contracting, construction, and industrial supply companies with comprehensive digital solutions.",
   shortDescription:
-    "Specialized digital partner for Jubail's industrial sector.",
+    "Professional IT & digital solutions for Al Jubail's industrial sector.",
   mission:
-    "To empower Saudi businesses with innovative digital solutions that drive growth and success.",
+    "To empower businesses in Saudi Arabia with affordable, professional, and complete digital solutions.",
   vision:
-    "To be the leading digital transformation partner for businesses across Saudi Arabia.",
+    "To become the most trusted digital solutions partner in Jubail's industrial sector.",
   values: [
     {
-      title: "Innovation",
+      title: "Reliability",
       description:
-        "We constantly explore new technologies and approaches to deliver cutting-edge solutions.",
+        "We provide honest pricing, clear timelines, and consistent communication.",
     },
     {
-      title: "Quality",
+      title: "Own Technology",
       description:
-        "We maintain the highest standards in every aspect of our work, from design to development.",
+        "We build our own technology including Gulf Orbit EMS.",
     },
     {
-      title: "Integrity",
+      title: "Client-Centric",
       description:
-        "We build relationships based on trust, transparency, and honest communication.",
+        "We put our clients' needs first with tailored solutions.",
     },
     {
-      title: "Client Success",
+      title: "Local Presence",
       description:
-        "Your success is our success. We're committed to helping you achieve your business goals.",
+        "Based in Jubail City Center with face-to-face availability.",
     },
   ],
   achievements: [
@@ -211,12 +211,12 @@ export const companyInfoEn: CompanyInfo = {
   team: {
     count: 35,
     expertise: [
-      "Web Development",
+      "Website Development",
       "Mobile App Development",
-      "UI/UX Design",
-      "Digital Marketing",
-      "E-commerce",
-      "E-invoicing",
+      "Company Branding",
+      "ZATCA E-Invoicing",
+      "Vendor Registration",
+      "IT Support",
     ],
   },
 };

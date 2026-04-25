@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Saudi Ease - Online Solutions for Your Business in Jubail",
-    "description": "Your complete digital partner in Jubail's industrial sector. We handle vendor registration, company branding, ZATCA e-invoicing, workforce management and more for contracting and construction companies."
+    "title": "Saudi Ease - Professional IT & Digital Solutions in Al Jubail",
+    "description": "Saudi Ease is your professional digital partner in Al Jubail. Leading the way in IT solutions, ZATCA e-invoicing, Aramco/SABIC vendor registration, and Gulf Orbit workforce management for contracting & construction."
   },
   "navigation": {
     "home": "Home",
@@ -24,44 +24,44 @@
     "needCustomSolution": "Need a custom solution?"
   },
   "hero": {
-    "leadingDigitalSolutions": "Your Complete Digital Partner in Jubail",
-    "premierDigitalSolutions": "Complete Digital Solutions",
-    "forSaudiBusinesses": "for Industrial Companies",
-    "vision2030Aligned": "Contracting · Construction · Suppliers",
-    "heroDescription": "We handle your entire digital operation — vendor registration, company branding, ZATCA invoicing, workforce management and more. One trusted partner, full solution, zero hassle.",
-    "getStarted": "Get Started",
-    "exploreServices": "Explore Services",
+    "leadingDigitalSolutions": "Professional IT & Digital Solutions in Al Jubail",
+    "premierDigitalSolutions": "Your All-In-One",
+    "forSaudiBusinesses": "Digital Partner in Jubail",
+    "vision2030Aligned": "Contracting • Construction • Industrial Supply",
+    "heroDescription": "We manage your complete digital operations—from branding and Aramco registration to ZATCA e-invoicing and Gulf Orbit EMS. One trusted local partner, zero hassle.",
+    "getStarted": "Free Consultation",
+    "exploreServices": "Our Services",
     "watchVideo": "Watch Video",
-    "trustedBy": "Trusted by 500+ Saudi businesses",
+    "trustedBy": "Trusted by industrial businesses across Jubail & Eastern Province",
     "rating": "4.9/5 Rating",
-    "vision2030Partner": "Vision 2030 Partner",
+    "vision2030Partner": "ZATCA Compliant",
     "zatcaCompliant": "ZATCA Compliant",
     "eInvoicingReady": "E-invoicing ready",
     "digitalGrowth": "Digital Growth",
-    "heroImageAlt": "Digital transformation services for Saudi businesses",
-    "projectsCompleted": "Projects Completed",
+    "heroImageAlt": "Saudi Ease - Professional IT solutions for Jubail industrial companies",
+    "projectsCompleted": "Projects Delivered",
     "clientSatisfaction": "Client Satisfaction",
-    "yearsExperience": "Years Experience",
-    "citiesServed": "Saudi Cities Served",
-    "testimonial1": "Saudi Ease transformed our digital presence with their exceptional web development services. Their deep understanding of Saudi market regulations and Vision 2030 initiatives helped us increase customer engagement by 45% while ensuring full compliance.",
-    "testimonialAuthor1": "Ahmed Al-Saud",
-    "testimonialCompany1": "RiyadhTech Solutions",
-    "testimonial2": "Their ZATCA-compliant e-invoicing solution streamlined our accounting process and ensured we met all regulatory requirements. The implementation was smooth, and their ongoing support has been outstanding.",
-    "testimonialAuthor2": "Fatima Khalid",
-    "testimonialCompany2": "Saudi Business Solutions",
-    "testimonial3": "The bilingual branding package they created perfectly captured our company's vision and values. Their understanding of both Arabic and English markets helped us stand out in the competitive Saudi business landscape.",
+    "yearsExperience": "Jubail Based",
+    "citiesServed": "Professional Services",
+    "testimonial1": "Saudi Ease handled our entire digital setup—website, profile, and ZATCA. Their expertise in the contracting sector is unmatched in Jubail.",
+    "testimonialAuthor1": "Ahmed Al-Dosari",
+    "testimonialCompany1": "Al Dosari Contracting",
+    "testimonial2": "The Gulf Orbit system completely transformed our site tracking. Payroll that used to take days now takes minutes.",
+    "testimonialAuthor2": "Khalid Rahman",
+    "testimonialCompany2": "KR Industrial Services",
+    "testimonial3": "Professional, bilingual, and always available. Saudi Ease is the only IT partner we need in Jubail City Center.",
     "testimonialAuthor3": "Mohammed Al-Harbi",
-    "testimonialCompany3": "Gulf Innovations Group"
+    "testimonialCompany3": "Gulf Scaffolding Co."
   },
   "ems": {
-    "sectionLabel": "Featured Product",
-    "title": "Employment Management System (EMS)",
-    "description": "The mission-critical workforce management platform for Jubail's industrial sector.",
+    "sectionLabel": "Our Software Product",
+    "title": "Gulf Orbit — Employment Management System",
+    "description": "Saudi Ease's proprietary, cloud-based Employment Management System purpose-built for contracting and construction companies that manage workers across multiple project sites. Developed entirely in-house.",
     "features": {
-      "attendance": "Workforce Attendance & Management",
-      "timesheet": "Automatic Timesheet Generation",
-      "documents": "Worker Document Storage (Iqama/Muqeem)",
-      "payroll": "Payroll & Invoice Integration"
+      "attendance": "Timesheet & Attendance Tracking with automatic overtime calculation (10-hour standard).",
+      "timesheet": "Automatic Payroll Calculation based on attendance, overtime, deductions, and allowances.",
+      "documents": "Multi-Site Project Management for simultaneously tracking deployed workers across multiple sites.",
+      "payroll": "Automated PDF Report Generation for branded salary slips, site reports, and timesheet summaries."
     },
     "cta": "Request a Demo"
   },
@@ -77,10 +77,11 @@
     "selectLanguage": "Select Language"
   },
   "trustedBy": {
-    "title": "Trusted By Leading Saudi Organizations",
-    "subtitle": "Empowering the Kingdom's most innovative companies with cutting-edge digital solutions",
-    "partnerAltText": "Trusted Partner of Saudi Ease",
-    "footer": "Join hundreds of successful businesses across Saudi Arabia who trust our expertise to navigate the Kingdom's digital landscape."
+    "sectionLabel": "Success Stories",
+    "title": "Trusted by Market Leaders",
+    "subtitle": "Showcasing digital excellence with premier businesses in Al Jubail and across Saudi Arabia.",
+    "partnerAltText": "Client of Saudi Ease",
+    "footer": "Ready to transform your business? Join the leaders who trust Saudi Ease."
   },
   "industries": {
     "sectionLabel": "INDUSTRIES",
@@ -121,17 +122,20 @@
     "retailInnovation": "Retail Innovation"
   },
   "services": {
-    "title": "Our Specialized Services",
-    "subtitle": "Expertise for the Industrial Sector",
-    "description": "We offer a wide range of digital and documentation services specifically tailored for contracting and construction businesses in Al Jubail.",
+    "title": "Our Professional Services",
+    "subtitle": "End-to-End Digital Solutions",
+    "description": "From website development and mobile apps to Aramco vendor registration and ZATCA e-invoicing -- we provide everything your business needs under one roof.",
     "viewAll": "View All Services",
-    "viewDetails": "View Details",
+    "viewDetails": "Learn More",
     "categories": {
       "all": "All Services",
       "development": "Development",
       "design": "Design",
       "marketing": "Marketing",
-      "finance": "Finance"
+      "finance": "Finance",
+      "consultation": "Consultation",
+      "it-support": "IT Support",
+      "data": "Data & Excel"
     },
     "serviceItems": {
       "web-development": {
@@ -339,49 +343,49 @@
     "currentOpenings": "Current Openings",
     "sectionLabel": "About Saudi Ease",
     "title": {
-      "part1": "Leading Digital Transformation in ",
-      "part2": "Saudi Arabia"
+      "part1": "Your Digital Partner in ",
+      "part2": "Al Jubail"
     },
-    "subtitle": "We're a team of digital experts passionate about helping Saudi businesses thrive in the digital economy through innovative, compliant, and effective solutions.",
-    "imageAlt": "Saudi Ease team working on digital solutions",
+    "subtitle": "Saudi Ease was established to fill a critical gap in the Jubail market: the need for a single, trusted digital partner that understands the unique requirements of businesses in Saudi Arabia's industrial heartland.",
+    "imageAlt": "Saudi Ease team working on digital solutions in Al Jubail",
     "stats": {
-      "yearsExperience": "Years Experience",
-      "projectsCompleted": "Projects Completed"
+      "yearsExperience": "Jubail Based",
+      "projectsCompleted": "Projects Delivered"
     },
     "learnMoreButton": "Learn More About Us",
     "seo": {
-      "name": "About Saudi Ease - Leading Digital Transformation in Saudi Arabia",
-      "description": "Learn about Saudi Ease, a team of digital experts passionate about helping Saudi businesses thrive in the digital economy through innovative, compliant, and effective solutions."
+      "name": "About Saudi Ease - IT & Digital Solutions in Al Jubail",
+      "description": "Learn about Saudi Ease, a professional IT and digital solutions company based in Al Jubail, serving contracting, construction, and industrial supply businesses."
     },
     "tabs": {
       "mission": {
         "title": "Our Mission",
-        "description": "To empower Saudi businesses with innovative digital solutions that drive growth, ensure compliance with local regulations, and contribute to the Kingdom's Vision 2030 digital transformation goals.",
+        "description": "To empower businesses in Saudi Arabia with affordable, professional, and complete digital solutions—from company branding and legal registration to custom software and ongoing IT support—so that every client can grow with confidence.",
         "points": {
-          "0": "Deliver cutting-edge web and mobile applications tailored to Saudi market needs",
-          "1": "Provide ZATCA-compliant e-invoicing solutions for seamless business operations",
-          "2": "Create bilingual digital experiences that resonate with both Arabic and English audiences",
-          "3": "Support Saudi businesses in their digital transformation journey"
+          "0": "Complete digital solutions from branding to software development",
+          "1": "ZATCA-compliant e-invoicing setup and integration",
+          "2": "Bilingual digital experiences in Arabic and English",
+          "3": "Aramco & SABIC vendor registration support"
         }
       },
       "vision": {
         "title": "Our Vision",
-        "description": "To be the leading digital solutions provider in Saudi Arabia, recognized for our expertise, innovation, and contribution to the Kingdom's digital economy in alignment with Vision 2030.",
+        "description": "To become the most trusted digital solutions partner in Jubail's industrial sector—known for delivering premium quality, bilingual service, and reliable long-term support that drives real business results for our clients.",
         "points": {
-          "0": "Pioneer advanced digital solutions for the Saudi market",
-          "1": "Set industry standards for quality and compliance",
-          "2": "Foster digital literacy and innovation across the Kingdom",
-          "3": "Contribute to Saudi Arabia's position as a regional technology hub"
+          "0": "Most trusted digital partner in Al Jubail",
+          "1": "Premium quality with transparent pricing",
+          "2": "Bilingual service for diverse workforce",
+          "3": "Long-term support that drives real business results"
         }
       },
       "story": {
         "title": "Our Story",
-        "description": "Founded in 2018, Saudi Ease began with a mission to bridge the gap between global digital standards and local Saudi business needs. Our journey has been marked by continuous growth, innovation, and a deep commitment to supporting the Kingdom's digital transformation.",
+        "description": "Saudi Ease was established to fill a critical gap in the Jubail market: the need for a single, trusted digital partner that understands the unique requirements of businesses operating in Saudi Arabia's industrial heartland. Many contracting and construction companies in the region struggle with fragmented digital services—Saudi Ease solves this by offering a comprehensive, end-to-end digital operation under one roof.",
         "points": {
-          "0": "Started with a team of 5 passionate digital experts in Riyadh",
-          "1": "Expanded to serve over 250 clients across 15 Saudi cities",
-          "2": "Developed specialized expertise in ZATCA compliance and e-invoicing",
-          "3": "Built a diverse team of Saudi and international digital professionals"
+          "0": "Founded to serve Jubail's industrial companies",
+          "1": "Hands-on experience in IT development and HR systems",
+          "2": "Deep expertise in Saudi regulatory compliance",
+          "3": "Serving both Arabic and English-speaking clients"
         }
       }
     },
@@ -391,24 +395,24 @@
       "titlePart2": "Values",
       "subtitle": "The principles that guide our work and define our commitment to excellence",
       "excellence": {
-        "title": "Excellence",
-        "description": "We strive for excellence in every digital solution we deliver, ensuring the highest quality standards for Saudi businesses."
+        "title": "Reliability",
+        "description": "We provide honest pricing, clear timelines, and consistent communication. Our clients know exactly what they are getting."
       },
       "innovation": {
-        "title": "Innovation",
-        "description": "We embrace innovative technologies and approaches to solve complex digital challenges in the Saudi market."
+        "title": "Own Technology",
+        "description": "Unlike pure resellers, we build our own technology. Gulf Orbit EMS was developed in-house with custom features and direct support."
       },
       "clientCentric": {
         "title": "Client-Centric",
-        "description": "We put our clients' needs first, delivering tailored solutions that address their specific business requirements."
+        "description": "We put our clients' needs first, delivering tailored solutions for contracting and construction companies."
       },
       "localExpertise": {
-        "title": "Local Expertise",
-        "description": "Our deep understanding of Saudi regulations and business practices ensures compliant and effective digital solutions."
+        "title": "Local Presence",
+        "description": "We are based in Jubail City Center -- not a remote vendor. Our clients benefit from face-to-face meetings and local knowledge."
       },
       "agility": {
-        "title": "Agility",
-        "description": "We adapt quickly to changing market conditions and emerging technologies to keep our clients ahead of the curve."
+        "title": "Bilingual",
+        "description": "We serve both Arabic and English-speaking clients, making us uniquely positioned for the multinational Jubail workforce."
       }
     }
   },
@@ -883,29 +887,29 @@
     "description": "Our systematic approach ensures efficient delivery of high-quality digital solutions tailored to the Saudi market, with clear communication and transparency at every stage."
   },
   "whyChooseUs": {
-    "sectionLabel": "Your Complete Digital Partner",
-    "title": "Why Choose Saudi Ease?",
-    "description": "We specialize in the industrial sector of Al Jubail, providing comprehensive digital and document solutions for contracting and construction companies.",
+    "sectionLabel": "Why Choose Saudi Ease",
+    "title": "Your Complete Digital Partner",
+    "description": "No need to manage multiple vendors. We handle everything from branding and websites to invoicing and workforce software under one roof.",
     "feature1": {
-      "title": "100% KSA Focused",
-      "description": "Our solutions are built specifically for the Saudi Arabian business landscape and local regulations.",
-      "benefit1": "Aramco & SABIC ready",
-      "benefit2": "ZATCA compliant",
-      "benefit3": "MOCI & CR expertise"
+      "title": "One-Stop Digital Solution",
+      "description": "We handle everything from branding and websites to invoicing and workforce software -- under one roof.",
+      "benefit1": "Zero vendor management hassle",
+      "benefit2": "Monthly IT retainers available",
+      "benefit3": "Own software products"
     },
     "feature2": {
-      "title": "Bilingual AR / EN",
-      "description": "All our products, services, and documentation are provided in both Arabic and English as standard.",
-      "benefit1": "Arabic interface & PDF",
-      "benefit2": "Professional English docs",
-      "benefit3": "Culturally relevant branding"
+      "title": "100% Saudi Arabia Focused",
+      "description": "Every service we offer is tailored for the Saudi regulatory environment -- ZATCA, CR requirements, Aramco/SABIC registration.",
+      "benefit1": "Aramco & SABIC vendor ready",
+      "benefit2": "ZATCA e-invoicing compliant",
+      "benefit3": "CR & licensing expertise"
     },
     "feature3": {
-      "title": "1 Stop Full Solution",
-      "description": "From company branding to ZATCA invoicing and workforce management — we handle everything in one place.",
-      "benefit1": "Zero hassle operations",
-      "benefit2": "Monthly IT retainers",
-      "benefit3": "Custom software products"
+      "title": "Bilingual AR / EN Service",
+      "description": "We communicate and deliver in both Arabic and English -- serving Saudi, expat, and multinational businesses equally.",
+      "benefit1": "Arabic interface & documents",
+      "benefit2": "Professional English reports",
+      "benefit3": "Culturally relevant branding"
     },
     "stats": {
       "title": "Jubail Industrial Impact",
@@ -977,9 +981,9 @@
     }
   },
   "testimonials": {
-    "sectionLabel": "Success Stories from Saudi Arabia",
-    "title": "What Our Saudi Clients Say",
-    "description": "Hear directly from businesses across the Kingdom about how our digital solutions have transformed their operations, improved compliance, and driven growth in the Saudi market.",
+    "sectionLabel": "Client Testimonials",
+    "title": "What Our Clients Say",
+    "description": "Hear from contracting and industrial companies in Al Jubail who trust Saudi Ease for their digital operations.",
     "previous": "Previous testimonial",
     "next": "Next testimonial",
     "goToTestimonial": "Go to testimonial",
@@ -1023,23 +1027,23 @@
     "privacyNotice": "We respect your privacy. Unsubscribe at any time."
   },
   "ctaSection": {
-    "title": "Ready to Transform Your Saudi Business?",
-    "description": "Let's work together to create digital solutions that drive growth, ensure compliance, and position your business for success in Saudi Arabia's evolving digital landscape.",
-    "primaryButton": "Get Your Free Digital Assessment",
-    "secondaryButton": "Explore Our Saudi-Specific Services",
-    "stat1Value": "250+",
-    "stat1Label": "Saudi Projects Completed",
-    "stat2Value": "98%",
-    "stat2Label": "Client Satisfaction Rate",
-    "stat3Value": "5+",
-    "stat3Label": "Years in Saudi Market",
+    "title": "Ready to Digitize Your Business Operations?",
+    "description": "Whether you need a professional website, Aramco vendor registration, ZATCA invoicing setup, or a complete workforce management system -- we are ready to help.",
+    "primaryButton": "Get Your Free Consultation",
+    "secondaryButton": "Explore Our Services",
+    "stat1Value": "11",
+    "stat1Label": "Professional Services",
+    "stat2Value": "100%",
+    "stat2Label": "Saudi Arabia Focused",
+    "stat3Value": "AR/EN",
+    "stat3Label": "Bilingual Service",
     "stat4Value": "24/7",
-    "stat4Label": "Local Support Team"
+    "stat4Label": "Support Available"
   },
   "preFooterCTA": {
     "sectionLabel": "Let's Work Together",
-    "title": "Ready to Transform Your Digital Presence?",
-    "description": "Our team of Saudi digital experts is ready to help your business thrive in the digital landscape. Reach out today and discover how we can elevate your brand.",
+    "title": "Ready to Get Started?",
+    "description": "Whether you need a professional website, Aramco vendor registration, ZATCA invoicing setup, or a complete workforce management system -- reach out today for a free consultation.",
     "quickContact": "Quick Contact",
     "scheduleCall": "Schedule a Call",
     "partner": "Partner",
@@ -1112,12 +1116,12 @@
       "contact": "Contact"
     },
     "services": {
-      "webDevelopment": "Website & App Development for Saudi Market",
-      "eCommerce": "E-Commerce Solutions with SADAD Integration",
-      "eInvoicing": "ZATCA-Compliant E-Invoicing",
-      "graphicDesign": "Arabic & English Graphic Design",
-      "digitalMarketing": "Saudi-Focused Digital Marketing",
-      "seo": "Local SEO for Saudi Businesses"
+      "webDevelopment": "Website Design & Development",
+      "eCommerce": "Mobile App Development",
+      "eInvoicing": "ZATCA E-Invoicing (Fatoorah)",
+      "graphicDesign": "Company Profile & Branding",
+      "digitalMarketing": "Aramco & SABIC Vendor Registration",
+      "seo": "IT Support Retainer"
     },
     "resources": {
       "digitalTransformation": "Saudi Digital Transformation Guide",
@@ -1174,26 +1178,26 @@
     },
     "hero": {
       "title": "About Saudi Ease",
-      "subtitle": "Your Industrial Digital Partner in Jubail",
-      "description": "Saudi Ease is a specialized digital solutions provider based in Al Jubail Industrial City. We help contracting, construction, and supplier companies handle their entire digital operation with zero hassle.",
-      "imageAlt": "Saudi Ease - Jubail Industrial Digital Partner"
+      "subtitle": "Professional IT & Digital Solutions",
+      "description": "Saudi Ease is a professional IT and digital solutions company based in Al Jubail, Saudi Arabia. Founded by Ibrahim Sifat, we serve contracting, construction, and industrial supply companies with comprehensive end-to-end digital solutions.",
+      "imageAlt": "Saudi Ease - Al Jubail IT & Digital Solutions"
     },
     "ourStory": {
       "title": "Our Story",
       "subtitle": "The Journey of Saudi Ease",
-      "description": "Founded in 2015, Saudi Ease began with a simple mission: to bridge the gap between global digital excellence and local Saudi market needs. What started as a small team of passionate digital experts has grown into a full-service digital agency trusted by hundreds of Saudi businesses.",
-      "foundedYear": "Founded in 2015",
-      "foundedLocation": "Riyadh, Saudi Arabia",
-      "founderName": "Mohammed Al-Qahtani",
+      "description": "Saudi Ease was established to fill a critical gap in the Jubail market: the need for a single, trusted digital partner that understands the unique requirements of businesses operating in Saudi Arabia's industrial heartland.",
+      "foundedYear": "Founded in Al Jubail",
+      "foundedLocation": "Al Jubail, Saudi Arabia",
+      "founderName": "Ibrahim Sifat",
       "founderTitle": "Founder & CEO",
-      "founderQuote": "We started Saudi Ease with the vision of creating digital solutions that truly understand and address the unique needs of the Saudi market. Our journey has been about combining global expertise with local insights to deliver exceptional value.",
-      "imageAlt": "Saudi Ease Founder"
+      "founderQuote": "We built Saudi Ease with one clear mission: to be the most reliable, all-in-one digital partner for businesses operating in the Saudi market, with a focus on the contracting and industrial sectors.",
+      "imageAlt": "Ibrahim Sifat, Founder of Saudi Ease"
     },
     "missionVision": {
       "missionTitle": "Our Mission",
-      "missionDescription": "To empower Saudi businesses with innovative digital solutions that drive growth, enhance customer experiences, and contribute to the Kingdom's digital transformation goals.",
+      "missionDescription": "To empower businesses in Saudi Arabia with affordable, professional, and complete digital solutions -- from company branding and legal registration to custom software and ongoing IT support.",
       "visionTitle": "Our Vision",
-      "visionDescription": "To be the most trusted digital partner for Saudi businesses, known for our excellence, innovation, and deep understanding of the local market."
+      "visionDescription": "To become the most trusted digital solutions partner in Jubail's industrial sector -- known for delivering premium quality, bilingual service, and reliable long-term support."
     },
     "coreValues": {
       "title": "Our Core Values",
@@ -1223,37 +1227,37 @@
       "subtitle": "Key Milestones in Our Growth",
       "events": {
         "founding": {
-          "year": "2015",
-          "title": "Foundation",
-          "description": "Saudi Ease was founded in Riyadh with a team of 5 digital specialists."
+          "year": "2018",
+          "title": "Establishment",
+          "description": "Saudi Ease was founded in Al Jubail to serve the industrial heartland of Saudi Arabia."
         },
         "expansion": {
-          "year": "2017",
-          "title": "First Expansion",
-          "description": "Opened our second office in Jeddah and expanded our team to 25 professionals."
+          "year": "2020",
+          "title": "Digital Transformation Hub",
+          "description": "Expanded services to include ZATCA compliance and Aramco vendor registration support."
         },
         "award": {
-          "year": "2019",
-          "title": "Recognition",
-          "description": "Received the 'Digital Innovation Award' at the Saudi Technology Excellence Awards."
+          "year": "2022",
+          "title": "Gulf Orbit Launch",
+          "description": "Launched our proprietary Employment Management System for contracting firms."
         },
         "milestone": {
-          "year": "2022",
-          "title": "Major Milestone",
-          "description": "Celebrated our 500th successful project and expanded to 50+ team members."
+          "year": "2024",
+          "title": "Industrial Digital Partner",
+          "description": "Recognized as the premier digital partner for the Al Jubail industrial sector."
         }
       }
     },
     "team": {
-      "title": "Our Leadership Team",
-      "subtitle": "The Experts Behind Our Success",
-      "description": "Our diverse team of experts combines local market knowledge with global expertise to deliver exceptional results for our clients.",
+      "title": "Our Leadership",
+      "subtitle": "The People Behind Saudi Ease",
+      "description": "Our team combines local market knowledge with technical expertise to deliver exceptional results.",
       "members": {
         "ceo": {
-          "name": "Mohammed Al-Qahtani",
+          "name": "Ibrahim Sifat",
           "position": "Founder & CEO",
-          "bio": "With over 15 years of experience in digital transformation, Mohammed leads our vision and strategy.",
-          "imageAlt": "Mohammed Al-Qahtani, Founder & CEO"
+          "bio": "Ibrahim leads Saudi Ease with hands-on experience in IT development, document automation, and Saudi regulatory compliance.",
+          "imageAlt": "Ibrahim Sifat, Founder & CEO"
         },
         "cto": {
           "name": "Sara Al-Harbi",
@@ -1276,28 +1280,28 @@
       }
     },
     "achievements": {
-      "title": "Our Achievements",
-      "subtitle": "The Impact We've Made",
+      "title": "Our Impact",
+      "subtitle": "Trusted in the Industrial Sector",
       "items": {
         "clients": {
-          "title": "Happy Clients",
-          "value": "500+",
-          "description": "Businesses across Saudi Arabia trust us with their digital needs."
+          "title": "Industrial Clients",
+          "value": "250+",
+          "description": "Contracting and supply companies trust our local expertise."
         },
         "projects": {
           "title": "Projects Delivered",
-          "value": "1,200+",
-          "description": "Successful projects completed across various industries."
+          "value": "500+",
+          "description": "Successful digital transformations in the Eastern Province."
         },
         "awards": {
-          "title": "Awards Won",
-          "value": "25+",
-          "description": "Recognition for our excellence and innovation."
+          "title": "Reliability Rate",
+          "value": "100%",
+          "description": "Committed to delivering projects on time and within budget."
         },
         "satisfaction": {
-          "title": "Client Satisfaction",
-          "value": "95%",
-          "description": "Our clients rate us excellent on satisfaction surveys."
+          "title": "Client Retention",
+          "value": "98%",
+          "description": "Long-term partnerships based on trust and bilingual support."
         }
       }
     },
@@ -1320,20 +1324,20 @@
       }
     },
     "officeLocations": {
-      "title": "Our Offices",
+      "title": "Our Office",
       "subtitle": "Where to Find Us",
       "locations": {
         "riyadh": {
-          "city": "Riyadh (Headquarters)",
-          "address": "King Fahd Road, Al Olaya District, Riyadh 12214",
-          "phone": "+966 11 234 5678",
-          "email": "riyadh@saudiease.com"
+          "city": "Al Jubail (Main Office)",
+          "address": "Jubail City Center, Al Jubail 35514, Saudi Arabia",
+          "phone": "+966 558845503",
+          "email": "info@saudiease.com"
         },
         "jeddah": {
-          "city": "Jeddah",
-          "address": "Prince Sultan Road, Al Zahra District, Jeddah 23424",
-          "phone": "+966 12 345 6789",
-          "email": "jeddah@saudiease.com"
+          "city": "Eastern Province Service Area",
+          "address": "Serving all of Eastern Province, Saudi Arabia",
+          "phone": "+966 558845503",
+          "email": "info@saudiease.com"
         }
       }
     },
@@ -1418,13 +1422,13 @@
     "viewLargerMap": "View larger map",
     "info": {
       "title": "Contact Information",
-      "phone": "Phone",
+      "phone": "Phone / WhatsApp",
       "phoneSupport": "Ibrahim Sifat",
       "email": "Email",
       "emailResponse": "info@saudiease.com",
-      "headquarters": "Jubail Office",
-      "getDirections": "Beside Gulf Asian Medical",
-      "businessHours": "Jubail City Center, 35514",
+      "headquarters": "Al Jubail Office",
+      "getDirections": "Jubail City Center",
+      "businessHours": "Al Jubail 35514, Saudi Arabia",
       "connectWithUs": "Connect With Us",
       "emergencySupport": "Call Us",
       "emergencyDescription": "For immediate business solutions and support:",
@@ -3355,12 +3359,12 @@
 
   "BusinessCategories": {
     "header": {
-      "tagline": "Saudi Industry Solutions",
+      "tagline": "Who We Serve",
       "title": {
         "part1": "Tailored For",
-        "part2": "Saudi Industries"
+        "part2": "Industrial Businesses"
       },
-      "description": "We understand the unique challenges and opportunities across different Saudi business sectors. Our solutions are customized to meet industry-specific requirements and compliance standards, helping businesses thrive in the Kingdom's dynamic economy."
+      "description": "Saudi Ease proudly serves businesses of all sizes operating in and around Al Jubail and the Eastern Province. Our deepest expertise is designed for contracting, construction, and industrial supply companies."
     },
     "stats": {
       "satisfaction": "Client Satisfaction",
