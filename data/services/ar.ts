@@ -12,6 +12,7 @@ import {
   Table,
   ClipboardList,
   LifeBuoy,
+  PenTool,
 } from "lucide-react";
 
 export interface Service {
@@ -89,6 +90,27 @@ export const services: Service[] = [
       "بروفايل شركة ثنائي اللغة (عربي/إنجليزي)",
       "تصميم أوراق المراسلات وبطاقات العمل",
       "بروشورات وفلايرات تسويقية"
+    ],
+    category: "design",
+  },
+  {
+    id: "brand-identity",
+    icon: PenTool,
+    title: "الشعار والهوية البصرية",
+    image: CONSTANT.images.service.brandIdentity,
+    description: "شعار وألوان وخطوط ودليل استخدام ومطبوعات.",
+    longDescription: "نصمّم شعاراً يعمل بالعربية والإنجليزية، ونثبّت ألوانك وخطوطك، ونطبقها على الورق الرسمي وبطاقات العمل والبروشورات وبروفايل الشركة.",
+    benefits: [
+      "مظهر واحد في كل المستندات",
+      "شعار بالعربية والإنجليزية",
+      "دليل يلتزم به فريقك والمطبعة",
+      "جاهز للبروفايل والموقع",
+    ],
+    features: [
+      "تصميم الشعار",
+      "الألوان والخطوط",
+      "دليل الهوية",
+      "الورق الرسمي والبطاقات والبروشورات",
     ],
     category: "design",
   },

@@ -12,6 +12,7 @@ import {
   Table,
   ClipboardList,
   LifeBuoy,
+  PenTool,
 } from "lucide-react";
 
 export interface Service {
@@ -89,6 +90,27 @@ export const services: Service[] = [
       "দ্বিভাষিক কোম্পানি প্রোফাইল (পিডিএফ/প্রিন্ট)",
       "লেটারহেড এবং বিজনেস কার্ড ডিজাইন",
       "মার্কেটিং ব্রোশিওর এবং ফ্লায়ার"
+    ],
+    category: "design",
+  },
+  {
+    id: "brand-identity",
+    icon: PenTool,
+    title: "লোগো ও ব্র্যান্ড আইডেন্টিটি",
+    image: CONSTANT.images.service.brandIdentity,
+    description: "লোগো, রং, ফন্ট, ব্র্যান্ড গাইড ও প্রিন্ট উপকরণ।",
+    longDescription: "আরবি ও ইংরেজিতে কাজ করে এমন লোগো ডিজাইন করি, রং ও ফন্ট ঠিক করি এবং লেটারহেড, বিজনেস কার্ড, ব্রোশিওর ও কোম্পানি প্রোফাইলে প্রয়োগ করি।",
+    benefits: [
+      "সব নথিতে একই চেহারা",
+      "আরবি ও ইংরেজি লোগো",
+      "টিম ও প্রিন্টারের জন্য গাইড",
+      "প্রোফাইল ও ওয়েবসাইটের জন্য প্রস্তুত",
+    ],
+    features: [
+      "লোগো ডিজাইন",
+      "রং ও ফন্ট",
+      "ব্র্যান্ড গাইড",
+      "লেটারহেড, কার্ড ও ব্রোশিওর",
     ],
     category: "design",
   },

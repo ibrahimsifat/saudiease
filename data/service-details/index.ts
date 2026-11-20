@@ -6,6 +6,7 @@ import { serviceDetails as enServiceDetails } from "./en";
 
 import { getServices } from "../services";
 import { SERVICE_SEO } from "./seo";
+import { APPS_CONTENT } from "./apps";
 import { BRAND_CONTENT } from "./brand";
 import { PROFILE_CONTENT } from "./profile";
 import { WEBSITE_CONTENT } from "./website";
@@ -153,6 +154,7 @@ export function getServiceDetails(locale: Locale): Record<string, ServiceDetail>
     "website-design-development": WEBSITE_CONTENT,
     "company-profile-branding": PROFILE_CONTENT,
     "brand-identity": BRAND_CONTENT,
+    "mobile-app-development": APPS_CONTENT,
   };
   for (const [id, content] of Object.entries(REWRITES)) {
     const c = content[locale];

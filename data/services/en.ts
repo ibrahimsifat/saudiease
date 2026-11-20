@@ -12,6 +12,7 @@ import {
   Table,
   ClipboardList,
   LifeBuoy,
+  PenTool,
 } from "lucide-react";
 
 export interface Service {
@@ -89,6 +90,27 @@ export const services: Service[] = [
       "Bilingual Company Profile (PDF/Print)",
       "Letterhead & Business Card design",
       "Marketing brochures & flyers"
+    ],
+    category: "design",
+  },
+  {
+    id: "brand-identity",
+    icon: PenTool,
+    title: "Logo & Brand Identity",
+    image: CONSTANT.images.service.brandIdentity,
+    description: "Logo, colours, fonts, brand guide and printed materials.",
+    longDescription: "We design a logo that works in Arabic and English, fix your colours and fonts, and apply them to letterhead, business cards, brochures and your company profile.",
+    benefits: [
+      "One look across all documents",
+      "Arabic and English logo",
+      "A guide your team and printer can follow",
+      "Ready for profile and website",
+    ],
+    features: [
+      "Logo design",
+      "Colours and fonts",
+      "Brand guide",
+      "Letterhead, cards and brochures",
     ],
     category: "design",
   },
