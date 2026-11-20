@@ -1,6 +1,7 @@
 "use client";
 
 import { localePath } from "@/config/site";
+import { whatsappLink } from "@/lib/track";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { type Locale, localeMetadata } from "@/config/i18n";
@@ -22,7 +23,6 @@ import {
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import Script from "next/script";
 
 export default function ServiceDetailClient({
   id,
@@ -32,6 +32,7 @@ export default function ServiceDetailClient({
   locale: Locale;
 }) {
   const t = useTranslations("serviceDetail");
+  const tWa = useTranslations("whatsappButton");
   const isRtl = localeMetadata[locale].dir === "rtl";
   const serviceDetails = getServiceDetails(locale);
   const serviceDetail = serviceDetails[id];
@@ -48,42 +49,14 @@ export default function ServiceDetailClient({
     return Icon;
   };
 
-  // Service packages/tiers
-  const serviceTiers = [
-    {
-      name: t("pricing.essential.name"),
-      price: t("pricing.essential.price"),
-      description: t("pricing.essential.description"),
-      featuresCount: 4,
-      tierKey: "essential",
-      recommended: false,
-    },
-    {
-      name: t("pricing.professional.name"),
-      price: t("pricing.professional.price"),
-      description: t("pricing.professional.description"),
-      featuresCount: 5,
-      tierKey: "professional",
-      recommended: true,
-    },
-    {
-      name: t("pricing.enterprise.name"),
-      price: t("pricing.enterprise.price"),
-      description: t("pricing.enterprise.description"),
-      featuresCount: 6,
-      tierKey: "enterprise",
-      recommended: false,
-    },
-  ];
-
   return (
-    <main className="min-h-screen">
+    <div className="min-h-screen">
       {/* Add structured data */}
-      <Script
+      <script
         id={`schema-service-${serviceDetail.id}`}
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(generateServiceSchema(serviceDetail)),
+          __html: JSON.stringify(generateServiceSchema(serviceDetail, locale)),
         }}
       />
 
@@ -129,14 +102,7 @@ export default function ServiceDetailClient({
               {t("sections.technologies")}
             </a>
           </li>
-          <li>
-            <a
-              href="#pricing"
-              className="text-gray-600 hover:text-primary transition-colors"
-            >
-              {t("sections.pricing")}
-            </a>
-          </li>
+          
           
           
           <li>
@@ -304,10 +270,17 @@ export default function ServiceDetailClient({
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-primary text-primary hover:bg-primary/10"
+                  className="border-[#25D366] text-[#128C4A] hover:bg-[#25D366]/10"
                   asChild
                 >
-                  <a href="#pricing">{t("viewPricing")}</a>
+                  <a
+                    href={whatsappLink(tWa("message"), localePath(locale, `/services/${id}`))}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-cta="service-hero"
+                  >
+                    {tWa("headerCta")}
+                  </a>
                 </Button>
               </div>
 
@@ -892,141 +865,6 @@ export default function ServiceDetailClient({
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section
-        id="pricing"
-        className="py-20 bg-gradient-to-b from-gray-50 to-white scroll-mt-20"
-      >
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-              <span className="flex h-2 w-2 rounded-full bg-primary mr-2"></span>
-              {t("sections.pricing")}
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-saudi-black mb-6">
-              {t("transparentPricing")}
-            </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              {t("pricingDescription", { service: serviceDetail.title })}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {serviceTiers.map((tier, index) => (
-              <div
-                key={index}
-                className={`bg-white rounded-2xl shadow-lg border ${
-                  tier.recommended ? "border-primary" : "border-gray-100"
-                } overflow-hidden transition-all hover:shadow-xl relative ${
-                  tier.recommended ? "md:-mt-4 md:mb-4" : ""
-                }`}
-              >
-                {tier.recommended && (
-                  <div className="absolute top-0 inset-x-0 h-1 bg-primary"></div>
-                )}
-
-                {tier.recommended && (
-                  <div className="absolute top-6 right-6 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full">
-                    {t("mostPopular")}
-                  </div>
-                )}
-
-                <div className="p-8">
-                  <h3 className="text-xl font-bold text-saudi-black mb-2">
-                    {tier.name}
-                  </h3>
-                  <p className="text-gray-600 mb-6">{tier.description}</p>
-
-                  <div className="mb-6">
-                    <span className="text-3xl font-bold text-saudi-black">
-                      {tier.price}
-                    </span>
-                    {tier.price !== t("pricing.enterprise.price") && (
-                      <span className="text-gray-500 ml-2">
-                        {t("perProject")}
-                      </span>
-                    )}
-                  </div>
-
-                  <ul className="space-y-4 mb-8">
-                    {Array.from({ length: tier.featuresCount }).map(
-                      (_, featureIndex) => (
-                        <li
-                          key={featureIndex}
-                          className={`flex items-start ${
-                            isRtl ? "flex-row-reverse text-right" : ""
-                          }`}
-                        >
-                          <div
-                            className={`flex-shrink-0 h-5 w-5 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 ${
-                              isRtl ? "ml-3" : "mr-3"
-                            }`}
-                          >
-                            <Check className="h-3 w-3 text-primary" />
-                          </div>
-                          <span className="text-gray-700">
-                            {t(
-                              `pricing.${tier.tierKey}.features.${featureIndex}`
-                            )}
-                          </span>
-                        </li>
-                      )
-                    )}
-                  </ul>
-
-                  <Button
-                    className={`w-full ${
-                      tier.recommended
-                        ? "bg-primary hover:bg-primary/90 text-white"
-                        : "bg-white border-primary text-primary hover:bg-primary/10"
-                    }`}
-                    variant={tier.recommended ? "default" : "outline"}
-                    asChild
-                  >
-                    <Link href="/contact">
-                      {tier.price === t("pricing.enterprise.price")
-                        ? t("contactForQuote")
-                        : t("getStarted")}
-                    </Link>
-                  </Button>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-16 bg-gray-50 p-8 rounded-2xl">
-            <div
-              className={`grid grid-cols-1 md:grid-cols-3 gap-8 items-center ${
-                isRtl ? "rtl" : "ltr"
-              }`}
-            >
-              <div className="md:col-span-2">
-                <h3 className="text-2xl font-bold text-saudi-black mb-4">
-                  {t("customSolutions")}
-                </h3>
-                <p className="text-gray-600 mb-6">
-                  {t("customSolutionsDescription")}
-                </p>
-                
-              </div>
-
-              <div className="bg-white p-6 rounded-xl shadow-md">
-                <h4 className="font-bold text-saudi-black mb-4">
-                  {t("needHelp")}
-                </h4>
-                <p className="text-gray-600 mb-6">{t("needHelpDescription")}</p>
-                <Button
-                  className="w-full bg-primary hover:bg-primary/90 text-white"
-                  asChild
-                >
-                  <Link href="/contact">{t("scheduleConsultation")}</Link>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* FAQ Section */}
       <section id="faq" className="py-20 bg-gray-50 scroll-mt-20">
         <div className="container mx-auto px-4">
@@ -1158,6 +996,6 @@ export default function ServiceDetailClient({
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

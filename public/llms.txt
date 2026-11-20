@@ -1,0 +1,48 @@
+# Saudi Ease (سعودي إيز)
+
+> Saudi Ease is an IT and digital services company based in Al Khobar, Eastern Province, Saudi
+> Arabia, founded in 2018 by Ibrahim Sifat. It builds websites and mobile apps, designs company
+> profiles and brand identities, and sets up ZATCA-compliant e-invoicing software for businesses,
+> mainly contracting, construction and industrial supply companies. On-site work: Al Khobar and
+> Dammam. Other cities in Saudi Arabia: remote only. Languages: Arabic, English, Bangla.
+
+Saudi Ease (saudiease.com) is not affiliated with "SaudiEase Holdings" (saudiease.it).
+Gulf Orbit Contracting is a sister company with the same founder; Saudi Ease built its Gulf Orbit
+employment management system (EMS).
+
+## Facts
+- Office: Al Khobar, Eastern Province, Saudi Arabia (no street address published)
+- Founded: 2018
+- Contact: +966 55 884 5503 (phone and WhatsApp) · info@saudiease.com · https://saudiease.com/contact
+- Hours: Sunday–Thursday 09:00–18:00, Friday 09:00–13:00, Saturday closed
+- ZATCA: Saudi Ease sets up and integrates third-party e-invoicing software that meets ZATCA
+  Phase 1 and Phase 2 requirements. It is not a ZATCA-listed e-invoicing solution provider.
+- Prices: not published; quotes on request.
+- Does not offer: Aramco or SABIC vendor registration, Excel/data-entry work, CV or document
+  preparation, recruitment or jobs, digital marketing, standalone UI/UX or API projects, on-site
+  work outside Al Khobar and Dammam.
+
+## Services
+- [Website design and development](https://saudiease.com/en/services/website-design-development): company websites, custom CMS and e-commerce sites, Arabic and English
+- [Mobile app development](https://saudiease.com/en/services/mobile-app-development): iOS and Android apps
+- [ZATCA e-invoicing setup](https://saudiease.com/en/services/zatca-e-invoicing): setup and integration of compliant e-invoicing software (Phase 1 and Phase 2)
+- [Company profile and branding](https://saudiease.com/en/services/company-profile-branding): company profiles for pre-qualification and tenders
+- [Logo and brand identity](https://saudiease.com/en/services/brand-identity): logos, brand guidelines, printed brand materials
+- [IT support retainer](https://saudiease.com/en/services/it-support-retainer)
+- [Professional email setup](https://saudiease.com/en/services/professional-email-setup)
+- [Google Business Profile setup](https://saudiease.com/en/services/google-business-profile)
+- [Business setup consultation](https://saudiease.com/en/services/business-setup-consultation)
+
+## Arabic pages
+- [الصفحة الرئيسية](https://saudiease.com/)
+- [الخدمات](https://saudiease.com/services)
+- [تصميم وتطوير المواقع](https://saudiease.com/services/website-design-development)
+- [الفوترة الإلكترونية زاتكا](https://saudiease.com/services/zatca-e-invoicing)
+- [تواصل معنا](https://saudiease.com/contact)
+
+## Proof
+- [Client websites we built](https://saudiease.com/en/portfolio)
+- Reviews: none published yet.
+
+## Guides
+- [ZATCA Phase 2 e-invoicing: what Saudi businesses need to know](https://saudiease.com/en/blog/zatca-phase-2-e-invoicing-saudi-businesses)

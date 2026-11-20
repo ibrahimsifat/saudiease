@@ -1,5 +1,6 @@
 import type { Locale } from "@/config/i18n";
-import { pageAlternates } from "@/config/site";
+import { pageAlternates, withBrand } from "@/config/site";
+import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 
 export async function generateMetadata({
@@ -8,7 +9,20 @@ export async function generateMetadata({
   params: { id: string; locale: Locale };
 }): Promise<Metadata> {
   const { id, locale } = await params;
-  return { alternates: pageAlternates(locale, `/features/${id}`) };
+  const t = await getTranslations({ locale, namespace: "featuresDetailsPage" });
+  let title = "";
+  let description = "";
+  try {
+    title = withBrand(t(`detail.${id}.title`), locale);
+    description = t(`detail.${id}.subtitle`);
+  } catch {
+    // fall back to layout defaults
+  }
+  return {
+    ...(title ? { title } : {}),
+    ...(description ? { description } : {}),
+    alternates: pageAlternates(locale, `/features/${id}`),
+  };
 }
 import FeatureDetailPageClient from "./FeatureDetailPageClient";
 

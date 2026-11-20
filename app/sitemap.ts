@@ -19,7 +19,6 @@ const staticPaths = [
   "/faq",
   "/features",
   "/industries",
-  "/estimator",
   "/schedule-consultation",
   "/tech-stack",
   "/legal",

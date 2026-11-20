@@ -51,7 +51,7 @@ export default async function FeaturesPage({
   const features = getFeatures(locale as Locale);
 
   return (
-    <main className="min-h-screen">
+    <div className="min-h-screen">
       {/* SEO Schema */}
       <script
         type="application/ld+json"
@@ -246,6 +246,6 @@ export default async function FeaturesPage({
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

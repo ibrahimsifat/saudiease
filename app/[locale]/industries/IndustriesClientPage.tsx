@@ -20,7 +20,7 @@ export default function IndustriesClientPage() {
   const ArrowIcon = isRTL ? ArrowLeft : ArrowRight;
 
   return (
-    <main className="min-h-screen">
+    <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">
         {/* Background elements */}
@@ -356,6 +356,6 @@ export default function IndustriesClientPage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

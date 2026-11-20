@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Saudi Ease - Professional IT & Digital Solutions in Al Jubail",
+    "title": "Web Design & App Company in Al Khobar & Dammam | Saudi Ease",
     "description": "Saudi Ease designs websites and mobile apps, company profiles and brand identities, and sets up ZATCA-compliant e-invoicing for businesses in the Eastern Province."
   },
   "navigation": {
@@ -24,23 +24,23 @@
     "needCustomSolution": "Need a custom solution?"
   },
   "hero": {
-    "leadingDigitalSolutions": "Professional IT & Digital Solutions in Al Jubail",
+    "leadingDigitalSolutions": "IT & Digital Services in Al Khobar & Dammam",
     "premierDigitalSolutions": "Your All-In-One",
-    "forSaudiBusinesses": "Digital Partner in Jubail",
+    "forSaudiBusinesses": "Digital Partner in the Eastern Province",
     "vision2030Aligned": "Contracting • Construction • Industrial Supply",
     "heroDescription": "Websites, mobile apps, company profiles, brand identity and ZATCA e-invoicing setup for contracting, construction and industrial companies. Message us on WhatsApp to discuss your project.",
     "getStarted": "Free Consultation",
     "exploreServices": "Our Services",
     "watchVideo": "Watch Video",
-    "trustedBy": "Trusted by industrial businesses across Jubail & Eastern Province",
+    "trustedBy": "Websites and systems for contracting and industrial companies in the Eastern Province",
     "vision2030Partner": "ZATCA e-invoicing setup",
     "zatcaCompliant": "ZATCA e-invoicing setup",
     "eInvoicingReady": "E-invoicing ready",
     "digitalGrowth": "Digital Growth",
-    "heroImageAlt": "Saudi Ease - Professional IT solutions for Jubail industrial companies",
+    "heroImageAlt": "Saudi Ease - IT and web services for companies in Al Khobar and Dammam",
     "projectsCompleted": "Projects Delivered",
     "clientSatisfaction": "Client Satisfaction",
-    "yearsExperience": "Jubail Based",
+    "yearsExperience": "Based in Al Khobar",
     "citiesServed": "Professional Services"
   },
   "ems": {
@@ -332,18 +332,18 @@
     "sectionLabel": "About Saudi Ease",
     "title": {
       "part1": "Your Digital Partner in ",
-      "part2": "Al Jubail"
+      "part2": "Al Khobar & Dammam"
     },
-    "subtitle": "Saudi Ease was established to fill a critical gap in the Jubail market: the need for a single, trusted digital partner that understands the unique requirements of businesses in Saudi Arabia's industrial heartland.",
-    "imageAlt": "Saudi Ease team working on digital solutions in Al Jubail",
+    "subtitle": "Saudi Ease is a single digital partner for contracting, construction and industrial companies in the Eastern Province: websites, apps, company profiles, brand identity and ZATCA e-invoicing setup.",
+    "imageAlt": "Saudi Ease team working on digital projects in Al Khobar",
     "stats": {
-      "yearsExperience": "Jubail Based",
+      "yearsExperience": "Based in Al Khobar",
       "projectsCompleted": "Projects Delivered"
     },
     "learnMoreButton": "Learn More About Us",
     "seo": {
-      "name": "About Saudi Ease - IT & Digital Solutions in Al Jubail",
-      "description": "Learn about Saudi Ease, a professional IT and digital solutions company based in Al Jubail, serving contracting, construction, and industrial supply businesses."
+      "name": "About Saudi Ease - IT & Digital Services in Al Khobar",
+      "description": "Saudi Ease is an IT and digital services company based in Al Khobar, serving contracting, construction and industrial supply businesses in Al Khobar and Dammam."
     },
     "tabs": {
       "mission": {
@@ -368,9 +368,9 @@
       },
       "story": {
         "title": "Our Story",
-        "description": "Saudi Ease was established to fill a critical gap in the Jubail market: the need for a single, trusted digital partner that understands the unique requirements of businesses operating in Saudi Arabia's industrial heartland. Many contracting and construction companies in the region struggle with fragmented digital services—Saudi Ease solves this by offering a comprehensive, end-to-end digital operation under one roof.",
+        "description": "Saudi Ease was set up to give contracting, construction and industrial companies one digital partner instead of several vendors: website, mobile app, company profile, brand identity and ZATCA e-invoicing setup, handled by one team in Al Khobar.",
         "points": {
-          "0": "Founded to serve Jubail's industrial companies",
+          "0": "Founded in 2018 to serve industrial and contracting companies",
           "1": "Hands-on experience in IT development and HR systems",
           "2": "Deep expertise in Saudi regulatory compliance",
           "3": "Serving both Arabic and English-speaking clients"
@@ -396,11 +396,11 @@
       },
       "localExpertise": {
         "title": "Local Presence",
-        "description": "We are based in Jubail City Center -- not a remote vendor. Our clients benefit from face-to-face meetings and local knowledge."
+        "description": "We are based in Al Khobar and meet clients in person in Al Khobar and Dammam."
       },
       "agility": {
         "title": "Bilingual",
-        "description": "We serve both Arabic and English-speaking clients, making us uniquely positioned for the multinational Jubail workforce."
+        "description": "We work in Arabic, English and Bangla, which suits the multinational workforce of Eastern Province companies."
       }
     }
   },
@@ -840,10 +840,10 @@
       "benefit3": "Culturally relevant branding"
     },
     "stats": {
-      "title": "Jubail Industrial Impact",
+      "title": "Eastern Province focus",
       "clients": "Industrial Clients",
       "retention": "Retention Rate",
-      "experience": "Jubail Based",
+      "experience": "Based in Al Khobar",
       "projects": "Projects Delivered"
     }
   },
@@ -911,7 +911,7 @@
   "testimonials": {
     "sectionLabel": "Client Testimonials",
     "title": "What Our Clients Say",
-    "description": "Hear from contracting and industrial companies in Al Jubail who trust Saudi Ease for their digital operations.",
+    "description": "Contracting and industrial companies in the Eastern Province we have worked with.",
     "previous": "Previous testimonial",
     "next": "Next testimonial",
     "goToTestimonial": "Go to testimonial",
@@ -1083,15 +1083,15 @@
     "hero": {
       "title": "About Saudi Ease",
       "subtitle": "Professional IT & Digital Solutions",
-      "description": "Saudi Ease is a professional IT and digital solutions company based in Al Jubail, Saudi Arabia. Founded by Ibrahim Sifat, we serve contracting, construction, and industrial supply companies with comprehensive end-to-end digital solutions.",
-      "imageAlt": "Saudi Ease - Al Jubail IT & Digital Solutions"
+      "description": "Saudi Ease is an IT and digital services company based in Al Khobar, Saudi Arabia, founded in 2018 by Ibrahim Sifat. We serve contracting, construction and industrial supply companies in Al Khobar and Dammam with websites, apps, company profiles, brand identity and ZATCA e-invoicing setup.",
+      "imageAlt": "Saudi Ease - IT & digital services in Al Khobar"
     },
     "ourStory": {
       "title": "Our Story",
       "subtitle": "The Journey of Saudi Ease",
-      "description": "Saudi Ease was established to fill a critical gap in the Jubail market: the need for a single, trusted digital partner that understands the unique requirements of businesses operating in Saudi Arabia's industrial heartland.",
-      "foundedYear": "Founded in Al Jubail",
-      "foundedLocation": "Al Jubail, Saudi Arabia",
+      "description": "Saudi Ease was set up to give contracting, construction and industrial companies one digital partner that understands how they work, instead of several separate vendors.",
+      "foundedYear": "Founded in 2018",
+      "foundedLocation": "Al Khobar, Saudi Arabia",
       "founderName": "Ibrahim Sifat",
       "founderTitle": "Founder & CEO",
       "founderQuote": "We built Saudi Ease with one clear mission: to be a reliable, all-in-one digital partner for businesses operating in the Saudi market, with a focus on the contracting and industrial sectors.",
@@ -1133,7 +1133,7 @@
         "founding": {
           "year": "2018",
           "title": "Establishment",
-          "description": "Saudi Ease was founded in Al Jubail to serve the industrial heartland of Saudi Arabia."
+          "description": "Saudi Ease was founded to serve contracting and industrial companies in the Eastern Province."
         },
         "expansion": {
           "year": "2020",
@@ -1202,9 +1202,9 @@
       "phoneSupport": "Ibrahim Sifat",
       "email": "Email",
       "emailResponse": "info@saudiease.com",
-      "headquarters": "Al Jubail Office",
-      "getDirections": "Jubail City Center",
-      "businessHours": "Al Jubail 35514, Saudi Arabia",
+      "headquarters": "Al Khobar Office",
+      "getDirections": "Al Khobar, Eastern Province",
+      "businessHours": "Al Khobar, Eastern Province, Saudi Arabia",
       "connectWithUs": "Connect With Us",
       "emergencySupport": "Call Us",
       "emergencyDescription": "For immediate business solutions and support:",
@@ -1280,6 +1280,10 @@
           "answer": "Yes. We set up and integrate e-invoicing software that meets ZATCA requirements for Phase 1 and Phase 2. We are not a ZATCA-listed solution provider; we implement compliant third-party software for you."
         }
       ]
+    },
+    "meta": {
+      "title": "Contact Saudi Ease | WhatsApp, Phone, Al Khobar",
+      "description": "Contact Saudi Ease in Al Khobar about a website, mobile app, company profile or ZATCA e-invoicing setup. WhatsApp or call +966 55 884 5503."
     }
   },
   "portfolio": {
@@ -1565,11 +1569,10 @@
     "professionalServices": "Professional Services",
     "solutions": "Solutions",
     "getStarted": "Get Started",
-    "viewPricing": "View Pricing",
     "floatingElements": {
       "satisfaction": {
-        "title": "100% Satisfaction",
-        "description": "We guarantee quality results that meet your expectations"
+        "title": "Clear scope in writing",
+        "description": "We agree scope, milestones and timeline before work starts"
       },
       "delivery": {
         "title": "Fast Delivery",
@@ -1651,48 +1654,6 @@
     "mostPopular": "MOST POPULAR",
     "perProject": "per project",
     "contactForQuote": "Contact for Quote",
-    "pricing": {
-      "essential": {
-        "name": "Essential",
-        "price": "SAR 5,000",
-        "description": "Perfect for small businesses just getting started",
-        "features": [
-          "Core service features",
-          "Basic customization",
-          "Email support",
-          "1 month of maintenance"
-        ]
-      },
-      "professional": {
-        "name": "Professional",
-        "price": "SAR 12,000",
-        "description": "Ideal for growing businesses with specific needs",
-        "features": [
-          "All Essential features",
-          "Advanced customization",
-          "Priority support",
-          "3 months of maintenance",
-          "Performance optimization"
-        ]
-      },
-      "enterprise": {
-        "name": "Enterprise",
-        "price": "Custom",
-        "description": "Comprehensive solution for large organizations",
-        "features": [
-          "All Professional features",
-          "Full customization",
-          "Dedicated support manager",
-          "12 months of maintenance",
-          "Regular updates and improvements",
-          "Integration with existing systems"
-        ]
-      }
-    },
-    "customSolutions": "Need a Custom Solution?",
-    "customSolutionsDescription": "We offer tailored solutions to meet your specific business requirements. Our team will work closely with you to understand your needs and develop a customized solution.",
-    "needHelp": "Need Help Choosing?",
-    "needHelpDescription": "Not sure which plan is right for you? Schedule a consultation with our experts to discuss your requirements.",
     "scheduleConsultation": "Schedule Consultation",
     "frequentlyAsked": "Frequently Asked Questions",
     "faqDescription": "Find answers to common questions about our {service} services.",
@@ -1881,7 +1842,7 @@
   },
   "featuresPage": {
     "metadata": {
-      "title": "Our Features | Saudi Ease - Digital Solutions for Saudi Businesses",
+      "title": "How We Build Websites & Apps | Saudi Ease",
       "description": "How Saudi Ease builds websites and apps: performance, security, responsive design, local expertise and clear timelines."
     },
     "hero": {
@@ -1980,308 +1941,6 @@
       "copyright": "© {year} Saudi Ease. All rights reserved.",
       "privacyPolicy": "Privacy Policy",
       "termsOfService": "Terms of Service"
-    }
-  },
-  "estimator": {
-    "sendingEstimate": "Sending estimate...",
-    "emailEstimate": "Email Estimate",
-    "estimateSentSuccessfully": "Estimate sent successfully to your email!",
-    "failedToSendEstimate": "Failed to send estimate. Please try again or contact support.",
-    "estimateSent": "Estimate sent successfully to your email!",
-    "estimateSentError": "Failed to send estimate. Please try again or contact support.",
-    "metadata": {
-      "title": "Project Estimator | Get Instant Cost & Timeline Estimates",
-      "description": "Use our interactive project estimator to get instant cost and timeline estimates for your digital project. Plan your budget and timeline with Saudi Ease.",
-      "keywords": "project estimator, cost calculator, digital project timeline, web development cost, app development cost, Saudi Arabia digital services pricing"
-    },
-    "hero": {
-      "badge": "Interactive Project Estimator",
-      "title": "Get an Instant Estimate for Your Project",
-      "description": "Use our interactive estimator to get an approximate cost and timeline for your digital project. Adjust parameters to see how different choices affect your project scope."
-    },
-    "steps": {
-      "projectDetails": "Project Details",
-      "features": "Features",
-      "businessInfo": "Business Info",
-      "contact": "Contact"
-    },
-    "step1": {
-      "title": "Project Type & Complexity",
-      "projectTypeQuestion": "What type of project do you need?",
-      "complexityTitle": "Project Complexity",
-      "costMultiplier": "x cost multiplier",
-      "complexityGuide": {
-        "title": "Complexity Guide:",
-        "basic": "Simple design, limited features, standard functionality",
-        "standard": "Custom design, common features, some integrations",
-        "advanced": "Complex design, advanced features, multiple integrations",
-        "enterprise": "Highly customized, complex architecture, extensive integrations"
-      },
-      "urgencyTitle": "Project Urgency",
-      "standardTimeline": "Standard Timeline",
-      "urgentHigherCost": "Urgent (Higher Cost)",
-      "standardTimelineLabel": "Standard Timeline",
-      "standardCost": "(1x cost)",
-      "expedited": "Expedited",
-      "expeditedCost": "x cost"
-    },
-    "step2": {
-      "title": "Project Features",
-      "selectFeaturesTitle": "Select the features you need",
-      "selectFeaturesDescription": "Choose the features that are essential for your {{projectType}}. Each feature affects the overall cost and timeline.",
-      "weeks": "{{count}} week",
-      "weeks_plural": "{{count}} weeks",
-      "maintenancePlanTitle": "Maintenance Plan",
-      "maintenancePlanDescription": "Choose a maintenance plan to keep your project running smoothly after launch."
-    },
-    "step3": {
-      "title": "Business Information",
-      "companySizeTitle": "Company Size",
-      "companySizeDescription": "The size of your organization helps us tailor the solution to your specific needs.",
-      "companyInfoTitle": "Company Information",
-      "companyName": "Company Name",
-      "companyNamePlaceholder": "Your company name",
-      "industry": "Industry",
-      "selectIndustry": "Select your industry"
-    },
-    "step4": {
-      "title": "Contact Information",
-      "yourDetailsTitle": "Your Details",
-      "fullName": "Full Name",
-      "fullNamePlaceholder": "Your  \"Your Details",
-      "email": "Email Address",
-      "emailPlaceholder": "your.email@example.com",
-      "phone": "Phone Number",
-      "phonePlaceholder": "+966 5X XXX XXXX",
-      "position": "Position",
-      "positionPlaceholder": "Your position",
-      "additionalInfo": "Additional Information",
-      "additionalInfoPlaceholder": "Tell us more about your project requirements..."
-    },
-    "navigation": {
-      "continueToFeatures": "Continue to Features",
-      "continueToBusinessInfo": "Continue to Business Info",
-      "continueToContact": "Continue to Contact Info",
-      "getEstimate": "Get Your Estimate",
-      "back": "Back"
-    },
-    "results": {
-      "calculating": "Calculating Your Estimate...",
-      "pleaseWait": "Please wait while we process your project details.",
-      "title": "Your Project Estimate",
-      "subtitle": "Based on the information you provided",
-      "estimatedCost": "Estimated Cost",
-      "oneTimeCost": "One-time project cost",
-      "monthlyMaintenance": "Monthly Maintenance",
-      "estimatedTimeline": "Estimated Timeline",
-      "weeks": "week",
-      "weeks_plural": "weeks",
-      "fromKickoffToLaunch": "From kickoff to launch",
-      "approximateLaunchDate": "Approximate Launch Date",
-      "projectSummary": "Project Summary",
-      "projectType": "Project Type",
-      "complexity": "Complexity",
-      "selectedFeatures": "Selected Features",
-      "noFeaturesSelected": "No additional features selected",
-      "maintenancePlan": "Maintenance Plan",
-      "nextSteps": "Next Steps",
-      "nextStepsDescription": "This is an estimate based on the information provided. For a detailed proposal and to discuss your project further:",
-      "scheduleConsultation": "Schedule Consultation",
-      "downloadEstimate": "Download Estimate",
-      "shareEstimate": "Share Estimate",
-      "needChanges": "Need to make changes? You can go back and adjust your selections.",
-      "startOver": "Start Over"
-    },
-    "faq": {
-      "title": "Frequently Asked Questions",
-      "description": "Have questions about our estimator or project process? Find answers to common questions below.",
-      "tabs": {
-        "estimator": "About the Estimator",
-        "process": "Our Process",
-        "pricing": "Pricing & Payment"
-      },
-      "estimator": {
-        "q1": "How accurate is this estimate?",
-        "a1": "This estimator provides an approximate cost and timeline based on the information you provide. The final cost may vary based on detailed requirements, which we'll discuss during a consultation.",
-        "q2": "Can I change my selections later?",
-        "a2": "Yes, you can go back and adjust your selections at any time before submitting. After submission, we'll discuss any changes during the consultation.",
-        "q3": "Is my information secure?",
-        "a3": "Yes, all information submitted through this estimator is encrypted and secure. We do not share your information with third parties."
-      },
-      "process": {
-        "q1": "What happens after I submit my estimate request?",
-        "a1": "Our team will review your requirements and schedule a consultation to discuss your project in detail. We'll then provide a detailed proposal with exact pricing and timeline.",
-        "q2": "How long does the development process take?",
-        "a2": "Development timelines vary based on project complexity and scope. The estimator provides an approximate timeline, which we'll refine during our consultation based on your specific requirements.",
-        "q3": "Do you provide support after launch?",
-        "a3": "Yes, we offer various maintenance plans to ensure your project continues to run smoothly after launch. These include bug fixes, security updates, and ongoing support."
-      },
-      "pricing": {
-        "q1": "What payment methods do you accept?",
-        "a1": "We accept bank transfers, credit cards, and digital payment methods. Payment terms and schedules will be outlined in your project proposal.",
-        "q2": "Do you require a deposit?",
-        "a2": "Yes, we typically require a 50% deposit to begin work, with the remaining balance due upon project completion. For larger projects, we can arrange milestone-based payments.",
-        "q3": "Are there any hidden costs?",
-        "a3": "No, we provide transparent pricing with no hidden costs. Any additional requirements or changes to the project scope will be discussed and approved before implementation."
-      }
-    },
-    "cta": {
-      "title": "Ready to Start Your Project?",
-      "description": "Get in touch with our team to discuss your project requirements and turn your vision into reality.",
-      "scheduleConsultation": "Schedule a Consultation",
-      "contactUs": "Contact Us"
-    },
-    "common": {
-      "month": "month"
-    },
-    "projectTypes": {
-      "website": {
-        "name": "Website",
-        "description": "Custom website development with responsive design and content management system."
-      },
-      "ecommerce": {
-        "name": "E-Commerce Platform",
-        "description": "Full-featured online store with product catalog, secure checkout, and inventory management."
-      },
-      "mobileApp": {
-        "name": "Mobile Application",
-        "description": "Native or cross-platform mobile application for iOS and Android devices."
-      },
-      "customSoftware": {
-        "name": "Custom Software",
-        "description": "Bespoke software solution tailored to your specific business requirements."
-      },
-      "eInvoicing": {
-        "name": "E-Invoicing Solution",
-        "description": "ZATCA-compliant e-invoicing system with integration to your existing systems."
-      },
-      "digitalMarketing": {
-        "name": "Digital Marketing",
-        "description": "Comprehensive digital marketing strategy and implementation."
-      }
-    },
-    "complexity": {
-      "basic": {
-        "name": "Basic"
-      },
-      "standard": {
-        "name": "Standard"
-      },
-      "advanced": {
-        "name": "Advanced"
-      },
-      "enterprise": {
-        "name": "Enterprise"
-      }
-    },
-    "features": {
-      "userAuth": {
-        "name": "User Authentication",
-        "description": "Secure login, registration, and user profile management."
-      },
-      "paymentGateway": {
-        "name": "Payment Gateway Integration",
-        "description": "Integration with popular payment gateways like Mada, Apple Pay, and credit cards."
-      },
-      "multiLanguage": {
-        "name": "Multi-language Support",
-        "description": "Support for Arabic, English, and other languages with RTL compatibility."
-      },
-      "analytics": {
-        "name": "Advanced Analytics",
-        "description": "Detailed analytics dashboard with custom reports and insights."
-      },
-      "apiIntegration": {
-        "name": "Third-party API Integration",
-        "description": "Integration with external services and APIs."
-      },
-      "seoOptimization": {
-        "name": "SEO Optimization",
-        "description": "On-page and technical SEO optimization for better search engine rankings."
-      },
-      "contentManagement": {
-        "name": "Advanced Content Management",
-        "description": "Sophisticated content management system with workflow and approval processes."
-      },
-      "socialIntegration": {
-        "name": "Social Media Integration",
-        "description": "Integration with social media platforms for sharing and authentication."
-      },
-      "offlineMode": {
-        "name": "Offline Mode",
-        "description": "Ability to use the application without an internet connection."
-      },
-      "pushNotifications": {
-        "name": "Push Notifications",
-        "description": "Real-time push notifications to engage users."
-      },
-      "reporting": {
-        "name": "Custom Reporting",
-        "description": "Customizable reports and dashboards for business intelligence."
-      },
-      "zatcaCompliance": {
-        "name": "ZATCA Compliance",
-        "description": "Full compliance with Saudi Arabian tax authority requirements."
-      }
-    },
-    "teamSize": {
-      "small": {
-        "name": "Small (1-10 employees)"
-      },
-      "medium": {
-        "name": "Medium (11-50 employees)"
-      },
-      "large": {
-        "name": "Large (51-200 employees)"
-      },
-      "enterprise": {
-        "name": "Enterprise (201+ employees)"
-      }
-    },
-    "maintenancePlans": {
-      "basic": {
-        "name": "Basic Support",
-        "features": [
-          "Bug fixes",
-          "Security updates",
-          "Email support (business hours)",
-          "Monthly performance report"
-        ]
-      },
-      "standard": {
-        "name": "Standard Support",
-        "features": [
-          "All Basic Support features",
-          "Minor feature updates",
-          "Phone support (business hours)",
-          "Weekly backups",
-          "Monthly performance optimization"
-        ]
-      },
-      "premium": {
-        "name": "Premium Support",
-        "features": [
-          "All Standard Support features",
-          "Priority bug fixes",
-          "Quarterly feature additions",
-          "24/7 emergency support",
-          "Dedicated account manager",
-          "Daily backups",
-          "Monthly strategy consultation"
-        ]
-      }
-    },
-    "industries": {
-      "retail": "Retail & E-commerce",
-      "healthcare": "Healthcare",
-      "finance": "Finance & Banking",
-      "education": "Education",
-      "manufacturing": "Manufacturing",
-      "technology": "Technology",
-      "hospitality": "Hospitality & Tourism",
-      "realEstate": "Real Estate",
-      "government": "Government",
-      "other": "Other"
     }
   },
   "privacyPolicy": {
@@ -2506,7 +2165,7 @@
   },
   "techStack": {
     "metadata": {
-      "title": "Our Technology Stack | Saudi Ease - Digital Solutions for Saudi Businesses",
+      "title": "Technology Stack | Saudi Ease",
       "description": "Explore the cutting-edge technologies we use to build powerful, scalable, and efficient digital solutions for businesses in Saudi Arabia."
     },
     "hero": {
@@ -2937,7 +2596,7 @@
         "part1": "Tailored For",
         "part2": "Industrial Businesses"
       },
-      "description": "Saudi Ease proudly serves businesses of all sizes operating in and around Al Jubail and the Eastern Province. Our deepest expertise is designed for contracting, construction, and industrial supply companies."
+      "description": "Saudi Ease serves businesses in Al Khobar, Dammam and the Eastern Province, with most of our work for contracting, construction and industrial supply companies."
     },
     "stats": {
       "satisfaction": "Client Satisfaction",

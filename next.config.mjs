@@ -95,11 +95,36 @@ const nextConfig = {
         permanent: true,
       },
       // Services no longer offered (docs/seo/business-goals.md, 2026-11-20)
-      ...["aramco-sabic-vendor-code", "excel-data-work"].flatMap((id) => [
+      ...[
+        "aramco-sabic-vendor-code",
+        "excel-data-work",
+        "cv-document-preparation",
+        "digital-marketing",
+        "ui-ux-design",
+        "api-development",
+      ].flatMap((id) => [
         { source: `/services/${id}`, destination: "/services", permanent: true },
         { source: `/ar/services/${id}`, destination: "/services", permanent: true },
         { source: `/:locale(en|bn)/services/${id}`, destination: "/:locale/services", permanent: true },
       ]),
+      // Duplicate service pages merged into one URL per service (task 3-1)
+      ...Object.entries({
+        "web-development": "website-design-development",
+        "custom-cms-development": "website-design-development",
+        "e-commerce-solutions": "website-design-development",
+        "e-invoicing": "zatca-e-invoicing",
+        "corporate-profile": "company-profile-branding",
+        "logo-design": "brand-identity",
+        "print-design": "brand-identity",
+      }).flatMap(([from, to]) => [
+        { source: `/services/${from}`, destination: `/services/${to}`, permanent: true },
+        { source: `/ar/services/${from}`, destination: `/services/${to}`, permanent: true },
+        { source: `/:locale(en|bn)/services/${from}`, destination: `/:locale/services/${to}`, permanent: true },
+      ]),
+      // No published prices (owner decision 2026-11-20): estimator retired
+      { source: "/estimator", destination: "/contact", permanent: true },
+      { source: "/ar/estimator", destination: "/contact", permanent: true },
+      { source: "/:locale(en|bn)/estimator", destination: "/:locale/contact", permanent: true },
       // Careers page never existed; the company is not hiring
       { source: "/careers", destination: "/contact", permanent: true },
       { source: "/:locale(en|bn)/careers", destination: "/:locale/contact", permanent: true },

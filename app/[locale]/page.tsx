@@ -1,11 +1,5 @@
 import { localeUrl, pageAlternates } from "@/config/site";
-import {
-  generateLocalBusinessSchema,
-  generateOrganizationSchema,
-  generateWebsiteSchema,
-} from "@/lib/seo-utils";
 import type { Metadata } from "next";
-import Script from "next/script";
 import { Suspense } from "react";
 
 // Static components
@@ -72,28 +66,6 @@ export default async function Home({ params }: Props) {
   const { locale } = await params;
   return (
     <>
-      {/* Structured Data */}
-      <Script
-        id="organization-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(generateOrganizationSchema()),
-        }}
-      />
-      <Script
-        id="website-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(generateWebsiteSchema()),
-        }}
-      />
-      <Script
-        id="local-business-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(generateLocalBusinessSchema()),
-        }}
-      />
       {/* Hero Section */}
       <HeroSection />
       {/* Clients Section */}

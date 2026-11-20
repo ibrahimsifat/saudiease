@@ -47,7 +47,7 @@ export default function FeatureDetailPageClient({
           __html: JSON.stringify(generateServiceSchema(feature)),
         }}
       />
-      <main className="min-h-screen">
+      <div className="min-h-screen">
         {/* Hero Section */}
         <section className="relative py-16 md:py-24 overflow-hidden">
           {/* Background Elements */}
@@ -345,7 +345,7 @@ export default function FeatureDetailPageClient({
             </div>
           </div>
         </section>
-      </main>
+      </div>
     </>
   );
 }

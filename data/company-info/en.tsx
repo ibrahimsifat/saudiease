@@ -4,12 +4,12 @@ import type { CompanyInfo } from "./types";
 export const companyInfoEn: CompanyInfo = {
   name: "Saudi Ease",
   logo: CONSTANT.images.logo.en,
-  tagline: "Professional IT & Digital Solutions in Al Jubail",
+  tagline: "IT & Digital Services in Al Khobar & Dammam",
   mapUrl: "",
   description:
-    "Saudi Ease is a professional IT and digital solutions company based in Al Jubail, Saudi Arabia. Founded by Ibrahim Sifat, we serve contracting, construction, and industrial supply companies with comprehensive digital solutions.",
+    "Saudi Ease is an IT and digital services company based in Al Khobar, Saudi Arabia, founded in 2018 by Ibrahim Sifat. We build websites and mobile apps, design company profiles and brand identities, and set up ZATCA-compliant e-invoicing for contracting, construction and industrial supply companies in Al Khobar and Dammam.",
   shortDescription:
-    "Professional IT & digital solutions for Al Jubail's industrial sector.",
+    "IT and digital services for industrial and contracting companies in the Eastern Province.",
   mission:
     "To empower businesses in Saudi Arabia with affordable, professional, and complete digital solutions.",
   vision:
@@ -33,7 +33,7 @@ export const companyInfoEn: CompanyInfo = {
     {
       title: "Local Presence",
       description:
-        "Based in Jubail City Center with face-to-face availability.",
+        "Based in Al Khobar; we meet clients in person in Al Khobar and Dammam.",
     },
   ],
   achievements: [
@@ -61,8 +61,8 @@ export const companyInfoEn: CompanyInfo = {
     phone: "+966 558845503",
     email: "info@saudiease.com",
     address: {
-      street: "Jubail City Center",
-      city: "Al Jubail",
+      street: "Eastern Province",
+      city: "Al Khobar",
       country: "Saudi Arabia",
     },
     businessHours: [

@@ -51,7 +51,7 @@ export default async function AboutPage({ params }: Props) {
   const isRTL = locale === "ar";
 
   return (
-    <main className={`min-h-screen ${isRTL ? "rtl" : ""}`}>
+    <div className={`min-h-screen ${isRTL ? "rtl" : ""}`}>
       <AboutHero
         title={t("hero.title")}
         subtitle={t("hero.subtitle")}
@@ -168,6 +168,6 @@ export default async function AboutPage({ params }: Props) {
         isRTL={isRTL}
       />
 
-    </main>
+    </div>
   );
 }

@@ -139,8 +139,8 @@ export const services: Service[] = [
     icon: MapPin,
     title: "Google Business Profile",
     image: CONSTANT.images.service.digitalMarketing,
-    description: "Get found on Maps by industrial clients in Jubail.",
-    longDescription: "Industrial clients often search for local suppliers and contractors on Google Maps. We optimize your business profile to ensure you appear when they search for services in Jubail and surrounding areas.",
+    description: "Get found on Google Maps by clients in the Eastern Province.",
+    longDescription: "Industrial clients often search for local suppliers and contractors on Google Maps. We optimize your business profile to ensure you appear when they search for services in Al Khobar, Dammam and the Eastern Province.",
     benefits: [
       "Appear in local search results",
       "Get direct calls from clients",
@@ -173,27 +173,6 @@ export const services: Service[] = [
       "MOCI portal support",
       "Chamber of Commerce registration",
       "Activity selection advice"
-    ],
-    category: "consultation",
-  },
-  {
-    id: "cv-document-preparation",
-    icon: ClipboardList,
-    title: "CV & Document Preparation",
-    image: CONSTANT.images.service.corporateProfile,
-    description: "Professional docs for industrial tenders and hiring.",
-    longDescription: "Industrial tenders often require specific documentation and CV formats. We prepare high-quality, professional documents and CVs for your key staff that meet the standards of major industrial clients.",
-    benefits: [
-      "Increase tender success rate",
-      "Professional staff representation",
-      "Ready-to-submit documentation",
-      "Saves management time"
-    ],
-    features: [
-      "ATS-friendly staff CVs",
-      "Tender response drafting",
-      "Technical proposal formatting",
-      "Policies & Procedures docs"
     ],
     category: "consultation",
   },

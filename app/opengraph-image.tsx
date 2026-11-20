@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "SaudiEase - Professional IT & Digital Solutions in Al Jubail, Eastern Province";
+export const alt = "Saudi Ease - IT & Digital Services in Al Khobar & Dammam, Eastern Province";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -159,7 +159,7 @@ export default async function Image() {
           }}
         >
           <span>🇸🇦</span>
-          <span>Al Jubail • Eastern Province • Saudi Arabia</span>
+          <span>Al Khobar • Dammam • Eastern Province</span>
           <span style={{ margin: "0 8px" }}>|</span>
           <span>saudiease.com</span>
         </div>

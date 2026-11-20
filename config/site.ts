@@ -55,3 +55,15 @@ export function stripLocale(path = ""): { locale?: Locale; path: string } {
   if (!m) return { path: cleanPath(path) };
   return { locale: m[1] as Locale, path: cleanPath(path.slice(m[0].length)) };
 }
+
+export const BRAND: Record<string, string> = {
+  ar: "سعودي إيز",
+  en: "Saudi Ease",
+  bn: "সৌদি ইজ",
+};
+
+/** "<page> | <brand>" when it fits in 60 characters, else the page title alone. */
+export function withBrand(title: string, locale: string): string {
+  const full = `${title} | ${BRAND[locale] || BRAND.en}`;
+  return [...full].length <= 60 ? full : title;
+}

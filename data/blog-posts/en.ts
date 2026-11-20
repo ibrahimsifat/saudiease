@@ -344,7 +344,7 @@ export const blogPosts: BlogPost[] = [
 
        Targeted LinkedIn Campaigns for B2B
       For B2B companies, LinkedIn is the most powerful platform in the Eastern Province.
-      - Account-Based Marketing (ABM): Target specific decision-makers within major corporations (like Saudi Aramco or SABIC) with highly personalized content.
+      - Account-Based Marketing (ABM): Target specific decision-makers within major corporations (for example, large industrial companies) with highly personalized content.
       - Thought Leadership: Publish insightful articles about industry trends, demonstrating your expertise and authority in the market.
 
       ---

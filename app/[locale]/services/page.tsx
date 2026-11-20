@@ -2,7 +2,6 @@ import type { Locale } from "@/config/i18n";
 import { generateServiceSchema } from "@/lib/schema";
 import { generatePageMetadata } from "@/lib/seo-utils";
 import type { Metadata } from "next";
-import Script from "next/script";
 import ServicesPageClient from "./ServicesPageClient";
 
 import { keywords } from "@/data/keywords";
@@ -33,7 +32,7 @@ export default async function ServicesPage({ params }: Props) {
 
   return (
     <>
-      <Script
+      <script
         id="services-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{

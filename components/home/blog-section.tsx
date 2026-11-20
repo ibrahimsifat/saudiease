@@ -11,7 +11,6 @@ import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Calendar, User } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import Script from "next/script";
 
 export default function BlogSection({ locale }: { locale: Locale }) {
   const t = useTranslations("blogSection");
@@ -51,7 +50,7 @@ export default function BlogSection({ locale }: { locale: Locale }) {
 
       {/* Add structured data for blog posts */}
       {blogPosts.map((post) => (
-        <Script
+        <script
           key={post.id}
           id={`schema-blog-${post.id}`}
           type="application/ld+json"

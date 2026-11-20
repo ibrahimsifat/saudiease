@@ -118,7 +118,7 @@ const RenderVisual = ({ id }: { id: string }) => {
                 <div className="text-xs text-gray-500 font-mono uppercase tracking-wider">Typography</div>
                 <div className="flex flex-col gap-4 bg-white/5 p-4 rounded-xl border border-white/10 h-full">
                    <div className="text-4xl font-bold tracking-tight text-white font-sans">Aa</div>
-                   <div className="text-xs text-gray-400 leading-relaxed font-sans">Building the future of industrial services in Jubail.</div>
+                   <div className="text-xs text-gray-400 leading-relaxed font-sans">Websites for industrial companies in the Eastern Province.</div>
                 </div>
              </div>
           </div>

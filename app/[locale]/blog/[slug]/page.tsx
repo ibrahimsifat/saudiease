@@ -1,5 +1,5 @@
 import { Locale, locales } from "@/config/i18n";
-import { localeUrl, pageAlternates } from "@/config/site";
+import { localeUrl, pageAlternates, withBrand } from "@/config/site";
 import { getBlogs } from "@/data/blog-posts/index";
 import { keywords } from "@/data/keywords";
 import { generateBlogPostSchema } from "@/lib/schema";
@@ -13,6 +13,36 @@ type Props = {
     locale: Locale;
   };
 };
+
+// Short SEO titles for the posts that feed money pages (≤ 60 chars).
+const BLOG_SEO_TITLES: Record<string, Record<string, string>> = {
+  "zatca-phase-2-e-invoicing-saudi-businesses": {
+    ar: "الفاتورة الإلكترونية المرحلة الثانية: ما يلزم شركتك",
+    en: "ZATCA Phase 2 E-Invoicing Guide | Saudi Ease",
+    bn: "ZATCA ফেজ ২ ই-ইনভয়েসিং গাইড | সৌদি ইজ",
+  },
+  "crafting-compelling-corporate-profile-b2b-clients": {
+    ar: "كيف تكتب بروفايل شركة يقنع العملاء | سعودي إيز",
+    en: "How to Write a Company Profile for B2B Clients",
+    bn: "B2B ক্লায়েন্টের জন্য কোম্পানি প্রোফাইল | সৌদি ইজ",
+  },
+  "web-development-vs-custom-cms-right-for-business": {
+    ar: "موقع مبرمج أم نظام إدارة محتوى؟ | سعودي إيز",
+    en: "Custom Website vs CMS: Which Fits Your Business?",
+    bn: "কাস্টম ওয়েবসাইট নাকি CMS? | সৌদি ইজ",
+  },
+};
+
+function blogSeoTitle(slug: string, title: string, locale: string): string {
+  const custom = BLOG_SEO_TITLES[slug]?.[locale];
+  if (custom) return custom;
+  const branded = withBrand(title, locale);
+  if ([...branded].length <= 60) return branded;
+  // "Main topic: subtitle" -> "Main topic | Brand" when the main part is meaningful
+  const head = title.split(/[:：]/)[0].trim();
+  if (head !== title && [...head].length >= 20) return withBrand(head, locale);
+  return title;
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug, locale } = await params;
@@ -33,7 +63,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     : "https://saudiease.com/opengraph-image";
 
   return {
-    title: `${post.title} | ${t("title")}`,
+    title: blogSeoTitle(slug, post.title, locale),
     description: post.metaDescription || post.excerpt,
     keywords: post.metaKeywords
       ? post.metaKeywords.join(", ")

@@ -3,7 +3,6 @@ import { keywords } from "@/data/keywords";
 import { generateFAQSchema, generatePageMetadata } from "@/lib/seo-utils";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import Script from "next/script";
 import { Suspense } from "react";
 import FAQPageClient from "./FAQPageClient";
 type Props = {
@@ -38,7 +37,7 @@ export default async function FAQPage({ params }: Props) {
 
   return (
     <>
-      <Script
+      <script
         id="faq-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}

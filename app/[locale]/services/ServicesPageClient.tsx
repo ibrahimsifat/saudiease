@@ -36,7 +36,7 @@ export default function ServicesPageClient({ locale }: { locale: Locale }) {
   });
 
   return (
-    <main className="min-h-screen">
+    <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-primary/10 via-white to-gray-50 py-12 md:py-24">
         <div className="absolute inset-0 bg-grid-pattern opacity-[0.015] pointer-events-none"></div>
@@ -229,6 +229,6 @@ export default function ServicesPageClient({ locale }: { locale: Locale }) {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

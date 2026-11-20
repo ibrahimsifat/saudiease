@@ -61,9 +61,10 @@ export const enFAQs: FAQ[] = [
   // E-Invoicing
   {
     id: "e-invoicing-zatca",
-    question: "Is your e-invoicing solution ZATCA compliant?",
+    question:
+      "Do you set up ZATCA-compliant e-invoicing?",
     answer:
-      "Yes, our e-invoicing solution is fully compliant with the Zakat, Tax and Customs Authority (ZATCA) regulations in Saudi Arabia. We ensure that all electronic invoices meet the required standards including QR codes and real-time reporting capabilities.",
+      "Yes. We set up and integrate e-invoicing software that meets ZATCA requirements for Phase 1 and Phase 2, including QR codes and invoice reporting. We are not a ZATCA-listed solution provider; we implement compliant third-party software for you.",
     category: "E-Invoicing",
   },
   {

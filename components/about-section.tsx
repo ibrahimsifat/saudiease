@@ -133,7 +133,7 @@ export default function AboutSection() {
             <span className="flex h-2 w-2 rounded-full bg-primary mr-2"></span>
             {t("sectionLabel")}
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-saudi-black mb-4 tracking-tight">
+          <h2 className="text-4xl md:text-5xl font-bold text-saudi-black mb-4 tracking-tight">
             {t("title.part1")}
             <span
               className={`text-primary relative ${isRTL ? "mr-2" : "ml-2"}`}
@@ -152,7 +152,7 @@ export default function AboutSection() {
                 />
               </svg>
             </span>
-          </h1>
+          </h2>
           <p className="text-gray-600 max-w-2xl mx-auto text-lg">
             {t("subtitle")}
           </p>

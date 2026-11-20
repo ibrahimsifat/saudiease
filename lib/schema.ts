@@ -1,114 +1,53 @@
+import { SITE_URL, localeUrl } from "@/config/site";
 import { companyInfo } from "@/data/company-info/index";
 import type { FAQ } from "@/data/faq";
 
-const BASE_URL = "https://saudiease.com";
+// Single source for JSON-LD. Every fact here must be in docs/seo/business-goals.md:
+// office city Al Khobar (no street published), on-site cities Al Khobar + Dammam,
+// founded 2018, phone/email/hours as on the site. No ratings, reviews or prices.
 
-// Generate Organization Schema
+const BASE_URL = SITE_URL;
+export const ORG_ID = `${BASE_URL}/#organization`;
+const WEBSITE_ID = `${BASE_URL}/#website`;
+
+const SAME_AS = companyInfo.contact.socialMedia.map((s) => s.url);
+
+const AREA_SERVED = [
+  { "@type": "City", name: "Al Khobar" },
+  { "@type": "City", name: "Dammam" },
+  { "@type": "AdministrativeArea", name: "Eastern Province" },
+];
+
+/** Organization + ProfessionalService in one node (one entity, one @id). */
 export function generateOrganizationSchema() {
   return {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "@id": `${BASE_URL}/#organization`,
-    name: companyInfo.name,
+    "@type": ["Organization", "ProfessionalService"],
+    "@id": ORG_ID,
+    name: "Saudi Ease",
+    alternateName: ["سعودي إيز", "SaudiEase"],
     url: BASE_URL,
     logo: `${BASE_URL}/images/logos/ar-logo.png`,
+    image: `${BASE_URL}/images/logos/ar-logo.png`,
     description: companyInfo.description,
+    foundingDate: "2018",
+    founder: { "@type": "Person", name: "Ibrahim Sifat" },
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Jubail City Center",
-      addressLocality: "Al Jubail",
+      addressLocality: "Al Khobar",
       addressRegion: "Eastern Province",
       addressCountry: "SA",
     },
+    areaServed: AREA_SERVED,
     telephone: "+966558845503",
     email: "info@saudiease.com",
-    sameAs: [
-      "https://facebook.com/saudiease0",
-      "https://twitter.com/saudiease0",
-      "https://linkedin.com/company/saudiease0",
-      "https://instagram.com/saudiease0",
-    ],
-  };
-}
-
-// Generate Service Schema
-export function generateServiceSchema(service: {
-  title: string;
-  description: string;
-  provider?: { name: string; url: string };
-}) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: service.title,
-    description: service.description,
-    provider: service.provider || {
-      "@type": "Organization",
-      name: companyInfo.name,
-      url: BASE_URL,
-    },
-    areaServed: {
-      "@type": "Country",
-      name: "Saudi Arabia",
-    },
-    serviceType: service.title,
-  };
-}
-
-// Generate FAQ Schema
-export function generateFAQSchema(faqs: FAQ[]) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.answer,
-      },
-    })),
-  };
-}
-
-// Generate Website Schema
-export function generateWebsiteSchema() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: companyInfo.name,
-    url: BASE_URL,
-    description: companyInfo.description,
-    publisher: {
-      "@id": `${BASE_URL}/#organization`,
-    },
-    inLanguage: ["ar", "en", "bn"],
-  };
-}
-
-// Generate LocalBusiness Schema
-export function generateLocalBusinessSchema(props?: any) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    name: props?.name || companyInfo.name,
-    image: `${BASE_URL}/images/logos/ar-logo.png`,
-    "@id": `${BASE_URL}/#localbusiness`,
-    url: BASE_URL,
-    telephone: props?.telephone || "+966558845503",
-    email: props?.email || "info@saudiease.com",
-    priceRange: "$$",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: props?.address?.streetAddress || "Jubail City Center",
-      addressLocality: props?.address?.addressLocality || "Al Jubail",
-      addressRegion: props?.address?.addressRegion || "Eastern Province",
-      addressCountry: props?.address?.addressCountry || "SA",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: 27.0046,
-      longitude: 49.6625,
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+966558845503",
+      email: "info@saudiease.com",
+      contactType: "sales",
+      areaServed: "SA",
+      availableLanguage: ["Arabic", "English", "Bengali"],
     },
     openingHoursSpecification: [
       {
@@ -124,21 +63,76 @@ export function generateLocalBusinessSchema(props?: any) {
         closes: "13:00",
       },
     ],
+    knowsLanguage: ["ar", "en", "bn"],
+    sameAs: SAME_AS,
   };
 }
 
-// Generate enriched BlogPosting Schema
-export function generateBlogPostSchema(post: any) {
-  const postUrl = post.slug
-    ? `${BASE_URL}/en/blog/${post.slug}`
-    : `${BASE_URL}/blog`;
+/** Kept for existing callers: the business entity is the organization node. */
+export function generateLocalBusinessSchema() {
+  return generateOrganizationSchema();
+}
+
+export function generateWebsiteSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": WEBSITE_ID,
+    name: "Saudi Ease",
+    alternateName: "سعودي إيز",
+    url: BASE_URL,
+    publisher: { "@id": ORG_ID },
+    inLanguage: ["ar", "en", "bn"],
+  };
+}
+
+export function generateServiceSchema(
+  service: { id?: string; title: string; description: string },
+  locale?: string
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: service.title,
+    description: service.description,
+    serviceType: service.title,
+    ...(service.id && locale ? { url: localeUrl(locale, `/services/${service.id}`) } : {}),
+    provider: { "@id": ORG_ID, "@type": "Organization", name: "Saudi Ease", url: BASE_URL },
+    areaServed: AREA_SERVED,
+  };
+}
+
+export function generateFAQSchema(faqs: FAQ[] | { question: string; answer: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: { "@type": "Answer", text: faq.answer },
+    })),
+  };
+}
+
+export function generateBreadcrumbSchema(items: { name: string; url: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: item.url,
+    })),
+  };
+}
+
+export function generateBlogPostSchema(post: any, locale: string = "ar") {
+  const postUrl = post.slug ? localeUrl(locale, `/blog/${post.slug}`) : localeUrl(locale, "/blog");
   return {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": postUrl,
-    },
+    mainEntityOfPage: { "@type": "WebPage", "@id": postUrl },
     headline: post.title,
     description: post.excerpt || post.metaDescription || "",
     image: post.image
@@ -148,22 +142,16 @@ export function generateBlogPostSchema(post: any) {
       : `${BASE_URL}/opengraph-image`,
     datePublished: post.date,
     dateModified: post.date,
-    author: {
-      "@type": "Person",
-      name: post.author,
-      url: BASE_URL,
-    },
+    author: { "@id": ORG_ID, "@type": "Organization", name: "Saudi Ease" },
     publisher: {
+      "@id": ORG_ID,
       "@type": "Organization",
-      name: companyInfo.name,
-      logo: {
-        "@type": "ImageObject",
-        url: `${BASE_URL}/images/logos/ar-logo.png`,
-      },
+      name: "Saudi Ease",
+      logo: { "@type": "ImageObject", url: `${BASE_URL}/images/logos/ar-logo.png` },
     },
     articleSection: post.category || "Technology",
     keywords: post.tags ? post.tags.join(", ") : "",
-    inLanguage: "en",
+    inLanguage: locale,
     url: postUrl,
   };
 }

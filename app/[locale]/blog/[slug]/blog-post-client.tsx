@@ -40,7 +40,6 @@ import {
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import Script from "next/script";
 import { useEffect, useRef, useState } from "react";
 
 export default function BlogPostClient({ post, locale, schema }) {
@@ -191,7 +190,7 @@ export default function BlogPostClient({ post, locale, schema }) {
   return (
     <>
       {/* Add structured data */}
-      <Script
+      <script
         id={`schema-blog-${post.id}`}
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}

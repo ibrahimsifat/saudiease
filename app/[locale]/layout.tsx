@@ -10,6 +10,7 @@ import { type Locale, localeMetadata, locales } from "@/config/i18n";
 import { getAllTranslations } from "@/lib/get-translation-namespace";
 import {
   generateGlobalSchema,
+  generateOrganizationSchema,
   generateLocalizedMetadata,
 } from "@/lib/seo-utils";
 import { Analytics } from "@vercel/analytics/react";
@@ -93,7 +94,7 @@ export default async function LocaleLayout({
     notFound();
   }
 
-  const globalSchema = generateGlobalSchema();
+  const globalSchema = [generateOrganizationSchema(), generateGlobalSchema()];
   const { dir } = localeMetadata[locale];
 
   return (
@@ -135,12 +136,10 @@ export default async function LocaleLayout({
 
         {/* Geo meta tags for local SEO */}
         <meta name="geo.region" content="SA-04" />
-        <meta name="geo.placename" content="Al Jubail, Eastern Province, Saudi Arabia" />
-        <meta name="geo.position" content="27.0046;49.6625" />
-        <meta name="ICBM" content="27.0046, 49.6625" />
+        <meta name="geo.placename" content="Al Khobar, Eastern Province, Saudi Arabia" />
 
         {/* Add structured data */}
-        <Script
+        <script
           id="schema-global"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}

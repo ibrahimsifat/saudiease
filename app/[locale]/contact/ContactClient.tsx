@@ -8,7 +8,7 @@ import type { Locale } from "@/config/i18n";
 
 export default function ContactClient({ locale }: { locale: Locale }) {
   return (
-    <main className="min-h-screen">
+    <div className="min-h-screen">
       {/* Hero Section */}
       <ContactHero />
 
@@ -34,6 +34,6 @@ export default function ContactClient({ locale }: { locale: Locale }) {
 
       {/* FAQ Section */}
       <ContactFAQ />
-    </main>
+    </div>
   );
 }

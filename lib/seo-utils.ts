@@ -5,175 +5,15 @@ import type { Metadata } from "next/types";
 
 const BASE_URL = SITE_URL;
 
-// Generate enriched Organization Schema with full contact, social, and area info
-export function generateOrganizationSchema() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "@id": `${BASE_URL}/#organization`,
-    name: companyInfo.name,
-    url: BASE_URL,
-    logo: {
-      "@type": "ImageObject",
-      url: `${BASE_URL}/images/logos/ar-logo.png`,
-      width: 512,
-      height: 512,
-    },
-    description: companyInfo.description,
-    foundingDate: "2018",
-    founder: {
-      "@type": "Person",
-      name: "Ibrahim Sifat",
-    },
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "Jubail City Center",
-      addressLocality: "Al Jubail",
-      addressRegion: "Eastern Province",
-      addressCountry: "SA",
-    },
-    telephone: "+966558845503",
-    email: "info@saudiease.com",
-    sameAs: [
-      "https://facebook.com/saudiease0",
-      "https://twitter.com/saudiease0",
-      "https://linkedin.com/company/saudiease0",
-      "https://instagram.com/saudiease0",
-    ],
-    areaServed: [
-      {
-        "@type": "City",
-        name: "Al Jubail",
-      },
-      {
-        "@type": "City",
-        name: "Dammam",
-      },
-      {
-        "@type": "City",
-        name: "Khobar",
-      },
-      {
-        "@type": "AdministrativeArea",
-        name: "Eastern Province",
-      },
-      {
-        "@type": "Country",
-        name: "Saudi Arabia",
-      },
-    ],
-    knowsLanguage: ["ar", "en", "bn"],
-  };
-}
-
-// Generate WebSite schema with search action
-export function generateGlobalSchema() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "@id": `${BASE_URL}/#website`,
-    name: companyInfo.name,
-    url: BASE_URL,
-    description: companyInfo.description,
-    publisher: {
-      "@id": `${BASE_URL}/#organization`,
-    },
-    inLanguage: ["ar", "en", "bn"],
-    potentialAction: {
-      "@type": "SearchAction",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate: `${BASE_URL}/en/blog?q={search_term_string}`,
-      },
-      "query-input": "required name=search_term_string",
-    },
-  };
-}
-
-// Generate LocalBusiness schema for Google Maps / local SEO
-export function generateLocalBusinessSchema() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "@id": `${BASE_URL}/#localbusiness`,
-    name: companyInfo.name,
-    image: `${BASE_URL}/images/logos/ar-logo.png`,
-    url: BASE_URL,
-    telephone: "+966558845503",
-    email: "info@saudiease.com",
-    priceRange: "$$",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "Jubail City Center",
-      addressLocality: "Al Jubail",
-      addressRegion: "Eastern Province",
-      postalCode: "35516",
-      addressCountry: "SA",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: 27.0046,
-      longitude: 49.6625,
-    },
-    openingHoursSpecification: [
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
-        opens: "09:00",
-        closes: "18:00",
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: "Friday",
-        opens: "09:00",
-        closes: "13:00",
-      },
-    ],
-    sameAs: [
-      "https://facebook.com/saudiease0",
-      "https://twitter.com/saudiease0",
-      "https://linkedin.com/company/saudiease0",
-      "https://instagram.com/saudiease0",
-    ],
-  };
-}
-
-// Generate FAQ Schema
-export function generateFAQSchema(faqs: any[]) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.answer,
-      },
-    })),
-  };
-}
-
-// Generate Website Schema (alias for backward compat)
-export function generateWebsiteSchema() {
-  return generateGlobalSchema();
-}
-
-// Generate BreadcrumbList schema
-export function generateBreadcrumbSchema(
-  items: { name: string; url: string }[]
-) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: items.map((item, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: item.name,
-      item: item.url,
-    })),
-  };
-}
+// JSON-LD lives in lib/schema.ts (single source); re-exported for existing imports.
+export {
+  generateBreadcrumbSchema,
+  generateFAQSchema,
+  generateLocalBusinessSchema,
+  generateOrganizationSchema,
+  generateWebsiteSchema,
+  generateWebsiteSchema as generateGlobalSchema,
+} from "@/lib/schema";
 
 // Generate alternate URLs for all supported locales (path without locale prefix)
 export function generateAlternateUrls(path = "") {
@@ -182,11 +22,11 @@ export function generateAlternateUrls(path = "") {
 
 // Base SEO metadata
 export const baseSeoMetadata = {
-  title: "SaudiEase - Professional IT & Digital Solutions in Eastern Province",
+  title: "Web Design & App Company in Al Khobar & Dammam | Saudi Ease",
   description:
-    "SaudiEase provides professional IT and digital solutions for businesses in Al Jubail, Dammam, Khobar, and across the Eastern Province. Web development, mobile apps, e-invoicing, branding, and more.",
+    "Saudi Ease builds websites and mobile apps, designs company profiles and brand identities, and sets up ZATCA-compliant e-invoicing for businesses in Al Khobar and Dammam.",
   keywords:
-    "digital solutions, Saudi Arabia, Eastern Province, Al Jubail, web development, mobile apps, ZATCA e-invoicing, branding, digital marketing, Dammam, Khobar",
+    "web design Al Khobar, web design Dammam, mobile app development, ZATCA e-invoicing, company profile design, brand identity, Eastern Province",
   authors: [{ name: "SaudiEase Team" }],
   creator: "SaudiEase",
   publisher: "SaudiEase",
@@ -202,9 +42,9 @@ export const baseSeoMetadata = {
     type: "website" as const,
     locale: "ar_SA",
     url: BASE_URL,
-    title: "SaudiEase - Professional IT & Digital Solutions in Eastern Province",
+    title: "Web Design & App Company in Al Khobar & Dammam | Saudi Ease",
     description:
-      "Professional IT and digital solutions for businesses in Al Jubail, Dammam, and the Eastern Province. Web development, mobile apps, e-invoicing, and more.",
+      "Websites, mobile apps, company profiles, brand identity and ZATCA e-invoicing setup for businesses in Al Khobar and Dammam.",
     siteName: "SaudiEase",
     images: [
       {
@@ -217,9 +57,9 @@ export const baseSeoMetadata = {
   },
   twitter: {
     card: "summary_large_image" as const,
-    title: "SaudiEase - Professional IT & Digital Solutions in Eastern Province",
+    title: "Web Design & App Company in Al Khobar & Dammam | Saudi Ease",
     description:
-      "Professional IT and digital solutions for businesses in Al Jubail, Dammam, and the Eastern Province.",
+      "Websites, mobile apps, company profiles and ZATCA e-invoicing setup in Al Khobar and Dammam.",
     creator: "@saudiease0",
     images: [`${BASE_URL}/opengraph-image`],
   },
