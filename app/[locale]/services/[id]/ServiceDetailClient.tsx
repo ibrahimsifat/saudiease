@@ -1,6 +1,7 @@
 "use client";
 
 import { localePath } from "@/config/site";
+import { CITIES, CITY_PAGES, CITY_SERVICE } from "@/data/city-pages";
 import { whatsappLink } from "@/lib/track";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -141,7 +142,7 @@ export default function ServiceDetailClient({
             >
               <li className="inline-flex items-center">
                 <Link
-                  href={localePath(locale, "")}
+                  href="/"
                   className="text-gray-600 hover:text-primary transition-colors"
                 >
                   {t("breadcrumbs.home")}
@@ -159,7 +160,7 @@ export default function ServiceDetailClient({
                     }`}
                   />
                   <Link
-                    href={localePath(locale, "/services")}
+                    href="/services"
                     className={`${
                       isRtl ? "mr-1" : "ml-1"
                     } text-gray-600 hover:text-primary transition-colors`}
@@ -336,6 +337,29 @@ export default function ServiceDetailClient({
           </div>
         </div>
       </section>
+
+      {/* Areas we serve on-site (service × city pages, task 3-7) */}
+      {id === CITY_SERVICE && (
+        <section className="py-8 bg-white" aria-labelledby="cities-title">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <h2 id="cities-title" className="text-2xl font-bold text-saudi-black mb-4">
+              {locale === "ar" ? "مدن نخدمها ميدانياً" : locale === "bn" ? "যেসব শহরে সরাসরি সেবা দিই" : "Cities we serve on-site"}
+            </h2>
+            <ul className="flex flex-wrap gap-3">
+              {CITIES.map((c) => (
+                <li key={c}>
+                  <Link
+                    href={`/services/${id}/${c}`}
+                    className="inline-block rounded-lg border border-primary/30 px-4 py-2 text-primary hover:bg-primary/5"
+                  >
+                    {CITY_PAGES[locale]?.[c]?.h1}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
 
       {/* Facts at a glance (only on pages that define them) */}
       {serviceDetail.facts && (

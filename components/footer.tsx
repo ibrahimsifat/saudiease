@@ -5,6 +5,7 @@ import type React from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { CONSTANT } from "@/config/constants";
+import { CITIES, CITY_PAGES, CITY_SERVICE } from "@/data/city-pages";
 import { getCompanyInfo } from "@/data/company-info/index";
 import { Link } from "@/i18n/routing";
 import { motion } from "framer-motion";
@@ -80,6 +81,11 @@ export default function Footer({ locale }: { locale: Locale }) {
       link: "/blog/zatca-phase-2-e-invoicing-saudi-businesses",
     },
     { name: t("resources.faq"), link: "/faq" },
+    // Service × city pages (task 3-7)
+    ...CITIES.map((city) => ({
+      name: CITY_PAGES[locale]?.[city]?.h1 || city,
+      link: `/services/${CITY_SERVICE}/${city}`,
+    })),
   ];
 
   // Animation variants

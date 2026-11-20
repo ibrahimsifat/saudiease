@@ -2,6 +2,7 @@ import { locales, type Locale } from "@/config/i18n";
 import { localeUrl, pageAlternates } from "@/config/site";
 import { getBlogs } from "@/data/blog-posts/index";
 import { getFeatures } from "@/data/features";
+import { CITIES, CITY_SERVICE } from "@/data/city-pages";
 import { getServiceDetails } from "@/data/service-details/index";
 import type { MetadataRoute } from "next";
 
@@ -57,6 +58,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const id of Object.keys(getServiceDetails(locale))) {
       const available = locales.filter((l) => Boolean(getServiceDetails(l)[id]));
       entries.push(entry(locale, `/services/${id}`, available));
+    }
+  }
+
+  // Service × city pages (only where on-site delivery is real)
+  for (const locale of locales) {
+    for (const city of CITIES) {
+      entries.push(entry(locale, `/services/${CITY_SERVICE}/${city}`));
     }
   }
 
