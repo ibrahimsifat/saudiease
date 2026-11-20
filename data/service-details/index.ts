@@ -6,6 +6,7 @@ import { serviceDetails as enServiceDetails } from "./en";
 
 import { getServices } from "../services";
 import { SERVICE_SEO } from "./seo";
+import { BRAND_CONTENT } from "./brand";
 import { PROFILE_CONTENT } from "./profile";
 import { WEBSITE_CONTENT } from "./website";
 import { ZATCA_CONTENT } from "./zatca";
@@ -151,6 +152,7 @@ export function getServiceDetails(locale: Locale): Record<string, ServiceDetail>
     "zatca-e-invoicing": ZATCA_CONTENT,
     "website-design-development": WEBSITE_CONTENT,
     "company-profile-branding": PROFILE_CONTENT,
+    "brand-identity": BRAND_CONTENT,
   };
   for (const [id, content] of Object.entries(REWRITES)) {
     const c = content[locale];
