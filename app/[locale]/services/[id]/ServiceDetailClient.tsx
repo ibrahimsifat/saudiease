@@ -337,6 +337,36 @@ export default function ServiceDetailClient({
         </div>
       </section>
 
+      {/* Facts at a glance (only on pages that define them) */}
+      {serviceDetail.facts && (
+        <section className="py-12 bg-white" aria-labelledby="facts-title">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <h2 id="facts-title" className="text-2xl font-bold text-saudi-black mb-6">
+              {serviceDetail.facts.title}
+            </h2>
+            <div className="overflow-hidden rounded-xl border border-gray-200">
+              <table className="w-full text-sm md:text-base">
+                <tbody>
+                  {serviceDetail.facts.rows.map((row: { label: string; value: string }) => (
+                    <tr key={row.label} className="border-b border-gray-100 last:border-b-0">
+                      <th
+                        scope="row"
+                        className={`w-1/3 bg-gray-50 px-4 py-3 font-semibold text-saudi-black align-top ${
+                          isRtl ? "text-right" : "text-left"
+                        }`}
+                      >
+                        {row.label}
+                      </th>
+                      <td className="px-4 py-3 text-gray-700">{row.value}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Overview Section */}
       <section id="overview" className="py-20 scroll-mt-20">
         <div className="container mx-auto px-4">

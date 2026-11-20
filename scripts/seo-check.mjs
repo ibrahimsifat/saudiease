@@ -18,8 +18,8 @@ const base = (process.argv[2] || "http://localhost:3000").replace(/\/$/, "");
 const CANONICAL_ORIGIN = "https://saudiease.com";
 
 const BANNED = [
-  /Aramco|أرامكو|ارامكو|আরামকো/,
-  /SABIC|سابك|সাবিক/,
+  /Aramco|(?<![\u0600-\u06FF])(أرامكو|ارامكو)(?![\u0600-\u06FF])|আরামকো/,
+  /SABIC|(?<![\u0600-\u06FF])سابك(?![\u0600-\u06FF])|সাবিক/,
   /\b250\+|\+250|২৫০\+/,
   /\b500\+|\+500|৫০০\+/,
   /15\+ Awards|4\.9\/5|4\.9 Rating/,

@@ -5,6 +5,7 @@ import { serviceDetails as enServiceDetails } from "./en";
 
 import { getServices } from "../services";
 import { SERVICE_SEO } from "./seo";
+import { ZATCA_CONTENT } from "./zatca";
 
 // Map of locale to service details
 const serviceDetailsMap = {
@@ -139,6 +140,12 @@ export function getServiceDetails(locale: Locale): Record<string, ServiceDetail>
         relatedServices: [],
       };
     }
+  }
+
+  // Rewritten, evidence-bounded content (task 3-2)
+  const zatca = ZATCA_CONTENT[locale];
+  if (zatca && result["zatca-e-invoicing"]) {
+    result["zatca-e-invoicing"] = { ...result["zatca-e-invoicing"], ...zatca, caseStudies: [] };
   }
 
   // Hand-written SEO title/description per language for the main pages

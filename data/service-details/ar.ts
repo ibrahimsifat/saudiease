@@ -41,6 +41,8 @@ export interface ServiceDetail {
     answer: string;
   }[];
   relatedServices: string[];
+  /** Optional "facts at a glance" table shown under the hero. */
+  facts?: { title: string; rows: { label: string; value: string }[] };
 }
 export const serviceDetailsAR: Record<string, ServiceDetail> = {
   "web-development": {
