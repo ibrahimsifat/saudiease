@@ -1,10 +1,12 @@
 import type { Locale } from "@/config/i18n";
+import type { ServiceDetail } from "./ar";
 import { serviceDetailsAR as arServiceDetails } from "./ar";
 import { serviceDetailsBn as bnServiceDetails } from "./bn";
 import { serviceDetails as enServiceDetails } from "./en";
 
 import { getServices } from "../services";
 import { SERVICE_SEO } from "./seo";
+import { WEBSITE_CONTENT } from "./website";
 import { ZATCA_CONTENT } from "./zatca";
 
 // Map of locale to service details
@@ -143,9 +145,14 @@ export function getServiceDetails(locale: Locale): Record<string, ServiceDetail>
   }
 
   // Rewritten, evidence-bounded content (task 3-2)
-  const zatca = ZATCA_CONTENT[locale];
-  if (zatca && result["zatca-e-invoicing"]) {
-    result["zatca-e-invoicing"] = { ...result["zatca-e-invoicing"], ...zatca, caseStudies: [] };
+  // (tasks 3-2, 3-3; one file per rewritten page)
+  const REWRITES: Record<string, Record<string, Partial<ServiceDetail>>> = {
+    "zatca-e-invoicing": ZATCA_CONTENT,
+    "website-design-development": WEBSITE_CONTENT,
+  };
+  for (const [id, content] of Object.entries(REWRITES)) {
+    const c = content[locale];
+    if (c && result[id]) result[id] = { ...result[id], ...c, caseStudies: [] };
   }
 
   // Hand-written SEO title/description per language for the main pages
