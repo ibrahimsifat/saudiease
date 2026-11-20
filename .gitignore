@@ -28,3 +28,6 @@ next-env.d.ts
 .qodo
 
 /saudiease.zip
+
+# SEO working docs (local only)
+/docs/seo
