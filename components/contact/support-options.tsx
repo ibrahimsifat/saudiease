@@ -1,5 +1,6 @@
 "use client";
 
+import { localePath } from "@/config/site";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import {
@@ -43,7 +44,7 @@ export default function SupportOptions() {
       description: t("ticket.description"),
       icon: <FileText className="h-6 w-6 text-primary" />,
       action: t("ticket.action"),
-      url: `${locale}/contact`,
+      url: localePath(locale, "/contact"),
     },
     {
       title: t("video.title"),

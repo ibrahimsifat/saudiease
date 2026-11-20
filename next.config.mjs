@@ -94,6 +94,15 @@ const nextConfig = {
         destination: "/contact",
         permanent: true,
       },
+      // Services no longer offered (docs/seo/business-goals.md, 2026-11-20)
+      ...["aramco-sabic-vendor-code", "excel-data-work"].flatMap((id) => [
+        { source: `/services/${id}`, destination: "/services", permanent: true },
+        { source: `/ar/services/${id}`, destination: "/services", permanent: true },
+        { source: `/:locale(en|bn)/services/${id}`, destination: "/:locale/services", permanent: true },
+      ]),
+      // Careers page never existed; the company is not hiring
+      { source: "/careers", destination: "/contact", permanent: true },
+      { source: "/:locale(en|bn)/careers", destination: "/:locale/contact", permanent: true },
     ];
   },
 };

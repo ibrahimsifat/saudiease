@@ -51,6 +51,6 @@ export interface SocialMediaAccount {
 }
 
 export interface TeamInfo {
-  count: number;
+  count?: number;
   expertise: string[];
 }

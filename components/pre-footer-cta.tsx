@@ -6,7 +6,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { CONSTANT } from "@/config/constants";
+import { trackEvent, whatsappLink } from "@/lib/track";
 import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import {
   AlertCircle,
@@ -27,16 +29,10 @@ import { useState } from "react";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { useInView } from "react-intersection-observer";
 
-const partners = [
-  CONSTANT.clients.deals,
-  CONSTANT.clients.kic,
-  CONSTANT.clients.kullesh,
-  CONSTANT.clients.nextRide,
-  CONSTANT.clients.ranchiUniversity,
-  CONSTANT.clients.sarah,
-];
 export default function PreFooterCTA() {
   const t = useTranslations("preFooterCTA");
+  const tWa = useTranslations("whatsappButton");
+  const pathname = usePathname();
   const [submitError, setSubmitError] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { executeRecaptcha } = useGoogleReCaptcha();
@@ -91,6 +87,7 @@ export default function PreFooterCTA() {
 
       if (result.success) {
         setSubmitted(true);
+        trackEvent("form_submit", { form: "pre_footer_contact" });
 
         // Reset form after submission
         setTimeout(() => {
@@ -337,6 +334,15 @@ export default function PreFooterCTA() {
                         </div>
                       </div>
 
+                      <a
+                        href={whatsappLink(tWa("message"), pathname || "/")}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        data-cta="pre-footer"
+                        className="mb-3 flex w-full items-center justify-center rounded-md bg-[#25D366] px-4 py-2 font-semibold text-white hover:bg-[#1ebe5b]"
+                      >
+                        {tWa("startChat")}
+                      </a>
                       <Button
                         className="w-full bg-primary hover:bg-primary/90 text-white"
                         onClick={() =>
@@ -443,6 +449,16 @@ export default function PreFooterCTA() {
                     <p className="text-white/80">{t("contactDescription")}</p>
                   </div>
 
+                  <a
+                    href={whatsappLink(tWa("message"), pathname || "/")}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-cta="pre-footer-contact"
+                    className="mb-6 flex w-full items-center justify-center rounded-lg bg-[#25D366] px-4 py-3 text-lg font-semibold text-white hover:bg-[#1ebe5b]"
+                  >
+                    {tWa("startChat")}
+                  </a>
+
                   <div className="space-y-6 flex-grow">
                     <div className="flex items-start">
                       <div className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center mr-4 rtl:ml-4 rtl:mr-0">
@@ -541,29 +557,7 @@ export default function PreFooterCTA() {
             </div>
           </motion.div>
 
-          <motion.div variants={itemVariants} className="mt-16 text-center">
-            <p className="text-gray-600 dark:text-gray-400 mb-4">
-              {t("trustedBy")}
-            </p>
-            <div className="flex flex-wrap justify-center items-center gap-8 opacity-70">
-              {/* Client logos would go here */}
-
-              {partners.map((partner, index) => (
-                <div
-                  key={index}
-                  className="bg-white p-4 rounded-lg flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300"
-                >
-                  <NextImage
-                    src={partner || "/placeholder.svg"}
-                    alt={`${t("partner")} ${index + 1}`}
-                    width={120}
-                    height={60}
-                    className="object-contain h-8 w-24"
-                  />
-                </div>
-              ))}
-            </div>
-          </motion.div>
+          
         </motion.div>
       </div>
     </section>

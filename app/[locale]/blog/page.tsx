@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { localeUrl, pageAlternates } from "@/config/site";
 import BlogPageClient from "./BlogPageClient";
 
 export async function generateMetadata({
@@ -60,7 +61,12 @@ export async function generateMetadata({
     },
   };
 
-  return metadata[locale] || metadata.en;
+  const page = metadata[locale] || metadata.en;
+  return {
+    ...page,
+    alternates: pageAlternates(locale, "/blog"),
+    openGraph: { ...page.openGraph, url: localeUrl(locale, "/blog") },
+  };
 }
 
 export default async function BlogPage({

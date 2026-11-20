@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { localeUrl, pageAlternates } from "@/config/site";
 import {
   Card,
   CardContent,
@@ -28,11 +29,12 @@ export async function generateMetadata({
     title: t("title"),
     description: t("description"),
     keywords: keywords[locale as keyof typeof keywords].join(", "),
+    alternates: pageAlternates(locale, "/features"),
     openGraph: {
       title: t("title"),
       description: t("description"),
       type: "website",
-      url: `https://saudiease.com/${locale}/features`,
+      url: localeUrl(locale, "/features"),
     },
   };
 }

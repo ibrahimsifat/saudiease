@@ -55,17 +55,14 @@ export default function Footer({ locale }: { locale: Locale }) {
     }
   };
 
-  // Update the services array with more SEO-friendly service names
+  // Footer service links: only pages that exist and services we deliver
   const services = [
-    { name: t("services.webDevelopment"), link: "/services/web-development" },
-    { name: t("services.eCommerce"), link: "/services/e-commerce" },
-    { name: t("services.eInvoicing"), link: "/services/e-invoicing" },
-    { name: t("services.graphicDesign"), link: "/services/graphic-design" },
-    {
-      name: t("services.digitalMarketing"),
-      link: "/services/digital-marketing",
-    },
-    { name: t("services.seo"), link: "/services/seo" },
+    { name: t("services.webDevelopment"), link: "/services/website-design-development" },
+    { name: t("services.mobileApps"), link: "/services/mobile-app-development" },
+    { name: t("services.eInvoicing"), link: "/services/zatca-e-invoicing" },
+    { name: t("services.companyProfile"), link: "/services/company-profile-branding" },
+    { name: t("services.brandIdentity"), link: "/services/brand-identity" },
+    { name: t("services.itSupport"), link: "/services/it-support-retainer" },
   ];
 
   const quickLinks = [
@@ -77,17 +74,12 @@ export default function Footer({ locale }: { locale: Locale }) {
     { name: t("quickLinks.contact"), link: "/contact" },
   ];
 
-  // Update the resources array with properly organized legal links
   const resources = [
     {
-      name: t("resources.digitalTransformation"),
-      link: "/services/digital-transformation",
+      name: t("resources.zatcaGuide"),
+      link: "/blog/zatca-phase-2-e-invoicing-saudi-businesses",
     },
-    {
-      name: t("resources.zatcaCompliance"),
-      link: "/services/zatca-compliance",
-    },
-    { name: t("resources.careers"), link: "/careers" },
+    { name: t("resources.faq"), link: "/faq" },
   ];
 
   // Animation variants
@@ -606,12 +598,12 @@ export default function Footer({ locale }: { locale: Locale }) {
                 >
                   {t("faq")}
                 </Link>
-                <Link
+                <a
                   href="/sitemap.xml"
                   className="text-gray-400 hover:text-primary text-sm transition-colors"
                 >
                   {t("sitemap")}
-                </Link>
+                </a>
               </div>
             </div>
           </div>

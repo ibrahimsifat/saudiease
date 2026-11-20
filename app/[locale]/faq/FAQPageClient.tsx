@@ -1,5 +1,6 @@
 "use client";
 
+import { localePath } from "@/config/site";
 import {
   Accordion,
   AccordionContent,
@@ -271,7 +272,7 @@ export default function FAQPageClient({ locale }: FAQPageClientProps) {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild>
-              <a href={`/${locale}/contact`}>{t("contactSupport")}</a>
+              <a href={localePath(locale, "/contact")}>{t("contactSupport")}</a>
             </Button>
             <Button variant="outline" asChild>
               <a href="tel:+966558845503">{t("callUs")}</a>

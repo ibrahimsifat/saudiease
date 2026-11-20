@@ -13,7 +13,7 @@ export const companyInfoBn: CompanyInfo = {
   mission:
     "উদ্ভাবনী ডিজিটাল সমাধান দিয়ে সৌদি ব্যবসাগুলিকে ক্ষমতায়ন করা যা বৃদ্ধি এবং সাফল্য চালায়।",
   vision:
-    "সৌদি আরব জুড়ে ব্যবসাগুলির জন্য অগ্রণী ডিজিটাল ট্রান্সফরমেশন পার্টনার হওয়া।",
+    "সৌদি আরবের কনট্রাক্টিং, নির্মাণ ও শিল্প প্রতিষ্ঠানের জন্য একটি নির্ভরযোগ্য ডিজিটাল পার্টনার হওয়া।",
   values: [
     {
       title: "উদ্ভাবন",
@@ -37,63 +37,6 @@ export const companyInfoBn: CompanyInfo = {
     },
   ],
   achievements: [
-    {
-      icon: (
-        <svg
-          className="h-5 w-5 text-primary"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-          />
-        </svg>
-      ),
-      value: "২৫০+",
-      label: "সন্তুষ্ট ক্লায়েন্ট",
-    },
-    {
-      icon: (
-        <svg
-          className="h-5 w-5 text-primary"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
-          />
-        </svg>
-      ),
-      value: "১৫+",
-      label: "পুরস্কার জিতেছে",
-    },
-    {
-      icon: (
-        <svg
-          className="h-5 w-5 text-primary"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-      ),
-      value: "৫০০+",
-      label: "প্রকল্প সম্পন্ন",
-    },
     {
       icon: (
         <svg
@@ -209,7 +152,6 @@ export const companyInfoBn: CompanyInfo = {
   },
   founded: "২০১৮",
   team: {
-    count: 35,
     expertise: [
       "ওয়েব ডেভেলপমেন্ট",
       "মোবাইল অ্যাপ ডেভেলপমেন্ট",

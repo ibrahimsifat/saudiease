@@ -34,14 +34,14 @@ const RenderVisual = ({ id }: { id: string }) => {
           <div className="p-5 sm:p-8 flex-1 text-gray-400 leading-relaxed overflow-hidden relative">
             <div className="z-10 relative space-y-1">
               <div><span className="text-purple-400">import</span> {'{'} motion {'}'} <span className="text-purple-400">from</span> <span className="text-green-400">'framer-motion'</span>;</div>
-              <div className="pb-4"><span className="text-purple-400">import</span> {'{'} AramcoAPI {'}'} <span className="text-purple-400">from</span> <span className="text-green-400">'@jubail/industrial-core'</span>;</div>
+              <div className="pb-4"><span className="text-purple-400">import</span> {'{'} QuoteForm {'}'} <span className="text-purple-400">from</span> <span className="text-green-400">'./components'</span>;</div>
               
               <div><span className="text-blue-400">export default function</span> <span className="text-yellow-200">IndustrialPlatform</span>() {'{'}</div>
               <div><span className="ml-4 text-purple-400">return</span> (</div>
               <div><span className="ml-8 text-gray-500">&lt;!-- Real-time Saudi factory metrics sync --&gt;</span></div>
               <div><span className="ml-8">&lt;</span><span className="text-blue-300">DashboardLayout</span><span className="ml-0">&gt;</span></div>
               <div><span className="ml-12">&lt;</span><span className="text-blue-300">LiveMetricsGrid</span><span className="text-blue-200"> region</span>=<span className="text-green-400">"Eastern Province"</span><span className="ml-0"> /&gt;</span></div>
-              <div><span className="ml-12">&lt;</span><span className="text-blue-300">AramcoSyncStatus</span><span className="text-blue-200"> status</span>=<span className="text-green-400">"Online"</span><span className="ml-0"> /&gt;</span></div>
+              <div><span className="ml-12">&lt;</span><span className="text-blue-300">QuoteForm</span><span className="text-blue-200"> lang</span>=<span className="text-green-400">"ar"</span><span className="ml-0"> /&gt;</span></div>
               <div><span className="ml-8">&lt;/</span><span className="text-blue-300">DashboardLayout</span><span className="ml-0">&gt;</span></div>
               <div><span className="ml-4">);</span></div>
               <div><span>{'}'}</span></div>
@@ -132,45 +132,6 @@ const RenderVisual = ({ id }: { id: string }) => {
         </div>
       );
 
-    case "aramco-sabic-vendor-code":
-      return (
-        <div className="w-full h-full bg-[#050505] p-5 sm:p-8 flex flex-col gap-6 relative overflow-hidden">
-           <div className="flex items-center gap-4 relative z-10 mb-2">
-              <div className="w-12 h-12 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0">
-                 <FileCheck className="w-6 h-6 text-blue-400" />
-              </div>
-              <div>
-                 <div className="text-base sm:text-lg font-bold text-white">Vendor Prequalification</div>
-                 <div className="text-xs text-gray-400 font-mono mt-1">ID: VQ-899120 &bull; AL JUBAIL</div>
-              </div>
-           </div>
-
-           <div className="flex-1 flex flex-col gap-3 sm:gap-4 relative z-10 max-w-md w-full">
-              <div className="flex items-center justify-between p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 shadow-[0_0_20px_rgba(16,185,129,0.05)]">
-                 <span className="text-sm text-emerald-100 font-medium tracking-wide">Aramco Registration</span>
-                 <CheckCircle2 className="w-5 h-5 text-emerald-400" />
-              </div>
-              <div className="flex items-center justify-between p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 shadow-[0_0_20px_rgba(16,185,129,0.05)]">
-                 <span className="text-sm text-emerald-100 font-medium tracking-wide">SABIC Vendor Code</span>
-                 <CheckCircle2 className="w-5 h-5 text-emerald-400" />
-              </div>
-              <div className="flex items-center justify-between p-4 rounded-xl bg-white/[0.03] border border-white/5">
-                 <span className="text-sm text-gray-300 font-medium tracking-wide">Royal Commission</span>
-                 <div className="w-5 h-5 rounded-full border-2 border-primary/50 border-t-primary animate-spin" />
-              </div>
-           </div>
-           
-           {/* Decorative elements */}
-           <div className="absolute top-1/2 right-10 -translate-y-1/2 w-[2px] h-3/4 bg-gradient-to-b from-transparent via-white/10 to-transparent hidden md:flex flex-col items-center justify-start py-8 gap-16">
-               <div className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_10px_#34d399]" />
-               <div className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_10px_#34d399]" />
-               <div className="w-2 h-2 rounded-full bg-primary/50" />
-           </div>
-
-           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[100px] pointer-events-none translate-x-1/3 -translate-y-1/3" />
-        </div>
-      );
-
     default:
       return (
          <div className="w-full h-full bg-[#050505] flex items-center justify-center p-6 text-center">
@@ -194,7 +155,7 @@ export default function ServicesSection({ locale }: { locale: Locale }) {
       "website-design-development",
       "zatca-e-invoicing",
       "company-profile-branding",
-      "aramco-sabic-vendor-code",
+      "mobile-app-development",
     ];
     return featuredIds
       .map(id => services.find(s => s.id === id))

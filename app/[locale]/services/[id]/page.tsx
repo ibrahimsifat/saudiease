@@ -1,6 +1,8 @@
-import type { Locale } from "@/config/i18n";
+import { type Locale, locales } from "@/config/i18n";
+import { localeUrl, pageAlternates } from "@/config/site";
 import { getServiceDetails } from "@/data/service-details/index";
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 import ServiceDetailClient from "./ServiceDetailClient";
 // Dynamic metadata
 export async function generateMetadata({
@@ -23,18 +25,15 @@ export async function generateMetadata({
     title: service.pageTitle,
     description: service.metaDescription,
     keywords: service.metaKeywords,
-    alternates: {
-      canonical: `https://saudiease.com/${locale}/services/${id}`,
-      languages: {
-        en: `https://saudiease.com/en/services/${id}`,
-        ar: `https://saudiease.com/ar/services/${id}`,
-        bn: `https://saudiease.com/bn/services/${id}`,
-      },
-    },
+    alternates: pageAlternates(
+      locale,
+      `/services/${id}`,
+      locales.filter((l) => Boolean(getServiceDetails(l)[id]))
+    ),
     openGraph: {
       title: service.pageTitle,
       description: service.metaDescription,
-      url: `https://saudiease.com/${locale}/services/${id}`,
+      url: localeUrl(locale, `/services/${id}`),
       siteName: "SaudiEase",
       type: "website",
       images: [
@@ -68,5 +67,7 @@ export default async function ServiceDetailPage({
   params: { id: string; locale: Locale };
 }) {
   const { id, locale } = await params;
+  // Unknown service IDs must return a real 404, not a 200 "not found" page.
+  if (!getServiceDetails(locale)[id]) notFound();
   return <ServiceDetailClient id={id} locale={locale} />;
 }

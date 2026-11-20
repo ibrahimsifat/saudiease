@@ -293,7 +293,7 @@ export default function IndustriesClientPage() {
 
                   <div className="flex justify-between items-center">
                     <Link
-                      href={`/industries/${category.id}`}
+                      href="/services"
                       className="text-primary font-medium flex items-center group-hover:underline"
                     >
                       {t("industriesGrid.exploreSolutions")}
@@ -317,57 +317,8 @@ export default function IndustriesClientPage() {
         </div>
       </section>
 
-      {/* Industry Stats */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-saudi-black mb-4">
-              {t("stats.title")}
-            </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              {t("stats.description")}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100">
-              <div className="text-4xl font-bold text-primary mb-2">12+</div>
-              <div className="text-gray-600">{t("stats.industriesServed")}</div>
-              <div className="mt-4 h-2 bg-gray-100 rounded-full overflow-hidden">
-                <div className="h-full bg-primary w-[100%] rounded-full"></div>
-              </div>
-            </div>
-
-            <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100">
-              <div className="text-4xl font-bold text-primary mb-2">200+</div>
-              <div className="text-gray-600">
-                {t("stats.projectsCompleted")}
-              </div>
-              <div className="mt-4 h-2 bg-gray-100 rounded-full overflow-hidden">
-                <div className="h-full bg-primary w-[85%] rounded-full"></div>
-              </div>
-            </div>
-
-            <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100">
-              <div className="text-4xl font-bold text-primary mb-2">95%</div>
-              <div className="text-gray-600">
-                {t("stats.clientSatisfaction")}
-              </div>
-              <div className="mt-4 h-2 bg-gray-100 rounded-full overflow-hidden">
-                <div className="h-full bg-primary w-[95%] rounded-full"></div>
-              </div>
-            </div>
-
-            <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100">
-              <div className="text-4xl font-bold text-primary mb-2">8+</div>
-              <div className="text-gray-600">{t("stats.yearsExperience")}</div>
-              <div className="mt-4 h-2 bg-gray-100 rounded-full overflow-hidden">
-                <div className="h-full bg-primary w-[80%] rounded-full"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      
+      
 
       {/* CTA Section */}
       <section className="py-20 bg-white">

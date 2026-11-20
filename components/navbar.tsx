@@ -7,6 +7,7 @@ import { getCompanyInfo } from "@/data/company-info/index";
 import { getServices } from "@/data/services/index";
 import { useMobile } from "@/hooks/use-mobile";
 import { Link } from "@/i18n/routing";
+import { whatsappLink } from "@/lib/track";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import {
@@ -35,6 +36,7 @@ const SearchDialog = dynamic(() => import("@/components/search-dialog"), {
 const Navbar = () => {
   const t = useTranslations("navigation");
   const common = useTranslations("common");
+  const tWa = useTranslations("whatsappButton");
   const locale = useLocale();
   const isRTL = locale === "ar";
   const services = getServices(locale as Locale);
@@ -433,10 +435,17 @@ const Navbar = () => {
                 <span>{t("search", { defaultMessage: "Search" })}</span>
               </Button>
               <Button
-                className="bg-primary hover:bg-primary/90 text-white shadow-md hover:shadow-lg transition-all"
+                className="bg-[#25D366] hover:bg-[#1ebe5b] text-white shadow-md hover:shadow-lg transition-all"
                 asChild
               >
-                <Link href="/estimator">{t("getQuote")}</Link>
+                <a
+                  href={whatsappLink(tWa("message"), pathname)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-cta="header"
+                >
+                  {tWa("headerCta")}
+                </a>
               </Button>
             </div>
             <div

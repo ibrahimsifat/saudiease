@@ -1,4 +1,5 @@
-import { Locale } from "@/config/i18n";
+import { Locale, locales } from "@/config/i18n";
+import { localeUrl, pageAlternates } from "@/config/site";
 import { getBlogs } from "@/data/blog-posts/index";
 import { keywords } from "@/data/keywords";
 import { generateBlogPostSchema } from "@/lib/schema";
@@ -37,21 +38,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     keywords: post.metaKeywords
       ? post.metaKeywords.join(", ")
       : keywords[locale as keyof typeof keywords].join(", "),
-    alternates: {
-      canonical: `https://saudiease.com/${locale}/blog/${slug}`,
-      languages: {
-        en: `https://saudiease.com/en/blog/${slug}`,
-        ar: `https://saudiease.com/ar/blog/${slug}`,
-        bn: `https://saudiease.com/bn/blog/${slug}`,
-      },
-    },
+    alternates: pageAlternates(
+      locale,
+      `/blog/${slug}`,
+      locales.filter((l) => getBlogs(l).some((p) => p.slug === slug))
+    ),
     openGraph: {
       title: post.title,
       description: post.metaDescription || post.excerpt,
       type: "article",
       publishedTime: post.date,
       authors: [post.author],
-      url: `https://saudiease.com/${locale}/blog/${slug}`,
+      url: localeUrl(locale, `/blog/${slug}`),
       siteName: "SaudiEase",
       images: [
         {

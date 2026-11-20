@@ -179,9 +179,8 @@ export default function FeatureDetailPageClient({
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
             <Tabs defaultValue="features" className="w-full">
-              <TabsList className="grid w-full grid-cols-3 mb-8">
+              <TabsList className="grid w-full grid-cols-2 mb-8">
                 <TabsTrigger value="features">{t("keyFeatures")}</TabsTrigger>
-                <TabsTrigger value="case-study">{t("caseStudy")}</TabsTrigger>
                 <TabsTrigger value="faq">{t("faq")}</TabsTrigger>
               </TabsList>
 
@@ -212,49 +211,7 @@ export default function FeatureDetailPageClient({
                 </div>
               </TabsContent>
 
-              <TabsContent value="case-study" className="mt-6">
-                <div
-                  className={`bg-gradient-to-r from-primary/5 to-transparent p-8 rounded-xl border border-gray-100 ${
-                    isRTL ? "text-right" : ""
-                  }`}
-                >
-                  <h3 className="text-2xl font-bold text-saudi-black mb-4">
-                    {t(`detail.${id}.caseStudy.title`)}
-                  </h3>
-                  <p className="text-gray-600 mb-6">
-                    {t(`detail.${id}.caseStudy.description`)}
-                  </p>
-
-                  <h4 className="text-lg font-semibold text-saudi-black mb-4">
-                    {t("results")}:
-                  </h4>
-                  <ul className="space-y-3">
-                    {details.caseStudy.results.map((result, index) => (
-                      <li
-                        key={index}
-                        className={`flex items-start ${
-                          isRTL ? "flex-row-reverse" : ""
-                        }`}
-                      >
-                        <CheckCircle
-                          className={`h-5 w-5 text-green-500 ${
-                            isRTL ? "ml-3" : "mr-3"
-                          } mt-0.5 flex-shrink-0`}
-                        />
-                        <span className="text-gray-700">
-                          {t(`detail.${id}.caseStudy.results.${index}`)}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className={`mt-8 ${isRTL ? "text-right" : ""}`}>
-                    <Button className="bg-primary hover:bg-primary/90">
-                      <Link href={`/contact`}>{t("discussYourProject")}</Link>
-                    </Button>
-                  </div>
-                </div>
-              </TabsContent>
+              
 
               <TabsContent value="faq" className="mt-6">
                 <Accordion type="single" collapsible className="w-full">

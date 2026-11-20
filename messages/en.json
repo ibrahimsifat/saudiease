@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Saudi Ease - Professional IT & Digital Solutions in Al Jubail",
-    "description": "Saudi Ease is your professional digital partner in Al Jubail. Leading the way in IT solutions, ZATCA e-invoicing, Aramco/SABIC vendor registration, and Gulf Orbit workforce management for contracting & construction."
+    "description": "Saudi Ease designs websites and mobile apps, company profiles and brand identities, and sets up ZATCA-compliant e-invoicing for businesses in the Eastern Province."
   },
   "navigation": {
     "home": "Home",
@@ -28,35 +28,25 @@
     "premierDigitalSolutions": "Your All-In-One",
     "forSaudiBusinesses": "Digital Partner in Jubail",
     "vision2030Aligned": "Contracting • Construction • Industrial Supply",
-    "heroDescription": "We manage your complete digital operations—from branding and Aramco registration to ZATCA e-invoicing and Gulf Orbit EMS. One trusted local partner, zero hassle.",
+    "heroDescription": "Websites, mobile apps, company profiles, brand identity and ZATCA e-invoicing setup for contracting, construction and industrial companies. Message us on WhatsApp to discuss your project.",
     "getStarted": "Free Consultation",
     "exploreServices": "Our Services",
     "watchVideo": "Watch Video",
     "trustedBy": "Trusted by industrial businesses across Jubail & Eastern Province",
-    "rating": "4.9/5 Rating",
-    "vision2030Partner": "ZATCA Compliant",
-    "zatcaCompliant": "ZATCA Compliant",
+    "vision2030Partner": "ZATCA e-invoicing setup",
+    "zatcaCompliant": "ZATCA e-invoicing setup",
     "eInvoicingReady": "E-invoicing ready",
     "digitalGrowth": "Digital Growth",
     "heroImageAlt": "Saudi Ease - Professional IT solutions for Jubail industrial companies",
     "projectsCompleted": "Projects Delivered",
     "clientSatisfaction": "Client Satisfaction",
     "yearsExperience": "Jubail Based",
-    "citiesServed": "Professional Services",
-    "testimonial1": "Saudi Ease handled our entire digital setup—website, profile, and ZATCA. Their expertise in the contracting sector is unmatched in Jubail.",
-    "testimonialAuthor1": "Ahmed Al-Dosari",
-    "testimonialCompany1": "Al Dosari Contracting",
-    "testimonial2": "The Gulf Orbit system completely transformed our site tracking. Payroll that used to take days now takes minutes.",
-    "testimonialAuthor2": "Khalid Rahman",
-    "testimonialCompany2": "KR Industrial Services",
-    "testimonial3": "Professional, bilingual, and always available. Saudi Ease is the only IT partner we need in Jubail City Center.",
-    "testimonialAuthor3": "Mohammed Al-Harbi",
-    "testimonialCompany3": "Gulf Scaffolding Co."
+    "citiesServed": "Professional Services"
   },
   "ems": {
-    "sectionLabel": "Our Software Product",
+    "sectionLabel": "Software we built",
     "title": "Gulf Orbit — Employment Management System",
-    "description": "Saudi Ease's proprietary, cloud-based Employment Management System purpose-built for contracting and construction companies that manage workers across multiple project sites. Developed entirely in-house.",
+    "description": "A cloud-based employment management system for contracting and construction companies that manage workers across several project sites. Saudi Ease built it for Gulf Orbit Contracting, our sister company (same founder).",
     "features": {
       "attendance": "Timesheet & Attendance Tracking with automatic overtime calculation (10-hour standard).",
       "timesheet": "Automatic Payroll Calculation based on attendance, overtime, deductions, and allowances.",
@@ -65,7 +55,6 @@
     },
     "cta": "Request a Demo"
   },
-
   "common": {
     "languageName": "English",
     "switchLanguage": "Switch language",
@@ -77,11 +66,11 @@
     "selectLanguage": "Select Language"
   },
   "trustedBy": {
-    "sectionLabel": "Success Stories",
-    "title": "Trusted by Market Leaders",
-    "subtitle": "Showcasing digital excellence with premier businesses in Al Jubail and across Saudi Arabia.",
+    "sectionLabel": "Our work",
+    "title": "Websites we have built",
+    "subtitle": "A selection of client websites designed and developed by Saudi Ease.",
     "partnerAltText": "Client of Saudi Ease",
-    "footer": "Ready to transform your business? Join the leaders who trust Saudi Ease."
+    "footer": "Want a website like these? Message us on WhatsApp."
   },
   "industries": {
     "sectionLabel": "INDUSTRIES",
@@ -124,7 +113,7 @@
   "services": {
     "title": "Our Professional Services",
     "subtitle": "End-to-End Digital Solutions",
-    "description": "From website development and mobile apps to Aramco vendor registration and ZATCA e-invoicing -- we provide everything your business needs under one roof.",
+    "description": "Website development, mobile apps, company profiles, brand identity and ZATCA e-invoicing setup for Saudi businesses.",
     "viewAll": "View All Services",
     "viewDetails": "Learn More",
     "categories": {
@@ -135,7 +124,7 @@
       "finance": "Finance",
       "consultation": "Consultation",
       "it-support": "IT Support",
-      "data": "Data & Excel"
+      "data": "Data"
     },
     "serviceItems": {
       "web-development": {
@@ -339,7 +328,6 @@
       "healthInsurance": "Health insurance and wellness programs",
       "regularTeamBuilding": "Regular team building activities"
     },
-    "careers": "Careers",
     "currentOpenings": "Current Openings",
     "sectionLabel": "About Saudi Ease",
     "title": {
@@ -365,15 +353,15 @@
           "0": "Complete digital solutions from branding to software development",
           "1": "ZATCA-compliant e-invoicing setup and integration",
           "2": "Bilingual digital experiences in Arabic and English",
-          "3": "Aramco & SABIC vendor registration support"
+          "3": "Company profile and brand identity design"
         }
       },
       "vision": {
         "title": "Our Vision",
-        "description": "To become the most trusted digital solutions partner in Jubail's industrial sector—known for delivering premium quality, bilingual service, and reliable long-term support that drives real business results for our clients.",
+        "description": "To be a dependable digital partner for contracting, construction and industrial businesses in Saudi Arabia: clear pricing, clear timelines and bilingual support.",
         "points": {
-          "0": "Most trusted digital partner in Al Jubail",
-          "1": "Premium quality with transparent pricing",
+          "0": "A dependable digital partner for industrial businesses",
+          "1": "Clear scope, timelines and communication on every project",
           "2": "Bilingual service for diverse workforce",
           "3": "Long-term support that drives real business results"
         }
@@ -400,7 +388,7 @@
       },
       "innovation": {
         "title": "Own Technology",
-        "description": "Unlike pure resellers, we build our own technology. Gulf Orbit EMS was developed in-house with custom features and direct support."
+        "description": "We build software ourselves, such as the Gulf Orbit EMS we developed for our sister company Gulf Orbit Contracting."
       },
       "clientCentric": {
         "title": "Client-Centric",
@@ -549,16 +537,6 @@
             "description": "Strategic distribution of servers to deliver content faster to users across Saudi Arabia."
           }
         ],
-        "caseStudy": {
-          "title": "How a Saudi E-commerce Platform Increased Sales by 35%",
-          "description": "A leading Saudi e-commerce platform was struggling with slow page load times, resulting in high bounce rates and abandoned carts. After implementing our Fast Performance solutions, they saw a dramatic improvement in user experience.",
-          "results": [
-            "Page load time reduced from 5.2 seconds to 1.8 seconds",
-            "Bounce rate decreased by 42%",
-            "Mobile conversions increased by 28%",
-            "Overall sales increased by 35% within three months"
-          ]
-        },
         "faq": [
           {
             "question": "How does page speed affect my business?",
@@ -609,16 +587,6 @@
             "description": "Ensuring adherence to Saudi regulations including CITC and NCA requirements."
           }
         ],
-        "caseStudy": {
-          "title": "Securing a Saudi Financial Institution Against Cyber Threats",
-          "description": "A prominent Saudi financial services provider needed to strengthen their digital security posture while maintaining a seamless user experience. Our comprehensive security solution provided the protection they needed without compromising on performance.",
-          "results": [
-            "Zero security breaches since implementation",
-            "100% compliance with Saudi financial regulations",
-            "Reduced unauthorized access attempts by 94%",
-            "Customer trust metrics improved by 28%"
-          ]
-        },
         "faq": [
           {
             "question": "How do you stay current with evolving security threats?",
@@ -669,16 +637,6 @@
             "description": "Consistent experience across all popular browsers used in Saudi Arabia."
           }
         ],
-        "caseStudy": {
-          "title": "How a Saudi Retailer Increased Mobile Conversions by 65%",
-          "description": "A major Saudi retail chain was losing mobile customers due to a poor smartphone shopping experience. After implementing our responsive design solutions, they saw dramatic improvements in mobile engagement and sales.",
-          "results": [
-            "Mobile traffic increased by 42% within two months",
-            "Average time on site from mobile users increased by 3.5 minutes",
-            "Mobile conversion rate improved by 65%",
-            "Customer satisfaction scores for mobile experience increased from 3.2/5 to 4.7/5"
-          ]
-        },
         "faq": [
           {
             "question": "Is responsive design really necessary if I already have a mobile app?",
@@ -730,16 +688,6 @@
             "description": "Strategic guidance based on deep understanding of Saudi consumer behavior."
           }
         ],
-        "caseStudy": {
-          "title": "How Local Expertise Helped a Global Brand Succeed in Saudi Arabia",
-          "description": "An international brand was struggling to gain traction in the Saudi market despite significant marketing investment. By leveraging our local expertise, we helped them adapt their digital presence to better resonate with Saudi consumers.",
-          "results": [
-            "User engagement increased by 87% after cultural adaptation",
-            "Conversion rates improved by 53% with localized user journeys",
-            "Customer acquisition costs decreased by 41%",
-            "Brand perception scores among Saudi consumers improved from 62% to 89%"
-          ]
-        },
         "faq": [
           {
             "question": "How does your local expertise translate into better digital solutions?",
@@ -790,16 +738,6 @@
             "description": "Integration with marketing tools to automate and optimize customer acquisition."
           }
         ],
-        "caseStudy": {
-          "title": "Accelerating Growth for a Saudi Startup",
-          "description": "A promising Saudi startup had a great product but was struggling to scale their customer base. Our growth-focused approach helped them identify and remove barriers to growth while implementing systems to support rapid expansion.",
-          "results": [
-            "Customer acquisition increased by 215% in six months",
-            "Customer lifetime value improved by 47%",
-            "Successfully scaled to handle 10x traffic without performance issues",
-            "Secured Series A funding based on improved growth metrics"
-          ]
-        },
         "faq": [
           {
             "question": "How do you measure the success of growth initiatives?",
@@ -850,16 +788,6 @@
             "description": "Proactive identification and mitigation of potential delays or issues."
           }
         ],
-        "caseStudy": {
-          "title": "Delivering a Complex E-Government Portal on Time",
-          "description": "A Saudi government entity needed a sophisticated digital portal delivered within a strict timeline to meet regulatory requirements. Despite the complexity and scale of the project, our timely delivery approach ensured successful completion within the mandated timeframe.",
-          "results": [
-            "Completed 2 weeks ahead of the critical deadline",
-            "Delivered within budget despite scope expansions",
-            "Achieved 100% of required functionality",
-            "Received commendation from ministry leadership for execution quality"
-          ]
-        },
         "faq": [
           {
             "question": "How do you handle unexpected challenges that might cause delays?",
@@ -875,7 +803,7 @@
           },
           {
             "question": "What is your track record for on-time delivery?",
-            "answer": "We're proud to maintain a 94% on-time delivery rate across all projects, with the remaining 6% typically involving significant scope changes requested by clients. For fixed-scope projects with clearly defined requirements, our on-time delivery rate exceeds 98%. We consider our ability to deliver reliably a core competitive advantage and a key reason clients choose to work with us repeatedly."
+            "answer": "We agree milestones and a timeline in writing before work starts, and we tell you early if a requested scope change affects the timeline."
           }
         ]
       }
@@ -899,8 +827,8 @@
     },
     "feature2": {
       "title": "100% Saudi Arabia Focused",
-      "description": "Every service we offer is tailored for the Saudi regulatory environment -- ZATCA, CR requirements, Aramco/SABIC registration.",
-      "benefit1": "Aramco & SABIC vendor ready",
+      "description": "Every service we offer is built for the Saudi environment: ZATCA e-invoicing, CR requirements and bilingual documents.",
+      "benefit1": "Bilingual Arabic / English",
       "benefit2": "ZATCA e-invoicing compliant",
       "benefit3": "CR & licensing expertise"
     },
@@ -989,29 +917,8 @@
     "goToTestimonial": "Go to testimonial",
     "saudiArabia": "Saudi Arabia",
     "project": "Project",
-    "trustedBy": "Trusted By Leading Saudi Companies",
     "partner": "Partner",
-    "becomeNextSuccess": "Become Our Next Success Story",
-    "testimonial1": {
-      "text": "Saudi Ease transformed our business with their e-commerce solution. Their understanding of Saudi regulations saved us months of work and helped us launch ahead of schedule.",
-      "project": "E-commerce Platform"
-    },
-    "testimonial2": {
-      "text": "The team at Saudi Ease delivered a custom ERP system that perfectly aligned with our business processes. Their attention to detail and responsive support has made them our go-to technology partner.",
-      "project": "Custom ERP Implementation"
-    },
-    "testimonial3": {
-      "text": "Working with Saudi Ease on our digital transformation initiative was a game-changer. Their expertise in Saudi market requirements and technical capabilities exceeded our expectations.",
-      "project": "Digital Transformation"
-    },
-    "testimonial4": {
-      "text": "Saudi Ease helped us navigate the complex regulatory landscape while building our fintech solution. Their knowledge of local compliance requirements was invaluable.",
-      "project": "Fintech Solution"
-    },
-    "testimonial5": {
-      "text": "The mobile app developed by Saudi Ease has significantly improved our customer engagement. Their team's understanding of Saudi user preferences resulted in an intuitive, culturally-appropriate design.",
-      "project": "Mobile App Development"
-    }
+    "becomeNextSuccess": "Become Our Next Success Story"
   },
   "blogSection": {
     "stayUpdated": "Stay Updated",
@@ -1028,10 +935,10 @@
   },
   "ctaSection": {
     "title": "Ready to Digitize Your Business Operations?",
-    "description": "Whether you need a professional website, Aramco vendor registration, ZATCA invoicing setup, or a complete workforce management system -- we are ready to help.",
+    "description": "Need a website, mobile app, company profile or ZATCA e-invoicing setup? Message us on WhatsApp and tell us what you need.",
     "primaryButton": "Get Your Free Consultation",
     "secondaryButton": "Explore Our Services",
-    "stat1Value": "11",
+    "stat1Value": "9",
     "stat1Label": "Professional Services",
     "stat2Value": "100%",
     "stat2Label": "Saudi Arabia Focused",
@@ -1043,10 +950,9 @@
   "preFooterCTA": {
     "sectionLabel": "Let's Work Together",
     "title": "Ready to Get Started?",
-    "description": "Whether you need a professional website, Aramco vendor registration, ZATCA invoicing setup, or a complete workforce management system -- reach out today for a free consultation.",
+    "description": "Need a website, mobile app, company profile or ZATCA e-invoicing setup? Message us on WhatsApp, call, or send the form below.",
     "quickContact": "Quick Contact",
     "scheduleCall": "Schedule a Call",
-    "partner": "Partner",
     "form": {
       "name": "Your Name",
       "namePlaceholder": "Enter your name",
@@ -1067,8 +973,8 @@
     "whyChooseUs": "Why Choose Saudi Ease?",
     "saudiMarketExperts": "Saudi Market Experts",
     "saudiMarketExpertsDescription": "Deep understanding of local business needs",
-    "zatcaCompliance": "ZATCA Compliance",
-    "zatcaComplianceDescription": "All solutions meet local regulations",
+    "zatcaCompliance": "ZATCA e-invoicing setup",
+    "zatcaComplianceDescription": "We set up ZATCA-compliant e-invoicing software",
     "fastTurnaround": "Fast Turnaround",
     "fastTurnaroundDescription": "Quick delivery without compromising quality",
     "bilingualSupport": "Bilingual Support",
@@ -1078,8 +984,7 @@
     "phone": "Phone",
     "email": "Email",
     "followUs": "Follow Us",
-    "officeImageAlt": "Saudi Ease Office",
-    "trustedBy": "Trusted by leading businesses across Saudi Arabia"
+    "officeImageAlt": "Saudi Ease Office"
   },
   "footer": {
     "logoAlt": "Saudi Ease Logo",
@@ -1117,16 +1022,15 @@
     },
     "services": {
       "webDevelopment": "Website Design & Development",
-      "eCommerce": "Mobile App Development",
-      "eInvoicing": "ZATCA E-Invoicing (Fatoorah)",
-      "graphicDesign": "Company Profile & Branding",
-      "digitalMarketing": "Aramco & SABIC Vendor Registration",
-      "seo": "IT Support Retainer"
+      "mobileApps": "Mobile App Development",
+      "eInvoicing": "ZATCA E-Invoicing Setup",
+      "companyProfile": "Company Profile Design",
+      "brandIdentity": "Logo & Brand Identity",
+      "itSupport": "IT Support Retainer"
     },
     "resources": {
-      "digitalTransformation": "Saudi Digital Transformation Guide",
-      "zatcaCompliance": "ZATCA Compliance Checklist",
-      "careers": "Careers at Saudi Ease"
+      "zatcaGuide": "ZATCA Phase 2 guide",
+      "faq": "FAQ"
     }
   },
   "featuresShowcase": {
@@ -1170,7 +1074,7 @@
   },
   "aboutPage": {
     "metadata": {
-      "title": "About Saudi Ease | Leading Digital Solutions Provider in Saudi Arabia",
+      "title": "About Saudi Ease | IT & Digital Services in Saudi Arabia",
       "description": "Learn about Saudi Ease, our journey, mission, values, and the team behind our success in delivering exceptional digital solutions across Saudi Arabia.",
       "ogTitle": "About Saudi Ease | Your Trusted Digital Partner in Saudi Arabia",
       "ogDescription": "Discover the story, mission, and values that drive Saudi Ease to deliver exceptional digital solutions tailored for the Saudi market.",
@@ -1190,14 +1094,14 @@
       "foundedLocation": "Al Jubail, Saudi Arabia",
       "founderName": "Ibrahim Sifat",
       "founderTitle": "Founder & CEO",
-      "founderQuote": "We built Saudi Ease with one clear mission: to be the most reliable, all-in-one digital partner for businesses operating in the Saudi market, with a focus on the contracting and industrial sectors.",
+      "founderQuote": "We built Saudi Ease with one clear mission: to be a reliable, all-in-one digital partner for businesses operating in the Saudi market, with a focus on the contracting and industrial sectors.",
       "imageAlt": "Ibrahim Sifat, Founder of Saudi Ease"
     },
     "missionVision": {
       "missionTitle": "Our Mission",
       "missionDescription": "To empower businesses in Saudi Arabia with affordable, professional, and complete digital solutions -- from company branding and legal registration to custom software and ongoing IT support.",
       "visionTitle": "Our Vision",
-      "visionDescription": "To become the most trusted digital solutions partner in Jubail's industrial sector -- known for delivering premium quality, bilingual service, and reliable long-term support."
+      "visionDescription": "To be a dependable digital partner for contracting, construction and industrial businesses in Saudi Arabia, with clear pricing, clear timelines and long-term support."
     },
     "coreValues": {
       "title": "Our Core Values",
@@ -1233,143 +1137,15 @@
         },
         "expansion": {
           "year": "2020",
-          "title": "Digital Transformation Hub",
-          "description": "Expanded services to include ZATCA compliance and Aramco vendor registration support."
+          "title": "ZATCA e-invoicing",
+          "description": "Added ZATCA e-invoicing setup to our services."
         },
         "award": {
           "year": "2022",
-          "title": "Gulf Orbit Launch",
-          "description": "Launched our proprietary Employment Management System for contracting firms."
-        },
-        "milestone": {
-          "year": "2024",
-          "title": "Industrial Digital Partner",
-          "description": "Recognized as the premier digital partner for the Al Jubail industrial sector."
+          "title": "Gulf Orbit EMS",
+          "description": "Built the Gulf Orbit employment management system (EMS) for Gulf Orbit Contracting, our sister company with the same founder."
         }
       }
-    },
-    "team": {
-      "title": "Our Leadership",
-      "subtitle": "The People Behind Saudi Ease",
-      "description": "Our team combines local market knowledge with technical expertise to deliver exceptional results.",
-      "members": {
-        "ceo": {
-          "name": "Ibrahim Sifat",
-          "position": "Founder & CEO",
-          "bio": "Ibrahim leads Saudi Ease with hands-on experience in IT development, document automation, and Saudi regulatory compliance.",
-          "imageAlt": "Ibrahim Sifat, Founder & CEO"
-        },
-        "cto": {
-          "name": "Sara Al-Harbi",
-          "position": "Chief Technology Officer",
-          "bio": "Sara oversees our technical operations, ensuring we deliver innovative and robust solutions.",
-          "imageAlt": "Sara Al-Harbi, CTO"
-        },
-        "cmo": {
-          "name": "Khalid Al-Otaibi",
-          "position": "Chief Marketing Officer",
-          "bio": "Khalid leads our marketing strategies, helping clients achieve their business objectives.",
-          "imageAlt": "Khalid Al-Otaibi, CMO"
-        },
-        "cdo": {
-          "name": "Fatima Al-Saud",
-          "position": "Chief Design Officer",
-          "bio": "Fatima ensures our designs are not only beautiful but also culturally relevant and effective.",
-          "imageAlt": "Fatima Al-Saud, CDO"
-        }
-      }
-    },
-    "achievements": {
-      "title": "Our Impact",
-      "subtitle": "Trusted in the Industrial Sector",
-      "items": {
-        "clients": {
-          "title": "Industrial Clients",
-          "value": "250+",
-          "description": "Contracting and supply companies trust our local expertise."
-        },
-        "projects": {
-          "title": "Projects Delivered",
-          "value": "500+",
-          "description": "Successful digital transformations in the Eastern Province."
-        },
-        "awards": {
-          "title": "Reliability Rate",
-          "value": "100%",
-          "description": "Committed to delivering projects on time and within budget."
-        },
-        "satisfaction": {
-          "title": "Client Retention",
-          "value": "98%",
-          "description": "Long-term partnerships based on trust and bilingual support."
-        }
-      }
-    },
-    "testimonials": {
-      "title": "What Our Clients Say",
-      "subtitle": "Testimonials from Saudi Businesses",
-      "items": {
-        "first": {
-          "quote": "Saudi Ease transformed our digital presence completely. Their understanding of the Saudi market and technical expertise delivered results beyond our expectations.",
-          "author": "Abdullah Al-Rashid",
-          "company": "CEO, Al Madar Group",
-          "imageAlt": "Abdullah Al-Rashid"
-        },
-        "second": {
-          "quote": "Working with Saudi Ease has been a game-changer for our business. Their team truly understands our needs and delivers solutions that work for our market.",
-          "author": "Noura Al-Zahrani",
-          "company": "Marketing Director, Saudi Retail Solutions",
-          "imageAlt": "Noura Al-Zahrani"
-        }
-      }
-    },
-    "officeLocations": {
-      "title": "Our Office",
-      "subtitle": "Where to Find Us",
-      "locations": {
-        "riyadh": {
-          "city": "Al Jubail (Main Office)",
-          "address": "Jubail City Center, Al Jubail 35514, Saudi Arabia",
-          "phone": "+966 558845503",
-          "email": "info@saudiease.com"
-        },
-        "jeddah": {
-          "city": "Eastern Province Service Area",
-          "address": "Serving all of Eastern Province, Saudi Arabia",
-          "phone": "+966 558845503",
-          "email": "info@saudiease.com"
-        }
-      }
-    },
-    "csrInitiatives": {
-      "title": "Our CSR Initiatives",
-      "subtitle": "Giving Back to the Community",
-      "description": "At Saudi Ease, we believe in contributing to the communities we serve. Our corporate social responsibility initiatives focus on creating positive impact across Saudi Arabia.",
-      "initiatives": {
-        "education": {
-          "title": "Digital Education",
-          "description": "We provide free digital skills training to young Saudis, helping prepare the next generation for the digital economy."
-        },
-        "environment": {
-          "title": "Environmental Sustainability",
-          "description": "Our green office initiatives and tree planting programs contribute to a more sustainable Saudi Arabia."
-        },
-        "community": {
-          "title": "Community Support",
-          "description": "We regularly volunteer and contribute to local community development projects across the Kingdom."
-        }
-      }
-    },
-    "partners": {
-      "title": "Our Partners",
-      "subtitle": "Collaborating for Success",
-      "description": "We work with leading technology and business partners to deliver the best solutions for our clients."
-    },
-    "joinOurTeam": {
-      "title": "Join Our Team",
-      "subtitle": "Build Your Career with Saudi Ease",
-      "description": "We're always looking for talented individuals who are passionate about digital excellence and want to make an impact in Saudi Arabia.",
-      "buttonText": "View Open Positions"
     }
   },
   "contact": {
@@ -1500,8 +1276,8 @@
           "answer": "Yes, we offer ongoing support and maintenance packages to ensure your digital solutions remain up-to-date and perform optimally."
         },
         {
-          "question": "Are your e-invoicing solutions ZATCA compliant?",
-          "answer": "Yes, our e-invoicing solutions are fully compliant with ZATCA regulations in Saudi Arabia."
+          "question": "Do you set up ZATCA-compliant e-invoicing?",
+          "answer": "Yes. We set up and integrate e-invoicing software that meets ZATCA requirements for Phase 1 and Phase 2. We are not a ZATCA-listed solution provider; we implement compliant third-party software for you."
         }
       ]
     }
@@ -1554,12 +1330,7 @@
       "title": "Our Portfolio",
       "description": "Explore our collection of successful digital projects across Saudi Arabia. From e-commerce solutions to ZATCA-compliant systems, discover how we've helped businesses achieve their digital transformation goals.",
       "startProject": "Start Your Project",
-      "browseProjects": "Browse Projects",
-      "stats": {
-        "projects": "250+ Projects",
-        "industries": "15+ Industries",
-        "awardWinning": "Award-Winning"
-      }
+      "browseProjects": "Browse Projects"
     },
     "filter": {
       "search": "Search projects by name, technology or description...",
@@ -1795,11 +1566,6 @@
     "solutions": "Solutions",
     "getStarted": "Get Started",
     "viewPricing": "View Pricing",
-    "trustIndicators": {
-      "experts": "Certified Experts",
-      "experience": "5+ Years Experience",
-      "clients": "250+ Happy Clients"
-    },
     "floatingElements": {
       "satisfaction": {
         "title": "100% Satisfaction",
@@ -1811,11 +1577,10 @@
       }
     },
     "whatWeOffer": "What We Offer",
-    "clientSatisfaction": "Client Satisfaction",
     "whyChoose": "Why Choose Our",
     "whyChooseDescription": "Our {service} services stand out due to our deep expertise, tailored approach, and commitment to delivering exceptional results. We understand the unique challenges businesses face in Saudi Arabia and provide solutions that address your specific needs.",
     "whyChoosePoints": {
-      "expertise": "Industry-leading expertise",
+      "expertise": "A hands-on delivery team",
       "tailored": "Tailored to Saudi market",
       "methodology": "Proven methodology",
       "support": "Ongoing support"
@@ -1879,7 +1644,6 @@
     "technologiesFooter": "Want to learn more about our technology stack and how it can benefit your business?",
     "discussTechStack": "Discuss Your Tech Requirements",
     "successStories": "Success Stories",
-    "caseStudiesDescription": "Explore how we've helped businesses achieve their goals with our {service} solutions.",
     "results": "Results",
     "similarResults": "Get Similar Results",
     "transparentPricing": "Transparent Pricing",
@@ -1930,36 +1694,6 @@
     "needHelp": "Need Help Choosing?",
     "needHelpDescription": "Not sure which plan is right for you? Schedule a consultation with our experts to discuss your requirements.",
     "scheduleConsultation": "Schedule Consultation",
-    "certifications": {
-      "iso": {
-        "name": "ISO 9001:2015",
-        "description": "Quality Management System"
-      },
-      "sbb": {
-        "name": "Saudi Business Bureau",
-        "description": "Certified Service Provider"
-      },
-      "citc": {
-        "name": "CITC Certified",
-        "description": "Communications and IT Commission"
-      }
-    },
-    "clientTestimonials": "What Our Clients Say",
-    "testimonialsDescription": "Don't just take our word for it. Here's what our clients have to say about our services.",
-    "testimonials": {
-      "first": {
-        "text": "Saudi Ease delivered exceptional results with their professional approach and attention to detail. Their team went above and beyond to ensure our project was a success.",
-        "author": "Mohammed Al-Harbi",
-        "position": "CEO",
-        "company": "Riyadh Technologies"
-      },
-      "second": {
-        "text": "Working with Saudi Ease was a game-changer for our business. Their expertise and innovative solutions helped us achieve our goals faster than expected.",
-        "author": "Fatima Al-Saud",
-        "position": "Marketing Director",
-        "company": "Saudi Retail Group"
-      }
-    },
     "frequentlyAsked": "Frequently Asked Questions",
     "faqDescription": "Find answers to common questions about our {service} services.",
     "moreQuestions": "Still have questions? We're here to help!",
@@ -2019,8 +1753,8 @@
         "answer": "Yes, we offer ongoing support and maintenance packages to ensure your digital solutions remain up-to-date and perform optimally."
       },
       {
-        "question": "Are your e-invoicing solutions ZATCA compliant?",
-        "answer": "Yes, our e-invoicing solutions are fully compliant with ZATCA regulations in Saudi Arabia."
+        "question": "Do you set up ZATCA-compliant e-invoicing?",
+        "answer": "Yes. We set up and integrate e-invoicing software that meets ZATCA requirements for Phase 1 and Phase 2. We are not a ZATCA-listed solution provider; we implement compliant third-party software for you."
       }
     ]
   },
@@ -2067,7 +1801,7 @@
       "services": {
         "webDevelopment": "Website & App Development",
         "eCommerce": "E-Commerce Solutions",
-        "eInvoicing": "E-Invoicing (ZATCA Compliant)",
+        "eInvoicing": "ZATCA E-Invoicing Setup",
         "graphicDesign": "Graphic Design & Branding",
         "digitalMarketing": "Digital Marketing",
         "seo": "Search Engine Optimization"
@@ -2145,167 +1879,10 @@
       "caseStudiesButton": "View Case Studies"
     }
   },
-  "industryDetail": {
-    "meta": {
-      "title": "{industry} Solutions | Saudi Ease",
-      "description": "Discover tailored digital solutions for the {industry} industry in Saudi Arabia. Our specialized services help {industryLower} businesses thrive in the digital landscape.",
-      "keywords": "{industry} digital solutions, Saudi {industryLower} technology, {industryLower} digital transformation Saudi Arabia",
-      "notFound": "Industry Not Found | Saudi Ease"
-    },
-    "hero": {
-      "badge": "Industry Solutions",
-      "titleSuffix": "Solutions",
-      "description": "Our tailored digital solutions for the {industry} sector address the unique challenges and opportunities in the Saudi market, helping businesses achieve their goals.",
-      "getStartedButton": "Get Started",
-      "scheduleButton": "Schedule Consultation",
-      "marketSize": "Market Size",
-      "annualGrowth": "Annual Growth",
-      "clientSatisfaction": "Client Satisfaction",
-      "vision2030": "Vision 2030 Alignment",
-      "vision2030Description": "Our {industry} solutions support Saudi Vision 2030 goals by enhancing efficiency, digital transformation, and sustainable growth.",
-      "saudiCertified": "Saudi Certified"
-    },
-    "benefits": {
-      "badge": "Why Choose Us",
-      "title": "Key Benefits for {industry} Businesses",
-      "description": "Our tailored solutions provide significant advantages for {industry} businesses in Saudi Arabia",
-      "benefit1": {
-        "title": "Increased Efficiency",
-        "description": "Streamline {industry} operations with automated workflows and integrated systems tailored to Saudi business practices."
-      },
-      "benefit2": {
-        "title": "Enhanced Customer Experience",
-        "description": "Deliver exceptional service through digital channels designed specifically for Saudi {industry} customers."
-      },
-      "benefit3": {
-        "title": "Data-Driven Insights",
-        "description": "Make informed decisions with analytics solutions customized for the Saudi {industry} market."
-      },
-      "benefit4": {
-        "title": "Competitive Advantage",
-        "description": "Stay ahead in the Saudi market with innovative digital solutions that set your {industry} business apart."
-      },
-      "benefit5": {
-        "title": "Regulatory Compliance",
-        "description": "Ensure full compliance with Saudi regulations specific to the {industry} sector."
-      },
-      "benefit6": {
-        "title": "Future-Ready Operations",
-        "description": "Prepare your {industry} business for future growth and Vision 2030 opportunities."
-      }
-    },
-    "tabs": {
-      "overview": "Overview",
-      "features": "Key Features",
-      "caseStudies": "Case Studies",
-      "faq": "FAQ"
-    },
-    "overview": {
-      "title": "Comprehensive {industry} Solutions",
-      "description": "Our {industry} solutions are designed specifically for the Saudi market, addressing the unique challenges and opportunities in this sector. We combine industry expertise with cutting-edge technology to deliver results that drive growth and efficiency.",
-      "feature1": {
-        "title": "Saudi Market Expertise",
-        "description": "Solutions tailored specifically for Saudi {industry} businesses"
-      },
-      "feature2": {
-        "title": "Regulatory Compliance",
-        "description": "Full alignment with Saudi regulations and Vision 2030 requirements"
-      },
-      "feature3": {
-        "title": "End-to-End Implementation",
-        "description": "Comprehensive support from planning to deployment and ongoing maintenance"
-      },
-      "feature4": {
-        "title": "Scalable Solutions",
-        "description": "Flexible systems that grow with your business needs"
-      },
-      "scheduleButton": "Schedule Consultation",
-      "projectsCompleted": "Projects Completed",
-      "clientSatisfaction": "Client Satisfaction"
-    },
-    "features": {
-      "title": "Key Features of Our {industry} Solutions",
-      "serviceDescription": "Our {service} solutions are designed specifically for Saudi {industry} businesses, ensuring compliance with local regulations while delivering exceptional performance.",
-      "enhanceDescription": "Enhance your {industry} operations with our advanced {service} solutions, designed to meet the specific needs of businesses in Saudi Arabia.",
-      "benefit1": "Customized for Saudi market requirements",
-      "benefit2": "Seamless integration with existing systems",
-      "benefit3": "Bilingual support (Arabic & English)",
-      "benefit4": "Vision 2030 aligned implementation",
-      "benefit5": "Cloud-based and on-premise options",
-      "benefit6": "Comprehensive training and support",
-      "exploreButton": "Explore All Features"
-    },
-    "caseStudies": {
-      "challengeLabel": "The Challenge",
-      "solutionLabel": "Our Solution",
-      "resultsLabel": "Results",
-      "case1": {
-        "title": "Leading {industry} Business Transformation",
-        "client": "Major {industry} Provider in Riyadh",
-        "challenge": "A leading {industry} business in Saudi Arabia was struggling with outdated systems that couldn't keep pace with the rapidly evolving market demands and Vision 2030 requirements.",
-        "solution": "We implemented a comprehensive digital transformation strategy, including {services}, tailored specifically to their business needs and aligned with Saudi regulations.",
-        "results": {
-          "result1": "50% increase in operational efficiency",
-          "result2": "35% reduction in processing time",
-          "result3": "Seamless compliance with Saudi regulations",
-          "result4": "Improved customer satisfaction scores by 40%"
-        }
-      },
-      "case2": {
-        "title": "{industry} Digital Innovation",
-        "client": "Growing {industry} Company in Jeddah",
-        "challenge": "A mid-sized {industry} company needed to modernize their operations while maintaining compliance with Saudi regulations and meeting the expectations of increasingly tech-savvy customers.",
-        "solution": "We developed a custom digital solution that integrated {service1} and {service2}, providing a seamless experience for both customers and staff while ensuring full compliance.",
-        "results": {
-          "result1": "200% increase in online engagement",
-          "result2": "45% growth in revenue within 6 months",
-          "result3": "Reduced operational costs by 30%",
-          "result4": "Expanded market reach across Saudi Arabia"
-        }
-      }
-    },
-    "faqs": {
-      "title": "Frequently Asked Questions About {industry} Solutions",
-      "faq1": {
-        "question": "What digital solutions are most important for the {industry} sector in Saudi Arabia?",
-        "answer": "For the {industry} sector in Saudi Arabia, the most critical digital solutions include {services}. These solutions help businesses meet the unique challenges of the Saudi market while aligning with Vision 2030 goals for digital transformation."
-      },
-      "faq2": {
-        "question": "How can {industry} businesses comply with Saudi regulations through digital solutions?",
-        "answer": "Our digital solutions for the {industry} sector are built with Saudi regulations in mind, including ZATCA e-invoicing requirements, data localization laws, and industry-specific compliance needs. We ensure all implementations meet current regulations while being adaptable to future changes."
-      },
-      "faq3": {
-        "question": "What is the typical implementation timeline for {industry} digital solutions?",
-        "answer": "Implementation timelines vary based on the specific needs and scale of your {industry} business. Typically, our solutions can be implemented within 2-4 months, with phased approaches available for larger organizations to minimize disruption to ongoing operations."
-      },
-      "faq4": {
-        "question": "How do your solutions support Vision 2030 goals for the {industry} sector?",
-        "answer": "Our digital solutions for the {industry} sector directly support Vision 2030 by enabling digital transformation, improving operational efficiency, supporting economic diversification, and enhancing the overall customer experience. We align our implementations with the specific Vision 2030 initiatives relevant to your industry."
-      },
-      "faq5": {
-        "question": "What ongoing support do you provide for {industry} businesses after implementation?",
-        "answer": "We provide comprehensive support including 24/7 technical assistance, regular updates to keep your systems current with Saudi regulations, performance optimization, staff training, and strategic consultations to ensure your digital solutions continue to meet your evolving business needs."
-      }
-    },
-    "moreQuestionsTitle": "Have more questions?",
-    "moreQuestionsDescription": "Our team of {industry} experts is ready to help you find the right solutions for your business.",
-    "contactButton": "Contact Our Experts",
-    "relatedIndustries": {
-      "title": "Explore Related Industries",
-      "description": "Discover our solutions for other sectors that might complement your {industry} business",
-      "learnMore": "Learn More"
-    },
-    "cta": {
-      "title": "Ready to Transform Your {industry} Business?",
-      "description": "Let's discuss how our specialized solutions can help your {industry} business thrive in Saudi Arabia's competitive market. Our team of experts is ready to provide tailored recommendations for your specific needs.",
-      "scheduleButton": "Schedule Consultation",
-      "caseStudiesButton": "View Case Studies"
-    }
-  },
   "featuresPage": {
     "metadata": {
       "title": "Our Features | Saudi Ease - Digital Solutions for Saudi Businesses",
-      "description": "Explore the comprehensive features that make Saudi Ease the leading provider of digital solutions for businesses in Saudi Arabia."
+      "description": "How Saudi Ease builds websites and apps: performance, security, responsive design, local expertise and clear timelines."
     },
     "hero": {
       "badge": "Powerful Features",
@@ -2316,7 +1893,7 @@
     },
     "grid": {
       "title": "Comprehensive Feature Set",
-      "description": "Each feature is designed with Saudi businesses in mind, ensuring compliance with local regulations while delivering world-class digital experiences.",
+      "description": "Each feature is designed with Saudi businesses in mind, ensuring compliance with local regulations while delivering fast, clear digital experiences.",
       "featureCard": {
         "learnMore": "Learn More",
         "benefit1": "Saudi market optimized",
@@ -3194,7 +2771,6 @@
     "searchPlaceholder": "Search questions or answers...",
     "clearFilters": "Clear Filters",
     "allCategories": "All Categories",
-
     "showingResults": "Showing {filtered} of {total} questions{category, select, '' {} other { in {category}}}{query, select, '' {} other { matching \"{query}\"}}",
     "noResults": "No results found",
     "noResultsDescription": "We couldn't find any FAQs matching your search criteria. Please try different keywords or browse all categories.",
@@ -3225,8 +2801,8 @@
         "answer": "Yes, we offer ongoing support and maintenance packages to ensure your digital solutions remain up-to-date and perform optimally."
       },
       {
-        "question": "Are your e-invoicing solutions ZATCA compliant?",
-        "answer": "Yes, our e-invoicing solutions are fully compliant with ZATCA regulations in Saudi Arabia."
+        "question": "Do you set up ZATCA-compliant e-invoicing?",
+        "answer": "Yes. We set up and integrate e-invoicing software that meets ZATCA requirements for Phase 1 and Phase 2. We are not a ZATCA-listed solution provider; we implement compliant third-party software for you."
       }
     ]
   },
@@ -3264,11 +2840,10 @@
   },
   "whatsappButton": {
     "chatWithUs": "Chat with us on WhatsApp",
-    "replyTime": "We typically reply within minutes",
     "startChat": "Start Chat",
-    "message": "Hello! I'm interested in your services and would like to know more."
+    "message": "Hello Saudi Ease, I would like to discuss a project.",
+    "headerCta": "WhatsApp us"
   },
-
   "scheduleConsultation": {
     "title": "Schedule a Personalized Consultation",
     "description": "Book a one-on-one session with our digital transformation experts to discuss your business needs and explore tailored solutions.",
@@ -3326,7 +2901,6 @@
       "title": "Consultation Scheduled Successfully!",
       "message": "Thank you for scheduling a consultation with Saudi Ease. We've sent a confirmation email with all the details. Our team will contact you shortly to confirm your appointment.",
       "nextSteps": "What happens next?",
-
       "returnHome": "Return to Homepage"
     },
     "benefits": [
@@ -3356,7 +2930,6 @@
       "maxLength": "Must not exceed {max} characters"
     }
   },
-
   "BusinessCategories": {
     "header": {
       "tagline": "Who We Serve",
@@ -3405,8 +2978,6 @@
       "title": "Vision 2030 Alignment",
       "description": "Our {category} solutions support Saudi Vision 2030 goals by enhancing efficiency, digital transformation, and sustainable growth."
     },
-    "badge": {
-      "certified": "Saudi Certified"
-    }
+    "badge": {}
   }
 }

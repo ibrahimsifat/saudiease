@@ -104,20 +104,7 @@ export default function PortfolioPageClient({ locale }: { locale: Locale }) {
               </Button>
             </div>
 
-            <div className="flex items-center justify-center space-x-4 text-sm text-gray-500">
-              <div className="flex items-center">
-                <div className="w-2 h-2 rounded-full bg-green-500 mr-2"></div>
-                <span>{t("hero.stats.projects")}</span>
-              </div>
-              <div className="flex items-center">
-                <div className="w-2 h-2 rounded-full bg-blue-500 mr-2"></div>
-                <span>{t("hero.stats.industries")}</span>
-              </div>
-              <div className="flex items-center">
-                <div className="w-2 h-2 rounded-full bg-purple-500 mr-2"></div>
-                <span>{t("hero.stats.awardWinning")}</span>
-              </div>
-            </div>
+            
           </motion.div>
         </div>
       </section>

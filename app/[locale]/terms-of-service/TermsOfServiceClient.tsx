@@ -1,5 +1,6 @@
 "use client";
 
+import { localePath } from "@/config/site";
 import { Button } from "@/components/ui/button";
 import { Locale } from "@/config/i18n";
 import { motion } from "framer-motion";
@@ -24,7 +25,7 @@ export default function TermsOfServiceClient({ locale }: { locale: Locale }) {
           >
             <Button variant="ghost" className="mb-6" asChild>
               <Link
-                href={`/${locale}`}
+                href={localePath(locale, "")}
                 className="flex items-center text-gray-600 hover:text-primary rtl:flex-row-reverse"
               >
                 <ArrowLeft
@@ -424,13 +425,13 @@ export default function TermsOfServiceClient({ locale }: { locale: Locale }) {
                 }`}
               >
                 <Link
-                  href={`/${locale}/privacy-policy`}
+                  href={localePath(locale, "/privacy-policy")}
                   className="text-sm text-primary hover:underline"
                 >
                   {t("privacyPolicy")}
                 </Link>
                 <Link
-                  href={`/${locale}/legal`}
+                  href={localePath(locale, "/legal")}
                   className="text-sm text-primary hover:underline"
                 >
                   {t("legalHub")}

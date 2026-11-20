@@ -12,7 +12,7 @@ export const companyInfoAr: CompanyInfo = {
     "شريك رقمي متخصص للقطاع الصناعي في الجبيل.",
   mission: "تمكين الشركات السعودية بحلول رقمية مبتكرة تدفع النمو والنجاح.",
   vision:
-    "أن نكون الشريك الرائد في التحول الرقمي للشركات في جميع أنحاء المملكة العربية السعودية.",
+    "أن نكون شريكاً رقمياً يُعتمد عليه لشركات المقاولات والإنشاءات والقطاع الصناعي في المملكة العربية السعودية.",
   values: [
     {
       title: "الابتكار",
@@ -34,63 +34,6 @@ export const companyInfoAr: CompanyInfo = {
     },
   ],
   achievements: [
-    {
-      icon: (
-        <svg
-          className="h-5 w-5 text-primary"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-          />
-        </svg>
-      ),
-      value: "+250",
-      label: "عميل سعيد",
-    },
-    {
-      icon: (
-        <svg
-          className="h-5 w-5 text-primary"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
-          />
-        </svg>
-      ),
-      value: "+15",
-      label: "جائزة محققة",
-    },
-    {
-      icon: (
-        <svg
-          className="h-5 w-5 text-primary"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-      ),
-      value: "+500",
-      label: "مشروع مكتمل",
-    },
     {
       icon: (
         <svg
@@ -206,7 +149,6 @@ export const companyInfoAr: CompanyInfo = {
   },
   founded: "2018",
   team: {
-    count: 35,
     expertise: [
       "تطوير الويب",
       "تطوير تطبيقات الجوال",

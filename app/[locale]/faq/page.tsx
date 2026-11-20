@@ -22,7 +22,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   });
 }
 
-export default async function FAQPage({ params: { locale } }: Props) {
+export default async function FAQPage({ params }: Props) {
+  const { locale } = await params;
   // unstable_setRequestLocale(locale);
 
   const t = await getTranslations({ locale, namespace: "faqPage" });

@@ -520,10 +520,7 @@ export default function BlogPostClient({ post, locale, schema }) {
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {post.tags.map((tag: string, index: number) => (
-                      <Link
-                        href={`/blog/tag/${tag
-                          .toLowerCase()
-                          .replace(/\s+/g, "-")}`}
+                      <span
                         key={index}
                         className={`bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm transition-colors flex items-center ${
                           isRTL ? "flex-row-reverse" : ""
@@ -531,7 +528,7 @@ export default function BlogPostClient({ post, locale, schema }) {
                       >
                         <Tag className={`${isRTL ? "ml-1" : "mr-1"} h-3 w-3`} />
                         {tag}
-                      </Link>
+                      </span>
                     ))}
                   </div>
                 </div>

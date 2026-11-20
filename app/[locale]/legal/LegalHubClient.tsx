@@ -40,34 +40,6 @@ export default function LegalHubClient({ locale }: { locale: Locale }) {
       link: `/terms-of-service`,
       updated: t("documents.termsOfService.updated"),
     },
-    {
-      title: t("documents.cookiePolicy.title"),
-      description: t("documents.cookiePolicy.description"),
-      icon: <FileText className="h-6 w-6 text-primary" />,
-      link: `/cookie-policy`,
-      updated: t("documents.cookiePolicy.updated"),
-    },
-    {
-      title: t("documents.dataProcessing.title"),
-      description: t("documents.dataProcessing.description"),
-      icon: <Shield className="h-6 w-6 text-primary" />,
-      link: `/data-processing-agreement`,
-      updated: t("documents.dataProcessing.updated"),
-    },
-    {
-      title: t("documents.acceptableUse.title"),
-      description: t("documents.acceptableUse.description"),
-      icon: <FileWarning className="h-6 w-6 text-primary" />,
-      link: `/acceptable-use-policy`,
-      updated: t("documents.acceptableUse.updated"),
-    },
-    {
-      title: t("documents.serviceLevelAgreement.title"),
-      description: t("documents.serviceLevelAgreement.description"),
-      icon: <Scale className="h-6 w-6 text-primary" />,
-      link: `/service-level-agreement`,
-      updated: t("documents.serviceLevelAgreement.updated"),
-    },
   ];
 
   return (

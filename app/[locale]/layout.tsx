@@ -5,6 +5,7 @@ import { RecaptchaProvider } from "@/components/recaptcha-provider";
 import ScrollToTop from "@/components/scroll-to-top";
 import { ThemeProvider } from "@/components/theme-provider";
 import WhatsAppButton from "@/components/whatsapp-button";
+import ConversionTracking from "@/components/conversion-tracking";
 import { type Locale, localeMetadata, locales } from "@/config/i18n";
 import { getAllTranslations } from "@/lib/get-translation-namespace";
 import {
@@ -130,15 +131,7 @@ export default async function LocaleLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="theme-color" content="#e63e65" />
 
-        {/* Add hreflang tags for SEO */}
-        <link
-          rel="alternate"
-          href="https://saudiease.com/ar"
-          hrefLang="x-default"
-        />
-        <link rel="alternate" href="https://saudiease.com/en" hrefLang="en" />
-        <link rel="alternate" href="https://saudiease.com/ar" hrefLang="ar" />
-        <link rel="alternate" href="https://saudiease.com/bn" hrefLang="bn" />
+        {/* hreflang is emitted per page via metadata.alternates (config/site.ts) */}
 
         {/* Geo meta tags for local SEO */}
         <meta name="geo.region" content="SA-04" />
@@ -197,6 +190,7 @@ export default async function LocaleLayout({
               </div>
             </RecaptchaProvider>
             <WhatsAppButton />
+            <ConversionTracking />
             <ScrollToTop />
           </ThemeProvider>
         </NextIntlClientProvider>

@@ -77,7 +77,7 @@ export const services: Service[] = [
     title: "Company Profile & Branding",
     image: CONSTANT.images.service.brandIdentity,
     description: "Logo, identity, and brochures designed for the Industrial Sector.",
-    longDescription: "We build a strong, professional identity for your business. For industrial companies, a high-quality company profile is essential for pre-qualification with major clients like Aramco and SABIC.",
+    longDescription: "We build a strong, professional identity for your business. For industrial companies, a high-quality company profile is essential for pre-qualification with major clients and for tenders.",
     benefits: [
       "Look professional to major clients",
       "Consistent branding across all documents",
@@ -91,27 +91,6 @@ export const services: Service[] = [
       "Marketing brochures & flyers"
     ],
     category: "design",
-  },
-  {
-    id: "aramco-sabic-vendor-code",
-    icon: UserCheck,
-    title: "Aramco & SABIC Vendor Code",
-    image: CONSTANT.images.service.apiDevelopment,
-    description: "Registration support for major industrial clients.",
-    longDescription: "Navigating the registration process for major industrial players like Saudi Aramco (Amana) and SABIC can be complex. We provide expert support to help your company obtain its vendor code and start participating in their ecosystem.",
-    benefits: [
-      "Access to multi-billion riyal tenders",
-      "Official vendor status with KSA giants",
-      "Expert guidance through the paperwork",
-      "Faster registration turnaround"
-    ],
-    features: [
-      "Aramco (Amana) registration support",
-      "SABIC vendor code application",
-      "Document collection & verification",
-      "Follow-up with registration portals"
-    ],
-    category: "consultation",
   },
   {
     id: "zatca-e-invoicing",
@@ -196,27 +175,6 @@ export const services: Service[] = [
       "Activity selection advice"
     ],
     category: "consultation",
-  },
-  {
-    id: "excel-data-work",
-    icon: Table,
-    title: "Excel & Data Work",
-    image: CONSTANT.images.service.brandIdentity,
-    description: "Reports, trackers, and automated spreadsheets.",
-    longDescription: "We transform your messy data into clear, automated reports and trackers. From payroll calculations to material tracking and project progress reports, we build the Excel tools your team needs.",
-    benefits: [
-      "Save hours on manual reporting",
-      "Accurate payroll and tracking",
-      "Clear visual data (Dashboards)",
-      "Automated calculations"
-    ],
-    features: [
-      "Advanced Excel formulas & VBA",
-      "Automated Payroll spreadsheets",
-      "Project progress trackers",
-      "Dynamic data dashboards"
-    ],
-    category: "data",
   },
   {
     id: "cv-document-preparation",

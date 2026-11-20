@@ -25,16 +25,6 @@ interface AboutHeroProps {
       title: string;
       subtitle: string;
     };
-    clients: {
-      value: string;
-      title: string;
-      subtitle: string;
-    };
-    team: {
-      value: string;
-      title: string;
-      subtitle: string;
-    };
   };
   visionTitle: string;
   visionDescription: string;
@@ -198,34 +188,8 @@ export default function AboutHero({
                   </p>
                 </div>
               </div>
-              <div className="flex items-center">
-                <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center mr-3 rtl:mr-0 rtl:ml-3">
-                  <span className="text-primary font-bold">
-                    {stats.clients.value}
-                  </span>
-                </div>
-                <div>
-                  <p className="font-medium text-saudi-black">
-                    {stats.clients.title}
-                  </p>
-                  <p className="text-sm text-gray-600">
-                    {stats.clients.subtitle}
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-center">
-                <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center mr-3 rtl:mr-0 rtl:ml-3">
-                  <span className="text-primary font-bold">
-                    {stats.team.value}
-                  </span>
-                </div>
-                <div>
-                  <p className="font-medium text-saudi-black">
-                    {stats.team.title}
-                  </p>
-                  <p className="text-sm text-gray-600">{stats.team.subtitle}</p>
-                </div>
-              </div>
+              
+              
             </div>
           </motion.div>
 

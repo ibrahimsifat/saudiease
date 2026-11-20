@@ -1,114 +1,81 @@
-import { locales } from "@/config/i18n";
+import { locales, type Locale } from "@/config/i18n";
+import { localeUrl, pageAlternates } from "@/config/site";
 import { getBlogs } from "@/data/blog-posts/index";
-import { getBusinessCategories } from "@/data/business-categories/index";
 import { getFeatures } from "@/data/features";
+import { getServiceDetails } from "@/data/service-details/index";
 import type { MetadataRoute } from "next";
 
-const baseUrl = "https://saudiease.com";
-
-// All service detail page IDs
-const serviceDetailIds = [
-  "web-development",
-  "mobile-app-development",
-  "e-invoicing",
-  "logo-design",
-  "digital-marketing",
-  "custom-cms-development",
-  "e-commerce-solutions",
-  "brand-identity",
-  "api-development",
-  "corporate-profile",
-  "ui-ux-design",
-  "print-design",
+// Only indexable pages that return 200 on the canonical host.
+// Arabic (default locale) URLs have no /ar prefix.
+// Excluded on purpose: /industries/<id> (404 until real industry pages exist),
+// admin, API.
+const staticPaths = [
+  "",
+  "/about",
+  "/services",
+  "/portfolio",
+  "/blog",
+  "/contact",
+  "/faq",
+  "/features",
+  "/industries",
+  "/estimator",
+  "/schedule-consultation",
+  "/tech-stack",
+  "/legal",
+  "/privacy-policy",
+  "/terms-of-service",
 ];
 
-// Static pages with their change frequencies and priorities
-const staticPages: {
-  path: string;
-  changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"];
-  priority: number;
-}[] = [
-  { path: "", changeFrequency: "weekly", priority: 1.0 },
-  { path: "/about", changeFrequency: "monthly", priority: 0.8 },
-  { path: "/services", changeFrequency: "weekly", priority: 0.9 },
-  { path: "/portfolio", changeFrequency: "weekly", priority: 0.8 },
-  { path: "/blog", changeFrequency: "daily", priority: 0.8 },
-  { path: "/contact", changeFrequency: "monthly", priority: 0.7 },
-  { path: "/faq", changeFrequency: "monthly", priority: 0.6 },
-  { path: "/features", changeFrequency: "monthly", priority: 0.7 },
-  { path: "/industries", changeFrequency: "monthly", priority: 0.7 },
-  { path: "/estimator", changeFrequency: "monthly", priority: 0.6 },
-  { path: "/schedule-consultation", changeFrequency: "monthly", priority: 0.6 },
-  { path: "/tech-stack", changeFrequency: "monthly", priority: 0.5 },
-  { path: "/legal", changeFrequency: "yearly", priority: 0.3 },
-  { path: "/privacy-policy", changeFrequency: "yearly", priority: 0.3 },
-  { path: "/terms-of-service", changeFrequency: "yearly", priority: 0.3 },
-];
+function entry(
+  locale: Locale,
+  path: string,
+  available: readonly Locale[] = locales,
+  lastModified?: Date
+): MetadataRoute.Sitemap[number] {
+  return {
+    url: localeUrl(locale, path),
+    ...(lastModified ? { lastModified } : {}),
+    alternates: { languages: pageAlternates(locale, path, available).languages },
+  };
+}
+
+function parseDate(value?: string): Date | undefined {
+  if (!value) return undefined;
+  const d = new Date(value);
+  return Number.isNaN(d.getTime()) ? undefined : d;
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
   const entries: MetadataRoute.Sitemap = [];
 
-  // 1. Static pages for every locale
   for (const locale of locales) {
-    for (const page of staticPages) {
-      entries.push({
-        url: `${baseUrl}/${locale}${page.path}`,
-        lastModified: now,
-        changeFrequency: page.changeFrequency,
-        priority: page.priority,
-      });
+    for (const path of staticPaths) entries.push(entry(locale, path));
+  }
+
+  // Services: every ID that renders (both data sets), per locale.
+  for (const locale of locales) {
+    for (const id of Object.keys(getServiceDetails(locale))) {
+      const available = locales.filter((l) => Boolean(getServiceDetails(l)[id]));
+      entries.push(entry(locale, `/services/${id}`, available));
     }
   }
 
-  // 2. Service detail pages for every locale
+  // Blog posts, with their own publish date as lastmod.
   for (const locale of locales) {
-    for (const serviceId of serviceDetailIds) {
-      entries.push({
-        url: `${baseUrl}/${locale}/services/${serviceId}`,
-        lastModified: now,
-        changeFrequency: "monthly" as const,
-        priority: 0.8,
-      });
+    for (const post of getBlogs(locale)) {
+      const available = locales.filter((l) =>
+        getBlogs(l).some((p) => p.slug === post.slug)
+      );
+      entries.push(
+        entry(locale, `/blog/${post.slug}`, available, parseDate(post.date))
+      );
     }
   }
 
-  // 3. Blog posts for every locale
   for (const locale of locales) {
-    const blogs = getBlogs(locale);
-    for (const blog of blogs) {
-      entries.push({
-        url: `${baseUrl}/${locale}/blog/${blog.slug}`,
-        lastModified: now,
-        changeFrequency: "monthly" as const,
-        priority: 0.7,
-      });
-    }
-  }
-
-  // 4. Feature pages for every locale
-  for (const locale of locales) {
-    const features = getFeatures(locale);
-    for (const feature of features) {
-      entries.push({
-        url: `${baseUrl}/${locale}/features/${feature.id}`,
-        lastModified: now,
-        changeFrequency: "monthly" as const,
-        priority: 0.6,
-      });
-    }
-  }
-
-  // 5. Industry pages for every locale
-  for (const locale of locales) {
-    const categories = getBusinessCategories(locale);
-    for (const category of categories) {
-      entries.push({
-        url: `${baseUrl}/${locale}/industries/${category.id}`,
-        lastModified: now,
-        changeFrequency: "monthly" as const,
-        priority: 0.6,
-      });
+    for (const feature of getFeatures(locale)) {
+      entries.push(entry(locale, `/features/${feature.id}`));
     }
   }
 

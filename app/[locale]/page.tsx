@@ -1,3 +1,4 @@
+import { localeUrl, pageAlternates } from "@/config/site";
 import {
   generateLocalBusinessSchema,
   generateOrganizationSchema,
@@ -36,18 +37,11 @@ export async function generateMetadata({
     title: t("title"),
     description: t("description"),
     keywords: keywords[locale as keyof typeof keywords].join(", "),
-    alternates: {
-      canonical: `https://saudiease.com/${locale}`,
-      languages: {
-        en: "https://saudiease.com/en",
-        ar: "https://saudiease.com/ar",
-        bn: "https://saudiease.com/bn",
-      },
-    },
+    alternates: pageAlternates(locale, ""),
     openGraph: {
       title: t("title"),
       description: t("description"),
-      url: `https://saudiease.com/${locale}`,
+      url: localeUrl(locale, ""),
       siteName: "SaudiEase",
       locale: locale === "en" ? "en_US" : locale === "ar" ? "ar_SA" : "bn_BD",
       type: "website",

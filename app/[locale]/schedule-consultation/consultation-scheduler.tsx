@@ -1,5 +1,6 @@
 "use client";
 
+import { trackEvent } from "@/lib/track";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import {
@@ -303,6 +304,7 @@ export default function ConsultationScheduler() {
 
       if (result.success) {
         setIsSuccess(true);
+        trackEvent("form_submit", { form: "consultation" });
 
         // Redirect to thank you page or show success message
         setTimeout(() => {

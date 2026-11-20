@@ -1,5 +1,6 @@
 "use client";
 
+import { localePath } from "@/config/site";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { type Locale, localeMetadata } from "@/config/i18n";
@@ -47,24 +48,6 @@ export default function ServiceDetailClient({
     return Icon;
   };
 
-  // Testimonials specific to this service
-  const serviceTestimonials = [
-    {
-      text: t("testimonials.first.text"),
-      author: t("testimonials.first.author"),
-      position: t("testimonials.first.position"),
-      company: t("testimonials.first.company"),
-      rating: 5,
-    },
-    {
-      text: t("testimonials.second.text"),
-      author: t("testimonials.second.author"),
-      position: t("testimonials.second.position"),
-      company: t("testimonials.second.company"),
-      rating: 5,
-    },
-  ];
-
   // Service packages/tiers
   const serviceTiers = [
     {
@@ -90,22 +73,6 @@ export default function ServiceDetailClient({
       featuresCount: 6,
       tierKey: "enterprise",
       recommended: false,
-    },
-  ];
-
-  // Industry certifications
-  const certifications = [
-    {
-      name: t("certifications.iso.name"),
-      description: t("certifications.iso.description"),
-    },
-    {
-      name: t("certifications.sbb.name"),
-      description: t("certifications.sbb.description"),
-    },
-    {
-      name: t("certifications.citc.name"),
-      description: t("certifications.citc.description"),
     },
   ];
 
@@ -170,22 +137,8 @@ export default function ServiceDetailClient({
               {t("sections.pricing")}
             </a>
           </li>
-          <li>
-            <Link
-              href="/estimator"
-              className="text-gray-600 hover:text-primary transition-colors"
-            >
-              {t("sections.caseStudies")}
-            </Link>
-          </li>
-          <li>
-            <a
-              href="#testimonials"
-              className="text-gray-600 hover:text-primary transition-colors"
-            >
-              {t("sections.testimonials")}
-            </a>
-          </li>
+          
+          
           <li>
             <a
               href="#faq"
@@ -222,7 +175,7 @@ export default function ServiceDetailClient({
             >
               <li className="inline-flex items-center">
                 <Link
-                  href={`/${locale}`}
+                  href={localePath(locale, "")}
                   className="text-gray-600 hover:text-primary transition-colors"
                 >
                   {t("breadcrumbs.home")}
@@ -240,7 +193,7 @@ export default function ServiceDetailClient({
                     }`}
                   />
                   <Link
-                    href={`/${locale}/services`}
+                    href={localePath(locale, "/services")}
                     className={`${
                       isRtl ? "mr-1" : "ml-1"
                     } text-gray-600 hover:text-primary transition-colors`}
@@ -358,33 +311,8 @@ export default function ServiceDetailClient({
                 </Button>
               </div>
 
-              {/* Trust indicators */}
-              <div className="mt-8 pt-8 border-t border-gray-200 grid grid-cols-3 gap-4 text-center">
-                <div>
-                  <div className="flex justify-center mb-2">
-                    <Award className="h-6 w-6 text-primary" />
-                  </div>
-                  <p className="text-sm font-medium text-gray-900">
-                    {t("trustIndicators.experts")}
-                  </p>
-                </div>
-                <div>
-                  <div className="flex justify-center mb-2">
-                    <Clock className="h-6 w-6 text-primary" />
-                  </div>
-                  <p className="text-sm font-medium text-gray-900">
-                    {t("trustIndicators.experience")}
-                  </p>
-                </div>
-                <div>
-                  <div className="flex justify-center mb-2">
-                    <Users className="h-6 w-6 text-primary" />
-                  </div>
-                  <p className="text-sm font-medium text-gray-900">
-                    {t("trustIndicators.clients")}
-                  </p>
-                </div>
-              </div>
+              
+              
             </div>
 
             <div
@@ -468,18 +396,8 @@ export default function ServiceDetailClient({
                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent mix-blend-multiply"></div>
               </div>
 
-              {/* Floating stats */}
-              <div className="absolute transform translate-y-[-50%] translate-x-[10%] bg-white rounded-lg shadow-lg p-4 flex items-center space-x-4">
-                <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
-                  <Users className="h-6 w-6 text-primary" />
-                </div>
-                <div>
-                  <p className="text-2xl font-bold text-saudi-black">98%</p>
-                  <p className="text-sm text-gray-600">
-                    {t("clientSatisfaction")}
-                  </p>
-                </div>
-              </div>
+              
+              
             </div>
 
             <div className="space-y-8">
@@ -974,101 +892,6 @@ export default function ServiceDetailClient({
         </div>
       </section>
 
-      {/* Case Studies Section */}
-      <section id="case-studies" className="py-20 bg-white scroll-mt-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-              <span className="flex h-2 w-2 rounded-full bg-primary mr-2"></span>
-              {t("sections.caseStudies")}
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-saudi-black mb-6">
-              {t("successStories")}
-            </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              {t("caseStudiesDescription", { service: serviceDetail.title })}
-            </p>
-          </div>
-
-          <div className="space-y-16">
-            {serviceDetail.caseStudies.map((caseStudy: any, index: number) => {
-              const isEven = index % 2 === 0;
-
-              return (
-                <div
-                  key={index}
-                  className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
-                    isRtl ? "rtl" : "ltr"
-                  }`}
-                >
-                  <div
-                    className={
-                      isEven
-                        ? isRtl
-                          ? "order-1"
-                          : ""
-                        : isRtl
-                        ? ""
-                        : "order-1 lg:order-2"
-                    }
-                  >
-                    <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-xl">
-                      <Image
-                        src={
-                          caseStudy.image ||
-                          "/placeholder.svg?height=800&width=1200"
-                        }
-                        alt={caseStudy.title}
-                        fill
-                        className="object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 to-transparent mix-blend-multiply"></div>
-                    </div>
-                  </div>
-
-                  <div
-                    className={
-                      isEven
-                        ? isRtl
-                          ? "order-2"
-                          : ""
-                        : isRtl
-                        ? ""
-                        : "order-2 lg:order-1"
-                    }
-                  >
-                    <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-                      <span className="flex h-2 w-2 rounded-full bg-primary mr-2"></span>
-                      {caseStudy.client}
-                    </div>
-                    <h3 className="text-2xl font-bold text-saudi-black mb-4">
-                      {caseStudy.title}
-                    </h3>
-                    <p className="text-gray-600 mb-6">
-                      {caseStudy.description}
-                    </p>
-
-                    <div className="bg-gray-50 p-6 rounded-xl mb-6">
-                      <h4 className="font-bold text-saudi-black mb-3">
-                        {t("results")}
-                      </h4>
-                      <p className="text-gray-600">{caseStudy.results}</p>
-                    </div>
-
-                    <Button
-                      className="bg-primary hover:bg-primary/90 text-white"
-                      asChild
-                    >
-                      <Link href="/contact">{t("similarResults")}</Link>
-                    </Button>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
       {/* Pricing Section */}
       <section
         id="pricing"
@@ -1184,32 +1007,7 @@ export default function ServiceDetailClient({
                 <p className="text-gray-600 mb-6">
                   {t("customSolutionsDescription")}
                 </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {certifications.map((cert, index) => (
-                    <div
-                      key={index}
-                      className={`flex items-start ${
-                        isRtl ? "flex-row-reverse text-right" : ""
-                      }`}
-                    >
-                      <div
-                        className={`flex-shrink-0 h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 ${
-                          isRtl ? "ml-4" : "mr-4"
-                        }`}
-                      >
-                        <Award className="h-5 w-5 text-primary" />
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-saudi-black">
-                          {cert.name}
-                        </h4>
-                        <p className="text-sm text-gray-600">
-                          {cert.description}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                
               </div>
 
               <div className="bg-white p-6 rounded-xl shadow-md">
@@ -1225,65 +1023,6 @@ export default function ServiceDetailClient({
                 </Button>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section id="testimonials" className="py-20 bg-white scroll-mt-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-              <span className="flex h-2 w-2 rounded-full bg-primary mr-2"></span>
-              {t("sections.testimonials")}
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-saudi-black mb-6">
-              {t("clientTestimonials")}
-            </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              {t("testimonialsDescription")}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {serviceTestimonials.map((testimonial, index) => (
-              <div key={index} className="bg-gray-50 p-8 rounded-2xl relative">
-                <div className="absolute top-8 right-8 text-primary/20">
-                  <svg
-                    className="h-16 w-16"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                  </svg>
-                </div>
-
-                <div className="mb-6">
-                  {Array.from({ length: testimonial.rating }).map((_, i) => (
-                    <Star
-                      key={i}
-                      className="inline-block h-5 w-5 text-yellow-400 fill-current"
-                    />
-                  ))}
-                </div>
-
-                <p className="text-lg text-gray-700 mb-6 relative z-10">
-                  {testimonial.text}
-                </p>
-
-                <div className="flex items-center">
-                  <div className="h-12 w-12 rounded-full bg-gray-300 mr-4"></div>
-                  <div>
-                    <h4 className="font-bold text-saudi-black">
-                      {testimonial.author}
-                    </h4>
-                    <p className="text-sm text-gray-600">
-                      {testimonial.position}, {testimonial.company}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>

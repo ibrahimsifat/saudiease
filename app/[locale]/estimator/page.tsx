@@ -17,6 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: t("metadata.title"),
     description: t("metadata.description"),
     path: "/estimator",
+    locale,
     keywords: keywords[locale as keyof typeof keywords].join(", "),
   });
 }

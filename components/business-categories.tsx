@@ -61,55 +61,8 @@ export default function BusinessCategories() {
             {t("header.description")}
           </p>
 
-          {/* Stats row */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10 max-w-4xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-white rounded-xl p-4 shadow-md border border-gray-100"
-            >
-              <div className="text-3xl font-bold text-primary mb-1">95%</div>
-              <div className="text-sm text-gray-600">
-                {t("stats.satisfaction")}
-              </div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-white rounded-xl p-4 shadow-md border border-gray-100"
-            >
-              <div className="text-3xl font-bold text-primary mb-1">12+</div>
-              <div className="text-sm text-gray-600">
-                {t("stats.industries")}
-              </div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="bg-white rounded-xl p-4 shadow-md border border-gray-100"
-            >
-              <div className="text-3xl font-bold text-primary mb-1">200+</div>
-              <div className="text-sm text-gray-600">{t("stats.projects")}</div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="bg-white rounded-xl p-4 shadow-md border border-gray-100"
-            >
-              <div className="text-3xl font-bold text-primary mb-1">8+</div>
-              <div className="text-sm text-gray-600">
-                {t("stats.experience")}
-              </div>
-            </motion.div>
-          </div>
+          
+          
         </motion.div>
 
         <Tabs
@@ -251,9 +204,9 @@ export default function BusinessCategories() {
                         size="lg"
                         asChild
                       >
-                        <a href={`/industries/${category.id}`}>
+                        <Link href="/services">
                           {t("buttons.learnMore")}
-                        </a>
+                        </Link>
                       </Button>
                     </div>
                   </div>
@@ -286,13 +239,7 @@ export default function BusinessCategories() {
                   <div className="absolute -top-6 -right-6 h-24 w-24 bg-primary/10 rounded-full"></div>
                   <div className="absolute -bottom-6 -left-6 h-32 w-32 bg-primary/5 rounded-full"></div>
 
-                  {/* Floating badges */}
-                  <div className="absolute top-4 left-4 bg-white py-1.5 px-3 rounded-full shadow-md flex items-center">
-                    <span className="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></span>
-                    <span className="text-sm font-medium">
-                      {t("badge.certified")}
-                    </span>
-                  </div>
+                  
                 </div>
               </motion.div>
             </TabsContent>

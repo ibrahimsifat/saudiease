@@ -1,40 +1,20 @@
 import { Locale } from "@/config/i18n";
-import { getBusinessCategories } from "@/data/business-categories";
-import { keywords } from "@/data/keywords";
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
-import IndustryDetailClient from "./IndustryDetailClient";
+import { notFound } from "next/navigation";
 
 type Props = {
   params: { id: string; locale: Locale };
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { locale } = await params;
-  const industry = getBusinessCategories(locale).find(
-    (category) => category.id === params.id
-  );
-  const t = await getTranslations({
-    locale: params.locale,
-    namespace: "industryDetail.meta",
-  });
-
-  if (!industry) {
-    return {
-      title: t("notFound"),
-    };
-  }
-
-  return {
-    title: t("title", { industry: industry.name }),
-    description: t("description", {
-      industry: industry.name,
-      industryLower: industry.name.toLowerCase(),
-    }),
-    keywords: keywords[locale as keyof typeof keywords].join(", "),
-  };
+// Industry detail pages are switched off: the template generated invented
+// case studies and certifications for every industry, and none of these
+// industries has evidence in docs/seo/business-goals.md. Every
+// /industries/<id> URL returns a real 404 until real industry pages exist
+// (MASTER-PLAN task 3-8).
+export async function generateMetadata(): Promise<Metadata> {
+  return { robots: { index: false, follow: true } };
 }
 
-export default function IndustryDetailPage({ params }: Props) {
-  return <IndustryDetailClient id={params.id} />;
+export default async function IndustryDetailPage(_props: Props) {
+  notFound();
 }

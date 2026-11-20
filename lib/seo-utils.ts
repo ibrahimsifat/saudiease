@@ -1,8 +1,9 @@
-import { type Locale, locales } from "@/config/i18n";
+import { type Locale } from "@/config/i18n";
+import { SITE_URL, localeUrl, pageAlternates, stripLocale } from "@/config/site";
 import { companyInfo } from "@/data/company-info/index";
 import type { Metadata } from "next/types";
 
-const BASE_URL = "https://saudiease.com";
+const BASE_URL = SITE_URL;
 
 // Generate enriched Organization Schema with full contact, social, and area info
 export function generateOrganizationSchema() {
@@ -61,10 +62,6 @@ export function generateOrganizationSchema() {
         name: "Saudi Arabia",
       },
     ],
-    numberOfEmployees: {
-      "@type": "QuantitativeValue",
-      value: 35,
-    },
     knowsLanguage: ["ar", "en", "bn"],
   };
 }
@@ -178,16 +175,9 @@ export function generateBreadcrumbSchema(
   };
 }
 
-// Generate alternate URLs for all supported locales
+// Generate alternate URLs for all supported locales (path without locale prefix)
 export function generateAlternateUrls(path = "") {
-  const cleanPath = path.startsWith("/") ? path : `/${path}`;
-  const languages: Record<string, string> = {};
-
-  locales.forEach((locale) => {
-    languages[locale] = `${BASE_URL}/${locale}${cleanPath}`;
-  });
-
-  return languages;
+  return pageAlternates("ar", path).languages;
 }
 
 // Base SEO metadata
@@ -249,7 +239,8 @@ export const baseSeoMetadata = {
 // Generate localized metadata for a specific page
 export async function generateLocalizedMetadata(
   locale: Locale,
-  pageName: string
+  pageName: string,
+  path?: string
 ): Promise<Metadata> {
   try {
     const messages = await import(`../messages/${locale}.json`);
@@ -262,13 +253,13 @@ export async function generateLocalizedMetadata(
       ...baseSeoMetadata,
       title: pageMetadata.title || baseSeoMetadata.title,
       description: pageMetadata.description || baseSeoMetadata.description,
-      alternates: {
-        canonical: `${BASE_URL}/${locale}`,
-        languages: generateAlternateUrls(),
-      },
+      // Only set canonical/hreflang when a page path is given. The layout
+      // passes none, so pages never inherit the home page's canonical.
+      ...(path !== undefined ? { alternates: pageAlternates(locale, path) } : {}),
       openGraph: {
         ...baseSeoMetadata.openGraph,
         locale: ogLocale,
+        ...(path !== undefined ? { url: localeUrl(locale, path) } : {}),
         title: pageMetadata.title || baseSeoMetadata.title,
         description: pageMetadata.description || baseSeoMetadata.description,
       },
@@ -300,18 +291,17 @@ export function generatePageMetadata({
   type?: "website" | "article";
   locale?: string;
 }): Metadata {
-  const url = `${BASE_URL}${path}`;
+  // Accepts "/en/faq" or "/faq" (+ locale); always emits the real URL.
+  const parsed = stripLocale(path);
+  const pageLocale = parsed.locale || locale || "ar";
+  const alternates = pageAlternates(pageLocale, parsed.path);
+  const url = alternates.canonical;
   const ogImage = image || `${BASE_URL}/opengraph-image`;
   return {
     title,
     description,
     keywords,
-    alternates: {
-      canonical: url,
-      languages: generateAlternateUrls(
-        path.replace(/^\/(en|ar|bn)/, "")
-      ),
-    },
+    alternates,
     openGraph: {
       title,
       description,

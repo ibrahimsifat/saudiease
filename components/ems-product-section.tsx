@@ -181,7 +181,7 @@ export default function EMSProductSection() {
                 <Users className="h-5 w-5 sm:h-6 sm:w-6 text-emerald-400" />
               </div>
               <div className={cn("text-left", isRTL && "text-right")}>
-                <p className="text-xs sm:text-sm font-bold text-white">500+ Staff Managed</p>
+                <p className="text-xs sm:text-sm font-bold text-white">Multi-site staff tracking</p>
                 <p className="text-[9px] sm:text-[10px] text-gray-400 uppercase tracking-widest font-mono mt-0.5">Real-time Site Sync</p>
               </div>
             </motion.div>

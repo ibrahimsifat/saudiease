@@ -10,6 +10,7 @@ import { ArrowRight, Filter, Search } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
+import { localePath } from "@/config/site";
 import { useState } from "react";
 
 export default function ServicesPageClient({ locale }: { locale: Locale }) {
@@ -130,7 +131,7 @@ export default function ServicesPageClient({ locale }: { locale: Locale }) {
               filteredServices.map((service) => (
                 <Link
                   key={service.id}
-                  href={`/${locale}/services/${service.id}`}
+                  href={localePath(locale, `/services/${service.id}`)}
                   className="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden hover:shadow-lg transition-all group"
                 >
                   <div className="p-6">
@@ -210,7 +211,7 @@ export default function ServicesPageClient({ locale }: { locale: Locale }) {
                 className="bg-white text-primary hover:bg-gray-100"
                 asChild
               >
-                <Link href={`/${locale}/contact`}>
+                <Link href={localePath(locale, "/contact")}>
                   {t("cta.contactButton")}
                 </Link>
               </Button>
@@ -220,7 +221,7 @@ export default function ServicesPageClient({ locale }: { locale: Locale }) {
                 className="border-white bg-white/10"
                 asChild
               >
-                <Link href={`/${locale}/schedule-consultation`}>
+                <Link href={localePath(locale, "/schedule-consultation")}>
                   {t("cta.scheduleButton")}
                 </Link>
               </Button>

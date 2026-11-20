@@ -1,5 +1,6 @@
 "use client";
 
+import { trackEvent } from "@/lib/track";
 import type React from "react";
 
 import { Button } from "@/components/ui/button";
@@ -128,6 +129,7 @@ export default function ContactForm() {
 
       if (result.success) {
         setSubmitSuccess(true);
+        trackEvent("form_submit", { form: "contact" });
         setFormData({
           name: "",
           email: "",

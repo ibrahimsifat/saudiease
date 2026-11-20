@@ -23,6 +23,7 @@ export async function generateMetadata({
     description: t("meta.description"),
     keywords: keywords[locale as keyof typeof keywords].join(", "),
     path: `/${locale}/services`,
+    locale,
   });
 }
 

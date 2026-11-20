@@ -1,4 +1,15 @@
 import type { Locale } from "@/config/i18n";
+import { pageAlternates } from "@/config/site";
+import type { Metadata } from "next";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { id: string; locale: Locale };
+}): Promise<Metadata> {
+  const { id, locale } = await params;
+  return { alternates: pageAlternates(locale, `/features/${id}`) };
+}
 import FeatureDetailPageClient from "./FeatureDetailPageClient";
 
 // Generate metadata for each feature page
