@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "website",
       images: [
         {
-          url: "https://saudiease.com/opengraph-image",
+          url: "https://www.saudiease.com/opengraph-image",
           width: 1200,
           height: 630,
           alt: t("title"),
@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary_large_image",
       title: t("title"),
       description: t("description"),
-      images: ["https://saudiease.com/opengraph-image"],
+      images: ["https://www.saudiease.com/opengraph-image"],
       creator: "@saudiease0",
     },
   };

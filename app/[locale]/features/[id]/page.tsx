@@ -55,7 +55,7 @@ import FeatureDetailPageClient from "./FeatureDetailPageClient";
 //       ...metadata.openGraph,
 //       title: `${t(`detail.${params.id}.title`)} | ${t("seoTitle")}`,
 //       description: t(`detail.${params.id}.description`),
-//       url: `https://saudiease.com/${params.locale}/features/${params.id}`,
+//       url: `https://www.saudiease.com/${params.locale}/features/${params.id}`,
 //     },
 //   };
 // }

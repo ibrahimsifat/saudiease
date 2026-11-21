@@ -59,8 +59,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const postImage = post.image
     ? post.image.startsWith("http")
       ? post.image
-      : `https://saudiease.com${post.image}`
-    : "https://saudiease.com/opengraph-image";
+      : `https://www.saudiease.com${post.image}`
+    : "https://www.saudiease.com/opengraph-image";
 
   return {
     title: blogSeoTitle(slug, post.title, locale),

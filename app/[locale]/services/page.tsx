@@ -42,7 +42,7 @@ export default async function ServicesPage({ params }: Props) {
               description: t("meta.schemaDescription"),
               provider: {
                 name: "Saudi Ease",
-                url: "https://saudiease.com",
+                url: "https://www.saudiease.com",
               },
             })
           ),

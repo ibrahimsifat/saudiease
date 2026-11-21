@@ -10,12 +10,12 @@
  *  - exactly one <h1>
  *  - no banned claims (docs/seo/business-goals.md §10) in the HTML, incl. the
  *    serialized translation payload
- *  - sitemap has no /ar/ URLs, no www, no retired service URLs
+ *  - sitemap URLs on the canonical origin, no /ar/ URLs, no retired service URLs
  * Also checks robots.txt and llms.txt exist. Exits 1 on any error.
  */
 
 const base = (process.argv[2] || "http://localhost:3000").replace(/\/$/, "");
-const CANONICAL_ORIGIN = "https://saudiease.com";
+const CANONICAL_ORIGIN = "https://www.saudiease.com";
 
 const BANNED = [
   /Aramco|(?<![\u0600-\u06FF])(أرامكو|ارامكو)(?![\u0600-\u06FF])|আরামকো/,

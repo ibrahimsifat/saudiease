@@ -8,6 +8,7 @@ const nextConfig = {
     remotePatterns: [
       { hostname: "placeholder.com" },
       { hostname: "saudiease.com" },
+      { hostname: "www.saudiease.com" },
       { hostname: "hebbkx1anhila5yf.public.blob.vercel-storage.com" },
     ],
     formats: ["image/avif", "image/webp"],

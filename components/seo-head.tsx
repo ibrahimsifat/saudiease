@@ -17,8 +17,8 @@ type SEOHeadProps = {
 export default function SEOHead({
   title = "Saudi Ease - Creative Digital Solutions for Saudi Businesses",
   description = "Comprehensive digital services in Saudi Arabia including web development, e-invoicing, graphic design, and digital marketing aligned with Vision 2030.",
-  canonicalUrl = "https://saudiease.com",
-  ogImage = "https://saudiease.com/og-image.jpg",
+  canonicalUrl = "https://www.saudiease.com",
+  ogImage = "https://www.saudiease.com/og-image.jpg",
   ogType = "website",
   twitterCard = "summary_large_image",
   keywords = [

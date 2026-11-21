@@ -2,10 +2,10 @@ import { defaultLocale, locales, type Locale } from "@/config/i18n";
 
 /**
  * The one canonical origin for the whole site (canonicals, hreflang, sitemap,
- * schema, robots). Change it here only. Vercel must serve this host with 200
- * and 308-redirect the other host (www ↔ apex) to it.
+ * schema, robots). Change it here only. Vercel serves this host with 200 and
+ * 308-redirects saudiease.com to it (set 2026-11-21).
  */
-export const SITE_URL = "https://saudiease.com";
+export const SITE_URL = "https://www.saudiease.com";
 
 export const WHATSAPP_NUMBER = "966558845503";
 

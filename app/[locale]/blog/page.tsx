@@ -22,7 +22,7 @@ export async function generateMetadata({
         title: "Blog | Saudi Ease Digital Solutions",
         description:
           "Digital transformation insights and trends for Saudi businesses.",
-        url: "https://saudiease.com/blog",
+        url: "https://www.saudiease.com/blog",
         siteName: "Saudi Ease",
         locale: "en_US",
         type: "website",
@@ -37,7 +37,7 @@ export async function generateMetadata({
       openGraph: {
         title: "المدونة | سعودي إيز للحلول الرقمية",
         description: "رؤى واتجاهات التحول الرقمي للشركات السعودية.",
-        url: "https://saudiease.com/ar/blog",
+        url: "https://www.saudiease.com/ar/blog",
         siteName: "سعودي إيز",
         locale: "ar_SA",
         type: "website",
@@ -53,7 +53,7 @@ export async function generateMetadata({
         title: "ব্লগ | সৌদি ইজ ডিজিটাল সলিউশনস",
         description:
           "সৌদি ব্যবসাগুলির জন্য ডিজিটাল ট্রান্সফরমেশন ইনসাইটস এবং ট্রেন্ড।",
-        url: "https://saudiease.com/bn/blog",
+        url: "https://www.saudiease.com/bn/blog",
         siteName: "সৌদি ইজ",
         locale: "bn_BD",
         type: "website",

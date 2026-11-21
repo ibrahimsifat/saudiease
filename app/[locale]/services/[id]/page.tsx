@@ -40,7 +40,7 @@ export async function generateMetadata({
         {
           url: service.heroImage?.startsWith("http")
             ? service.heroImage
-            : `https://saudiease.com${service.heroImage}`,
+            : `https://www.saudiease.com${service.heroImage}`,
           width: 1200,
           height: 630,
           alt: service.pageTitle,
@@ -54,7 +54,7 @@ export async function generateMetadata({
       images: [
         service.heroImage?.startsWith("http")
           ? service.heroImage
-          : `https://saudiease.com${service.heroImage}`,
+          : `https://www.saudiease.com${service.heroImage}`,
       ],
       creator: "@saudiease0",
     },
