@@ -3,12 +3,13 @@ import { localeUrl, pageAlternates } from "@/config/site";
 import { getBlogs } from "@/data/blog-posts/index";
 import { getFeatures } from "@/data/features";
 import { CITIES, CITY_SERVICE } from "@/data/city-pages";
+import { INDUSTRY_ID } from "@/data/industry-pages";
 import { getServiceDetails } from "@/data/service-details/index";
 import type { MetadataRoute } from "next";
 
 // Only indexable pages that return 200 on the canonical host.
 // Arabic (default locale) URLs have no /ar prefix.
-// Excluded on purpose: /industries/<id> (404 until real industry pages exist),
+// Excluded on purpose: template /industries/<id> pages (404; only real industries are listed),
 // admin, API.
 const staticPaths = [
   "",
@@ -66,6 +67,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const city of CITIES) {
       entries.push(entry(locale, `/services/${CITY_SERVICE}/${city}`));
     }
+  }
+
+  // Industry pages with real delivery history (task 3-8)
+  for (const locale of locales) {
+    entries.push(entry(locale, `/industries/${INDUSTRY_ID}`));
   }
 
   // Blog posts, with their own publish date as lastmod.

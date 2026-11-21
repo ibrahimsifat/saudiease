@@ -30,7 +30,7 @@ const BANNED = [
   /Riyadh Medical Center|Al-Madinah Retail|Al Dosari Contracting/,
   /cv-document-preparation|excel-data-work|aramco-sabic-vendor-code/,
 ];
-const RETIRED_IN_SITEMAP = /\/(estimator|careers|industries\/[a-z])|services\/(web-development|e-invoicing|corporate-profile|logo-design|print-design|custom-cms-development|e-commerce-solutions|digital-marketing|ui-ux-design|api-development|cv-document-preparation)\b/;
+const RETIRED_IN_SITEMAP = /\/(estimator|careers|industries\/(?!contracting-construction\b)[a-z])|services\/(web-development|e-invoicing|corporate-profile|logo-design|print-design|custom-cms-development|e-commerce-solutions|digital-marketing|ui-ux-design|api-development|cv-document-preparation)\b/;
 
 const errors = [];
 const warnings = [];
