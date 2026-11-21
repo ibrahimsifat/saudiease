@@ -1,5 +1,6 @@
 import { locales, localeMetadata, type Locale } from "@/config/i18n";
 import { localePath, localeUrl, pageAlternates } from "@/config/site";
+import { CASE_STUDIES } from "@/data/case-studies";
 import { CITIES, CITY_PAGES, CITY_SERVICE, type CitySlug } from "@/data/city-pages";
 import {
   generateBreadcrumbSchema,
@@ -181,6 +182,13 @@ export default async function CityServicePage({ params }: { params: Params }) {
           <ul className="mt-8 space-y-2 text-primary">
             <li><Link href={localePath(locale, `/services/${id}`)} className="hover:underline">{page.serviceLinkLabel}</Link></li>
             <li><Link href={localePath(locale, `/services/${id}/${otherCity}`)} className="hover:underline">{page.otherCityLabel}</Link></li>
+            {CASE_STUDIES.map((cs) => (
+              <li key={cs.slug}>
+                <Link href={localePath(locale, `/portfolio/${cs.slug}`)} className="hover:underline">
+                  {cs.text[locale]?.h1}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
       </section>

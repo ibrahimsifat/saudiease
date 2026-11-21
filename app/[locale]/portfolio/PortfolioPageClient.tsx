@@ -5,55 +5,16 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Locale } from "@/config/i18n";
-import { getProjects } from "@/data/projects";
+import { CASE_STUDIES, CASE_STUDY_UI } from "@/data/case-studies";
 import { Link } from "@/i18n/routing";
 import { motion } from "framer-motion";
 import { ArrowRight, ExternalLink, Filter, Search } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 
 export default function PortfolioPageClient({ locale }: { locale: Locale }) {
   const t = useTranslations("portfolioPage");
   const isRtl = locale === "ar";
-  const projects = getProjects(locale);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [filteredProjects, setFilteredProjects] = useState(projects);
-  const [selectedCategory, setSelectedCategory] = useState("all");
-  const [isLoading, setIsLoading] = useState(true);
-
-  // Get unique categories from projects
-  const categories = [
-    "all",
-    ...Array.from(new Set(projects.map((project) => project.category))),
-  ];
-
-  // Filter projects based on search query and selected category
-  useEffect(() => {
-    setIsLoading(true);
-    const timer = setTimeout(() => {
-      const filtered = projects.filter((project) => {
-        const matchesSearch =
-          project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          project.description
-            .toLowerCase()
-            .includes(searchQuery.toLowerCase()) ||
-          project.technologies.some((tech) =>
-            tech.toLowerCase().includes(searchQuery.toLowerCase())
-          );
-
-        const matchesCategory =
-          selectedCategory === "all" || project.category === selectedCategory;
-
-        return matchesSearch && matchesCategory;
-      });
-      setFilteredProjects(filtered);
-      setIsLoading(false);
-    }, 300);
-
-    return () => clearTimeout(timer);
-  }, [searchQuery, selectedCategory]);
-
   const ArrowIcon = isRtl
     ? ({ className }: { className?: string }) => (
         <ArrowRight className={`${className} rotate-180`} />
@@ -112,182 +73,36 @@ export default function PortfolioPageClient({ locale }: { locale: Locale }) {
       {/* Filter Section */}
       <section id="portfolio-grid" className="py-12">
         <div className="container mx-auto px-4">
-          <div className="bg-white rounded-xl shadow-md p-6 mb-12">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="col-span-1 md:col-span-2">
-                <div className="relative">
-                  <Search
-                    className={`absolute ${
-                      isRtl ? "right-3" : "left-3"
-                    } top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5`}
-                  />
-                  <Input
-                    type="text"
-                    placeholder={t("filter.search")}
-                    className={isRtl ? "pr-10 text-right" : "pl-10"}
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                  />
-                </div>
-              </div>
-              <div>
-                <Tabs defaultValue="all" onValueChange={setSelectedCategory}>
-                  <div className="flex items-center mb-2">
-                    <Filter className="h-4 w-4 mr-2 text-primary" />
-                    <span className="text-sm font-medium">
-                      {t("filter.filterBy")}
-                    </span>
-                  </div>
-                  <TabsList className="w-full overflow-auto">
-                    {categories.map((category) => (
-                      <TabsTrigger
-                        key={category}
-                        value={category}
-                        className="capitalize"
-                      >
-                        {category === "all" ? t("filter.all") : category}
-                      </TabsTrigger>
-                    ))}
-                  </TabsList>
-                </Tabs>
-              </div>
-            </div>
+          {/* Case studies (growth plan P1): real, approved client websites */}
+          <div className={`mb-8 ${isRtl ? "text-right" : "text-left"}`}>
+            <h2 className="text-2xl md:text-3xl font-bold text-saudi-black mb-2">
+              {CASE_STUDY_UI[locale]?.caseStudies}
+            </h2>
+            <p className="text-gray-600">{CASE_STUDY_UI[locale]?.caseStudiesIntro}</p>
           </div>
-
-          {/* Projects Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {isLoading ? (
-              // Loading skeleton
-              Array.from({ length: 6 }).map((_, index) => (
-                <Card
-                  key={index}
-                  className="overflow-hidden border border-gray-100"
-                >
-                  <div className="h-48 bg-gray-200 animate-pulse"></div>
-                  <CardContent className="p-6">
-                    <div className="h-6 bg-gray-200 rounded animate-pulse mb-4"></div>
-                    <div className="h-4 bg-gray-100 rounded animate-pulse mb-2"></div>
-                    <div className="h-4 bg-gray-100 rounded animate-pulse mb-2"></div>
-                    <div className="h-4 bg-gray-100 rounded animate-pulse w-2/3"></div>
-                    <div className="mt-6 flex gap-2">
-                      <div className="h-8 w-20 bg-gray-200 rounded animate-pulse"></div>
-                      <div className="h-8 w-20 bg-gray-200 rounded animate-pulse"></div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))
-            ) : filteredProjects.length > 0 ? (
-              filteredProjects.map((project) => (
-                <motion.div
-                  key={project.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="group"
-                >
-                  <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 border border-gray-100 h-full flex flex-col">
-                    <div className="relative h-48 overflow-hidden">
-                      <Image
-                        src={
-                          project.image ||
-                          "/placeholder.svg?height=400&width=600"
-                        }
-                        alt={project.title}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                        <div className="p-4 w-full">
-                          <div className="flex justify-between items-center">
-                            <span className="text-white text-sm">
-                              {project.category}
-                            </span>
-                            <span className="bg-white/20 backdrop-blur-sm text-white text-xs px-2 py-1 rounded-full">
-                              {project.completionDate}
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <CardContent className="p-6 flex-grow flex flex-col">
-                      <div className="mb-4 flex-grow">
-                        <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-primary transition-colors">
-                          {project.title}
-                        </h3>
-                        <p className="text-gray-600 text-sm line-clamp-3">
-                          {project.description}
-                        </p>
-                      </div>
-
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {project.technologies.slice(0, 3).map((tech, index) => (
-                          <span
-                            key={index}
-                            className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                        {project.technologies.length > 3 && (
-                          <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">
-                            +{project.technologies.length - 3} more
-                          </span>
-                        )}
-                      </div>
-
-                      <div className="flex gap-3">
-                        <Button size="sm" asChild>
-                          <Link
-                            href={`/portfolio/${project.id}`}
-                            className="flex items-center"
-                          >
-                            {t("projectDetail.viewProject")}
-                            <ArrowIcon
-                              className={`${isRtl ? "mr-2" : "ml-2"} h-3 w-3`}
-                            />
-                          </Link>
-                        </Button>
-                        {project.link && (
-                          <Button size="sm" variant="outline" asChild>
-                            <a
-                              href={project.link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center"
-                            >
-                              {t("projectDetail.liveDemo")}
-                              <ExternalLink
-                                className={`${isRtl ? "mr-2" : "ml-2"} h-3 w-3`}
-                              />
-                            </a>
-                          </Button>
-                        )}
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))
-            ) : (
-              <div className="col-span-1 md:col-span-2 lg:col-span-3 text-center py-12">
-                <div className="bg-gray-50 rounded-lg p-8 max-w-md mx-auto">
-                  <Search className="h-12 w-12 text-gray-300 mx-auto mb-4" />
-                  <h3 className="text-xl font-bold text-gray-700 mb-2">
-                    {t("noProjects.title")}
-                  </h3>
-                  <p className="text-gray-500 mb-4">
-                    {t("noProjects.description")}
-                  </p>
-                  <Button
-                    onClick={() => {
-                      setSearchQuery("");
-                      setSelectedCategory("all");
-                    }}
-                  >
-                    {t("noProjects.clearFilters")}
-                  </Button>
-                </div>
-              </div>
-            )}
+            {CASE_STUDIES.map((cs) => (
+              <Card key={cs.slug} className="overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow">
+                <Link href={`/portfolio/${cs.slug}`} className="block">
+                  <div className="relative aspect-[16/10] bg-gray-100">
+                    <Image src={cs.screenshot} alt={`${cs.name} website`} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover object-top" />
+                  </div>
+                </Link>
+                <CardContent className={`p-6 ${isRtl ? "text-right" : "text-left"}`}>
+                  <p className="text-sm text-primary font-medium mb-1">{cs.text[locale]?.sector}</p>
+                  <h3 className="text-xl font-bold text-saudi-black mb-3" dir="ltr">{cs.name}</h3>
+                  <p className="text-gray-600 text-sm mb-4 line-clamp-3">{cs.text[locale]?.summary}</p>
+                  <div className="flex flex-wrap gap-3">
+                    <Link href={`/portfolio/${cs.slug}`} className="inline-flex items-center text-primary font-semibold hover:underline">
+                      {CASE_STUDY_UI[locale]?.readCase}
+                    </Link>
+                    <a href={cs.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-gray-600 hover:text-primary">
+                      {CASE_STUDY_UI[locale]?.visitSite} <ExternalLink className="h-4 w-4 mx-1" />
+                    </a>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
 
           {/* CTA Section */}

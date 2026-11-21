@@ -2,6 +2,7 @@ import { locales, type Locale } from "@/config/i18n";
 import { localeUrl, pageAlternates } from "@/config/site";
 import { getBlogs } from "@/data/blog-posts/index";
 import { getFeatures } from "@/data/features";
+import { CASE_STUDIES } from "@/data/case-studies";
 import { CITIES, CITY_SERVICE } from "@/data/city-pages";
 import { INDUSTRY_ID } from "@/data/industry-pages";
 import { getServiceDetails } from "@/data/service-details/index";
@@ -72,6 +73,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Industry pages with real delivery history (task 3-8)
   for (const locale of locales) {
     entries.push(entry(locale, `/industries/${INDUSTRY_ID}`));
+  }
+
+  // Case studies (growth plan P1)
+  for (const locale of locales) {
+    for (const cs of CASE_STUDIES) entries.push(entry(locale, `/portfolio/${cs.slug}`));
   }
 
   // Blog posts, with their own publish date as lastmod.

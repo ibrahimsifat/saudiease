@@ -52,6 +52,9 @@ employment management system (EMS).
 
 ## Proof
 - [Client websites we built](https://www.saudiease.com/en/portfolio)
+- [Case study: Cobalt Core Contracting website](https://www.saudiease.com/en/portfolio/cobalt-core-contracting)
+- [Case study: Solidcore International website](https://www.saudiease.com/en/portfolio/solidcore-international)
+- [Case study: Al Bishri Company website](https://www.saudiease.com/en/portfolio/al-bishri-company)
 - Reviews: none published yet.
 
 ## Guides

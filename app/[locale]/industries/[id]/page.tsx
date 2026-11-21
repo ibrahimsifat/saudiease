@@ -1,5 +1,6 @@
 import { locales, localeMetadata, type Locale } from "@/config/i18n";
 import { localePath, localeUrl, pageAlternates } from "@/config/site";
+import { CASE_STUDIES, CASE_STUDY_UI } from "@/data/case-studies";
 import { INDUSTRY_CLIENTS, INDUSTRY_ID, INDUSTRY_PAGES } from "@/data/industry-pages";
 import { generateBreadcrumbSchema, generateFAQSchema, ORG_ID } from "@/lib/schema";
 import { whatsappLink } from "@/lib/track";
@@ -169,9 +170,16 @@ export default async function IndustryPage({ params }: { params: Params }) {
                 </div>
                 <figcaption className="p-4">
                   <p className="font-semibold text-saudi-black" dir="ltr">{c.name}</p>
-                  <a href={c.url} target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline">
-                    {page.visitSite}
-                  </a>
+                  <div className="flex flex-wrap gap-3 text-sm">
+                    {CASE_STUDIES.find((cs) => cs.name === c.name) && (
+                      <Link href={localePath(locale, `/portfolio/${CASE_STUDIES.find((cs) => cs.name === c.name)!.slug}`)} className="font-semibold text-primary hover:underline">
+                        {CASE_STUDY_UI[locale]?.readCase}
+                      </Link>
+                    )}
+                    <a href={c.url} target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-primary">
+                      {page.visitSite}
+                    </a>
+                  </div>
                 </figcaption>
               </figure>
             ))}
