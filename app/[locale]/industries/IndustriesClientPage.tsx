@@ -5,6 +5,7 @@ import { CONSTANT } from "@/config/constants";
 import { Locale } from "@/config/i18n";
 import { getBusinessCategories } from "@/data/business-categories";
 import { Link } from "@/i18n/routing";
+import { INDUSTRY_ID, INDUSTRY_PAGES } from "@/data/industry-pages";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Building2, CheckCircle2 } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -77,6 +78,21 @@ export default function IndustriesClientPage() {
               </Button>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Industry with real delivery history (task 3-8) */}
+      <section className="py-10">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <Link
+            href={`/industries/${INDUSTRY_ID}`}
+            className="block rounded-2xl border-2 border-primary/30 bg-primary/5 p-6 md:p-8 hover:border-primary transition"
+          >
+            <h2 className="text-2xl font-bold text-saudi-black mb-2">
+              {INDUSTRY_PAGES[locale]?.h1}
+            </h2>
+            <p className="text-gray-700">{INDUSTRY_PAGES[locale]?.metaDescription}</p>
+          </Link>
         </div>
       </section>
 

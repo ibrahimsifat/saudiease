@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { CONSTANT } from "@/config/constants";
 import { CITIES, CITY_PAGES, CITY_SERVICE } from "@/data/city-pages";
+import { INDUSTRY_ID, INDUSTRY_PAGES } from "@/data/industry-pages";
 import { getCompanyInfo } from "@/data/company-info/index";
 import { Link } from "@/i18n/routing";
 import { motion } from "framer-motion";
@@ -81,6 +82,8 @@ export default function Footer({ locale }: { locale: Locale }) {
       link: "/blog/zatca-phase-2-e-invoicing-saudi-businesses",
     },
     { name: t("resources.faq"), link: "/faq" },
+    // Industry page (task 3-8)
+    { name: INDUSTRY_PAGES[locale]?.h1 || "Contracting", link: `/industries/${INDUSTRY_ID}` },
     // Service × city pages (task 3-7)
     ...CITIES.map((city) => ({
       name: CITY_PAGES[locale]?.[city]?.h1 || city,

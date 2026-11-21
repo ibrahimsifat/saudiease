@@ -37,6 +37,9 @@ employment management system (EMS).
 - [Web design in Al Khobar](https://www.saudiease.com/en/services/website-design-development/al-khobar): our office; meetings at our office or yours
 - [Web design in Dammam](https://www.saudiease.com/en/services/website-design-development/dammam): we visit your office in Dammam (no office in Dammam)
 
+## Industries
+- [Contracting & construction](https://www.saudiease.com/en/industries/contracting-construction): websites, company profiles and ZATCA e-invoicing setup for contractors. Our work includes the websites of Cobalt Core Contracting, Solidcore International and Al Bishri Company.
+
 ## Arabic pages
 - [الصفحة الرئيسية](https://www.saudiease.com/)
 - [الخدمات](https://www.saudiease.com/services)
@@ -44,6 +47,7 @@ employment management system (EMS).
 - [الفوترة الإلكترونية زاتكا](https://www.saudiease.com/services/zatca-e-invoicing)
 - [شركة تصميم مواقع في الخبر](https://www.saudiease.com/services/website-design-development/al-khobar)
 - [شركة تصميم مواقع في الدمام](https://www.saudiease.com/services/website-design-development/dammam)
+- [تصميم موقع شركة مقاولات](https://www.saudiease.com/industries/contracting-construction)
 - [تواصل معنا](https://www.saudiease.com/contact)
 
 ## Proof
