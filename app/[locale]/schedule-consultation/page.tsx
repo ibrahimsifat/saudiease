@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
   const descMap: Record<string, string> = {
     en: "Book a personalized consultation with our digital transformation experts to discuss your business needs and explore tailored solutions.",
-    ar: "احجز استشارة مخصصة مع خبراء التحول الرقمي لدينا لمناقشة احتياجات عملك واستكشاف الحلول المصممة خصيصاً.",
+    ar: "احجز استشارة مجانية مع سعودي إيز لمناقشة موقعك أو تطبيقك أو بروفايل شركتك أو الفوترة الإلكترونية، في الخبر أو الدمام أو عبر الإنترنت.",
     bn: "আপনার ব্যবসার প্রয়োজনীয়তা আলোচনা করতে এবং কাস্টমাইজড সমাধান অন্বেষণ করতে আমাদের ডিজিটাল ট্রান্সফরমেশন বিশেষজ্ঞদের সাথে একটি ব্যক্তিগত পরামর্শ বুক করুন।",
   };
 

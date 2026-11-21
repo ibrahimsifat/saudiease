@@ -35,7 +35,7 @@ export const CITY_PAGES: Record<string, Record<CitySlug, CityPage>> = {
     "al-khobar": {
       pageTitle: "شركة تصميم مواقع في الخبر | سعودي إيز",
       metaDescription:
-        "شركة تصميم مواقع في الخبر: مواقع شركات بالعربية والإنجليزية ونظام إدارة محتوى ومتاجر إلكترونية. قابلنا في مكتبنا بالخبر أو نزورك في مكتبك. راسلنا على واتساب.",
+        "شركة تصميم مواقع في الخبر: مواقع شركات بالعربية والإنجليزية ونظام إدارة محتوى ومتاجر إلكترونية. قابلنا في مكتبنا بالخبر أو نزورك في مكتبك.",
       h1: "شركة تصميم مواقع في الخبر",
       answer:
         "سعودي إيز شركة تصميم مواقع مقرها الخبر. نصمّم ونبرمج مواقع الشركات باللغتين العربية والإنجليزية، مع نظام إدارة محتوى تعدّل منه بنفسك، ومتجر إلكتروني عند الحاجة، لشركات المقاولات والإنشاءات والتوريد الصناعي وغيرها في الخبر. نلتقيك في مكتبنا بالخبر أو في مكتبك. ابدأ برسالة على واتساب.",
@@ -95,7 +95,7 @@ export const CITY_PAGES: Record<string, Record<CitySlug, CityPage>> = {
     dammam: {
       pageTitle: "شركة تصميم مواقع في الدمام | سعودي إيز",
       metaDescription:
-        "شركة تصميم مواقع للشركات في الدمام: مواقع بالعربية والإنجليزية ونظام إدارة محتوى ومتاجر إلكترونية. فريقنا في الخبر ونزورك في مكتبك بالدمام. راسلنا على واتساب.",
+        "شركة تصميم مواقع للشركات في الدمام: مواقع بالعربية والإنجليزية ونظام إدارة محتوى ومتاجر إلكترونية. فريقنا في الخبر ونزورك في مكتبك بالدمام.",
       h1: "شركة تصميم مواقع في الدمام",
       answer:
         "تصمّم سعودي إيز مواقع الشركات في الدمام باللغتين العربية والإنجليزية، مع نظام إدارة محتوى ومتجر إلكتروني عند الحاجة. فريقنا في الخبر المجاورة، ونزورك في مكتبك بالدمام للاجتماعات، أو تلتقينا في مكتبنا بالخبر. ابدأ برسالة على واتساب.",
@@ -158,7 +158,7 @@ export const CITY_PAGES: Record<string, Record<CitySlug, CityPage>> = {
     "al-khobar": {
       pageTitle: "Web Design Company in Al Khobar | Saudi Ease",
       metaDescription:
-        "Web design company in Al Khobar: Arabic/English company websites, custom CMS and online stores. Meet us at our Al Khobar office or yours. Message us on WhatsApp.",
+        "Web design company in Al Khobar: Arabic/English company websites, custom CMS and online stores. Meet us at our Al Khobar office or at yours.",
       h1: "Web Design Company in Al Khobar",
       answer:
         "Saudi Ease is a web design company based in Al Khobar. We design and build Arabic/English company websites with a CMS you can edit yourself, plus an online store when needed, for contracting, construction, industrial supply and other companies in Al Khobar. Meet us at our Al Khobar office or at yours. Start with a WhatsApp message.",
@@ -218,7 +218,7 @@ export const CITY_PAGES: Record<string, Record<CitySlug, CityPage>> = {
     dammam: {
       pageTitle: "Web Design Company in Dammam | Saudi Ease",
       metaDescription:
-        "Web design for companies in Dammam: Arabic/English websites, custom CMS and online stores. Our team is in Al Khobar and visits your Dammam office. WhatsApp us.",
+        "Web design for companies in Dammam: Arabic/English websites, custom CMS and online stores. Our team is in Al Khobar and visits your Dammam office.",
       h1: "Web Design Company in Dammam",
       answer:
         "Saudi Ease designs and builds Arabic/English company websites for businesses in Dammam, with a CMS and an online store when needed. Our team is in neighbouring Al Khobar: we visit your office in Dammam for meetings, or you can meet us at our Al Khobar office. Start with a WhatsApp message.",

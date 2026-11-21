@@ -33,6 +33,48 @@ const BLOG_SEO_TITLES: Record<string, Record<string, string>> = {
   },
 };
 
+// Meta descriptions (120–155 chars) for posts whose own text is too long or short.
+const BLOG_META: Record<string, Record<string, string>> = {
+  "guide-designing-powerful-logo-saudi-business": {
+    ar: "دليل عملي لتصميم شعار قوي لشركتك في السعودية: البساطة، والملاءمة لنشاطك، والعمل بالعربية والإنجليزية، ووضوحه بحجم صغير ولون واحد.",
+  },
+  "web-development-vs-custom-cms-right-for-business": {
+    ar: "موقع مبرمج خصيصاً أم نظام إدارة محتوى؟ مقارنة مبسطة للتكلفة والمرونة وسهولة التعديل والصيانة، لتختار الأنسب لشركتك في السعودية.",
+  },
+  "importance-mobile-first-design-saudi-businesses": {
+    ar: "لماذا يجب أن يُصمَّم موقع شركتك للجوال أولاً؟ أغلب زوار المواقع في السعودية يتصفحون من الجوال، وهذا ما يحتاجه الموقع ليخدمهم جيداً.",
+  },
+  "multilingual-websites-best-practices-saudi-businesses": {
+    ar: "أفضل الممارسات لبناء موقع بالعربية والإنجليزية: اتجاه النص، والخطوط، وتبديل اللغة، وكتابة المحتوى لكل لغة بدل الترجمة الحرفية.",
+    bn: "সৌদি ব্যবসার জন্য বহুভাষিক ওয়েবসাইট তৈরির সেরা অনুশীলন: আরবির ডান-থেকে-বাম লেখা, ফন্ট, ভাষা পরিবর্তন এবং প্রতিটি ভাষার জন্য আলাদা কনটেন্ট।",
+  },
+  "optimizing-website-performance-saudi-arabia-internet": {
+    ar: "كيف تجعل موقع شركتك سريعاً لزوارك في السعودية: ضغط الصور، وتخفيف البرمجة، والتخزين المؤقت، واختيار استضافة قريبة من جمهورك.",
+  },
+  "arabic-seo-strategies-saudi-businesses": {
+    ar: "استراتيجيات تحسين محركات البحث بالعربية للشركات السعودية: اختيار الكلمات التي يبحث بها عملاؤك فعلاً، وكتابة العناوين والمحتوى لها.",
+  },
+  "vision-2030-digital-transformation-opportunities": {
+    en: "What Vision 2030 digital transformation means for Saudi businesses: practical steps such as e-invoicing, a bilingual website and moving paperwork online.",
+  },
+  "custom-api-development-streamlines-business-operations": {
+    bn: "কাস্টম API কীভাবে আপনার ব্যবসার বিভিন্ন সিস্টেম যুক্ত করে: অ্যাকাউন্টিং, ওয়েবসাইট ও অ্যাপের মধ্যে ডেটা আদান-প্রদান সহজ করে এবং হাতের কাজ কমায়।",
+  },
+  "zatca-phase-2-e-invoicing-saudi-businesses": {
+    bn: "ZATCA ফেজ ২ ই-ইনভয়েসিং: সৌদি প্রতিষ্ঠানের যা জানা দরকার, ইন্টিগ্রেশনের ধাপ, প্রয়োজনীয়তা এবং আপনার ওয়েভের তারিখের আগে কীভাবে প্রস্তুত হবেন।",
+  },
+};
+
+const inRange = (t?: string) => !!t && [...t].length >= 120 && [...t].length <= 155;
+
+function blogMetaDescription(slug: string, locale: string, post: { metaDescription?: string; excerpt: string }): string {
+  const custom = BLOG_META[slug]?.[locale];
+  if (custom) return custom;
+  if (inRange(post.metaDescription)) return post.metaDescription as string;
+  if (inRange(post.excerpt)) return post.excerpt;
+  return post.metaDescription || post.excerpt;
+}
+
 function blogSeoTitle(slug: string, title: string, locale: string): string {
   const custom = BLOG_SEO_TITLES[slug]?.[locale];
   if (custom) return custom;
@@ -64,7 +106,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: blogSeoTitle(slug, post.title, locale),
-    description: post.metaDescription || post.excerpt,
+    description: blogMetaDescription(slug, locale, post as any),
     keywords: post.metaKeywords
       ? post.metaKeywords.join(", ")
       : keywords[locale as keyof typeof keywords].join(", "),
@@ -75,7 +117,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     ),
     openGraph: {
       title: post.title,
-      description: post.metaDescription || post.excerpt,
+      description: blogMetaDescription(slug, locale, post as any),
       type: "article",
       publishedTime: post.date,
       authors: [post.author],
@@ -93,7 +135,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     twitter: {
       card: "summary_large_image",
       title: post.title,
-      description: post.metaDescription || post.excerpt,
+      description: blogMetaDescription(slug, locale, post as any),
       images: [postImage],
       creator: "@saudiease0",
     },

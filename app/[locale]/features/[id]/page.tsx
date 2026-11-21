@@ -14,7 +14,7 @@ export async function generateMetadata({
   let description = "";
   try {
     title = withBrand(t(`detail.${id}.title`), locale);
-    description = t(`detail.${id}.subtitle`);
+    description = t(`detail.${id}.metaDescription`);
   } catch {
     // fall back to layout defaults
   }

@@ -6,6 +6,26 @@ export const SERVICE_SEO: Record<
   Record<string, { pageTitle: string; metaDescription: string }>
 > = {
   ar: {
+    "it-support-retainer": {
+      pageTitle: "عقد دعم تقني شهري في الخبر والدمام | سعودي إيز",
+      metaDescription:
+        "دعم تقني شهري للشركات في الخبر والدمام: متابعة الموقع والبريد الإلكتروني، والتحديثات والنسخ الاحتياطية، والمساعدة عندما يتوقف شيء عن العمل.",
+    },
+    "professional-email-setup": {
+      pageTitle: "إعداد بريد إلكتروني رسمي للشركات | سعودي إيز",
+      metaDescription:
+        "بريد إلكتروني باسم نطاق شركتك (name@yourcompany.com)، نجهّزه ونربطه بالجوالات وأجهزة الكمبيوتر لفريقك في الخبر والدمام وباقي المملكة.",
+    },
+    "google-business-profile": {
+      pageTitle: "إعداد ملف نشاطك التجاري على قوقل | سعودي إيز",
+      metaDescription:
+        "نجهّز ونكمل ملف نشاطك التجاري على قوقل حتى يجد عملاؤك في الخبر والدمام والمنطقة الشرقية شركتك على خرائط قوقل بسهولة وبمعلومات صحيحة.",
+    },
+    "business-setup-consultation": {
+      pageTitle: "استشارة تأسيس الأعمال والسجل التجاري | سعودي إيز",
+      metaDescription:
+        "إرشاد خطوة بخطوة لاستخراج السجل التجاري ومتطلبات وزارة التجارة والتسجيل في الغرفة التجارية والتراخيص اللازمة لتأسيس نشاطك في السعودية.",
+    },
     "website-design-development": {
       pageTitle: "شركة تصميم مواقع في الخبر والدمام | سعودي إيز",
       metaDescription:
@@ -33,6 +53,26 @@ export const SERVICE_SEO: Record<
     },
   },
   en: {
+    "it-support-retainer": {
+      pageTitle: "IT Support Retainer in Al Khobar & Dammam | Saudi Ease",
+      metaDescription:
+        "Monthly IT support for companies in Al Khobar and Dammam: email and domain management, website updates, security monitoring and priority support.",
+    },
+    "professional-email-setup": {
+      pageTitle: "Professional Email Setup for Companies | Saudi Ease",
+      metaDescription:
+        "Company email on your own domain (name@yourcompany.com) with Google Workspace or Microsoft 365, set up and synced to your team's phones and laptops.",
+    },
+    "google-business-profile": {
+      pageTitle: "Google Business Profile Setup | Saudi Ease",
+      metaDescription:
+        "We set up and complete your Google Business Profile so clients in Al Khobar, Dammam and the Eastern Province find your company on Google Maps.",
+    },
+    "business-setup-consultation": {
+      pageTitle: "CR Registration & Business Setup Guidance | Saudi Ease",
+      metaDescription:
+        "Step-by-step guidance on CR registration, MOCI requirements, Chamber of Commerce registration and commercial licences for new businesses in Saudi Arabia.",
+    },
     "website-design-development": {
       pageTitle: "Website Design Company in Al Khobar & Dammam | Saudi Ease",
       metaDescription:
@@ -60,6 +100,26 @@ export const SERVICE_SEO: Record<
     },
   },
   bn: {
+    "it-support-retainer": {
+      pageTitle: "আল খোবার ও দাম্মামে আইটি সাপোর্ট চুক্তি | সৌদি ইজ",
+      metaDescription:
+        "আল খোবার ও দাম্মামের প্রতিষ্ঠানের জন্য মাসিক আইটি সাপোর্ট: ওয়েবসাইট ও ইমেইল দেখাশোনা, আপডেট, ব্যাকআপ এবং কিছু কাজ না করলে সাহায্য।",
+    },
+    "professional-email-setup": {
+      pageTitle: "প্রতিষ্ঠানের জন্য প্রফেশনাল ইমেইল সেটআপ | সৌদি ইজ",
+      metaDescription:
+        "আপনার নিজের ডোমেইনে কোম্পানি ইমেইল (name@yourcompany.com), সেটআপ করে টিমের ফোন ও ল্যাপটপে যুক্ত করি, আল খোবার, দাম্মাম ও সৌদি আরবজুড়ে।",
+    },
+    "google-business-profile": {
+      pageTitle: "গুগল বিজনেস প্রোফাইল সেটআপ | সৌদি ইজ",
+      metaDescription:
+        "আপনার গুগল বিজনেস প্রোফাইল সেটআপ ও সম্পূর্ণ করি, যাতে আল খোবার, দাম্মাম ও পূর্বাঞ্চলের ক্লায়েন্টরা গুগল ম্যাপে আপনার প্রতিষ্ঠান খুঁজে পান।",
+    },
+    "business-setup-consultation": {
+      pageTitle: "CR নিবন্ধন ও ব্যবসা সেটআপ পরামর্শ | সৌদি ইজ",
+      metaDescription:
+        "সৌদি আরবে ব্যবসা শুরুর জন্য ধাপে ধাপে পরামর্শ: CR নিবন্ধন, বাণিজ্য মন্ত্রণালয়ের (MOCI) প্রয়োজনীয়তা, চেম্বার অব কমার্স নিবন্ধন ও বাণিজ্যিক লাইসেন্স।",
+    },
     "website-design-development": {
       pageTitle: "আল খোবার ও দাম্মামে ওয়েবসাইট ডিজাইন | সৌদি ইজ",
       metaDescription:

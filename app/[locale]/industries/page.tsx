@@ -15,7 +15,7 @@ export async function generateMetadata({
 
   return generatePageMetadata({
     title: `${t("hero.badge")} | Saudi Ease`,
-    description: t("hero.description"),
+    description: t("meta.description"),
     path: `/${locale}/industries`,
     keywords: keywords[locale as keyof typeof keywords].join(", "),
     locale,

@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Web Design & App Company in Al Khobar & Dammam | Saudi Ease",
-    "description": "Saudi Ease designs websites and mobile apps, company profiles and brand identities, and sets up ZATCA-compliant e-invoicing for businesses in the Eastern Province."
+    "description": "Saudi Ease builds websites and mobile apps, designs company profiles and brand identities, and sets up ZATCA e-invoicing in Al Khobar and Dammam."
   },
   "navigation": {
     "home": "Home",
@@ -554,7 +554,8 @@
             "question": "Can you optimize performance for Arabic content and RTL layouts?",
             "answer": "Absolutely. We have specialized expertise in optimizing Arabic websites with RTL layouts, ensuring that the unique characteristics of Arabic typography and design don't negatively impact performance."
           }
-        ]
+        ],
+        "metaDescription": "Fast-loading websites and apps from Saudi Ease: optimised images, lean code and caching, so pages open quickly for visitors on mobile networks."
       },
       "security": {
         "title": "Secure Solutions",
@@ -604,7 +605,8 @@
             "question": "Can you help with security training for our staff?",
             "answer": "Yes, we offer comprehensive security awareness training programs customized for Saudi businesses. These programs cover best practices, common threats specific to the Saudi market, and practical exercises to help staff recognize and respond appropriately to security threats."
           }
-        ]
+        ],
+        "metaDescription": "How Saudi Ease builds secure websites and apps: HTTPS, protected admin access, regular updates and backups, and careful handling of your data."
       },
       "responsive": {
         "title": "Mobile Responsive",
@@ -654,7 +656,8 @@
             "question": "How do you test responsive designs for the Saudi market?",
             "answer": "We conduct extensive testing on the most popular devices and browsers used in Saudi Arabia, including various Android phones, iPhones, and tablets at different screen sizes and resolutions. We also test on common network conditions experienced in different regions of Saudi Arabia to ensure good performance even in areas with slower connections."
           }
-        ]
+        ],
+        "metaDescription": "Websites from Saudi Ease work on phones, tablets and desktops, in Arabic right-to-left and English left-to-right. See how we design for every screen."
       },
       "local-expertise": {
         "title": "Local Expertise",
@@ -705,7 +708,8 @@
             "question": "Do you provide bilingual (Arabic/English) solutions?",
             "answer": "Yes, we excel at creating truly bilingual digital experiences that work seamlessly in both Arabic and English. Rather than treating one language as an afterthought, we design with both languages in mind from the beginning, ensuring proper layout, typography, and user experience for both language options. We also provide professional translation services that capture the right tone and cultural context."
           }
-        ]
+        ],
+        "metaDescription": "Built for Saudi businesses: Arabic and English sites, ZATCA e-invoicing setup and meetings in Al Khobar and Dammam. How local know-how shapes our work."
       },
       "growth": {
         "title": "Growth Focused",
@@ -755,7 +759,8 @@
             "question": "Do you provide ongoing growth support after the initial implementation?",
             "answer": "Yes, we offer ongoing growth partnerships where we continue to optimize and evolve your digital presence based on performance data and changing business needs. Many clients find this approach valuable as it provides continuous improvement without the need to manage multiple vendors or build an extensive in-house team."
           }
-        ]
+        ],
+        "metaDescription": "Websites and apps that grow with your company: a CMS you edit yourself, room for new pages and services, and an online store when you need one."
       },
       "timely": {
         "title": "Timely Delivery",
@@ -805,7 +810,8 @@
             "question": "What is your track record for on-time delivery?",
             "answer": "We agree milestones and a timeline in writing before work starts, and we tell you early if a requested scope change affects the timeline."
           }
-        ]
+        ],
+        "metaDescription": "How Saudi Ease keeps projects on schedule: written scope, agreed milestones and early notice of any change. Website and app delivery you can plan around."
       }
     }
   },
@@ -1838,12 +1844,15 @@
       "description": "Let's discuss how our industry-specific solutions can help your business thrive in Saudi Arabia's competitive market. Our team of experts is ready to provide tailored recommendations for your specific needs.",
       "scheduleButton": "Schedule Consultation",
       "caseStudiesButton": "View Case Studies"
+    },
+    "meta": {
+      "description": "Industries Saudi Ease works with: mostly contracting, construction and industrial supply companies, plus retail and service businesses in Saudi Arabia."
     }
   },
   "featuresPage": {
     "metadata": {
       "title": "How We Build Websites & Apps | Saudi Ease",
-      "description": "How Saudi Ease builds websites and apps: performance, security, responsive design, local expertise and clear timelines."
+      "description": "How Saudi Ease builds websites and apps for Eastern Province companies: performance, security, responsive design, local know-how and clear timelines."
     },
     "hero": {
       "badge": "Powerful Features",
@@ -1871,7 +1880,7 @@
   },
   "legal": {
     "title": "Legal Hub | Saudi Ease",
-    "description": "Legal information, privacy policy, terms of service, and other legal documents for Saudi Ease.",
+    "description": "Saudi Ease legal documents: our privacy policy and terms of service for websites, apps, company profiles and e-invoicing setup in Saudi Arabia.",
     "backToHome": "Back to Home",
     "pageTitle": "Legal Hub",
     "lastUpdated": "Last Updated",
@@ -1946,7 +1955,7 @@
   "privacyPolicy": {
     "metadata": {
       "title": "Privacy Policy | Saudi Ease",
-      "description": "Learn how Saudi Ease collects, uses, and protects your personal information in compliance with Saudi data protection regulations."
+      "description": "How Saudi Ease collects, uses and protects the personal information you share through our website, contact forms and WhatsApp. Read the policy."
     },
     "title": "Privacy Policy",
     "backToHome": "Back to Home",
@@ -2166,7 +2175,7 @@
   "techStack": {
     "metadata": {
       "title": "Technology Stack | Saudi Ease",
-      "description": "Explore the cutting-edge technologies we use to build powerful, scalable, and efficient digital solutions for businesses in Saudi Arabia."
+      "description": "The technologies Saudi Ease uses to build company websites, CMS sites, online stores and mobile apps for businesses in Al Khobar, Dammam and KSA."
     },
     "hero": {
       "badge": "Technology Stack",
@@ -2298,7 +2307,7 @@
   "termsOfService": {
     "metadata": {
       "title": "Terms of Service | Saudi Ease",
-      "description": "The terms and conditions governing your use of Saudi Ease services and platform."
+      "description": "The terms and conditions for using the Saudi Ease website and our services: websites, mobile apps, company profiles and ZATCA e-invoicing setup."
     },
     "title": "Terms of Service",
     "backToHome": "Back to Home",
