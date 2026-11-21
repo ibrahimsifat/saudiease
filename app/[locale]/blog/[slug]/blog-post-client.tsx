@@ -42,6 +42,30 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
+// Kept posts link to the service they support (task 3-12)
+const RELATED_SERVICE: Record<string, string> = {
+  "zatca-phase-2-e-invoicing-saudi-businesses": "zatca-e-invoicing",
+  "crafting-compelling-corporate-profile-b2b-clients": "company-profile-branding",
+  "web-development-vs-custom-cms-right-for-business": "website-design-development",
+};
+const RELATED_LABEL: Record<string, Record<string, string>> = {
+  ar: {
+    "zatca-e-invoicing": "خدمة تجهيز الفوترة الإلكترونية (زاتكا) ←",
+    "company-profile-branding": "خدمة تصميم بروفايل الشركات ←",
+    "website-design-development": "خدمة تصميم وتطوير المواقع ←",
+  },
+  en: {
+    "zatca-e-invoicing": "Our ZATCA e-invoicing setup service →",
+    "company-profile-branding": "Our company profile design service →",
+    "website-design-development": "Our website design & development service →",
+  },
+  bn: {
+    "zatca-e-invoicing": "আমাদের ZATCA ই-ইনভয়েসিং সেটআপ সেবা →",
+    "company-profile-branding": "আমাদের কোম্পানি প্রোফাইল ডিজাইন সেবা →",
+    "website-design-development": "আমাদের ওয়েবসাইট ডিজাইন ও ডেভেলপমেন্ট সেবা →",
+  },
+};
+
 export default function BlogPostClient({ post, locale, schema }) {
   const router = useRouter();
   const t = useTranslations("blog");
@@ -504,6 +528,15 @@ export default function BlogPostClient({ post, locale, schema }) {
                   />
                 </div>
 
+                {/* Related service for posts that feed a money page (task 3-12) */}
+                {RELATED_SERVICE[post.slug] && (
+                  <Link
+                    href={`/services/${RELATED_SERVICE[post.slug]}`}
+                    className="mt-8 block rounded-xl border border-primary/30 bg-primary/5 p-5 font-semibold text-primary hover:border-primary"
+                  >
+                    {RELATED_LABEL[locale]?.[RELATED_SERVICE[post.slug]]}
+                  </Link>
+                )}
                 <div className="mt-8 pt-6 border-t border-gray-100">
                   <h3
                     className={`text-lg font-semibold mb-3 flex items-center ${

@@ -171,8 +171,8 @@ export const blogPosts: BlogPost[] = [
       A Custom CMS is built from the ground up specifically for your business processes. Technologies like Next.js, React, and Node.js are often used to create a tailored, high-performance solution.
 
       Pros:
-      - Unmatched Security: Because the code is proprietary, it is significantly less vulnerable to automated attacks that target popular platforms.
-      - High Performance: Custom code is lean and optimized, resulting in blazing-fast load times.
+      - Smaller attack surface: custom code does not depend on third-party plugins, which are a common target of automated attacks on popular platforms.
+      - Performance: custom code can be kept lean, which helps pages load quickly.
       - Scalability: The system can grow seamlessly with your enterprise, handling high traffic and complex integrations without breaking.
       - Exact Fit: The admin dashboard is designed exactly for your team's workflow, without unnecessary features.
 
@@ -183,7 +183,7 @@ export const blogPosts: BlogPost[] = [
       ---
 
        Making the Choice for Your Saudi Enterprise
-      For small businesses or startups testing the market, a standard CMS might be sufficient. However, for growing enterprises, government entities, or businesses dealing with sensitive data in Saudi Arabia, a Custom CMS is the superior choice.
+      For small businesses or startups testing the market, a standard CMS might be sufficient. For growing companies, or businesses with specific workflows or sensitive data, a Custom CMS is often the better fit.
 
       With Vision 2030 encouraging digital innovation, relying on rigid, outdated platforms can hinder your growth. A custom solution allows for seamless integration with local payment gateways (like Mada), ZATCA compliant e-invoicing systems, and complex ERP software.
 
@@ -192,7 +192,7 @@ export const blogPosts: BlogPost[] = [
        Conclusion
       Your website is the digital headquarters of your business. While off-the-shelf solutions offer a quick fix, a Custom CMS provides the security, speed, and scalability required for serious, long-term success in the Saudi market.
 
-      At SaudiEase, we build robust, high-performance Custom CMS solutions that empower your business to scale securely. Contact us to discuss your digital infrastructure needs.
+      Saudi Ease builds Arabic/English company websites on a custom CMS or a standard platform, depending on what fits your business. Message us on WhatsApp to discuss which option suits you.
     `,
     image: CONSTANT.blogs[13],
     date: "November 2, 2023",
@@ -479,7 +479,7 @@ export const blogPosts: BlogPost[] = [
        Conclusion
       A compelling corporate profile is an indispensable asset for B2B networking and tendering in Saudi Arabia. By combining strategic content with premium design, you can project authority and win the high-value contracts your business deserves.
 
-      At SaudiEase, we specialize in designing premium, high-impact corporate profiles for the industrial and B2B sectors. Let us help you tell your company's story.
+      Saudi Ease designs Arabic/English company profiles for contracting, construction and industrial companies, built from your real projects and documents. Message us on WhatsApp to start.
     `,
     image: CONSTANT.blogs[18],
     date: "January 24, 2024",
@@ -847,40 +847,41 @@ export const blogPosts: BlogPost[] = [
     content: `
        ZATCA Phase 2 E-Invoicing: What Saudi Businesses Need to Know
 
-      The Zakat, Tax, and Customs Authority (ZATCA) has implemented Phase 2 of its e-invoicing initiative, marking a significant step in Saudi Arabia’s digital transformation journey. Here’s everything Saudi businesses need to know about Phase 2 compliance:
+      E-invoicing is mandatory for every VAT-registered business in Saudi Arabia. Phase 1 (generation) started on 4 December 2021. Phase 2 (integration) started on 1 January 2023 and is being rolled out in waves; ZATCA notifies each business of its integration date at least six months in advance.
 
       ---
 
-       Key Requirements of Phase 2
-      - Real-time reporting: Businesses must transmit e-invoices to ZATCA in real-time.
-      - QR codes: Simplified tax invoices must include QR codes for verification.
-      - Digital signatures: Ensuring the authenticity and integrity of invoices.
-      - Anti-tampering features: Preventing unauthorized modifications to invoices.
+       What changes in Phase 2
+      - Your invoicing system must be connected to ZATCA's FATOORA platform.
+      - Invoices are issued in XML format (UBL 2.1 standard), with a cryptographic stamp, a QR code and a unique identifier.
+      - Standard tax invoices (business to business) are cleared by ZATCA before they are shared with the buyer.
+      - Simplified tax invoices (business to consumer) are given to the customer straight away and reported to ZATCA within 24 hours.
+      - Every device or unit that issues invoices is onboarded with a one-time password (OTP) that you generate in the FATOORA portal.
 
       ---
 
-       Implementation Strategies
-      To achieve compliance, businesses should:
-      1. Choose a ZATCA-compliant solution: Select software that meets all regulatory requirements.
-      2. Integrate with ZATCA’s platform: Ensure seamless data transmission.
-      3. Train employees: Educate staff on the new system and processes.
-      4. Test thoroughly: Conduct end-to-end testing before going live.
-      5. Monitor compliance: Regularly review processes to ensure adherence.
+       How to prepare
+      1. Check your wave: look for ZATCA's notification and confirm your integration date.
+      2. Check your software: ask your accounting or POS vendor whether it supports Phase 2 integration, or choose compliant software.
+      3. Check your data: VAT number, CR number and national address must be correct on every invoice.
+      4. Onboard your devices: generate the OTP in FATOORA and register each device or branch that issues invoices.
+      5. Test before go-live: issue a standard invoice, a simplified invoice, a credit note and a debit note in the simulation environment, and fix any rejection.
+      6. Train your team: accounts and sales staff should know how to issue invoices and follow up rejected ones.
 
       ---
 
-       Benefits of Compliance
-      - Operational efficiency: Streamlined invoicing processes.
-      - Cost savings: Reduced paper and printing expenses.
-      - Improved accuracy: Minimized errors in manual invoicing.
-      - Enhanced trust: Building credibility with customers and regulators.
+       Common mistakes
+      - Waiting until the last weeks before your integration date.
+      - Assuming your current software is ready without asking the vendor.
+      - Sharing your FATOORA password with a supplier; the OTP is all that is needed for onboarding.
+      - Skipping tests for credit and debit notes.
 
       ---
 
        Conclusion
-      ZATCA Phase 2 e-invoicing is a game-changer for Saudi businesses. By embracing this initiative, companies can achieve compliance, improve efficiency, and contribute to the Kingdom’s digital transformation goals.
+      Phase 2 is mostly a technical project: the right software, correct data, onboarded devices and proper testing. Questions about tax treatment remain for your accountant or tax adviser.
 
-      At [Your Business Name], we provide end-to-end e-invoicing solutions tailored to Saudi businesses. Contact us to learn how we can help you navigate Phase 2 compliance.
+      Saudi Ease sets up and integrates ZATCA-compliant e-invoicing software for companies in Al Khobar, Dammam and across Saudi Arabia. We are not a ZATCA-listed solution provider; we implement compliant third-party software and test it with you. Message us on WhatsApp to start with a readiness check.
     `,
     image: CONSTANT.blogs[4],
     date: "June 5, 2023",

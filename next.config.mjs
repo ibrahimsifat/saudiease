@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 import createNextIntlPlugin from "next-intl/plugin";
+import { RETIRED_BLOG_REDIRECTS } from "./data/blog-posts/retired.mjs";
 
 const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
 const nextConfig = {
@@ -121,6 +122,12 @@ const nextConfig = {
         { source: `/services/${from}`, destination: `/services/${to}`, permanent: true },
         { source: `/ar/services/${from}`, destination: `/services/${to}`, permanent: true },
         { source: `/:locale(en|bn)/services/${from}`, destination: `/:locale/services/${to}`, permanent: true },
+      ]),
+      // Blog: 17 off-offer posts retired to the closest live page (task 3-12)
+      ...Object.entries(RETIRED_BLOG_REDIRECTS).flatMap(([slug, to]) => [
+        { source: `/blog/${slug}`, destination: to, permanent: true },
+        { source: `/ar/blog/${slug}`, destination: to, permanent: true },
+        { source: `/:locale(en|bn)/blog/${slug}`, destination: `/:locale${to}`, permanent: true },
       ]),
       // No published prices (owner decision 2026-11-20): estimator retired
       { source: "/estimator", destination: "/contact", permanent: true },
