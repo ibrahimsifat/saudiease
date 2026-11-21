@@ -9,6 +9,7 @@ import { SERVICE_SEO } from "./seo";
 import { APPS_CONTENT } from "./apps";
 import { BRAND_CONTENT } from "./brand";
 import { PROFILE_CONTENT } from "./profile";
+import { SMALL_SERVICES } from "./small-services";
 import { WEBSITE_CONTENT } from "./website";
 import { ZATCA_CONTENT } from "./zatca";
 
@@ -155,6 +156,7 @@ export function getServiceDetails(locale: Locale): Record<string, ServiceDetail>
     "company-profile-branding": PROFILE_CONTENT,
     "brand-identity": BRAND_CONTENT,
     "mobile-app-development": APPS_CONTENT,
+    ...SMALL_SERVICES,
   };
   for (const [id, content] of Object.entries(REWRITES)) {
     const c = content[locale];

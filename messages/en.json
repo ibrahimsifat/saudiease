@@ -1036,7 +1036,8 @@
     },
     "resources": {
       "zatcaGuide": "ZATCA Phase 2 guide",
-      "faq": "FAQ"
+      "faq": "FAQ",
+      "techStack": "Technology stack"
     }
   },
   "featuresShowcase": {

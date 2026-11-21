@@ -705,7 +705,8 @@
     },
     "resources": {
       "zatcaGuide": "ZATCA ফেজ ২ গাইড",
-      "faq": "প্রশ্নোত্তর"
+      "faq": "প্রশ্নোত্তর",
+      "techStack": "প্রযুক্তি স্ট্যাক"
     }
   },
   "featuresShowcase": {

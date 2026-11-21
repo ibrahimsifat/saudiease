@@ -82,6 +82,7 @@ export default function Footer({ locale }: { locale: Locale }) {
       link: "/blog/zatca-phase-2-e-invoicing-saudi-businesses",
     },
     { name: t("resources.faq"), link: "/faq" },
+    { name: t("resources.techStack"), link: "/tech-stack" },
     // Industry page (task 3-8)
     { name: INDUSTRY_PAGES[locale]?.h1 || "Contracting", link: `/industries/${INDUSTRY_ID}` },
     // Service × city pages (task 3-7)
